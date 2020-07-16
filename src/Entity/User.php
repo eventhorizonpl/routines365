@@ -53,6 +53,11 @@ class User implements UserInterface
      */
     private array $roles = [];
 
+    public function __toString(): string
+    {
+        return $this->getUuid();
+    }
+
     public function eraseCredentials()
     {
     }

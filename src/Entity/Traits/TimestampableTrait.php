@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait TimestampableTrait
 {
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeInterface")
      * @ORM\Column(type="datetime")
      */
@@ -21,7 +21,7 @@ trait TimestampableTrait
     protected $deletedAt;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeInterface")
      * @ORM\Column(type="datetime")
      */

@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.author) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.isVisible) }}
+
+    <hr>
+    <button class="btn btn-primary">
+        <i class="fas fa-save"></i>
+        {{ button_label|default('Save'|trans) }}
+    </button>
+{{ form_end(form) }}

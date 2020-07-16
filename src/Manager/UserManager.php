@@ -30,8 +30,11 @@ class UserManager
         return $this;
     }
 
-    public function save(User $user, string $actor): self
+    public function save(User $user, string $actor = null): self
     {
+        if (null === $actor) {
+            $actor = $user->getUuid();
+        }
         $date = new DateTime();
         if (null === $user->getId()) {
             $user->setCreatedAt($date);

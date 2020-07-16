@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait BlameableTrait
 {
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"system"})
      * @Assert\Uuid
      * @ORM\Column(type="guid")
      */
@@ -20,7 +20,7 @@ trait BlameableTrait
     protected $deletedBy;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"system"})
      * @Assert\Uuid
      * @ORM\Column(type="guid")
      */

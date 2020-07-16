@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Z7aWRoY" resname="Dashboard">
+        <source>Dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="jcN4adY" resname="Quotes">
+        <source>Quotes</source>
+        <target>Quotes</target>
+      </trans-unit>
+      <trans-unit id="ZyXnu80" resname="System">
+        <source>System</source>
+        <target>System</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="0xwYTwL" resname="Routines365">
+        <source>Routines365</source>
+        <target>Routines365</target>
+      </trans-unit>
+      <trans-unit id="wcIksDz" resname="Admin">
+        <source>Admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="bi6mN7M" resname="No records found">
+        <source>No records found</source>
+        <target>No records found</target>
+      </trans-unit>
+      <trans-unit id="FQn1YfJ" resname="Save">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="R1lJisK" resname="Create">
+        <source>Create</source>
+        <target>Create</target>
+      </trans-unit>
+      <trans-unit id="ScJmuqq" resname="Search">
+        <source>Search</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="2VCCou5" resname="Author">
+        <source>Author</source>
+        <target>Author</target>
+      </trans-unit>
+      <trans-unit id="R70pB1_" resname="Content">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="FQbg4fy" resname="Is visible">
+        <source>Is visible</source>
+        <target>Is visible</target>
+      </trans-unit>
+      <trans-unit id="vtpwLW6" resname="String length">
+        <source>String length</source>
+        <target>String length</target>
+      </trans-unit>
+      <trans-unit id="PCEFPeg" resname="Updated at">
+        <source>Updated at</source>
+        <target>Updated at</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="haOas0X" resname="Yes">
+        <source>Yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="HqRCoTS" resname="No">
+        <source>No</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="DfbxytN" resname="Show">
+        <source>Show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Update</target>
+      </trans-unit>
+      <trans-unit id="DjOSy.X" resname="Create Quote">
+        <source>Create Quote</source>
+        <target>Create Quote</target>
+      </trans-unit>
+      <trans-unit id="dpAPG.0" resname="Back">
+        <source>Back</source>
+        <target>Back</target>
+      </trans-unit>
+      <trans-unit id="Gsc544l" resname="Quote details">
+        <source>Quote details</source>
+        <target>Quote details</target>
+      </trans-unit>
+      <trans-unit id="DjX26XQ" resname="Basic">
+        <source>Basic</source>
+        <target>Basic</target>
+      </trans-unit>
+      <trans-unit id="nDSHQn_" resname="Additional">
+        <source>Additional</source>
+        <target>Additional</target>
+      </trans-unit>
+      <trans-unit id="OEOXHc." resname="ID">
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="KomLyYq" resname="UUID">
+        <source>UUID</source>
+        <target>UUID</target>
+      </trans-unit>
+      <trans-unit id="r3TDzd1" resname="Content MD5">
+        <source>Content MD5</source>
+        <target>Content MD5</target>
+      </trans-unit>
+      <trans-unit id="N0zZ0iD" resname="Created by">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id=".msQX2I" resname="Deleted by">
+        <source>Deleted by</source>
+        <target>Deleted by</target>
+      </trans-unit>
+      <trans-unit id="IPDEcp3" resname="Updated by">
+        <source>Updated by</source>
+        <target>Updated by</target>
+      </trans-unit>
+      <trans-unit id="d1tb_WR" resname="Created at">
+        <source>Created at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="dYTfsUZ" resname="Deleted at">
+        <source>Deleted at</source>
+        <target>Deleted at</target>
+      </trans-unit>
+      <trans-unit id="9wH_kR5" resname="Edit Quote">
+        <source>Edit Quote</source>
+        <target>Edit Quote</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

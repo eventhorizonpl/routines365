@@ -1,0 +1,135 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\QuoteRepository;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass=QuoteRepository::class)
+ */
+class Quote
+{
+    use Traits\IdTrait;
+    use Traits\UuidTrait;
+    use Traits\BlameableTrait;
+    use Traits\TimestampableTrait;
+
+    /**
+     * @Assert\Length(
+     *   max = 64
+     * )
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @ORM\Column(length=64, type="string")
+     */
+    private string $author;
+
+    /**
+     * @Assert\Length(
+     *   max = 255
+     * )
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @ORM\Column(type="string")
+     */
+    private string $content;
+
+    /**
+     * @Assert\Length(
+     *   max = 32
+     * )
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string")
+     * @ORM\Column(length=32, type="string", unique=true)
+     */
+    private string $contentMd5;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isVisible;
+
+    /**
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $stringLength;
+
+    public function __construct()
+    {
+        $this->author = '';
+        $this->content = '';
+        $this->isVisible = false;
+    }
+
+    public function __toString(): string
+    {
+        return '“'.$this->getContent().'” – '.$this->getAuthor();
+    }
+
+    public function getAuthor(): string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getContentMd5(): ?string
+    {
+        return $this->contentMd5;
+    }
+
+    public function setContentMd5(string $contentMd5): self
+    {
+        $contentMd5 = md5(preg_replace('/[^a-z0-9]/i', '', strtolower($contentMd5)));
+        $this->contentMd5 = $contentMd5;
+
+        return $this;
+    }
+
+    public function getIsVisible(): ?bool
+    {
+        return $this->isVisible;
+    }
+
+    public function setIsVisible(bool $isVisible): self
+    {
+        $this->isVisible = $isVisible;
+
+        return $this;
+    }
+
+    public function getStringLength(): ?int
+    {
+        return $this->stringLength;
+    }
+
+    public function setStringLength(int $stringLength): self
+    {
+        $this->stringLength = $stringLength;
+
+        return $this;
+    }
+}
