@@ -1,7 +1,25 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}dashboard{% endblock %}
+{% block title %}{{ parent() }} - {{ 'Dashboard'|trans }}{% endblock %}
 
 {% block content %}
-    {{ 'Routines365'|trans }} {{ 'Admin'|trans }}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Dashboard'|trans }}
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>{{ 'Quotes'|trans }}</td>
+                        <td>{{ quotes_count }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'Users'|trans }}</td>
+                        <td>{{ users_count }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
