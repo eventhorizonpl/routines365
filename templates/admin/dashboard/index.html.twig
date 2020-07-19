@@ -11,11 +11,15 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>{{ 'Quotes'|trans }}</td>
+                        <td><a href="{{ path('admin_user_index') }}">{{ 'Profiles'|trans }}</a></td>
+                        <td>{{ profiles_count }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
                         <td>{{ quotes_count }}</td>
                     </tr>
                     <tr>
-                        <td>{{ 'Users'|trans }}</td>
+                        <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
                         <td>{{ users_count }}</td>
                     </tr>
                 </tbody>

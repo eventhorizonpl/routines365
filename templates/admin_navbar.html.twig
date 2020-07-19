@@ -7,17 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a>
+                <a class="nav-link" href="{{ path('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> {{ 'Dashboard'|trans }}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ 'System'|trans }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_quote_index') }}"><i class="fas fa-quote-left"></i> {{ 'Quotes'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_user_index') }}"><i class="fas fa-users"></i> {{ 'Users'|trans }}</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i> {{ 'Logout'|trans }}</a>
                 </div>
             </li>
         </ul>

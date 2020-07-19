@@ -4,23 +4,30 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
     use Traits\IdTrait;
     use Traits\UuidTrait;
+    use Traits\IsEnabledTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+    public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+    public const ROLE_USER = 'ROLE_USER';
+
     /**
-     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", targetEntity="Profile", mappedBy="user")
      */
-    private $profile;
+    private Profile $profile;
 
     /**
      * @Assert\Email()
@@ -34,29 +41,37 @@ class User implements UserInterface
     private string $email;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Type("bool")
-     * @ORM\Column(type="boolean")
-     */
-    private bool $isEnabled = false;
-
-    /**
      * @Assert\Length(
      *   max = 255
      * )
-     * @Assert\NotBlank
-     * @Assert\NotCompromisedPassword
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\NotCompromisedPassword(groups={"system"})
      * @Assert\Type("string")
      * @ORM\Column(type="string")
      */
     private string $password;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\Choice(callback="getRolesFormChoices", multiple=true)
+     * @Assert\NotNull
      * @Assert\Type("array")
      * @ORM\Column(type="json")
      */
     private array $roles = [];
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isVerified;
+
+    public function __construct()
+    {
+        $this->email = '';
+        $this->isEnabled = false;
+        $this->isVerified = false;
+    }
 
     public function __toString(): string
     {
@@ -75,18 +90,6 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getIsEnabled(): ?bool
-    {
-        return $this->isEnabled;
-    }
-
-    public function setIsEnabled(bool $isEnabled): self
-    {
-        $this->isEnabled = $isEnabled;
 
         return $this;
     }
@@ -118,9 +121,27 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
+        $roles[] = self::ROLE_USER;
 
         return array_unique($roles);
+    }
+
+    public static function getRolesFormChoices(): array
+    {
+        return [
+            self::ROLE_ADMIN => self::ROLE_ADMIN,
+            self::ROLE_SUPER_ADMIN => self::ROLE_SUPER_ADMIN,
+            self::ROLE_USER => self::ROLE_USER,
+        ];
+    }
+
+    public function getRolesValidationChoices(): array
+    {
+        return [
+            self::ROLE_ADMIN,
+            self::ROLE_SUPER_ADMIN,
+            self::ROLE_USER,
+        ];
     }
 
     public function setRoles(array $roles): self
@@ -137,5 +158,17 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
+    }
+
+    public function getIsVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

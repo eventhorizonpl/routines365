@@ -13,8 +13,16 @@ class Quote
 {
     use Traits\IdTrait;
     use Traits\UuidTrait;
+    use Traits\IsVisibleTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
+
+    public const TYPE_ART = 'art';
+    public const TYPE_BUSINESS = 'business';
+    public const TYPE_POLITICS = 'politics';
+    public const TYPE_SPORT = 'sport';
+    public const TYPE_TECHNOLOGY = 'technology';
+    public const TYPE_UNKNOWN = 'unknown';
 
     /**
      * @Assert\Length(
@@ -47,24 +55,29 @@ class Quote
     private string $contentMd5;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
-     * @ORM\Column(type="boolean")
-     */
-    private bool $isVisible;
-
-    /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */
     private int $stringLength;
 
+    /**
+     * @Assert\Choice(callback="getTypeValidationChoices")
+     * @Assert\Length(
+     *   max = 64
+     * )
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ORM\Column(length=64, type="string")
+     */
+    private string $type;
+
     public function __construct()
     {
         $this->author = '';
         $this->content = '';
         $this->isVisible = false;
+        $this->type = self::TYPE_UNKNOWN;
     }
 
     public function __toString(): string
@@ -109,18 +122,6 @@ class Quote
         return $this;
     }
 
-    public function getIsVisible(): ?bool
-    {
-        return $this->isVisible;
-    }
-
-    public function setIsVisible(bool $isVisible): self
-    {
-        $this->isVisible = $isVisible;
-
-        return $this;
-    }
-
     public function getStringLength(): ?int
     {
         return $this->stringLength;
@@ -129,6 +130,42 @@ class Quote
     public function setStringLength(int $stringLength): self
     {
         $this->stringLength = $stringLength;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public static function getTypeFormChoices(): array
+    {
+        return [
+            self::TYPE_ART => self::TYPE_ART,
+            self::TYPE_BUSINESS => self::TYPE_BUSINESS,
+            self::TYPE_POLITICS => self::TYPE_POLITICS,
+            self::TYPE_SPORT => self::TYPE_SPORT,
+            self::TYPE_TECHNOLOGY => self::TYPE_TECHNOLOGY,
+            self::TYPE_UNKNOWN => self::TYPE_UNKNOWN,
+        ];
+    }
+
+    public function getTypeValidationChoices(): array
+    {
+        return [
+            self::TYPE_ART,
+            self::TYPE_BUSINESS,
+            self::TYPE_POLITICS,
+            self::TYPE_SPORT,
+            self::TYPE_TECHNOLOGY,
+            self::TYPE_UNKNOWN,
+        ];
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

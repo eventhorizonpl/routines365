@@ -3,8 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Quote;
+use App\Entity\User;
 use App\Factory\QuoteFactory;
-use App\Form\QuoteType;
+use App\Form\Admin\QuoteType;
 use App\Manager\QuoteManager;
 use App\Repository\QuoteRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @IsGranted("ROLE_ADMIN")
+ * @IsGranted(User::ROLE_ADMIN)
  * @Route("/admin/quote", name="admin_")
  */
 class QuoteController extends AbstractController
@@ -28,19 +29,20 @@ class QuoteController extends AbstractController
         QuoteRepository $quoteRepository,
         Request $request
     ): Response {
-        $options = [
+        $parameters = [
             'query' => $request->query->get('q'),
+            'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $quoteRepository->findByOptions($options);
+        $queryResult = $quoteRepository->findByParameters($parameters);
         $quotes = $paginator->paginate(
             $queryResult,
             $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 10)
+            $request->query->getInt('limit', 50)
         );
 
         return $this->render('admin/quote/index.html.twig', [
-            'options' => $options,
+            'parameters' => $parameters,
             'quotes' => $quotes,
         ]);
     }
@@ -107,7 +109,7 @@ class QuoteController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_SUPER_ADMIN")
+     * @IsGranted(User::ROLE_SUPER_ADMIN)
      * @Route("/{uuid}", name="quote_delete", methods={"DELETE"})
      */
     public function delete(
@@ -115,7 +117,10 @@ class QuoteController extends AbstractController
         QuoteManager $quoteManager,
         Request $request
     ): Response {
-        if ($this->isCsrfTokenValid('delete'.$quote->getUuid(), $request->request->get('_token'))) {
+        if (true === $this->isCsrfTokenValid(
+            'delete'.$quote->getUuid(),
+            $request->request->get('_token')
+        )) {
             $quoteManager->softDelete($quote, $this->getUser());
         }
 

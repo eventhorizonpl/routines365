@@ -3,19 +3,15 @@
 namespace App\Factory;
 
 use App\Entity\User;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Uid\Uuid;
 
 class UserFactory
 {
     private ProfileFactory $profileFactory;
-    private UserPasswordEncoderInterface $passwordEncoder;
 
     public function __construct(
-        ProfileFactory $profileFactory,
-        UserPasswordEncoderInterface $passwordEncoder
+        ProfileFactory $profileFactory
     ) {
-        $this->passwordEncoder = $passwordEncoder;
         $this->profileFactory = $profileFactory;
     }
 
@@ -33,7 +29,6 @@ class UserFactory
     public function createUserWithRequired(
         string $email,
         bool $isEnabled,
-        string $password,
         array $roles
     ): User {
         $user = $this->createUser();
@@ -41,10 +36,6 @@ class UserFactory
         $user->setEmail($email);
         $user->setIsEnabled($isEnabled);
         $user->setRoles($roles);
-        $user->setPassword($this->passwordEncoder->encodePassword(
-            $user,
-            $password
-        ));
 
         return $user;
     }

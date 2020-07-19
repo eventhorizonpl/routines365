@@ -1,12 +1,12 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'Quote details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'User details'|trans }} {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Quote details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_quote_index') }}">
+            {{ 'User details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -25,21 +25,31 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th class="col-md-2" scope="row">{{ 'Author'|trans }}</th>
-                                <td>{{ quote.author }}</td>
+                                <th class="col-md-2" scope="row">{{ 'Email'|trans }}</th>
+                                <td>{{ user.email }}</td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Content'|trans }}</th>
-                                <td>{{ quote.content }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ quote.type }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Is visible'|trans }}</th>
+                                <th scope="row">{{ 'Phone'|trans }}</th>
                                 <td>
-                                    {% if quote.isVisible %}
+                                    {% if user.profile and user.profile.phone %}
+                                        {{ user.profile.phone|phone_number_format }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <td>
+                                    {% if user.isEnabled %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Is verified'|trans }}</th>
+                                <td>
+                                    {% if user.isVerified %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -54,49 +64,41 @@
                         <tbody>
                             <tr>
                                 <th class="col-md-2" scope="row">{{ 'ID'|trans }}</th>
-                                <td>{{ quote.id }}</td>
+                                <td>{{ user.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ quote.uuid }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Content MD5'|trans }}</th>
-                                <td>{{ quote.contentMd5 }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'String length'|trans }}</th>
-                                <td>{{ quote.stringLength }}</td>
+                                <td>{{ user.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
-                                <td>{{ quote.createdBy }}</td>
+                                <td>{{ user.createdBy }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
-                                <td>{{ quote.deletedBy }}</td>
+                                <td>{{ user.deletedBy }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
-                                <td>{{ quote.updatedBy }}</td>
+                                <td>{{ user.updatedBy }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ quote.createdAt ? quote.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ quote.deletedAt ? quote.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ user.deletedAt ? user.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ quote.updatedAt ? quote.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-                <a class="btn btn-success" href="{{ path('admin_quote_edit', {'uuid': quote.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
         </div>
     </div>
 {% endblock %}

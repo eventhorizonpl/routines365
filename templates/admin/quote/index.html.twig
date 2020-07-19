@@ -14,10 +14,18 @@
         <div class="card-body">
             <form action="{{ path('admin_quote_index') }}" class="form-inline pull-right" method="get">
                 <div class="form-group">
-                    <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ options.query }}">
+                    <select class="custom-select" id="type" name="type">
+                        <option value="" selected>{{ 'Type'|trans }}</option>
+                        {% for type_value in quoteType() %}
+                            <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
                 <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i> {{ 'Search'|trans }}</button>
-                <a class="btn {% if not options.query %}disabled{% endif %} btn-default" href="{{ path('admin_quote_index') }}">
+                <a class="btn {% if not parameters.query %}disabled{% endif %} btn-default" href="{{ path('admin_quote_index') }}">
                     <i class="fas fa-times"></i>
                 </a>
             </form>
@@ -26,6 +34,7 @@
                     <tr>
                         <th {% if quotes.isSorted('q.Author') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Author'|trans, 'q.author') }}</th>
                         <th {% if quotes.isSorted('q.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Content'|trans, 'q.content') }}</th>
+                        <th {% if quotes.isSorted('q.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Type'|trans, 'q.type') }}</th>
                         <th {% if quotes.isSorted('q.IsVisible') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Is visible'|trans, 'q.isVisible') }}</th>
                         <th {% if quotes.isSorted('q.StringLength') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'String length'|trans, 'q.stringLength') }}</th>
                         <th {% if quotes.isSorted('q.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Updated at'|trans, 'q.updatedAt') }}</th>
@@ -37,6 +46,7 @@
                     <tr>
                         <td>{{ quote.author }}</td>
                         <td>{{ quote.content }}</td>
+                        <td>{{ quote.type }}</td>
                         <td>
                             {% if quote.isVisible %}
                                 <span class="badge badge-primary">{{ 'Yes'|trans }}</span>

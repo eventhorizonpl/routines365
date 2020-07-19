@@ -2,8 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use App\Factory\UserFactory;
 use App\Manager\UserManager;
+use App\Service\UserService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use libphonenumber\PhoneNumberUtil;
@@ -15,14 +17,17 @@ class UserFixtures extends Fixture
     private PhoneNumberUtil $phoneNumberUtil;
     private UserFactory $userFactory;
     private UserManager $userManager;
+    private UserService $userService;
 
     public function __construct(
         UserFactory $userFactory,
-        UserManager $userManager
+        UserManager $userManager,
+        UserService $userService
     ) {
         $this->phoneNumberUtil = PhoneNumberUtil::getInstance();
         $this->userFactory = $userFactory;
         $this->userManager = $userManager;
+        $this->userService = $userService;
     }
 
     public function load(ObjectManager $manager): void
@@ -30,9 +35,9 @@ class UserFixtures extends Fixture
         $user = $this->userFactory->createUserWithRequired(
             'admin@admin.com',
             true,
-            'admin',
-            ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN', 'ROLE_USER']
+            [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER]
         );
+        $user = $this->userService->encodePassword($user, 'admin');
         $phone = $this->phoneNumberUtil->parse('+48881573056');
         $user->getProfile()->setPhone($phone);
 

@@ -14,16 +14,24 @@ class QuoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Quote::class);
     }
 
-    public function findByOptions(array $options = []): Query
+    public function findByParameters(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('q')
             ->select('q')
             ->where('q.deletedAt IS NULL')
             ->addOrderBy('q.createdAt', 'DESC');
 
-        if (!(empty($options))) {
-            if (array_key_exists('query', $options)) {
-                $query = $options['query'];
+        if (!(empty($parameters))) {
+            if (array_key_exists('type', $parameters)) {
+                $type = $parameters['type'];
+                if ((null !== $type) && ('' !== $type)) {
+                    $queryBuilder->andWhere('q.type = :type')
+                        ->setParameter('type', $type);
+                }
+            }
+
+            if (array_key_exists('query', $parameters)) {
+                $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
                         $queryBuilder->expr()->orX(

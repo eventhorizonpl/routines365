@@ -153,6 +153,46 @@
         <source>Users</source>
         <target>Users</target>
       </trans-unit>
+      <trans-unit id="uq3fcPt" resname="Type">
+        <source>Type</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="U15S5KJ" resname="Profiles">
+        <source>Profiles</source>
+        <target>Profiles</target>
+      </trans-unit>
+      <trans-unit id="Wcly3xP" resname="User details">
+        <source>User details</source>
+        <target>User details</target>
+      </trans-unit>
+      <trans-unit id="yUavCHz" resname="Is enabled">
+        <source>Is enabled</source>
+        <target>Is enabled</target>
+      </trans-unit>
+      <trans-unit id="PUtzLt4" resname="Is verified">
+        <source>Is verified</source>
+        <target>Is verified</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="wlM3BVR" resname="Roles">
+        <source>Roles</source>
+        <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="gFMuwLY" resname="Create User">
+        <source>Create User</source>
+        <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="Y9zriAC" resname="Phone">
+        <source>Phone</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="6KiDUxl" resname="Edit User">
+        <source>Edit User</source>
+        <target>Edit User</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
