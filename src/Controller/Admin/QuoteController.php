@@ -61,7 +61,7 @@ class QuoteController extends AbstractController
             $quoteManager->save($quote, $this->getUser());
 
             return $this->redirectToRoute('admin_quote_show', [
-                'uuid' => $quote->getUuid()
+                'uuid' => $quote->getUuid(),
             ]);
         }
 
@@ -96,7 +96,7 @@ class QuoteController extends AbstractController
             $quoteManager->save($quote, $this->getUser());
 
             return $this->redirectToRoute('admin_quote_show', [
-                'uuid' => $quote->getUuid()
+                'uuid' => $quote->getUuid(),
             ]);
         }
 

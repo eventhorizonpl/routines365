@@ -18,6 +18,11 @@ class User implements UserInterface
     use Traits\TimestampableTrait;
 
     /**
+     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     */
+    private $profile;
+
+    /**
      * @Assert\Email()
      * @Assert\Length(
      *   max = 180
@@ -94,6 +99,18 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getProfile(): Profile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(Profile $profile): self
+    {
+        $this->profile = $profile;
 
         return $this;
     }

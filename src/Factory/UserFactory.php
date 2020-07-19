@@ -8,18 +8,24 @@ use Symfony\Component\Uid\Uuid;
 
 class UserFactory
 {
+    private ProfileFactory $profileFactory;
     private UserPasswordEncoderInterface $passwordEncoder;
 
     public function __construct(
+        ProfileFactory $profileFactory,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
         $this->passwordEncoder = $passwordEncoder;
+        $this->profileFactory = $profileFactory;
     }
 
     public function createUser(): User
     {
         $user = new User();
         $user->setUuid(Uuid::v4());
+        $profile = $this->profileFactory->createProfile();
+        $profile->setUser($user);
+        $user->setProfile($profile);
 
         return $user;
     }

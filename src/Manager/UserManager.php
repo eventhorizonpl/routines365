@@ -12,13 +12,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class UserManager
 {
     private EntityManagerInterface $entityManager;
+    private ProfileManager $profileManager;
     private ValidatorInterface $validator;
 
     public function __construct(
         EntityManagerInterface $entityManager,
+        ProfileManager $profileManager,
         ValidatorInterface $validator
     ) {
         $this->entityManager = $entityManager;
+        $this->profileManager = $profileManager;
         $this->validator = $validator;
     }
 
@@ -49,6 +52,7 @@ class UserManager
         }
 
         $this->entityManager->persist($user);
+        $this->profileManager->save($user->getProfile(), $actor, false);
         $this->entityManager->flush();
 
         return $this;
