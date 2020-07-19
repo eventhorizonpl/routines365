@@ -99,6 +99,12 @@
     "egulias/email-validator": {
         "version": "2.1.18"
     },
+    "giggsey/libphonenumber-for-php": {
+        "version": "8.12.7"
+    },
+    "giggsey/locale": {
+        "version": "1.9"
+    },
     "knplabs/knp-components": {
         "version": "v2.4.1"
     },
@@ -122,6 +128,18 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.8.0"
+    },
+    "odolbeau/phone-number-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "4388686329b81291918a948cd42891829fb1de71"
+        },
+        "files": [
+            "config/packages/misd_phone_number.yaml"
+        ]
     },
     "php": {
         "version": "7.4"
