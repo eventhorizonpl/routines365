@@ -18,6 +18,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
+/**
+ * @Route("/", name="security_")
+ */
 class RegistrationController extends AbstractController
 {
     private $emailVerifier;
@@ -28,7 +31,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register", name="register")
      */
     public function register(
         GuardAuthenticatorHandler $guardHandler,
@@ -49,7 +52,7 @@ class RegistrationController extends AbstractController
 
             $userManager->save($user);
             /*
-                        $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                        $this->emailVerifier->sendEmailConfirmation('security_verify_email', $user,
                             (new TemplatedEmail())
                                 ->from(new Address('mailer@routines365.com', 'Routines365'))
                                 ->to($user->getEmail())
@@ -71,7 +74,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/verify/email", name="app_verify_email")
+     * @Route("/verify/email", name="verify_email")
      */
     public function verifyUserEmail(Request $request): Response
     {
@@ -83,12 +86,12 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('security_register');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('security_register');
     }
 }

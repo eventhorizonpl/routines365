@@ -193,6 +193,10 @@
         <source>Edit User</source>
         <target>Edit User</target>
       </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Country</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

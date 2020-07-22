@@ -3,5 +3,27 @@
 {% block title %}homepage{% endblock %}
 
 {% block content %}
-Routines365
+    <div class="jumbotron">
+        <h1 class="display-3">{{ 'Routines365'|trans }}</h1>
+        <p class="lead">{{ 'Routines365'|trans }}</p>
+        <hr class="my-4">
+        <p>{{ 'Routines365'|trans }}</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">{{ 'Register'|trans }}</a>
+            <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button">{{ 'Login'|trans }}</a>
+        </p>
+    </div>
+
+    <footer id="footer">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline list-unstyled">
+                    <li class="list-inline-item"><a href="#">{{ 'About'|trans }}</a></li>
+                    <li class="list-inline-item"><a href="#">{{ 'About'|trans }}</a></li>
+                    <li class="list-inline-item"><a href="#">{{ 'About'|trans }}</a></li>
+                </ul>
+                <p>Copyright &copy; {{ "now"|date("Y") }} Event Horizon Labs LLP</p>
+            </div>
+        </div>
+    </footer>
 {% endblock %}
