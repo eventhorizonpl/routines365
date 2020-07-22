@@ -26,14 +26,40 @@ class Profile
     private User $user;
 
     /**
+     * @Assert\Length(
+     *   max = 2
+     * )
+     * @Assert\Type("string")
+     * @ORM\Column(length=2, nullable=true, type="string")
+     */
+    private ?string $country;
+
+    /**
      * @AssertPhoneNumber(type="mobile")
      * @ORM\Column(nullable=true, type="phone_number", unique=true)
      */
     private ?PhoneNumber $phone;
 
+    public function __construct()
+    {
+        $this->phone = null;
+    }
+
     public function __toString(): string
     {
         return $this->getUuid();
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 
     public function getPhone(): ?PhoneNumber

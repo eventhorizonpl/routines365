@@ -6,6 +6,9 @@ use App\Entity\Profile;
 use App\Exception\ManagerException;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use League\ISO3166\Exception\OutOfBoundsException;
+use League\ISO3166\ISO3166;
+use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -56,6 +59,16 @@ class ProfileManager
         }
         $profile->setUpdatedAt($date);
         $profile->setUpdatedBy($actor);
+
+        if (null !== $profile->getPhone()) {
+            $descriptionForNumber = PhoneNumberOfflineGeocoder::getInstance()
+                ->getDescriptionForNumber($profile->getPhone(), 'en');
+            try {
+                $country = (new ISO3166())->name($descriptionForNumber);
+                $profile->setCountry($country['alpha2']);
+            } catch (OutOfBoundsException $e) {
+            }
+        }
 
         $errors = $this->validate($profile);
         if (0 !== count($errors)) {

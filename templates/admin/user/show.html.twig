@@ -29,6 +29,14 @@
                                 <td>{{ user.email }}</td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Country'|trans }}</th>
+                                <td>
+                                    {% if user.profile %}
+                                        {{ user.profile.country }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Phone'|trans }}</th>
                                 <td>
                                     {% if user.profile and user.profile.phone %}
