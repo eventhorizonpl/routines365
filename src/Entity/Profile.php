@@ -67,7 +67,7 @@ class Profile
         return $this->phone;
     }
 
-    public function setPhone(PhoneNumber $phone): self
+    public function setPhone(?PhoneNumber $phone): self
     {
         $this->phone = $phone;
 

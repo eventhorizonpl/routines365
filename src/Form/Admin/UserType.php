@@ -18,6 +18,7 @@ class UserType extends AbstractType
         $user = $options['data'];
         $builder
             ->add('email')
+            ->add('profile', ProfileType::class)
             ->add('roles', ChoiceType::class, [
                 'choices' => User::getRolesFormChoices(),
                 'expanded' => false,
@@ -43,6 +44,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

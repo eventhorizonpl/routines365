@@ -25,6 +25,7 @@ class User implements UserInterface
     public const ROLE_USER = 'ROLE_USER';
 
     /**
+     * @Assert\Valid(groups={"form"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", targetEntity="Profile", mappedBy="user")
      */
     private Profile $profile;
