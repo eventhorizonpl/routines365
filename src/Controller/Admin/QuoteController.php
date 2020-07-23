@@ -17,12 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/quote", name="admin_")
+ * @Route("/admin/quote", name="admin_quote_")
  */
 class QuoteController extends AbstractController
 {
     /**
-     * @Route("/", name="quote_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(
         PaginatorInterface $paginator,
@@ -34,7 +34,7 @@ class QuoteController extends AbstractController
             'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $quoteRepository->findByParameters($parameters);
+        $queryResult = $quoteRepository->findByParametersForAdmin($parameters);
         $quotes = $paginator->paginate(
             $queryResult,
             $request->query->getInt('page', 1),
@@ -48,7 +48,7 @@ class QuoteController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="quote_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(
         QuoteFactory $quoteFactory,
@@ -74,7 +74,7 @@ class QuoteController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}", name="quote_show", methods={"GET"})
+     * @Route("/{uuid}", name="show", methods={"GET"})
      */
     public function show(Quote $quote): Response
     {
@@ -84,7 +84,7 @@ class QuoteController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}/edit", name="quote_edit", methods={"GET","POST"})
+     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(
         Quote $quote,
@@ -110,7 +110,7 @@ class QuoteController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="quote_delete", methods={"DELETE"})
+     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
     public function delete(
         Quote $quote,

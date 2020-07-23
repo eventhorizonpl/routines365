@@ -64,11 +64,11 @@ class Quote
     /**
      * @Assert\Choice(callback="getTypeValidationChoices")
      * @Assert\Length(
-     *   max = 64
+     *   max = 16
      * )
      * @Assert\NotBlank()
      * @Assert\Type("string")
-     * @ORM\Column(length=64, type="string")
+     * @ORM\Column(length=16, type="string")
      */
     private string $type;
 

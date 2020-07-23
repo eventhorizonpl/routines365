@@ -197,6 +197,78 @@
         <source>Country</source>
         <target>Country</target>
       </trans-unit>
+      <trans-unit id="Tvyg0Qx" resname="About">
+        <source>About</source>
+        <target>About</target>
+      </trans-unit>
+      <trans-unit id="Epxnj85" resname="Disclaimer">
+        <source>Disclaimer</source>
+        <target>Disclaimer</target>
+      </trans-unit>
+      <trans-unit id="UG.zlGI" resname="Privacy Policy">
+        <source>Privacy Policy</source>
+        <target>Privacy Policy</target>
+      </trans-unit>
+      <trans-unit id="NOb68Vq" resname="Terms and Conditions">
+        <source>Terms and Conditions</source>
+        <target>Terms and Conditions</target>
+      </trans-unit>
+      <trans-unit id="jfx3q0C" resname="Copyright">
+        <source>Copyright</source>
+        <target>Copyright</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="nWMiwfT" resname="Login">
+        <source>Login</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="pMQrDeM" resname="User content">
+        <source>User content</source>
+        <target>User content</target>
+      </trans-unit>
+      <trans-unit id="Ybe7ROK" resname="Routines">
+        <source>Routines</source>
+        <target>Routines</target>
+      </trans-unit>
+      <trans-unit id="Pv08lHB" resname="Routine details">
+        <source>Routine details</source>
+        <target>Routine details</target>
+      </trans-unit>
+      <trans-unit id="ujmqvl2" resname="Relations">
+        <source>Relations</source>
+        <target>Relations</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="fZ63rLE" resname="Close">
+        <source>Close</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="pTwVTB4" resname="Create Routine">
+        <source>Create Routine</source>
+        <target>Create Routine</target>
+      </trans-unit>
+      <trans-unit id="0_qH7mF" resname="You do not have any routines!">
+        <source>You do not have any routines!</source>
+        <target>You do not have any routines!</target>
+      </trans-unit>
+      <trans-unit id="FbXbMky" resname="Edit Routine">
+        <source>Edit Routine</source>
+        <target>Edit Routine</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

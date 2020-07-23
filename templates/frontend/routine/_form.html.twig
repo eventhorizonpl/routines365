@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.type) }}
+    {{ form_row(form.isEnabled) }}
+
+    <hr>
+    <button class="btn btn-primary">
+        <i class="fas fa-save"></i>
+        {{ button_label|default('Save'|trans) }}
+    </button>
+    <a class="btn btn-info float-right" href="{{ path('frontend_routine_index') }}">
+        <i class="fas fa-times"></i>
+        {{ 'Close'|trans }}
+    </a>
+{{ form_end(form) }}

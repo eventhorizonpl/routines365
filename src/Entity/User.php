@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,9 +28,14 @@ class User implements UserInterface
 
     /**
      * @Assert\Valid(groups={"form"})
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", targetEntity="Profile", mappedBy="user")
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
     private Profile $profile;
+
+    /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Routine::class)
+     */
+    private Collection $routines;
 
     /**
      * @Assert\Email()
@@ -72,6 +79,7 @@ class User implements UserInterface
         $this->email = '';
         $this->isEnabled = false;
         $this->isVerified = false;
+        $this->routines = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -148,6 +156,30 @@ class User implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function addRoutine(Routine $routine): self
+    {
+        if (!($this->routines->contains($routine))) {
+            $this->routines->add($routine);
+            $routine->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getRoutines(): Collection
+    {
+        return $this->routines;
+    }
+
+    public function removeRoutine(Routine $routine): self
+    {
+        if ($this->routines->contains($routine)) {
+            $this->routines->removeElement($routine);
+        }
 
         return $this;
     }

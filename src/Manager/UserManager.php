@@ -25,6 +25,23 @@ class UserManager
         $this->validator = $validator;
     }
 
+    public function bulkSave(array $users, string $actor = null, int $saveEvery = 50): self
+    {
+        $i = 1;
+        foreach ($users as $user) {
+            $this->save($user, $actor, false);
+            if ($i >= $saveEvery) {
+                $this->entityManager->flush();
+                $i = 1;
+            }
+            ++$i;
+        }
+
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function delete(User $user): self
     {
         $this->entityManager->remove($user);
@@ -33,7 +50,7 @@ class UserManager
         return $this;
     }
 
-    public function save(User $user, string $actor = null): self
+    public function save(User $user, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
             $actor = $user->getUuid();
@@ -53,7 +70,9 @@ class UserManager
 
         $this->entityManager->persist($user);
         $this->profileManager->save($user->getProfile(), $actor, false);
-        $this->entityManager->flush();
+        if (true === $flush) {
+            $this->entityManager->flush();
+        }
 
         return $this;
     }

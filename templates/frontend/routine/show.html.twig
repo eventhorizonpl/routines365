@@ -1,0 +1,43 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Routine details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('frontend_routine_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th class="col-md-2" scope="row">{{ 'Name'|trans }}</th>
+                        <td>{{ routine.name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ 'Description'|trans }}</th>
+                        <td> {{ routine.description }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ 'Type'|trans }}</th>
+                        <td>{{ routine.type }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{ 'Is enabled'|trans }}</th>
+                        <td>
+                            {% if routine.isEnabled %}
+                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                            {% else %}
+                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

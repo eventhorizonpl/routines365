@@ -10,9 +10,7 @@
                 <i class="fas fa-plus"></i>
                 {{ 'Create'|trans }}
             </a>
-        </div>
-        <div class="card-body">
-            <form action="{{ path('admin_quote_index') }}" class="form-inline pull-right" method="get">
+            <form action="{{ path('admin_quote_index') }}" class="form-inline mt-2" method="get">
                 <div class="form-group">
                     <select class="custom-select" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
@@ -29,6 +27,8 @@
                     <i class="fas fa-times"></i>
                 </a>
             </form>
+        </div>
+        <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>

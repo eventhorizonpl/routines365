@@ -1,0 +1,39 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ 'Routines'|trans }}{% endblock %}
+
+{% block content %}
+    {% if routines|length %}
+        <div class="row mb-3">
+            <div class="col-md-10 offset-md-1">
+                <a class="btn btn-primary float-right" href="{{ path('frontend_routine_new') }}"><i class="fas fa-sync"></i> {{ 'Create Routine'|trans }}</a>
+            </div>
+        </div>
+    {% endif %}
+    {% for routine in routines %}
+        <div class="row mb-5">
+            <div class="col-md-10 offset-md-1">
+                <div class="card text-white {% if routine.isEnabled %}bg-success{% else %}bg-warning{% endif %}">
+                    <div class="card-header">
+                        {{ routine.name }}
+                        <a class="btn btn-info btn-sm float-right" href="{{ path('frontend_routine_edit', {'uuid': routine.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ routine.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row mb-5">
+            <div class="col-md-4 offset-md-4">
+                <div class="card text-white bg-secondary">
+                    <div class="card-body">
+                        <p class="card-text">{{ 'You do not have any routines!'|trans }}</p>
+                        <a class="btn btn-primary" href="{{ path('frontend_routine_new') }}"><i class="fas fa-sync"></i> {{ 'Create Routine'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -17,12 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/user", name="admin_")
+ * @Route("/admin/user", name="admin_user_")
  */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(
         PaginatorInterface $paginator,
@@ -33,7 +33,7 @@ class UserController extends AbstractController
             'query' => $request->query->get('q'),
         ];
 
-        $queryResult = $userRepository->findByParameters($parameters);
+        $queryResult = $userRepository->findByParametersForAdmin($parameters);
         $users = $paginator->paginate(
             $queryResult,
             $request->query->getInt('page', 1),
@@ -47,7 +47,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(
         Request $request,
@@ -75,7 +75,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}", name="user_show", methods={"GET"})
+     * @Route("/{uuid}", name="show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -85,7 +85,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(
         Request $request,
@@ -115,7 +115,7 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="user_delete", methods={"DELETE"})
+     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
     public function delete(
         Request $request,

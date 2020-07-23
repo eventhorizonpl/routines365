@@ -14,7 +14,7 @@ class QuoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Quote::class);
     }
 
-    public function findByParameters(array $parameters = []): Query
+    public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('q')
             ->select('q')

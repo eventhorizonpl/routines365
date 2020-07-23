@@ -1,0 +1,14 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ 'Create Routine'|trans }} {% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Create Routine'|trans }}
+        </div>
+        <div class="card-body">
+            {{ include('frontend/routine/_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

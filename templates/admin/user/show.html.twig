@@ -10,22 +10,25 @@
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
-        </div>
-        <div class="card-body">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
                 </li>
             </ul>
+        </div>
+        <div class="card-body">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th class="col-md-2" scope="row">{{ 'Email'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
                                 <td>{{ user.email }}</td>
                             </tr>
                             <tr>
@@ -67,11 +70,29 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="tab-pane fade show" id="relations" role="tabpanel" aria-labelledby="relations-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Routines'|trans }}</th>
+                                <td>
+                                    {% if user.routines|length %}
+                                        <ul>
+                                            {% for routine in user.routines %}
+                                                <li><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th class="col-md-2" scope="row">{{ 'ID'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
                                 <td>{{ user.id }}</td>
                             </tr>
                             <tr>
@@ -106,7 +127,7 @@
                     </table>
                 </div>
             </div>
-                <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+            <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
         </div>
     </div>
 {% endblock %}

@@ -20,8 +20,8 @@ class Profile
 
     /**
      * @Assert\Valid
-     * @ORM\JoinColumn(name="user_id", nullable=false, onDelete="CASCADE", referencedColumnName="id")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="profile", targetEntity="User")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="profile", targetEntity=User::class)
      */
     private User $user;
 

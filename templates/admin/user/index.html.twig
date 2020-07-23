@@ -10,9 +10,7 @@
                 <i class="fas fa-plus"></i>
                 {{ 'Create'|trans }}
             </a>
-        </div>
-        <div class="card-body">
-            <form action="{{ path('admin_user_index') }}" class="form-inline pull-right" method="get">
+            <form action="{{ path('admin_user_index') }}" class="form-inline mt-2"" method="get">
                 <div class="form-group">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
@@ -21,6 +19,8 @@
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
             </form>
+        </div>
+        <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>

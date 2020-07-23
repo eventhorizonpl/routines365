@@ -17,7 +17,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         parent::__construct($registry, User::class);
     }
 
-    public function findByParameters(array $parameters = []): Query
+    public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('u')
             ->select('u')

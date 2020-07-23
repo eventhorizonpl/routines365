@@ -1,18 +1,21 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'Quote details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Quote details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_quote_index') }}">
+            {{ 'Routine details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_routine_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
@@ -25,24 +28,50 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Author'|trans }}</th>
-                                <td>{{ quote.author }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Content'|trans }}</th>
-                                <td>{{ quote.content }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ quote.type }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Is visible'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
                                 <td>
-                                    {% if quote.isVisible %}
+                                    {% if routine.name %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Description'|trans }}</th>
+                                <td>
+                                    {% if routine.description %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Type'|trans }}</th>
+                                <td>{{ routine.type }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <td>
+                                    {% if routine.isEnabled %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade show" id="relations" role="tabpanel" aria-labelledby="relations-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'User'|trans }}</th>
+                                <td>
+                                    {% if routine.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -54,49 +83,40 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ quote.id }}</td>
+                                <td>{{ routine.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ quote.uuid }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Content MD5'|trans }}</th>
-                                <td>{{ quote.contentMd5 }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'String length'|trans }}</th>
-                                <td>{{ quote.stringLength }}</td>
+                                <td>{{ routine.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
-                                <td>{{ quote.createdBy }}</td>
+                                <td>{{ routine.createdBy }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
-                                <td>{{ quote.deletedBy }}</td>
+                                <td>{{ routine.deletedBy }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
-                                <td>{{ quote.updatedBy }}</td>
+                                <td>{{ routine.updatedBy }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ quote.createdAt ? quote.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ routine.createdAt ? routine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ quote.deletedAt ? quote.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ quote.updatedAt ? quote.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_quote_edit', {'uuid': quote.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
         </div>
     </div>
 {% endblock %}

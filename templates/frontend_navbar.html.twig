@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ path('frontend_home') }}">{{ 'Routines365'|trans }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('frontend_routine_index') }}"><i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ 'System'|trans }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
+                        <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="fas fa-sign-out-alt"></i> {{ 'Logout'|trans }}</a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_register') }}"><i class="fas fa-plus-square"></i> {{ 'Register'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_login') }}"><i class="fas fa-sign-in-alt"></i> {{ 'Login'|trans }}</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
