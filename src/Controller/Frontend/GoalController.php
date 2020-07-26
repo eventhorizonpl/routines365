@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
@@ -62,12 +63,18 @@ class GoalController extends AbstractController
     public function complete(
         Goal $goal,
         GoalManager $goalManager,
-        Request $request
+        Request $request,
+        TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(GoalVoter::EDIT, $goal);
 
         $goal->setIsCompleted(true);
         $goalManager->save($goal, $this->getUser());
+
+        $this->addFlash(
+            'success',
+            $translator->trans('Congratulations for achieving your goal!')
+        );
 
         return $this->redirectToRoute('frontend_routine_show', [
             'uuid' => $goal->getRoutine()->getUuid(),

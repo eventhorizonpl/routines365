@@ -321,6 +321,38 @@
         <source>Edit Goal</source>
         <target>Edit Goal</target>
       </trans-unit>
+      <trans-unit id="aWh061Q" resname="Congratulations for achieving your goal!">
+        <source>Congratulations for achieving your goal!</source>
+        <target>Congratulations for achieving your goal!</target>
+      </trans-unit>
+      <trans-unit id="inUlsUk" resname="Notes">
+        <source>Notes</source>
+        <target>Notes</target>
+      </trans-unit>
+      <trans-unit id="UnYAjgM" resname="Note details">
+        <source>Note details</source>
+        <target>Note details</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="RJ3K2.H" resname="Create Note">
+        <source>Create Note</source>
+        <target>Create Note</target>
+      </trans-unit>
+      <trans-unit id="76vDGHf" resname="You do not have any Notes!">
+        <source>You do not have any Notes!</source>
+        <target>You do not have any Notes!</target>
+      </trans-unit>
+      <trans-unit id="qyJO46j" resname="Edit Note">
+        <source>Edit Note</source>
+        <target>Edit Note</target>
+      </trans-unit>
+      <trans-unit id="njOR6b8" resname="Homepage">
+        <source>Homepage</source>
+        <target>Homepage</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
