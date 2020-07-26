@@ -1,7 +1,5 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'Dashboard'|trans }}{% endblock %}
-
 {% block breadcrumb %}
     <li class="breadcrumb-item active">{{ 'Dashboard'|trans }}</li>
 {% endblock %}
@@ -15,12 +13,20 @@
             <table class="table">
                 <tbody>
                     <tr>
+                        <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
+                        <td>{{ goals_count }}</td>
+                    </tr>
+                    <tr>
                         <td><a href="{{ path('admin_user_index') }}">{{ 'Profiles'|trans }}</a></td>
                         <td>{{ profiles_count }}</td>
                     </tr>
                     <tr>
                         <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
                         <td>{{ quotes_count }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></td>
+                        <td>{{ routines_count }}</td>
                     </tr>
                     <tr>
                         <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
@@ -31,3 +37,5 @@
         </div>
     </div>
 {% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Dashboard'|trans }}{% endblock %}

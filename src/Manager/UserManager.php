@@ -25,7 +25,7 @@ class UserManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $users, string $actor = null, int $saveEvery = 50): self
+    public function bulkSave(array $users, string $actor = null, int $saveEvery = 100): self
     {
         $i = 1;
         foreach ($users as $user) {

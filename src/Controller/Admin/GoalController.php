@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Routine;
+use App\Entity\Goal;
 use App\Entity\User;
-use App\Repository\RoutineRepository;
+use App\Repository\GoalRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,43 +14,42 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/routine", name="admin_routine_")
+ * @Route("/admin/goal", name="admin_goal_")
  */
-class RoutineController extends AbstractController
+class GoalController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
      */
     public function index(
+        GoalRepository $goalRepository,
         PaginatorInterface $paginator,
-        Request $request,
-        RoutineRepository $routineRepository
+        Request $request
     ): Response {
         $parameters = [
             'query' => trim($request->query->get('q')),
-            'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $routineRepository->findByParametersForAdmin($parameters);
-        $routines = $paginator->paginate(
+        $queryResult = $goalRepository->findByParametersForAdmin($parameters);
+        $goals = $paginator->paginate(
             $queryResult,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
 
-        return $this->render('admin/routine/index.html.twig', [
+        return $this->render('admin/goal/index.html.twig', [
+            'goals' => $goals,
             'parameters' => $parameters,
-            'routines' => $routines,
         ]);
     }
 
     /**
      * @Route("/{uuid}", name="show", methods={"GET"})
      */
-    public function show(Routine $routine): Response
+    public function show(Goal $goal): Response
     {
-        return $this->render('admin/routine/show.html.twig', [
-            'routine' => $routine,
+        return $this->render('admin/goal/show.html.twig', [
+            'goal' => $goal,
         ]);
     }
 }

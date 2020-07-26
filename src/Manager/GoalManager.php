@@ -2,14 +2,14 @@
 
 namespace App\Manager;
 
-use App\Entity\Quote;
+use App\Entity\Goal;
 use App\Exception\ManagerException;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class QuoteManager
+class GoalManager
 {
     private EntityManagerInterface $entityManager;
     private ValidatorInterface $validator;
@@ -22,11 +22,11 @@ class QuoteManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $quotes, string $actor, int $saveEvery = 100): self
+    public function bulkSave(array $routines, string $actor = null, int $saveEvery = 100): self
     {
         $i = 1;
-        foreach ($quotes as $quote) {
-            $this->save($quote, $actor, false);
+        foreach ($routines as $routine) {
+            $this->save($routine, $actor, false);
             if ($i >= $saveEvery) {
                 $this->entityManager->flush();
                 $i = 1;
@@ -39,33 +39,34 @@ class QuoteManager
         return $this;
     }
 
-    public function delete(Quote $quote): self
+    public function delete(Goal $routine): self
     {
-        $this->entityManager->remove($quote);
+        $this->entityManager->remove($routine);
         $this->entityManager->flush();
 
         return $this;
     }
 
-    public function save(Quote $quote, string $actor, bool $flush = true): self
+    public function save(Goal $routine, string $actor = null, bool $flush = true): self
     {
-        $quote->setStringLength(mb_strlen($quote));
-        $quote->setContentMd5($quote->getContent());
+        if (null === $actor) {
+            $actor = $routine->getUser();
+        }
 
         $date = new DateTime();
-        if (null === $quote->getId()) {
-            $quote->setCreatedAt($date);
-            $quote->setCreatedBy($actor);
+        if (null === $routine->getId()) {
+            $routine->setCreatedAt($date);
+            $routine->setCreatedBy($actor);
         }
-        $quote->setUpdatedAt($date);
-        $quote->setUpdatedBy($actor);
+        $routine->setUpdatedAt($date);
+        $routine->setUpdatedBy($actor);
 
-        $errors = $this->validate($quote);
+        $errors = $this->validate($routine);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$quote);
+            throw new ManagerException((string) $errors.' '.$routine);
         }
 
-        $this->entityManager->persist($quote);
+        $this->entityManager->persist($routine);
 
         if (true === $flush) {
             $this->entityManager->flush();
@@ -74,21 +75,21 @@ class QuoteManager
         return $this;
     }
 
-    public function softDelete(Quote $quote, string $actor): self
+    public function softDelete(Goal $routine, string $actor): self
     {
         $date = new DateTime();
-        $quote->setDeletedAt($date);
-        $quote->setDeletedBy($actor);
+        $routine->setDeletedAt($date);
+        $routine->setDeletedBy($actor);
 
-        $this->entityManager->persist($quote);
+        $this->entityManager->persist($routine);
         $this->entityManager->flush();
 
         return $this;
     }
 
-    public function validate(Quote $quote): ConstraintViolationListInterface
+    public function validate(Goal $routine): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($quote, null, ['system']);
+        $errors = $this->validator->validate($routine, null, ['system']);
 
         return $errors;
     }

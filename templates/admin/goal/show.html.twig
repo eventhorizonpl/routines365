@@ -2,15 +2,15 @@
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Routine details'|trans }}</li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Goal details'|trans }}</li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Routine details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_routine_index') }}">
+            {{ 'Goal details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_goal_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -34,7 +34,7 @@
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
                                 <td>
-                                    {% if routine.name %}
+                                    {% if goal.name %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -44,7 +44,7 @@
                             <tr>
                                 <th scope="row">{{ 'Description'|trans }}</th>
                                 <td>
-                                    {% if routine.description %}
+                                    {% if goal.description %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -52,13 +52,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ routine.type }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <th scope="row">{{ 'Is completed'|trans }}</th>
                                 <td>
-                                    {% if routine.isEnabled %}
+                                    {% if goal.isCompleted %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -72,22 +68,18 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Routine'|trans }}</th>
                                 <td>
-                                    {% if routine.goals|length %}
-                                        <ul>
-                                            {% for goal in routine.goals %}
-                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
+                                    {% if goal.routine %}
+                                        <a href="{{ path('admin_routine_show', {'uuid': goal.routine.uuid}) }}">{{ goal.routine.uuid }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'User'|trans }}</th>
+                                <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
-                                    {% if routine.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
+                                    {% if goal.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': goal.user.uuid}) }}">{{ goal.user.email }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -99,47 +91,47 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ routine.id }}</td>
+                                <td>{{ goal.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ routine.uuid }}</td>
+                                <td>{{ goal.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
                                 <td>
-                                    {% if routine.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.createdBy}) }}">{{ routine.createdBy }}</a>
+                                    {% if goal.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': goal.createdBy}) }}">{{ goal.createdBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
                                 <td>
-                                    {% if routine.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.deletedBy}) }}">{{ routine.deletedBy }}</a>
+                                    {% if goal.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': goal.deletedBy}) }}">{{ goal.deletedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
                                 <td>
-                                    {% if routine.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.updatedBy}) }}">{{ routine.updatedBy }}</a>
+                                    {% if goal.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': goal.updatedBy}) }}">{{ goal.updatedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ routine.createdAt ? routine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ goal.createdAt ? goal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ goal.deletedAt ? goal.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -149,4 +141,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Goal details'|trans }} {% endblock %}

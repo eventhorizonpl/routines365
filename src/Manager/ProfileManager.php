@@ -25,7 +25,7 @@ class ProfileManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $profiles, string $actor, int $saveEvery = 50): self
+    public function bulkSave(array $profiles, string $actor, int $saveEvery = 100): self
     {
         $i = 1;
         foreach ($profiles as $profile) {

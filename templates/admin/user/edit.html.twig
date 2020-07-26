@@ -1,7 +1,5 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'Edit User'|trans }} {% endblock %}
-
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></li>
@@ -27,3 +25,5 @@
         </div>
     </div>
 {% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Edit User'|trans }} {% endblock %}

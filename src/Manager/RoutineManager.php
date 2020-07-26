@@ -22,7 +22,7 @@ class RoutineManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $routines, string $actor = null, int $saveEvery = 50): self
+    public function bulkSave(array $routines, string $actor = null, int $saveEvery = 100): self
     {
         $i = 1;
         foreach ($routines as $routine) {

@@ -27,6 +27,11 @@ class User implements UserInterface
     public const ROLE_USER = 'ROLE_USER';
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
+     */
+    private Collection $goals;
+
+    /**
      * @Assert\Valid(groups={"form"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
@@ -77,6 +82,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->email = '';
+        $this->goals = new ArrayCollection();
         $this->isEnabled = false;
         $this->isVerified = false;
         $this->routines = new ArrayCollection();
@@ -99,6 +105,30 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function addGoal(Goal $goal): self
+    {
+        if (false === $this->goals->contains($goal)) {
+            $this->goals->add($goal);
+            $goal->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getGoals(): Collection
+    {
+        return $this->goals;
+    }
+
+    public function removeGoal(Goal $goal): self
+    {
+        if (true === $this->goals->contains($goal)) {
+            $this->goals->removeElement($goal);
+        }
 
         return $this;
     }
@@ -162,7 +192,7 @@ class User implements UserInterface
 
     public function addRoutine(Routine $routine): self
     {
-        if (!($this->routines->contains($routine))) {
+        if (false === $this->routines->contains($routine)) {
             $this->routines->add($routine);
             $routine->setUser($this);
         }
@@ -177,7 +207,7 @@ class User implements UserInterface
 
     public function removeRoutine(Routine $routine): self
     {
-        if ($this->routines->contains($routine)) {
+        if (true === $this->routines->contains($routine)) {
             $this->routines->removeElement($routine);
         }
 

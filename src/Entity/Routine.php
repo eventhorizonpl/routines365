@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RoutineRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,6 +25,12 @@ class Routine
     public const TYPE_WORK = 'work';
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Goal::class)
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private Collection $goals;
+
+    /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
@@ -33,7 +41,6 @@ class Routine
      * @Assert\Length(
      *   max = 255
      * )
-     * @Assert\NotBlank
      * @Assert\Type("string")
      * @ORM\Column(nullable=true, type="string")
      */
@@ -63,6 +70,7 @@ class Routine
     public function __construct()
     {
         $this->description = null;
+        $this->goals = new ArrayCollection();
         $this->isEnabled = false;
         $this->name = '';
         $this->type = self::TYPE_HOBBY;
@@ -76,6 +84,68 @@ class Routine
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function addGoal(Goal $goal): self
+    {
+        if (false === $this->goals->contains($goal)) {
+            $this->goals->add($goal);
+            $goal->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getGoals(): Collection
+    {
+        return $this->goals;
+    }
+
+    public function getGoalsCompleted(): Collection
+    {
+        return $this->goals->filter(function(Goal $goal) {
+            return ((true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
+        });
+    }
+
+    public function getGoalsCompletedCount(): int
+    {
+        $goalsCompleted = 0;
+        foreach ($this->goals as $goal) {
+            if ((true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt())) {
+                ++$goalsCompleted;
+            }
+        }
+
+        return $goalsCompleted;
+    }
+
+    public function getGoalsNotCompleted(): Collection
+    {
+        return $this->goals->filter(function(Goal $goal) {
+            return ((false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
+        });
+    }
+
+    public function getGoalsNotCompletedCount(): int
+    {
+        $goalsNotCompleted = 0;
+        foreach ($this->goals as $goal) {
+            if ((false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt())) {
+                ++$goalsNotCompleted;
+            }
+        }
+
+        return $goalsNotCompleted;
+    }
+
+    public function removeGoal(Goal $goal): self
+    {
+        if (true === $this->goals->contains($goal)) {
+            $this->goals->removeElement($goal);
+        }
 
         return $this;
     }

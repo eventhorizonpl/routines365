@@ -1,7 +1,5 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'Routines'|trans }}{% endblock %}
-
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
     <li class="breadcrumb-item active">{{ 'Routines'|trans }}</li>
@@ -44,53 +42,53 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for routine in routines %}
-                    <tr>
-                        <td>{{ routine.uuid }}</td>
-                        <td>
-                            {% if routine.user %}
-                                <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if routine.name %}
-                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                            {% else %}
-                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if routine.description %}
-                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                            {% else %}
-                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                            {% endif %}
-                        </td>
-                        <td>{{ routine.type }}</td>
-                        <td>
-                            {% if routine.isEnabled %}
-                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                            {% else %}
-                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                            {% endif %}
-                        </td>
-                        <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop{{ routine.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ routine.id }}">
-                                    <a class="dropdown-item" href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                    {% for routine in routines %}
+                        <tr>
+                            <td>{{ routine.uuid }}</td>
+                            <td>
+                                {% if routine.user %}
+                                    <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if routine.name %}
+                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                {% else %}
+                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if routine.description %}
+                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                {% else %}
+                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ routine.type }}</td>
+                            <td>
+                                {% if routine.isEnabled %}
+                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                {% else %}
+                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop{{ routine.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ routine.id }}">
+                                        <a class="dropdown-item" href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="8">{{ 'No records found'|trans }}</td>
-                    </tr>
-                {% endfor %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">{{ 'No records found'|trans }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
             <div class="navigation">
@@ -99,3 +97,5 @@
         </div>
     </div>
 {% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Routines'|trans }}{% endblock %}

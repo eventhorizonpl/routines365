@@ -30,7 +30,7 @@ class QuoteController extends AbstractController
         Request $request
     ): Response {
         $parameters = [
-            'query' => $request->query->get('q'),
+            'query' => trim($request->query->get('q')),
             'type' => $request->query->get('type'),
         ];
 

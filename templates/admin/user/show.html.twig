@@ -1,7 +1,5 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'User details'|trans }} {% endblock %}
-
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></li>
@@ -88,7 +86,19 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Routines'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
+                                <td>
+                                    {% if user.goals|length %}
+                                        <ul>
+                                            {% for goal in user.goals %}
+                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Routines'|trans }}</th>
                                 <td>
                                     {% if user.routines|length %}
                                         <ul>
@@ -115,15 +125,27 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
-                                <td>{{ user.createdBy }}</td>
+                                <td>
+                                    {% if user.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.createdBy}) }}">{{ user.createdBy }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
-                                <td>{{ user.deletedBy }}</td>
+                                <td>
+                                    {% if user.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.deletedBy}) }}">{{ user.deletedBy }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
-                                <td>{{ user.updatedBy }}</td>
+                                <td>
+                                    {% if user.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.updatedBy}) }}">{{ user.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
@@ -145,3 +167,5 @@
         </div>
     </div>
 {% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'User details'|trans }} {% endblock %}

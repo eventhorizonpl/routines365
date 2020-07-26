@@ -261,13 +261,49 @@
         <source>Create Routine</source>
         <target>Create Routine</target>
       </trans-unit>
-      <trans-unit id="0_qH7mF" resname="You do not have any routines!">
-        <source>You do not have any routines!</source>
-        <target>You do not have any routines!</target>
-      </trans-unit>
       <trans-unit id="FbXbMky" resname="Edit Routine">
         <source>Edit Routine</source>
         <target>Edit Routine</target>
+      </trans-unit>
+      <trans-unit id="EWzTmCq" resname="Goals">
+        <source>Goals</source>
+        <target>Goals</target>
+      </trans-unit>
+      <trans-unit id="TOyh1Sz" resname="Timezone">
+        <source>Timezone</source>
+        <target>Timezone</target>
+      </trans-unit>
+      <trans-unit id="tHlGX50" resname="Goal details">
+        <source>Goal details</source>
+        <target>Goal details</target>
+      </trans-unit>
+      <trans-unit id="cN5NTQL" resname="Is completed">
+        <source>Is completed</source>
+        <target>Is completed</target>
+      </trans-unit>
+      <trans-unit id="C1uvMJi" resname="Routine">
+        <source>Routine</source>
+        <target>Routine</target>
+      </trans-unit>
+      <trans-unit id="HV41B1o" resname="Create Goal">
+        <source>Create Goal</source>
+        <target>Create Goal</target>
+      </trans-unit>
+      <trans-unit id="AZJQJHH" resname="Not completed">
+        <source>Not completed</source>
+        <target>Not completed</target>
+      </trans-unit>
+      <trans-unit id="Iqlw0uW" resname="Completed">
+        <source>Completed</source>
+        <target>Completed</target>
+      </trans-unit>
+      <trans-unit id="r32jzqT" resname="Goals completed">
+        <source>Goals completed</source>
+        <target>Goals completed</target>
+      </trans-unit>
+      <trans-unit id="0ptVsgq" resname="Goals not completed">
+        <source>Goals not completed</source>
+        <target>Goals not completed</target>
       </trans-unit>
     </body>
   </file>

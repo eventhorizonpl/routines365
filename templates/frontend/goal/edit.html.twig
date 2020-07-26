@@ -1,0 +1,16 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ 'Edit Goal'|trans }} {% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Edit Goal'|trans }}
+        </div>
+        <div class="card-body">
+            {{ include('frontend/goal/_form.html.twig', {'button_label': 'Update'|trans}) }}
+            <br>
+            {{ include('frontend/goal/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

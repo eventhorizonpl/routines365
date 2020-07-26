@@ -1,7 +1,5 @@
 {% extends 'admin_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - {{ 'Quote details'|trans }} {% endblock %}
-
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></li>
@@ -76,15 +74,27 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
-                                <td>{{ quote.createdBy }}</td>
+                                <td>
+                                    {% if quote.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': quote.createdBy}) }}">{{ quote.createdBy }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
-                                <td>{{ quote.deletedBy }}</td>
+                                <td>
+                                    {% if quote.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': quote.deletedBy}) }}">{{ quote.deletedBy }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
-                                <td>{{ quote.updatedBy }}</td>
+                                <td>
+                                    {% if quote.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': quote.updatedBy}) }}">{{ quote.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
@@ -106,3 +116,5 @@
         </div>
     </div>
 {% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Quote details'|trans }} {% endblock %}

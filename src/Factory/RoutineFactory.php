@@ -18,18 +18,13 @@ class RoutineFactory
     public function createRoutineWithRequired(
         bool $isEnabled,
         string $name,
-        string $type,
-        string $description = null
+        string $type
     ): Routine {
         $routine = $this->createRoutine();
 
         $routine->setIsEnabled($isEnabled);
         $routine->setName($name);
         $routine->setType($type);
-
-        if (null !== $description) {
-            $routine->setDescription($description);
-        }
 
         return $routine;
     }

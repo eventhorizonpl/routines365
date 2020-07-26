@@ -30,7 +30,7 @@ class UserController extends AbstractController
         UserRepository $userRepository
     ): Response {
         $parameters = [
-            'query' => $request->query->get('q'),
+            'query' => trim($request->query->get('q')),
         ];
 
         $queryResult = $userRepository->findByParametersForAdmin($parameters);

@@ -50,9 +50,10 @@ class RoutineFaker
         $routine = $this->routineFactory->createRoutineWithRequired(
             $isEnabled,
             $name,
-            $type,
-            $description
+            $type
         );
+
+        $routine->setDescription($description);
 
         return $routine;
     }
