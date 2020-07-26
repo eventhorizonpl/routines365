@@ -38,7 +38,15 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
+    {% if app.user %}
+        {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
+            {{ encore_entry_script_tags('frontend-light') }}
+        {% else %}
+            {{ encore_entry_script_tags('frontend-dark') }}
+        {% endif %}
+    {% else %}
+        {{ encore_entry_script_tags('frontend-dark') }}
+    {% endif %}
 {% endblock %}
 
 {% block meta %}
@@ -47,5 +55,13 @@
 {% endblock %}
 
 {% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
+    {% if app.user %}
+        {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
+            {{ encore_entry_link_tags('frontend-light') }}
+        {% else %}
+            {{ encore_entry_link_tags('frontend-dark') }}
+        {% endif %}
+    {% else %}
+        {{ encore_entry_link_tags('frontend-dark') }}
+    {% endif %}
 {% endblock %}

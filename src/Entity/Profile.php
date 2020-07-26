@@ -18,6 +18,9 @@ class Profile
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
+    public const THEME_DARK = 'dark';
+    public const THEME_LIGHT = 'light';
+
     /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -41,6 +44,16 @@ class Profile
     private ?PhoneNumber $phone;
 
     /**
+     * @Assert\Choice(callback="getThemeValidationChoices")
+     * @Assert\Length(
+     *   max = 8
+     * )
+     * @Assert\Type("string")
+     * @ORM\Column(length=8, nullable=true, type="string")
+     */
+    private ?string $theme;
+
+    /**
      * @Assert\Length(
      *   max = 36
      * )
@@ -53,6 +66,7 @@ class Profile
     public function __construct()
     {
         $this->phone = null;
+        $this->theme = self::THEME_DARK;
     }
 
     public function __toString(): string
@@ -92,6 +106,34 @@ class Profile
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTheme(): ?string
+    {
+        return $this->theme;
+    }
+
+    public static function getThemeFormChoices(): array
+    {
+        return [
+            self::THEME_DARK => self::THEME_DARK,
+            self::THEME_LIGHT => self::THEME_LIGHT,
+        ];
+    }
+
+    public function getThemeValidationChoices(): array
+    {
+        return [
+            self::THEME_DARK,
+            self::THEME_LIGHT,
+        ];
+    }
+
+    public function setTheme(?string $theme): self
+    {
+        $this->theme = $theme;
 
         return $this;
     }
