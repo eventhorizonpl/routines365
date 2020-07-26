@@ -25,6 +25,7 @@ class UserType extends AbstractType
                 'multiple' => true,
             ])
             ->add('isEnabled', YesNoType::class)
+            ->add('isVerified', YesNoType::class)
             ->add('plainPassword', RepeatedType::class, [
                 'invalid_message' => 'The password fields must match.',
                 'mapped' => false,

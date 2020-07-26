@@ -4,6 +4,9 @@
     {% include('admin_navbar.html.twig') %}
 
     <div class="container-fluid">
+        <ol class="breadcrumb">
+            {% block breadcrumb %}{% endblock %}
+        </ol>
         {% block content %}{% endblock %}
     </div>
 {% endblock %}

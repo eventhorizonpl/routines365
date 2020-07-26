@@ -2,6 +2,11 @@
 
 {% block title %}{{ parent() }} - {{ 'Quotes'|trans }}{% endblock %}
 
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Quotes'|trans }}</li>
+{% endblock %}
+
 {% block content %}
     <div class="card">
         <div class="card-header">

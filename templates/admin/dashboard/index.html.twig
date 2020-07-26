@@ -2,6 +2,10 @@
 
 {% block title %}{{ parent() }} - {{ 'Dashboard'|trans }}{% endblock %}
 
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">{{ 'Dashboard'|trans }}</li>
+{% endblock %}
+
 {% block content %}
     <div class="card">
         <div class="card-header">

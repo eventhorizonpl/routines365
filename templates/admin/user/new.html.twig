@@ -2,6 +2,12 @@
 
 {% block title %}{{ parent() }} - {{ 'Create User'|trans }} {% endblock %}
 
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Create User'|trans }}</li>
+{% endblock %}
+
 {% block content %}
     <div class="card">
         <div class="card-header">
