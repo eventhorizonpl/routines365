@@ -57,6 +57,11 @@ class Note
         $this->title = '';
     }
 
+    public function __toString(): string
+    {
+        return $this->getUuid();
+    }
+
     public function getContent(): string
     {
         return $this->content;

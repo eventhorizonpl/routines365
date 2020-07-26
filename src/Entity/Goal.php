@@ -63,6 +63,11 @@ class Goal
         $this->name = '';
     }
 
+    public function __toString(): string
+    {
+        return $this->getUuid();
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;

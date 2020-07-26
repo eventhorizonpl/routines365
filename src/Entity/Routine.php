@@ -36,6 +36,11 @@ class Routine
     private Collection $notes;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Reminder::class)
+     */
+    private Collection $reminders;
+
+    /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
@@ -79,6 +84,7 @@ class Routine
         $this->isEnabled = false;
         $this->name = '';
         $this->notes = new ArrayCollection();
+        $this->reminders = new ArrayCollection();
         $this->type = self::TYPE_HOBBY;
     }
 
@@ -116,8 +122,8 @@ class Routine
 
     public function getGoalsCompleted(): Collection
     {
-        return $this->goals->filter(function(Goal $goal) {
-            return ((true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
+        return $this->goals->filter(function (Goal $goal) {
+            return (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
         });
     }
 
@@ -135,8 +141,8 @@ class Routine
 
     public function getGoalsNotCompleted(): Collection
     {
-        return $this->goals->filter(function(Goal $goal) {
-            return ((false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
+        return $this->goals->filter(function (Goal $goal) {
+            return (false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
         });
     }
 
@@ -177,7 +183,7 @@ class Routine
     {
         if (false === $this->notes->contains($note)) {
             $this->notes->add($note);
-            $goal->setUser($this);
+            $note->setUser($this);
         }
 
         return $this;
@@ -192,6 +198,30 @@ class Routine
     {
         if (true === $this->notes->contains($note)) {
             $this->notes->removeElement($note);
+        }
+
+        return $this;
+    }
+
+    public function addReminder(Reminder $reminder): self
+    {
+        if (false === $this->reminders->contains($reminder)) {
+            $this->reminders->add($reminder);
+            $reminder->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getReminders(): Collection
+    {
+        return $this->reminders;
+    }
+
+    public function removeReminder(Reminder $reminder): self
+    {
+        if (true === $this->reminders->contains($reminder)) {
+            $this->reminders->removeElement($reminder);
         }
 
         return $this;

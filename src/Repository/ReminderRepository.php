@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Goal;
+use App\Entity\Reminder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
-class GoalRepository extends ServiceEntityRepository
+class ReminderRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Goal::class);
+        parent::__construct($registry, Reminder::class);
     }
 
     public function findByParametersForAdmin(array $parameters = []): Query
     {
-        $queryBuilder = $this->createQueryBuilder('g')
-            ->select('g, gu')
-            ->leftJoin('g.user', 'gu')
-            ->where('g.deletedAt IS NULL')
-            ->addOrderBy('g.createdAt', 'DESC');
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->select('r, ru')
+            ->leftJoin('r.user', 'ru')
+            ->where('r.deletedAt IS NULL')
+            ->addOrderBy('r.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
             if (array_key_exists('query', $parameters)) {
@@ -28,8 +28,8 @@ class GoalRepository extends ServiceEntityRepository
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
                         $queryBuilder->expr()->orX(
-                            $queryBuilder->expr()->like('gu.email', ':q'),
-                            $queryBuilder->expr()->like('gu.uuid', ':q')
+                            $queryBuilder->expr()->like('ru.email', ':q'),
+                            $queryBuilder->expr()->like('ru.uuid', ':q')
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');

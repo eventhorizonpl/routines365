@@ -43,6 +43,11 @@ class User implements UserInterface
     private Profile $profile;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reminder::class)
+     */
+    private Collection $reminders;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Routine::class)
      */
     private Collection $routines;
@@ -91,6 +96,7 @@ class User implements UserInterface
         $this->isEnabled = false;
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
+        $this->reminders = new ArrayCollection();
         $this->routines = new ArrayCollection();
     }
 
@@ -143,7 +149,7 @@ class User implements UserInterface
     {
         if (false === $this->notes->contains($note)) {
             $this->notes->add($note);
-            $goal->setUser($this);
+            $note->setUser($this);
         }
 
         return $this;
@@ -183,6 +189,30 @@ class User implements UserInterface
     public function setProfile(Profile $profile): self
     {
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function addReminder(Reminder $reminder): self
+    {
+        if (false === $this->reminders->contains($reminder)) {
+            $this->reminders->add($reminder);
+            $reminder->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getReminders(): Collection
+    {
+        return $this->reminders;
+    }
+
+    public function removeReminder(Reminder $reminder): self
+    {
+        if (true === $this->reminders->contains($reminder)) {
+            $this->reminders->removeElement($reminder);
+        }
 
         return $this;
     }

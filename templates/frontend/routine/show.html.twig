@@ -28,6 +28,77 @@
                     </p>
                     <hr>
                     <p>
+                        {{ 'Reminders'|trans }}: {{ routine.reminders|length }}
+                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reminder_new', {'uuid': routine.uuid}) }}">
+                            <i class="fas fa-clock"></i>
+                            {{ 'Create Reminder'|trans }}
+                        </a>
+                    </p>
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'Hour'|trans }}</th>
+                                    <th>{{ 'Minutes before'|trans }}</th>
+                                    <th>{{ 'Is enabled'|trans }}</th>
+                                    <th>{{ 'Send email'|trans }}</th>
+                                    <th>{{ 'Send sms'|trans }}</th>
+                                    <th>{{ 'Type'|trans }}</th>
+                                    <th>{{ 'Next reminder at'|trans }}</th>
+                                    <th>{{ 'Actions'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for reminder in routine.reminders %}
+                                    <tr>
+                                        <td>{{ reminder.hour ? reminder.hour|date('H:i') : '' }}</td>
+                                        <td>{{ reminder.minutesBefore }}</td>
+                                        <td>
+                                            {% if reminder.isEnabled %}
+                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if reminder.sendEmail %}
+                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if reminder.sendSms %}
+                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ reminder.type }}</td>
+                                        <td>{{ reminder.nextDate ? reminder.nextDate|date('Y-m-d H:i:s') : '' }}</td>
+                                        <td style="width: 25%;">
+                                            <a class="btn btn-info btn-sm m-1" href="{{ path('frontend_reminder_edit', {'uuid': reminder.uuid}) }}">
+                                                <i class="fas fa-edit"></i>
+                                                {{ 'Edit'|trans }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">
+                                            {{ 'You do not have any Goals.'|trans }}<br>
+                                            <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_new', {'uuid': routine.uuid}) }}">
+                                                <i class="fas fa-bullseye"></i>
+                                                {{ 'Create Goal'|trans }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <p>
                         {{ 'Notes'|trans }}: {{ routine.notes|length }}
                         <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid}) }}">
                             <i class="fas fa-pen-fancy"></i>

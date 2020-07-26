@@ -46,6 +46,7 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
         $user = $this->userService->encodePassword($user, 'admin');
         $phone = $this->phoneNumberUtil->parse('+48881573056');
         $user->getProfile()->setPhone($phone);
+        $user->getProfile()->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
         $this->addReference(self::ADMIN_USER_REFERENCE, $user);
@@ -62,6 +63,7 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
                 $user = $this->userService->encodePassword($user, 'test'.(string) $userId);
                 $phone = $this->phoneNumberUtil->parse('+488815731'.(string) $userId);
                 $user->getProfile()->setPhone($phone);
+                $user->getProfile()->setTimezone('Europe/Warsaw');
                 $users[] = $user;
                 $this->addReference(self::REGULAR_USER_REFERENCE.'_'.(string) $userId, $user);
             }

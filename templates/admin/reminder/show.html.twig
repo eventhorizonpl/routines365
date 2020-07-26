@@ -2,15 +2,15 @@
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Routine details'|trans }}</li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_reminder_index') }}">{{ 'Reminders'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Reminder details'|trans }}</li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Routine details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_routine_index') }}">
+            {{ 'Reminder details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_reminder_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -32,9 +32,9 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Hour'|trans }}</th>
                                 <td>
-                                    {% if routine.name %}
+                                    {% if reminder.hour %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -42,9 +42,59 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Description'|trans }}</th>
+                                <th scope="row">{{ 'Is enabled'|trans }}</th>
                                 <td>
-                                    {% if routine.description %}
+                                    {% if reminder.isEnabled %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Minutes before'|trans }}</th>
+                                <td>
+                                    {% if reminder.minutesBefore %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Next date'|trans }}</th>
+                                <td>
+                                    {% if reminder.nextDate %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Previous date'|trans }}</th>
+                                <td>
+                                    {% if reminder.previousDate %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Send email'|trans }}</th>
+                                <td>
+                                    {% if reminder.sendEmail %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Send sms'|trans }}</th>
+                                <td>
+                                    {% if reminder.sendSms %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -53,17 +103,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ routine.type }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
-                                <td>
-                                    {% if routine.isEnabled %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                                    {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                    {% endif %}
-                                </td>
+                                <td>{{ reminder.type }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -72,46 +112,18 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Routine'|trans }}</th>
                                 <td>
-                                    {% if routine.goals|length %}
-                                        <ul>
-                                            {% for goal in routine.goals %}
-                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Notes'|trans }}</th>
-                                <td>
-                                    {% if routine.notes|length %}
-                                        <ul>
-                                            {% for note in routine.notes %}
-                                                <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Reminders'|trans }}</th>
-                                <td>
-                                    {% if routine.reminders|length %}
-                                        <ul>
-                                            {% for reminder in routine.reminders %}
-                                                <li><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
+                                    {% if reminder.routine %}
+                                        <a href="{{ path('admin_routine_show', {'uuid': reminder.routine.uuid}) }}">{{ reminder.routine.uuid }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
-                                    {% if routine.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
+                                    {% if reminder.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.user.uuid}) }}">{{ reminder.user.email }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -123,47 +135,47 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ routine.id }}</td>
+                                <td>{{ reminder.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ routine.uuid }}</td>
+                                <td>{{ reminder.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
                                 <td>
-                                    {% if routine.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.createdBy}) }}">{{ routine.createdBy }}</a>
+                                    {% if reminder.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.createdBy}) }}">{{ reminder.createdBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
                                 <td>
-                                    {% if routine.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.deletedBy}) }}">{{ routine.deletedBy }}</a>
+                                    {% if reminder.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.deletedBy}) }}">{{ reminder.deletedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
                                 <td>
-                                    {% if routine.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.updatedBy}) }}">{{ routine.updatedBy }}</a>
+                                    {% if reminder.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.updatedBy}) }}">{{ reminder.updatedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ routine.createdAt ? routine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reminder.createdAt ? reminder.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -173,4 +185,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Reminder details'|trans }} {% endblock %}

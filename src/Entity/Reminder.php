@@ -1,0 +1,270 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\ReminderRepository;
+use DateTimeImmutable;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass=ReminderRepository::class)
+ */
+class Reminder
+{
+    use Traits\IdTrait;
+    use Traits\UuidTrait;
+    use Traits\IsEnabledTrait;
+    use Traits\BlameableTrait;
+    use Traits\TimestampableTrait;
+
+    public const TYPE_DAILY = 'daily';
+    public const TYPE_FRIDAY = 'friday';
+    public const TYPE_MONDAY = 'monday';
+    public const TYPE_SATURDAY = 'saturday';
+    public const TYPE_SUNDAY = 'sunday';
+    public const TYPE_THURSDAY = 'thursday';
+    public const TYPE_TUESDAY = 'tuesday';
+    public const TYPE_WEDNESDAY = 'wednesday';
+
+    /**
+     * @Assert\Valid
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=Routine::class)
+     */
+    private Routine $routine;
+
+    /**
+     * @Assert\Valid
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=User::class)
+     */
+    private User $user;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="time_immutable")
+     */
+    private DateTimeImmutable $hour;
+
+    /**
+     * @Assert\Choice(callback="getMinutesBeforeValidationChoices")
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $minutesBefore;
+
+    /**
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable")
+     */
+    private ?DateTimeImmutable $nextDate;
+
+    /**
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable")
+     */
+    private ?DateTimeImmutable $previousDate;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private bool $sendEmail;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private bool $sendSms;
+
+    /**
+     * @Assert\Choice(callback="getTypeValidationChoices")
+     * @Assert\Length(
+     *   max = 10
+     * )
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ORM\Column(length=10, type="string")
+     */
+    private string $type;
+
+    public function __construct()
+    {
+        $this->isEnabled = false;
+        $this->nextDate = null;
+        $this->previousDate = null;
+        $this->type = self::TYPE_DAILY;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getUuid();
+    }
+
+    public function getHour(): ?DateTimeImmutable
+    {
+        return $this->hour;
+    }
+
+    public function setHour(DateTimeImmutable $hour): self
+    {
+        $this->hour = $hour;
+
+        return $this;
+    }
+
+    public function getMinutesBefore(): ?int
+    {
+        return $this->minutesBefore;
+    }
+
+    public static function getMinutesBeforeFormChoices(): array
+    {
+        return [
+            5 => 5,
+            10 => 10,
+            15 => 15,
+            20 => 20,
+            25 => 25,
+            30 => 30,
+        ];
+    }
+
+    public function getMinutesBeforeValidationChoices(): array
+    {
+        return [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+        ];
+    }
+
+    public function setMinutesBefore(int $minutesBefore): self
+    {
+        $this->minutesBefore = $minutesBefore;
+
+        return $this;
+    }
+
+    public function getNextDate(): ?DateTimeImmutable
+    {
+        return $this->nextDate;
+    }
+
+    public function setNextDate(DateTimeImmutable $nextDate): self
+    {
+        $this->nextDate = $nextDate;
+
+        return $this;
+    }
+
+    public function getPreviousDate(): ?DateTimeImmutable
+    {
+        return $this->previousDate;
+    }
+
+    public function setPreviousDate(DateTimeImmutable $previousDate): self
+    {
+        $this->previousDate = $previousDate;
+
+        return $this;
+    }
+
+    public function getRoutine(): ?Routine
+    {
+        return $this->routine;
+    }
+
+    public function setRoutine(Routine $routine): self
+    {
+        $this->routine = $routine;
+
+        return $this;
+    }
+
+    public function getSendEmail(): ?bool
+    {
+        return $this->sendEmail;
+    }
+
+    public function setSendEmail(bool $sendEmail): self
+    {
+        $this->sendEmail = $sendEmail;
+
+        return $this;
+    }
+
+    public function getSendSms(): ?bool
+    {
+        return $this->sendSms;
+    }
+
+    public function setSendSms(bool $sendSms): self
+    {
+        $this->sendSms = $sendSms;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public static function getTypeFormChoices(): array
+    {
+        return [
+            self::TYPE_DAILY => self::TYPE_DAILY,
+            self::TYPE_MONDAY => self::TYPE_MONDAY,
+            self::TYPE_TUESDAY => self::TYPE_TUESDAY,
+            self::TYPE_WEDNESDAY => self::TYPE_WEDNESDAY,
+            self::TYPE_THURSDAY => self::TYPE_THURSDAY,
+            self::TYPE_FRIDAY => self::TYPE_FRIDAY,
+            self::TYPE_SATURDAY => self::TYPE_SATURDAY,
+            self::TYPE_SUNDAY => self::TYPE_SUNDAY,
+        ];
+    }
+
+    public function getTypeValidationChoices(): array
+    {
+        return [
+            self::TYPE_DAILY,
+            self::TYPE_FRIDAY,
+            self::TYPE_MONDAY,
+            self::TYPE_SATURDAY,
+            self::TYPE_SUNDAY,
+            self::TYPE_THURSDAY,
+            self::TYPE_TUESDAY,
+            self::TYPE_WEDNESDAY,
+        ];
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+}

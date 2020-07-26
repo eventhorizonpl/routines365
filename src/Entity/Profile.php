@@ -119,7 +119,7 @@ class Profile
     {
         return [
             self::THEME_DARK => self::THEME_DARK,
-            self::THEME_LIGHT => self::THEME_LIGHT,
+            //self::THEME_LIGHT => self::THEME_LIGHT,
         ];
     }
 
@@ -127,7 +127,7 @@ class Profile
     {
         return [
             self::THEME_DARK,
-            self::THEME_LIGHT,
+            //self::THEME_LIGHT,
         ];
     }
 

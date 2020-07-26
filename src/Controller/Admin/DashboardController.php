@@ -6,6 +6,7 @@ use App\Repository\GoalRepository;
 use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;
 use App\Repository\QuoteRepository;
+use App\Repository\ReminderRepository;
 use App\Repository\RoutineRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,7 @@ class DashboardController extends AbstractController
         NoteRepository $noteRepository,
         ProfileRepository $profileRepository,
         QuoteRepository $quoteRepository,
+        ReminderRepository $reminderRepository,
         RoutineRepository $routineRepository,
         UserRepository $userRepository
     ): Response {
@@ -32,6 +34,7 @@ class DashboardController extends AbstractController
         $notesCount = $noteRepository->count([]);
         $profilesCount = $profileRepository->count([]);
         $quotesCount = $quoteRepository->count([]);
+        $remindersCount = $reminderRepository->count([]);
         $routinesCount = $routineRepository->count([]);
         $usersCount = $userRepository->count([]);
 
@@ -40,6 +43,7 @@ class DashboardController extends AbstractController
             'notes_count' => $notesCount,
             'profiles_count' => $profilesCount,
             'quotes_count' => $quotesCount,
+            'reminders_count' => $remindersCount,
             'routines_count' => $routinesCount,
             'users_count' => $usersCount,
         ]);

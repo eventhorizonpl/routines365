@@ -353,6 +353,54 @@
         <source>Homepage</source>
         <target>Homepage</target>
       </trans-unit>
+      <trans-unit id="eXHddSZ" resname="Reminders">
+        <source>Reminders</source>
+        <target>Reminders</target>
+      </trans-unit>
+      <trans-unit id="HNJ9YIw" resname="Reminder details">
+        <source>Reminder details</source>
+        <target>Reminder details</target>
+      </trans-unit>
+      <trans-unit id="8AY7gIc" resname="Hour">
+        <source>Hour</source>
+        <target>Hour</target>
+      </trans-unit>
+      <trans-unit id="IFAtLrN" resname="Minutes before">
+        <source>Minutes before</source>
+        <target>Minutes before</target>
+      </trans-unit>
+      <trans-unit id="JZ9XffU" resname="Next date">
+        <source>Next date</source>
+        <target>Next date</target>
+      </trans-unit>
+      <trans-unit id="3y0NyOJ" resname="Previous date">
+        <source>Previous date</source>
+        <target>Previous date</target>
+      </trans-unit>
+      <trans-unit id="4GIstok" resname="Send email">
+        <source>Send email</source>
+        <target>Send email</target>
+      </trans-unit>
+      <trans-unit id="GV4Nx_p" resname="Send sms">
+        <source>Send sms</source>
+        <target>Send sms</target>
+      </trans-unit>
+      <trans-unit id="77UucXK" resname="Theme">
+        <source>Theme</source>
+        <target>Theme</target>
+      </trans-unit>
+      <trans-unit id="HNPDRnG" resname="Edit Reminder">
+        <source>Edit Reminder</source>
+        <target>Edit Reminder</target>
+      </trans-unit>
+      <trans-unit id="5HwXyL9" resname="Create Reminder">
+        <source>Create Reminder</source>
+        <target>Create Reminder</target>
+      </trans-unit>
+      <trans-unit id="kBxULse" resname="Next reminder at">
+        <source>Next reminder at</source>
+        <target>Next reminder at</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

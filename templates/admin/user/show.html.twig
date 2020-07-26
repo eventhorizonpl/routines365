@@ -118,6 +118,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Reminders'|trans }}</th>
+                                <td>
+                                    {% if user.reminders|length %}
+                                        <ul>
+                                            {% for reminder in user.reminders %}
+                                                <li><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Routines'|trans }}</th>
                                 <td>
                                     {% if user.routines|length %}
