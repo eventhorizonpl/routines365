@@ -5,14 +5,16 @@
         <div class="col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">
-                    {{ 'Create Routine'|trans }}
+                    {{ 'Edit Note'|trans }}
                 </div>
                 <div class="card-body">
-                    {{ include('frontend/routine/_form.html.twig') }}
+                    {{ include('frontend/note/_form.html.twig', {'button_label': 'Update'|trans}) }}
+                    <br>
+                    {{ include('frontend/note/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Create Routine'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Edit Note'|trans }} {% endblock %}

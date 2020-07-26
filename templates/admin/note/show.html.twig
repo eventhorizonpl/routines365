@@ -2,15 +2,15 @@
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'User details'|trans }}</li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_note_index') }}">{{ 'Notes'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Note details'|trans }}</li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'User details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_index') }}">
+            {{ 'Note details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_note_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -32,37 +32,9 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
-                                <td>{{ user.email }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Country'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Title'|trans }}</th>
                                 <td>
-                                    {% if user.profile %}
-                                        {{ user.profile.country }}
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Phone'|trans }}</th>
-                                <td>
-                                    {% if user.profile and user.profile.phone %}
-                                        {{ user.profile.phone|phone_number_format }}
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Timezone'|trans }}</th>
-                                <td>
-                                    {% if user.profile %}
-                                        {{ user.profile.timezone }}
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
-                                <td>
-                                    {% if user.isEnabled %}
+                                    {% if note.title %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -70,9 +42,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is verified'|trans }}</th>
+                                <th scope="row">{{ 'Content'|trans }}</th>
                                 <td>
-                                    {% if user.isVerified %}
+                                    {% if note.content %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -86,38 +58,18 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Routine'|trans }}</th>
                                 <td>
-                                    {% if user.goals|length %}
-                                        <ul>
-                                            {% for goal in user.goals %}
-                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
+                                    {% if note.routine %}
+                                        <a href="{{ path('admin_routine_show', {'uuid': note.routine.uuid}) }}">{{ note.routine.uuid }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Notes'|trans }}</th>
+                                <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
-                                    {% if user.notes|length %}
-                                        <ul>
-                                            {% for note in user.notes %}
-                                                <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Routines'|trans }}</th>
-                                <td>
-                                    {% if user.routines|length %}
-                                        <ul>
-                                            {% for routine in user.routines %}
-                                                <li><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
+                                    {% if note.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': note.user.uuid}) }}">{{ note.user.email }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -129,55 +81,54 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ user.id }}</td>
+                                <td>{{ note.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ user.uuid }}</td>
+                                <td>{{ note.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
                                 <td>
-                                    {% if user.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.createdBy}) }}">{{ user.createdBy }}</a>
+                                    {% if note.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': note.createdBy}) }}">{{ note.createdBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
                                 <td>
-                                    {% if user.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.deletedBy}) }}">{{ user.deletedBy }}</a>
+                                    {% if note.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': note.deletedBy}) }}">{{ note.deletedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
                                 <td>
-                                    {% if user.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.updatedBy}) }}">{{ user.updatedBy }}</a>
+                                    {% if note.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': note.updatedBy}) }}">{{ note.updatedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ note.createdAt ? note.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ user.deletedAt ? user.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ note.deletedAt ? note.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ note.updatedAt ? note.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'User details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Note details'|trans }} {% endblock %}

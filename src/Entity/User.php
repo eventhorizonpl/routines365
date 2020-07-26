@@ -32,6 +32,11 @@ class User implements UserInterface
     private Collection $goals;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Note::class)
+     */
+    private Collection $notes;
+
+    /**
      * @Assert\Valid(groups={"form"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
@@ -85,6 +90,7 @@ class User implements UserInterface
         $this->goals = new ArrayCollection();
         $this->isEnabled = false;
         $this->isVerified = false;
+        $this->notes = new ArrayCollection();
         $this->routines = new ArrayCollection();
     }
 
@@ -128,6 +134,30 @@ class User implements UserInterface
     {
         if (true === $this->goals->contains($goal)) {
             $this->goals->removeElement($goal);
+        }
+
+        return $this;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (false === $this->notes->contains($note)) {
+            $this->notes->add($note);
+            $goal->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if (true === $this->notes->contains($note)) {
+            $this->notes->removeElement($note);
         }
 
         return $this;

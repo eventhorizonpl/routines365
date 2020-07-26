@@ -305,6 +305,22 @@
         <source>Goals not completed</source>
         <target>Goals not completed</target>
       </trans-unit>
+      <trans-unit id="FDsnCjJ" resname="Complete">
+        <source>Complete</source>
+        <target>Complete</target>
+      </trans-unit>
+      <trans-unit id="Mjw0Gn3" resname="You do not have any Goals.">
+        <source>You do not have any Goals.</source>
+        <target>You do not have any Goals.</target>
+      </trans-unit>
+      <trans-unit id="SGhtGgE" resname="You do not have any Routines!">
+        <source>You do not have any Routines!</source>
+        <target>You do not have any Routines!</target>
+      </trans-unit>
+      <trans-unit id="xFz0bNz" resname="Edit Goal">
+        <source>Edit Goal</source>
+        <target>Edit Goal</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

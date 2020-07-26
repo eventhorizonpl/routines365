@@ -1,7 +1,5 @@
 {% extends 'frontend_layout.html.twig' %}
 
-{% block title %}homepage{% endblock %}
-
 {% block content %}
     <div class="jumbotron">
         <h1 class="display-3">{{ 'Routines365'|trans }}</h1>
@@ -14,3 +12,5 @@
         </p>
     </div>
 {% endblock %}
+
+{% block title %}{{ 'Homepage'|trans }}{% endblock %}

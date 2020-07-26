@@ -84,7 +84,19 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'User'|trans }}</th>
+                                <th scope="row">{{ 'Notes'|trans }}</th>
+                                <td>
+                                    {% if routine.notes|length %}
+                                        <ul>
+                                            {% for note in routine.notes %}
+                                                <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
                                     {% if routine.user %}
                                         <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>

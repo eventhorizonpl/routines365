@@ -31,6 +31,11 @@ class Routine
     private Collection $goals;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Note::class)
+     */
+    private Collection $notes;
+
+    /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
@@ -73,7 +78,13 @@ class Routine
         $this->goals = new ArrayCollection();
         $this->isEnabled = false;
         $this->name = '';
+        $this->notes = new ArrayCollection();
         $this->type = self::TYPE_HOBBY;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 
     public function getDescription(): ?string
@@ -158,6 +169,30 @@ class Routine
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (false === $this->notes->contains($note)) {
+            $this->notes->add($note);
+            $goal->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if (true === $this->notes->contains($note)) {
+            $this->notes->removeElement($note);
+        }
 
         return $this;
     }
