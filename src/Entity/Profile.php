@@ -40,6 +40,16 @@ class Profile
      */
     private ?PhoneNumber $phone;
 
+    /**
+     * @Assert\Length(
+     *   max = 36
+     * )
+     * @Assert\Timezone
+     * @Assert\Type("string")
+     * @ORM\Column(length=36, nullable=true, type="string")
+     */
+    private ?string $timezone;
+
     public function __construct()
     {
         $this->phone = null;
@@ -55,7 +65,7 @@ class Profile
         return $this->country;
     }
 
-    public function setCountry(string $country): self
+    public function setCountry(?string $country): self
     {
         $this->country = $country;
 
@@ -82,6 +92,18 @@ class Profile
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTimezone(): ?string
+    {
+        return $this->timezone;
+    }
+
+    public function setTimezone(?string $timezone): self
+    {
+        $this->timezone = $timezone;
 
         return $this;
     }

@@ -48,6 +48,14 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Timezone'|trans }}</th>
+                                <td>
+                                    {% if user.profile %}
+                                        {{ user.profile.timezone }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Is enabled'|trans }}</th>
                                 <td>
                                     {% if user.isEnabled %}
