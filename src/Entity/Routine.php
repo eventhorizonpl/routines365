@@ -117,6 +117,13 @@ class Routine
 
     public function getGoals(): Collection
     {
+        return $this->goals->filter(function (Goal $goal) {
+            return (null === $goal->getDeletedAt());
+        });
+    }
+
+    public function getGoalsAll(): Collection
+    {
         return $this->goals;
     }
 
@@ -191,6 +198,13 @@ class Routine
 
     public function getNotes(): Collection
     {
+        return $this->notes->filter(function (Note $note) {
+            return (null === $note->getDeletedAt());
+        });
+    }
+
+    public function getNotesAll(): Collection
+    {
         return $this->notes;
     }
 
@@ -214,6 +228,13 @@ class Routine
     }
 
     public function getReminders(): Collection
+    {
+        return $this->reminders->filter(function (Reminder $reminder) {
+            return (null === $reminder->getDeletedAt());
+        });
+    }
+
+    public function getRemindersAll(): Collection
     {
         return $this->reminders;
     }

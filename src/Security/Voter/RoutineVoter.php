@@ -14,13 +14,13 @@ class RoutineVoter extends Voter
     public const EDIT = 'edit';
     public const VIEW = 'view';
 
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         return in_array($attribute, [self::DELETE, self::EDIT, self::VIEW])
             && $subject instanceof Routine;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
         if (!$user instanceof UserInterface) {
@@ -39,18 +39,22 @@ class RoutineVoter extends Voter
         return false;
     }
 
-    private function canDelete(Routine $routine, User $user)
+    private function canDelete(Routine $routine, User $user): bool
     {
         return $user === $routine->getUser();
     }
 
-    private function canEdit(Routine $routine, User $user)
+    private function canEdit(Routine $routine, User $user): bool
     {
         return $user === $routine->getUser();
     }
 
-    private function canView(Routine $routine, User $user)
+    private function canView(Routine $routine, User $user): bool
     {
+        if (null !== $routine->getDeletedAt()) {
+            return false;
+        }
+
         return $user === $routine->getUser();
     }
 }

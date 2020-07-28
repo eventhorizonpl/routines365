@@ -14,13 +14,13 @@ class NoteVoter extends Voter
     public const EDIT = 'edit';
     public const VIEW = 'view';
 
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         return in_array($attribute, [self::DELETE, self::EDIT, self::VIEW])
             && $subject instanceof Note;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
         if (!$user instanceof UserInterface) {
@@ -39,18 +39,22 @@ class NoteVoter extends Voter
         return false;
     }
 
-    private function canDelete(Note $note, User $user)
+    private function canDelete(Note $note, User $user): bool
     {
         return $user === $note->getUser();
     }
 
-    private function canEdit(Note $note, User $user)
+    private function canEdit(Note $note, User $user): bool
     {
         return $user === $note->getUser();
     }
 
-    private function canView(Note $note, User $user)
+    private function canView(Note $note, User $user): bool
     {
+        if (null !== $routine->getDeletedAt()) {
+            return false;
+        }
+
         return $user === $note->getUser();
     }
 }

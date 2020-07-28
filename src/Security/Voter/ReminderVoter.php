@@ -13,13 +13,13 @@ class ReminderVoter extends Voter
     public const DELETE = 'delete';
     public const EDIT = 'edit';
 
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         return in_array($attribute, [self::DELETE, self::EDIT])
             && $subject instanceof Reminder;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
         if (!$user instanceof UserInterface) {
@@ -36,12 +36,12 @@ class ReminderVoter extends Voter
         return false;
     }
 
-    private function canDelete(Reminder $reminder, User $user)
+    private function canDelete(Reminder $reminder, User $user): bool
     {
         return $user === $reminder->getUser();
     }
 
-    private function canEdit(Reminder $reminder, User $user)
+    private function canEdit(Reminder $reminder, User $user): bool
     {
         return $user === $reminder->getUser();
     }
