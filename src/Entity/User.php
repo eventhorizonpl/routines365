@@ -134,7 +134,7 @@ class User implements UserInterface
     public function getGoals(): Collection
     {
         return $this->goals->filter(function (Goal $goal) {
-            return (null === $goal->getDeletedAt());
+            return null === $goal->getDeletedAt();
         });
     }
 
@@ -165,7 +165,7 @@ class User implements UserInterface
     public function getNotes(): Collection
     {
         return $this->notes->filter(function (Note $note) {
-            return (null === $note->getDeletedAt());
+            return null === $note->getDeletedAt();
         });
     }
 
@@ -220,7 +220,7 @@ class User implements UserInterface
     public function getReminders(): Collection
     {
         return $this->reminders->filter(function (Reminder $reminder) {
-            return (null === $reminder->getDeletedAt());
+            return null === $reminder->getDeletedAt();
         });
     }
 
@@ -284,7 +284,7 @@ class User implements UserInterface
     public function getRoutines(): Collection
     {
         return $this->routines->filter(function (Routine $routine) {
-            return (null === $routine->getDeletedAt());
+            return null === $routine->getDeletedAt();
         });
     }
 

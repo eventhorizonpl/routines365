@@ -118,7 +118,7 @@ class Routine
     public function getGoals(): Collection
     {
         return $this->goals->filter(function (Goal $goal) {
-            return (null === $goal->getDeletedAt());
+            return null === $goal->getDeletedAt();
         });
     }
 
@@ -199,7 +199,7 @@ class Routine
     public function getNotes(): Collection
     {
         return $this->notes->filter(function (Note $note) {
-            return (null === $note->getDeletedAt());
+            return null === $note->getDeletedAt();
         });
     }
 
@@ -230,7 +230,7 @@ class Routine
     public function getReminders(): Collection
     {
         return $this->reminders->filter(function (Reminder $reminder) {
-            return (null === $reminder->getDeletedAt());
+            return null === $reminder->getDeletedAt();
         });
     }
 

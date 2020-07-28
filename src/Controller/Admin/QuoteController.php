@@ -8,6 +8,7 @@ use App\Factory\QuoteFactory;
 use App\Form\Admin\QuoteType;
 use App\Manager\QuoteManager;
 use App\Repository\QuoteRepository;
+use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +31,9 @@ class QuoteController extends AbstractController
         Request $request
     ): Response {
         $parameters = [
+            'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
             'query' => trim($request->query->get('q')),
+            'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
             'type' => $request->query->get('type'),
         ];
 

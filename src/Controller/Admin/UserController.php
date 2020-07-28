@@ -8,6 +8,7 @@ use App\Form\Admin\UserType;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
 use App\Service\UserService;
+use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +31,9 @@ class UserController extends AbstractController
         UserRepository $userRepository
     ): Response {
         $parameters = [
+            'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
             'query' => trim($request->query->get('q')),
+            'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
         ];
 
         $queryResult = $userRepository->findByParametersForAdmin($parameters);

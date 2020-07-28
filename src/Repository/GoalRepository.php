@@ -19,7 +19,6 @@ class GoalRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('g')
             ->select('g, gu')
             ->leftJoin('g.user', 'gu')
-            ->where('g.deletedAt IS NULL')
             ->addOrderBy('g.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
@@ -33,6 +32,22 @@ class GoalRepository extends ServiceEntityRepository
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
+                }
+            }
+
+            if (array_key_exists('ends_at', $parameters)) {
+                $endsAt = $parameters['ends_at'];
+                if (null !== $endsAt) {
+                    $queryBuilder->andWhere('g.createdAt <= :endsAt')
+                        ->setParameter('endsAt', $endsAt);
+                }
+            }
+
+            if (array_key_exists('starts_at', $parameters)) {
+                $startsAt = $parameters['starts_at'];
+                if (null !== $startsAt) {
+                    $queryBuilder->andWhere('g.createdAt >= :startsAt')
+                        ->setParameter('startsAt', $startsAt);
                 }
             }
         }

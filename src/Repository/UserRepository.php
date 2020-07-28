@@ -22,7 +22,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $queryBuilder = $this->createQueryBuilder('u')
             ->select('u, up')
             ->leftJoin('u.profile', 'up')
-            ->where('u.deletedAt IS NULL')
             ->addOrderBy('u.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
@@ -35,6 +34,22 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
+                }
+            }
+
+            if (array_key_exists('ends_at', $parameters)) {
+                $endsAt = $parameters['ends_at'];
+                if (null !== $endsAt) {
+                    $queryBuilder->andWhere('u.createdAt <= :endsAt')
+                        ->setParameter('endsAt', $endsAt);
+                }
+            }
+
+            if (array_key_exists('starts_at', $parameters)) {
+                $startsAt = $parameters['starts_at'];
+                if (null !== $startsAt) {
+                    $queryBuilder->andWhere('u.createdAt >= :startsAt')
+                        ->setParameter('startsAt', $startsAt);
                 }
             }
         }

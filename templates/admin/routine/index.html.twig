@@ -11,6 +11,12 @@
             {{ 'Routines'|trans }}
             <form action="{{ path('admin_routine_index') }}" class="form-inline mt-2" method="get">
                 <div class="form-group">
+                    <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group">
                     <select class="custom-select" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in routineType() %}
@@ -37,6 +43,7 @@
                         <th {% if routines.isSorted('r.Description') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Description'|trans, 'r.description') }}</th>
                         <th {% if routines.isSorted('r.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Type'|trans, 'r.type') }}</th>
                         <th {% if routines.isSorted('r.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Is enabled'|trans, 'r.isEnabled') }}</th>
+                        <th {% if routines.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Deleted at'|trans, 'r.deletedAt') }}</th>
                         <th {% if routines.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Updated at'|trans, 'r.updatedAt') }}</th>
                         <th>{{ 'Actions'|trans }}</th>
                     </tr>
@@ -72,6 +79,7 @@
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
+                            <td>{{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>
                                 <div class="btn-group" role="group">
@@ -86,7 +94,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="8">{{ 'No records found'|trans }}</td>
+                            <td colspan="9">{{ 'No records found'|trans }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

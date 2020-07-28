@@ -20,7 +20,6 @@ class RoutineRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('r')
             ->select('r, ru')
             ->leftJoin('r.user', 'ru')
-            ->where('r.deletedAt IS NULL')
             ->addOrderBy('r.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
@@ -42,6 +41,22 @@ class RoutineRepository extends ServiceEntityRepository
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
+                }
+            }
+
+            if (array_key_exists('ends_at', $parameters)) {
+                $endsAt = $parameters['ends_at'];
+                if (null !== $endsAt) {
+                    $queryBuilder->andWhere('r.createdAt <= :endsAt')
+                        ->setParameter('endsAt', $endsAt);
+                }
+            }
+
+            if (array_key_exists('starts_at', $parameters)) {
+                $startsAt = $parameters['starts_at'];
+                if (null !== $startsAt) {
+                    $queryBuilder->andWhere('r.createdAt >= :startsAt')
+                        ->setParameter('startsAt', $startsAt);
                 }
             }
         }

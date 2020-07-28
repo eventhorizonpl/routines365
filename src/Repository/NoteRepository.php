@@ -20,7 +20,6 @@ class NoteRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('n')
             ->select('n, nu')
             ->leftJoin('n.user', 'nu')
-            ->where('n.deletedAt IS NULL')
             ->addOrderBy('n.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
@@ -34,6 +33,22 @@ class NoteRepository extends ServiceEntityRepository
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
+                }
+            }
+
+            if (array_key_exists('ends_at', $parameters)) {
+                $endsAt = $parameters['ends_at'];
+                if (null !== $endsAt) {
+                    $queryBuilder->andWhere('n.createdAt <= :endsAt')
+                        ->setParameter('endsAt', $endsAt);
+                }
+            }
+
+            if (array_key_exists('starts_at', $parameters)) {
+                $startsAt = $parameters['starts_at'];
+                if (null !== $startsAt) {
+                    $queryBuilder->andWhere('n.createdAt >= :startsAt')
+                        ->setParameter('startsAt', $startsAt);
                 }
             }
         }

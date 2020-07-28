@@ -18,7 +18,6 @@ class QuoteRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('q')
             ->select('q')
-            ->where('q.deletedAt IS NULL')
             ->addOrderBy('q.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
@@ -40,6 +39,22 @@ class QuoteRepository extends ServiceEntityRepository
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
+                }
+            }
+
+            if (array_key_exists('ends_at', $parameters)) {
+                $endsAt = $parameters['ends_at'];
+                if (null !== $endsAt) {
+                    $queryBuilder->andWhere('q.createdAt <= :endsAt')
+                        ->setParameter('endsAt', $endsAt);
+                }
+            }
+
+            if (array_key_exists('starts_at', $parameters)) {
+                $startsAt = $parameters['starts_at'];
+                if (null !== $startsAt) {
+                    $queryBuilder->andWhere('q.createdAt >= :startsAt')
+                        ->setParameter('startsAt', $startsAt);
                 }
             }
         }
