@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\User;
 use App\Exception\ManagerException;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -55,7 +55,7 @@ class UserManager
         if (null === $actor) {
             $actor = $user->getUuid();
         }
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $user->getId()) {
             $user->setCreatedAt($date);
             $user->setCreatedBy($actor);
@@ -79,7 +79,7 @@ class UserManager
 
     public function softDelete(User $user, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $user->setDeletedAt($date);
         $user->setDeletedBy($actor);
 

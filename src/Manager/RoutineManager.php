@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Routine;
 use App\Exception\ManagerException;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -53,7 +53,7 @@ class RoutineManager
             $actor = $routine->getUser();
         }
 
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $routine->getId()) {
             $routine->setCreatedAt($date);
             $routine->setCreatedBy($actor);
@@ -77,7 +77,7 @@ class RoutineManager
 
     public function softDelete(Routine $routine, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $routine->setDeletedAt($date);
         $routine->setDeletedBy($actor);
 

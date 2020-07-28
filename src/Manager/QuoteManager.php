@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Quote;
 use App\Exception\ManagerException;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -52,7 +52,7 @@ class QuoteManager
         $quote->setStringLength(mb_strlen($quote));
         $quote->setContentMd5($quote->getContent());
 
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $quote->getId()) {
             $quote->setCreatedAt($date);
             $quote->setCreatedBy($actor);
@@ -76,7 +76,7 @@ class QuoteManager
 
     public function softDelete(Quote $quote, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $quote->setDeletedAt($date);
         $quote->setDeletedBy($actor);
 

@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Profile;
 use App\Exception\ManagerException;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use League\ISO3166\Exception\OutOfBoundsException;
 use League\ISO3166\ISO3166;
@@ -52,7 +52,7 @@ class ProfileManager
 
     public function save(Profile $profile, string $actor, bool $flush = true): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $profile->getId()) {
             $profile->setCreatedAt($date);
             $profile->setCreatedBy($actor);
@@ -86,7 +86,7 @@ class ProfileManager
 
     public function softDelete(Profile $profile, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $profile->setDeletedAt($date);
         $profile->setDeletedBy($actor);
 

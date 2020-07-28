@@ -4,7 +4,6 @@ namespace App\Manager;
 
 use App\Entity\Reminder;
 use App\Exception\ManagerException;
-use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -54,7 +53,7 @@ class ReminderManager
             $actor = $reminder->getUser();
         }
 
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $reminder->getId()) {
             $reminder->setCreatedAt($date);
             $reminder->setCreatedBy($actor);
@@ -63,13 +62,13 @@ class ReminderManager
         $reminder->setUpdatedBy($actor);
 
         if ((null === $reminder->getPreviousDate()) && (null === $reminder->getNextDate())) {
-            $reminder->setPreviousDate(DateTimeImmutable::createFromMutable($date));
+            $reminder->setPreviousDate($date);
         } elseif (null !== $reminder->getNextDate()) {
             $reminder->setPreviousDate($reminder->getNextDate());
         }
 
         if (null === $reminder->getNextDate()) {
-            $reminder->setNextDate(new DateTimeImmutable());
+            $reminder->setNextDate($date);
         }
 
         $errors = $this->validate($reminder);
@@ -88,7 +87,7 @@ class ReminderManager
 
     public function softDelete(Reminder $reminder, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $reminder->setDeletedAt($date);
         $reminder->setDeletedBy($actor);
 

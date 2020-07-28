@@ -2,61 +2,61 @@
 
 namespace App\Entity\Traits;
 
-use DateTimeInterface;
+use DateTimeImmutable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait TimestampableTrait
 {
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeInterface")
-     * @ORM\Column(type="datetime")
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable")
      */
     protected $createdAt;
 
     /**
-     * @Assert\Type("DateTimeInterface")
-     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable", nullable=true)
      */
     protected $deletedAt;
 
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeInterface")
-     * @ORM\Column(type="datetime")
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable")
      */
     protected $updatedAt;
 
-    public function getCreatedAt(): ?DateTimeInterface
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTimeInterface $createdAt): self
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getDeletedAt(): ?DateTimeInterface
+    public function getDeletedAt(): ?DateTimeImmutable
     {
         return $this->deletedAt;
     }
 
-    public function setDeletedAt(?DateTimeInterface $deletedAt): self
+    public function setDeletedAt(?DateTimeImmutable $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 

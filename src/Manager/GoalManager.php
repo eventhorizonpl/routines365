@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Goal;
 use App\Exception\ManagerException;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -53,7 +53,7 @@ class GoalManager
             $actor = $goal->getUser();
         }
 
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $goal->getId()) {
             $goal->setCreatedAt($date);
             $goal->setCreatedBy($actor);
@@ -77,7 +77,7 @@ class GoalManager
 
     public function softDelete(Goal $goal, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $goal->setDeletedAt($date);
         $goal->setDeletedBy($actor);
 

@@ -33,7 +33,7 @@ class ReminderFaker
         ?string $type = null
     ): Reminder {
         if (null === $hour) {
-            $hour = new DateTimeImmutable($this->faker->dateTime->format('Y-m-d H:i:s'));
+            $hour = DateTimeImmutable::createFromMutable($this->faker->dateTime);
         }
 
         $isEnabled = false;

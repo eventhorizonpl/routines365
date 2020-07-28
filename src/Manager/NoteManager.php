@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Note;
 use App\Exception\ManagerException;
-use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -53,7 +53,7 @@ class NoteManager
             $actor = $note->getUser();
         }
 
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         if (null === $note->getId()) {
             $note->setCreatedAt($date);
             $note->setCreatedBy($actor);
@@ -77,7 +77,7 @@ class NoteManager
 
     public function softDelete(Note $note, string $actor): self
     {
-        $date = new DateTime();
+        $date = new DateTimeImmutable();
         $note->setDeletedAt($date);
         $note->setDeletedBy($actor);
 
