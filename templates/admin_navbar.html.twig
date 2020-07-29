@@ -25,6 +25,7 @@
                     {{ 'System'|trans }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
+                    <a class="dropdown-item" href="{{ path('admin_account_operation_index') }}"><i class="fas fa-calculator"></i> {{ 'Account operations'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_quote_index') }}"><i class="fas fa-quote-left"></i> {{ 'Quotes'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_user_index') }}"><i class="fas fa-users"></i> {{ 'Users'|trans }}</a>
                     <div class="dropdown-divider"></div>

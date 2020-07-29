@@ -39,9 +39,10 @@ class UserFactory
     ): User {
         $user = $this->createUser();
 
-        $user->setEmail($email);
-        $user->setIsEnabled($isEnabled);
-        $user->setRoles($roles);
+        $user
+            ->setEmail($email)
+            ->setIsEnabled($isEnabled)
+            ->setRoles($roles);
 
         return $user;
     }

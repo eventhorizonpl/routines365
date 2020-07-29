@@ -22,9 +22,10 @@ class RoutineFactory
     ): Routine {
         $routine = $this->createRoutine();
 
-        $routine->setIsEnabled($isEnabled);
-        $routine->setName($name);
-        $routine->setType($type);
+        $routine
+            ->setIsEnabled($isEnabled)
+            ->setName($name)
+            ->setType($type);
 
         return $routine;
     }

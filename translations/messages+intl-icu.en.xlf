@@ -437,6 +437,30 @@
         <source>Account details</source>
         <target>Account details</target>
       </trans-unit>
+      <trans-unit id="6b31__i" resname="Account operations">
+        <source>Account operations</source>
+        <target>Account operations</target>
+      </trans-unit>
+      <trans-unit id="R8iKEzZ" resname="Account operation details">
+        <source>Account operation details</source>
+        <target>Account operation details</target>
+      </trans-unit>
+      <trans-unit id="qrebqUw" resname="Email notifications">
+        <source>Email notifications</source>
+        <target>Email notifications</target>
+      </trans-unit>
+      <trans-unit id="88y_63u" resname="Sms notifications">
+        <source>Sms notifications</source>
+        <target>Sms notifications</target>
+      </trans-unit>
+      <trans-unit id="PDwjM.3" resname="Add free email notifications">
+        <source>Add free email notifications</source>
+        <target>Add free email notifications</target>
+      </trans-unit>
+      <trans-unit id="VXkq5zg" resname="Add free sms notifications">
+        <source>Add free sms notifications</source>
+        <target>Add free sms notifications</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

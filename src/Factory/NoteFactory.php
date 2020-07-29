@@ -21,8 +21,9 @@ class NoteFactory
     ): Note {
         $note = $this->createNote();
 
-        $note->setContent($content);
-        $note->setTitle($title);
+        $note
+            ->setContent($content)
+            ->setTitle($title);
 
         return $note;
     }

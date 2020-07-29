@@ -73,6 +73,11 @@
                                     {% if user.account %}
                                         {{ user.account.availableEmailNotifications }}
                                     {% endif %}
+
+                                    <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_email', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                        <i class="fas fa-plus"></i>
+                                        {{ 'Add free email notifications'|trans }}
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -81,6 +86,11 @@
                                     {% if user.account %}
                                         {{ user.account.availableSmsNotifications }}
                                     {% endif %}
+
+                                    <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_sms', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                        <i class="fas fa-plus"></i>
+                                        {{ 'Add free sms notifications'|trans }}
+                                    </a>
                                 </td>
                             </tr>
                             <tr>

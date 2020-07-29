@@ -21,8 +21,9 @@ class GoalFactory
     ): Goal {
         $goal = $this->createGoal();
 
-        $goal->setIsCompleted($isCompleted);
-        $goal->setName($name);
+        $goal
+            ->setIsCompleted($isCompleted)
+            ->setName($name);
 
         return $goal;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AccountRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,6 +17,12 @@ class Account
     use Traits\UuidTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
+
+    /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", orphanRemoval=true, targetEntity=AccountOperation::class)
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    private Collection $accountOperations;
 
     /**
      * @Assert\Valid
@@ -39,6 +47,7 @@ class Account
 
     public function __construct()
     {
+        $this->accountOperations = new ArrayCollection();
         $this->availableEmailNotifications = 0;
         $this->availableSmsNotifications = 0;
     }
@@ -46,6 +55,44 @@ class Account
     public function __toString(): string
     {
         return $this->getUuid();
+    }
+
+    public function addAccountOperation(AccountOperation $accountOperation): self
+    {
+        if (false === $this->accountOperations->contains($accountOperation)) {
+            $this->accountOperations->add($accountOperation);
+            $note->setAccount($this);
+        }
+
+        return $this;
+    }
+
+    public function getAccountOperations(): Collection
+    {
+        return $this->accountOperations->filter(function (AccountOperation $accountOperation) {
+            return null === $accountOperation->getDeletedAt();
+        });
+    }
+
+    public function getAccountOperationsAll(): Collection
+    {
+        return $this->accountOperations;
+    }
+
+    public function removeAccountOperation(AccountOperation $accountOperation): self
+    {
+        if (true === $this->accountOperations->contains($accountOperation)) {
+            $this->accountOperations->removeElement($accountOperation);
+        }
+
+        return $this;
+    }
+
+    public function depositEmailNotifications(int $emailNotifications): self
+    {
+        $this->setAvailableEmailNotifications($this->getAvailableEmailNotifications() + $emailNotifications);
+
+        return $this;
     }
 
     public function getAvailableEmailNotifications(): int
@@ -60,6 +107,20 @@ class Account
         return $this;
     }
 
+    public function withdrawEmailNotifications(int $emailNotifications): self
+    {
+        $this->setAvailableEmailNotifications($this->getAvailableEmailNotifications() - $emailNotifications);
+
+        return $this;
+    }
+
+    public function depositSmsNotifications(int $smsNotifications): self
+    {
+        $this->setAvailableSmsNotifications($this->getAvailableSmsNotifications() + $smsNotifications);
+
+        return $this;
+    }
+
     public function getAvailableSmsNotifications(): int
     {
         return $this->availableSmsNotifications;
@@ -68,6 +129,13 @@ class Account
     public function setAvailableSmsNotifications(int $availableSmsNotifications): self
     {
         $this->availableSmsNotifications = $availableSmsNotifications;
+
+        return $this;
+    }
+
+    public function withdrawSmsNotifications(int $smsNotifications): self
+    {
+        $this->setAvailableSmsNotifications($this->getAvailableSmsNotifications() - $smsNotifications);
 
         return $this;
     }

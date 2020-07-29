@@ -23,10 +23,11 @@ class QuoteFactory
     ): Quote {
         $quote = $this->createQuote();
 
-        $quote->setAuthor($author);
-        $quote->setContent($content);
-        $quote->setIsVisible($isVisible);
-        $quote->setType($type);
+        $quote
+            ->setAuthor($author)
+            ->setContent($content)
+            ->setIsVisible($isVisible)
+            ->setType($type);
 
         return $quote;
     }

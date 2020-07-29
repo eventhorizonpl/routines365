@@ -1,0 +1,124 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'Dashboard'|trans }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_account_operation_index') }}">{{ 'Account operations'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Account operation details'|trans }}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Account operation details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+            <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Description'|trans }}</th>
+                                <td>{{ account_operation.description }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Email notifications'|trans }}</th>
+                                <td>{{ account_operation.emailNotifications }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Sms notifications'|trans }}</th>
+                                <td>{{ account_operation.smsNotifications }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Type'|trans }}</th>
+                                <td>{{ account_operation.type }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade show" id="relations" role="tabpanel" aria-labelledby="relations-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ 'User'|trans }}</th>
+                                <td>
+                                    {% if account_operation.account and account_operation.account.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.account.user.uuid}) }}">
+                                            {{ account_operation.account.user.email }}
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ account_operation.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ account_operation.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <td>
+                                    {% if account_operation.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.createdBy}) }}">{{ account_operation.createdBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <td>
+                                    {% if account_operation.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.deletedBy}) }}">{{ account_operation.deletedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <td>
+                                    {% if account_operation.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.updatedBy}) }}">{{ account_operation.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ account_operation.createdAt ? account_operation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>{{ account_operation.deletedAt ? account_operation.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ account_operation.updatedAt ? account_operation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Account operation details'|trans }} {% endblock %}

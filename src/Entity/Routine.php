@@ -109,7 +109,7 @@ class Routine
     {
         if (false === $this->goals->contains($goal)) {
             $this->goals->add($goal);
-            $goal->setUser($this);
+            $goal->setRoutine($this);
         }
 
         return $this;
@@ -190,7 +190,7 @@ class Routine
     {
         if (false === $this->notes->contains($note)) {
             $this->notes->add($note);
-            $note->setUser($this);
+            $note->setRoutine($this);
         }
 
         return $this;
@@ -221,7 +221,7 @@ class Routine
     {
         if (false === $this->reminders->contains($reminder)) {
             $this->reminders->add($reminder);
-            $reminder->setUser($this);
+            $reminder->setRoutine($this);
         }
 
         return $this;

@@ -26,12 +26,13 @@ class ReminderFactory
     ): Reminder {
         $reminder = $this->createReminder();
 
-        $reminder->setHour($hour);
-        $reminder->setIsEnabled($isEnabled);
-        $reminder->setMinutesBefore($minutesBefore);
-        $reminder->setSendEmail($sendEmail);
-        $reminder->setSendSms($sendSms);
-        $reminder->setType($type);
+        $reminder
+            ->setHour($hour)
+            ->setIsEnabled($isEnabled)
+            ->setMinutesBefore($minutesBefore)
+            ->setSendEmail($sendEmail)
+            ->setSendSms($sendSms)
+            ->setType($type);
 
         return $reminder;
     }
