@@ -1,0 +1,45 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card text-white bg-secondary">
+                <div class="card-header">
+                    {{ 'Profile details'|trans }}
+                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_profile_edit') }}">
+                        <i class="fas fa-edit"></i>
+                        {{ 'Edit'|trans }}
+                    </a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
+                                <td>{{ profile.user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Phone'|trans }}</th>
+                                <td>
+                                    {% if profile.phone %}
+                                        {{ profile.phone|phone_number_format }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Theme'|trans }}</th>
+                                <td>{{ profile.theme }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Time zone'|trans }}</th>
+                                <td>{{ profile.timeZone }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Profile details'|trans }} {% endblock %}

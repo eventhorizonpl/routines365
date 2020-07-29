@@ -269,10 +269,6 @@
         <source>Goals</source>
         <target>Goals</target>
       </trans-unit>
-      <trans-unit id="TOyh1Sz" resname="Timezone">
-        <source>Timezone</source>
-        <target>Timezone</target>
-      </trans-unit>
       <trans-unit id="tHlGX50" resname="Goal details">
         <source>Goal details</source>
         <target>Goal details</target>
@@ -400,6 +396,22 @@
       <trans-unit id="kBxULse" resname="Next reminder at">
         <source>Next reminder at</source>
         <target>Next reminder at</target>
+      </trans-unit>
+      <trans-unit id="1pajW90" resname="Profile">
+        <source>Profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="c5Sbsb2" resname="Profile details">
+        <source>Profile details</source>
+        <target>Profile details</target>
+      </trans-unit>
+      <trans-unit id=".sKsD0z" resname="Edit Profile">
+        <source>Edit Profile</source>
+        <target>Edit Profile</target>
+      </trans-unit>
+      <trans-unit id="uf4UZHg" resname="Time zone">
+        <source>Time zone</source>
+        <target>Time zone</target>
       </trans-unit>
     </body>
   </file>

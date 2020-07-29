@@ -61,7 +61,7 @@ class Profile
      * @Assert\Type("string")
      * @ORM\Column(length=36, nullable=true, type="string")
      */
-    private ?string $timezone;
+    private ?string $timeZone;
 
     public function __construct()
     {
@@ -138,14 +138,14 @@ class Profile
         return $this;
     }
 
-    public function getTimezone(): ?string
+    public function getTimeZone(): ?string
     {
-        return $this->timezone;
+        return $this->timeZone;
     }
 
-    public function setTimezone(?string $timezone): self
+    public function setTimeZone(?string $timeZone): self
     {
-        $this->timezone = $timezone;
+        $this->timeZone = $timeZone;
 
         return $this;
     }

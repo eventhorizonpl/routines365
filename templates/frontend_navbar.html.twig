@@ -18,6 +18,8 @@
                         {{ 'System'|trans }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
+                        <a class="dropdown-item" href="{{ path('frontend_profile_show') }}"><i class="fas fa-user"></i> {{ 'Profile'|trans }}</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="fas fa-sign-out-alt"></i> {{ 'Logout'|trans }}</a>
                     </div>
                 </li>
