@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/profile", name="frontend_profile_")
+ * @Route("/settings/profile", name="frontend_profile_")
  */
 class ProfileController extends AbstractController
 {

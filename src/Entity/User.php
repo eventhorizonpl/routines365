@@ -27,6 +27,12 @@ class User implements UserInterface
     public const ROLE_USER = 'ROLE_USER';
 
     /**
+     * @Assert\Valid(groups={"form"})
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Account::class)
+     */
+    private Account $account;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
      */
     private Collection $goals;
@@ -103,6 +109,18 @@ class User implements UserInterface
     public function __toString(): string
     {
         return $this->getUuid();
+    }
+
+    public function getAccount(): Account
+    {
+        return $this->account;
+    }
+
+    public function setAccount(Account $account): self
+    {
+        $this->account = $account;
+
+        return $this;
     }
 
     public function eraseCredentials()

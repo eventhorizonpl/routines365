@@ -41,7 +41,7 @@ class ReminderFixtures extends Fixture implements ContainerAwareInterface, Depen
         $kernel = $this->container->get('kernel');
         $reminders = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 10; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($reminderId = 1; $reminderId <= self::REMINDER_LIMIT; ++$reminderId) {
                         $reminder = $this->reminderFaker->createReminder();

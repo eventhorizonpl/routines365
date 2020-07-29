@@ -1,0 +1,30 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            {% include('frontend_settings_nav.html.twig') %}
+            <div class="card text-white bg-secondary">
+                <div class="card-header">
+                    {{ 'Account details'|trans }}
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 25%;">{{ 'Available email notifications'|trans }}</th>
+                                <td>{{ account.availableEmailNotifications }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Available sms notifications'|trans }}</th>
+                                <td>{{ account.availableSmsNotifications }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Account details'|trans }} {% endblock %}

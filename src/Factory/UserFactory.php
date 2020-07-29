@@ -7,11 +7,14 @@ use Symfony\Component\Uid\Uuid;
 
 class UserFactory
 {
+    private AccountFactory $accountFactory;
     private ProfileFactory $profileFactory;
 
     public function __construct(
+        AccountFactory $accountFactory,
         ProfileFactory $profileFactory
     ) {
+        $this->accountFactory = $accountFactory;
         $this->profileFactory = $profileFactory;
     }
 
@@ -19,8 +22,11 @@ class UserFactory
     {
         $user = new User();
         $user->setUuid(Uuid::v4());
+        $account = $this->accountFactory->createAccount();
+        $account->setUser($user);
         $profile = $this->profileFactory->createProfile();
         $profile->setUser($user);
+        $user->setAccount($account);
         $user->setProfile($profile);
 
         return $user;

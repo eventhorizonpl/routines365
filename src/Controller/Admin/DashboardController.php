@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\AccountRepository;
 use App\Repository\GoalRepository;
 use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;
@@ -22,6 +23,7 @@ class DashboardController extends AbstractController
      * @Route("/", name="dashboard")
      */
     public function index(
+        AccountRepository $accountRepository,
         GoalRepository $goalRepository,
         NoteRepository $noteRepository,
         ProfileRepository $profileRepository,
@@ -30,6 +32,7 @@ class DashboardController extends AbstractController
         RoutineRepository $routineRepository,
         UserRepository $userRepository
     ): Response {
+        $accountsCount = $accountRepository->count([]);
         $goalsCount = $goalRepository->count([]);
         $notesCount = $noteRepository->count([]);
         $profilesCount = $profileRepository->count([]);
@@ -39,6 +42,7 @@ class DashboardController extends AbstractController
         $usersCount = $userRepository->count([]);
 
         return $this->render('admin/dashboard/index.html.twig', [
+            'accounts_count' => $accountsCount,
             'goals_count' => $goalsCount,
             'notes_count' => $notesCount,
             'profiles_count' => $profilesCount,

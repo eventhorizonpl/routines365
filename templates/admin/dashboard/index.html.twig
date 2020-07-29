@@ -13,7 +13,11 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td style="width: 20%;"><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
+                        <td style="width: 20%;"><a href="{{ path('admin_user_index') }}">{{ 'Accounts'|trans }}</a></td>
+                        <td>{{ accounts_count }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
                         <td>{{ goals_count }}</td>
                     </tr>
                     <tr>

@@ -397,10 +397,6 @@
         <source>Next reminder at</source>
         <target>Next reminder at</target>
       </trans-unit>
-      <trans-unit id="1pajW90" resname="Profile">
-        <source>Profile</source>
-        <target>Profile</target>
-      </trans-unit>
       <trans-unit id="c5Sbsb2" resname="Profile details">
         <source>Profile details</source>
         <target>Profile details</target>
@@ -412,6 +408,34 @@
       <trans-unit id="uf4UZHg" resname="Time zone">
         <source>Time zone</source>
         <target>Time zone</target>
+      </trans-unit>
+      <trans-unit id="dKiDoDe" resname="Settings">
+        <source>Settings</source>
+        <target>Settings</target>
+      </trans-unit>
+      <trans-unit id="1pajW90" resname="Profile">
+        <source>Profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="fhsNVkH" resname="Account">
+        <source>Account</source>
+        <target>Account</target>
+      </trans-unit>
+      <trans-unit id="inyLZ.6" resname="Accounts">
+        <source>Accounts</source>
+        <target>Accounts</target>
+      </trans-unit>
+      <trans-unit id=".JnXBkf" resname="Available email notifications">
+        <source>Available email notifications</source>
+        <target>Available email notifications</target>
+      </trans-unit>
+      <trans-unit id="tgk1c4L" resname="Available sms notifications">
+        <source>Available sms notifications</source>
+        <target>Available sms notifications</target>
+      </trans-unit>
+      <trans-unit id="F76V4aG" resname="Account details">
+        <source>Account details</source>
+        <target>Account details</target>
       </trans-unit>
     </body>
   </file>

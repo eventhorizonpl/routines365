@@ -17,7 +17,7 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     public const ADMIN_USER_REFERENCE = 'admin-user';
-    public const REGULAR_USER_LIMIT = 99;
+    public const REGULAR_USER_LIMIT = 50;
     public const REGULAR_USER_REFERENCE = 'regular-user-reference';
 
     private PhoneNumberUtil $phoneNumberUtil;
@@ -54,14 +54,14 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
         $kernel = $this->container->get('kernel');
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
             $users = [];
-            for ($userId = 10; $userId <= self::REGULAR_USER_LIMIT; ++$userId) {
+            for ($userId = 1; $userId <= self::REGULAR_USER_LIMIT; ++$userId) {
                 $user = $this->userFactory->createUserWithRequired(
                     'test'.(string) $userId.'@test.com',
                     true,
                     [User::ROLE_USER]
                 );
                 $user = $this->userService->encodePassword($user, 'test'.(string) $userId);
-                $phone = $this->phoneNumberUtil->parse('+488815731'.(string) $userId);
+                $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));
                 $user->getProfile()->setPhone($phone);
                 $user->getProfile()->setTimezone('Europe/Warsaw');
                 $users[] = $user;

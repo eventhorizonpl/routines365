@@ -11,15 +11,18 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserManager
 {
+    private AccountManager $accountManager;
     private EntityManagerInterface $entityManager;
     private ProfileManager $profileManager;
     private ValidatorInterface $validator;
 
     public function __construct(
+        AccountManager $accountManager,
         EntityManagerInterface $entityManager,
         ProfileManager $profileManager,
         ValidatorInterface $validator
     ) {
+        $this->accountManager = $accountManager;
         $this->entityManager = $entityManager;
         $this->profileManager = $profileManager;
         $this->validator = $validator;
@@ -69,6 +72,7 @@ class UserManager
         }
 
         $this->entityManager->persist($user);
+        $this->accountManager->save($user->getAccount(), $actor, false);
         $this->profileManager->save($user->getProfile(), $actor, false);
         if (true === $flush) {
             $this->entityManager->flush();

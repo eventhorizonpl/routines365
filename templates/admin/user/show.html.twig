@@ -68,6 +68,22 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Available email notifications'|trans }}</th>
+                                <td>
+                                    {% if user.account %}
+                                        {{ user.account.availableEmailNotifications }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Available sms notifications'|trans }}</th>
+                                <td>
+                                    {% if user.account %}
+                                        {{ user.account.availableSmsNotifications }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Is enabled'|trans }}</th>
                                 <td>
                                     {% if user.isEnabled %}
