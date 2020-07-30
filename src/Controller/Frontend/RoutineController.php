@@ -9,7 +9,6 @@ use App\Form\Frontend\RoutineType;
 use App\Manager\RoutineManager;
 use App\Repository\RoutineRepository;
 use App\Security\Voter\RoutineVoter;
-use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +25,6 @@ class RoutineController extends AbstractController
      * @Route("/", name="index", methods={"GET"})
      */
     public function index(
-        PaginatorInterface $paginator,
         Request $request,
         RoutineRepository $routineRepository
     ): Response {

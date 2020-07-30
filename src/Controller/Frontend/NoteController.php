@@ -11,6 +11,7 @@ use App\Manager\NoteManager;
 use App\Repository\NoteRepository;
 use App\Security\Voter\NoteVoter;
 use App\Security\Voter\RoutineVoter;
+use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,10 +34,17 @@ class NoteController extends AbstractController
         Request $request
     ): Response {
         $parameters = [
+            'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
             'query' => trim($request->query->get('q')),
+            'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
         ];
 
-        $notes = $noteRepository->findByParametersForFrontend($this->getUser(), $parameters);
+        $queryResult = $noteRepository->findByParametersForFrontend($this->getUser(), $parameters);
+        $notes = $paginator->paginate(
+            $queryResult,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 10)
+        );
 
         return $this->render('frontend/note/index.html.twig', [
             'notes' => $notes,

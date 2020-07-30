@@ -56,7 +56,7 @@ class NoteRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
-    public function findByParametersForFrontend(User $user, array $parameters = []): array
+    public function findByParametersForFrontend(User $user, array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('n')
             ->select('n, nr')
@@ -81,6 +81,6 @@ class NoteRepository extends ServiceEntityRepository
             }
         }
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder->getQuery();
     }
 }
