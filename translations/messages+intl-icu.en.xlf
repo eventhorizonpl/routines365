@@ -461,6 +461,18 @@
         <source>Add free sms notifications</source>
         <target>Add free sms notifications</target>
       </trans-unit>
+      <trans-unit id="e1DpiUO" resname="Additional account details">
+        <source>Additional account details</source>
+        <target>Additional account details</target>
+      </trans-unit>
+      <trans-unit id="2nZPp5g" resname="Additional profile details">
+        <source>Additional profile details</source>
+        <target>Additional profile details</target>
+      </trans-unit>
+      <trans-unit id="1QCRahR" resname="Additional user details">
+        <source>Additional user details</source>
+        <target>Additional user details</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

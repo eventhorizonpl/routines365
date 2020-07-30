@@ -22,7 +22,13 @@
                     <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-account-tab" data-toggle="tab" href="#additional-account" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional account details'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-profile-tab" data-toggle="tab" href="#additional-profile" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional profile details'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-user-tab" data-toggle="tab" href="#additional-user" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional user details'|trans }}</a>
                 </li>
             </ul>
         </div>
@@ -170,7 +176,107 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="tab-pane fade" id="additional-account" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ user.account.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ user.account.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <td>
+                                    {% if user.account.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.account.createdBy}) }}">{{ user.profile.createdBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <td>
+                                    {% if user.account.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.account.deletedBy}) }}">{{ user.profile.deletedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <td>
+                                    {% if user.account.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.account.updatedBy}) }}">{{ user.profile.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ user.account.createdAt ? user.account.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>{{ user.account.deletedAt ? user.account.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ user.account.updatedAt ? user.account.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional-profile" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ user.profile.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ user.profile.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <td>
+                                    {% if user.profile.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.createdBy}) }}">{{ user.profile.createdBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <td>
+                                    {% if user.profile.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.deletedBy}) }}">{{ user.profile.deletedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <td>
+                                    {% if user.profile.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.updatedBy}) }}">{{ user.profile.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ user.profile.createdAt ? user.profile.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>{{ user.profile.deletedAt ? user.profile.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ user.profile.updatedAt ? user.profile.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional-user" role="tabpanel" aria-labelledby="contact-tab">
                     <table class="table">
                         <tbody>
                             <tr>
