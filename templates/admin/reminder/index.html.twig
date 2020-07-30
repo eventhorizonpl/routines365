@@ -17,10 +17,18 @@
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
                 <div class="form-group">
+                    <select class="custom-select" id="type" name="type">
+                        <option value="" selected>{{ 'Type'|trans }}</option>
+                        {% for type_value in reminderType() %}
+                            <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
                 <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i> {{ 'Search'|trans }}</button>
-                <a class="btn {% if not parameters.query %}disabled{% endif %} btn-default" href="{{ path('admin_reminder_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-default" href="{{ path('admin_reminder_index') }}">
                     <i class="fas fa-times"></i>
                 </a>
             </form>

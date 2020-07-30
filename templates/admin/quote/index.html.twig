@@ -32,7 +32,7 @@
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
                 <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i> {{ 'Search'|trans }}</button>
-                <a class="btn {% if not parameters.query %}disabled{% endif %} btn-default" href="{{ path('admin_quote_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-default" href="{{ path('admin_quote_index') }}">
                     <i class="fas fa-times"></i>
                 </a>
             </form>

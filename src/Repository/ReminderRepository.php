@@ -22,6 +22,14 @@ class ReminderRepository extends ServiceEntityRepository
             ->addOrderBy('r.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
+            if (array_key_exists('type', $parameters)) {
+                $type = $parameters['type'];
+                if ((null !== $type) && ('' !== $type)) {
+                    $queryBuilder->andWhere('r.type = :type')
+                        ->setParameter('type', $type);
+                }
+            }
+
             if (array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
