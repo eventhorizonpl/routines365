@@ -9,7 +9,7 @@ trait UuidTrait
     /**
      * @Assert\NotBlank
      * @Assert\Uuid
-     * @ORM\Column(type="guid")
+     * @ORM\Column(type="guid", unique=true)
      */
     protected $uuid;
 

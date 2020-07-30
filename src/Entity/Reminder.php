@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ReminderRepository::class)
+ * @ORM\Table(indexes={@ORM\Index(name="next_date_idx", columns={"next_date"}), @ORM\Index(name="type_idx", columns={"type"})})
  */
 class Reminder
 {

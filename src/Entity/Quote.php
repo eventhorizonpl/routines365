@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=QuoteRepository::class)
+ * @ORM\Table(indexes={@ORM\Index(name="string_length_idx", columns={"string_length"}), @ORM\Index(name="type_idx", columns={"type"})})
  */
 class Quote
 {
