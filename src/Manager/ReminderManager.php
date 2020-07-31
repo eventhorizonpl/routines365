@@ -4,7 +4,9 @@ namespace App\Manager;
 
 use App\Entity\Reminder;
 use App\Exception\ManagerException;
+use DateTime;
 use DateTimeImmutable;
+use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -47,6 +49,27 @@ class ReminderManager
         return $this;
     }
 
+    public function findNextDate(Reminder $reminder): DateTimeImmutable
+    {
+        $hour = $reminder->getHour();
+
+        $dateTimeNow = new DateTime();
+        $dateTimeNow->setTimezone(new DateTimeZone($reminder->getUser()->getProfile()->getTimeZone()));
+        $dateTime = clone $dateTimeNow;
+        $dateTime->setTime($hour->format('H'), $hour->format('i'), $hour->format('s'));
+        $dateTime->modify('-'.$reminder->getMinutesBefore().' minutes');
+
+        if ((Reminder::TYPE_DAILY === $reminder->getType()) && ($dateTime < $dateTimeNow)) {
+            $dateTime->modify('+1 day');
+        } elseif (Reminder::TYPE_DAILY !== $reminder->getType()) {
+            while (strtolower($dateTime->format('l')) !== $reminder->getType()) {
+                $dateTime->modify('+1 day');
+            }
+        }
+
+        return DateTimeImmutable::createFromMutable($dateTime);
+    }
+
     public function save(Reminder $reminder, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
@@ -67,9 +90,7 @@ class ReminderManager
             $reminder->setPreviousDate($reminder->getNextDate());
         }
 
-        if (null === $reminder->getNextDate()) {
-            $reminder->setNextDate($date);
-        }
+        $reminder->setNextDate($this->findNextDate($reminder));
 
         $errors = $this->validate($reminder);
         if (0 !== count($errors)) {
