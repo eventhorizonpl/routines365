@@ -5,6 +5,8 @@ namespace App\Controller\Security;
 use App\Entity\User;
 use App\Form\Security\ChangePasswordFormType;
 use App\Form\Security\ResetPasswordRequestFormType;
+use App\Manager\UserManager;
+use App\Service\UserService;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -76,8 +78,13 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("/reset/{token}", name="reset_password")
      */
-    public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder, string $token = null): Response
-    {
+    public function reset(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        UserManager $userManager,
+        UserService $userService,
+        string $token = null
+    ): Response {
         if ($token) {
             // We store the token in session and remove it from the URL, to avoid the URL being
             // loaded in a browser and potentially leaking the token to 3rd party JavaScript.
@@ -110,14 +117,8 @@ class ResetPasswordController extends AbstractController
             // A password reset token should be used only once, remove it.
             $this->resetPasswordHelper->removeResetRequest($token);
 
-            // Encode the plain password, and set it.
-            $encodedPassword = $passwordEncoder->encodePassword(
-                $user,
-                $form->get('plainPassword')->getData()
-            );
-
-            $user->setPassword($encodedPassword);
-            $this->getDoctrine()->getManager()->flush();
+            $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
+            $userManager->save($user);
 
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
