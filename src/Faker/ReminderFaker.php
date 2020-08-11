@@ -29,6 +29,7 @@ class ReminderFaker
         ?bool $isEnabled = null,
         ?int $minutesBefore = null,
         ?bool $sendEmail = null,
+        ?bool $sendMotivationalMessage = null,
         ?bool $sendSms = null,
         ?string $type = null
     ): Reminder {
@@ -36,7 +37,7 @@ class ReminderFaker
             $hour = DateTimeImmutable::createFromMutable($this->faker->dateTime);
         }
 
-        $isEnabled = false;
+        $isEnabled = (bool) $this->faker->boolean;
 
         if (null === $minutesBefore) {
             $minutesBefore = (int) $this->faker->randomElement(
@@ -48,7 +49,12 @@ class ReminderFaker
             $sendEmail = (bool) $this->faker->boolean;
         }
 
-        if (null === $sendSms) {
+        if (null === $sendMotivationalMessage) {
+            $sendMotivationalMessage = (bool) $this->faker->boolean;
+        }
+
+        $sendSms = false;
+        if ((null === $sendSms) && (false === $isEnabled)) {
             $sendSms = (bool) $this->faker->boolean;
         }
 
@@ -63,6 +69,7 @@ class ReminderFaker
             $isEnabled,
             $minutesBefore,
             $sendEmail,
+            $sendMotivationalMessage,
             $sendSms,
             $type
         );
@@ -75,6 +82,7 @@ class ReminderFaker
         ?bool $isEnabled = null,
         ?int $minutesBefore = null,
         ?bool $sendEmail = null,
+        ?bool $sendMotivationalMessage = null,
         ?bool $sendSms = null,
         ?string $type = null
     ): Reminder {
@@ -83,6 +91,7 @@ class ReminderFaker
             $isEnabled,
             $minutesBefore,
             $sendEmail,
+            $sendMotivationalMessage,
             $sendSms,
             $type
         );

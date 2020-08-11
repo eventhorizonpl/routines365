@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Reminder;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -61,5 +62,25 @@ class ReminderRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder->getQuery();
+    }
+
+    public function findOneByNextDate(DateTimeImmutable $nextDate): ?Reminder
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->select('r, rr, rrg, ru, rup')
+            ->leftJoin('r.routine', 'rr')
+            ->leftJoin('rr.goals', 'rrg')
+            ->leftJoin('r.user', 'ru')
+            ->leftJoin('ru.profile', 'rup')
+            ->where('r.deletedAt IS NULL')
+            ->andWhere('r.lockedAt IS NULL')
+            ->andWhere('r.nextDate < :nextDate')
+            ->andWhere('r.isEnabled = :isEnabled')
+            ->orderBy('r.nextDate', 'ASC')
+            ->setMaxResults(1)
+            ->setParameter('isEnabled', true)
+            ->setParameter('nextDate', $nextDate);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

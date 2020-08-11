@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ReminderRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,6 +18,7 @@ class Reminder
     use Traits\IdTrait;
     use Traits\UuidTrait;
     use Traits\IsEnabledTrait;
+    use Traits\LockableTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
@@ -27,6 +30,11 @@ class Reminder
     public const TYPE_THURSDAY = 'thursday';
     public const TYPE_TUESDAY = 'tuesday';
     public const TYPE_WEDNESDAY = 'wednesday';
+
+    /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="reminder", orphanRemoval=true, targetEntity=ReminderMessage::class)
+     */
+    private Collection $reminderMessages;
 
     /**
      * @Assert\Valid
@@ -83,6 +91,13 @@ class Reminder
      * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
+    private bool $sendMotivationalMessage;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
     private bool $sendSms;
 
     /**
@@ -101,6 +116,7 @@ class Reminder
         $this->isEnabled = false;
         $this->nextDate = null;
         $this->previousDate = null;
+        $this->reminderMessages = new ArrayCollection();
         $this->type = self::TYPE_DAILY;
     }
 
@@ -181,6 +197,37 @@ class Reminder
         return $this;
     }
 
+    public function addReminderMessage(ReminderMessage $reminderMessage): self
+    {
+        if (false === $this->reminderMessages->contains($reminderMessage)) {
+            $this->reminderMessages->add($reminderMessage);
+            $reminderMessage->setReminder($this);
+        }
+
+        return $this;
+    }
+
+    public function getReminderMessages(): Collection
+    {
+        return $this->reminderMessages->filter(function (ReminderMessage $reminderMessage) {
+            return null === $reminderMessage->getDeletedAt();
+        });
+    }
+
+    public function getReminderMessagesAll(): Collection
+    {
+        return $this->reminderMessages;
+    }
+
+    public function removeReminderMessage(ReminderMessage $reminderMessage): self
+    {
+        if (true === $this->reminderMessages->contains($reminderMessage)) {
+            $this->reminderMessages->removeElement($reminderMessage);
+        }
+
+        return $this;
+    }
+
     public function getRoutine(): ?Routine
     {
         return $this->routine;
@@ -201,6 +248,18 @@ class Reminder
     public function setSendEmail(bool $sendEmail): self
     {
         $this->sendEmail = $sendEmail;
+
+        return $this;
+    }
+
+    public function getSendMotivationalMessage(): ?bool
+    {
+        return $this->sendMotivationalMessage;
+    }
+
+    public function setSendMotivationalMessage(bool $sendMotivationalMessage): self
+    {
+        $this->sendMotivationalMessage = $sendMotivationalMessage;
 
         return $this;
     }

@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -54,7 +55,11 @@ class ReminderManager
         $hour = $reminder->getHour();
 
         $dateTimeNow = new DateTime();
-        $dateTimeNow->setTimezone(new DateTimeZone($reminder->getUser()->getProfile()->getTimeZone()));
+        try {
+            $dateTimeNow->setTimezone(new DateTimeZone($reminder->getUser()->getProfile()->getTimeZone()));
+        } catch (Exception $e) {
+        }
+
         $dateTime = clone $dateTimeNow;
         $dateTime->setTime($hour->format('H'), $hour->format('i'), $hour->format('s'));
         $dateTime->modify('-'.$reminder->getMinutesBefore().' minutes');
@@ -62,12 +67,25 @@ class ReminderManager
         if ((Reminder::TYPE_DAILY === $reminder->getType()) && ($dateTime < $dateTimeNow)) {
             $dateTime->modify('+1 day');
         } elseif (Reminder::TYPE_DAILY !== $reminder->getType()) {
+            if ($dateTime < $dateTimeNow) {
+                $dateTime->modify('+1 day');
+            }
             while (strtolower($dateTime->format('l')) !== $reminder->getType()) {
                 $dateTime->modify('+1 day');
             }
         }
 
         return DateTimeImmutable::createFromMutable($dateTime);
+    }
+
+    public function lock(Reminder $reminder): self
+    {
+        $date = new DateTimeImmutable();
+        $reminder->setLockedAt($date);
+        $this->entityManager->persist($reminder);
+        $this->entityManager->flush();
+
+        return $this;
     }
 
     public function save(Reminder $reminder, string $actor = null, bool $flush = true): self
@@ -112,6 +130,15 @@ class ReminderManager
         $reminder->setDeletedAt($date);
         $reminder->setDeletedBy($actor);
 
+        $this->entityManager->persist($reminder);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
+    public function unlock(Reminder $reminder): self
+    {
+        $reminder->setLockedAt(null);
         $this->entityManager->persist($reminder);
         $this->entityManager->flush();
 

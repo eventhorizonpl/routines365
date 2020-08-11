@@ -29,9 +29,9 @@ class AccountOperationController extends AbstractController
             'query' => trim($request->query->get('q')),
         ];
 
-        $queryResult = $accountOperationRepository->findByParametersForFrontend($this->getUser(), $parameters);
+        $accountOperationsQuery = $accountOperationRepository->findByParametersForFrontend($this->getUser(), $parameters);
         $accountOperations = $paginator->paginate(
-            $queryResult,
+            $accountOperationsQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );

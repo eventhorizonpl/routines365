@@ -102,6 +102,16 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Send motivational message'|trans }}</th>
+                                <td>
+                                    {% if reminder.sendMotivationalMessage %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Type'|trans }}</th>
                                 <td>{{ reminder.type }}</td>
                             </tr>
@@ -112,7 +122,19 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Routine'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Reminder messages'|trans }}</th>
+                                <td>
+                                    {% if reminder.reminderMessages|length %}
+                                        <ul>
+                                            {% for reminder_message in reminder.reminderMessages %}
+                                                <li><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Routine'|trans }}</th>
                                 <td>
                                     {% if reminder.routine %}
                                         <a href="{{ path('admin_routine_show', {'uuid': reminder.routine.uuid}) }}">{{ reminder.routine.uuid }}</a>
@@ -172,6 +194,10 @@
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
                                 <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Locked at'|trans }}</th>
+                                <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>

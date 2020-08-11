@@ -21,6 +21,7 @@ class ReminderFactory
         bool $isEnabled,
         int $minutesBefore,
         bool $sendEmail,
+        bool $sendMotivationalMessage,
         bool $sendSms,
         string $type
     ): Reminder {
@@ -31,6 +32,7 @@ class ReminderFactory
             ->setIsEnabled($isEnabled)
             ->setMinutesBefore($minutesBefore)
             ->setSendEmail($sendEmail)
+            ->setSendMotivationalMessage($sendMotivationalMessage)
             ->setSendSms($sendSms)
             ->setType($type);
 

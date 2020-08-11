@@ -34,9 +34,9 @@ class RoutineController extends AbstractController
             'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $routineRepository->findByParametersForAdmin($parameters);
+        $routinesQuery = $routineRepository->findByParametersForAdmin($parameters);
         $routines = $paginator->paginate(
-            $queryResult,
+            $routinesQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );

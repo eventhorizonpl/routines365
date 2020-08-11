@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Goal;
+use App\Entity\ReminderMessage;
 use App\Entity\User;
-use App\Repository\GoalRepository;
+use App\Repository\ReminderMessageRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -15,44 +15,45 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/goal", name="admin_goal_")
+ * @Route("/admin/reminder-message", name="admin_reminder_message_")
  */
-class GoalController extends AbstractController
+class ReminderMessageController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
      */
     public function index(
-        GoalRepository $goalRepository,
         PaginatorInterface $paginator,
+        ReminderMessageRepository $reminderMessageRepository,
         Request $request
     ): Response {
         $parameters = [
             'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
             'query' => trim($request->query->get('q')),
             'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
+            'type' => $request->query->get('type'),
         ];
 
-        $goalsQuery = $goalRepository->findByParametersForAdmin($parameters);
-        $goals = $paginator->paginate(
-            $goalsQuery,
+        $reminderMessagesQuery = $reminderMessageRepository->findByParametersForAdmin($parameters);
+        $reminderMessages = $paginator->paginate(
+            $reminderMessagesQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
 
-        return $this->render('admin/goal/index.html.twig', [
-            'goals' => $goals,
+        return $this->render('admin/reminder_message/index.html.twig', [
             'parameters' => $parameters,
+            'reminder_messages' => $reminderMessages,
         ]);
     }
 
     /**
      * @Route("/{uuid}", name="show", methods={"GET"})
      */
-    public function show(Goal $goal): Response
+    public function show(ReminderMessage $reminderMessage): Response
     {
-        return $this->render('admin/goal/show.html.twig', [
-            'goal' => $goal,
+        return $this->render('admin/reminder_message/show.html.twig', [
+            'reminder_message' => $reminderMessage,
         ]);
     }
 }

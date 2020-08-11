@@ -2,29 +2,33 @@
 
 namespace App\Repository;
 
-use App\Entity\Quote;
+use App\Entity\ReminderMessage;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
-class QuoteRepository extends ServiceEntityRepository
+class ReminderMessageRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Quote::class);
+        parent::__construct($registry, ReminderMessage::class);
     }
 
     public function findByParametersForAdmin(array $parameters = []): Query
     {
-        $queryBuilder = $this->createQueryBuilder('q')
-            ->select('q')
-            ->addOrderBy('q.createdAt', 'DESC');
+        $queryBuilder = $this->createQueryBuilder('rm')
+            ->select('rm, rmr, rmru, rmrup')
+            ->leftJoin('rm.reminder', 'rmr')
+            ->leftJoin('rmr.user', 'rmru')
+            ->leftJoin('rmru.profile', 'rmrup')
+            ->addOrderBy('rm.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
             if (array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
-                    $queryBuilder->andWhere('q.type = :type')
+                    $queryBuilder->andWhere('rm.type = :type')
                         ->setParameter('type', $type);
                 }
             }
@@ -34,8 +38,9 @@ class QuoteRepository extends ServiceEntityRepository
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
                         $queryBuilder->expr()->orX(
-                            $queryBuilder->expr()->like('q.author', ':q'),
-                            $queryBuilder->expr()->like('q.content', ':q')
+                            $queryBuilder->expr()->like('rm.content', ':q'),
+                            $queryBuilder->expr()->like('rmru.email', ':q'),
+                            $queryBuilder->expr()->like('rmru.uuid', ':q')
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
@@ -45,7 +50,7 @@ class QuoteRepository extends ServiceEntityRepository
             if (array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
-                    $queryBuilder->andWhere('q.createdAt <= :endsAt')
+                    $queryBuilder->andWhere('rm.createdAt <= :endsAt')
                         ->setParameter('endsAt', $endsAt);
                 }
             }
@@ -53,27 +58,12 @@ class QuoteRepository extends ServiceEntityRepository
             if (array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
-                    $queryBuilder->andWhere('q.createdAt >= :startsAt')
+                    $queryBuilder->andWhere('rm.createdAt >= :startsAt')
                         ->setParameter('startsAt', $startsAt);
                 }
             }
         }
 
         return $queryBuilder->getQuery();
-    }
-
-    public function findOneByStringLength(int $stringLength = null): ?Quote
-    {
-        $queryBuilder = $this->createQueryBuilder('q')
-            ->where('q.deletedAt IS NULL')
-            ->orderBy('RAND()')
-            ->setMaxResults(1);
-
-        if (null !== $stringLength) {
-            $queryBuilder->andWhere('q.stringLength <= :stringLength')
-                ->setParameter('stringLength', $stringLength);
-        }
-
-        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

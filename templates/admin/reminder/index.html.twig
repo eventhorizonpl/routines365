@@ -46,8 +46,10 @@
                         <th {% if reminders.isSorted('r.PreviousDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Previous date'|trans, 'r.previousDate') }}</th>
                         <th {% if reminders.isSorted('r.SendEmail') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send email'|trans, 'r.sendEmail') }}</th>
                         <th {% if reminders.isSorted('r.SendSms') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send sms'|trans, 'r.sendSms') }}</th>
+                        <th {% if reminders.isSorted('r.SendMotivationalMessage') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send motivational message'|trans, 'r.sendMotivationalMessage') }}</th>
                         <th {% if reminders.isSorted('r.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Type'|trans, 'r.type') }}</th>
                         <th {% if reminders.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Deleted at'|trans, 'r.deletedAt') }}</th>
+                        <th {% if reminders.isSorted('r.LockedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Locked at'|trans, 'r.lockedAt') }}</th>
                         <th {% if reminders.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Updated at'|trans, 'r.updatedAt') }}</th>
                         <th>{{ 'Actions'|trans }}</th>
                     </tr>
@@ -110,8 +112,16 @@
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
+                            <td>
+                                {% if reminder.sendMotivationalMessage %}
+                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                {% else %}
+                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                {% endif %}
+                            </td>
                             <td>{{ reminder.type }}</td>
-                            <td>{{ reminder.deletedAt ? goal.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>
                                 <div class="btn-group" role="group">

@@ -37,9 +37,9 @@ class QuoteController extends AbstractController
             'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $quoteRepository->findByParametersForAdmin($parameters);
+        $quotesQuery = $quoteRepository->findByParametersForAdmin($parameters);
         $quotes = $paginator->paginate(
-            $queryResult,
+            $quotesQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );

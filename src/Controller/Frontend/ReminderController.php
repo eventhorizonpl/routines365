@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
@@ -29,9 +30,19 @@ class ReminderController extends AbstractController
         ReminderFactory $reminderFactory,
         ReminderManager $reminderManager,
         Request $request,
-        Routine $routine
+        Routine $routine,
+        TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(RoutineVoter::EDIT, $routine);
+
+        if (null === $this->getUser()->getProfile()->getTimeZone()) {
+            $this->addFlash(
+                'danger',
+                $translator->trans('Please set up time zone!')
+            );
+
+            return $this->redirectToRoute('frontend_profile_edit');
+        }
 
         $reminder = $reminderFactory->createReminder();
         $reminder->setRoutine($routine);
@@ -60,9 +71,19 @@ class ReminderController extends AbstractController
     public function edit(
         Reminder $reminder,
         ReminderManager $reminderManager,
-        Request $request
+        Request $request,
+        TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(ReminderVoter::EDIT, $reminder);
+
+        if (null === $this->getUser()->getProfile()->getTimeZone()) {
+            $this->addFlash(
+                'danger',
+                $translator->trans('Please set up time zone!')
+            );
+
+            return $this->redirectToRoute('frontend_profile_edit');
+        }
 
         $form = $this->createForm(ReminderType::class, $reminder);
         $form->handleRequest($request);

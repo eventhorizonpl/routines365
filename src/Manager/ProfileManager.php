@@ -15,13 +15,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class ProfileManager
 {
     private EntityManagerInterface $entityManager;
+    private ReminderManager $reminderManager;
     private ValidatorInterface $validator;
 
     public function __construct(
         EntityManagerInterface $entityManager,
+        ReminderManager $reminderManager,
         ValidatorInterface $validator
     ) {
         $this->entityManager = $entityManager;
+        $this->reminderManager = $reminderManager;
         $this->validator = $validator;
     }
 
@@ -79,6 +82,10 @@ class ProfileManager
 
         if (true === $flush) {
             $this->entityManager->flush();
+        }
+
+        foreach ($profile->getUser()->getReminders() as $reminder) {
+            $this->reminderManager->save($reminder);
         }
 
         return $this;

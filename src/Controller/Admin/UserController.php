@@ -36,9 +36,9 @@ class UserController extends AbstractController
             'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
         ];
 
-        $queryResult = $userRepository->findByParametersForAdmin($parameters);
+        $usersQuery = $userRepository->findByParametersForAdmin($parameters);
         $users = $paginator->paginate(
-            $queryResult,
+            $usersQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );

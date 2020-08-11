@@ -33,9 +33,9 @@ class NoteController extends AbstractController
             'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
         ];
 
-        $queryResult = $noteRepository->findByParametersForAdmin($parameters);
+        $notesQuery = $noteRepository->findByParametersForAdmin($parameters);
         $notes = $paginator->paginate(
-            $queryResult,
+            $notesQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );

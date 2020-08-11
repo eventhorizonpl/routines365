@@ -497,6 +497,38 @@
         <source>Reset password</source>
         <target>Reset password</target>
       </trans-unit>
+      <trans-unit id="Ea8RmOs" resname="Please set up time zone!">
+        <source>Please set up time zone!</source>
+        <target>Please set up time zone!</target>
+      </trans-unit>
+      <trans-unit id="zQ_lAl6" resname="You do not have any Reminders.">
+        <source>You do not have any Reminders.</source>
+        <target>You do not have any Reminders.</target>
+      </trans-unit>
+      <trans-unit id="j8IaJQb" resname="Send motivational message">
+        <source>Send motivational message</source>
+        <target>Send motivational message</target>
+      </trans-unit>
+      <trans-unit id="NoYNTvh" resname="Reminder messages">
+        <source>Reminder messages</source>
+        <target>Reminder messages</target>
+      </trans-unit>
+      <trans-unit id="uJS9uwk" resname="Locked at">
+        <source>Locked at</source>
+        <target>Locked at</target>
+      </trans-unit>
+      <trans-unit id="5LrlpgP" resname="Reminder message details">
+        <source>Reminder message details</source>
+        <target>Reminder message details</target>
+      </trans-unit>
+      <trans-unit id="9hEw5dO" resname="Post date">
+        <source>Post date</source>
+        <target>Post date</target>
+      </trans-unit>
+      <trans-unit id="MXV7v6F" resname="Reminder">
+        <source>Reminder</source>
+        <target>Reminder</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -36,9 +36,9 @@ class AccountOperationController extends AbstractController
             'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $accountOperationRepository->findByParametersForAdmin($parameters);
+        $accountOperationsQuery = $accountOperationRepository->findByParametersForAdmin($parameters);
         $accountOperations = $paginator->paginate(
-            $queryResult,
+            $accountOperationsQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );

@@ -16,7 +16,7 @@ trait TimestampableTrait
 
     /**
      * @Assert\Type("DateTimeImmutable")
-     * @ORM\Column(type="datetimetz_immutable", nullable=true)
+     * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected $deletedAt;
 

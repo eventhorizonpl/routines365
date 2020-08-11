@@ -34,16 +34,16 @@ class ReminderController extends AbstractController
             'type' => $request->query->get('type'),
         ];
 
-        $queryResult = $reminderRepository->findByParametersForAdmin($parameters);
+        $remindersQuery = $reminderRepository->findByParametersForAdmin($parameters);
         $reminders = $paginator->paginate(
-            $queryResult,
+            $remindersQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
 
         return $this->render('admin/reminder/index.html.twig', [
-            'reminders' => $reminders,
             'parameters' => $parameters,
+            'reminders' => $reminders,
         ]);
     }
 
