@@ -101,7 +101,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         if (in_array(User::ROLE_ADMIN, $token->getRoleNames())) {
-            return new RedirectResponse($this->urlGenerator->generate('admin_dashboard'));
+            return new RedirectResponse($this->urlGenerator->generate('admin_workspace'));
         } elseif (in_array(User::ROLE_USER, $token->getRoleNames())) {
             return new RedirectResponse($this->urlGenerator->generate('frontend_routine_index'));
         } else {

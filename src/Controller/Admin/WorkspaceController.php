@@ -17,10 +17,10 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin", name="admin_")
  */
-class DashboardController extends AbstractController
+class WorkspaceController extends AbstractController
 {
     /**
-     * @Route("/", name="dashboard")
+     * @Route("/", name="workspace")
      */
     public function index(
         AccountRepository $accountRepository,
@@ -41,7 +41,7 @@ class DashboardController extends AbstractController
         $routinesCount = $routineRepository->count([]);
         $usersCount = $userRepository->count([]);
 
-        return $this->render('admin/dashboard/index.html.twig', [
+        return $this->render('admin/workspace/index.html.twig', [
             'accounts_count' => $accountsCount,
             'goals_count' => $goalsCount,
             'notes_count' => $notesCount,
