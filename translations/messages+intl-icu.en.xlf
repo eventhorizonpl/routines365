@@ -537,6 +537,18 @@
         <source>Unlock</source>
         <target>Unlock</target>
       </trans-unit>
+      <trans-unit id="W.sUdp7" resname="KPIs">
+        <source>KPIs</source>
+        <target>KPIs</target>
+      </trans-unit>
+      <trans-unit id="ndg1sAu" resname="KPI details">
+        <source>KPI details</source>
+        <target>KPI details</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

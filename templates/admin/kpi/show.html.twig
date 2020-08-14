@@ -1,0 +1,114 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_kpi_index') }}">{{ 'KPIs'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'KPI details'|trans }}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'KPI details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_kpi_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+            <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Date'|trans }}</th>
+                                <td>{{ kpi.date ? kpi.date|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Accounts'|trans }}</th>
+                                <td>{{ kpi.accountCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Account operations'|trans }}</th>
+                                <td>{{ kpi.accountOperationCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Goals'|trans }}</th>
+                                <td>{{ kpi.goalCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Notes'|trans }}</th>
+                                <td>{{ kpi.noteCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Profiles'|trans }}</th>
+                                <td>{{ kpi.profileCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Quotes'|trans }}</th>
+                                <td>{{ kpi.quoteCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Reminders'|trans }}</th>
+                                <td>{{ kpi.reminderCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Reminder messages'|trans }}</th>
+                                <td>{{ kpi.reminderMessageCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Routines'|trans }}</th>
+                                <td>{{ kpi.routineCounter }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Users'|trans }}</th>
+                                <td>{{ kpi.userCounter }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ kpi.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ kpi.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ kpi.createdAt ? kpi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>
+                                    {% if kpi.deletedAt %}
+                                        {{ kpi.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_kpi_undelete', {'uuid': kpi.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ kpi.updatedAt ? kpi.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'KPI details'|trans }} {% endblock %}
