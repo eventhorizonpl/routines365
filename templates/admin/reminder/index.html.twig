@@ -120,8 +120,8 @@
                                 {% endif %}
                             </td>
                             <td>{{ reminder.type }}</td>
-                            <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>
                                 <div class="btn-group" role="group">

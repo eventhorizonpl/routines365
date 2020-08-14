@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Reminder;
 use App\Entity\User;
+use App\Manager\ReminderManager;
 use App\Repository\ReminderRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
@@ -54,6 +55,20 @@ class ReminderController extends AbstractController
     {
         return $this->render('admin/reminder/show.html.twig', [
             'reminder' => $reminder,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/unlock", name="unlock", methods={"GET"})
+     */
+    public function unlock(
+        Reminder $reminder,
+        ReminderManager $reminderManager
+    ): Response {
+        $reminderManager->unlock($reminder);
+
+        return $this->redirectToRoute('admin_reminder_show', [
+            'uuid' => $reminder->getUuid(),
         ]);
     }
 }

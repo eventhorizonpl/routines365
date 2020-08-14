@@ -197,7 +197,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Locked at'|trans }}</th>
-                                <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if reminder.lockedAt %}
+                                        {{ reminder.lockedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_unlock', {'uuid': reminder.uuid}) }}"><i class="fa fa-lock-open"></i> {{ 'Unlock'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
