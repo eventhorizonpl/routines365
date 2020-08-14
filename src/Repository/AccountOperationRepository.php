@@ -18,9 +18,10 @@ class AccountOperationRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('ao')
-            ->select('ao, aoa, aoau')
+            ->select('ao, aoa, aoau, aoaup')
             ->leftJoin('ao.account', 'aoa')
             ->leftJoin('aoa.user', 'aoau')
+            ->leftJoin('aoau.profile', 'aoaup')
             ->addOrderBy('ao.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
