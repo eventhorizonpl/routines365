@@ -85,6 +85,7 @@
                                 <td>
                                     {% if quote.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': quote.deletedBy}) }}">{{ quote.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_quote_undelete', {'uuid': quote.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -102,7 +103,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ quote.deletedAt ? quote.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if quote.deletedAt %}
+                                        {{ quote.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_quote_undelete', {'uuid': quote.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>

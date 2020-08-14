@@ -134,4 +134,18 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('admin_user_index');
     }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        User $user,
+        UserManager $userManager
+    ): Response {
+        $userManager->undelete($user);
+
+        return $this->redirectToRoute('admin_user_show', [
+            'uuid' => $user->getUuid(),
+        ]);
+    }
 }

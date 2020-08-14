@@ -87,6 +87,17 @@ class NoteManager
         return $this;
     }
 
+    public function undelete(Note $note): self
+    {
+        $note->setDeletedAt(null);
+        $note->setDeletedBy(null);
+
+        $this->entityManager->persist($note);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(Note $note): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($note, null, ['system']);

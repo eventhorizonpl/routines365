@@ -87,10 +87,16 @@ class UserManager
         $user->setDeletedAt($date);
         $user->setDeletedBy($actor);
 
-        $errors = $this->validate($user);
-        if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors);
-        }
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
+    public function undelete(User $user): self
+    {
+        $user->setDeletedAt(null);
+        $user->setDeletedBy(null);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

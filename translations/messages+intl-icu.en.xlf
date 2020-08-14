@@ -529,6 +529,14 @@
         <source>Workspace</source>
         <target>Workspace</target>
       </trans-unit>
+      <trans-unit id="Mc3G5YF" resname="Undelete">
+        <source>Undelete</source>
+        <target>Undelete</target>
+      </trans-unit>
+      <trans-unit id="SscJqli" resname="Unlock">
+        <source>Unlock</source>
+        <target>Unlock</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Routine;
 use App\Entity\User;
+use App\Manager\RoutineManager;
 use App\Repository\RoutineRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
@@ -54,6 +55,20 @@ class RoutineController extends AbstractController
     {
         return $this->render('admin/routine/show.html.twig', [
             'routine' => $routine,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        Routine $routine,
+        RoutineManager $routineManager
+    ): Response {
+        $routineManager->undelete($routine);
+
+        return $this->redirectToRoute('admin_routine_show', [
+            'uuid' => $routine->getUuid(),
         ]);
     }
 }

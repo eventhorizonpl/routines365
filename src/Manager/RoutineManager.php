@@ -87,6 +87,17 @@ class RoutineManager
         return $this;
     }
 
+    public function undelete(Routine $routine): self
+    {
+        $routine->setDeletedAt(null);
+        $routine->setDeletedBy(null);
+
+        $this->entityManager->persist($routine);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(Routine $routine): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($routine, null, ['system']);

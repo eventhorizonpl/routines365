@@ -87,6 +87,17 @@ class GoalManager
         return $this;
     }
 
+    public function undelete(Goal $goal): self
+    {
+        $goal->setDeletedAt(null);
+        $goal->setDeletedBy(null);
+
+        $this->entityManager->persist($goal);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(Goal $goal): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($goal, null, ['system']);

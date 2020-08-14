@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Account;
 use App\Entity\AccountOperation;
 use App\Entity\User;
+use App\Manager\AccountOperationManager;
 use App\Repository\AccountOperationRepository;
 use App\Service\AccountOperationService;
 use App\Util\DateTimeImmutableUtil;
@@ -91,6 +92,20 @@ class AccountOperationController extends AbstractController
             0,
             10
         );
+
+        return $this->redirectToRoute('admin_account_operation_show', [
+            'uuid' => $accountOperation->getUuid(),
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        AccountOperation $accountOperation,
+        AccountOperationManager $accountOperationManager
+    ): Response {
+        $accountOperationManager->undelete($accountOperation);
 
         return $this->redirectToRoute('admin_account_operation_show', [
             'uuid' => $accountOperation->getUuid(),

@@ -59,6 +59,20 @@ class ReminderController extends AbstractController
     }
 
     /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        Reminder $reminder,
+        ReminderManager $reminderManager
+    ): Response {
+        $reminderManager->undelete($reminder);
+
+        return $this->redirectToRoute('admin_reminder_show', [
+            'uuid' => $reminder->getUuid(),
+        ]);
+    }
+
+    /**
      * @Route("/{uuid}/unlock", name="unlock", methods={"GET"})
      */
     public function unlock(

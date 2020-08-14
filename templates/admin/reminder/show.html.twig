@@ -176,6 +176,7 @@
                                 <td>
                                     {% if reminder.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': reminder.deletedBy}) }}">{{ reminder.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -193,7 +194,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if reminder.deletedAt %}
+                                        {{ reminder.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Locked at'|trans }}</th>

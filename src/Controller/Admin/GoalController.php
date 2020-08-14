@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Goal;
 use App\Entity\User;
+use App\Manager\GoalManager;
 use App\Repository\GoalRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
@@ -53,6 +54,20 @@ class GoalController extends AbstractController
     {
         return $this->render('admin/goal/show.html.twig', [
             'goal' => $goal,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        Goal $goal,
+        GoalManager $goalManager
+    ): Response {
+        $goalManager->undelete($goal);
+
+        return $this->redirectToRoute('admin_goal_show', [
+            'uuid' => $goal->getUuid(),
         ]);
     }
 }

@@ -86,6 +86,17 @@ class QuoteManager
         return $this;
     }
 
+    public function undelete(Quote $quote): self
+    {
+        $quote->setDeletedAt(null);
+        $quote->setDeletedBy(null);
+
+        $this->entityManager->persist($quote);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(Quote $quote): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($quote, null, ['system']);

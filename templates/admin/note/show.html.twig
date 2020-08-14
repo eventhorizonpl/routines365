@@ -100,6 +100,7 @@
                                 <td>
                                     {% if note.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': note.deletedBy}) }}">{{ note.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_note_undelete', {'uuid': note.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -117,7 +118,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ note.deletedAt ? note.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if note.deletedAt %}
+                                        {{ note.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_note_undelete', {'uuid': note.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>

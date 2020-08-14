@@ -90,6 +90,7 @@
                                 <td>
                                     {% if account_operation.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': account_operation.deletedBy}) }}">{{ account_operation.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_account_operation_undelete', {'uuid': account_operation.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -107,7 +108,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ account_operation.deletedAt ? account_operation.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if account_operation.deletedAt %}
+                                        {{ account_operation.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_account_operation_undelete', {'uuid': account_operation.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>

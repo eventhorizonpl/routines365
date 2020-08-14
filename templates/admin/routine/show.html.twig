@@ -142,6 +142,7 @@
                                 <td>
                                     {% if routine.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': routine.deletedBy}) }}">{{ routine.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_routine_undelete', {'uuid': routine.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -159,7 +160,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if routine.deletedAt %}
+                                        {{ routine.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_routine_undelete', {'uuid': routine.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>

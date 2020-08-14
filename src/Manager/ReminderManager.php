@@ -82,6 +82,7 @@ class ReminderManager
     {
         $date = new DateTimeImmutable();
         $reminder->setLockedAt($date);
+
         $this->entityManager->persist($reminder);
         $this->entityManager->flush();
 
@@ -136,9 +137,21 @@ class ReminderManager
         return $this;
     }
 
+    public function undelete(Reminder $reminder): self
+    {
+        $reminder->setDeletedAt(null);
+        $reminder->setDeletedBy(null);
+
+        $this->entityManager->persist($reminder);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function unlock(Reminder $reminder): self
     {
         $reminder->setLockedAt(null);
+
         $this->entityManager->persist($reminder);
         $this->entityManager->flush();
 

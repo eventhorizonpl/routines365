@@ -100,6 +100,17 @@ class AccountOperationManager
         return $this;
     }
 
+    public function undelete(AccountOperation $accountOperation): self
+    {
+        $accountOperation->setDeletedAt(null);
+        $accountOperation->setDeletedBy(null);
+
+        $this->entityManager->persist($accountOperation);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(AccountOperation $accountOperation): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($accountOperation, null, ['system']);

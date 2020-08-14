@@ -103,6 +103,17 @@ class ProfileManager
         return $this;
     }
 
+    public function undelete(Profile $profile): self
+    {
+        $profile->setDeletedAt(null);
+        $profile->setDeletedBy(null);
+
+        $this->entityManager->persist($profile);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(Profile $profile): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($profile);

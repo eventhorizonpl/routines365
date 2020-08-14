@@ -110,6 +110,7 @@
                                 <td>
                                     {% if goal.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': goal.deletedBy}) }}">{{ goal.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_goal_undelete', {'uuid': goal.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -127,7 +128,12 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ goal.deletedAt ? goal.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {% if goal.deletedAt %}
+                                        {{ goal.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_goal_undelete', {'uuid': goal.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Note;
 use App\Entity\User;
+use App\Manager\NoteManager;
 use App\Repository\NoteRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
@@ -53,6 +54,20 @@ class NoteController extends AbstractController
     {
         return $this->render('admin/note/show.html.twig', [
             'note' => $note,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        Note $note,
+        NoteManager $noteManager
+    ): Response {
+        $noteManager->undelete($note);
+
+        return $this->redirectToRoute('admin_note_show', [
+            'uuid' => $note->getUuid(),
         ]);
     }
 }

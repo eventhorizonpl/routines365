@@ -129,4 +129,18 @@ class QuoteController extends AbstractController
 
         return $this->redirectToRoute('admin_quote_index');
     }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        Quote $quote,
+        QuoteManager $quoteManager
+    ): Response {
+        $quoteManager->undelete($quote);
+
+        return $this->redirectToRoute('admin_quote_show', [
+            'uuid' => $quote->getUuid(),
+        ]);
+    }
 }

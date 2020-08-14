@@ -83,6 +83,17 @@ class AccountManager
         return $this;
     }
 
+    public function undelete(Account $account): self
+    {
+        $account->setDeletedAt(null);
+        $account->setDeletedBy(null);
+
+        $this->entityManager->persist($account);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(Account $account): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($account);

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\ReminderMessage;
 use App\Entity\User;
+use App\Manager\ReminderMessageManager;
 use App\Repository\ReminderMessageRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
@@ -54,6 +55,20 @@ class ReminderMessageController extends AbstractController
     {
         return $this->render('admin/reminder_message/show.html.twig', [
             'reminder_message' => $reminderMessage,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
+     */
+    public function undelete(
+        ReminderMessage $reminderMessage,
+        ReminderMessageManager $reminderMessageManager
+    ): Response {
+        $reminderMessageManager->undelete($reminderMessage);
+
+        return $this->redirectToRoute('admin_reminder_message_show', [
+            'uuid' => $reminderMessage->getUuid(),
         ]);
     }
 }

@@ -80,6 +80,16 @@ class ReminderMessageManager
         return $this;
     }
 
+    public function undelete(ReminderMessage $reminderMessage): self
+    {
+        $reminderMessage->setDeletedAt(null);
+
+        $this->entityManager->persist($reminderMessage);
+        $this->entityManager->flush();
+
+        return $this;
+    }
+
     public function validate(ReminderMessage $reminderMessage): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($reminderMessage, null, ['system']);
