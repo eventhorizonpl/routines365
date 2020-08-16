@@ -2,45 +2,35 @@
 
 namespace App\Repository;
 
-use App\Entity\ReminderMessage;
+use App\Entity\CompletedRoutine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
-class ReminderMessageRepository extends ServiceEntityRepository
+class CompletedRoutineRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ReminderMessage::class);
+        parent::__construct($registry, CompletedRoutine::class);
     }
 
     public function findByParametersForAdmin(array $parameters = []): Query
     {
-        $queryBuilder = $this->createQueryBuilder('rm')
-            ->select('rm, rmr, rmru, rmrua, rmrup')
-            ->leftJoin('rm.reminder', 'rmr')
-            ->leftJoin('rmr.user', 'rmru')
-            ->leftJoin('rmru.account', 'rmrua')
-            ->leftJoin('rmru.profile', 'rmrup')
-            ->addOrderBy('rm.createdAt', 'DESC');
+        $queryBuilder = $this->createQueryBuilder('cr')
+            ->select('cr, cru, crua, crup')
+            ->leftJoin('cr.user', 'cru')
+            ->leftJoin('cru.account', 'crua')
+            ->leftJoin('cru.profile', 'crup')
+            ->addOrderBy('cr.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
-            if (array_key_exists('type', $parameters)) {
-                $type = $parameters['type'];
-                if ((null !== $type) && ('' !== $type)) {
-                    $queryBuilder->andWhere('rm.type = :type')
-                        ->setParameter('type', $type);
-                }
-            }
-
             if (array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
                         $queryBuilder->expr()->orX(
-                            $queryBuilder->expr()->like('rm.content', ':q'),
-                            $queryBuilder->expr()->like('rmru.email', ':q'),
-                            $queryBuilder->expr()->like('rmru.uuid', ':q')
+                            $queryBuilder->expr()->like('cru.email', ':q'),
+                            $queryBuilder->expr()->like('cru.uuid', ':q')
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');
@@ -50,7 +40,7 @@ class ReminderMessageRepository extends ServiceEntityRepository
             if (array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
-                    $queryBuilder->andWhere('rm.createdAt <= :endsAt')
+                    $queryBuilder->andWhere('cr.createdAt <= :endsAt')
                         ->setParameter('endsAt', $endsAt);
                 }
             }
@@ -58,7 +48,7 @@ class ReminderMessageRepository extends ServiceEntityRepository
             if (array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
-                    $queryBuilder->andWhere('rm.createdAt >= :startsAt')
+                    $queryBuilder->andWhere('cr.createdAt >= :startsAt')
                         ->setParameter('startsAt', $startsAt);
                 }
             }

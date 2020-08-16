@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use App\Repository\KpiRepository;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -19,6 +17,7 @@ class Kpi
     use Traits\TimestampableTrait;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -26,6 +25,7 @@ class Kpi
     private int $accountCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -40,6 +40,7 @@ class Kpi
     private ?DateTimeImmutable $date;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -47,6 +48,7 @@ class Kpi
     private int $goalCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -54,6 +56,7 @@ class Kpi
     private int $noteCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -61,6 +64,7 @@ class Kpi
     private int $profileCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -68,6 +72,7 @@ class Kpi
     private int $quoteCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -75,6 +80,7 @@ class Kpi
     private int $reminderCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -82,6 +88,7 @@ class Kpi
     private int $reminderMessageCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -89,6 +96,7 @@ class Kpi
     private int $routineCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")

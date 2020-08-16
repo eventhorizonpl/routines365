@@ -32,6 +32,7 @@ class Account
     private User $user;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -39,6 +40,7 @@ class Account
     private int $availableEmailNotifications;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")

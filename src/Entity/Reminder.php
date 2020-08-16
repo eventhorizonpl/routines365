@@ -59,6 +59,8 @@ class Reminder
 
     /**
      * @Assert\Choice(callback="getMinutesBeforeValidationChoices")
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\LessThanOrEqual(60)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")

@@ -37,6 +37,8 @@ class AccountOperation
     private string $description;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\LessThanOrEqual(1024)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
@@ -44,6 +46,8 @@ class AccountOperation
     private int $emailNotifications;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\LessThanOrEqual(1024)
      * @Assert\NotBlank
      * @Assert\Type("int")
      * @ORM\Column(type="integer")

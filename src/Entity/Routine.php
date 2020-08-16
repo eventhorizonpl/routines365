@@ -26,6 +26,12 @@ class Routine
     public const TYPE_WORK = 'work';
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=CompletedRoutine::class)
+     * @ORM\OrderBy({"id" = "ASC"})
+     */
+    private Collection $completedRoutines;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Goal::class)
      * @ORM\OrderBy({"name" = "ASC"})
      */
@@ -80,6 +86,7 @@ class Routine
 
     public function __construct()
     {
+        $this->completedRoutines = new ArrayCollection();
         $this->description = null;
         $this->goals = new ArrayCollection();
         $this->isEnabled = false;
@@ -92,6 +99,37 @@ class Routine
     public function __toString(): string
     {
         return $this->getName();
+    }
+
+    public function addCompletedRoutine(CompletedRoutine $completedRoutine): self
+    {
+        if (false === $this->completedRoutines->contains($completedRoutine)) {
+            $this->completedRoutines->add($completedRoutine);
+            $completedRoutine->setRoutine($this);
+        }
+
+        return $this;
+    }
+
+    public function getCompletedRoutines(): Collection
+    {
+        return $this->completedRoutines->filter(function (CompletedRoutine $completedRoutine) {
+            return null === $completedRoutine->getDeletedAt();
+        });
+    }
+
+    public function getCompletedRoutinesAll(): Collection
+    {
+        return $this->completedRoutines;
+    }
+
+    public function removeCompletedRoutine(CompletedRoutine $completedRoutine): self
+    {
+        if (true === $this->completedRoutines->contains($completedRoutine)) {
+            $this->completedRoutines->removeElement($completedRoutine);
+        }
+
+        return $this;
     }
 
     public function getDescription(): ?string

@@ -14,6 +14,7 @@
                     {{ 'User content'|trans }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownUserContent">
+                    <a class="dropdown-item" href="{{ path('admin_completed_routine_index') }}"><i class="fas fa-star"></i> {{ 'Completed routines'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_goal_index') }}"><i class="fas fa-bullseye"></i> {{ 'Goals'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_reminder_index') }}"><i class="fas fa-clock"></i> {{ 'Reminders'|trans }}</a>

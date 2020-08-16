@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Repository\AccountRepository;
 use App\Repository\AccountOperationRepository;
+use App\Repository\AccountRepository;
 use App\Repository\GoalRepository;
 use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;

@@ -26,6 +26,9 @@
                     <div class="card-body">
                         <p class="card-text">{{ routine.description }}</p>
                         <p>
+                            <a class="btn btn-danger btn-sm m-1" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
+                                <i class="fas fa-star"></i> {{ 'Create Completed routine'|trans }}
+                            </a>
                             <a class="btn btn-danger btn-sm m-1" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">
                                 <i class="fas fa-bullseye"></i> {{ 'Goals not completed'|trans }} <span class="badge badge-light">{{ routine.goalsNotCompletedCount }}</span>
                             </a>

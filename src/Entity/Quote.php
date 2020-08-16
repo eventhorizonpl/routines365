@@ -56,6 +56,8 @@ class Quote
     private string $contentMd5;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\LessThanOrEqual(336)
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("int")
      * @ORM\Column(type="integer")

@@ -549,6 +549,26 @@
         <source>Date</source>
         <target>Date</target>
       </trans-unit>
+      <trans-unit id="cEu._0P" resname="Completed routines">
+        <source>Completed routines</source>
+        <target>Completed routines</target>
+      </trans-unit>
+      <trans-unit id="1PffHia" resname="Completed routine details">
+        <source>Completed routine details</source>
+        <target>Completed routine details</target>
+      </trans-unit>
+      <trans-unit id="RPXj__x" resname="Comment">
+        <source>Comment</source>
+        <target>Comment</target>
+      </trans-unit>
+      <trans-unit id="c8w43gc" resname="Minutes devoted">
+        <source>Minutes devoted</source>
+        <target>Minutes devoted</target>
+      </trans-unit>
+      <trans-unit id="WhZrCHA" resname="Create Completed routine">
+        <source>Create Completed routine</source>
+        <target>Create Completed routine</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

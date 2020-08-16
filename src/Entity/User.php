@@ -33,6 +33,12 @@ class User implements UserInterface
     private Account $account;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=CompletedRoutine::class)
+     * @ORM\OrderBy({"id" = "ASC"})
+     */
+    private Collection $completedRoutines;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
      */
     private Collection $goals;
@@ -97,6 +103,7 @@ class User implements UserInterface
 
     public function __construct()
     {
+        $this->completedRoutines = new ArrayCollection();
         $this->email = '';
         $this->goals = new ArrayCollection();
         $this->isEnabled = false;
@@ -119,6 +126,37 @@ class User implements UserInterface
     public function setAccount(Account $account): self
     {
         $this->account = $account;
+
+        return $this;
+    }
+
+    public function addCompletedRoutine(CompletedRoutine $completedRoutine): self
+    {
+        if (false === $this->completedRoutines->contains($completedRoutine)) {
+            $this->completedRoutines->add($completedRoutine);
+            $completedRoutine->setRoutine($this);
+        }
+
+        return $this;
+    }
+
+    public function getCompletedRoutines(): Collection
+    {
+        return $this->completedRoutines->filter(function (CompletedRoutine $completedRoutine) {
+            return null === $completedRoutine->getDeletedAt();
+        });
+    }
+
+    public function getCompletedRoutinesAll(): Collection
+    {
+        return $this->completedRoutines;
+    }
+
+    public function removeCompletedRoutine(CompletedRoutine $completedRoutine): self
+    {
+        if (true === $this->completedRoutines->contains($completedRoutine)) {
+            $this->completedRoutines->removeElement($completedRoutine);
+        }
 
         return $this;
     }
