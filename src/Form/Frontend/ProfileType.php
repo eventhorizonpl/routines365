@@ -3,6 +3,7 @@
 namespace App\Form\Frontend;
 
 use App\Entity\Profile;
+use App\Form\Type\YesNoType;
 use App\Form\BaseProfileType;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -19,6 +20,10 @@ class ProfileType extends BaseProfileType
             ->add('phone', PhoneNumberType::class, [
                 'help' => 'The phone number is required for proper work of SMS notifications.',
                 'required' => false,
+            ])
+            ->add('showMotivationalMessages', YesNoType::class, [
+                'help' => 'Indicates if you want to see a motivational messages in user interface.',
+                'required' => true,
             ])
             ->add('theme', ChoiceType::class, [
                 'choices' => Profile::getThemeFormChoices(),

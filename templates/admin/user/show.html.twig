@@ -58,6 +58,16 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Show motivational messages'|trans }}</th>
+                                <td>
+                                    {% if user.profile.showMotivationalMessages %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Theme'|trans }}</th>
                                 <td>
                                     {% if user.profile %}

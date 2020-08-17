@@ -44,6 +44,13 @@ class Profile
     private ?PhoneNumber $phone;
 
     /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private bool $showMotivationalMessages;
+
+    /**
      * @Assert\Choice(callback="getThemeValidationChoices")
      * @Assert\Length(
      *   max = 8
@@ -66,6 +73,7 @@ class Profile
     public function __construct()
     {
         $this->phone = null;
+        $this->showMotivationalMessages = true;
         $this->theme = self::THEME_DARK;
     }
 
@@ -98,14 +106,14 @@ class Profile
         return $this;
     }
 
-    public function getUser(): User
+    public function getShowMotivationalMessages(): ?bool
     {
-        return $this->user;
+        return $this->showMotivationalMessages;
     }
 
-    public function setUser(User $user): self
+    public function setShowMotivationalMessages(bool $showMotivationalMessages): self
     {
-        $this->user = $user;
+        $this->showMotivationalMessages = $showMotivationalMessages;
 
         return $this;
     }
@@ -146,6 +154,18 @@ class Profile
     public function setTimeZone(?string $timeZone): self
     {
         $this->timeZone = $timeZone;
+
+        return $this;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

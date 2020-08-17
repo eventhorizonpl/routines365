@@ -7,12 +7,14 @@ use App\Entity\User;
 use App\Factory\CompletedRoutineFactory;
 use App\Form\Frontend\CompletedRoutineType;
 use App\Manager\CompletedRoutineManager;
+use App\Repository\QuoteRepository;
 use App\Security\Voter\RoutineVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
@@ -26,8 +28,10 @@ class CompletedRoutineController extends AbstractController
     public function new(
         CompletedRoutineFactory $completedRoutineFactory,
         CompletedRoutineManager $completedRoutineManager,
+        QuoteRepository $quoteRepository,
         Request $request,
-        Routine $routine
+        Routine $routine,
+        TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(RoutineVoter::EDIT, $routine);
 
@@ -39,6 +43,19 @@ class CompletedRoutineController extends AbstractController
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $completedRoutineManager->save($completedRoutine, $this->getUser());
+
+            $this->addFlash(
+                'success',
+                $translator->trans('Congratulations for completing your routine!')
+            );
+
+            $quote = $quoteRepository->findOneByStringLength();
+            if (null !== $quote) {
+                $this->addFlash(
+                    'primary',
+                    (string) $quote
+                );
+            }
 
             return $this->redirectToRoute('frontend_routine_show', [
                 'uuid' => $routine->getUuid(),

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Profile;
+use App\Form\Type\YesNoType;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,6 +19,7 @@ abstract class BaseProfileType extends AbstractType
             ->add('phone', PhoneNumberType::class, [
                 'required' => false,
             ])
+            ->add('showMotivationalMessages', YesNoType::class)
             ->add('theme', ChoiceType::class, [
                 'choices' => Profile::getThemeFormChoices(),
                 'required' => false,

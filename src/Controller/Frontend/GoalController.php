@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Factory\GoalFactory;
 use App\Form\Frontend\GoalType;
 use App\Manager\GoalManager;
+use App\Repository\QuoteRepository;
 use App\Security\Voter\GoalVoter;
 use App\Security\Voter\RoutineVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -61,6 +62,7 @@ class GoalController extends AbstractController
     public function complete(
         Goal $goal,
         GoalManager $goalManager,
+        QuoteRepository $quoteRepository,
         Request $request,
         TranslatorInterface $translator
     ): Response {
@@ -73,6 +75,14 @@ class GoalController extends AbstractController
             'success',
             $translator->trans('Congratulations for achieving your goal!')
         );
+
+        $quote = $quoteRepository->findOneByStringLength();
+        if (null !== $quote) {
+            $this->addFlash(
+                'primary',
+                (string) $quote
+            );
+        }
 
         return $this->redirectToRoute('frontend_routine_show', [
             'uuid' => $goal->getRoutine()->getUuid(),

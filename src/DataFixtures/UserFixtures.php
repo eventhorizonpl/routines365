@@ -62,6 +62,7 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
                 );
                 $user = $this->userService->encodePassword($user, 'test'.(string) $userId);
                 $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));
+                $user->getProfile()->setShowMotivationalMessages(true);
                 $user->getProfile()->setPhone($phone);
                 $user->getProfile()->setTimezone('Europe/Warsaw');
                 $users[] = $user;

@@ -569,6 +569,14 @@
         <source>Create Completed routine</source>
         <target>Create Completed routine</target>
       </trans-unit>
+      <trans-unit id="h0eQDkh" resname="Congratulations for completing your routine!">
+        <source>Congratulations for completing your routine!</source>
+        <target>Congratulations for completing your routine!</target>
+      </trans-unit>
+      <trans-unit id="kW0n_uO" resname="Show motivational messages">
+        <source>Show motivational messages</source>
+        <target>Show motivational messages</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
