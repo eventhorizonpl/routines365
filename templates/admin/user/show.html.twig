@@ -136,11 +136,23 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Completed routines'|trans }}</th>
                                 <td>
-                                    {% if user.goals|length %}
+                                    {% if user.completedRoutinesAll|length %}
                                         <ul>
-                                            {% for goal in user.goals %}
+                                            {% for completed_routine in user.completedRoutinesAll %}
+                                                <li><a href="{{ path('admin_completed_routine_show', {'uuid': completed_routine.uuid}) }}">{{ completed_routine.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Goals'|trans }}</th>
+                                <td>
+                                    {% if user.goalsAll|length %}
+                                        <ul>
+                                            {% for goal in user.goalsAll %}
                                                 <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
                                             {% endfor %}
                                         </ul>
@@ -150,9 +162,9 @@
                             <tr>
                                 <th scope="row">{{ 'Notes'|trans }}</th>
                                 <td>
-                                    {% if user.notes|length %}
+                                    {% if user.notesAll|length %}
                                         <ul>
-                                            {% for note in user.notes %}
+                                            {% for note in user.notesAll %}
                                                 <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
                                             {% endfor %}
                                         </ul>
@@ -162,9 +174,9 @@
                             <tr>
                                 <th scope="row">{{ 'Reminders'|trans }}</th>
                                 <td>
-                                    {% if user.reminders|length %}
+                                    {% if user.remindersAll|length %}
                                         <ul>
-                                            {% for reminder in user.reminders %}
+                                            {% for reminder in user.remindersAll %}
                                                 <li><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></li>
                                             {% endfor %}
                                         </ul>
@@ -174,9 +186,9 @@
                             <tr>
                                 <th scope="row">{{ 'Routines'|trans }}</th>
                                 <td>
-                                    {% if user.routines|length %}
+                                    {% if user.routinesAll|length %}
                                         <ul>
-                                            {% for routine in user.routines %}
+                                            {% for routine in user.routinesAll %}
                                                 <li><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></li>
                                             {% endfor %}
                                         </ul>

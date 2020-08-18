@@ -15,13 +15,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class ReminderManager
 {
     private EntityManagerInterface $entityManager;
+    private ReminderMessageManager $reminderMessageManager;
     private ValidatorInterface $validator;
 
     public function __construct(
         EntityManagerInterface $entityManager,
+        ReminderMessageManager $reminderMessageManager,
         ValidatorInterface $validator
     ) {
         $this->entityManager = $entityManager;
+        $this->reminderMessageManager = $reminderMessageManager;
         $this->validator = $validator;
     }
 
@@ -133,6 +136,10 @@ class ReminderManager
 
         $this->entityManager->persist($reminder);
         $this->entityManager->flush();
+
+        foreach ($reminder->getReminderMessages() as $reminderMessage) {
+            $this->reminderMessageManager->softDelete($reminderMessage);
+        }
 
         return $this;
     }

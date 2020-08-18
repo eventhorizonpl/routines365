@@ -11,14 +11,26 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RoutineManager
 {
+    private CompletedRoutineManager $completedRoutineManager;
     private EntityManagerInterface $entityManager;
+    private GoalManager $goalManager;
+    private NoteManager $noteManager;
+    private ReminderManager $reminderManager;
     private ValidatorInterface $validator;
 
     public function __construct(
+        CompletedRoutineManager $completedRoutineManager,
         EntityManagerInterface $entityManager,
+        GoalManager $goalManager,
+        NoteManager $noteManager,
+        ReminderManager $reminderManager,
         ValidatorInterface $validator
     ) {
+        $this->completedRoutineManager = $completedRoutineManager;
         $this->entityManager = $entityManager;
+        $this->goalManager = $goalManager;
+        $this->noteManager = $noteManager;
+        $this->reminderManager = $reminderManager;
         $this->validator = $validator;
     }
 
@@ -83,6 +95,22 @@ class RoutineManager
 
         $this->entityManager->persist($routine);
         $this->entityManager->flush();
+
+        foreach ($routine->getCompletedRoutines() as $completedRoutine) {
+            $this->completedRoutineManager->softDelete($completedRoutine, $actor);
+        }
+
+        foreach ($routine->getGoals() as $goal) {
+            $this->goalManager->softDelete($goal, $actor);
+        }
+
+        foreach ($routine->getNotes() as $note) {
+            $this->noteManager->softDelete($note, $actor);
+        }
+
+        foreach ($routine->getReminders() as $reminder) {
+            $this->reminderManager->softDelete($reminder, $actor);
+        }
 
         return $this;
     }
