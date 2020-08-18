@@ -54,6 +54,16 @@
                     <table class="table">
                         <tbody>
                             <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Reminder message'|trans }}</th>
+                                <td>
+                                    {% if account_operation.reminderMessage %}
+                                        <a href="{{ path('admin_reminder_message_show', {'uuid': account_operation.reminderMessage.uuid}) }}">
+                                            {{ account_operation.reminderMessage.uuid }}
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
                                     {% if account_operation.account and account_operation.account.user %}

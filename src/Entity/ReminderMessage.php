@@ -22,6 +22,12 @@ class ReminderMessage
 
     /**
      * @Assert\Valid
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="reminderMessage", targetEntity=AccountOperation::class)
+     */
+    private AccountOperation $accountOperation;
+
+    /**
+     * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminderMessages", targetEntity=Reminder::class)
      */
@@ -63,6 +69,18 @@ class ReminderMessage
     public function __toString(): string
     {
         return $this->getUuid();
+    }
+
+    public function getAccountOperation(): AccountOperation
+    {
+        return $this->accountOperation;
+    }
+
+    public function setAccountOperation(AccountOperation $accountOperation): self
+    {
+        $this->accountOperation = $accountOperation;
+
+        return $this;
     }
 
     public function getContent(): ?string

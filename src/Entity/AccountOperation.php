@@ -28,6 +28,13 @@ class AccountOperation
     private Account $account;
 
     /**
+     * @Assert\Valid
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="accountOperation", targetEntity=ReminderMessage::class)
+     */
+    private ReminderMessage $reminderMessage;
+
+    /**
      * @Assert\Length(
      *   max = 255
      * )
@@ -109,6 +116,18 @@ class AccountOperation
     public function setEmailNotifications(int $emailNotifications): self
     {
         $this->emailNotifications = abs($emailNotifications);
+
+        return $this;
+    }
+
+    public function getReminderMessage(): ?ReminderMessage
+    {
+        return $this->reminderMessage;
+    }
+
+    public function setReminderMessage(ReminderMessage $reminderMessage): self
+    {
+        $this->reminderMessage = $reminderMessage;
 
         return $this;
     }

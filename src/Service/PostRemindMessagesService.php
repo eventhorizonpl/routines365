@@ -14,6 +14,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class PostRemindMessagesService
 {
+    private AccountOperationService $accountOperationService;
     private EntityManagerInterface $entityManager;
     private QuoteRepository $quoteRepository;
     private ReminderManager $reminderManager;
@@ -22,6 +23,7 @@ class PostRemindMessagesService
     private ReminderRepository $reminderRepository;
 
     public function __construct(
+        AccountOperationService $accountOperationService,
         EntityManagerInterface $entityManager,
         QuoteRepository $quoteRepository,
         ReminderManager $reminderManager,
@@ -29,6 +31,7 @@ class PostRemindMessagesService
         ReminderMessageManager $reminderMessageManager,
         ReminderRepository $reminderRepository
     ) {
+        $this->accountOperationService = $accountOperationService;
         $this->entityManager = $entityManager;
         $this->quoteRepository = $quoteRepository;
         $this->reminderManager = $reminderManager;
@@ -86,21 +89,36 @@ class PostRemindMessagesService
                 }
             }
         }
-        if (true === $reminder->getSendEmail()) {
+        $account = $reminder->getUser()->getAccount();
+        if ((true === $reminder->getSendEmail()) && ($account->getAvailableEmailNotifications() > 0)) {
             $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                 $emailMessage,
                 ReminderMessage::TYPE_EMAIL
             );
             $reminderMessage->setReminder($reminder);
             $this->reminderMessageManager->save($reminderMessage);
+            $accountOperation = $this->accountOperationService->withdraw(
+                $account,
+                'Email notification',
+                1,
+                0,
+                $reminderMessage
+            );
         }
-        if (true === $reminder->getSendSms()) {
+        if ((true === $reminder->getSendSms()) && ($account->getAvailableSmsNotifications() > 0)) {
             $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                 $smsMessage,
                 ReminderMessage::TYPE_SMS
             );
             $reminderMessage->setReminder($reminder);
             $this->reminderMessageManager->save($reminderMessage);
+            $accountOperation = $this->accountOperationService->withdraw(
+                $account,
+                'SMS notification',
+                0,
+                1,
+                $reminderMessage
+            );
         }
         $this->reminderManager->save($reminder);
 
