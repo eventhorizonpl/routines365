@@ -11,6 +11,8 @@ use App\Repository\QuoteRepository;
 use App\Repository\ReminderRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PostRemindMessagesService
 {
@@ -21,6 +23,7 @@ class PostRemindMessagesService
     private ReminderMessageFactory $reminderMessageFactory;
     private ReminderMessageManager $reminderMessageManager;
     private ReminderRepository $reminderRepository;
+    private RouterInterface $router;
 
     public function __construct(
         AccountOperationService $accountOperationService,
@@ -29,7 +32,8 @@ class PostRemindMessagesService
         ReminderManager $reminderManager,
         ReminderMessageFactory $reminderMessageFactory,
         ReminderMessageManager $reminderMessageManager,
-        ReminderRepository $reminderRepository
+        ReminderRepository $reminderRepository,
+        RouterInterface $router
     ) {
         $this->accountOperationService = $accountOperationService;
         $this->entityManager = $entityManager;
@@ -38,6 +42,7 @@ class PostRemindMessagesService
         $this->reminderMessageFactory = $reminderMessageFactory;
         $this->reminderMessageManager = $reminderMessageManager;
         $this->reminderRepository = $reminderRepository;
+        $this->router = $router;
     }
 
     public function findNextReminder(): ?Reminder
@@ -63,7 +68,6 @@ class PostRemindMessagesService
 
     public function prepareReminderMessages(Reminder $reminder): Reminder
     {
-        var_dump($reminder->getNextDate());
         $message = 'Your routine '.$reminder->getRoutine()->getName();
         $message .= ' starts at '.$reminder->getNextDate()->format('H:i:s').'.';
         if ($reminder->getRoutine()->getGoals()->count() > 0) {
@@ -89,6 +93,12 @@ class PostRemindMessagesService
                 }
             }
         }
+
+        $link = $this->router->generate('frontend_completed_routine_new', [
+            'uuid' => $reminder->getRoutine()->getUuid(),
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
+        $emailMessage .= ' Click this link when you finish '.$link;
+
         $account = $reminder->getUser()->getAccount();
         if ((true === $reminder->getSendEmail()) && ($account->getAvailableEmailNotifications() > 0)) {
             $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
