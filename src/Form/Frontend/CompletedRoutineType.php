@@ -3,7 +3,6 @@
 namespace App\Form\Frontend;
 
 use App\Entity\CompletedRoutine;
-use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -159,10 +159,7 @@ class AccountOperation
 
     public function getTypeValidationChoices(): array
     {
-        return [
-            self::TYPE_DEPOSIT,
-            self::TYPE_WITHDRAW,
-        ];
+        return array_keys(self::getTypeFormChoices());
     }
 
     public function setType(string $type): self

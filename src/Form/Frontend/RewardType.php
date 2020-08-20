@@ -2,17 +2,18 @@
 
 namespace App\Form\Frontend;
 
-use App\Entity\Note;
+use App\Entity\Reward;
 use App\Entity\Routine;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 
-class NoteType extends AbstractType
+class RewardType extends AbstractType
 {
     private Security $security;
 
@@ -23,24 +24,33 @@ class NoteType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $note = $options['data'];
+        $reward = $options['data'];
 
         $builder
-            ->add('content', TextareaType::class)
-            ->add('title')
+            ->add('description', TextareaType::class)
+            ->add('name')
+            ->add('requiredNumberOfCompletions', ChoiceType::class, [
+                'choices' => Reward::getRequiredNumberOfCompletionsFormChoices(),
+                'required' => true,
+            ])
+            ->add('type', ChoiceType::class, [
+                'choices' => Reward::getTypeFormChoices(),
+                'required' => true,
+            ])
         ;
 
-        if (null === $note->getRoutine()) {
+        if (null === $reward->getRoutine()) {
             $user = $this->security->getUser();
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
-                    return $entityRepository->createQueryBuilder('n')
-                        ->where('n.user = :user')
-                        ->andWhere('n.deletedAt IS NULL')
-                        ->orderBy('n.name', 'ASC')
+                    return $entityRepository->createQueryBuilder('r')
+                        ->where('r.user = :user')
+                        ->andWhere('r.deletedAt IS NULL')
+                        ->orderBy('r.name', 'ASC')
                         ->setParameter('user', $user);
                 },
+                'required' => false,
             ]);
         }
     }
@@ -48,7 +58,7 @@ class NoteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Note::class,
+            'data_class' => Reward::class,
         ]);
     }
 }

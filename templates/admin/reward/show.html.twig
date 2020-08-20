@@ -2,15 +2,15 @@
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Routine details'|trans }}</li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_reward_index') }}">{{ 'Rewards'|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ 'Reward details'|trans }}</li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Routine details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_routine_index') }}">
+            {{ 'Reward details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_reward_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -34,7 +34,7 @@
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
                                 <td>
-                                    {% if routine.name %}
+                                    {% if reward.name %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -44,7 +44,37 @@
                             <tr>
                                 <th scope="row">{{ 'Description'|trans }}</th>
                                 <td>
-                                    {% if routine.description %}
+                                    {% if reward.description %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Is awarded'|trans }}</th>
+                                <td>
+                                    {% if reward.isAwarded %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Number of completions'|trans }}</th>
+                                <td>
+                                    {% if reward.numberOfCompletions %}
+                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Required number of completions'|trans }}</th>
+                                <td>
+                                    {% if reward.requiredNumberOfCompletions %}
                                         <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -53,17 +83,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ routine.type }}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
-                                <td>
-                                    {% if routine.isEnabled %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                                    {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                    {% endif %}
-                                </td>
+                                <td>{{ reward.type }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -72,70 +92,18 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Completed routines'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Routine'|trans }}</th>
                                 <td>
-                                    {% if routine.completedRoutinesAll|length %}
-                                        <ul>
-                                            {% for completed_routine in routine.completedRoutinesAll %}
-                                                <li><a href="{{ path('admin_completed_routine_show', {'uuid': completed_routine.uuid}) }}">{{ completed_routine.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Goals'|trans }}</th>
-                                <td>
-                                    {% if routine.goalsAll|length %}
-                                        <ul>
-                                            {% for goal in routine.goalsAll %}
-                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Notes'|trans }}</th>
-                                <td>
-                                    {% if routine.notesAll|length %}
-                                        <ul>
-                                            {% for note in routine.notesAll %}
-                                                <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Reminders'|trans }}</th>
-                                <td>
-                                    {% if routine.remindersAll|length %}
-                                        <ul>
-                                            {% for reminder in routine.remindersAll %}
-                                                <li><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Rewards'|trans }}</th>
-                                <td>
-                                    {% if routine.rewardsAll|length %}
-                                        <ul>
-                                            {% for reward in routine.rewardsAll %}
-                                                <li><a href="{{ path('admin_reward_show', {'uuid': reward.uuid}) }}">{{ reward.uuid }}</a></li>
-                                            {% endfor %}
-                                        </ul>
+                                    {% if reward.routine %}
+                                        <a href="{{ path('admin_routine_show', {'uuid': reward.routine.uuid}) }}">{{ reward.routine.uuid }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
-                                    {% if routine.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
+                                    {% if reward.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reward.user.uuid}) }}">{{ reward.user.email }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -147,53 +115,53 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ routine.id }}</td>
+                                <td>{{ reward.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ routine.uuid }}</td>
+                                <td>{{ reward.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
                                 <td>
-                                    {% if routine.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.createdBy}) }}">{{ routine.createdBy }}</a>
+                                    {% if reward.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reward.createdBy}) }}">{{ reward.createdBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
                                 <td>
-                                    {% if routine.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.deletedBy}) }}">{{ routine.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_routine_undelete', {'uuid': routine.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% if reward.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reward.deletedBy}) }}">{{ reward.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reward_undelete', {'uuid': reward.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
                                 <td>
-                                    {% if routine.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.updatedBy}) }}">{{ routine.updatedBy }}</a>
+                                    {% if reward.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reward.updatedBy}) }}">{{ reward.updatedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ routine.createdAt ? routine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reward.createdAt ? reward.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
                                 <td>
-                                    {% if routine.deletedAt %}
-                                        {{ routine.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_routine_undelete', {'uuid': routine.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% if reward.deletedAt %}
+                                        {{ reward.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_reward_undelete', {'uuid': reward.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reward.updatedAt ? reward.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -203,4 +171,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Reward details'|trans }} {% endblock %}

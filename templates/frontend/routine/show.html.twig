@@ -28,6 +28,13 @@
                     </p>
                     <hr>
                     <p>
+                        {{ 'Rewards'|trans }}: {{ routine.rewards|length }}
+                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reward_new', {'uuid': routine.uuid}) }}">
+                            <i class="fas fa-award"></i> {{ 'Create Reward'|trans }}
+                        </a>
+                    </p>
+                    <hr>
+                    <p>
                         {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
                         <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
                             <i class="fas fa-star"></i> {{ 'Create Completed routine'|trans }}

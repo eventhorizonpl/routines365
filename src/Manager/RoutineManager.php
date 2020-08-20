@@ -16,6 +16,7 @@ class RoutineManager
     private GoalManager $goalManager;
     private NoteManager $noteManager;
     private ReminderManager $reminderManager;
+    private RewardManager $rewardManager;
     private ValidatorInterface $validator;
 
     public function __construct(
@@ -24,6 +25,7 @@ class RoutineManager
         GoalManager $goalManager,
         NoteManager $noteManager,
         ReminderManager $reminderManager,
+        RewardManager $rewardManager,
         ValidatorInterface $validator
     ) {
         $this->completedRoutineManager = $completedRoutineManager;
@@ -31,6 +33,7 @@ class RoutineManager
         $this->goalManager = $goalManager;
         $this->noteManager = $noteManager;
         $this->reminderManager = $reminderManager;
+        $this->rewardManager = $rewardManager;
         $this->validator = $validator;
     }
 
@@ -110,6 +113,10 @@ class RoutineManager
 
         foreach ($routine->getReminders() as $reminder) {
             $this->reminderManager->softDelete($reminder, $actor);
+        }
+
+        foreach ($routine->getRewards() as $reward) {
+            $this->rewardManager->softDelete($reward, $actor);
         }
 
         return $this;

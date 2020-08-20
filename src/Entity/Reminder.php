@@ -146,26 +146,18 @@ class Reminder
 
     public static function getMinutesBeforeFormChoices(): array
     {
-        return [
-            5 => 5,
-            10 => 10,
-            15 => 15,
-            20 => 20,
-            25 => 25,
-            30 => 30,
-        ];
+        $minutesBefore = [];
+
+        for ($i = 5; $i <= 30; $i += 5) {
+            $minutesBefore[$i] = $i;
+        }
+
+        return $minutesBefore;
     }
 
     public function getMinutesBeforeValidationChoices(): array
     {
-        return [
-            5,
-            10,
-            15,
-            20,
-            25,
-            30,
-        ];
+        return array_keys(self::getMinutesBeforeFormChoices());
     }
 
     public function setMinutesBefore(int $minutesBefore): self
@@ -299,16 +291,7 @@ class Reminder
 
     public function getTypeValidationChoices(): array
     {
-        return [
-            self::TYPE_DAILY,
-            self::TYPE_FRIDAY,
-            self::TYPE_MONDAY,
-            self::TYPE_SATURDAY,
-            self::TYPE_SUNDAY,
-            self::TYPE_THURSDAY,
-            self::TYPE_TUESDAY,
-            self::TYPE_WEDNESDAY,
-        ];
+        return array_keys(self::getTypeFormChoices());
     }
 
     public function setType(string $type): self

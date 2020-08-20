@@ -134,10 +134,7 @@ class ReminderMessage
 
     public function getTypeValidationChoices(): array
     {
-        return [
-            self::TYPE_EMAIL,
-            self::TYPE_SMS,
-        ];
+        return array_keys(self::getTypeFormChoices());
     }
 
     public function setType(string $type): self

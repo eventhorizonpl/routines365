@@ -18,6 +18,7 @@ class UserManager
     private NoteManager $noteManager;
     private ProfileManager $profileManager;
     private ReminderManager $reminderManager;
+    private RewardManager $rewardManager;
     private RoutineManager $routineManager;
     private ValidatorInterface $validator;
 
@@ -29,6 +30,7 @@ class UserManager
         NoteManager $noteManager,
         ProfileManager $profileManager,
         ReminderManager $reminderManager,
+        RewardManager $rewardManager,
         RoutineManager $routineManager,
         ValidatorInterface $validator
     ) {
@@ -39,6 +41,7 @@ class UserManager
         $this->noteManager = $noteManager;
         $this->profileManager = $profileManager;
         $this->reminderManager = $reminderManager;
+        $this->rewardManager = $rewardManager;
         $this->routineManager = $routineManager;
         $this->validator = $validator;
     }
@@ -123,6 +126,10 @@ class UserManager
 
         foreach ($user->getReminders() as $reminder) {
             $this->reminderManager->softDelete($reminder, $actor);
+        }
+
+        foreach ($user->getRewards() as $reward) {
+            $this->rewardManager->softDelete($reward, $actor);
         }
 
         foreach ($user->getRoutines() as $routine) {

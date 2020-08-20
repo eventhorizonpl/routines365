@@ -3,6 +3,7 @@
 namespace App\Controller\Frontend;
 
 use App\Entity\Goal;
+use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\User;
 use App\Factory\GoalFactory;
@@ -11,6 +12,7 @@ use App\Manager\GoalManager;
 use App\Repository\QuoteRepository;
 use App\Security\Voter\GoalVoter;
 use App\Security\Voter\RoutineVoter;
+use App\Service\RewardService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,12 +66,15 @@ class GoalController extends AbstractController
         GoalManager $goalManager,
         QuoteRepository $quoteRepository,
         Request $request,
+        RewardService $rewardService,
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(GoalVoter::EDIT, $goal);
 
         $goal->setIsCompleted(true);
         $goalManager->save($goal, $this->getUser());
+
+        $reward = $rewardService->manageReward($goal->getRoutine(), Reward::TYPE_COMPLETED_GOAL);
 
         $this->addFlash(
             'success',
@@ -82,6 +87,17 @@ class GoalController extends AbstractController
                 'primary',
                 (string) $quote
             );
+        }
+
+        if (true === $reward->getIsAwarded()) {
+            $this->addFlash(
+                'success',
+                $translator->trans('Congratulations for awarding your reward!')
+            );
+
+            return $this->redirectToRoute('frontend_reward_show', [
+                'uuid' => $reward->getUuid(),
+            ]);
         }
 
         return $this->redirectToRoute('frontend_routine_show', [

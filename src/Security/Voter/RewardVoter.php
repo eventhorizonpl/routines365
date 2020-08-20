@@ -2,13 +2,13 @@
 
 namespace App\Security\Voter;
 
-use App\Entity\Note;
+use App\Entity\Reward;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class NoteVoter extends Voter
+class RewardVoter extends Voter
 {
     public const DELETE = 'delete';
     public const EDIT = 'edit';
@@ -17,7 +17,7 @@ class NoteVoter extends Voter
     protected function supports($attribute, $subject): bool
     {
         return in_array($attribute, [self::DELETE, self::EDIT, self::VIEW])
-            && $subject instanceof Note;
+            && $subject instanceof Reward;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
@@ -39,22 +39,22 @@ class NoteVoter extends Voter
         return false;
     }
 
-    private function canDelete(Note $note, User $user): bool
+    private function canDelete(Reward $reward, User $user): bool
     {
-        return $user === $note->getUser();
+        return $user === $reward->getUser();
     }
 
-    private function canEdit(Note $note, User $user): bool
+    private function canEdit(Reward $reward, User $user): bool
     {
-        return $user === $note->getUser();
+        return $user === $reward->getUser();
     }
 
-    private function canView(Note $note, User $user): bool
+    private function canView(Reward $reward, User $user): bool
     {
-        if (null !== $note->getDeletedAt()) {
+        if (null !== $reward->getDeletedAt()) {
             return false;
         }
 
-        return $user === $note->getUser();
+        return $user === $reward->getUser();
     }
 }

@@ -60,6 +60,11 @@ class User implements UserInterface
     private Collection $reminders;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reward::class)
+     */
+    private Collection $rewards;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Routine::class)
      */
     private Collection $routines;
@@ -110,6 +115,7 @@ class User implements UserInterface
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
         $this->reminders = new ArrayCollection();
+        $this->rewards = new ArrayCollection();
         $this->routines = new ArrayCollection();
     }
 
@@ -294,6 +300,37 @@ class User implements UserInterface
         return $this;
     }
 
+    public function addReward(Reward $reward): self
+    {
+        if (false === $this->rewards->contains($reward)) {
+            $this->rewards->add($reward);
+            $reward->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getRewards(): Collection
+    {
+        return $this->rewards->filter(function (Reward $reward) {
+            return null === $reward->getDeletedAt();
+        });
+    }
+
+    public function getRewardsAll(): Collection
+    {
+        return $this->rewards;
+    }
+
+    public function removeReward(Reward $reward): self
+    {
+        if (true === $this->rewards->contains($reward)) {
+            $this->rewards->removeElement($reward);
+        }
+
+        return $this;
+    }
+
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -313,11 +350,7 @@ class User implements UserInterface
 
     public function getRolesValidationChoices(): array
     {
-        return [
-            self::ROLE_ADMIN,
-            self::ROLE_SUPER_ADMIN,
-            self::ROLE_USER,
-        ];
+        return array_keys(self::getRolesFormChoices());
     }
 
     public function setRoles(array $roles): self

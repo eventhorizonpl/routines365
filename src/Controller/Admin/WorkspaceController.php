@@ -4,7 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Repository\AccountOperationRepository;
 use App\Repository\AccountRepository;
+use App\Repository\CompletedRoutineRepository;
 use App\Repository\GoalRepository;
+use App\Repository\KpiRepository;
 use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;
 use App\Repository\QuoteRepository;
@@ -27,8 +29,10 @@ class WorkspaceController extends AbstractController
     public function index(
         AccountRepository $accountRepository,
         AccountOperationRepository $accountOperationRepository,
+        CompletedRoutineRepository $completedRoutineRepository,
         GoalRepository $goalRepository,
         NoteRepository $noteRepository,
+        KpiRepository $kpiRepository,
         ProfileRepository $profileRepository,
         QuoteRepository $quoteRepository,
         ReminderMessageRepository $reminderMessageRepository,
@@ -38,8 +42,10 @@ class WorkspaceController extends AbstractController
     ): Response {
         $accountsCount = $accountRepository->count([]);
         $accountOperationsCount = $accountOperationRepository->count([]);
+        $completedRoutinesCount = $completedRoutineRepository->count([]);
         $goalsCount = $goalRepository->count([]);
         $notesCount = $noteRepository->count([]);
+        $kpisCount = $kpiRepository->count([]);
         $profilesCount = $profileRepository->count([]);
         $quotesCount = $quoteRepository->count([]);
         $reminderMessagesCount = $reminderMessageRepository->count([]);
@@ -50,8 +56,10 @@ class WorkspaceController extends AbstractController
         return $this->render('admin/workspace/index.html.twig', [
             'accounts_count' => $accountsCount,
             'account_operations_count' => $accountOperationsCount,
+            'completed_routines_count' => $completedRoutinesCount,
             'goals_count' => $goalsCount,
             'notes_count' => $notesCount,
+            'kpis_count' => $kpisCount,
             'profiles_count' => $profilesCount,
             'quotes_count' => $quotesCount,
             'reminder_messages_count' => $reminderMessagesCount,

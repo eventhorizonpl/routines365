@@ -21,8 +21,16 @@
                         <td>{{ account_operations_count }}</td>
                     </tr>
                     <tr>
+                        <td><a href="{{ path('admin_completed_routine_index') }}">{{ 'Completed routines'|trans }}</a></td>
+                        <td>{{ completed_routines_count }}</td>
+                    </tr>
+                    <tr>
                         <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
                         <td>{{ goals_count }}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('admin_kpi_index') }}">{{ 'KPIs'|trans }}</a></td>
+                        <td>{{ kpis_count }}</td>
                     </tr>
                     <tr>
                         <td><a href="{{ path('admin_note_index') }}">{{ 'Notes'|trans }}</a></td>

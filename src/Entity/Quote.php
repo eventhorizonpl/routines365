@@ -156,14 +156,7 @@ class Quote
 
     public function getTypeValidationChoices(): array
     {
-        return [
-            self::TYPE_ART,
-            self::TYPE_BUSINESS,
-            self::TYPE_POLITICS,
-            self::TYPE_SPORT,
-            self::TYPE_TECHNOLOGY,
-            self::TYPE_UNKNOWN,
-        ];
+        return array_keys(self::getTypeFormChoices());
     }
 
     public function setType(string $type): self

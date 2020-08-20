@@ -10,14 +10,12 @@ use App\Manager\ReminderMessageManager;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderRepository;
 use DateTimeImmutable;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 class PostRemindMessagesService
 {
     private AccountOperationService $accountOperationService;
-    private EntityManagerInterface $entityManager;
     private QuoteRepository $quoteRepository;
     private ReminderManager $reminderManager;
     private ReminderMessageFactory $reminderMessageFactory;
@@ -27,7 +25,6 @@ class PostRemindMessagesService
 
     public function __construct(
         AccountOperationService $accountOperationService,
-        EntityManagerInterface $entityManager,
         QuoteRepository $quoteRepository,
         ReminderManager $reminderManager,
         ReminderMessageFactory $reminderMessageFactory,
@@ -36,7 +33,6 @@ class PostRemindMessagesService
         RouterInterface $router
     ) {
         $this->accountOperationService = $accountOperationService;
-        $this->entityManager = $entityManager;
         $this->quoteRepository = $quoteRepository;
         $this->reminderManager = $reminderManager;
         $this->reminderMessageFactory = $reminderMessageFactory;

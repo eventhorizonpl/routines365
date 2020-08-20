@@ -577,6 +577,54 @@
         <source>Show motivational messages</source>
         <target>Show motivational messages</target>
       </trans-unit>
+      <trans-unit id="Wa.kfZ0" resname="Rewards">
+        <source>Rewards</source>
+        <target>Rewards</target>
+      </trans-unit>
+      <trans-unit id="P5yZH2O" resname="Change password">
+        <source>Change password</source>
+        <target>Change password</target>
+      </trans-unit>
+      <trans-unit id="f6X9bDC" resname="Reminder message">
+        <source>Reminder message</source>
+        <target>Reminder message</target>
+      </trans-unit>
+      <trans-unit id="EiIu4Lq" resname="Reward details">
+        <source>Reward details</source>
+        <target>Reward details</target>
+      </trans-unit>
+      <trans-unit id="XiFBYrq" resname="Is awarded">
+        <source>Is awarded</source>
+        <target>Is awarded</target>
+      </trans-unit>
+      <trans-unit id="cjwaw0x" resname="Number of completions">
+        <source>Number of completions</source>
+        <target>Number of completions</target>
+      </trans-unit>
+      <trans-unit id="LpQk5Fe" resname="Required number of completions">
+        <source>Required number of completions</source>
+        <target>Required number of completions</target>
+      </trans-unit>
+      <trans-unit id="9SxsYU0" resname="Create Reward">
+        <source>Create Reward</source>
+        <target>Create Reward</target>
+      </trans-unit>
+      <trans-unit id="J.YuejS" resname="You do not have any Rewards!">
+        <source>You do not have any Rewards!</source>
+        <target>You do not have any Rewards!</target>
+      </trans-unit>
+      <trans-unit id=".qqQQMF" resname="Edit Reward">
+        <source>Edit Reward</source>
+        <target>Edit Reward</target>
+      </trans-unit>
+      <trans-unit id="uxlYcPN" resname="Congratulations for awarding your reward!">
+        <source>Congratulations for awarding your reward!</source>
+        <target>Congratulations for awarding your reward!</target>
+      </trans-unit>
+      <trans-unit id="KnCwuCr" resname="Awarded">
+        <source>Awarded</source>
+        <target>Awarded</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

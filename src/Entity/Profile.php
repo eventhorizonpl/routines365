@@ -133,10 +133,7 @@ class Profile
 
     public function getThemeValidationChoices(): array
     {
-        return [
-            self::THEME_DARK,
-            //self::THEME_LIGHT,
-        ];
+        return array_keys(self::getThemeFormChoices());
     }
 
     public function setTheme(?string $theme): self

@@ -48,6 +48,11 @@ class Routine
     private Collection $reminders;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Reward::class)
+     */
+    private Collection $rewards;
+
+    /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
@@ -93,6 +98,7 @@ class Routine
         $this->name = '';
         $this->notes = new ArrayCollection();
         $this->reminders = new ArrayCollection();
+        $this->rewards = new ArrayCollection();
         $this->type = self::TYPE_HOBBY;
     }
 
@@ -287,6 +293,37 @@ class Routine
         return $this;
     }
 
+    public function addReward(Reward $reward): self
+    {
+        if (false === $this->rewards->contains($reward)) {
+            $this->rewards->add($reward);
+            $reward->setRoutine($this);
+        }
+
+        return $this;
+    }
+
+    public function getRewards(): Collection
+    {
+        return $this->rewards->filter(function (Reward $reward) {
+            return null === $reward->getDeletedAt();
+        });
+    }
+
+    public function getRewardsAll(): Collection
+    {
+        return $this->rewards;
+    }
+
+    public function removeReward(Reward $reward): self
+    {
+        if (true === $this->rewards->contains($reward)) {
+            $this->rewards->removeElement($reward);
+        }
+
+        return $this;
+    }
+
     public function getType(): ?string
     {
         return $this->type;
@@ -304,12 +341,7 @@ class Routine
 
     public function getTypeValidationChoices(): array
     {
-        return [
-            self::TYPE_HOBBY,
-            self::TYPE_LEARNING,
-            self::TYPE_SPORT,
-            self::TYPE_WORK,
-        ];
+        return array_keys(self::getTypeFormChoices());
     }
 
     public function setType(string $type): self

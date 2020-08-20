@@ -184,6 +184,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Rewards'|trans }}</th>
+                                <td>
+                                    {% if user.rewardsAll|length %}
+                                        <ul>
+                                            {% for reward in user.rewardsAll %}
+                                                <li><a href="{{ path('admin_reward_show', {'uuid': reward.uuid}) }}">{{ reward.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Routines'|trans }}</th>
                                 <td>
                                     {% if user.routinesAll|length %}

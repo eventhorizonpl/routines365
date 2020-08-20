@@ -3,8 +3,8 @@
 namespace App\Form\Frontend;
 
 use App\Entity\Profile;
-use App\Form\Type\YesNoType;
 use App\Form\BaseProfileType;
+use App\Form\Type\YesNoType;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;

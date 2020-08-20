@@ -2,6 +2,7 @@
 
 namespace App\Controller\Frontend;
 
+use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\User;
 use App\Factory\CompletedRoutineFactory;
@@ -9,6 +10,7 @@ use App\Form\Frontend\CompletedRoutineType;
 use App\Manager\CompletedRoutineManager;
 use App\Repository\QuoteRepository;
 use App\Security\Voter\RoutineVoter;
+use App\Service\RewardService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +32,7 @@ class CompletedRoutineController extends AbstractController
         CompletedRoutineManager $completedRoutineManager,
         QuoteRepository $quoteRepository,
         Request $request,
+        RewardService $rewardService,
         Routine $routine,
         TranslatorInterface $translator
     ): Response {
@@ -44,6 +47,8 @@ class CompletedRoutineController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $completedRoutineManager->save($completedRoutine, $this->getUser());
 
+            $reward = $rewardService->manageReward($completedRoutine->getRoutine(), Reward::TYPE_COMPLETED_ROUTINE);
+
             $this->addFlash(
                 'success',
                 $translator->trans('Congratulations for completing your routine!')
@@ -55,6 +60,17 @@ class CompletedRoutineController extends AbstractController
                     'primary',
                     (string) $quote
                 );
+            }
+
+            if (true === $reward->getIsAwarded()) {
+                $this->addFlash(
+                    'success',
+                    $translator->trans('Congratulations for awarding your reward!')
+                );
+
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'uuid' => $reward->getUuid(),
+                ]);
             }
 
             return $this->redirectToRoute('frontend_routine_show', [

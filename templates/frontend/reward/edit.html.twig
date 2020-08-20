@@ -1,0 +1,20 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card">
+                <div class="card-header">
+                    {{ 'Edit Reward'|trans }}
+                </div>
+                <div class="card-body">
+                    {{ include('frontend/reward/_form.html.twig', {'button_label': 'Update'|trans}) }}
+                    <br>
+                    {{ include('frontend/reward/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Edit Reward'|trans }} {% endblock %}
