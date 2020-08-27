@@ -20,6 +20,14 @@ class StaticPageController extends AbstractController
     }
 
     /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('frontend/static_page/contact.html.twig');
+    }
+
+    /**
      * @Route("/disclaimer", name="disclaimer")
      */
     public function disclaimer(): Response
