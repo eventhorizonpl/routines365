@@ -36,6 +36,14 @@ class StaticPageController extends AbstractController
     }
 
     /**
+     * @Route("/faq", name="faq")
+     */
+    public function faq(): Response
+    {
+        return $this->render('frontend/static_page/faq.html.twig');
+    }
+
+    /**
      * @Route("/privacy-policy", name="privacy_policy")
      */
     public function privacyPolicy(): Response

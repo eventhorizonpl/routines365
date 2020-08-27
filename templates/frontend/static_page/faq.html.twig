@@ -1,0 +1,48 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">FAQ</h5>
+                <p class="card-text">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        General
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Q: Who is this app for?<br>
+                                    A: The application is aimed at people who want to develop and maintain their routines.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Security
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Q: I've found a security issue. What should I do?<br>
+                                    A: Please <a href="{{ path('frontend_static_page_contact') }}">{{ 'Contact'|trans }}</a> with us.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ 'FAQ'|trans }}{% endblock %}
