@@ -63,7 +63,7 @@ class Account
     {
         if (false === $this->accountOperations->contains($accountOperation)) {
             $this->accountOperations->add($accountOperation);
-            $note->setAccount($this);
+            $accountOperation->setAccount($this);
         }
 
         return $this;

@@ -155,7 +155,7 @@ class Reminder
         return $minutesBefore;
     }
 
-    public function getMinutesBeforeValidationChoices(): array
+    public static function getMinutesBeforeValidationChoices(): array
     {
         return array_keys(self::getMinutesBeforeFormChoices());
     }
@@ -289,7 +289,7 @@ class Reminder
         ];
     }
 
-    public function getTypeValidationChoices(): array
+    public static function getTypeValidationChoices(): array
     {
         return array_keys(self::getTypeFormChoices());
     }

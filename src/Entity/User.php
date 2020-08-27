@@ -348,7 +348,7 @@ class User implements UserInterface
         ];
     }
 
-    public function getRolesValidationChoices(): array
+    public static function getRolesValidationChoices(): array
     {
         return array_keys(self::getRolesFormChoices());
     }

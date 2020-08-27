@@ -132,7 +132,7 @@ class ReminderMessage
         ];
     }
 
-    public function getTypeValidationChoices(): array
+    public static function getTypeValidationChoices(): array
     {
         return array_keys(self::getTypeFormChoices());
     }

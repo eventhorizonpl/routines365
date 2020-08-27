@@ -131,7 +131,7 @@ class Profile
         ];
     }
 
-    public function getThemeValidationChoices(): array
+    public static function getThemeValidationChoices(): array
     {
         return array_keys(self::getThemeFormChoices());
     }

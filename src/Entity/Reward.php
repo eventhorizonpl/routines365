@@ -177,7 +177,7 @@ class Reward
         return $requiredNumberOfCompletions;
     }
 
-    public function getRequiredNumberOfCompletionsValidationChoices(): array
+    public static function getRequiredNumberOfCompletionsValidationChoices(): array
     {
         return array_keys(self::getRequiredNumberOfCompletionsFormChoices());
     }
@@ -215,7 +215,7 @@ class Reward
         ];
     }
 
-    public function getTypeValidationChoices(): array
+    public static function getTypeValidationChoices(): array
     {
         return array_keys(self::getTypeFormChoices());
     }
