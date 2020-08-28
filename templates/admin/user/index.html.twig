@@ -33,6 +33,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th {% if users.isSorted('u.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'UUID'|trans, 'u.uuid') }}</th>
                         <th {% if users.isSorted('u.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Email'|trans, 'u.email') }}</th>
                         <th {% if users.isSorted('u.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Is enabled'|trans, 'u.isEnabled') }}</th>
                         <th {% if users.isSorted('u.IsVerified') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Is verified'|trans, 'u.isVerified') }}</th>
@@ -45,17 +46,18 @@
                 <tbody>
                     {% for user in users %}
                         <tr>
+                            <td><a href="{{ path('admin_user_show', {'uuid': user.uuid}) }}">{{ user.uuid }}</a></td>
                             <td>{{ user.email }}</td>
                             <td>
                                 {% if user.isEnabled %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if user.isVerified %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

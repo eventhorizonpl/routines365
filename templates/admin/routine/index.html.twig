@@ -51,7 +51,7 @@
                 <tbody>
                     {% for routine in routines %}
                         <tr>
-                            <td>{{ routine.uuid }}</td>
+                            <td><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></td>
                             <td>
                                 {% if routine.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
@@ -59,14 +59,14 @@
                             </td>
                             <td>
                                 {% if routine.name %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if routine.description %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
@@ -74,7 +74,7 @@
                             <td>{{ routine.type }}</td>
                             <td>
                                 {% if routine.isEnabled %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

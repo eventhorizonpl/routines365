@@ -36,7 +36,7 @@
                 <tbody>
                     {% for kpi in kpis %}
                         <tr>
-                            <td>{{ kpi.uuid }}</td>
+                            <td><a href="{{ path('admin_kpi_show', {'uuid': kpi.uuid}) }}">{{ kpi.uuid }}</a></td>
                             <td>{{ kpi.date ? kpi.date|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ kpi.deletedAt ? kpi.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ kpi.updatedAt ? kpi.updatedAt|date('Y-m-d H:i:s') : '' }}</td>

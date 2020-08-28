@@ -11,23 +11,17 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Security;
 
 class RewardType extends AbstractType
 {
-    private Security $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $reward = $options['data'];
 
         $builder
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'required' => false,
+            ])
             ->add('name')
             ->add('requiredNumberOfCompletions', ChoiceType::class, [
                 'choices' => Reward::getRequiredNumberOfCompletionsFormChoices(),
@@ -40,7 +34,7 @@ class RewardType extends AbstractType
         ;
 
         if (null === $reward->getRoutine()) {
-            $user = $this->security->getUser();
+            $user = $reward->getUser();
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {

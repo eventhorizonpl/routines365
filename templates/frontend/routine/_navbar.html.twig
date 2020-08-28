@@ -1,0 +1,19 @@
+{% set route = app.request.get('_route') %}
+
+<ul class="nav nav-tabs mt-2">
+    <li class="nav-item">
+        <a class="nav-link{% if route in ['frontend_routine_show'] %} active{% endif %}" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">{{ 'Completed routines'|trans }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if route in ['frontend_routine_show_goals'] %} active{% endif %}" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}">{{ 'Goals'|trans }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if route in ['frontend_routine_show_notes'] %} active{% endif %}" href="{{ path('frontend_routine_show_notes', {'uuid': routine.uuid}) }}">{{ 'Notes'|trans }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if route in ['frontend_routine_show_reminders'] %} active{% endif %}" href="{{ path('frontend_routine_show_reminders', {'uuid': routine.uuid}) }}">{{ 'Reminders'|trans }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if route in ['frontend_routine_show_rewards'] %} active{% endif %}" href="{{ path('frontend_routine_show_rewards', {'uuid': routine.uuid}) }}">{{ 'Rewards'|trans }}</a>
+    </li>
+</ul>

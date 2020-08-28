@@ -3,13 +3,13 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            {% include('frontend_settings_nav.html.twig') %}
-            <div class="card text-white bg-secondary">
+            <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Account operations'|trans }}
+                    {% include('frontend_settings_nav.html.twig') %}
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-dark">
                         <thead>
                             <tr>
                                 <th>{{ 'Description'|trans }}</th>
@@ -42,4 +42,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Account details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Account operations'|trans }}{% endblock %}

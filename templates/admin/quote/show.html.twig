@@ -44,7 +44,7 @@
                                 <th scope="row">{{ 'Is visible'|trans }}</th>
                                 <td>
                                     {% if quote.isVisible %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -123,4 +123,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Quote details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Quote details'|trans }}{% endblock %}

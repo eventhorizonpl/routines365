@@ -39,16 +39,19 @@ class Routine
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Note::class)
+     * @ORM\OrderBy({"id" = "DESC"})
      */
     private Collection $notes;
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Reminder::class)
+     * @ORM\OrderBy({"nextDate" = "ASC"})
      */
     private Collection $reminders;
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Reward::class)
+     * @ORM\OrderBy({"id" = "DESC"})
      */
     private Collection $rewards;
 
@@ -191,6 +194,20 @@ class Routine
         return $goalsCompleted;
     }
 
+    public function getGoalsCompletedPercent(): int
+    {
+        $goalsCompleted = $this->getGoalsCompletedCount();
+        $goalsNotCompleted = $this->getGoalsNotCompletedCount();
+
+        $total = $goalsCompleted + $goalsNotCompleted;
+
+        if ($total > 0) {
+            return (int) (($goalsCompleted / $total) * 100);
+        } else {
+            return 0;
+        }
+    }
+
     public function getGoalsNotCompleted(): Collection
     {
         return $this->goals->filter(function (Goal $goal) {
@@ -208,6 +225,20 @@ class Routine
         }
 
         return $goalsNotCompleted;
+    }
+
+    public function getGoalsNotCompletedPercent(): int
+    {
+        $goalsCompleted = $this->getGoalsCompletedCount();
+        $goalsNotCompleted = $this->getGoalsNotCompletedCount();
+
+        $total = $goalsCompleted + $goalsNotCompleted;
+
+        if ($total > 0) {
+            return (int) (($goalsNotCompleted / $total) * 100);
+        } else {
+            return 0;
+        }
     }
 
     public function removeGoal(Goal $goal): self

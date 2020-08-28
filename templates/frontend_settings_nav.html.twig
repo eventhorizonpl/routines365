@@ -1,14 +1,16 @@
-<ul class="nav nav-pills">
+{% set route = app.request.get('_route') %}
+
+<ul class="nav nav-tabs card-header-tabs mt-2">
     <li class="nav-item">
-        <a class="nav-link" href="{{ path('frontend_profile_show') }}">{{ 'Profile'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_profile_show', 'frontend_profile_edit'] %} active{% endif %}" href="{{ path('frontend_profile_show') }}">{{ 'Profile'|trans }}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ path('frontend_account_show') }}">{{ 'Account'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_account_show' %} active{% endif %}" href="{{ path('frontend_account_show') }}">{{ 'Account'|trans }}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ path('frontend_account_operation_index') }}">{{ 'Account operations'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_account_operation_index' %} active{% endif %}" href="{{ path('frontend_account_operation_index') }}">{{ 'Account operations'|trans }}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ path('frontend_user_change_password') }}">{{ 'Change password'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_user_change_password' %} active{% endif %}" href="{{ path('frontend_user_change_password') }}">{{ 'Change password'|trans }}</a>
     </li>
 </ul>

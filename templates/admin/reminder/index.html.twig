@@ -57,7 +57,7 @@
                 <tbody>
                     {% for reminder in reminders %}
                         <tr>
-                            <td>{{ reminder.uuid }}</td>
+                            <td><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></td>
                             <td>
                                 {% if reminder.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': reminder.user.uuid}) }}">{{ reminder.user.email }}</a>
@@ -65,56 +65,56 @@
                             </td>
                             <td>
                                 {% if reminder.hour %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.isEnabled %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.minutesBefore %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.nextDate %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.previousDate %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.sendEmail %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.sendSms %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if reminder.sendMotivationalMessage %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

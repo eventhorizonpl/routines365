@@ -3,9 +3,13 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            <div class="card">
+            <div class="card bg-dark text-white">
                 <div class="card-header">
-                    {{ 'Create Completed routine'|trans }}
+                    {{ 'Complete routine'|trans }}
+                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">
+                        <i class="fas fa-times"></i>
+                        {{ 'Close'|trans }}
+                    </a>
                 </div>
                 <div class="card-body">
                     {{ include('frontend/completed_routine/_form.html.twig') }}
@@ -15,4 +19,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Create Completed routine'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Complete routine'|trans }}{% endblock %}

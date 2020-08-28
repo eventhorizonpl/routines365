@@ -1,0 +1,15 @@
+{% extends 'frontend/routine/show.html.twig' %}
+
+{% block routine_content %}
+    <p>
+        {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
+        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
+            <i class="fas fa-star"></i> {{ 'Complete routine'|trans }}
+        </a>
+    </p>
+    <p>
+        {% for completed_routine in routine.completedRoutines|slice(-7) %}
+            <span class="badge badge-success m-1 p-3"><i class="fas fa-star"></i><br><br>{{ completed_routine.createdAt|date('Y-m-d') }}<br><br>{{ completed_routine.minutesDevoted }}</span>
+        {% endfor %}
+    </p>
+{% endblock %}

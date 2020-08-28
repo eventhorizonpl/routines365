@@ -35,7 +35,7 @@
                                 <th scope="row" style="width: 20%;">{{ 'Title'|trans }}</th>
                                 <td>
                                     {% if note.title %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -45,7 +45,7 @@
                                 <th scope="row">{{ 'Content'|trans }}</th>
                                 <td>
                                     {% if note.content %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -137,4 +137,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Note details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Note details'|trans }}{% endblock %}

@@ -49,7 +49,7 @@
                 <tbody>
                     {% for reminder_message in reminder_messages %}
                         <tr>
-                            <td>{{ reminder_message.uuid }}</td>
+                            <td><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></td>
                             <td>
                                 {% if reminder_message.reminder.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': reminder_message.reminder.user.uuid}) }}">{{ reminder_message.reminder.user.email }}</a>

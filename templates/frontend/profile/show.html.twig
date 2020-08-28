@@ -3,17 +3,17 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            {% include('frontend_settings_nav.html.twig') %}
-            <div class="card text-white bg-secondary">
+            <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Profile details'|trans }}
-                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_profile_edit') }}">
+                    <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_profile_edit') }}">
                         <i class="fas fa-edit"></i>
                         {{ 'Edit'|trans }}
                     </a>
+                    {% include('frontend_settings_nav.html.twig') %}
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-dark">
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
@@ -31,7 +31,7 @@
                                 <th scope="row">{{ 'Show motivational messages'|trans }}</th>
                                 <td>
                                     {% if profile.showMotivationalMessages %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -53,4 +53,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Profile details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Profile details'|trans }}{% endblock %}

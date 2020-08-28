@@ -46,7 +46,7 @@ class GoalController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $goalManager->save($goal, $this->getUser());
 
-            return $this->redirectToRoute('frontend_routine_show', [
+            return $this->redirectToRoute('frontend_routine_show_goals', [
                 'uuid' => $routine->getUuid(),
             ]);
         }
@@ -100,7 +100,7 @@ class GoalController extends AbstractController
             ]);
         }
 
-        return $this->redirectToRoute('frontend_routine_show', [
+        return $this->redirectToRoute('frontend_routine_show_goals', [
             'uuid' => $goal->getRoutine()->getUuid(),
         ]);
     }
@@ -121,7 +121,7 @@ class GoalController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $goalManager->save($goal, $this->getUser());
 
-            return $this->redirectToRoute('frontend_routine_show', [
+            return $this->redirectToRoute('frontend_routine_show_goals', [
                 'uuid' => $goal->getRoutine()->getUuid(),
             ]);
         }
@@ -150,7 +150,7 @@ class GoalController extends AbstractController
             $goalManager->softDelete($goal, $this->getUser());
         }
 
-        return $this->redirectToRoute('frontend_routine_show', [
+        return $this->redirectToRoute('frontend_routine_show_goals', [
             'uuid' => $goal->getRoutine()->getUuid(),
         ]);
     }

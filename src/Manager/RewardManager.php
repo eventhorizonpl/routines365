@@ -63,6 +63,8 @@ class RewardManager
 
         if ($reward->getNumberOfCompletions() >= $reward->getRequiredNumberOfCompletions()) {
             $reward->setIsAwarded(true);
+        } else {
+            $reward->setIsAwarded(false);
         }
 
         $errors = $this->validate($reward);

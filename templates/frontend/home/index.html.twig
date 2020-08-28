@@ -7,8 +7,10 @@
         <hr class="my-4">
         <p>{{ 'Routines365'|trans }}</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">{{ 'Register'|trans }}</a>
-            <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button">{{ 'Login'|trans }}</a>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">{{ 'Register'|trans }}</a>
+                <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button">{{ 'Login'|trans }}</a>
+            {% endif %}
         </p>
     </div>
 {% endblock %}

@@ -3,13 +3,13 @@
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Edit User'|trans }}</li>
+    <li class="breadcrumb-item active">{{ 'Edit user'|trans }}</li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Edit User'|trans }}
+            {{ 'Edit user'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
@@ -26,4 +26,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Edit User'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Edit user'|trans }}{% endblock %}

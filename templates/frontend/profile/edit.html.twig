@@ -3,10 +3,14 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            {% include('frontend_settings_nav.html.twig') %}
-            <div class="card">
+            <div class="card bg-dark text-white">
                 <div class="card-header">
-                    {{ 'Edit Profile'|trans }}
+                    {{ 'Edit profile'|trans }}
+                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_profile_show') }}">
+                        <i class="fas fa-times"></i>
+                        {{ 'Close'|trans }}
+                    </a>
+                    {% include('frontend_settings_nav.html.twig') %}
                 </div>
                 <div class="card-body">
                     {{ include('frontend/profile/_form.html.twig', {'button_label': 'Update'|trans}) }}
@@ -16,4 +20,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Edit Profile'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Edit profile'|trans }}{% endblock %}

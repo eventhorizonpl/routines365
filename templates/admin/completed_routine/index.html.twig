@@ -41,7 +41,7 @@
                 <tbody>
                     {% for completed_routine in completed_routines %}
                         <tr>
-                            <td>{{ completed_routine.uuid }}</td>
+                            <td><a href="{{ path('admin_completed_routine_show', {'uuid': completed_routine.uuid}) }}">{{ completed_routine.uuid }}</a></td>
                             <td>
                                 {% if completed_routine.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': completed_routine.user.uuid}) }}">{{ completed_routine.user.email }}</a>
@@ -49,14 +49,14 @@
                             </td>
                             <td>
                                 {% if completed_routine.comment %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if completed_routine.minutesDevoted %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

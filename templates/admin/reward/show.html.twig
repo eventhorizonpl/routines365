@@ -35,7 +35,7 @@
                                 <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
                                 <td>
                                     {% if reward.name %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -45,7 +45,7 @@
                                 <th scope="row">{{ 'Description'|trans }}</th>
                                 <td>
                                     {% if reward.description %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -55,7 +55,7 @@
                                 <th scope="row">{{ 'Is awarded'|trans }}</th>
                                 <td>
                                     {% if reward.isAwarded %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -65,7 +65,7 @@
                                 <th scope="row">{{ 'Number of completions'|trans }}</th>
                                 <td>
                                     {% if reward.numberOfCompletions %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -75,7 +75,7 @@
                                 <th scope="row">{{ 'Required number of completions'|trans }}</th>
                                 <td>
                                     {% if reward.requiredNumberOfCompletions %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -171,4 +171,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Reward details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Reward details'|trans }}{% endblock %}

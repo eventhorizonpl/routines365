@@ -35,7 +35,7 @@
                                 <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
                                 <td>
                                     {% if routine.name %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -45,7 +45,7 @@
                                 <th scope="row">{{ 'Description'|trans }}</th>
                                 <td>
                                     {% if routine.description %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -59,7 +59,7 @@
                                 <th scope="row">{{ 'Is enabled'|trans }}</th>
                                 <td>
                                     {% if routine.isEnabled %}
-                                        <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
@@ -203,4 +203,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Routine details'|trans }}{% endblock %}

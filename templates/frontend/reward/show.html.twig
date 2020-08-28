@@ -3,10 +3,10 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            <div class="card text-white bg-secondary">
+            <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ reward.name }}
-                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}">
+                    <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}">
                         <i class="fas fa-edit"></i>
                         {{ 'Edit'|trans }}
                     </a>
@@ -21,16 +21,28 @@
                     {% endif %}
                     {% if reward.routine %}
                         <p class="card-text">
-                            <a href="{{ path('frontend_routine_show', {'uuid': reward.routine.uuid}) }}">
+                            <a href="{{ path('frontend_routine_show_rewards', {'uuid': reward.routine.uuid}) }}">
                                 {{ reward.routine.name }}
                             </a>
                         </p>
                     {% endif %}
                     <p class="card-text">{{ reward.description }}</p>
+                    <p>
+                        <span>{{ 'Number of completions'|trans }}: {{ reward.numberOfCompletions }}</span>
+                        <span class="ml-3">{{ 'Required number of completions'|trans }}: {{ reward.requiredNumberOfCompletions }}</span>
+                    </p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ reward.numberOfCompletionsPercent }}%" aria-valuenow="{{ reward.numberOfCompletionsPercent }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: {{ 100 - reward.numberOfCompletionsPercent }}%" aria-valuenow="{{ 100 - reward.numberOfCompletionsPercent }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Reward details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Reward details'|trans }}{% endblock %}

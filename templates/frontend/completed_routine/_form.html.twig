@@ -5,12 +5,12 @@
     {{ form_row(form.comment) }}
 
     <hr>
-    <button class="btn btn-primary">
-        <i class="fas fa-save"></i>
-        {{ button_label|default('Save'|trans) }}
-    </button>
-    <a class="btn btn-info float-right" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">
-        <i class="fas fa-times"></i>
-        {{ 'Close'|trans }}
-    </a>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary">
+                <i class="fas fa-save"></i>
+                {{ button_label|default('Save'|trans) }}
+            </button>
+        </div>
+    </div>
 {{ form_end(form) }}

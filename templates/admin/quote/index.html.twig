@@ -41,6 +41,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th {% if quotes.isSorted('q.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'UUID'|trans, 'q.uuid') }}</th>
                         <th {% if quotes.isSorted('q.Author') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Author'|trans, 'q.author') }}</th>
                         <th {% if quotes.isSorted('q.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Content'|trans, 'q.content') }}</th>
                         <th {% if quotes.isSorted('q.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Type'|trans, 'q.type') }}</th>
@@ -54,12 +55,13 @@
                 <tbody>
                     {% for quote in quotes %}
                         <tr>
+                            <td><a href="{{ path('admin_quote_show', {'uuid': quote.uuid}) }}">{{ quote.uuid }}</a></td>
                             <td>{{ quote.author }}</td>
                             <td>{{ quote.content }}</td>
                             <td>{{ quote.type }}</td>
                             <td>
                                 {% if quote.isVisible %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

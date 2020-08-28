@@ -10,28 +10,24 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Security;
 
 class NoteType extends AbstractType
 {
-    private Security $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $note = $options['data'];
 
         $builder
-            ->add('content', TextareaType::class)
+            ->add('content', TextareaType::class, [
+                'attr' => [
+                    'rows' => 7,
+                ],
+            ])
             ->add('title')
         ;
 
         if (null === $note->getRoutine()) {
-            $user = $this->security->getUser();
+            $user = $note->getUser();
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
@@ -41,6 +37,7 @@ class NoteType extends AbstractType
                         ->orderBy('n.name', 'ASC')
                         ->setParameter('user', $user);
                 },
+                'required' => false,
             ]);
         }
     }

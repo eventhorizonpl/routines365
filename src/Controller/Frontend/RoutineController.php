@@ -75,7 +75,55 @@ class RoutineController extends AbstractController
     {
         $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
 
-        return $this->render('frontend/routine/show.html.twig', [
+        return $this->render('frontend/routine/show_completed_routines.html.twig', [
+            'routine' => $routine,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/goals", name="show_goals", methods={"GET"})
+     */
+    public function showGoals(Routine $routine): Response
+    {
+        $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
+
+        return $this->render('frontend/routine/show_goals.html.twig', [
+            'routine' => $routine,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/notes", name="show_notes", methods={"GET"})
+     */
+    public function showNotes(Routine $routine): Response
+    {
+        $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
+
+        return $this->render('frontend/routine/show_notes.html.twig', [
+            'routine' => $routine,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/reminders", name="show_reminders", methods={"GET"})
+     */
+    public function showReminders(Routine $routine): Response
+    {
+        $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
+
+        return $this->render('frontend/routine/show_reminders.html.twig', [
+            'routine' => $routine,
+        ]);
+    }
+
+    /**
+     * @Route("/{uuid}/rewards", name="show_rewards", methods={"GET"})
+     */
+    public function showRewards(Routine $routine): Response
+    {
+        $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
+
+        return $this->render('frontend/routine/show_rewards.html.twig', [
             'routine' => $routine,
         ]);
     }

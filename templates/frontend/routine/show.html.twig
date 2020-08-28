@@ -3,10 +3,10 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            <div class="card text-white bg-secondary">
+            <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ routine.name }}
-                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_routine_edit', {'uuid': routine.uuid}) }}">
+                    <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_routine_edit', {'uuid': routine.uuid}) }}">
                         <i class="fas fa-edit"></i>
                         {{ 'Edit'|trans }}
                     </a>
@@ -21,214 +21,20 @@
                     <p>
                         {{ 'Is enabled'|trans }}:
                         {% if routine.isEnabled %}
-                            <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                            <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                         {% else %}
                             <span class="badge badge-danger">{{ 'No'|trans }}</span>
                         {% endif %}
                     </p>
                     <hr>
-                    <p>
-                        {{ 'Rewards'|trans }}: {{ routine.rewards|length }}
-                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reward_new', {'uuid': routine.uuid}) }}">
-                            <i class="fas fa-award"></i> {{ 'Create Reward'|trans }}
-                        </a>
-                    </p>
+                    {% include('frontend/routine/_navbar.html.twig') %}
                     <hr>
-                    <p>
-                        {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
-                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
-                            <i class="fas fa-star"></i> {{ 'Create Completed routine'|trans }}
-                        </a>
-                        <br><br>
-                        {% for completed_routine in routine.completedRoutines|slice(-7) %}
-                            <span class="badge badge-success m-1 p-3"><i class="fas fa-star"></i><br><br>{{ completed_routine.createdAt|date('Y-m-d') }}<br><br>{{ completed_routine.minutesDevoted }}</span>
-                        {% endfor %}
-                    </p>
-                    <hr>
-                    <p>
-                        {{ 'Reminders'|trans }}: {{ routine.reminders|length }}
-                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reminder_new', {'uuid': routine.uuid}) }}">
-                            <i class="fas fa-clock"></i>
-                            {{ 'Create Reminder'|trans }}
-                        </a>
-                    </p>
-                    <div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>{{ 'Hour'|trans }}</th>
-                                    <th>{{ 'Minutes before'|trans }}</th>
-                                    <th>{{ 'Is enabled'|trans }}</th>
-                                    <th>{{ 'Send email'|trans }}</th>
-                                    <th>{{ 'Send sms'|trans }}</th>
-                                    <th>{{ 'Send motivational message'|trans }}</th>
-                                    <th>{{ 'Type'|trans }}</th>
-                                    <th>{{ 'Next reminder at'|trans }}</th>
-                                    <th>{{ 'Actions'|trans }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for reminder in routine.reminders %}
-                                    <tr>
-                                        <td>{{ reminder.hour ? reminder.hour|date('H:i') : '' }}</td>
-                                        <td>{{ reminder.minutesBefore }}</td>
-                                        <td>
-                                            {% if reminder.isEnabled %}
-                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                                            {% else %}
-                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if reminder.sendEmail %}
-                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                                            {% else %}
-                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if reminder.sendSms %}
-                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                                            {% else %}
-                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if reminder.sendMotivationalMessage %}
-                                                <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
-                                            {% else %}
-                                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>{{ reminder.type }}</td>
-                                        <td>{{ reminder.nextDate ? reminder.nextDate|date('Y-m-d H:i:s') : '' }}</td>
-                                        <td style="width: 10%;">
-                                            <a class="btn btn-info btn-sm m-1" href="{{ path('frontend_reminder_edit', {'uuid': reminder.uuid}) }}">
-                                                <i class="fas fa-edit"></i>
-                                                {{ 'Edit'|trans }}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="4">
-                                            {{ 'You do not have any Reminders.'|trans }}<br>
-                                            <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_reminder_new', {'uuid': routine.uuid}) }}">
-                                                <i class="fas fa-clock"></i>
-                                                {{ 'Create Reminder'|trans }}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <hr>
-                    <p>
-                        {{ 'Notes'|trans }}: {{ routine.notes|length }}
-                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid}) }}">
-                            <i class="fas fa-pen-fancy"></i>
-                            {{ 'Create Note'|trans }}
-                        </a>
-                    </p>
-                    <hr>
-                    <p>
-                        {{ 'Goals'|trans }}: {{ routine.goals|length }}
-                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_goal_new', {'uuid': routine.uuid}) }}">
-                            <i class="fas fa-bullseye"></i>
-                            {{ 'Create Goal'|trans }}
-                        </a>
-                    </p>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#not-completed">
-                                {{ 'Not completed'|trans }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#completed">
-                                {{ 'Completed'|trans }}
-                            </a>
-                        </li>
-                    </ul>
-                    <div id="myTabContent" class="tab-content mt-1">
-                        <div class="tab-pane fade active show" id="not-completed">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>{{ 'Name'|trans }}</th>
-                                        <th>{{ 'Description'|trans }}</th>
-                                        <th>{{ 'Updated at'|trans }}</th>
-                                        <th>{{ 'Actions'|trans }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for goal in routine.goalsNotCompleted %}
-                                        <tr>
-                                            <td>{{ goal.name }}</td>
-                                            <td>{{ goal.description }}</td>
-                                            <td>{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                            <td style="width: 25%;">
-                                                <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid}) }}">
-                                                    <i class="fas fa-check"></i>
-                                                    {{ 'Complete'|trans }}
-                                                </a>
-                                                <a class="btn btn-info btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid}) }}">
-                                                    <i class="fas fa-edit"></i>
-                                                    {{ 'Edit'|trans }}
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {% else %}
-                                        <tr>
-                                            <td colspan="4">
-                                                {{ 'You do not have any Goals.'|trans }}<br>
-                                                <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_new', {'uuid': routine.uuid}) }}">
-                                                    <i class="fas fa-bullseye"></i>
-                                                    {{ 'Create Goal'|trans }}
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="completed">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>{{ 'Name'|trans }}</th>
-                                        <th>{{ 'Description'|trans }}</th>
-                                        <th>{{ 'Updated at'|trans }}</th>
-                                        <th>{{ 'Actions'|trans }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for goal in routine.goalsCompleted %}
-                                        <tr>
-                                            <td>{{ goal.name }}</td>
-                                            <td>{{ goal.description }}</td>
-                                            <td>{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                            <td style="width: 25%;">
-                                                <a class="btn btn-info btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
-                                            </td>
-                                        </tr>
-                                    {% else %}
-                                        <tr>
-                                            <td colspan="4">
-                                                {{ 'You do not have any Goals.'|trans }}<br>
-                                                <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_new', {'uuid': routine.uuid}) }}"><i class="fas fa-bullseye"></i> {{ 'Create Goal'|trans }}</a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    {% block routine_content %}
+                    {% endblock %}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routine details'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Routine details'|trans }}{% endblock %}

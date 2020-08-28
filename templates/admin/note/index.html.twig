@@ -41,7 +41,7 @@
                 <tbody>
                     {% for note in notes %}
                         <tr>
-                            <td>{{ note.uuid }}</td>
+                            <td><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></td>
                             <td>
                                 {% if note.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': note.user.uuid}) }}">{{ note.user.email }}</a>
@@ -49,14 +49,14 @@
                             </td>
                             <td>
                                 {% if note.title %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if note.content %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

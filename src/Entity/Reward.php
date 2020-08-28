@@ -154,6 +154,11 @@ class Reward
         return $this->numberOfCompletions;
     }
 
+    public function getNumberOfCompletionsPercent(): ?int
+    {
+        return (int) (($this->getNumberOfCompletions() / $this->getRequiredNumberOfCompletions()) * 100);
+    }
+
     public function setNumberOfCompletions(int $numberOfCompletions): self
     {
         $this->numberOfCompletions = $numberOfCompletions;

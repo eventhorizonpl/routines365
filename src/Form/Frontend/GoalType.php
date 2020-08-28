@@ -13,13 +13,18 @@ class GoalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $goal = $options['data'];
+
         $builder
             ->add('description', TextareaType::class, [
                 'required' => false,
             ])
-            ->add('isCompleted', YesNoType::class)
             ->add('name')
         ;
+
+        if (null !== $goal->getId()) {
+            $builder->add('isCompleted', YesNoType::class);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

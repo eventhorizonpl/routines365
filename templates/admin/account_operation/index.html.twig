@@ -51,7 +51,7 @@
                 <tbody>
                     {% for account_operation in account_operations %}
                         <tr>
-                            <td>{{ account_operation.uuid }}</td>
+                            <td><a href="{{ path('admin_account_operation_show', {'uuid': account_operation.uuid}) }}">{{ account_operation.uuid }}</a></td>
                             <td>
                                 {% if account_operation.account and account_operation.account.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': account_operation.account.user.uuid}) }}">{{ account_operation.account.user.email }}</a>

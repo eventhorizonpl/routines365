@@ -1,3 +1,5 @@
+{% set route = app.request.get('_route') %}
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('frontend_home') }}">{{ 'Routines365'|trans }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,13 +10,13 @@
         <ul class="navbar-nav mr-auto">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('frontend_routine_index') }}"><i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_routine_edit', 'frontend_routine_index', 'frontend_routine_new', 'frontend_routine_show'] %} active{% endif %}" href="{{ path('frontend_routine_index') }}"><i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('frontend_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_note_edit', 'frontend_note_index', 'frontend_note_new', 'frontend_note_show'] %} active{% endif %}" href="{{ path('frontend_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('frontend_reward_index') }}"><i class="fas fa-award"></i> {{ 'Rewards'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{{ path('frontend_reward_index') }}"><i class="fas fa-award"></i> {{ 'Rewards'|trans }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

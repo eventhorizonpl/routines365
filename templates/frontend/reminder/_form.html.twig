@@ -1,21 +1,40 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.hour) }}
-    {{ form_row(form.minutesBefore) }}
-    {{ form_row(form.sendEmail) }}
-    {{ form_row(form.sendSms) }}
-    {{ form_row(form.sendMotivationalMessage) }}
-    {{ form_row(form.type) }}
-    {{ form_row(form.isEnabled) }}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(form.hour) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.minutesBefore) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.type) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_row(form.sendEmail) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.sendSms) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.sendMotivationalMessage) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.isEnabled) }}
+        </div>
+    </div>
 
     <hr>
-    <button class="btn btn-primary">
-        <i class="fas fa-save"></i>
-        {{ button_label|default('Save'|trans) }}
-    </button>
-    <a class="btn btn-info float-right" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">
-        <i class="fas fa-times"></i>
-        {{ 'Close'|trans }}
-    </a>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary">
+                <i class="fas fa-save"></i>
+                {{ button_label|default('Save'|trans) }}
+            </button>
+        </div>
+    </div>
 {{ form_end(form) }}

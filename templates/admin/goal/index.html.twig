@@ -42,7 +42,7 @@
                 <tbody>
                     {% for goal in goals %}
                         <tr>
-                            <td>{{ goal.uuid }}</td>
+                            <td><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></td>
                             <td>
                                 {% if goal.user %}
                                     <a href="{{ path('admin_user_show', {'uuid': goal.user.uuid}) }}">{{ goal.user.email }}</a>
@@ -50,21 +50,21 @@
                             </td>
                             <td>
                                 {% if goal.name %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if goal.description %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if goal.isCompleted %}
-                                    <span class="badge badge-primary">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                 {% else %}
                                     <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                 {% endif %}

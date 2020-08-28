@@ -18,7 +18,7 @@ class Note
 
     /**
      * @Assert\Valid
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="notes", targetEntity=Routine::class)
      */
     private ?Routine $routine;
