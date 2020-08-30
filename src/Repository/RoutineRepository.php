@@ -69,7 +69,8 @@ class RoutineRepository extends ServiceEntityRepository
     public function findByParametersForFrontend(User $user, array $parameters = []): array
     {
         $queryBuilder = $this->createQueryBuilder('r')
-            ->select('r')
+            ->select('r, rcr')
+            ->leftJoin('r.completedRoutines', 'rcr')
             ->where('r.deletedAt IS NULL')
             ->andWhere('r.user = :user')
             ->addOrderBy('r.isEnabled', 'DESC')
