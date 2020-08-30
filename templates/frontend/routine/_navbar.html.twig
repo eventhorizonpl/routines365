@@ -2,18 +2,28 @@
 
 <ul class="nav nav-tabs mt-2">
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show'] %} active{% endif %}" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">{{ 'Completed routines'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_routine_show'] %} active{% endif %}" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}" id="completed_routines_link"{% if route in ['frontend_routine_show'] and routine.reminders|length and routine.completedRoutines|length == 0 %} data-placement="top" data-trigger="hover" data-toggle="popover" title="{{ 'Complete routine'|trans }}" data-content="{{ 'Remember about marking routine as completed. This will allow you to track your progress.'|trans }}"{% endif %}>
+            {{ 'Completed routines'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_goals'] %} active{% endif %}" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}">{{ 'Goals'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_routine_show_goals'] %} active{% endif %}" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}">
+            {{ 'Goals'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_notes'] %} active{% endif %}" href="{{ path('frontend_routine_show_notes', {'uuid': routine.uuid}) }}">{{ 'Notes'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_routine_show_notes'] %} active{% endif %}" href="{{ path('frontend_routine_show_notes', {'uuid': routine.uuid}) }}">
+            {{ 'Notes'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_reminders'] %} active{% endif %}" href="{{ path('frontend_routine_show_reminders', {'uuid': routine.uuid}) }}">{{ 'Reminders'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_routine_show_reminders'] %} active{% endif %}" href="{{ path('frontend_routine_show_reminders', {'uuid': routine.uuid}) }}" id="reminders_link"{% if routine.reminders|length == 0 %} data-placement="top" data-trigger="hover" data-toggle="popover" title="{{ 'Create reminder'|trans }}" data-content="{{ 'The first thing you should do is to create a reminder.'|trans }}"{% endif %}>
+            {{ 'Reminders'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_rewards'] %} active{% endif %}" href="{{ path('frontend_routine_show_rewards', {'uuid': routine.uuid}) }}">{{ 'Rewards'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_routine_show_rewards'] %} active{% endif %}" href="{{ path('frontend_routine_show_rewards', {'uuid': routine.uuid}) }}">
+            {{ 'Rewards'|trans }}
+        </a>
     </li>
 </ul>

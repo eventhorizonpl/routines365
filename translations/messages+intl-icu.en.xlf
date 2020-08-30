@@ -629,6 +629,14 @@
         <source>Enter your email address and we will send you a link to reset your password.</source>
         <target>Enter your email address and we will send you a link to reset your password.</target>
       </trans-unit>
+      <trans-unit id="qrIh8os" resname="Remember about marking routine as completed. This will allow you to track your progress.">
+        <source>Remember about marking routine as completed. This will allow you to track your progress.</source>
+        <target>Remember about marking routine as completed. This will allow you to track your progress.</target>
+      </trans-unit>
+      <trans-unit id="x631MU7" resname="The first thing you should do is to create a reminder.">
+        <source>The first thing you should do is to create a reminder.</source>
+        <target>The first thing you should do is to create a reminder.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

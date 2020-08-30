@@ -89,7 +89,7 @@ class GoalController extends AbstractController
             );
         }
 
-        if (true === $reward->getIsAwarded()) {
+        if ((null !== $reward) && (true === $reward->getIsAwarded())) {
             $this->addFlash(
                 'success',
                 $translator->trans('Congratulations for awarding your reward!')

@@ -37,4 +37,10 @@
     </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('frontend-routines') }}
+{% endblock %}
+
 {% block title %}{{ parent() }} - {{ 'Routine details'|trans }}{% endblock %}
