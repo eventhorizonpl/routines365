@@ -38,6 +38,24 @@ class Profile
     private ?string $country;
 
     /**
+     * @Assert\Length(
+     *   max = 64
+     * )
+     * @Assert\Type("string")
+     * @ORM\Column(length=64, nullable=true, type="string")
+     */
+    private ?string $firstName;
+
+    /**
+     * @Assert\Length(
+     *   max = 64
+     * )
+     * @Assert\Type("string")
+     * @ORM\Column(length=64, nullable=true, type="string")
+     */
+    private ?string $lastName;
+
+    /**
      * @AssertPhoneNumber(type="mobile")
      * @ORM\Column(nullable=true, type="phone_number", unique=true)
      */
@@ -72,6 +90,8 @@ class Profile
 
     public function __construct()
     {
+        $this->firstName = null;
+        $this->lastName = null;
         $this->phone = null;
         $this->showMotivationalMessages = true;
         $this->theme = self::THEME_DARK;
@@ -90,6 +110,30 @@ class Profile
     public function setCountry(?string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(?string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(?string $lastName): self
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }

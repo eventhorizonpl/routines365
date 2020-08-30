@@ -19,6 +19,16 @@
                                 <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
                                 <td>{{ profile.user.email }}</td>
                             </tr>
+                            {% if true == constant('App\\Config::INVITATIONS_ENABLED') %}
+                                <tr>
+                                    <th scope="row">{{ 'First name'|trans }}</th>
+                                    <td>{{ profile.firstName }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ 'Last name'|trans }}</th>
+                                    <td>{{ profile.lastName }}</td>
+                                </tr>
+                            {% endif %}
                             <tr>
                                 <th scope="row">{{ 'Phone'|trans }}</th>
                                 <td>

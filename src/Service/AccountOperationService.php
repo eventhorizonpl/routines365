@@ -25,7 +25,8 @@ class AccountOperationService
         Account $account,
         string $description,
         int $emailNotifications,
-        int $smsNotifications
+        int $smsNotifications,
+        bool $topupReferrerAccount = true
     ): AccountOperation {
         $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
             $description,
@@ -35,6 +36,25 @@ class AccountOperationService
         );
         $accountOperation->setAccount($account);
         $this->accountOperationManager->save($accountOperation);
+
+        if ((null !== $account->getUser()->getReferrer()) && (true === $topupReferrerAccount)) {
+            $referrerAccount = $account->getUser()->getReferrer()->getAccount();
+            $referrerEmailNotifications = (int) ($emailNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
+            if ((0 < $emailNotifications) && (0 === $referrerEmailNotifications)) {
+                $referrerEmailNotifications = 1;
+            }
+            $referrerSmsNotifications = (int) ($smsNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
+            if ((0 < $smsNotifications) && (0 === $referrerSmsNotifications)) {
+                $referrerSmsNotifications = 1;
+            }
+            $referrerAccountOperation = $this->deposit(
+                $referrerAccount,
+                'Referrer bonus',
+                $referrerEmailNotifications,
+                $referrerSmsNotifications,
+                false
+            );
+        }
 
         return $accountOperation;
     }

@@ -637,6 +637,66 @@
         <source>The first thing you should do is to create a reminder.</source>
         <target>The first thing you should do is to create a reminder.</target>
       </trans-unit>
+      <trans-unit id="cC75Ie0" resname="First name">
+        <source>First name</source>
+        <target>First name</target>
+      </trans-unit>
+      <trans-unit id="e0iIBJR" resname="Last name">
+        <source>Last name</source>
+        <target>Last name</target>
+      </trans-unit>
+      <trans-unit id="UgDtWoC" resname="Referrer code">
+        <source>Referrer code</source>
+        <target>Referrer code</target>
+      </trans-unit>
+      <trans-unit id="jjUMhc4" resname="Referrer">
+        <source>Referrer</source>
+        <target>Referrer</target>
+      </trans-unit>
+      <trans-unit id="BzjuALY" resname="Recommendations">
+        <source>Recommendations</source>
+        <target>Recommendations</target>
+      </trans-unit>
+      <trans-unit id="plYQfpn" resname="Statistics">
+        <source>Statistics</source>
+        <target>Statistics</target>
+      </trans-unit>
+      <trans-unit id="szLDSS1" resname="Configuration">
+        <source>Configuration</source>
+        <target>Configuration</target>
+      </trans-unit>
+      <trans-unit id="oPtc3i8" resname="Invitations enabled">
+        <source>Invitations enabled</source>
+        <target>Invitations enabled</target>
+      </trans-unit>
+      <trans-unit id="MPI1Iok" resname="Please provide your first and last name!">
+        <source>Please provide your first and last name!</source>
+        <target>Please provide your first and last name!</target>
+      </trans-unit>
+      <trans-unit id="1uQjpNp" resname="%firstName% %lastName% wants to invite you to Routines365.com">
+        <source>%firstName% %lastName% wants to invite you to Routines365.com</source>
+        <target>%firstName% %lastName% wants to invite you to Routines365.com</target>
+      </trans-unit>
+      <trans-unit id="B1pIYOL" resname="Email was sent. You can invite another person.">
+        <source>Email was sent. You can invite another person.</source>
+        <target>Email was sent. You can invite another person.</target>
+      </trans-unit>
+      <trans-unit id="H9muFge" resname="Invite">
+        <source>Invite</source>
+        <target>Invite</target>
+      </trans-unit>
+      <trans-unit id="aJcSg4Q" resname="Subject">
+        <source>Subject</source>
+        <target>Subject</target>
+      </trans-unit>
+      <trans-unit id="9vRoj.I" resname="Send">
+        <source>Send</source>
+        <target>Send</target>
+      </trans-unit>
+      <trans-unit id="26QDi2U" resname="Send invitation">
+        <source>Send invitation</source>
+        <target>Send invitation</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

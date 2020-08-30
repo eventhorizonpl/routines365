@@ -32,7 +32,7 @@ class AccountOperation
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="accountOperation", targetEntity=ReminderMessage::class)
      */
-    private ReminderMessage $reminderMessage;
+    private ?ReminderMessage $reminderMessage;
 
     /**
      * @Assert\Length(
@@ -76,6 +76,7 @@ class AccountOperation
     {
         $this->description = '';
         $this->emailNotifications = 0;
+        $this->reminderMessage = null;
         $this->smsNotifications = 0;
     }
 

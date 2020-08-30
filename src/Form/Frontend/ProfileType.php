@@ -2,11 +2,13 @@
 
 namespace App\Form\Frontend;
 
+use App\Config;
 use App\Entity\Profile;
 use App\Form\BaseProfileType;
 use App\Form\Type\YesNoType;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -34,5 +36,18 @@ class ProfileType extends BaseProfileType
                 'required' => true,
             ])
         ;
+
+        if (true === Config::INVITATIONS_ENABLED) {
+            $builder
+                ->add('firstName', TextType::class, [
+                    'help' => 'First name is required for sending invitations.',
+                    'required' => false,
+                ])
+                ->add('lastName', TextType::class, [
+                    'help' => 'Last name is required for sending invitations.',
+                    'required' => false,
+                ])
+            ;
+        }
     }
 }

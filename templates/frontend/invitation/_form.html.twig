@@ -1,0 +1,28 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.email) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ 'Subject'|trans }}: {{ subject }}
+        </div>
+        <hr>
+        <div class="col-md-12">
+            {{ include('email/invitation_email_content.html.twig') }}
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary">
+                <i class="fas fa-envelope"></i>
+                {{ button_label|default('Send'|trans) }}
+            </button>
+        </div>
+    </div>
+{{ form_end(form) }}

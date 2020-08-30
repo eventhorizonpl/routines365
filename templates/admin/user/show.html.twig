@@ -42,6 +42,22 @@
                                 <td>{{ user.email }}</td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'First name'|trans }}</th>
+                                <td>
+                                    {% if user.profile %}
+                                        {{ user.profile.firstName }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Last name'|trans }}</th>
+                                <td>
+                                    {% if user.profile %}
+                                        {{ user.profile.lastName }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Country'|trans }}</th>
                                 <td>
                                     {% if user.profile %}
@@ -129,6 +145,10 @@
                                     {% endif %}
                                 </td>
                             </tr>
+                            <tr>
+                                <th scope="row">{{ 'Referrer code'|trans }}</th>
+                                <td>{{ user.referrerCode }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -166,6 +186,26 @@
                                         <ul>
                                             {% for note in user.notesAll %}
                                                 <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Referrer'|trans }}</th>
+                                <td>
+                                    {% if user.referrer %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.referrer.uuid}) }}">{{ user.referrer.email }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Recommendations'|trans }}</th>
+                                <td>
+                                    {% if user.recommendationsAll|length %}
+                                        <ul>
+                                            {% for recommendation in user.recommendationsAll %}
+                                                <li><a href="{{ path('admin_user_show', {'uuid': recommendation.uuid}) }}">{{ recommendation.email }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}

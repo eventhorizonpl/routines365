@@ -1,11 +1,38 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.phone) }}
-    {{ form_row(form.showMotivationalMessages) }}
-    {{ form_row(form.theme) }}
-    {{ form_row(form.timeZone) }}
-
+    {% if true == constant('App\\Config::INVITATIONS_ENABLED') %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.firstName) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.lastName) }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.phone) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.showMotivationalMessages) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.theme) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.timeZone) }}
+        </div>
+    </div>
     <hr>
     <div class="row">
         <div class="col-md-12 text-center">

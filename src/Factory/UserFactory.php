@@ -21,6 +21,7 @@ class UserFactory
     public function createUser(): User
     {
         $user = new User();
+        $user->setReferrerCode(Uuid::v4());
         $user->setUuid(Uuid::v4());
         $account = $this->accountFactory->createAccount();
         $account->setUser($user);

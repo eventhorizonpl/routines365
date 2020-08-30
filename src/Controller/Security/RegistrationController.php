@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Factory\UserFactory;
 use App\Form\Security\RegistrationFormType;
 use App\Manager\UserManager;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
 use App\Service\UserService;
@@ -39,16 +40,30 @@ class RegistrationController extends AbstractController
         Request $request,
         UserFactory $userFactory,
         UserManager $userManager,
+        UserRepository $userRepository,
         UserService $userService
     ): Response {
+        $referrerCode = $request->query->get('referrer_code');
         $user = $userFactory->createUser();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
+            if ((null !== $referrerCode) or ('' !== $referrerCode)) {
+                $referrer = $userRepository->findOneBy([
+                    'referrerCode' => $referrerCode,
+                ]);
+            } else {
+                $referrer = null;
+            }
+
             $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             $user->setIsEnabled(true);
             $user->setRoles([User::ROLE_USER]);
+
+            if (null !== $referrer) {
+                $user->setReferrer($referrer);
+            }
 
             $userManager->save($user);
             /*

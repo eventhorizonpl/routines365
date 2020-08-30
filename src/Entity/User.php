@@ -55,6 +55,17 @@ class User implements UserInterface
     private Profile $profile;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="referrer", targetEntity=User::class)
+     */
+    private Collection $recommendations;
+
+    /**
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="recommendations", targetEntity=User::class)
+     */
+    private ?User $referrer = null;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reminder::class)
      */
     private Collection $reminders;
@@ -81,6 +92,13 @@ class User implements UserInterface
     private string $email;
 
     /**
+     * @Assert\NotNull
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isVerified;
+
+    /**
      * @Assert\Length(
      *   max = 255
      * )
@@ -92,19 +110,19 @@ class User implements UserInterface
     private string $password;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Uuid
+     * @ORM\Column(type="guid", unique=true)
+     */
+    private string $referrerCode;
+
+    /**
      * @Assert\Choice(callback="getRolesFormChoices", multiple=true)
      * @Assert\NotNull
      * @Assert\Type("array")
      * @ORM\Column(type="json")
      */
     private array $roles = [];
-
-    /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
-     * @ORM\Column(type="boolean")
-     */
-    private bool $isVerified;
 
     public function __construct()
     {
@@ -114,14 +132,72 @@ class User implements UserInterface
         $this->isEnabled = false;
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
+        $this->recommendations = new ArrayCollection();
+        $this->referrer = null;
         $this->reminders = new ArrayCollection();
         $this->rewards = new ArrayCollection();
         $this->routines = new ArrayCollection();
     }
 
+    public function __serialize(): array
+    {
+        return [
+            'account' => $this->getAccount(),
+            'completedRoutines' => $this->getCompletedRoutinesAll(),
+            'createdAt' => $this->getCreatedAt(),
+            'createdBy' => $this->getCreatedBy(),
+            'deletedAt' => $this->getDeletedAt(),
+            'deletedBy' => $this->getDeletedBy(),
+            'goals' => $this->getGoalsAll(),
+            'id' => $this->getId(),
+            'isEnabled' => $this->getIsEnabled(),
+            'isVerified' => $this->getIsVerified(),
+            'notes' => $this->getNotesAll(),
+            'profile' => $this->getProfile(),
+            'recommendations' => $this->getRecommendationsAll(),
+            'reminders' => $this->getRemindersAll(),
+            'rewards' => $this->getRewardsAll(),
+            'routines' => $this->getRoutinesAll(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+            'referrerCode' => $this->getReferrerCode(),
+            'roles' => $this->getRoles(),
+            'updatedAt' => $this->getUpdatedAt(),
+            'updatedBy' => $this->getUpdatedBy(),
+            'uuid' => $this->getUuid(),
+        ];
+    }
+
     public function __toString(): string
     {
         return $this->getUuid();
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->account = $data['account'];
+        $this->completedRoutines = $data['completedRoutines'];
+        $this->createdAt = $data['createdAt'];
+        $this->createdBy = $data['createdBy'];
+        $this->deletedAt = $data['deletedAt'];
+        $this->deletedBy = $data['deletedBy'];
+        $this->goals = $data['goals'];
+        $this->notes = $data['notes'];
+        $this->id = $data['id'];
+        $this->isEnabled = $data['isEnabled'];
+        $this->isVerified = $data['isVerified'];
+        $this->profile = $data['profile'];
+        $this->recommendations = $data['recommendations'];
+        $this->reminders = $data['reminders'];
+        $this->rewards = $data['rewards'];
+        $this->routines = $data['routines'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+        $this->referrerCode = $data['referrerCode'];
+        $this->roles = $data['roles'];
+        $this->updatedAt = $data['updatedAt'];
+        $this->updatedBy = $data['updatedBy'];
+        $this->uuid = $data['uuid'];
     }
 
     public function getAccount(): Account
@@ -140,7 +216,7 @@ class User implements UserInterface
     {
         if (false === $this->completedRoutines->contains($completedRoutine)) {
             $this->completedRoutines->add($completedRoutine);
-            $completedRoutine->setRoutine($this);
+            $completedRoutine->setUser($this);
         }
 
         return $this;
@@ -214,6 +290,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getIsVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
     public function addNote(Note $note): self
     {
         if (false === $this->notes->contains($note)) {
@@ -265,6 +353,61 @@ class User implements UserInterface
     public function setProfile(Profile $profile): self
     {
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function addRecommendation(self $recommendation): self
+    {
+        if (false === $this->recommendations->contains($note)) {
+            $this->recommendations->add($recommendation);
+            $recommendation->setReferrer($this);
+        }
+
+        return $this;
+    }
+
+    public function getRecommendations(): Collection
+    {
+        return $this->recommendations->filter(function (self $recommendation) {
+            return null === $recommendation->getDeletedAt();
+        });
+    }
+
+    public function getRecommendationsAll(): Collection
+    {
+        return $this->recommendations;
+    }
+
+    public function removeRecommendation(self $recommendation): self
+    {
+        if (true === $this->recommendations->contains($recommendation)) {
+            $this->recommendations->removeElement($recommendation);
+        }
+
+        return $this;
+    }
+
+    public function getReferrer(): ?User
+    {
+        return $this->referrer;
+    }
+
+    public function setReferrer(?User $referrer): self
+    {
+        $this->referrer = $referrer;
+
+        return $this;
+    }
+
+    public function getReferrerCode(): ?string
+    {
+        return $this->referrerCode;
+    }
+
+    public function setReferrerCode(string $referrerCode): self
+    {
+        $this->referrerCode = $referrerCode;
 
         return $this;
     }
@@ -398,17 +541,5 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
-    }
-
-    public function getIsVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
     }
 }

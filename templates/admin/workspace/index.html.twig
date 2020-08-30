@@ -10,58 +10,80 @@
             {{ 'Workspace'|trans }}
         </div>
         <div class="card-body">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td style="width: 20%;"><a href="{{ path('admin_user_index') }}">{{ 'Accounts'|trans }}</a></td>
-                        <td>{{ accounts_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_account_operation_index') }}">{{ 'Account operations'|trans }}</a></td>
-                        <td>{{ account_operations_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_completed_routine_index') }}">{{ 'Completed routines'|trans }}</a></td>
-                        <td>{{ completed_routines_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
-                        <td>{{ goals_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_kpi_index') }}">{{ 'KPIs'|trans }}</a></td>
-                        <td>{{ kpis_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_note_index') }}">{{ 'Notes'|trans }}</a></td>
-                        <td>{{ notes_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_user_index') }}">{{ 'Profiles'|trans }}</a></td>
-                        <td>{{ profiles_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
-                        <td>{{ quotes_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_reminder_index') }}">{{ 'Reminders'|trans }}</a></td>
-                        <td>{{ reminders_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_reminder_message_index') }}">{{ 'Reminder messages'|trans }}</a></td>
-                        <td>{{ reminder_messages_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></td>
-                        <td>{{ routines_count }}</td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
-                        <td>{{ users_count }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table">
+                        <caption>{{ 'Statistics'|trans }}</caption>
+                        <tbody>
+                            <tr>
+                                <td style="width: 40%;"><a href="{{ path('admin_user_index') }}">{{ 'Accounts'|trans }}</a></td>
+                                <td>{{ accounts_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_account_operation_index') }}">{{ 'Account operations'|trans }}</a></td>
+                                <td>{{ account_operations_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_completed_routine_index') }}">{{ 'Completed routines'|trans }}</a></td>
+                                <td>{{ completed_routines_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
+                                <td>{{ goals_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_kpi_index') }}">{{ 'KPIs'|trans }}</a></td>
+                                <td>{{ kpis_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_note_index') }}">{{ 'Notes'|trans }}</a></td>
+                                <td>{{ notes_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_user_index') }}">{{ 'Profiles'|trans }}</a></td>
+                                <td>{{ profiles_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
+                                <td>{{ quotes_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_reminder_index') }}">{{ 'Reminders'|trans }}</a></td>
+                                <td>{{ reminders_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_reminder_message_index') }}">{{ 'Reminder messages'|trans }}</a></td>
+                                <td>{{ reminder_messages_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></td>
+                                <td>{{ routines_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
+                                <td>{{ users_count }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table">
+                        <caption>{{ 'Configuration'|trans }}</caption>
+                        <tbody>
+                            <tr>
+                                <td style="width: 40%;">{{ 'Invitations enabled'|trans }}</td>
+                                <td>
+                                    {% if constant('App\\Config::INVITATIONS_ENABLED') %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

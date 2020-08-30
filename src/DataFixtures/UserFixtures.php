@@ -44,7 +44,7 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
             [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER]
         );
         $user = $this->userService->encodePassword($user, 'admin');
-        $phone = $this->phoneNumberUtil->parse('+48881573056');
+        $phone = $this->phoneNumberUtil->parse('+48881573000');
         $user->getProfile()->setPhone($phone);
         $user->getProfile()->setTimezone('Europe/Warsaw');
 
@@ -54,6 +54,7 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
         $kernel = $this->container->get('kernel');
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
             $users = [];
+            $referrerUser = null;
             for ($userId = 1; $userId <= self::REGULAR_USER_LIMIT; ++$userId) {
                 $user = $this->userFactory->createUserWithRequired(
                     'test'.(string) $userId.'@test.com',
@@ -62,11 +63,17 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
                 );
                 $user = $this->userService->encodePassword($user, 'test'.(string) $userId);
                 $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));
+                $user->getProfile()->setFirstName('test'.(string) $userId);
+                $user->getProfile()->setLastName('test'.(string) $userId);
                 $user->getProfile()->setShowMotivationalMessages(true);
                 $user->getProfile()->setPhone($phone);
                 $user->getProfile()->setTimezone('Europe/Warsaw');
+                if (null !== $referrerUser) {
+                    $user->setReferrer($referrerUser);
+                }
                 $users[] = $user;
                 $this->addReference(self::REGULAR_USER_REFERENCE.'_'.(string) $userId, $user);
+                $referrerUser = $user;
             }
             $this->userManager->bulkSave($users);
         }

@@ -18,6 +18,8 @@ class Account
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
+    public const TOPUP_REFERRER_ACCOUNT_MULTIPLIER = 0.05;
+
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", orphanRemoval=true, targetEntity=AccountOperation::class)
      * @ORM\OrderBy({"id" = "DESC"})
