@@ -2,6 +2,7 @@
 
 namespace App\Controller\Security;
 
+use App\Config;
 use App\Entity\User;
 use App\Factory\UserFactory;
 use App\Form\Security\RegistrationFormType;
@@ -43,6 +44,10 @@ class RegistrationController extends AbstractController
         UserRepository $userRepository,
         UserService $userService
     ): Response {
+        if (true !== Config::REGISTRATION_ENABLED) {
+            return $this->redirectToRoute('frontend_home');
+        }
+
         $referrerCode = $request->query->get('referrer_code');
         $user = $userFactory->createUser();
         $form = $this->createForm(RegistrationFormType::class, $user);

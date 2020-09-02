@@ -8,7 +8,9 @@
         <p>{{ 'Routines365'|trans }}</p>
         <p class="lead">
             {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">{{ 'Register'|trans }}</a>
+                {% if true == constant('App\\Config::REGISTRATION_ENABLED') %}
+                    <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">{{ 'Register'|trans }}</a>
+                {% endif %}
                 <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button">{{ 'Login'|trans }}</a>
             {% endif %}
         </p>
