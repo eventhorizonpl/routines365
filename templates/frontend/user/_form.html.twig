@@ -1,7 +1,16 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.plainPassword) }}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.oldPassword) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.plainPassword) }}
+        </div>
+    </div>
 
     <hr>
     <div class="row">

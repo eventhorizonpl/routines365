@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
@@ -23,7 +25,9 @@ class UserController extends AbstractController
      */
     public function edit(
         Request $request,
+        TranslatorInterface $translator,
         UserManager $userManager,
+        UserPasswordEncoderInterface $passwordEncoder,
         UserService $userService
     ): Response {
         $user = $this->getUser();
@@ -32,6 +36,14 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
+            if (false === $passwordEncoder->isPasswordValid($user, $form->get('oldPassword')->getData())) {
+                $this->addFlash(
+                    'danger',
+                    $translator->trans('Old password is not correct!')
+                );
+
+                return $this->redirectToRoute('frontend_user_change_password');
+            }
             if (null !== $form->get('plainPassword')->getData()) {
                 $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             }
