@@ -14,16 +14,23 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3">
+        {% if app.user.profile.country in constant('App\\Config::COUNTRIES_ALLOWED_FOR_SMS') %}
+            {% set width = 3 %}
+        {% else %}
+            {% set width = 4 %}
+        {% endif %}
+        <div class="col-md-{{ width }}">
             {{ form_row(form.sendEmail) }}
         </div>
-        <div class="col-md-3">
-            {{ form_row(form.sendSms) }}
-        </div>
-        <div class="col-md-3">
+        {% if app.user.profile.country in constant('App\\Config::COUNTRIES_ALLOWED_FOR_SMS') %}
+            <div class="col-md-{{ width }}">
+                {{ form_row(form.sendSms) }}
+            </div>
+        {% endif %}
+        <div class="col-md-{{ width }}">
             {{ form_row(form.sendMotivationalMessage) }}
         </div>
-        <div class="col-md-3">
+        <div class="col-md-{{ width }}">
             {{ form_row(form.isEnabled) }}
         </div>
     </div>

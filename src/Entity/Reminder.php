@@ -119,6 +119,7 @@ class Reminder
         $this->nextDate = null;
         $this->previousDate = null;
         $this->reminderMessages = new ArrayCollection();
+        $this->sendSms = false;
         $this->type = self::TYPE_DAILY;
     }
 
