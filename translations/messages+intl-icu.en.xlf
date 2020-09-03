@@ -697,6 +697,22 @@
         <source>Send invitation</source>
         <target>Send invitation</target>
       </trans-unit>
+      <trans-unit id="Jplw2wy" resname="Account available SMS notifications limit">
+        <source>Account available SMS notifications limit</source>
+        <target>Account available SMS notifications limit</target>
+      </trans-unit>
+      <trans-unit id="ePaqaod" resname="Countries allowed for SMS">
+        <source>Countries allowed for SMS</source>
+        <target>Countries allowed for SMS</target>
+      </trans-unit>
+      <trans-unit id="1OO5Pas" resname="Registration enabled">
+        <source>Registration enabled</source>
+        <target>Registration enabled</target>
+      </trans-unit>
+      <trans-unit id="0aFhj5F" resname="Account available email notifications limit">
+        <source>Account available email notifications limit</source>
+        <target>Account available email notifications limit</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

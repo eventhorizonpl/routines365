@@ -67,15 +67,25 @@ class AccountOperationController extends AbstractController
         Account $account,
         AccountOperationService $accountOperationService
     ): Response {
-        $accountOperation = $accountOperationService->deposit(
-            $account,
-            'Free email notifications',
-            10,
-            0
-        );
+        $emailNotifications = 10;
+        $smsNotifications = 0;
 
-        return $this->redirectToRoute('admin_account_operation_show', [
-            'uuid' => $accountOperation->getUuid(),
+        if ((true === $account->canDepositEmailNotifications($emailNotifications)) &&
+            (true === $account->canDepositSmsNotifications($smsNotifications))) {
+            $accountOperation = $accountOperationService->deposit(
+                $account,
+                'Free email notifications',
+                $emailNotifications,
+                $smsNotifications
+            );
+
+            return $this->redirectToRoute('admin_account_operation_show', [
+                'uuid' => $accountOperation->getUuid(),
+            ]);
+        }
+
+        return $this->redirectToRoute('admin_user_show', [
+            'uuid' => $account->getUser()->getUuid(),
         ]);
     }
 
@@ -86,15 +96,25 @@ class AccountOperationController extends AbstractController
         Account $account,
         AccountOperationService $accountOperationService
     ): Response {
-        $accountOperation = $accountOperationService->deposit(
-            $account,
-            'Free sms notifications',
-            0,
-            10
-        );
+        $emailNotifications = 0;
+        $smsNotifications = 10;
 
-        return $this->redirectToRoute('admin_account_operation_show', [
-            'uuid' => $accountOperation->getUuid(),
+        if ((true === $account->canDepositEmailNotifications($emailNotifications)) &&
+            (true === $account->canDepositSmsNotifications($smsNotifications))) {
+            $accountOperation = $accountOperationService->deposit(
+                $account,
+                'Free sms notifications',
+                $emailNotifications,
+                $smsNotifications
+            );
+
+            return $this->redirectToRoute('admin_account_operation_show', [
+                'uuid' => $accountOperation->getUuid(),
+            ]);
+        }
+
+        return $this->redirectToRoute('admin_user_show', [
+            'uuid' => $account->getUser()->getUuid(),
         ]);
     }
 

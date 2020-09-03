@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Config;
 use App\Repository\AccountRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -92,6 +93,15 @@ class Account
         return $this;
     }
 
+    public function canDepositEmailNotifications(int $emailNotifications): bool
+    {
+        if (Config::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT > ($this->getAvailableEmailNotifications() + $emailNotifications)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function depositEmailNotifications(int $emailNotifications): self
     {
         $this->setAvailableEmailNotifications($this->getAvailableEmailNotifications() + $emailNotifications);
@@ -111,11 +121,29 @@ class Account
         return $this;
     }
 
+    public function canWithdrawEmailNotifications(int $emailNotifications): bool
+    {
+        if (0 <= ($this->getAvailableEmailNotifications() - $emailNotifications)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function withdrawEmailNotifications(int $emailNotifications): self
     {
         $this->setAvailableEmailNotifications($this->getAvailableEmailNotifications() - $emailNotifications);
 
         return $this;
+    }
+
+    public function canDepositSmsNotifications(int $smsNotifications): bool
+    {
+        if (Config::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT > ($this->getAvailableSmsNotifications() + $smsNotifications)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function depositSmsNotifications(int $smsNotifications): self
@@ -135,6 +163,15 @@ class Account
         $this->availableSmsNotifications = $availableSmsNotifications;
 
         return $this;
+    }
+
+    public function canWithdrawSmsNotifications(int $smsNotifications): bool
+    {
+        if (0 <= ($this->getAvailableSmsNotifications() - $smsNotifications)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function withdrawSmsNotifications(int $smsNotifications): self

@@ -96,7 +96,7 @@ class PostRemindMessagesService
         $emailMessage .= ' Click this link when you finish '.$link;
 
         $account = $reminder->getUser()->getAccount();
-        if ((true === $reminder->getSendEmail()) && ($account->getAvailableEmailNotifications() > 0)) {
+        if ((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) {
             $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                 $emailMessage,
                 ReminderMessage::TYPE_EMAIL
@@ -111,7 +111,7 @@ class PostRemindMessagesService
                 $reminderMessage
             );
         }
-        if ((true === $reminder->getSendSms()) && ($account->getAvailableSmsNotifications() > 0)) {
+        if ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) {
             $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                 $smsMessage,
                 ReminderMessage::TYPE_SMS
