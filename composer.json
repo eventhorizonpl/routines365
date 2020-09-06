@@ -5,6 +5,7 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "async-aws/ses": "dev-fix_region",
         "composer/package-versions-deprecated": "^1.10",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.1",
@@ -56,6 +57,12 @@
         "twig/markdown-extra": "^3.0",
         "twig/twig": "^2.12|^3.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:eventhorizonpl/ses.git"
+        }
+    ],
     "require-dev": {
         "fzaninotto/faker": "^1.9",
         "symfony/browser-kit": "^5.1",

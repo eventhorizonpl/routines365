@@ -1,0 +1,11 @@
+{% apply inky_to_html %}
+    <container>
+        <row>
+            Hi,<br><br>
+            Please confirm your email address by clicking the following <a href="{{ signed_url|raw }}">link</a>.<br><br>
+            This link will expire in {{ expires_at|date('g') }} hour(s).<br><br>
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endapply %}

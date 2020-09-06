@@ -673,10 +673,6 @@
         <source>Please provide your first and last name!</source>
         <target>Please provide your first and last name!</target>
       </trans-unit>
-      <trans-unit id="1uQjpNp" resname="%firstName% %lastName% wants to invite you to Routines365.com">
-        <source>%firstName% %lastName% wants to invite you to Routines365.com</source>
-        <target>%firstName% %lastName% wants to invite you to Routines365.com</target>
-      </trans-unit>
       <trans-unit id="B1pIYOL" resname="Email was sent. You can invite another person.">
         <source>Email was sent. You can invite another person.</source>
         <target>Email was sent. You can invite another person.</target>
@@ -712,6 +708,18 @@
       <trans-unit id="0aFhj5F" resname="Account available email notifications limit">
         <source>Account available email notifications limit</source>
         <target>Account available email notifications limit</target>
+      </trans-unit>
+      <trans-unit id="njNAthI" resname="Old password is not correct!">
+        <source>Old password is not correct!</source>
+        <target>Old password is not correct!</target>
+      </trans-unit>
+      <trans-unit id="41fEQeu" resname="invites you to Routines365.com">
+        <source>invites you to Routines365.com</source>
+        <target>invites you to Routines365.com</target>
+      </trans-unit>
+      <trans-unit id="MMHY0_k" resname="Forgot password?">
+        <source>Forgot password?</source>
+        <target>Forgot password?</target>
       </trans-unit>
     </body>
   </file>

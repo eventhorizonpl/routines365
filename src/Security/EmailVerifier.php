@@ -3,43 +3,43 @@
 namespace App\Security;
 
 use App\Manager\UserManager;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use App\Service\EmailService;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 class EmailVerifier
 {
-    private MailerInterface $mailer;
+    private EmailService $emailService;
     private UserManager $userManager;
     private VerifyEmailHelperInterface $verifyEmailHelper;
 
     public function __construct(
-        MailerInterface $mailer,
+        EmailService $emailService,
         UserManager $userManager,
         VerifyEmailHelperInterface $verifyEmailHelper
     ) {
-        $this->mailer = $mailer;
+        $this->emailService = $emailService;
         $this->userManager = $userManager;
         $this->verifyEmailHelper = $verifyEmailHelper;
     }
 
-    public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email): void
+    public function sendEmailConfirmation(UserInterface $user): void
     {
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
-            $verifyEmailRouteName,
+            'security_verify_email',
             $user->getId(),
             $user->getEmail()
         );
 
-        $context = $email->getContext();
-        $context['signedUrl'] = $signatureComponents->getSignedUrl();
-        $context['expiresAt'] = $signatureComponents->getExpiresAt();
-
-        $email->context($context);
-
-        $this->mailer->send($email);
+        $this->emailService->sendConfirmation(
+            $user->getEmail(),
+            'Please confirm your email',
+            [
+                'expires_at' => $signatureComponents->getExpiresAt(),
+                'signed_url' => $signatureComponents->getSignedUrl(),
+            ]
+        );
     }
 
     public function handleEmailConfirmation(Request $request, UserInterface $user): void

@@ -12,7 +12,7 @@
         </div>
         <hr>
         <div class="col-md-12">
-            {{ include('email/invitation_email_content.html.twig') }}
+            {{ include('email/invitation_content.html.twig')|inky_to_html }}
         </div>
     </div>
 

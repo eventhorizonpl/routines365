@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\Security\ChangePasswordFormType;
 use App\Form\Security\ResetPasswordRequestFormType;
 use App\Manager\UserManager;
+use App\Service\EmailService;
 use App\Service\UserService;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,7 +40,7 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("", name="forgot_password_request")
      */
-    public function request(Request $request, MailerInterface $mailer): Response
+    public function request(Request $request, EmailService $emailService): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
@@ -47,7 +48,7 @@ class ResetPasswordController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             return $this->processSendingPasswordResetEmail(
                 $form->get('email')->getData(),
-                $mailer
+                $emailService
             );
         }
 
@@ -131,7 +132,7 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer): RedirectResponse
+    private function processSendingPasswordResetEmail(string $emailFormData, EmailService $emailService): RedirectResponse
     {
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
             'email' => $emailFormData,
@@ -160,18 +161,14 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('security_check_email');
         }
 
-        $email = (new TemplatedEmail())
-            ->from(new Address('noreply@routines365.com', 'Routines365'))
-            ->to($user->getEmail())
-            ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
-            ->context([
-                'resetToken' => $resetToken,
-                'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
-            ])
-        ;
-
-        $mailer->send($email);
+        $emailService->sendResetPassword(
+            $user->getEmail(),
+            'Your password reset request',
+            [
+                'reset_token' => $resetToken,
+                'token_lifetime' => $this->resetPasswordHelper->getTokenLifetime(),
+            ]
+        );
 
         return $this->redirectToRoute('security_check_email');
     }
