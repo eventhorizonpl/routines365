@@ -41,7 +41,8 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
         $user = $this->userFactory->createUserWithRequired(
             'admin@admin.com',
             true,
-            [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER]
+            [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER],
+            User::TYPE_STAFF
         );
         $user = $this->userService->encodePassword($user, 'admin');
         $phone = $this->phoneNumberUtil->parse('+48881573000');
@@ -59,7 +60,8 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
                 $user = $this->userFactory->createUserWithRequired(
                     'test'.(string) $userId.'@test.com',
                     true,
-                    [User::ROLE_USER]
+                    [User::ROLE_USER],
+                    User::TYPE_PROSPECT
                 );
                 $user = $this->userService->encodePassword($user, 'test'.(string) $userId);
                 $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));

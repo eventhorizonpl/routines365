@@ -3,15 +3,19 @@
 namespace App\Service;
 
 use App\Entity\User;
+use App\Manager\UserManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserService
 {
+    private UserManager $userManager;
     private UserPasswordEncoderInterface $passwordEncoder;
 
     public function __construct(
+        UserManager $userManager,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
+        $this->userManager = $userManager;
         $this->passwordEncoder = $passwordEncoder;
     }
 
@@ -23,6 +27,22 @@ class UserService
             $user,
             $password
         ));
+
+        return $user;
+    }
+
+    public function changeTypeToCustomer(User $user): User
+    {
+        $user->setType(User::TYPE_CUSTOMER);
+        $this->userManager->save($user);
+
+        return $user;
+    }
+
+    public function changeTypeToProspect(User $user): User
+    {
+        $user->setType(User::TYPE_PROSPECT);
+        $this->userManager->save($user);
 
         return $user;
     }

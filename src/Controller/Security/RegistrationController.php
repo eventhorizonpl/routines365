@@ -63,6 +63,7 @@ class RegistrationController extends AbstractController
             $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             $user->setIsEnabled(true);
             $user->setRoles([User::ROLE_USER]);
+            $user->setType(User::TYPE_PROSPECT);
 
             if (null !== $referrer) {
                 $user->setReferrer($referrer);

@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
+use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,17 +31,20 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private EntityManagerInterface $entityManager;
     private UrlGeneratorInterface $urlGenerator;
     private UserPasswordEncoderInterface $passwordEncoder;
+    private UserService $userService;
 
     public function __construct(
         CsrfTokenManagerInterface $csrfTokenManager,
         EntityManagerInterface $entityManager,
         UrlGeneratorInterface $urlGenerator,
-        UserPasswordEncoderInterface $passwordEncoder
+        UserPasswordEncoderInterface $passwordEncoder,
+        UserService $userService
     ) {
         $this->csrfTokenManager = $csrfTokenManager;
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->passwordEncoder = $passwordEncoder;
+        $this->userService = $userService;
     }
 
     public function supports(Request $request): bool
@@ -96,11 +100,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
+        if (User::TYPE_LEAD === $token->getUser()->getType()) {
+            $this->userService->changeTypeToProspect($token->getUser());
+        }
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
 
-        if (in_array(User::ROLE_ADMIN, $token->getRoleNames())) {
+        if ((User::TYPE_STAFF === $token->getUser()->getType()) || (in_array(User::ROLE_ADMIN, $token->getRoleNames()))) {
             return new RedirectResponse($this->urlGenerator->generate('admin_workspace'));
         } elseif (in_array(User::ROLE_USER, $token->getRoleNames())) {
             return new RedirectResponse($this->urlGenerator->generate('frontend_routine_index'));

@@ -25,6 +25,10 @@ class User implements UserInterface
     public const ROLE_ADMIN = 'ROLE_ADMIN';
     public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     public const ROLE_USER = 'ROLE_USER';
+    public const TYPE_CUSTOMER = 'customer';
+    public const TYPE_LEAD = 'lead';
+    public const TYPE_PROSPECT = 'prospect';
+    public const TYPE_STAFF = 'staff';
 
     /**
      * @Assert\Valid(groups={"form"})
@@ -124,6 +128,17 @@ class User implements UserInterface
      */
     private array $roles = [];
 
+    /**
+     * @Assert\Choice(callback="getTypeValidationChoices")
+     * @Assert\Length(
+     *   max = 8
+     * )
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @ORM\Column(length=8, type="string")
+     */
+    private string $type;
+
     public function __construct()
     {
         $this->completedRoutines = new ArrayCollection();
@@ -137,6 +152,7 @@ class User implements UserInterface
         $this->reminders = new ArrayCollection();
         $this->rewards = new ArrayCollection();
         $this->routines = new ArrayCollection();
+        $this->type = self::TYPE_PROSPECT;
     }
 
     public function __serialize(): array
@@ -536,6 +552,33 @@ class User implements UserInterface
 
     public function getSalt()
     {
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public static function getTypeFormChoices(): array
+    {
+        return [
+            self::TYPE_CUSTOMER => self::TYPE_CUSTOMER,
+            self::TYPE_LEAD => self::TYPE_LEAD,
+            self::TYPE_PROSPECT => self::TYPE_PROSPECT,
+            self::TYPE_STAFF => self::TYPE_STAFF,
+        ];
+    }
+
+    public static function getTypeValidationChoices(): array
+    {
+        return array_keys(self::getTypeFormChoices());
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 
     public function getUsername(): string

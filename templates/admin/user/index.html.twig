@@ -1,8 +1,14 @@
 {% extends 'admin_layout.html.twig' %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Users'|trans }}</li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Users'|trans }}
+    </li>
 {% endblock %}
 
 {% block content %}
@@ -21,10 +27,21 @@
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
                 <div class="form-group">
+                    <select class="custom-select" id="type" name="type">
+                        <option value="" selected>{{ 'Type'|trans }}</option>
+                        {% for type_value in userType() %}
+                            <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i> {{ 'Search'|trans }}</button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_user_index') }}">
+                <button class="btn btn-default" type="submit">
+                    <i class="fa fa-search"></i>
+                    {{ 'Search'|trans }}
+                </button>
+                <a class="btn {% if not (parameters.type or parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_user_index') }}">
                     <i class="fas fa-times"></i>
                 </a>
             </form>
@@ -38,6 +55,7 @@
                         <th {% if users.isSorted('u.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Is enabled'|trans, 'u.isEnabled') }}</th>
                         <th {% if users.isSorted('u.IsVerified') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Is verified'|trans, 'u.isVerified') }}</th>
                         <th>{{ 'Roles'|trans }}</th>
+                        <th {% if users.isSorted('u.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Type'|trans, 'u.type') }}</th>
                         <th {% if users.isSorted('u.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Deleted at'|trans, 'u.deletedAt') }}</th>
                         <th {% if users.isSorted('u.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Updated at'|trans, 'u.updatedAt') }}</th>
                         <th>{{ 'Actions'|trans }}</th>
@@ -67,6 +85,7 @@
                                     {{ role }}{% if not loop.last %},{% endif %}
                                 {% endfor %}
                             </td>
+                            <td>{{ user.type }}</td>
                             <td>{{ user.deletedAt ? user.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>
@@ -83,7 +102,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="7">{{ 'No records found'|trans }}</td>
+                            <td colspan="9">{{ 'No records found'|trans }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

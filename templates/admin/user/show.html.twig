@@ -1,9 +1,19 @@
 {% extends 'admin_layout.html.twig' %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'User details'|trans }}</li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_user_index') }}">
+            {{ 'Users'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'User details'|trans }}
+    </li>
 {% endblock %}
 
 {% block content %}
@@ -148,6 +158,18 @@
                             <tr>
                                 <th scope="row">{{ 'Referrer code'|trans }}</th>
                                 <td>{{ user.referrerCode }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Roles'|trans }}</th>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {{ role }}{% if not loop.last %},{% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Type'|trans }}</th>
+                                <td>{{ user.type }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -407,7 +429,10 @@
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+            <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}">
+                <i class="fas fa-edit"></i>
+                {{ 'Edit'|trans }}
+            </a>
         </div>
     </div>
 {% endblock %}

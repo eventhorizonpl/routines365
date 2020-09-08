@@ -26,12 +26,22 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->addOrderBy('u.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
+            if (array_key_exists('type', $parameters)) {
+                $type = $parameters['type'];
+                if ((null !== $type) && ('' !== $type)) {
+                    $queryBuilder->andWhere('u.type = :type')
+                        ->setParameter('type', $type);
+                }
+            }
+
             if (array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
                         $queryBuilder->expr()->orX(
-                            $queryBuilder->expr()->like('u.email', ':q')
+                            $queryBuilder->expr()->like('u.email', ':q'),
+                            $queryBuilder->expr()->like('u.referrerCode', ':q'),
+                            $queryBuilder->expr()->like('u.uuid', ':q')
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');

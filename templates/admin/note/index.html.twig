@@ -1,8 +1,14 @@
 {% extends 'admin_layout.html.twig' %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Notes'|trans }}</li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Notes'|trans }}
+    </li>
 {% endblock %}
 
 {% block content %}
@@ -19,7 +25,10 @@
                 <div class="form-group">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i> {{ 'Search'|trans }}</button>
+                <button class="btn btn-default" type="submit">
+                    <i class="fa fa-search"></i>
+                    {{ 'Search'|trans }}
+                </button>
                 <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_note_index') }}">
                     <i class="fas fa-times"></i>
                 </a>

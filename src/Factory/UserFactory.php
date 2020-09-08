@@ -36,14 +36,16 @@ class UserFactory
     public function createUserWithRequired(
         string $email,
         bool $isEnabled,
-        array $roles
+        array $roles,
+        string $type
     ): User {
         $user = $this->createUser();
 
         $user
             ->setEmail($email)
             ->setIsEnabled($isEnabled)
-            ->setRoles($roles);
+            ->setRoles($roles)
+            ->setType($type);
 
         return $user;
     }

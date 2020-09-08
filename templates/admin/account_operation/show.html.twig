@@ -1,9 +1,19 @@
 {% extends 'admin_layout.html.twig' %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{{ path('admin_workspace') }}">{{ 'Workspace'|trans }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ path('admin_account_operation_index') }}">{{ 'Account operations'|trans }}</a></li>
-    <li class="breadcrumb-item active">{{ 'Account operation details'|trans }}</li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_account_operation_index') }}">
+            {{ 'Account operations'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Account operation details'|trans }}
+    </li>
 {% endblock %}
 
 {% block content %}
