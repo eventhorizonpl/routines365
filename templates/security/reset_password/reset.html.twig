@@ -9,10 +9,19 @@
                 </div>
                 <div class="card-body">
                     {{ form_start(resetForm) }}
-                        {{ form_row(resetForm.plainPassword) }}
-                        <button class="btn btn-primary">
-                            {{ 'Reset password'|trans }}
-                        </button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(resetForm.plainPassword) }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ 'Reset password'|trans }}
+                                </button>
+                            </div>
+                        </div>
                     {{ form_end(resetForm) }}
                 </div>
             </div>

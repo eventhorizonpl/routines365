@@ -9,9 +9,15 @@
         <p class="lead">
             {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                 {% if true == constant('App\\Config::REGISTRATION_ENABLED') %}
-                    <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">{{ 'Register'|trans }}</a>
+                    <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">
+                        <i class="fas fa-plus-square"></i>
+                        {{ 'Register'|trans }}
+                    </a>
                 {% endif %}
-                <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button">{{ 'Login'|trans }}</a>
+                <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button">
+                    <i class="fas fa-sign-in-alt"></i>
+                    {{ 'Login'|trans }}
+                </a>
             {% endif %}
         </p>
     </div>

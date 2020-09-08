@@ -1,17 +1,27 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.name) }}
-    {{ form_row(form.description) }}
-
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.name) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.description) }}
+        </div>
+    </div>
     {% if goal.id %}
-        {{ form_row(form.isCompleted) }}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.isCompleted) }}
+            </div>
+        </div>
     {% endif %}
-
     <hr>
     <div class="row">
         <div class="col-md-12 text-center">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" type="submit">
                 <i class="fas fa-save"></i>
                 {{ button_label|default('Save'|trans) }}
             </button>

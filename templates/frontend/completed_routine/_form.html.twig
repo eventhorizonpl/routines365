@@ -1,13 +1,20 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.minutesDevoted) }}
-    {{ form_row(form.comment) }}
-
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.minutesDevoted) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.comment) }}
+        </div>
+    </div>
     <hr>
     <div class="row">
         <div class="col-md-12 text-center">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" type="submit">
                 <i class="fas fa-save"></i>
                 {{ button_label|default('Save'|trans) }}
             </button>

@@ -12,7 +12,6 @@
             {{ form_row(form.type) }}
         </div>
     </div>
-
     <div class="row">
         {% if app.user.profile.country in constant('App\\Config::COUNTRIES_ALLOWED_FOR_SMS') %}
             {% set width = 3 %}
@@ -34,11 +33,10 @@
             {{ form_row(form.isEnabled) }}
         </div>
     </div>
-
     <hr>
     <div class="row">
         <div class="col-md-12 text-center">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" type="submit">
                 <i class="fas fa-save"></i>
                 {{ button_label|default('Save'|trans) }}
             </button>

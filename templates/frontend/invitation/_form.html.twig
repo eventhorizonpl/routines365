@@ -15,11 +15,10 @@
             {{ include('email/invitation_content.html.twig')|inky_to_html }}
         </div>
     </div>
-
     <hr>
     <div class="row">
         <div class="col-md-12 text-center">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" type="submit">
                 <i class="fas fa-envelope"></i>
                 {{ button_label|default('Send'|trans) }}
             </button>

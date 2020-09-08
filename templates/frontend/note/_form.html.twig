@@ -1,16 +1,27 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.title) }}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.title) }}
+        </div>
+    </div>
     {% if not note.routine %}
-        {{ form_row(form.routine) }}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.routine) }}
+            </div>
+        </div>
     {% endif %}
-    {{ form_row(form.content) }}
-
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.content) }}
+        </div>
+    </div>
     <hr>
     <div class="row">
         <div class="col-md-12 text-center">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" type="submit">
                 <i class="fas fa-save"></i>
                 {{ button_label|default('Save'|trans) }}
             </button>

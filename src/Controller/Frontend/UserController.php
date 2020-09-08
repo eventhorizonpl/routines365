@@ -3,7 +3,7 @@
 namespace App\Controller\Frontend;
 
 use App\Entity\User;
-use App\Form\Security\ChangePasswordFormType;
+use App\Form\Frontend\ChangePasswordFormType;
 use App\Manager\UserManager;
 use App\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;

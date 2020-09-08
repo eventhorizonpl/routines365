@@ -721,6 +721,10 @@
         <source>Forgot password?</source>
         <target>Forgot password?</target>
       </trans-unit>
+      <trans-unit id="r6xVdSK" resname="Password reset email sent">
+        <source>Password reset email sent</source>
+        <target>Password reset email sent</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
