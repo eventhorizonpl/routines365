@@ -78,6 +78,7 @@ class ReminderRepository extends ServiceEntityRepository
             ->andWhere('r.lockedAt IS NULL')
             ->andWhere('r.nextDate < :nextDate')
             ->andWhere('r.isEnabled = :isEnabled')
+            ->andWhere('rr.isEnabled = :isEnabled')
             ->orderBy('r.nextDate', 'ASC')
             ->setMaxResults(1)
             ->setParameter('isEnabled', true)

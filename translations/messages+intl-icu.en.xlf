@@ -725,6 +725,58 @@
         <source>Password reset email sent</source>
         <target>Password reset email sent</target>
       </trans-unit>
+      <trans-unit id="WvuxyIf" resname="Cron jobs">
+        <source>Cron jobs</source>
+        <target>Cron jobs</target>
+      </trans-unit>
+      <trans-unit id="AYfUiBq" resname="Cron reports">
+        <source>Cron reports</source>
+        <target>Cron reports</target>
+      </trans-unit>
+      <trans-unit id="P4.Epqs" resname="Cron job details">
+        <source>Cron job details</source>
+        <target>Cron job details</target>
+      </trans-unit>
+      <trans-unit id="cTFmlx1" resname="Command">
+        <source>Command</source>
+        <target>Command</target>
+      </trans-unit>
+      <trans-unit id="9IMKHa4" resname="Schedule">
+        <source>Schedule</source>
+        <target>Schedule</target>
+      </trans-unit>
+      <trans-unit id="ksHN.fT" resname="Enabled">
+        <source>Enabled</source>
+        <target>Enabled</target>
+      </trans-unit>
+      <trans-unit id="wunbzpB" resname="Edit cron job">
+        <source>Edit cron job</source>
+        <target>Edit cron job</target>
+      </trans-unit>
+      <trans-unit id="X5kCqIL" resname="Create cron job">
+        <source>Create cron job</source>
+        <target>Create cron job</target>
+      </trans-unit>
+      <trans-unit id="rWF6D91" resname="Job">
+        <source>Job</source>
+        <target>Job</target>
+      </trans-unit>
+      <trans-unit id="S0wxKU_" resname="Run at">
+        <source>Run at</source>
+        <target>Run at</target>
+      </trans-unit>
+      <trans-unit id="QDSau.x" resname="Run time">
+        <source>Run time</source>
+        <target>Run time</target>
+      </trans-unit>
+      <trans-unit id="zMbrHIe" resname="Exit code">
+        <source>Exit code</source>
+        <target>Exit code</target>
+      </trans-unit>
+      <trans-unit id="skOby43" resname="Output">
+        <source>Output</source>
+        <target>Output</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

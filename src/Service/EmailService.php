@@ -43,7 +43,7 @@ class EmailService
         TemplatedEmail $templatedEmail
     ): bool {
         try {
-            $result = $this->mailer->send($templatedEmail);
+            $this->mailer->send($templatedEmail);
 
             return true;
         } catch (TransportExceptionInterface $e) {

@@ -57,9 +57,11 @@ class PostRemindMessagesService
 
     public function nurture(): self
     {
-        while (true) {
+        for ($i = 0; $i < 50; ++$i) {
             $this->findNextReminder();
         }
+
+        return $this;
     }
 
     public function prepareReminderMessages(Reminder $reminder): Reminder

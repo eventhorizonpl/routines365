@@ -375,7 +375,7 @@ class User implements UserInterface
 
     public function addRecommendation(self $recommendation): self
     {
-        if (false === $this->recommendations->contains($note)) {
+        if (false === $this->recommendations->contains($recommendation)) {
             $this->recommendations->add($recommendation);
             $recommendation->setReferrer($this);
         }

@@ -10,4 +10,4 @@ then
     mkdir var/psalm_report
 fi
 
-php psalm.phar --show-info=true > var/psalm_report/report.txt
+php psalm.phar --show-info=false > var/psalm_report/report.txt

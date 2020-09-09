@@ -1,0 +1,52 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Factory\CronJobFactory;
+use App\Manager\CronJobManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+
+class CronJobFixtures extends Fixture
+{
+    private CronJobFactory $cronJobFactory;
+    private CronJobManager $cronJobManager;
+
+    public function __construct(
+        CronJobFactory $cronJobFactory,
+        CronJobManager $cronJobManager
+    ) {
+        $this->cronJobFactory = $cronJobFactory;
+        $this->cronJobManager = $cronJobManager;
+    }
+
+    public function load(ObjectManager $manager): void
+    {
+        $dataset = [
+            [
+                'command' => 'app:post-remind-messages',
+                'description' => 'app:post-remind-messages',
+                'name' => 'app:post-remind-messages',
+                'schedule' => '* * * * *',
+            ],
+            [
+                'command' => 'app:create-kpi',
+                'description' => 'app:create-kpi',
+                'name' => 'app:create-kpi',
+                'schedule' => '0 3 * * *',
+            ],
+        ];
+
+        $cronJobs = [];
+        foreach ($dataset as $data) {
+            $cronJobs[] = $this->cronJobFactory->createCronJobWithRequired(
+                $data['command'],
+                $data['description'],
+                true,
+                $data['name'],
+                $data['schedule']
+            );
+        }
+        $this->cronJobManager->bulkSave($cronJobs);
+    }
+}

@@ -1,0 +1,55 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Cron reports'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Cron reports'|trans }}
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th {% if cron_reports.isSorted('cr.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'ID'|trans, 'cr.id') }}</th>
+                        <th {% if cron_reports.isSorted('cr.Job') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Job'|trans, 'cr.job') }}</th>
+                        <th {% if cron_reports.isSorted('cr.RunAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Run at'|trans, 'cr.runAt') }}</th>
+                        <th {% if cron_reports.isSorted('cr.RunTime') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Run time'|trans, 'cr.runTime') }}</th>
+                        <th {% if cron_reports.isSorted('cr.ExitCode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Exit code'|trans, 'cr.exitCode') }}</th>
+                        <th {% if cron_reports.isSorted('cr.Output') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Output'|trans, 'cr.output') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cron_report in cron_reports %}
+                        <tr>
+                            <td>{{ cron_report.id }}</td>
+                            <td>{{ cron_report.job.name }}</td>
+                            <td>{{ cron_report.runAt ? cron_report.runAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ cron_report.runTime }}</td>
+                            <td>{{ cron_report.exitCode }}</td>
+                            <td>{{ cron_report.output }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">{{ 'No records found'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(cron_reports) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Cron reports'|trans }}{% endblock %}

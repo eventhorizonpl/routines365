@@ -31,16 +31,16 @@ class CreateKpiCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        if (!$this->lock()) {
+        if (false === $this->lock()) {
             $output->writeln('The command is already running in another process.');
 
-            return Command::SUCCESS;
+            return Command::FAILURE;
         }
 
         $this->kpiService->create();
 
         $this->release();
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
