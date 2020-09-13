@@ -18,16 +18,14 @@ class QuoteFactory
     public function createQuoteWithRequired(
         string $author,
         string $content,
-        bool $isVisible,
-        string $type
+        bool $isVisible
     ): Quote {
         $quote = $this->createQuote();
 
         $quote
             ->setAuthor($author)
             ->setContent($content)
-            ->setIsVisible($isVisible)
-            ->setType($type);
+            ->setIsVisible($isVisible);
 
         return $quote;
     }

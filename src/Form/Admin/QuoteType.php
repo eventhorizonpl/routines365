@@ -17,9 +17,6 @@ class QuoteType extends AbstractType
         $builder
             ->add('author')
             ->add('content', TextareaType::class)
-            ->add('type', ChoiceType::class, [
-                'choices' => Quote::getTypeFormChoices(),
-            ])
             ->add('isVisible', YesNoType::class)
         ;
     }

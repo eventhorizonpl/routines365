@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=QuoteRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="string_length_idx", columns={"string_length"}), @ORM\Index(name="type_idx", columns={"type"})})
+ * @ORM\Table(indexes={@ORM\Index(name="string_length_idx", columns={"string_length"})})
  */
 class Quote
 {
@@ -17,13 +17,6 @@ class Quote
     use Traits\IsVisibleTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
-
-    public const TYPE_ART = 'art';
-    public const TYPE_BUSINESS = 'business';
-    public const TYPE_POLITICS = 'politics';
-    public const TYPE_SPORT = 'sport';
-    public const TYPE_TECHNOLOGY = 'technology';
-    public const TYPE_UNKNOWN = 'unknown';
 
     /**
      * @Assert\Length(
@@ -64,23 +57,11 @@ class Quote
      */
     private int $stringLength;
 
-    /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 16
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @ORM\Column(length=16, type="string")
-     */
-    private string $type;
-
     public function __construct()
     {
         $this->author = '';
         $this->content = '';
         $this->isVisible = false;
-        $this->type = self::TYPE_UNKNOWN;
     }
 
     public function __toString(): string
@@ -133,35 +114,6 @@ class Quote
     public function setStringLength(int $stringLength): self
     {
         $this->stringLength = $stringLength;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public static function getTypeFormChoices(): array
-    {
-        return [
-            self::TYPE_ART => self::TYPE_ART,
-            self::TYPE_BUSINESS => self::TYPE_BUSINESS,
-            self::TYPE_POLITICS => self::TYPE_POLITICS,
-            self::TYPE_SPORT => self::TYPE_SPORT,
-            self::TYPE_TECHNOLOGY => self::TYPE_TECHNOLOGY,
-            self::TYPE_UNKNOWN => self::TYPE_UNKNOWN,
-        ];
-    }
-
-    public static function getTypeValidationChoices(): array
-    {
-        return array_keys(self::getTypeFormChoices());
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }

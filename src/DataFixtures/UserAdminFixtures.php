@@ -37,7 +37,7 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
 
     public static function getGroups(): array
     {
-        return ['installation'];
+        return ['v1deployment'];
     }
 
     public function load(ObjectManager $manager): void
