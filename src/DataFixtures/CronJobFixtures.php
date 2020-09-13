@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Factory\CronJobFactory;
 use App\Manager\CronJobManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CronJobFixtures extends Fixture
+class CronJobFixtures extends Fixture implements FixtureGroupInterface
 {
     private CronJobFactory $cronJobFactory;
     private CronJobManager $cronJobManager;
@@ -18,6 +19,11 @@ class CronJobFixtures extends Fixture
     ) {
         $this->cronJobFactory = $cronJobFactory;
         $this->cronJobManager = $cronJobManager;
+    }
+
+    public static function getGroups(): array
+    {
+        return ['installation'];
     }
 
     public function load(ObjectManager $manager): void

@@ -6,10 +6,11 @@ use App\Entity\Quote;
 use App\Factory\QuoteFactory;
 use App\Manager\QuoteManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class QuoteFixtures extends Fixture implements DependentFixtureInterface
+class QuoteFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
     private QuoteFactory $quoteFactory;
     private QuoteManager $quoteManager;
@@ -25,8 +26,13 @@ class QuoteFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            UserAdminFixtures::class,
         ];
+    }
+
+    public static function getGroups(): array
+    {
+        return ['installation'];
     }
 
     public function load(ObjectManager $manager): void
@@ -2058,6 +2064,6 @@ class QuoteFixtures extends Fixture implements DependentFixtureInterface
                 $data['type']
             );
         }
-        $this->quoteManager->bulkSave($quotes, $this->getReference(UserFixtures::ADMIN_USER_REFERENCE));
+        $this->quoteManager->bulkSave($quotes, $this->getReference(UserAdminFixtures::ADMIN_USER_REFERENCE));
     }
 }

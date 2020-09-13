@@ -16,7 +16,6 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
-    public const ADMIN_USER_REFERENCE = 'admin-user';
     public const REGULAR_USER_LIMIT = 50;
     public const REGULAR_USER_REFERENCE = 'regular-user-reference';
 
@@ -50,7 +49,6 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
         $user->getProfile()->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
-        $this->addReference(self::ADMIN_USER_REFERENCE, $user);
 
         $kernel = $this->container->get('kernel');
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {

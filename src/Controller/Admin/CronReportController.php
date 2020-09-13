@@ -2,12 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use Cron\CronBundle\Entity\CronReport;
 use App\Entity\User;
-use App\Factory\CronReportFactory;
-use App\Form\Admin\CronReportType;
-use App\Manager\CronReportManager;
-use App\Util\DateTimeImmutableUtil;
+use Cron\CronBundle\Entity\CronReport;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
