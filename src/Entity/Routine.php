@@ -138,6 +138,23 @@ class Routine
         return $this->completedRoutines;
     }
 
+    public function getCompletedRoutinesCount(): int
+    {
+        return $this->getCompletedRoutines()->count();
+    }
+
+    public function getCompletedRoutinesPercent(): int
+    {
+        $completedRoutines = $this->getCompletedRoutinesCount();
+        $sentReminders = $this->getSentRemindersCount();
+
+        if ($sentReminders > 0) {
+            return (int) (($completedRoutines / $sentReminders) * 100);
+        } else {
+            return 0;
+        }
+    }
+
     public function removeCompletedRoutine(CompletedRoutine $completedRoutine): self
     {
         if (true === $this->completedRoutines->contains($completedRoutine)) {
@@ -381,6 +398,23 @@ class Routine
     public function getSentRemindersAll(): Collection
     {
         return $this->sentReminders;
+    }
+
+    public function getSentRemindersCount(): int
+    {
+        return $this->getSentReminders()->count();
+    }
+
+    public function getSentRemindersPercent(): int
+    {
+        $completedRoutines = $this->getCompletedRoutinesCount();
+        $sentReminders = $this->getSentRemindersCount();
+
+        if ($sentReminders > 0) {
+            return (int) ((($sentReminders / $sentReminders) * 100) - $this->getCompletedRoutinesPercent());
+        } else {
+            return 0;
+        }
     }
 
     public function removeSentReminder(SentReminder $sentReminder): self

@@ -44,14 +44,28 @@
                             <span class="ml-3">
                                 {{ 'Rewards'|trans }}: {{ routine.rewards|length }}
                             </span>
+                            <span class="ml-3">
+                                {{ 'Sent reminders'|trans }}: {{ routine.sentReminders|length }}
+                            </span>
                         </p>
+                        {% if routine.completedRoutinesPercent > 0 or routine.sentRemindersPercent > 0 %}
+                            <div class="row">
+                                <div class="col-md-5">{{ 'Completed routines'|trans }} ({{ routine.completedRoutinesCount }}) / {{ 'Sent reminders'|trans }} ({{ routine.sentRemindersCount }})</div>
+                                <div class="col-md-7">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ routine.completedRoutinesPercent }}%" aria-valuenow="{{ routine.completedRoutinesPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.completedRoutinesPercent }} &percnt;</div>
+                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ routine.sentRemindersPercent }}%" aria-valuenow="{{ routine.sentRemindersPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.sentRemindersPercent }} &percnt;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
                         {% if routine.goalsCompletedPercent > 0 or routine.goalsNotCompletedPercent > 0 %}
                             <div class="row">
-                                <div class="col-md-4">{{ 'Goals completed'|trans }} / {{ 'Goals not completed'|trans }}</div>
-                                <div class="col-md-8">
+                                <div class="col-md-5">{{ 'Goals completed'|trans }} ({{ routine.goalsCompletedCount }}) / {{ 'Goals not completed'|trans }} ({{ routine.goalsNotCompletedCount }})</div>
+                                <div class="col-md-7">
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ routine.goalsCompletedPercent }}%" aria-valuenow="{{ routine.goalsCompletedPercent }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ routine.goalsNotCompletedPercent }}%" aria-valuenow="{{ routine.goalsNotCompletedPercent }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ routine.goalsCompletedPercent }}%" aria-valuenow="{{ routine.goalsCompletedPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.goalsCompletedPercent }} &percnt;</div>
+                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ routine.goalsNotCompletedPercent }}%" aria-valuenow="{{ routine.goalsNotCompletedPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.goalsNotCompletedPercent }} &percnt;</div>
                                     </div>
                                 </div>
                             </div>
