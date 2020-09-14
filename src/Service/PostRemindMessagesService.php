@@ -5,8 +5,10 @@ namespace App\Service;
 use App\Entity\Reminder;
 use App\Entity\ReminderMessage;
 use App\Factory\ReminderMessageFactory;
+use App\Factory\SentReminderFactory;
 use App\Manager\ReminderManager;
 use App\Manager\ReminderMessageManager;
+use App\Manager\SentReminderManager;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderRepository;
 use DateTimeImmutable;
@@ -22,6 +24,8 @@ class PostRemindMessagesService
     private ReminderMessageManager $reminderMessageManager;
     private ReminderRepository $reminderRepository;
     private RouterInterface $router;
+    private SentReminderFactory $sentReminderFactory;
+    private SentReminderManager $sentReminderManager;
 
     public function __construct(
         AccountOperationService $accountOperationService,
@@ -30,7 +34,9 @@ class PostRemindMessagesService
         ReminderMessageFactory $reminderMessageFactory,
         ReminderMessageManager $reminderMessageManager,
         ReminderRepository $reminderRepository,
-        RouterInterface $router
+        RouterInterface $router,
+        SentReminderFactory $sentReminderFactory,
+        SentReminderManager $sentReminderManager
     ) {
         $this->accountOperationService = $accountOperationService;
         $this->quoteRepository = $quoteRepository;
@@ -39,6 +45,8 @@ class PostRemindMessagesService
         $this->reminderMessageManager = $reminderMessageManager;
         $this->reminderRepository = $reminderRepository;
         $this->router = $router;
+        $this->sentReminderFactory = $sentReminderFactory;
+        $this->sentReminderManager = $sentReminderManager;
     }
 
     public function findNextReminder(): ?Reminder
@@ -98,36 +106,56 @@ class PostRemindMessagesService
         $emailMessage .= ' Click this link when you finish '.$link;
 
         $account = $reminder->getUser()->getAccount();
-        if ((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) {
-            $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
-                $emailMessage,
-                ReminderMessage::TYPE_EMAIL
-            );
-            $reminderMessage->setReminder($reminder);
-            $this->reminderMessageManager->save($reminderMessage);
-            $accountOperation = $this->accountOperationService->withdraw(
-                $account,
-                'Email notification',
-                1,
-                0,
-                $reminderMessage
-            );
+        $createSentReminder = false;
+        if (((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) ||
+            ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1)))) {
+            $createSentReminder = true;
         }
-        if ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) {
-            $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
-                $smsMessage,
-                ReminderMessage::TYPE_SMS
-            );
-            $reminderMessage->setReminder($reminder);
-            $this->reminderMessageManager->save($reminderMessage);
-            $accountOperation = $this->accountOperationService->withdraw(
-                $account,
-                'SMS notification',
-                0,
-                1,
-                $reminderMessage
-            );
+
+        if (true === $createSentReminder) {
+            $sentReminder = $this->sentReminderFactory->createSentReminder();
+            $sentReminder->setReminder($reminder);
+            $sentReminder->setRoutine($reminder->getRoutine());
+            $this->sentReminderManager->save($sentReminder);
+        } else {
+            $sentReminder = null;
         }
+
+        if (null !== $sentReminder) {
+            if ((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) {
+                $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
+                    $emailMessage,
+                    ReminderMessage::TYPE_EMAIL
+                );
+                $reminderMessage->setReminder($reminder);
+                $reminderMessage->setSentReminder($sentReminder);
+                $this->reminderMessageManager->save($reminderMessage);
+                $accountOperation = $this->accountOperationService->withdraw(
+                    $account,
+                    'Email notification',
+                    1,
+                    0,
+                    $reminderMessage
+                );
+            }
+            if ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) {
+                $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
+                    $smsMessage,
+                    ReminderMessage::TYPE_SMS
+                );
+                $reminderMessage->setReminder($reminder);
+                $reminderMessage->setSentReminder($sentReminder);
+                $this->reminderMessageManager->save($reminderMessage);
+                $accountOperation = $this->accountOperationService->withdraw(
+                    $account,
+                    'SMS notification',
+                    0,
+                    1,
+                    $reminderMessage
+                );
+            }
+        }
+
         $this->reminderManager->save($reminder);
 
         return $reminder;

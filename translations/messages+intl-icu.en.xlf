@@ -777,6 +777,18 @@
         <source>Output</source>
         <target>Output</target>
       </trans-unit>
+      <trans-unit id="257F4MS" resname="Sent reminders">
+        <source>Sent reminders</source>
+        <target>Sent reminders</target>
+      </trans-unit>
+      <trans-unit id="wV66TTk" resname="Sent reminder details">
+        <source>Sent reminder details</source>
+        <target>Sent reminder details</target>
+      </trans-unit>
+      <trans-unit id="JzQ8kRx" resname="Sent reminder">
+        <source>Sent reminder</source>
+        <target>Sent reminder</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

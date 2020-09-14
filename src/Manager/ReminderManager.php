@@ -16,15 +16,18 @@ class ReminderManager
 {
     private EntityManagerInterface $entityManager;
     private ReminderMessageManager $reminderMessageManager;
+    private SentReminderManager $sentReminderManager;
     private ValidatorInterface $validator;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         ReminderMessageManager $reminderMessageManager,
+        SentReminderManager $sentReminderManager,
         ValidatorInterface $validator
     ) {
         $this->entityManager = $entityManager;
         $this->reminderMessageManager = $reminderMessageManager;
+        $this->sentReminderManager = $sentReminderManager;
         $this->validator = $validator;
     }
 
@@ -139,6 +142,10 @@ class ReminderManager
 
         foreach ($reminder->getReminderMessages() as $reminderMessage) {
             $this->reminderMessageManager->softDelete($reminderMessage);
+        }
+
+        foreach ($reminder->getSentReminders() as $sentReminder) {
+            $this->sentReminderManager->softDelete($sentReminder);
         }
 
         return $this;

@@ -14,6 +14,7 @@ use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
 use App\Repository\RoutineRepository;
+use App\Repository\SentReminderRepository;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 
@@ -30,6 +31,7 @@ class KpiService
     private ReminderMessageRepository $reminderMessageRepository;
     private ReminderRepository $reminderRepository;
     private RoutineRepository $routineRepository;
+    private SentReminderRepository $sentReminderRepository;
     private UserRepository $userRepository;
 
     public function __construct(
@@ -44,6 +46,7 @@ class KpiService
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
         RoutineRepository $routineRepository,
+        SentReminderRepository $sentReminderRepository,
         UserRepository $userRepository
     ) {
         $this->accountRepository = $accountRepository;
@@ -57,6 +60,7 @@ class KpiService
         $this->reminderMessageRepository = $reminderMessageRepository;
         $this->reminderRepository = $reminderRepository;
         $this->routineRepository = $routineRepository;
+        $this->sentReminderRepository = $sentReminderRepository;
         $this->userRepository = $userRepository;
     }
 
@@ -74,6 +78,7 @@ class KpiService
             $this->reminderRepository->count([]),
             $this->reminderMessageRepository->count([]),
             $this->routineRepository->count([]),
+            $this->sentReminderRepository->count([]),
             $this->userRepository->count([])
         );
         $this->kpiManager->save($kpi);

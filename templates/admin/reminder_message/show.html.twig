@@ -67,6 +67,14 @@
                                     {% endif %}
                                 </td>
                             </tr>
+                            <tr>
+                                <th scope="row">{{ 'Sent reminder'|trans }}</th>
+                                <td>
+                                    {% if reminder_message.sentReminder %}
+                                        <a href="{{ path('admin_sent_reminder_show', {'uuid': reminder_message.sentReminder.uuid}) }}">{{ reminder_message.sentReminder.uuid }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

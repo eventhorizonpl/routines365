@@ -1,0 +1,108 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_sent_reminder_index') }}">
+            {{ 'Sent reminders'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Sent reminder details'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Sent reminder details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_sent_reminder_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+            <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="relations" role="tabpanel" aria-labelledby="relations-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Reminder'|trans }}</th>
+                                <td>
+                                    {% if sent_reminder.reminder %}
+                                        <a href="{{ path('admin_reminder_show', {'uuid': sent_reminder.reminder.uuid}) }}">{{ sent_reminder.reminder.uuid }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Reminder messages'|trans }}</th>
+                                <td>
+                                    {% if sent_reminder.reminderMessagesAll|length %}
+                                        <ul>
+                                            {% for reminder_message in sent_reminder.reminderMessagesAll %}
+                                                <li><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Routine'|trans }}</th>
+                                <td>
+                                    {% if sent_reminder.routine %}
+                                        <a href="{{ path('admin_routine_show', {'uuid': sent_reminder.routine.uuid}) }}">{{ sent_reminder.routine.uuid }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ sent_reminder.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ sent_reminder.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ sent_reminder.createdAt ? sent_reminder.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>
+                                    {% if sent_reminder.deletedAt %}
+                                        {{ sent_reminder.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_sent_reminder_undelete', {'uuid': sent_reminder.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ sent_reminder.updatedAt ? sent_reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Sent reminder details'|trans }}{% endblock %}

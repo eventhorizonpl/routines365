@@ -34,6 +34,13 @@ class ReminderMessage
     private Reminder $reminder;
 
     /**
+     * @Assert\Valid
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminderMessages", targetEntity=SentReminder::class)
+     */
+    private SentReminder $sentReminder;
+
+    /**
      * @Assert\Length(
      *   max = 512
      * )
@@ -115,6 +122,18 @@ class ReminderMessage
     public function setReminder(Reminder $reminder): self
     {
         $this->reminder = $reminder;
+
+        return $this;
+    }
+
+    public function getSentReminder(): ?SentReminder
+    {
+        return $this->sentReminder;
+    }
+
+    public function setSentReminder(SentReminder $sentReminder): self
+    {
+        $this->sentReminder = $sentReminder;
 
         return $this;
     }

@@ -101,6 +101,14 @@ class Kpi
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */
+    private int $sentReminderCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
     private int $userCounter;
 
     public function __construct()
@@ -114,6 +122,7 @@ class Kpi
         $this->reminderCounter = 0;
         $this->reminderMessageCounter = 0;
         $this->routineCounter = 0;
+        $this->sentReminderCounter = 0;
         $this->userCounter = 0;
     }
 
@@ -238,6 +247,18 @@ class Kpi
     public function setRoutineCounter(int $routineCounter): self
     {
         $this->routineCounter = $routineCounter;
+
+        return $this;
+    }
+
+    public function getSentReminderCounter(): int
+    {
+        return $this->sentReminderCounter;
+    }
+
+    public function setSentReminderCounter(int $sentReminderCounter): self
+    {
+        $this->sentReminderCounter = $sentReminderCounter;
 
         return $this;
     }

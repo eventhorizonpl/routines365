@@ -13,6 +13,7 @@ use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
 use App\Repository\RoutineRepository;
+use App\Repository\SentReminderRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +39,7 @@ class WorkspaceController extends AbstractController
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
         RoutineRepository $routineRepository,
+        SentReminderRepository $sentReminderRepository,
         UserRepository $userRepository
     ): Response {
         $accountsCount = $accountRepository->count([]);
@@ -51,6 +53,7 @@ class WorkspaceController extends AbstractController
         $reminderMessagesCount = $reminderMessageRepository->count([]);
         $remindersCount = $reminderRepository->count([]);
         $routinesCount = $routineRepository->count([]);
+        $sentRemindersCount = $sentReminderRepository->count([]);
         $usersCount = $userRepository->count([]);
 
         return $this->render('admin/workspace/index.html.twig', [
@@ -65,6 +68,7 @@ class WorkspaceController extends AbstractController
             'reminder_messages_count' => $reminderMessagesCount,
             'reminders_count' => $remindersCount,
             'routines_count' => $routinesCount,
+            'sent_reminders_count' => $sentRemindersCount,
             'users_count' => $usersCount,
         ]);
     }

@@ -142,6 +142,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Sent reminders'|trans }}</th>
+                                <td>
+                                    {% if routine.sentRemindersAll|length %}
+                                        <ul>
+                                            {% for sent_reminder in routine.sentRemindersAll %}
+                                                <li><a href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}">{{ sent_reminder.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
                                     {% if routine.user %}

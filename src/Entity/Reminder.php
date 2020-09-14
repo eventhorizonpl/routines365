@@ -37,6 +37,11 @@ class Reminder
     private Collection $reminderMessages;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="reminder", orphanRemoval=true, targetEntity=SentReminder::class)
+     */
+    private Collection $sentReminders;
+
+    /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=Routine::class)
@@ -120,6 +125,7 @@ class Reminder
         $this->previousDate = null;
         $this->reminderMessages = new ArrayCollection();
         $this->sendSms = false;
+        $this->sentReminders = new ArrayCollection();
         $this->type = self::TYPE_DAILY;
     }
 
@@ -267,6 +273,37 @@ class Reminder
     public function setSendSms(bool $sendSms): self
     {
         $this->sendSms = $sendSms;
+
+        return $this;
+    }
+
+    public function addSentReminder(SentReminder $sentReminder): self
+    {
+        if (false === $this->sentReminders->contains($sentReminder)) {
+            $this->sentReminders->add($sentReminder);
+            $sentReminder->setReminder($this);
+        }
+
+        return $this;
+    }
+
+    public function getSentReminders(): Collection
+    {
+        return $this->sentReminders->filter(function (SentReminder $sentReminder) {
+            return null === $sentReminder->getDeletedAt();
+        });
+    }
+
+    public function getSentRemindersAll(): Collection
+    {
+        return $this->sentReminders;
+    }
+
+    public function removeSentReminder(SentReminder $sentReminder): self
+    {
+        if (true === $this->sentReminders->contains($sentReminder)) {
+            $this->sentReminders->removeElement($sentReminder);
+        }
 
         return $this;
     }

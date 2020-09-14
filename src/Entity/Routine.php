@@ -56,6 +56,11 @@ class Routine
     private Collection $rewards;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=SentReminder::class)
+     */
+    private Collection $sentReminders;
+
+    /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
@@ -102,6 +107,7 @@ class Routine
         $this->notes = new ArrayCollection();
         $this->reminders = new ArrayCollection();
         $this->rewards = new ArrayCollection();
+        $this->sentReminders = new ArrayCollection();
         $this->type = self::TYPE_HOBBY;
     }
 
@@ -350,6 +356,37 @@ class Routine
     {
         if (true === $this->rewards->contains($reward)) {
             $this->rewards->removeElement($reward);
+        }
+
+        return $this;
+    }
+
+    public function addSentReminder(SentReminder $sentReminder): self
+    {
+        if (false === $this->sentReminders->contains($sentReminder)) {
+            $this->sentReminders->add($sentReminder);
+            $sentReminder->setRoutine($this);
+        }
+
+        return $this;
+    }
+
+    public function getSentReminders(): Collection
+    {
+        return $this->sentReminders->filter(function (SentReminder $sentReminder) {
+            return null === $sentReminder->getDeletedAt();
+        });
+    }
+
+    public function getSentRemindersAll(): Collection
+    {
+        return $this->sentReminders;
+    }
+
+    public function removeSentReminder(SentReminder $sentReminder): self
+    {
+        if (true === $this->sentReminders->contains($sentReminder)) {
+            $this->sentReminders->removeElement($sentReminder);
         }
 
         return $this;

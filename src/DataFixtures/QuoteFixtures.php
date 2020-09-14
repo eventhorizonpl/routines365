@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Quote;
 use App\Factory\QuoteFactory;
 use App\Manager\QuoteManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;

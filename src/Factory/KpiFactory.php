@@ -27,6 +27,7 @@ class KpiFactory
         int $reminderCounter,
         int $reminderMessageCounter,
         int $routineCounter,
+        int $sentReminderCounter,
         int $userCounter
     ): Kpi {
         $kpi = $this->createKpi();
@@ -42,6 +43,7 @@ class KpiFactory
             ->setReminderCounter($reminderCounter)
             ->setReminderMessageCounter($reminderMessageCounter)
             ->setRoutineCounter($routineCounter)
+            ->setSentReminderCounter($sentReminderCounter)
             ->setUserCounter($userCounter);
 
         return $kpi;
