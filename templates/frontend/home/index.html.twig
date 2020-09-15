@@ -3,11 +3,11 @@
 {% block content %}
     <div class="jumbotron">
         <h1 class="display-3">{{ 'Routines365'|trans }}</h1>
-        <p class="lead">{{ 'Routines365'|trans }}</p>
-        <hr class="my-4">
-        <p>{{ 'Routines365'|trans }}</p>
-        <p class="lead">
-            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p class="lead">{{ 'We will help you in creating and maintaining your routines. With routines you can achieve amazing things.'|trans }}</p>
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <hr class="my-2">
+            <p>{{ 'Are you ready to improve your work, hobby, sport or learning habits?'|trans }}</p>
+            <p class="lead">
                 {% if true == constant('App\\Config::REGISTRATION_ENABLED') %}
                     <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">
                         <i class="fas fa-plus-square"></i>
@@ -18,8 +18,141 @@
                     <i class="fas fa-sign-in-alt"></i>
                     {{ 'Login'|trans }}
                 </a>
-            {% endif %}
-        </p>
+            </p>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>{{ 'What we do?'|trans }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <ul>
+                <li class="mb-2">
+                    {{ 'We help you to create and maintain routines. Because not goals but routines are key to success.'|trans }}
+                </li>
+                <li class="mb-2">
+                    {{ 'We have different ways to remind you about your routines.'|trans }}
+                </li>
+                <li class="mb-2">
+                    {{ 'We help you to develop self accountability.'|trans }}
+                </li>
+                <li>
+                    {{ 'We help you to motivate yourself.'|trans }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>{{ 'What we do not do?'|trans }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <ul>
+                <li class="mb-2">
+                    {{ 'We do not sell your data. Everything that you do in this system stays your private thing.'|trans }}
+                </li>
+                <li class="mb-2">
+                    {{ 'It is not a social network. We do not want your constant attention. This is a tool that should work for you.'|trans }}
+                </li>
+                <li>
+                    {{ 'We can not make your work for you. But we can help you develop good habits that will make your tasks easier.'|trans }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>{{ 'Features'|trans }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <h5 class="mb-3">
+                <i class="fas fa-sync"></i>
+                {{ 'Routines'|trans }}
+            </h5>
+            <ul>
+                <li class="mb-2">
+                    {{ 'You can create a few different types of routines.'|trans }}
+                </li>
+                <li>
+                    {{ 'For your self accountability you can mark routine as completed.'|trans }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 mb-3">
+            <h5 class="mb-3">
+                <i class="fas fa-clock"></i>
+                {{ 'Reminders'|trans }}
+            </h5>
+            <ul>
+                <li class="mb-2">
+                    {{ 'You can create reminders that will remind you about your routine before it starts.'|trans }}
+                </li>
+                <li class="mb-2">
+                    {{ 'We send each reminder by email or sms.'|trans }}
+                </li>
+                <li class="mb-2">
+                    {{ 'We send you a motivational message.'|trans }}
+                </li>
+                <li>
+                    {{ 'We keep track how many reminders we sent and how many routines you completed to show you your progress.'|trans }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <h5 class="mb-3">
+                <i class="fas fa-bullseye"></i>
+                {{ 'Goals'|trans }}
+            </h5>
+            <ul>
+                <li class="mb-2">
+                    {{ 'You can create goals that you want to realize in your routines.'|trans }}
+                </li>
+                <li class="mb-2">
+                    {{ 'Goals are not most important. Routines are. We will help you to use your routines to complete goals.'|trans }}
+                </li>
+                <li>
+                    {{ 'We keep track on how many goals you completed to show you your progress.'|trans }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 mb-3">
+            <h5 class="mb-3">
+                <i class="fas fa-award"></i>
+                {{ 'Rewards'|trans }}
+            </h5>
+            <ul>
+                <li class="mb-2">
+                    {{ 'Self motivate yourself with small rewards for your achievements.'|trans }}
+                </li>
+                <li>
+                    {{ 'We keep track on your completed routines and goals, We will let you know when you deserve your reward.'|trans }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <h5 class="mb-3">
+                <i class="fas fa-pen-fancy"></i>
+                {{ 'Notes'|trans }}
+            </h5>
+            <ul>
+                <li class="mb-2">
+                    {{ 'You can create notes about your progress and struggles with routines.'|trans }}
+                </li>
+                <li>
+                    {{ 'It is your private journal. Visible only for you.'|trans }}
+                </li>
+            </ul>
+        </div>
     </div>
 {% endblock %}
 

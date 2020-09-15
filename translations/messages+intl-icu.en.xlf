@@ -789,6 +789,110 @@
         <source>Sent reminder</source>
         <target>Sent reminder</target>
       </trans-unit>
+      <trans-unit id="VA0eT9m" resname="We will help you in creating and maintaining your routines. With routines you can achieve amazing things.">
+        <source>We will help you in creating and maintaining your routines. With routines you can achieve amazing things.</source>
+        <target>We will help you in creating and maintaining your routines. With routines you can achieve amazing things.</target>
+      </trans-unit>
+      <trans-unit id="5cwFz33" resname="Are you ready to improve your work, hobby, sport or learning habits?">
+        <source>Are you ready to improve your work, hobby, sport or learning habits?</source>
+        <target>Are you ready to improve your work, hobby, sport or learning habits?</target>
+      </trans-unit>
+      <trans-unit id="jdS6gFV" resname="What we do?">
+        <source>What we do?</source>
+        <target>What we do?</target>
+      </trans-unit>
+      <trans-unit id="Zya6HPv" resname="We help you to create and maintain routines. Because not goals but routines are key to success.">
+        <source>We help you to create and maintain routines. Because not goals but routines are key to success.</source>
+        <target>We help you to create and maintain routines. Because not goals but routines are key to success.</target>
+      </trans-unit>
+      <trans-unit id="rtmUOad" resname="We help you to develop self accountability.">
+        <source>We help you to develop self accountability.</source>
+        <target>We help you to develop self accountability.</target>
+      </trans-unit>
+      <trans-unit id="ELIFs5k" resname="We help you to motivate yourself.">
+        <source>We help you to motivate yourself.</source>
+        <target>We help you to motivate yourself.</target>
+      </trans-unit>
+      <trans-unit id="VpfQPa7" resname="Features">
+        <source>Features</source>
+        <target>Features</target>
+      </trans-unit>
+      <trans-unit id="VPtEugA" resname="You can create a few different types of routines.">
+        <source>You can create a few different types of routines.</source>
+        <target>You can create a few different types of routines.</target>
+      </trans-unit>
+      <trans-unit id="OyA1sz2" resname="You can create reminders that will remind you about your routine before it starts.">
+        <source>You can create reminders that will remind you about your routine before it starts.</source>
+        <target>You can create reminders that will remind you about your routine before it starts.</target>
+      </trans-unit>
+      <trans-unit id="562oq5r" resname="We send each reminder by email or sms.">
+        <source>We send each reminder by email or sms.</source>
+        <target>We send each reminder by email or sms.</target>
+      </trans-unit>
+      <trans-unit id="un3M_x5" resname="We send you a motivational message.">
+        <source>We send you a motivational message.</source>
+        <target>We send you a motivational message.</target>
+      </trans-unit>
+      <trans-unit id="_OTFNKL" resname="We keep track how many reminders we sent and how many routines you completed to show you your progress.">
+        <source>We keep track how many reminders we sent and how many routines you completed to show you your progress.</source>
+        <target>We keep track how many reminders we sent and how many routines you completed to show you your progress.</target>
+      </trans-unit>
+      <trans-unit id="it3rfIs" resname="You can create goals that you want to realize in your routines.">
+        <source>You can create goals that you want to realize in your routines.</source>
+        <target>You can create goals that you want to realize in your routines.</target>
+      </trans-unit>
+      <trans-unit id="Y9s8jWn" resname="Goals are not most important. Routines are. We will help you to use your routines to complete goals.">
+        <source>Goals are not most important. Routines are. We will help you to use your routines to complete goals.</source>
+        <target>Goals are not most important. Routines are. We will help you to use your routines to complete goals.</target>
+      </trans-unit>
+      <trans-unit id="s2buA7A" resname="We keep track on how many goals you completed to show you your progress.">
+        <source>We keep track on how many goals you completed to show you your progress.</source>
+        <target>We keep track on how many goals you completed to show you your progress.</target>
+      </trans-unit>
+      <trans-unit id="HqmhT2." resname="Self motivate yourself with small rewards for your achievements.">
+        <source>Self motivate yourself with small rewards for your achievements.</source>
+        <target>Self motivate yourself with small rewards for your achievements.</target>
+      </trans-unit>
+      <trans-unit id="Ed9c5lj" resname="We keep track on your completed routines and goals, We will let you know when you deserve your reward.">
+        <source>We keep track on your completed routines and goals, We will let you know when you deserve your reward.</source>
+        <target>We keep track on your completed routines and goals, We will let you know when you deserve your reward.</target>
+      </trans-unit>
+      <trans-unit id="kMpYeFn" resname="You can create notes about your progress and struggles with routines.">
+        <source>You can create notes about your progress and struggles with routines.</source>
+        <target>You can create notes about your progress and struggles with routines.</target>
+      </trans-unit>
+      <trans-unit id="goFQbaa" resname="It is your private journal. Visible only for you.">
+        <source>It is your private journal. Visible only for you.</source>
+        <target>It is your private journal. Visible only for you.</target>
+      </trans-unit>
+      <trans-unit id="e35DYv9" resname="Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too.">
+        <source>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too.</source>
+        <target>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too.</target>
+      </trans-unit>
+      <trans-unit id="sP9KSGw" resname="We have different ways to remind you about your routines.">
+        <source>We have different ways to remind you about your routines.</source>
+        <target>We have different ways to remind you about your routines.</target>
+      </trans-unit>
+      <trans-unit id="GZjfOpU" resname="What we do not do?">
+        <source>What we do not do?</source>
+        <target>What we do not do?</target>
+      </trans-unit>
+      <trans-unit id="zCZtBCt" resname="We do not sell your data. Everything that you do in this system stays your private thing.">
+        <source>We do not sell your data. Everything that you do in this system stays your private thing.</source>
+        <target>We do not sell your data. Everything that you do in this system stays your private thing.</target>
+      </trans-unit>
+      <trans-unit id="oh.siCY" resname="It is not a social network. We do not want your constant attention. This is a tool that should work for you.">
+        <source>It is not a social network. We do not want your constant attention. This is a tool that should work for you.</source>
+        <target>It is not a social network. We do not want your constant attention. This is a tool that should work for you.</target>
+      </trans-unit>
+      <trans-unit id="xZAgdNh" resname="We can not make your work for you. But we can help you develop good habits that will make your tasks easier.">
+        <source>We can not make your work for you. But we can help you develop good habits that will make your tasks easier.</source>
+        <target>We can not make your work for you. But we can help you develop good habits that will make your tasks easier.</target>
+      </trans-unit>
+      <trans-unit id="lIC5wu0" resname="For your self accountability you can mark routine as completed.">
+        <source>For your self accountability you can mark routine as completed.</source>
+        <target>For your self accountability you can mark routine as completed.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
