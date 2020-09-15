@@ -4,6 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    sns_access_key_id: '%env(SNS_ACCESS_KEY_ID)%'
+    sns_region: '%env(SNS_REGION)%'
+    sns_secret_access_key: '%env(SNS_SECRET_ACCESS_KEY)%'
 
 services:
     # default configuration for services in *this* file

@@ -19,6 +19,7 @@ class User implements UserInterface
     use Traits\IdTrait;
     use Traits\UuidTrait;
     use Traits\IsEnabledTrait;
+    use Traits\IsVerifiedTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
@@ -94,13 +95,6 @@ class User implements UserInterface
      * @ORM\Column(length=180, type="string", unique=true)
      */
     private string $email;
-
-    /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
-     * @ORM\Column(type="boolean")
-     */
-    private bool $isVerified;
 
     /**
      * @Assert\Length(
@@ -302,18 +296,6 @@ class User implements UserInterface
         if (true === $this->goals->contains($goal)) {
             $this->goals->removeElement($goal);
         }
-
-        return $this;
-    }
-
-    public function getIsVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
 
         return $this;
     }

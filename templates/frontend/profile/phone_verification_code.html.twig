@@ -1,0 +1,39 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    {{ 'Phone verification'|trans }}
+                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_profile_show') }}">
+                        <i class="fas fa-times"></i>
+                        {{ 'Close'|trans }}
+                    </a>
+                    {% include('frontend_settings_nav.html.twig') %}
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.phoneVerificationCode) }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-check-circle"></i>
+                                    {{ button_label|default('Verify'|trans) }}
+                                </button>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Edit profile'|trans }}{% endblock %}

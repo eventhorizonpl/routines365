@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "async-aws/ses": "dev-fix_region",
+        "async-aws/sns": "^1.0",
         "composer/package-versions-deprecated": "^1.10",
         "cron/cron-bundle": "^2.4",
         "doctrine/annotations": "^1.0",

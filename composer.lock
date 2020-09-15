@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "763e1df5308030dbf6ac1445aee3aa45",
+    "content-hash": "bf7a5e9ced195020de7a76767ee90082",
     "packages": [
         {
             "name": "async-aws/core",
@@ -130,6 +130,60 @@
                 }
             ],
             "time": "2020-09-06T22:38:23+00:00"
+        },
+        {
+            "name": "async-aws/sns",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/async-aws/sns.git",
+                "reference": "51257662d9e859b2b47eddb4a40c0f9c3e390ead"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/async-aws/sns/zipball/51257662d9e859b2b47eddb4a40c0f9c3e390ead",
+                "reference": "51257662d9e859b2b47eddb4a40c0f9c3e390ead",
+                "shasum": ""
+            },
+            "require": {
+                "async-aws/core": "^1.2",
+                "ext-simplexml": "*",
+                "php": "^7.2.5 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AsyncAws\\Sns\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "SNS client, part of the AWS SDK provided by AsyncAws.",
+            "keywords": [
+                "SNS",
+                "amazon",
+                "async-aws",
+                "aws",
+                "sdk"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/jderusse",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nyholm",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-29T11:01:45+00:00"
         },
         {
             "name": "clue/stream-filter",

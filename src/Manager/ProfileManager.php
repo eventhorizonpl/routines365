@@ -71,6 +71,17 @@ class ProfileManager
                 $profile->setCountry($country['alpha2']);
             } catch (OutOfBoundsException $e) {
             }
+            $phoneMd5 = md5($profile->getPhoneString());
+            if ($profile->getPhoneMd5() !== $phoneMd5) {
+                $profile->setIsVerified(false);
+                $profile->setPhoneVerificationCode(random_int(100000, 999999));
+            }
+
+            if (false === $profile->getIsVerified()) {
+                if ($profile->getNumberOfPhoneVerificationTries() < 5) {
+                    $profile->incrementNumberOfPhoneVerificationTries();
+                }
+            }
         }
 
         $errors = $this->validate($profile);

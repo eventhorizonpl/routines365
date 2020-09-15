@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ProfileRepository;
 use Doctrine\ORM\Mapping as ORM;
 use libphonenumber\PhoneNumber;
+use libphonenumber\PhoneNumberFormat;
+use libphonenumber\PhoneNumberUtil;
 use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,6 +17,7 @@ class Profile
 {
     use Traits\IdTrait;
     use Traits\UuidTrait;
+    use Traits\IsVerifiedTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
@@ -56,10 +59,35 @@ class Profile
     private ?string $lastName;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\LessThanOrEqual(5)
+     * @Assert\Type("int")
+     * @ORM\Column(nullable=true, type="integer")
+     */
+    private ?int $numberOfPhoneVerificationTries;
+
+    /**
      * @AssertPhoneNumber(type="mobile")
      * @ORM\Column(nullable=true, type="phone_number", unique=true)
      */
     private ?PhoneNumber $phone;
+
+    /**
+     * @Assert\Length(
+     *   max = 32
+     * )
+     * @Assert\Type("string")
+     * @ORM\Column(nullable=true, length=32, type="string", unique=true)
+     */
+    private ?string $phoneMd5;
+
+    /**
+     * @Assert\GreaterThanOrEqual(100000)
+     * @Assert\LessThanOrEqual(999999)
+     * @Assert\Type("int")
+     * @ORM\Column(nullable=true, type="integer")
+     */
+    private ?int $phoneVerificationCode;
 
     /**
      * @Assert\NotNull
@@ -91,8 +119,11 @@ class Profile
     public function __construct()
     {
         $this->firstName = null;
+        $this->isVerified = false;
         $this->lastName = null;
+        $this->numberOfPhoneVerificationTries = null;
         $this->phone = null;
+        $this->phoneMd5 = null;
         $this->showMotivationalMessages = true;
         $this->theme = self::THEME_DARK;
     }
@@ -138,14 +169,65 @@ class Profile
         return $this;
     }
 
+    public function getNumberOfPhoneVerificationTries(): ?int
+    {
+        return $this->numberOfPhoneVerificationTries;
+    }
+
+    public function incrementNumberOfPhoneVerificationTries(): self
+    {
+        $this->setNumberOfPhoneVerificationTries($this->getNumberOfPhoneVerificationTries() + 1);
+
+        return $this;
+    }
+
+    public function setNumberOfPhoneVerificationTries(?int $numberOfPhoneVerificationTries): self
+    {
+        $this->numberOfPhoneVerificationTries = $numberOfPhoneVerificationTries;
+
+        return $this;
+    }
+
     public function getPhone(): ?PhoneNumber
     {
         return $this->phone;
     }
 
+    public function getPhoneString(): ?string
+    {
+        $phoneNumberUtil = PhoneNumberUtil::getInstance();
+        $phone = $phoneNumberUtil->format($this->getPhone(), PhoneNumberFormat::INTERNATIONAL);
+
+        return $phone;
+    }
+
     public function setPhone(?PhoneNumber $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getPhoneMd5(): ?string
+    {
+        return $this->phoneMd5;
+    }
+
+    public function setPhoneMd5(?string $phoneMd5): self
+    {
+        $this->phoneMd5 = $phoneMd5;
+
+        return $this;
+    }
+
+    public function getPhoneVerificationCode(): ?int
+    {
+        return $this->phoneVerificationCode;
+    }
+
+    public function setPhoneVerificationCode(?int $phoneVerificationCode): self
+    {
+        $this->phoneVerificationCode = $phoneVerificationCode;
 
         return $this;
     }

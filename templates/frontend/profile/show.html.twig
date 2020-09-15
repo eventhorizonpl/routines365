@@ -17,7 +17,14 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
-                                <td>{{ profile.user.email }}</td>
+                                <td>
+                                    {{ profile.user.email }}
+                                    {% if profile.user.isVerified %}
+                                        <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                    {% endif %}
+                                </td>
                             </tr>
                             {% if true == constant('App\\Config::INVITATIONS_ENABLED') %}
                                 <tr>
@@ -34,6 +41,12 @@
                                 <td>
                                     {% if profile.phone %}
                                         {{ profile.phone|phone_number_format }}
+                                        {% if profile.isVerified %}
+                                            <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                        {% else %}
+                                            <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                            <a href="{{ path('frontend_profile_phone_verification_code') }}">{{ 'I have the code'|trans }}</a>
+                                        {% endif %}
                                     {% endif %}
                                 </td>
                             </tr>
