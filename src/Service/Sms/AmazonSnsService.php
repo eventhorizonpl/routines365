@@ -6,7 +6,7 @@ use AsyncAws\Sns\Input\PublishInput;
 use AsyncAws\Sns\SnsClient;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class AmazonSmsService implements SmsServiceInterface
+class AmazonSnsService implements SmsServiceInterface
 {
     private ParameterBagInterface $parameterBag;
     private SnsClient $snsClient;

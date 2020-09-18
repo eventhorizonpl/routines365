@@ -70,10 +70,12 @@ class ReminderManager
         $dateTime->setTime($hour->format('H'), $hour->format('i'), $hour->format('s'));
         $dateTime->modify('-'.$reminder->getMinutesBefore().' minutes');
 
-        if ((Reminder::TYPE_DAILY === $reminder->getType()) && ($dateTime < $dateTimeNow)) {
-            $dateTime->modify('+1 day');
-        } elseif (Reminder::TYPE_DAILY !== $reminder->getType()) {
-            if ($dateTime < $dateTimeNow) {
+        if (Reminder::TYPE_DAILY === $reminder->getType()) {
+            while ($dateTime <= $dateTimeNow) {
+                $dateTime->modify('+1 day');
+            }
+        } else {
+            if ($dateTime <= $dateTimeNow) {
                 $dateTime->modify('+1 day');
             }
             while (strtolower($dateTime->format('l')) !== $reminder->getType()) {

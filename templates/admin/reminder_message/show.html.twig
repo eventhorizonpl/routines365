@@ -90,6 +90,14 @@
                                 <td>{{ reminder_message.uuid }}</td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Third party system response'|trans }}</th>
+                                <td>{{ reminder_message.thirdPartySystemResponse }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Third party system type'|trans }}</th>
+                                <td>{{ reminder_message.thirdPartySystemType }}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
                                 <td>{{ reminder_message.createdAt ? reminder_message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
