@@ -893,6 +893,42 @@
         <source>For your self accountability you can mark routine as completed.</source>
         <target>For your self accountability you can mark routine as completed.</target>
       </trans-unit>
+      <trans-unit id="dwDLKm1" resname="We have sent you a verification code on your phone!">
+        <source>We have sent you a verification code on your phone!</source>
+        <target>We have sent you a verification code on your phone!</target>
+      </trans-unit>
+      <trans-unit id="IyPMZ6j" resname="You exceeded your phone number verification attempts!">
+        <source>You exceeded your phone number verification attempts!</source>
+        <target>You exceeded your phone number verification attempts!</target>
+      </trans-unit>
+      <trans-unit id="fUesGIp" resname="Your phone number is already verified!">
+        <source>Your phone number is already verified!</source>
+        <target>Your phone number is already verified!</target>
+      </trans-unit>
+      <trans-unit id="V1bj3D2" resname="Currently this system is only available to invitees.">
+        <source>Currently this system is only available to invitees.</source>
+        <target>Currently this system is only available to invitees.</target>
+      </trans-unit>
+      <trans-unit id="T3g4QC8" resname="Verified">
+        <source>Verified</source>
+        <target>Verified</target>
+      </trans-unit>
+      <trans-unit id="FRM5ByW" resname="Not verified">
+        <source>Not verified</source>
+        <target>Not verified</target>
+      </trans-unit>
+      <trans-unit id="vhnhZ.A" resname="I have the code">
+        <source>I have the code</source>
+        <target>I have the code</target>
+      </trans-unit>
+      <trans-unit id="LmjtfKP" resname="Phone verification">
+        <source>Phone verification</source>
+        <target>Phone verification</target>
+      </trans-unit>
+      <trans-unit id="7qJ0Xih" resname="Verify">
+        <source>Verify</source>
+        <target>Verify</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

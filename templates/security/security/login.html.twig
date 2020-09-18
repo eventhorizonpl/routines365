@@ -13,12 +13,11 @@
                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
 
-                        {% if app.user %}
-                            <div class="mb-3">
-                                You are logged in as {{ app.user.username }}, <a href="{{ path('security_logout') }}">Logout</a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ 'Currently this system is only available to invitees.'|trans }}
                             </div>
-                        {% endif %}
-
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">

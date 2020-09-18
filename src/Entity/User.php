@@ -101,7 +101,6 @@ class User implements UserInterface
      *   max = 255
      * )
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\NotCompromisedPassword(groups={"system"})
      * @Assert\Type("string")
      * @ORM\Column(type="string")
      */
