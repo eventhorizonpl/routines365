@@ -28,6 +28,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ routine.description }}</p>
+                        <p>{{ 'Devoted time'|trans }}: {{ routine.completedRoutinesDevotedTime }}</p>
                         <p>
                             <span>
                                 {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}

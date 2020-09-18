@@ -26,6 +26,27 @@
                             <span class="badge badge-danger">{{ 'No'|trans }}</span>
                         {% endif %}
                     </p>
+                    <p>{{ 'Devoted time'|trans }}: {{ routine.completedRoutinesDevotedTime }}</p>
+                    <p>
+                        <span>
+                            {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
+                        </span>
+                        <span class="ml-3">
+                            {{ 'Goals'|trans }}: {{ routine.goals|length }}
+                        </span>
+                        <span class="ml-3">
+                            {{ 'Notes'|trans }}: {{ routine.notes|length }}
+                        </span>
+                        <span class="ml-3">
+                            {{ 'Reminders'|trans }}: {{ routine.reminders|length }}
+                        </span>
+                        <span class="ml-3">
+                            {{ 'Rewards'|trans }}: {{ routine.rewards|length }}
+                        </span>
+                        <span class="ml-3">
+                            {{ 'Sent reminders'|trans }}: {{ routine.sentReminders|length }}
+                        </span>
+                    </p>
                     {% if routine.completedRoutinesPercent > 0 or routine.sentRemindersPercent > 0 %}
                         <div class="row">
                             <div class="col-md-5">{{ 'Completed routines'|trans }} ({{ routine.completedRoutinesCount }}) / {{ 'Sent reminders'|trans }} ({{ routine.sentRemindersCount }})</div>

@@ -143,6 +143,19 @@ class Routine
         return $this->getCompletedRoutines()->count();
     }
 
+    public function getCompletedRoutinesDevotedTime(): string
+    {
+        $totalMinutes = 0;
+
+        foreach ($this->getCompletedRoutines() as $completedRoutine) {
+            $totalMinutes += $completedRoutine->getMinutesDevoted();
+        }
+
+        $totalMinutes *= 60;
+
+        return sprintf('%dd %dh %dm', $totalMinutes/86400, $totalMinutes/3600%24, $totalMinutes/60%60);
+    }
+
     public function getCompletedRoutinesPercent(): int
     {
         $completedRoutines = $this->getCompletedRoutinesCount();
