@@ -34,7 +34,7 @@ class EmailVerifier
 
         $this->emailService->sendConfirmation(
             $user->getEmail(),
-            'Please confirm your email',
+            'R365: Please confirm your email',
             [
                 'expires_at' => $signatureComponents->getExpiresAt(),
                 'signed_url' => $signatureComponents->getSignedUrl(),

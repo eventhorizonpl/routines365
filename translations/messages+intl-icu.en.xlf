@@ -929,6 +929,10 @@
         <source>Verify</source>
         <target>Verify</target>
       </trans-unit>
+      <trans-unit id="8oJIrJ4" resname="R365: Congratulations for completing your routine!">
+        <source>R365: Congratulations for completing your routine!</source>
+        <target>__R365: Congratulations for completing your routine!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

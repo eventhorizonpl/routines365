@@ -1,0 +1,14 @@
+{% apply inky_to_html %}
+    <container>
+        <row>
+            Hi,<br><br>
+            We want to congratulate you for completing your routine.<br><br>
+            {% if reminder %}
+                Your next routine {{ reminder.routine.name }} starts at {{ reminder.routineStartDate ? reminder.routineStartDate|date('Y-m-d H:i:s') : '' }}.<br><br>
+            {% endif %}
+            {{ quote }}<br><br>
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endapply %}

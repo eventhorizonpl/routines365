@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReminderRepository;
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -232,6 +233,14 @@ class Reminder
     public function getRoutine(): ?Routine
     {
         return $this->routine;
+    }
+
+    public function getRoutineStartDate(): ?DateTimeImmutable
+    {
+        $routineStartDate = DateTime::createFromImmutable($this->getNextDate());
+        $routineStartDate->modify('+'.$this->getMinutesBefore().' minutes');
+
+        return DateTimeImmutable::createFromMutable($routineStartDate);
     }
 
     public function setRoutine(Routine $routine): self

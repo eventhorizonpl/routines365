@@ -51,6 +51,24 @@ class EmailService
         }
     }
 
+    public function sendCompletedRoutineCongratulations(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/completed_routine_congratulations.html.twig',
+            'email/completed_routine_congratulations.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendConfirmation(
         string $email,
         string $subject,

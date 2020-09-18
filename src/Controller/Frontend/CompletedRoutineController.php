@@ -9,7 +9,9 @@ use App\Factory\CompletedRoutineFactory;
 use App\Form\Frontend\CompletedRoutineType;
 use App\Manager\CompletedRoutineManager;
 use App\Repository\QuoteRepository;
+use App\Repository\ReminderRepository;
 use App\Security\Voter\RoutineVoter;
+use App\Service\EmailService;
 use App\Service\RewardService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +32,9 @@ class CompletedRoutineController extends AbstractController
     public function new(
         CompletedRoutineFactory $completedRoutineFactory,
         CompletedRoutineManager $completedRoutineManager,
+        EmailService $emailService,
         QuoteRepository $quoteRepository,
+        ReminderRepository $reminderRepository,
         Request $request,
         RewardService $rewardService,
         Routine $routine,
@@ -54,11 +58,24 @@ class CompletedRoutineController extends AbstractController
                 $translator->trans('Congratulations for completing your routine!')
             );
 
-            $quote = $quoteRepository->findOneByStringLength();
-            if (null !== $quote) {
-                $this->addFlash(
-                    'primary',
-                    (string) $quote
+            if (true === $this->getUser()->getProfile()->getShowMotivationalMessages()) {
+                $quote = $quoteRepository->findOneByStringLength();
+                if (null !== $quote) {
+                    $this->addFlash(
+                        'primary',
+                        (string) $quote
+                    );
+                }
+
+                $quote = $quoteRepository->findOneByStringLength();
+                $reminder = $reminderRepository->findOneByUser($this->getUser());
+                $emailService->sendCompletedRoutineCongratulations(
+                    $this->getUser()->getEmail(),
+                    $translator->trans('R365: Congratulations for completing your routine!'),
+                    [
+                        'quote' => $quote,
+                        'reminder' => $reminder,
+                    ]
                 );
             }
 

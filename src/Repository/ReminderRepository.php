@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Reminder;
+use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -83,6 +84,27 @@ class ReminderRepository extends ServiceEntityRepository
             ->setMaxResults(1)
             ->setParameter('isEnabled', true)
             ->setParameter('nextDate', $nextDate);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+    public function findOneByUser(User $user): ?Reminder
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->select('r, rr, rrg, ru, rup')
+            ->leftJoin('r.routine', 'rr')
+            ->leftJoin('rr.goals', 'rrg')
+            ->leftJoin('r.user', 'ru')
+            ->leftJoin('ru.profile', 'rup')
+            ->where('r.user = :user')
+            ->andWhere('r.deletedAt IS NULL')
+            ->andWhere('r.lockedAt IS NULL')
+            ->andWhere('r.isEnabled = :isEnabled')
+            ->andWhere('rr.isEnabled = :isEnabled')
+            ->orderBy('r.nextDate', 'ASC')
+            ->setMaxResults(1)
+            ->setParameter('user', $user)
+            ->setParameter('isEnabled', true);
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
