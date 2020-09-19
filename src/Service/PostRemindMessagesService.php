@@ -11,6 +11,7 @@ use App\Manager\ReminderMessageManager;
 use App\Manager\SentReminderManager;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderRepository;
+use App\Service\Sms\SmsService;
 use DateTimeImmutable;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -18,6 +19,7 @@ use Symfony\Component\Routing\RouterInterface;
 class PostRemindMessagesService
 {
     private AccountOperationService $accountOperationService;
+    private EmailService $emailService;
     private QuoteRepository $quoteRepository;
     private ReminderManager $reminderManager;
     private ReminderMessageFactory $reminderMessageFactory;
@@ -26,9 +28,11 @@ class PostRemindMessagesService
     private RouterInterface $router;
     private SentReminderFactory $sentReminderFactory;
     private SentReminderManager $sentReminderManager;
+    private SmsService $smsService;
 
     public function __construct(
         AccountOperationService $accountOperationService,
+        EmailService $emailService,
         QuoteRepository $quoteRepository,
         ReminderManager $reminderManager,
         ReminderMessageFactory $reminderMessageFactory,
@@ -36,9 +40,11 @@ class PostRemindMessagesService
         ReminderRepository $reminderRepository,
         RouterInterface $router,
         SentReminderFactory $sentReminderFactory,
-        SentReminderManager $sentReminderManager
+        SentReminderManager $sentReminderManager,
+        SmsService $smsService
     ) {
         $this->accountOperationService = $accountOperationService;
+        $this->emailService = $emailService;
         $this->quoteRepository = $quoteRepository;
         $this->reminderManager = $reminderManager;
         $this->reminderMessageFactory = $reminderMessageFactory;
@@ -47,6 +53,7 @@ class PostRemindMessagesService
         $this->router = $router;
         $this->sentReminderFactory = $sentReminderFactory;
         $this->sentReminderManager = $sentReminderManager;
+        $this->smsService = $smsService;
     }
 
     public function findNextReminder(): ?Reminder
@@ -80,6 +87,8 @@ class PostRemindMessagesService
             $message .= ' You have '.$reminder->getRoutine()->getGoals()->count().' goals.';
         }
         $emailMessage = $message;
+        $emailOriginalMessage = $message;
+        $emailQuote = null;
         $smsMessage = $message;
         if (true === $reminder->getSendMotivationalMessage()) {
             $message .= ' ';
@@ -87,7 +96,8 @@ class PostRemindMessagesService
                 $messageLength = mb_strlen($message);
                 $quote = $this->quoteRepository->findOneByStringLength();
                 if (null !== $quote) {
-                    $emailMessage = $message.(string) $quote;
+                    $emailMessage = $message.' '.(string) $quote;
+                    $emailQuote = (string) $quote;
                 }
             }
             if (true === $reminder->getSendSms()) {
@@ -104,6 +114,7 @@ class PostRemindMessagesService
             'uuid' => $reminder->getRoutine()->getUuid(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
         $emailMessage .= ' Click this link when you finish '.$link;
+        $emailLink = $link;
 
         $account = $reminder->getUser()->getAccount();
         $createSentReminder = false;
@@ -122,14 +133,35 @@ class PostRemindMessagesService
         }
 
         if (null !== $sentReminder) {
-            if ((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) {
+            if ((true === $reminder->getUser()->getIsVerified()) &&
+                (true === $reminder->getSendEmail()) &&
+                (true === $account->canWithdrawEmailNotifications(1))
+            ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $emailMessage,
                     ReminderMessage::TYPE_EMAIL
                 );
-                $reminderMessage->setReminder($reminder);
-                $reminderMessage->setSentReminder($sentReminder);
+                $reminderMessage
+                    ->setReminder($reminder)
+                    ->setSentReminder($sentReminder);
                 $this->reminderMessageManager->save($reminderMessage);
+
+                $response = $this->emailService->sendReminderMessage(
+                    $reminder->getUser()->getEmail(),
+                    'R365: Routine reminder',
+                    [
+                        'email_link' => $emailLink,
+                        'email_original_message' => $emailOriginalMessage,
+                        'email_quote' => $emailQuote,
+                    ]
+                );
+
+                $reminderMessage
+                    ->setPostDate(new DateTimeImmutable())
+                    ->setThirdPartySystemType(ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES)
+                    ->setThirdPartySystemResponse($response);
+                $this->reminderMessageManager->save($reminderMessage);
+
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
                     'Email notification',
@@ -138,14 +170,32 @@ class PostRemindMessagesService
                     $reminderMessage
                 );
             }
-            if ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) {
+            if ((true === $reminder->getUser()->getProfile()->getIsVerified()) &&
+                (true === $reminder->getSendSms()) &&
+                (true === $account->canWithdrawSmsNotifications(1))
+            ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $smsMessage,
                     ReminderMessage::TYPE_SMS
                 );
-                $reminderMessage->setReminder($reminder);
-                $reminderMessage->setSentReminder($sentReminder);
+                $reminderMessage
+                    ->setReminder($reminder)
+                    ->setSentReminder($sentReminder);
                 $this->reminderMessageManager->save($reminderMessage);
+
+                $response = $this->smsService->sendReminderMessage(
+                    $reminder->getUser()->getProfile()->getPhoneString(),
+                    [
+                        'sms_message' => $smsMessage,
+                    ]
+                );
+
+                $reminderMessage
+                    ->setPostDate(new DateTimeImmutable())
+                    ->setThirdPartySystemType(ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS)
+                    ->setThirdPartySystemResponse($response);
+                $this->reminderMessageManager->save($reminderMessage);
+
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
                     'SMS notification',

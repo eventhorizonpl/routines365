@@ -105,6 +105,24 @@ class EmailService
         return $result;
     }
 
+    public function sendReminderMessage(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/reminder_message.html.twig',
+            'email/reminder_message.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendResetPassword(
         string $email,
         string $subject,

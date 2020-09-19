@@ -931,7 +931,19 @@
       </trans-unit>
       <trans-unit id="8oJIrJ4" resname="R365: Congratulations for completing your routine!">
         <source>R365: Congratulations for completing your routine!</source>
-        <target>__R365: Congratulations for completing your routine!</target>
+        <target>R365: Congratulations for completing your routine!</target>
+      </trans-unit>
+      <trans-unit id="y4DcMZZ" resname="Third party system response">
+        <source>Third party system response</source>
+        <target>Third party system response</target>
+      </trans-unit>
+      <trans-unit id="KZrsqpr" resname="Third party system type">
+        <source>Third party system type</source>
+        <target>Third party system type</target>
+      </trans-unit>
+      <trans-unit id="QfV3QfP" resname="Devoted time">
+        <source>Devoted time</source>
+        <target>Devoted time</target>
       </trans-unit>
     </body>
   </file>

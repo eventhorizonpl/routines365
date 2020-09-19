@@ -26,4 +26,12 @@ class SmsService implements SmsServiceInterface
 
         return $result;
     }
+
+    public function sendReminderMessage(string $phone, array $context = []): string
+    {
+        $message = $context['sms_message'];
+        $result = $this->send($message, $phone);
+
+        return $result;
+    }
 }

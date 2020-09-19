@@ -1,0 +1,16 @@
+{% apply inky_to_html %}
+    <container>
+        <row>
+            Hi,<br><br>
+            {{ email_original_message }}<br><br>
+            {% if email_quote %}
+                {{ email_quote }}<br><br>
+            {% endif %}
+            {% if email_link %}
+                Please visit the following <a href="{{ email_link }}">link</a> when you finish.<br><br>
+            {% endif %}
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endapply %}
