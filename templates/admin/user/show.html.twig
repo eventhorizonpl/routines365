@@ -49,7 +49,14 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
-                                <td>{{ user.email }}</td>
+                                <td>
+                                    {{ user.email }}
+                                    {% if user.isVerified %}
+                                        <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'First name'|trans }}</th>
@@ -80,6 +87,11 @@
                                 <td>
                                     {% if user.profile and user.profile.phone %}
                                         {{ user.profile.phone|phone_number_format }}
+                                        {% if user.profile.isVerified %}
+                                            <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                        {% else %}
+                                            <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                        {% endif %}
                                     {% endif %}
                                 </td>
                             </tr>

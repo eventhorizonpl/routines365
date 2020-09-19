@@ -56,5 +56,21 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
         $this->userManager->save($user);
 
         $this->addReference(self::ADMIN_USER_REFERENCE, $user);
+
+        $user = $this->userFactory->createUserWithRequired(
+            'mkpiotrowskiprivate@gmail.com',
+            true,
+            [User::ROLE_USER],
+            User::TYPE_PROSPECT
+        );
+        $user = $this->userService->encodePassword($user, 'michal');
+        $phone = $this->phoneNumberUtil->parse('+48881573056');
+        $user->getProfile()->setFirstName('Michal');
+        $user->getProfile()->setLastName('Piotrowski');
+        $user->getProfile()->setShowMotivationalMessages(true);
+        $user->getProfile()->setPhone($phone);
+        $user->getProfile()->setTimezone('Europe/Warsaw');
+
+        $this->userManager->save($user);
     }
 }
