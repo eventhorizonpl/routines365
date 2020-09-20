@@ -49,8 +49,6 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
             User::TYPE_STAFF
         );
         $user = $this->userService->encodePassword($user, 'michal');
-        $phone = $this->phoneNumberUtil->parse('+48530573056');
-        $user->getProfile()->setPhone($phone);
         $user->getProfile()->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
@@ -67,6 +65,22 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
         $phone = $this->phoneNumberUtil->parse('+48881573056');
         $user->getProfile()->setFirstName('Michal');
         $user->getProfile()->setLastName('Piotrowski');
+        $user->getProfile()->setShowMotivationalMessages(true);
+        $user->getProfile()->setPhone($phone);
+        $user->getProfile()->setTimezone('Europe/Warsaw');
+
+        $this->userManager->save($user);
+
+        $user = $this->userFactory->createUserWithRequired(
+            'epiotrowska16@gmail.com',
+            true,
+            [User::ROLE_USER],
+            User::TYPE_PROSPECT
+        );
+        $user = $this->userService->encodePassword($user, 'ewelina');
+        $phone = $this->phoneNumberUtil->parse('+48530573056');
+        $user->getProfile()->setFirstName('Ewelina');
+        $user->getProfile()->setLastName('Piotrowska');
         $user->getProfile()->setShowMotivationalMessages(true);
         $user->getProfile()->setPhone($phone);
         $user->getProfile()->setTimezone('Europe/Warsaw');
