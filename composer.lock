@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf7a5e9ced195020de7a76767ee90082",
+    "content-hash": "4539bd5b251f93c63933c1da1eba6cf9",
     "packages": [
         {
             "name": "async-aws/core",
@@ -72,16 +72,16 @@
         },
         {
             "name": "async-aws/ses",
-            "version": "dev-fix_region",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/eventhorizonpl/ses.git",
-                "reference": "2f1ad4fbf8e1e7b640fb35295bc9c2663e46a8f5"
+                "url": "https://github.com/async-aws/ses.git",
+                "reference": "16dfe62c117cbfeabd2cb1b945ae58bcd3e98eac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eventhorizonpl/ses/zipball/2f1ad4fbf8e1e7b640fb35295bc9c2663e46a8f5",
-                "reference": "2f1ad4fbf8e1e7b640fb35295bc9c2663e46a8f5",
+                "url": "https://api.github.com/repos/async-aws/ses/zipball/16dfe62c117cbfeabd2cb1b945ae58bcd3e98eac",
+                "reference": "16dfe62c117cbfeabd2cb1b945ae58bcd3e98eac",
                 "shasum": ""
             },
             "require": {
@@ -100,11 +100,7 @@
                     "AsyncAws\\Ses\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "AsyncAws\\Ses\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -116,20 +112,17 @@
                 "sdk",
                 "ses"
             ],
-            "support": {
-                "source": "https://github.com/eventhorizonpl/ses/tree/fix_region"
-            },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/nyholm"
+                    "url": "https://github.com/jderusse",
+                    "type": "github"
                 },
                 {
-                    "type": "github",
-                    "url": "https://github.com/jderusse"
+                    "url": "https://github.com/nyholm",
+                    "type": "github"
                 }
             ],
-            "time": "2020-09-06T22:38:23+00:00"
+            "time": "2020-08-02T09:49:41+00:00"
         },
         {
             "name": "async-aws/sns",
@@ -3517,6 +3510,67 @@
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "time": "2020-09-17T18:55:26+00:00"
+        },
+        {
+            "name": "prolix/maintenance-bundle",
+            "version": "2.1.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prolixtechnikos/LexikMaintenanceBundle.git",
+                "reference": "bcdbfb42517ffd4dd558033378593244edc7a07c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prolixtechnikos/LexikMaintenanceBundle/zipball/bcdbfb42517ffd4dd558033378593244edc7a07c",
+                "reference": "bcdbfb42517ffd4dd558033378593244edc7a07c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/framework-bundle": "~2.7|~3.0|^4.0|^5.0",
+                "symfony/translation": "~2.7|~3.0|^4.0|^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "8.5.*",
+                "symfony/phpunit-bridge": "~2.7|~3.0|^4.0|^5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lexik\\Bundle\\MaintenanceBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gilles Gauthier",
+                    "email": "g.gauthier@lexik.fr"
+                },
+                {
+                    "name": "Dev Lexik",
+                    "email": "dev@lexik.fr"
+                },
+                {
+                    "name": "Djuri Baars",
+                    "email": "info@djurict.nl"
+                }
+            ],
+            "description": "This bundle allows you to place your website in maintenance mode by calling two commands from your console.",
+            "homepage": "https://github.com/lexik/LexikMaintenanceBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "maintenance"
+            ],
+            "time": "2020-10-24T07:43:33+00:00"
         },
         {
             "name": "psr/cache",
@@ -10756,9 +10810,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "async-aws/ses": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

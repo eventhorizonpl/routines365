@@ -5,7 +5,7 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "async-aws/ses": "dev-fix_region",
+        "async-aws/ses": "^1.2.0",
         "async-aws/sns": "^1.0",
         "composer/package-versions-deprecated": "^1.10",
         "cron/cron-bundle": "^2.4",
@@ -18,6 +18,7 @@
         "league/iso3166": "^2.1",
         "odolbeau/phone-number-bundle": "^3.1",
         "phpdocumentor/reflection-docblock": "^5.1",
+        "prolix/maintenance-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.6",
         "sensiolabs/security-checker": "^6.0",
         "sentry/sentry-symfony": "^3.5",
@@ -59,12 +60,6 @@
         "twig/markdown-extra": "^3.0",
         "twig/twig": "^2.12|^3.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@github.com:eventhorizonpl/ses.git"
-        }
-    ],
     "require-dev": {
         "fzaninotto/faker": "^1.9",
         "symfony/browser-kit": "^5.1",

@@ -1,17 +1,32 @@
-FROM php:7.4-fpm-alpine AS php_build
+#FROM php:7.4-fpm-alpine AS php_build
+FROM php:7.4-apache AS php_build
 
-RUN apk add --no-cache \
-  libxslt \
-  libzip \
-  nginx \
-  zlib
-RUN apk add --no-cache --virtual .build-deps \
-  $PHPIZE_DEPS \
-  libxslt-dev \
+RUN apt-get update && apt-get install -y \
+  acl \
+  gnupg2 \
+  libicu-dev \
+  libxslt1-dev \
   libzip-dev \
-  zlib-dev
+  unzip
 
-RUN docker-php-ext-configure xsl \
+#RUN apk add --no-cache \
+#  libxslt \
+#  libzip \
+#  nginx \
+#  zlib
+#RUN apk add --no-cache --virtual .build-deps \
+#  $PHPIZE_DEPS \
+#  libxslt-dev \
+#  libzip-dev \
+#  zlib-dev
+
+RUN docker-php-ext-configure intl \
+  && docker-php-ext-install intl \
+  && docker-php-ext-install mysqli pdo pdo_mysql \
+  && docker-php-ext-enable pdo_mysql \
+  && docker-php-ext-configure pcntl \
+  && docker-php-ext-install pcntl \
+  && docker-php-ext-configure xsl \
   && docker-php-ext-install xsl \
   && docker-php-ext-configure zip \
   && docker-php-ext-install zip \
@@ -19,8 +34,8 @@ RUN docker-php-ext-configure xsl \
   && pecl clear-cache \
   && docker-php-ext-enable apcu opcache
 
-RUN rm -rf /tmp/pear/
-RUN apk del .build-deps
+#RUN rm -rf /tmp/pear/
+#RUN apk del .build-deps
 
 COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
 
@@ -34,8 +49,9 @@ RUN composer install --prefer-dist --no-scripts --no-progress --no-suggest \
   && composer clear-cache
 
 COPY .env ./
+COPY .env.prod.local ./
 RUN composer dump-env prod \
-  && rm .env
+  && rm .env .env.prod.local
 
 COPY bin bin/
 COPY config config/
@@ -49,10 +65,14 @@ VOLUME /var/www/html/var
 
 FROM php_build as php_build_assets
 
-RUN apk add --no-cache \
-  nodejs \
-  npm \
-  yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y nodejs npm yarn
+
+#RUN apk add --no-cache \
+#  nodejs \
+#  npm \
+#  yarn
 
 COPY assets assets/
 RUN yarn install
@@ -60,8 +80,24 @@ RUN yarn encore production
 
 FROM php_build as php_build_final
 COPY --from=php_build_assets /var/www/html/public/build /var/www/html/public/build
+COPY public/.htaccess public/.htaccess
 
+RUN chown -R www-data:www-data /var/www
+
+#COPY docker/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY docker/apache2/sites-enabled/routines365.conf /etc/apache2/sites-enabled/
+RUN rm /etc/apache2/sites-enabled/000-default.conf
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
-COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+#COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+RUN a2enmod rewrite
 
-#RUN sh bin/deploy_install.sh
+#RUN mkdir -p /run/nginx/
+
+EXPOSE 80
+
+#STOPSIGNAL SIGTERM
+
+#CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["apache2-foreground"]

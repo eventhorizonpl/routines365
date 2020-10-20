@@ -1,0 +1,3 @@
+lexik_maintenance:
+    driver:
+        class: 'Lexik\Bundle\MaintenanceBundle\Drivers\DatabaseDriver'
