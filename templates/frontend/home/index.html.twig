@@ -2,7 +2,8 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1 class="display-3">{{ 'Routines365'|trans }}</h1>
+        <h1 class="display-2">{{ 'Routines365'|trans }}</h1>
+        <h3 class="display-4">{{ 'We help. You achieve.'|trans }}</h3>
         <p class="lead">{{ 'We will help you in creating and maintaining your routines. With routines you can achieve amazing things.'|trans }}</p>
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <hr class="my-2">
