@@ -102,7 +102,7 @@ class Routine
         $this->completedRoutines = new ArrayCollection();
         $this->description = null;
         $this->goals = new ArrayCollection();
-        $this->isEnabled = false;
+        $this->isEnabled = true;
         $this->name = '';
         $this->notes = new ArrayCollection();
         $this->reminders = new ArrayCollection();

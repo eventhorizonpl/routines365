@@ -121,12 +121,13 @@ class Reminder
 
     public function __construct()
     {
-        $this->isEnabled = false;
+        $this->isEnabled = true;
         $this->nextDate = null;
         $this->previousDate = null;
         $this->reminderMessages = new ArrayCollection();
-        $this->sendSms = false;
+        $this->sendEmail = true;
         $this->sentReminders = new ArrayCollection();
+        $this->sendSms = true;
         $this->type = self::TYPE_DAILY;
     }
 
