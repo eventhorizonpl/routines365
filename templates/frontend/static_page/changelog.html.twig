@@ -1,0 +1,19 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">Changelog</h5>
+                <div>
+                    <h6>2020-10-27 - v1</h6>
+                    <ul>
+                        <li>first private version</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ 'Changelog'|trans }}{% endblock %}

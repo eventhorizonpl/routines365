@@ -945,6 +945,10 @@
         <source>Devoted time</source>
         <target>Devoted time</target>
       </trans-unit>
+      <trans-unit id="6tB8hLq" resname="Changelog">
+        <source>Changelog</source>
+        <target>Changelog</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

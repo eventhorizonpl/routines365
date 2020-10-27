@@ -20,6 +20,14 @@ class StaticPageController extends AbstractController
     }
 
     /**
+     * @Route("/changelog", name="changelog")
+     */
+    public function changelog(): Response
+    {
+        return $this->render('frontend/static_page/changelog.html.twig');
+    }
+
+    /**
      * @Route("/contact", name="contact")
      */
     public function contact(): Response
