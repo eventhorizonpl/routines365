@@ -1,5 +1,7 @@
 #!/bin/sh
 
+exit 1
+
 rm -rf var/cache/*
 
 bin/console doctrine:database:drop --force
