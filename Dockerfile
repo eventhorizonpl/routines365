@@ -81,6 +81,7 @@ RUN yarn encore production
 FROM php_build as php_build_final
 COPY --from=php_build_assets /var/www/html/public/build /var/www/html/public/build
 COPY public/.htaccess public/.htaccess
+COPY public/robots.txt public/robots.txt
 
 RUN chown -R www-data:www-data /var/www
 
