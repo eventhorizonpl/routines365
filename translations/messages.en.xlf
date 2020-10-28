@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="cus0000" resname="all">
+        <source>all</source>
+        <target>All</target>
+      </trans-unit>
+      <trans-unit id="cus0001" resname="completed_routine">
+        <source>completed_routine</source>
+        <target>Completed routine</target>
+      </trans-unit>
+      <trans-unit id="cus0002" resname="completed_goal">
+        <source>completed_goal</source>
+        <target>Completed goal</target>
+      </trans-unit>
+      <trans-unit id="cus0003" resname="yes">
+        <source>yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="cus0004" resname="no">
+        <source>no</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="cus0005" resname="deposit">
+        <source>deposit</source>
+        <target>Deposit</target>
+      </trans-unit>
+      <trans-unit id="cus0006" resname="withdraw">
+        <source>withdraw</source>
+        <target>Withdraw</target>
+      </trans-unit>
+      <trans-unit id="cus0007" resname="dark">
+        <source>dark</source>
+        <target>Dark</target>
+      </trans-unit>
+      <trans-unit id="cus0008" resname="light">
+        <source>light</source>
+        <target>Light</target>
+      </trans-unit>
+      <trans-unit id="cus0009" resname="daily">
+        <source>daily</source>
+        <target>Daily</target>
+      </trans-unit>
+      <trans-unit id="cus0010" resname="friday">
+        <source>friday</source>
+        <target>Friday</target>
+      </trans-unit>
+      <trans-unit id="cus0011" resname="monday">
+        <source>monday</source>
+        <target>Monday</target>
+      </trans-unit>
+      <trans-unit id="cus0012" resname="saturday">
+        <source>saturday</source>
+        <target>Saturday</target>
+      </trans-unit>
+      <trans-unit id="cus0013" resname="sunday">
+        <source>sunday</source>
+        <target>Sunday</target>
+      </trans-unit>
+      <trans-unit id="cus0014" resname="thursday">
+        <source>thursday</source>
+        <target>Thursday</target>
+      </trans-unit>
+      <trans-unit id="cus0015" resname="tuesday">
+        <source>tuesday</source>
+        <target>Tuesday</target>
+      </trans-unit>
+      <trans-unit id="cus0016" resname="wednesday">
+        <source>wednesday</source>
+        <target>Wednesday</target>
+      </trans-unit>
+      <trans-unit id="cus0017" resname="hobby">
+        <source>hobby</source>
+        <target>Hobby</target>
+      </trans-unit>
+      <trans-unit id="cus0018" resname="learning">
+        <source>learning</source>
+        <target>Learning</target>
+      </trans-unit>
+      <trans-unit id="cus0019" resname="sport">
+        <source>sport</source>
+        <target>Sport</target>
+      </trans-unit>
+      <trans-unit id="cus0020" resname="work">
+        <source>work</source>
+        <target>Work</target>
+      </trans-unit>
+      <trans-unit id="cus0021" resname="customer">
+        <source>customer</source>
+        <target>Customer</target>
+      </trans-unit>
+      <trans-unit id="cus0022" resname="lead">
+        <source>lead</source>
+        <target>Lead</target>
+      </trans-unit>
+      <trans-unit id="cus0023" resname="prospect">
+        <source>prospect</source>
+        <target>Prospect</target>
+      </trans-unit>
+      <trans-unit id="cus0024" resname="staff">
+        <source>staff</source>
+        <target>Staff</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
