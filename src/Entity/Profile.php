@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProfileRepository;
+use App\Resource\ConfigResource;
 use Doctrine\ORM\Mapping as ORM;
 use libphonenumber\PhoneNumber;
 use libphonenumber\PhoneNumberFormat;
@@ -230,6 +231,58 @@ class Profile
         $this->phoneVerificationCode = $phoneVerificationCode;
 
         return $this;
+    }
+
+    public function getProfileCompletenessPercent(): int
+    {
+        $itemsCompleted = 0;
+        $itemsToComplete = 8;
+
+        if (null !== $this->getCountry()) {
+            $itemsCompleted += 1;
+        }
+
+        if (true === ConfigResource::INVITATIONS_ENABLED) {
+            if (null !== $this->getFirstName()) {
+                $itemsCompleted += 1;
+            }
+
+            if (null !== $this->getLastName()) {
+                $itemsCompleted += 1;
+            }
+
+            $itemsToComplete += 2;
+        }
+
+        if (null !== $this->getPhone()) {
+            $itemsCompleted += 1;
+        }
+
+        if (true === $this->getIsVerified()) {
+            $itemsCompleted += 1;
+        }
+
+        if (null !== $this->getShowMotivationalMessages()) {
+            $itemsCompleted += 1;
+        }
+
+        if (null !== $this->getTheme()) {
+            $itemsCompleted += 1;
+        }
+
+        if (null !== $this->getTimeZone()) {
+            $itemsCompleted += 1;
+        }
+
+        if (null !== $this->getUser()->getEmail()) {
+            $itemsCompleted += 1;
+        }
+
+        if (true === $this->getUser()->getIsVerified()) {
+            $itemsCompleted += 1;
+        }
+
+        return (int) (($itemsCompleted / $itemsToComplete) * 100);
     }
 
     public function getShowMotivationalMessages(): ?bool
