@@ -24,7 +24,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
                         <a class="dropdown-item" href="{{ path('frontend_profile_show') }}"><i class="fas fa-cogs"></i> {{ 'Settings'|trans }}</a>
-                        {% if true == constant('App\\Config::INVITATIONS_ENABLED') %}
+                        {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
                             <a class="dropdown-item" href="{{ path('frontend_invitation_new') }}"><i class="fas fa-envelope"></i> {{ 'Invite'|trans }}</a>
                         {% endif %}
                         <div class="dropdown-divider"></div>
@@ -32,7 +32,7 @@
                     </div>
                 </li>
             {% else %}
-                {% if true == constant('App\\Config::REGISTRATION_ENABLED') %}
+                {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('security_register') }}"><i class="fas fa-plus-square"></i> {{ 'Register'|trans }}</a>
                     </li>

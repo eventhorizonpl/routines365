@@ -77,19 +77,19 @@
                             <tr>
                                 <td style="width: 40%;">{{ 'Account available email notifications limit'|trans }}</td>
                                 <td>
-                                    {{ constant('App\\Config::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT') }}
+                                    {{ constant('App\\Resource\\ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT') }}
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ 'Account available SMS notifications limit'|trans }}</td>
                                 <td>
-                                    {{ constant('App\\Config::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT') }}
+                                    {{ constant('App\\Resource\\ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT') }}
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ 'Countries allowed for SMS'|trans }}</td>
                                 <td>
-                                    {% for country in constant('App\\Config::COUNTRIES_ALLOWED_FOR_SMS') %}
+                                    {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
                                         <span class="badge badge-success">{{ country }}</span>
                                     {% endfor %}
                                 </td>
@@ -97,7 +97,7 @@
                             <tr>
                                 <td>{{ 'Invitations enabled'|trans }}</td>
                                 <td>
-                                    {% if constant('App\\Config::INVITATIONS_ENABLED') %}
+                                    {% if constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -107,7 +107,7 @@
                             <tr>
                                 <td>{{ 'Registration enabled'|trans }}</td>
                                 <td>
-                                    {% if constant('App\\Config::REGISTRATION_ENABLED') %}
+                                    {% if constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>

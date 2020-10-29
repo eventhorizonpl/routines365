@@ -2,12 +2,12 @@
 
 namespace App\Controller\Security;
 
-use App\Config;
 use App\Entity\User;
 use App\Factory\UserFactory;
 use App\Form\Security\RegistrationFormType;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
+use App\Resource\ConfigResource;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
 use App\Service\UserService;
@@ -42,7 +42,7 @@ class RegistrationController extends AbstractController
         UserRepository $userRepository,
         UserService $userService
     ): Response {
-        if (true !== Config::REGISTRATION_ENABLED) {
+        if (true !== ConfigResource::REGISTRATION_ENABLED) {
             return $this->redirectToRoute('frontend_home');
         }
 

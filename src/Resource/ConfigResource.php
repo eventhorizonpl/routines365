@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Resource;
 
-class Config
+class ConfigResource
 {
     public const ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT = 2000;
     public const ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT = 200;

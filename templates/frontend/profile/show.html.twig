@@ -26,7 +26,7 @@
                                     {% endif %}
                                 </td>
                             </tr>
-                            {% if true == constant('App\\Config::INVITATIONS_ENABLED') %}
+                            {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
                                 <tr>
                                     <th scope="row">{{ 'First name'|trans }}</th>
                                     <td>{{ profile.firstName }}</td>

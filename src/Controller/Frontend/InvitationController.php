@@ -2,9 +2,9 @@
 
 namespace App\Controller\Frontend;
 
-use App\Config;
 use App\Entity\User;
 use App\Form\Frontend\InvitationType;
+use App\Resource\ConfigResource;
 use App\Service\EmailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,7 +27,7 @@ class InvitationController extends AbstractController
         Request $request,
         TranslatorInterface $translator
     ): Response {
-        if (true !== Config::INVITATIONS_ENABLED) {
+        if (true !== ConfigResource::INVITATIONS_ENABLED) {
             return $this->redirectToRoute('frontend_home');
         }
 

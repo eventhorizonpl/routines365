@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row">
-        {% if app.user.profile.country in constant('App\\Config::COUNTRIES_ALLOWED_FOR_SMS') %}
+        {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
             {% set width = 3 %}
         {% else %}
             {% set width = 4 %}
@@ -21,7 +21,7 @@
         <div class="col-md-{{ width }}">
             {{ form_row(form.sendEmail) }}
         </div>
-        {% if app.user.profile.country in constant('App\\Config::COUNTRIES_ALLOWED_FOR_SMS') %}
+        {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
             <div class="col-md-{{ width }}">
                 {{ form_row(form.sendSms) }}
             </div>

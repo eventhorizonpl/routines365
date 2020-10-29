@@ -2,9 +2,9 @@
 
 namespace App\Form\Frontend;
 
-use App\Config;
 use App\Entity\Reminder;
 use App\Form\Type\YesNoType;
+use App\Resource\ConfigResource;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -40,7 +40,7 @@ class ReminderType extends AbstractType
             ])
         ;
 
-        if (in_array($profile->getCountry(), Config::COUNTRIES_ALLOWED_FOR_SMS)) {
+        if (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS)) {
             $builder->add('sendSms', YesNoType::class);
         }
     }

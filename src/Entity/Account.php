@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Config;
 use App\Repository\AccountRepository;
+use App\Resource\ConfigResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -95,7 +95,7 @@ class Account
 
     public function canDepositEmailNotifications(int $emailNotifications): bool
     {
-        if (Config::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT > ($this->getAvailableEmailNotifications() + $emailNotifications)) {
+        if (ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT > ($this->getAvailableEmailNotifications() + $emailNotifications)) {
             return true;
         } else {
             return false;
@@ -139,7 +139,7 @@ class Account
 
     public function canDepositSmsNotifications(int $smsNotifications): bool
     {
-        if (Config::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT > ($this->getAvailableSmsNotifications() + $smsNotifications)) {
+        if (ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT > ($this->getAvailableSmsNotifications() + $smsNotifications)) {
             return true;
         } else {
             return false;

@@ -9,7 +9,7 @@
             <hr class="my-2">
             <p>{{ 'Are you ready to improve your work, hobby, sport or learning habits?'|trans }}</p>
             <p class="lead">
-                {% if true == constant('App\\Config::REGISTRATION_ENABLED') %}
+                {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">
                         <i class="fas fa-plus-square"></i>
                         {{ 'Register'|trans }}

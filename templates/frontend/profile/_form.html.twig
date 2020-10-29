@@ -1,7 +1,7 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {% if true == constant('App\\Config::INVITATIONS_ENABLED') %}
+    {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
         <div class="row">
             <div class="col-md-12">
                 {{ form_row(form.firstName) }}
