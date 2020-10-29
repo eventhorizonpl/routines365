@@ -51,12 +51,17 @@
                         </p>
                         {% if routine.completedRoutinesPercent > 0 or routine.sentRemindersPercent > 0 %}
                             <div class="row">
-                                <div class="col-md-5">{{ 'Completed routines'|trans }} ({{ routine.completedRoutinesCount }}) / {{ 'Sent reminders'|trans }} ({{ routine.sentRemindersCount }})</div>
-                                <div class="col-md-7">
+                                <div class="col-md-5 mt-2">{{ 'Completed routines'|trans }} ({{ routine.completedRoutinesCount }}) / {{ 'Sent reminders'|trans }} ({{ routine.sentRemindersCount }})</div>
+                                <div class="col-md-4 mt-2">
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: {{ routine.completedRoutinesPercent }}%" aria-valuenow="{{ routine.completedRoutinesPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.completedRoutinesPercent }} &percnt;</div>
                                         <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ routine.sentRemindersPercent }}%" aria-valuenow="{{ routine.sentRemindersPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.sentRemindersPercent }} &percnt;</div>
                                     </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
+                                        <i class="fas fa-star"></i> {{ 'Complete routine'|trans }}
+                                    </a>
                                 </div>
                             </div>
                         {% endif %}
