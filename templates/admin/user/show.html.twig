@@ -434,6 +434,10 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Last login at'|trans }}</th>
+                                <td>{{ user.lastLoginAt ? user.lastLoginAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
                                 <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>

@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Manager\UserManager;
+use DateTimeImmutable;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserService
@@ -42,6 +43,14 @@ class UserService
     public function changeTypeToProspect(User $user): User
     {
         $user->setType(User::TYPE_PROSPECT);
+        $this->userManager->save($user);
+
+        return $user;
+    }
+
+    public function updateLastLoginAt(User $user): User
+    {
+        $user->setLastLoginAt(new DateTimeImmutable());
         $this->userManager->save($user);
 
         return $user;

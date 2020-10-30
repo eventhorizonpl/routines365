@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -97,6 +98,12 @@ class User implements UserInterface
     private string $email;
 
     /**
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(nullable=true, type="datetimetz_immutable")
+     */
+    protected $lastLoginAt;
+
+    /**
      * @Assert\Length(
      *   max = 255
      * )
@@ -161,6 +168,7 @@ class User implements UserInterface
             'id' => $this->getId(),
             'isEnabled' => $this->getIsEnabled(),
             'isVerified' => $this->getIsVerified(),
+            'lastLoginAt' => $this->getLastLoginAt(),
             'notes' => $this->getNotesAll(),
             'profile' => $this->getProfile(),
             'recommendations' => $this->getRecommendationsAll(),
@@ -195,6 +203,7 @@ class User implements UserInterface
         $this->id = $data['id'];
         $this->isEnabled = $data['isEnabled'];
         $this->isVerified = $data['isVerified'];
+        $this->lastLoginAt = isset($data['lastLoginAt']) ? $data['lastLoginAt'] : null;
         $this->profile = $data['profile'];
         $this->recommendations = $data['recommendations'];
         $this->reminders = $data['reminders'];
@@ -295,6 +304,18 @@ class User implements UserInterface
         if (true === $this->goals->contains($goal)) {
             $this->goals->removeElement($goal);
         }
+
+        return $this;
+    }
+
+    public function getLastLoginAt(): ?DateTimeImmutable
+    {
+        return $this->lastLoginAt;
+    }
+
+    public function setLastLoginAt(?DateTimeImmutable $lastLoginAt): self
+    {
+        $this->lastLoginAt = $lastLoginAt;
 
         return $this;
     }

@@ -957,6 +957,14 @@
         <source>We help. You achieve.</source>
         <target>We help. You achieve.</target>
       </trans-unit>
+      <trans-unit id="bAyofJn" resname="Last login at">
+        <source>Last login at</source>
+        <target>Last login at</target>
+      </trans-unit>
+      <trans-unit id="caNcb34" resname="Profile completeness">
+        <source>Profile completeness</source>
+        <target>Profile completeness</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
