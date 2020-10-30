@@ -108,4 +108,15 @@ class ReminderRepository extends ServiceEntityRepository
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
+
+    public function findByLockedAt(DateTimeImmutable $lockedAt): array
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->select('r')
+            ->where('r.deletedAt IS NULL')
+            ->andWhere('r.lockedAt < :lockedAt')
+            ->setParameter('lockedAt', $lockedAt);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

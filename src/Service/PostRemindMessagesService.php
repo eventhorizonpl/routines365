@@ -70,11 +70,25 @@ class PostRemindMessagesService
         return $reminder;
     }
 
+    public function findOldLocked(): self
+    {
+        $lockedAt = new DateTimeImmutable('-10 minutes');
+        $reminders = $this->reminderRepository->findByLockedAt($lockedAt);
+
+        foreach ($reminders as $reminder) {
+            $this->reminderManager->unlock($reminder);
+        }
+
+        return $this;
+    }
+
     public function nurture(): self
     {
         for ($i = 0; $i < 50; ++$i) {
             $this->findNextReminder();
         }
+
+        $this->findOldLocked();
 
         return $this;
     }
