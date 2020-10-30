@@ -2,21 +2,19 @@
     {{ form_errors(form) }}
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             {{ form_row(form.name) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.type, {'attr': {'class': 'custom-select'}}) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.isEnabled, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             {{ form_row(form.description) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            {{ form_row(form.type) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_row(form.isEnabled) }}
         </div>
     </div>
     <hr>

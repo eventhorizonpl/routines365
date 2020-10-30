@@ -9,7 +9,7 @@
     {% if not note.routine %}
         <div class="row">
             <div class="col-md-12">
-                {{ form_row(form.routine) }}
+                {{ form_row(form.routine, {'attr': {'class': 'custom-select'}}) }}
             </div>
         </div>
     {% endif %}

@@ -15,10 +15,10 @@
     {% endif %}
     <div class="row">
         <div class="col-md-6">
-            {{ form_row(form.type) }}
+            {{ form_row(form.type, {'attr': {'class': 'custom-select'}}) }}
         </div>
         <div class="col-md-6">
-            {{ form_row(form.requiredNumberOfCompletions) }}
+            {{ form_row(form.requiredNumberOfCompletions, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
     <div class="row">
