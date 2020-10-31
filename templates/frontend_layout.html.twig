@@ -50,6 +50,16 @@
     {% else %}
         {{ encore_entry_script_tags('frontend-dark') }}
     {% endif %}
+    {% if app.environment == "prod" %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJEXTQKCLF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FJEXTQKCLF');
+        </script>
+    {% endif %}
 {% endblock %}
 
 {% block meta %}
