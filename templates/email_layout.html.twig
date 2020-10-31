@@ -1,0 +1,26 @@
+{% apply inky_to_html %}
+    <container>
+        <row>
+            <columns>
+                <h1 class="text-center">Routines365</h1>
+                <h2 class="text-center">We help. You achieve.</h2>
+            </columns>
+        </row>
+    </container>
+
+    {% block content %}{% endblock %}
+
+    <container>
+        <row>
+            <columns>
+                <center>
+                    <menu class="text-center">
+                        <item href="https://routines365.com/page/about">About</item>
+                        <item href="https://routines365.com/page/faq">FAQ</item>
+                        <item href="https://routines365.com/page/contact">Contact</item>
+                    </menu>
+                </center>
+            </columns>
+        </row>
+    </container>
+{% endapply %}

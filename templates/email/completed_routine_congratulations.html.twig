@@ -1,4 +1,6 @@
-{% apply inky_to_html %}
+{% extends 'email_layout.html.twig' %}
+
+{% block content %}
     <container>
         <row>
             Hi,<br><br>
@@ -11,4 +13,4 @@
             Routines365 Team
         </row>
     </container>
-{% endapply %}
+{% endblock %}
