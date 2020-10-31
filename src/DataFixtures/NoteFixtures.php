@@ -14,7 +14,7 @@ class NoteFixtures extends Fixture implements ContainerAwareInterface, Dependent
 {
     use ContainerAwareTrait;
 
-    public const NOTE_LIMIT = 10;
+    public const NOTE_LIMIT = 5;
     public const NOTE_REFERENCE = 'note_reference';
 
     private NoteFaker $noteFaker;

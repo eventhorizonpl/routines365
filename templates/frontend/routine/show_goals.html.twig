@@ -3,7 +3,7 @@
 {% block routine_content %}
     <p>
         {{ 'Goals'|trans }}: {{ routine.goals|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_goal_new', {'uuid': routine.uuid}) }}">
+        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_goal_new', {'uuid': routine.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}">
             <i class="fas fa-bullseye"></i>
             {{ 'Create goal'|trans }}
         </a>
@@ -42,13 +42,15 @@
                                 <tr>
                                     <td>{{ goal.name }}</td>
                                     <td>{{ goal.description }}</td>
-                                    <td style="width: 15%;">{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td style="width: 15%;">
+                                        {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                    </td>
                                     <td style="width: 25%;">
-                                        <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid}) }}">
+                                        <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}">
                                             <i class="fas fa-check"></i>
                                             {{ 'Complete'|trans }}
                                         </a>
-                                        <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid}) }}">
+                                        <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}">
                                             <i class="fas fa-edit"></i>
                                             {{ 'Edit'|trans }}
                                         </a>
@@ -75,9 +77,14 @@
                                 <tr>
                                     <td>{{ goal.name }}</td>
                                     <td>{{ goal.description }}</td>
-                                    <td style="width: 15%;">{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td style="width: 15%;">
+                                        {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                    </td>
                                     <td style="width: 25%;">
-                                        <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                                        <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}">
+                                            <i class="fas fa-edit"></i>
+                                            {{ 'Edit'|trans }}
+                                        </a>
                                     </td>
                                 </tr>
                             {% endfor %}

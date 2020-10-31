@@ -239,47 +239,47 @@ class Profile
         $itemsToComplete = 8;
 
         if (null !== $this->getCountry()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (true === ConfigResource::INVITATIONS_ENABLED) {
             if (null !== $this->getFirstName()) {
-                $itemsCompleted += 1;
+                ++$itemsCompleted;
             }
 
             if (null !== $this->getLastName()) {
-                $itemsCompleted += 1;
+                ++$itemsCompleted;
             }
 
             $itemsToComplete += 2;
         }
 
         if (null !== $this->getPhone()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (true === $this->getIsVerified()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (null !== $this->getShowMotivationalMessages()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (null !== $this->getTheme()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (null !== $this->getTimeZone()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (null !== $this->getUser()->getEmail()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         if (true === $this->getUser()->getIsVerified()) {
-            $itemsCompleted += 1;
+            ++$itemsCompleted;
         }
 
         return (int) (($itemsCompleted / $itemsToComplete) * 100);

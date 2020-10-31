@@ -14,7 +14,7 @@ class CompletedRoutineFixtures extends Fixture implements ContainerAwareInterfac
 {
     use ContainerAwareTrait;
 
-    public const COMPLETED_ROUTINE_LIMIT = 10;
+    public const COMPLETED_ROUTINE_LIMIT = 5;
     public const COMPLETED_ROUTINE_REFERENCE = 'completed_routine_reference';
 
     private CompletedRoutineFaker $completedRoutineFaker;

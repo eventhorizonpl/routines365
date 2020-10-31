@@ -14,7 +14,7 @@ class RoutineFixtures extends Fixture implements ContainerAwareInterface, Depend
 {
     use ContainerAwareTrait;
 
-    public const ROUTINE_LIMIT = 10;
+    public const ROUTINE_LIMIT = 5;
     public const ROUTINE_REFERENCE = 'routine_reference';
 
     private RoutineFaker $routineFaker;

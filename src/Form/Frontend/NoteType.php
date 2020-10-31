@@ -31,10 +31,10 @@ class NoteType extends AbstractType
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
-                    return $entityRepository->createQueryBuilder('n')
-                        ->where('n.user = :user')
-                        ->andWhere('n.deletedAt IS NULL')
-                        ->orderBy('n.name', 'ASC')
+                    return $entityRepository->createQueryBuilder('r')
+                        ->where('r.user = :user')
+                        ->andWhere('r.deletedAt IS NULL')
+                        ->orderBy('r.name', 'ASC')
                         ->setParameter('user', $user);
                 },
                 'required' => false,

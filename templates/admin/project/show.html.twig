@@ -7,20 +7,20 @@
         </a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ path('admin_goal_index') }}">
-            {{ 'Goals'|trans }}
+        <a href="{{ path('admin_project_index') }}">
+            {{ 'Projects'|trans }}
         </a>
     </li>
     <li class="breadcrumb-item active">
-        {{ 'Goal details'|trans }}
+        {{ 'Project details'|trans }}
     </li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Goal details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_goal_index') }}">
+            {{ 'Project details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_project_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -44,7 +44,7 @@
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
                                 <td>
-                                    {% if goal.name %}
+                                    {% if project.name %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -54,7 +54,7 @@
                             <tr>
                                 <th scope="row">{{ 'Description'|trans }}</th>
                                 <td>
-                                    {% if goal.description %}
+                                    {% if project.description %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -64,7 +64,7 @@
                             <tr>
                                 <th scope="row">{{ 'Is completed'|trans }}</th>
                                 <td>
-                                    {% if goal.isCompleted %}
+                                    {% if project.isCompleted %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -78,26 +78,22 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Project'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
                                 <td>
-                                    {% if goal.project %}
-                                        <a href="{{ path('admin_project_show', {'uuid': goal.project.uuid}) }}">{{ goal.project.uuid }}</a>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">{{ 'Routine'|trans }}</th>
-                                <td>
-                                    {% if goal.routine %}
-                                        <a href="{{ path('admin_routine_show', {'uuid': goal.routine.uuid}) }}">{{ goal.routine.uuid }}</a>
+                                    {% if project.goalsAll|length %}
+                                        <ul>
+                                            {% for goal in project.goalsAll %}
+                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'User'|trans }}</th>
                                 <td>
-                                    {% if goal.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': goal.user.uuid}) }}">{{ goal.user.email }}</a>
+                                    {% if project.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': project.user.uuid}) }}">{{ project.user.email }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -109,53 +105,53 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ goal.id }}</td>
+                                <td>{{ project.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ goal.uuid }}</td>
+                                <td>{{ project.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
                                 <td>
-                                    {% if goal.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': goal.createdBy}) }}">{{ goal.createdBy }}</a>
+                                    {% if project.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': project.createdBy}) }}">{{ project.createdBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
                                 <td>
-                                    {% if goal.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': goal.deletedBy}) }}">{{ goal.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_goal_undelete', {'uuid': goal.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% if project.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': project.deletedBy}) }}">{{ project.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_project_undelete', {'uuid': project.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
                                 <td>
-                                    {% if goal.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': goal.updatedBy}) }}">{{ goal.updatedBy }}</a>
+                                    {% if project.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': project.updatedBy}) }}">{{ project.updatedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ goal.createdAt ? goal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
                                 <td>
-                                    {% if goal.deletedAt %}
-                                        {{ goal.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_goal_undelete', {'uuid': goal.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% if project.deletedAt %}
+                                        {{ project.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_project_undelete', {'uuid': project.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -165,4 +161,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Goal details'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ 'Project details'|trans }}{% endblock %}

@@ -14,7 +14,7 @@ class RewardFixtures extends Fixture implements ContainerAwareInterface, Depende
 {
     use ContainerAwareTrait;
 
-    public const REWARD_LIMIT = 10;
+    public const REWARD_LIMIT = 5;
     public const REWARD_REFERENCE = 'reward_reference';
 
     private RewardFaker $rewardFaker;

@@ -1,0 +1,78 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    {% if projects|length %}
+        <div class="row mb-3">
+            <div class="col-md-10 offset-md-1">
+                <h3 class="float-left">
+                    <i class="fas fa-tools"></i>
+                    {{ 'Projects'|trans }}
+                </h3>
+                <a class="btn btn-primary float-right" href="{{ path('frontend_project_new') }}">
+                    <i class="fas fa-tools"></i>
+                    {{ 'Create project'|trans }}
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    {% for project in projects %}
+        <div class="row mb-5">
+            <div class="col-md-10 offset-md-1">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        {{ project.name }}
+                        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}">
+                            <i class="fas fa-eye"></i>
+                            {{ 'Show'|trans }}
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ project.description }}</p>
+                        <p>
+                            {{ 'Is completed'|trans }}:
+                            {% if project.isCompleted %}
+                                <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                            {% else %}
+                                <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                            {% endif %}
+                        </p>
+                        <p>
+                            <span>
+                                {{ 'Goals'|trans }}: {{ project.goals|length }}
+                            </span>
+                        </p>
+                        {% if project.goalsCompletedPercent > 0 or project.goalsNotCompletedPercent > 0 %}
+                            <div class="row">
+                                <div class="col-md-5">{{ 'Goals completed'|trans }} ({{ project.goalsCompletedCount }}) / {{ 'Goals not completed'|trans }} ({{ project.goalsNotCompletedCount }})</div>
+                                <div class="col-md-7">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ project.goalsCompletedPercent }}%" aria-valuenow="{{ project.goalsCompletedPercent }}" aria-valuemin="0" aria-valuemax="100">{{ project.goalsCompletedPercent }} &percnt;</div>
+                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ project.goalsNotCompletedPercent }}%" aria-valuenow="{{ project.goalsNotCompletedPercent }}" aria-valuemin="0" aria-valuemax="100">{{ project.goalsNotCompletedPercent }} &percnt;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row mb-5">
+            <div class="col-md-4 offset-md-4">
+                <div class="card text-white bg-secondary">
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{ 'You do not have any projects!'|trans }}
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('frontend_project_new') }}">
+                            <i class="fas fa-sync"></i>
+                            {{ 'Create project'|trans }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Projects'|trans }}{% endblock %}

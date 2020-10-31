@@ -14,7 +14,7 @@ class ReminderFixtures extends Fixture implements ContainerAwareInterface, Depen
 {
     use ContainerAwareTrait;
 
-    public const REMINDER_LIMIT = 10;
+    public const REMINDER_LIMIT = 5;
     public const REMINDER_REFERENCE = 'reminder_reference';
 
     private ReminderFaker $reminderFaker;

@@ -16,6 +16,9 @@
                     <a class="nav-link{% if route in ['frontend_note_edit', 'frontend_note_index', 'frontend_note_new', 'frontend_note_show'] %} active{% endif %}" href="{{ path('frontend_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link{% if route in ['frontend_project_edit', 'frontend_project_index', 'frontend_project_new', 'frontend_project_show'] %} active{% endif %}" href="{{ path('frontend_project_index') }}"><i class="fas fa-tools"></i> {{ 'Projects'|trans }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{{ path('frontend_reward_index') }}"><i class="fas fa-award"></i> {{ 'Rewards'|trans }}</a>
                 </li>
                 <li class="nav-item dropdown">

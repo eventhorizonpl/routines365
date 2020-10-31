@@ -13,8 +13,19 @@ class Goal
 {
     use Traits\IdTrait;
     use Traits\UuidTrait;
+    use Traits\IsCompletedTrait;
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
+
+    public const CONTEXT_PROJECT = 'project';
+    public const CONTEXT_ROUTINE = 'routine';
+
+    /**
+     * @Assert\Valid
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
+     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="goals", targetEntity=Project::class)
+     */
+    private ?Project $project;
 
     /**
      * @Assert\Valid
@@ -38,13 +49,6 @@ class Goal
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
-
-    /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
-     * @ORM\Column(type="boolean")
-     */
-    private bool $isCompleted;
 
     /**
      * @Assert\Length(
@@ -80,18 +84,6 @@ class Goal
         return $this;
     }
 
-    public function getIsCompleted(): ?bool
-    {
-        return $this->isCompleted;
-    }
-
-    public function setIsCompleted(bool $isCompleted): self
-    {
-        $this->isCompleted = $isCompleted;
-
-        return $this;
-    }
-
     public function getName(): string
     {
         return $this->name;
@@ -100,6 +92,18 @@ class Goal
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project = null): self
+    {
+        $this->project = $project;
 
         return $this;
     }

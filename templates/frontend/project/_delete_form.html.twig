@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-md-12">
+        <form class="float-right" method="post" action="{{ path('frontend_project_delete', {'uuid': project.uuid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.uuid) }}">
+            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> {{ 'Delete'|trans }}</button>
+        </form>
+    </div>
+</div>

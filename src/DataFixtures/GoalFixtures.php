@@ -14,7 +14,7 @@ class GoalFixtures extends Fixture implements ContainerAwareInterface, Dependent
 {
     use ContainerAwareTrait;
 
-    public const GOAL_LIMIT = 10;
+    public const GOAL_LIMIT = 5;
     public const GOAL_REFERENCE = 'goal_reference';
 
     private GoalFaker $goalFaker;
@@ -31,6 +31,7 @@ class GoalFixtures extends Fixture implements ContainerAwareInterface, Dependent
     public function getDependencies(): array
     {
         return [
+            ProjectFixtures::class,
             RoutineFixtures::class,
             UserFixtures::class,
         ];
@@ -49,6 +50,23 @@ class GoalFixtures extends Fixture implements ContainerAwareInterface, Dependent
                         $goal->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                         $goals[] = $goal;
                         $this->addReference(self::GOAL_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $goalId, $goal);
+                    }
+                }
+            }
+        }
+
+        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+                for ($projectId = 1; $projectId <= ProjectFixtures::PROJECT_LIMIT; ++$projectId) {
+                    for ($routineId = 1; $routineId <= RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
+                        for ($goalId = 1; $goalId <= self::GOAL_LIMIT; ++$goalId) {
+                            $goal = $this->goalFaker->createGoal();
+                            $goal->setProject($this->getReference(ProjectFixtures::PROJECT_REFERENCE.'-'.(string) $userId.'-'.(string) $projectId));
+                            $goal->setRoutine($this->getReference(RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
+                            $goal->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                            $goals[] = $goal;
+                            $this->addReference(self::GOAL_REFERENCE.'-'.(string) $userId.'-'.(string) $projectId.'-'.(string) $routineId.'-'.(string) $goalId, $goal);
+                        }
                     }
                 }
             }
