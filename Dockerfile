@@ -92,6 +92,7 @@ RUN rm /etc/apache2/sites-enabled/000-default.conf
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
 #COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+RUN a2enmod expires
 RUN a2enmod rewrite
 
 #RUN mkdir -p /run/nginx/
