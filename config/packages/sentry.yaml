@@ -5,5 +5,6 @@ sentry:
         release: '%env(VERSION)%'
         excluded_exceptions:
             - App\Exception\ManagerException
+            - Lexik\Bundle\MaintenanceBundle\Exception\ServiceUnavailableException
             - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
             - Symfony\Component\Security\Core\Exception\AccessDeniedException
