@@ -985,6 +985,18 @@
         <source>Edit project</source>
         <target>Edit project</target>
       </trans-unit>
+      <trans-unit id="LzddAbO" resname="You can create personal projects.">
+        <source>You can create personal projects.</source>
+        <target>You can create personal projects.</target>
+      </trans-unit>
+      <trans-unit id="5fQw7dg" resname="In project you can create goals that you will realize in routines.">
+        <source>In project you can create goals that you will realize in routines.</source>
+        <target>In project you can create goals that you will realize in routines.</target>
+      </trans-unit>
+      <trans-unit id="fJzicTd" resname="We keep track on how many goals you realized to show you progress of your project.">
+        <source>We keep track on how many goals you realized to show you progress of your project.</source>
+        <target>We keep track on how many goals you realized to show you progress of your project.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
