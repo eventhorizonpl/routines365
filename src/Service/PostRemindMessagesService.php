@@ -164,6 +164,8 @@ class PostRemindMessagesService
                     $reminder->getUser()->getEmail(),
                     'R365: Routine reminder',
                     [
+                        'available_email_notifications' => $reminder->getUser()->getAccount()->getAvailableEmailNotifications(),
+                        'available_sms_notifications' => $reminder->getUser()->getAccount()->getAvailableSmsNotifications(),
                         'email_link' => $emailLink,
                         'email_original_message' => $emailOriginalMessage,
                         'email_quote' => $emailQuote,
