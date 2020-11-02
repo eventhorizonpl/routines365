@@ -13,10 +13,12 @@ class UserManager
 {
     private AccountManager $accountManager;
     private CompletedRoutineManager $completedRoutineManager;
+    private ContactManager $contactManager;
     private EntityManagerInterface $entityManager;
     private GoalManager $goalManager;
     private NoteManager $noteManager;
     private ProfileManager $profileManager;
+    private ProjectManager $projectManager;
     private ReminderManager $reminderManager;
     private RewardManager $rewardManager;
     private RoutineManager $routineManager;
@@ -25,10 +27,12 @@ class UserManager
     public function __construct(
         AccountManager $accountManager,
         CompletedRoutineManager $completedRoutineManager,
+        ContactManager $contactManager,
         EntityManagerInterface $entityManager,
         GoalManager $goalManager,
         NoteManager $noteManager,
         ProfileManager $profileManager,
+        ProjectManager $projectManager,
         ReminderManager $reminderManager,
         RewardManager $rewardManager,
         RoutineManager $routineManager,
@@ -36,10 +40,12 @@ class UserManager
     ) {
         $this->accountManager = $accountManager;
         $this->completedRoutineManager = $completedRoutineManager;
+        $this->contactManager = $contactManager;
         $this->entityManager = $entityManager;
         $this->goalManager = $goalManager;
         $this->noteManager = $noteManager;
         $this->profileManager = $profileManager;
+        $this->projectManager = $projectManager;
         $this->reminderManager = $reminderManager;
         $this->rewardManager = $rewardManager;
         $this->routineManager = $routineManager;
@@ -114,6 +120,10 @@ class UserManager
             $this->completedRoutineManager->softDelete($completedRoutine, $actor);
         }
 
+        foreach ($user->getContacts() as $contact) {
+            $this->contactManager->softDelete($contact, $actor);
+        }
+
         foreach ($user->getGoals() as $goal) {
             $this->goalManager->softDelete($goal, $actor);
         }
@@ -123,6 +133,10 @@ class UserManager
         }
 
         $this->profileManager->softDelete($user->getProfile(), $actor);
+
+        foreach ($user->getProjects() as $project) {
+            $this->projectManager->softDelete($project, $actor);
+        }
 
         foreach ($user->getReminders() as $reminder) {
             $this->reminderManager->softDelete($reminder, $actor);

@@ -226,6 +226,18 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Projects'|trans }}</th>
+                                <td>
+                                    {% if user.projectsAll|length %}
+                                        <ul>
+                                            {% for project in user.projectsAll %}
+                                                <li><a href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">{{ project.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Referrer'|trans }}</th>
                                 <td>
                                     {% if user.referrer %}

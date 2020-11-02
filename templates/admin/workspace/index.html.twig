@@ -28,6 +28,10 @@
                                 <td>{{ completed_routines_count }}</td>
                             </tr>
                             <tr>
+                                <td><a href="{{ path('admin_contact_index') }}">{{ 'Contacts'|trans }}</a></td>
+                                <td>{{ contacts_count }}</td>
+                            </tr>
+                            <tr>
                                 <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
                                 <td>{{ goals_count }}</td>
                             </tr>
@@ -42,6 +46,10 @@
                             <tr>
                                 <td><a href="{{ path('admin_user_index') }}">{{ 'Profiles'|trans }}</a></td>
                                 <td>{{ profiles_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_project_index') }}">{{ 'Projects'|trans }}</a></td>
+                                <td>{{ projects_count }}</td>
                             </tr>
                             <tr>
                                 <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>

@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Repository\AccountOperationRepository;
 use App\Repository\AccountRepository;
 use App\Repository\CompletedRoutineRepository;
+use App\Repository\ContactRepository;
 use App\Repository\GoalRepository;
 use App\Repository\KpiRepository;
 use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;
+use App\Repository\ProjectRepository;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
@@ -31,10 +33,12 @@ class WorkspaceController extends AbstractController
         AccountRepository $accountRepository,
         AccountOperationRepository $accountOperationRepository,
         CompletedRoutineRepository $completedRoutineRepository,
+        ContactRepository $contactRepository,
         GoalRepository $goalRepository,
         NoteRepository $noteRepository,
         KpiRepository $kpiRepository,
         ProfileRepository $profileRepository,
+        ProjectRepository $projectRepository,
         QuoteRepository $quoteRepository,
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
@@ -45,10 +49,12 @@ class WorkspaceController extends AbstractController
         $accountsCount = $accountRepository->count([]);
         $accountOperationsCount = $accountOperationRepository->count([]);
         $completedRoutinesCount = $completedRoutineRepository->count([]);
+        $contactsCount = $contactRepository->count([]);
         $goalsCount = $goalRepository->count([]);
         $notesCount = $noteRepository->count([]);
         $kpisCount = $kpiRepository->count([]);
         $profilesCount = $profileRepository->count([]);
+        $projectsCount = $projectRepository->count([]);
         $quotesCount = $quoteRepository->count([]);
         $reminderMessagesCount = $reminderMessageRepository->count([]);
         $remindersCount = $reminderRepository->count([]);
@@ -60,10 +66,12 @@ class WorkspaceController extends AbstractController
             'accounts_count' => $accountsCount,
             'account_operations_count' => $accountOperationsCount,
             'completed_routines_count' => $completedRoutinesCount,
+            'contacts_count' => $contactsCount,
             'goals_count' => $goalsCount,
             'notes_count' => $notesCount,
             'kpis_count' => $kpisCount,
             'profiles_count' => $profilesCount,
+            'projects_count' => $projectsCount,
             'quotes_count' => $quotesCount,
             'reminder_messages_count' => $reminderMessagesCount,
             'reminders_count' => $remindersCount,

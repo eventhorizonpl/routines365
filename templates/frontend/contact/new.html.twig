@@ -1,0 +1,18 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    {{ 'Contact form'|trans }}
+                </div>
+                <div class="card-body">
+                    {{ include('frontend/contact/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Contact form'|trans }}{% endblock %}

@@ -1,0 +1,28 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.title) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.content) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.type, {'attr': {'class': 'custom-select'}}) }}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-envelope"></i>
+                {{ button_label|default('Send'|trans) }}
+            </button>
+        </div>
+    </div>
+{{ form_end(form) }}

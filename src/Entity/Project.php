@@ -28,7 +28,7 @@ class Project
     /**
      * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
+     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="projects", targetEntity=User::class)
      */
     private User $user;
 

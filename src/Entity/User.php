@@ -45,6 +45,11 @@ class User implements UserInterface
     private Collection $completedRoutines;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Contact::class)
+     */
+    private Collection $contacts;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
      */
     private Collection $goals;
@@ -59,6 +64,11 @@ class User implements UserInterface
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
     private Profile $profile;
+
+    /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Project::class)
+     */
+    private Collection $projects;
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="referrer", targetEntity=User::class)
@@ -142,11 +152,13 @@ class User implements UserInterface
     public function __construct()
     {
         $this->completedRoutines = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
         $this->email = '';
         $this->goals = new ArrayCollection();
         $this->isEnabled = false;
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
+        $this->projects = new ArrayCollection();
         $this->recommendations = new ArrayCollection();
         $this->referrer = null;
         $this->reminders = new ArrayCollection();
@@ -256,6 +268,37 @@ class User implements UserInterface
     {
         if (true === $this->completedRoutines->contains($completedRoutine)) {
             $this->completedRoutines->removeElement($completedRoutine);
+        }
+
+        return $this;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (false === $this->contacts->contains($contact)) {
+            $this->contacts->add($contact);
+            $contact->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getContacts(): Collection
+    {
+        return $this->contacts->filter(function (Contact $contact) {
+            return null === $contact->getDeletedAt();
+        });
+    }
+
+    public function getContactsAll(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if (true === $this->contacts->contains($contact)) {
+            $this->contacts->removeElement($contact);
         }
 
         return $this;
@@ -371,6 +414,37 @@ class User implements UserInterface
     public function setProfile(Profile $profile): self
     {
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (false === $this->projects->contains($project)) {
+            $this->projects->add($project);
+            $project->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getProjects(): Collection
+    {
+        return $this->projects->filter(function (Project $project) {
+            return null === $project->getDeletedAt();
+        });
+    }
+
+    public function getProjectsAll(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if (true === $this->projects->contains($project)) {
+            $this->projects->removeElement($project);
+        }
 
         return $this;
     }
