@@ -105,6 +105,14 @@
         <source>staff</source>
         <target>Staff</target>
       </trans-unit>
+      <trans-unit id="cus0025" resname="feature_idea">
+        <source>feature_idea</source>
+        <target>Feature idea</target>
+      </trans-unit>
+      <trans-unit id="cus0026" resname="question">
+        <source>question</source>
+        <target>Question</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

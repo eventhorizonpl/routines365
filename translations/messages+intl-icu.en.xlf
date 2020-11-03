@@ -997,6 +997,34 @@
         <source>We keep track on how many goals you realized to show you progress of your project.</source>
         <target>We keep track on how many goals you realized to show you progress of your project.</target>
       </trans-unit>
+      <trans-unit id="4U1Z073" resname="We saved your contact request. We will get back to you soon.">
+        <source>We saved your contact request. We will get back to you soon.</source>
+        <target>We saved your contact request. We will get back to you soon.</target>
+      </trans-unit>
+      <trans-unit id="JSCgulZ" resname="Contact form">
+        <source>Contact form</source>
+        <target>Contact form</target>
+      </trans-unit>
+      <trans-unit id="tFBkXev" resname="Contacts">
+        <source>Contacts</source>
+        <target>Contacts</target>
+      </trans-unit>
+      <trans-unit id="loE5XeR" resname="Contact details">
+        <source>Contact details</source>
+        <target>Contact details</target>
+      </trans-unit>
+      <trans-unit id="kg5BPH1" resname="Status">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="gc0GWkX" resname="Edit contact">
+        <source>Edit contact</source>
+        <target>Edit contact</target>
+      </trans-unit>
+      <trans-unit id="CGh3fxc" resname="For interesting feature ideas we offer rewards in the form of free notifications.">
+        <source>For interesting feature ideas we offer rewards in the form of free notifications.</source>
+        <target>For interesting feature ideas we offer rewards in the form of free notifications.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
