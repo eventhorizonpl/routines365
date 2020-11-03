@@ -170,30 +170,9 @@ class User implements UserInterface
     public function __serialize(): array
     {
         return [
-            'account' => $this->getAccount(),
-            'completedRoutines' => $this->getCompletedRoutinesAll(),
-            'createdAt' => $this->getCreatedAt(),
-            'createdBy' => $this->getCreatedBy(),
-            'deletedAt' => $this->getDeletedAt(),
-            'deletedBy' => $this->getDeletedBy(),
-            'goals' => $this->getGoalsAll(),
             'id' => $this->getId(),
-            'isEnabled' => $this->getIsEnabled(),
-            'isVerified' => $this->getIsVerified(),
-            'lastLoginAt' => $this->getLastLoginAt(),
-            'notes' => $this->getNotesAll(),
-            'profile' => $this->getProfile(),
-            'recommendations' => $this->getRecommendationsAll(),
-            'reminders' => $this->getRemindersAll(),
-            'rewards' => $this->getRewardsAll(),
-            'routines' => $this->getRoutinesAll(),
             'email' => $this->getEmail(),
             'password' => $this->getPassword(),
-            'referrerCode' => $this->getReferrerCode(),
-            'roles' => $this->getRoles(),
-            'updatedAt' => $this->getUpdatedAt(),
-            'updatedBy' => $this->getUpdatedBy(),
-            'uuid' => $this->getUuid(),
         ];
     }
 
@@ -204,30 +183,9 @@ class User implements UserInterface
 
     public function __unserialize(array $data): void
     {
-        $this->account = $data['account'];
-        $this->completedRoutines = $data['completedRoutines'];
-        $this->createdAt = $data['createdAt'];
-        $this->createdBy = $data['createdBy'];
-        $this->deletedAt = $data['deletedAt'];
-        $this->deletedBy = $data['deletedBy'];
-        $this->goals = $data['goals'];
-        $this->notes = $data['notes'];
         $this->id = $data['id'];
-        $this->isEnabled = $data['isEnabled'];
-        $this->isVerified = $data['isVerified'];
-        $this->lastLoginAt = isset($data['lastLoginAt']) ? $data['lastLoginAt'] : null;
-        $this->profile = $data['profile'];
-        $this->recommendations = $data['recommendations'];
-        $this->reminders = $data['reminders'];
-        $this->rewards = $data['rewards'];
-        $this->routines = $data['routines'];
         $this->email = $data['email'];
         $this->password = $data['password'];
-        $this->referrerCode = $data['referrerCode'];
-        $this->roles = $data['roles'];
-        $this->updatedAt = $data['updatedAt'];
-        $this->updatedBy = $data['updatedBy'];
-        $this->uuid = $data['uuid'];
     }
 
     public function getAccount(): Account
