@@ -33,6 +33,22 @@ class Kpi
     private int $accountOperationCounter;
 
     /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $completedRoutineCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $contactCounter;
+
+    /**
      * @Assert\NotBlank
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(type="datetimetz_immutable")
@@ -69,6 +85,14 @@ class Kpi
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */
+    private int $projectCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
     private int $quoteCounter;
 
     /**
@@ -93,7 +117,23 @@ class Kpi
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */
+    private int $rewardCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
     private int $routineCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $savedEmailCounter;
 
     /**
      * @Assert\GreaterThanOrEqual(0)
@@ -115,13 +155,18 @@ class Kpi
     {
         $this->accountCounter = 0;
         $this->accountOperationCounter = 0;
+        $this->completedRoutineCounter = 0;
+        $this->contactCounter = 0;
         $this->goalCounter = 0;
         $this->noteCounter = 0;
         $this->profileCounter = 0;
+        $this->projectCounter = 0;
         $this->quoteCounter = 0;
         $this->reminderCounter = 0;
         $this->reminderMessageCounter = 0;
+        $this->rewardCounter = 0;
         $this->routineCounter = 0;
+        $this->savedEmailCounter = 0;
         $this->sentReminderCounter = 0;
         $this->userCounter = 0;
     }
@@ -151,6 +196,30 @@ class Kpi
     public function setAccountOperationCounter(int $accountOperationCounter): self
     {
         $this->accountOperationCounter = $accountOperationCounter;
+
+        return $this;
+    }
+
+    public function getCompletedRoutineCounter(): int
+    {
+        return $this->completedRoutineCounter;
+    }
+
+    public function setCompletedRoutineCounter(int $completedRoutineCounter): self
+    {
+        $this->completedRoutineCounter = $completedRoutineCounter;
+
+        return $this;
+    }
+
+    public function getContactCounter(): int
+    {
+        return $this->contactCounter;
+    }
+
+    public function setContactCounter(int $contactCounter): self
+    {
+        $this->contactCounter = $contactCounter;
 
         return $this;
     }
@@ -203,6 +272,18 @@ class Kpi
         return $this;
     }
 
+    public function getProjectCounter(): int
+    {
+        return $this->projectCounter;
+    }
+
+    public function setProjectCounter(int $projectCounter): self
+    {
+        $this->projectCounter = $projectCounter;
+
+        return $this;
+    }
+
     public function getQuoteCounter(): int
     {
         return $this->quoteCounter;
@@ -239,6 +320,18 @@ class Kpi
         return $this;
     }
 
+    public function getRewardCounter(): int
+    {
+        return $this->rewardCounter;
+    }
+
+    public function setRewardCounter(int $rewardCounter): self
+    {
+        $this->rewardCounter = $rewardCounter;
+
+        return $this;
+    }
+
     public function getRoutineCounter(): int
     {
         return $this->routineCounter;
@@ -247,6 +340,18 @@ class Kpi
     public function setRoutineCounter(int $routineCounter): self
     {
         $this->routineCounter = $routineCounter;
+
+        return $this;
+    }
+
+    public function getSavedEmailCounter(): int
+    {
+        return $this->savedEmailCounter;
+    }
+
+    public function setSavedEmailCounter(int $savedEmailCounter): self
+    {
+        $this->savedEmailCounter = $savedEmailCounter;
 
         return $this;
     }
