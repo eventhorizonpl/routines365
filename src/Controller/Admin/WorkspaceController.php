@@ -15,6 +15,7 @@ use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
 use App\Repository\RoutineRepository;
+use App\Repository\SavedEmailRepository;
 use App\Repository\SentReminderRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +44,7 @@ class WorkspaceController extends AbstractController
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
         RoutineRepository $routineRepository,
+        SavedEmailRepository $savedEmailRepository,
         SentReminderRepository $sentReminderRepository,
         UserRepository $userRepository
     ): Response {
@@ -59,6 +61,7 @@ class WorkspaceController extends AbstractController
         $reminderMessagesCount = $reminderMessageRepository->count([]);
         $remindersCount = $reminderRepository->count([]);
         $routinesCount = $routineRepository->count([]);
+        $savedEmailsCount = $savedEmailRepository->count([]);
         $sentRemindersCount = $sentReminderRepository->count([]);
         $usersCount = $userRepository->count([]);
 
@@ -76,6 +79,7 @@ class WorkspaceController extends AbstractController
             'reminder_messages_count' => $reminderMessagesCount,
             'reminders_count' => $remindersCount,
             'routines_count' => $routinesCount,
+            'saved_emails_count' => $savedEmailsCount,
             'sent_reminders_count' => $sentRemindersCount,
             'users_count' => $usersCount,
         ]);

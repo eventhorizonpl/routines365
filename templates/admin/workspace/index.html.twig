@@ -68,6 +68,10 @@
                                 <td>{{ routines_count }}</td>
                             </tr>
                             <tr>
+                                <td><a href="{{ path('admin_saved_email_index') }}">{{ 'Saved emails'|trans }}</a></td>
+                                <td>{{ saved_emails_count }}</td>
+                            </tr>
+                            <tr>
                                 <td><a href="{{ path('admin_sent_reminder_index') }}">{{ 'Sent reminders'|trans }}</a></td>
                                 <td>{{ sent_reminders_count }}</td>
                             </tr>
