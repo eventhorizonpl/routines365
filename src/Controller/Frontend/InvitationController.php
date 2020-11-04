@@ -2,10 +2,12 @@
 
 namespace App\Controller\Frontend;
 
+use App\Entity\SavedEmail;
 use App\Entity\User;
 use App\Form\Frontend\InvitationType;
 use App\Resource\ConfigResource;
 use App\Service\EmailService;
+use App\Service\SavedEmailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +27,7 @@ class InvitationController extends AbstractController
     public function new(
         EmailService $emailService,
         Request $request,
+        SavedEmailService $savedEmailService,
         TranslatorInterface $translator
     ): Response {
         if (true !== ConfigResource::INVITATIONS_ENABLED) {
@@ -60,6 +63,12 @@ class InvitationController extends AbstractController
                     'last_name' => $lastName,
                     'referrer_code' => $user->getReferrerCode(),
                 ]
+            );
+
+            $savedEmailService->create(
+                $data['email'],
+                SavedEmail::TYPE_INVITATION,
+                $user
             );
 
             $this->addFlash(

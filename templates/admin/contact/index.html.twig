@@ -45,7 +45,7 @@
                     <i class="fa fa-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_contact_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type or parameters.status) %}disabled{% endif %} btn-default" href="{{ path('admin_contact_index') }}">
                     <i class="fas fa-times"></i>
                 </a>
             </form>

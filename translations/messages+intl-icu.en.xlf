@@ -1025,6 +1025,18 @@
         <source>For interesting feature ideas we offer rewards in the form of free notifications.</source>
         <target>For interesting feature ideas we offer rewards in the form of free notifications.</target>
       </trans-unit>
+      <trans-unit id="xMTCm4l" resname="Saved emails">
+        <source>Saved emails</source>
+        <target>Saved emails</target>
+      </trans-unit>
+      <trans-unit id="3ntLEV1" resname="Saved email details">
+        <source>Saved email details</source>
+        <target>Saved email details</target>
+      </trans-unit>
+      <trans-unit id="KTPbAP9" resname="Saved email">
+        <source>Saved email</source>
+        <target>Saved email</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

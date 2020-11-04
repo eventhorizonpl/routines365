@@ -1,0 +1,130 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_saved_email_index') }}">
+            {{ 'Saved emails'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Saved email details'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Saved email details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_saved_email_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+            <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Saved email'|trans }}</th>
+                                <td>{{ saved_email.email }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Type'|trans }}</th>
+                                <td>{{ saved_email.type }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade show" id="relations" role="tabpanel" aria-labelledby="relations-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ 'User'|trans }}</th>
+                                <td>
+                                    {% if saved_email.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': saved_email.user.uuid}) }}">{{ saved_email.user.email }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ saved_email.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ saved_email.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <td>
+                                    {% if saved_email.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': saved_email.createdBy}) }}">{{ saved_email.createdBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <td>
+                                    {% if saved_email.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': saved_email.deletedBy}) }}">{{ saved_email.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_saved_email_undelete', {'uuid': saved_email.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <td>
+                                    {% if saved_email.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': saved_email.updatedBy}) }}">{{ saved_email.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ saved_email.createdAt ? saved_email.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>
+                                    {% if saved_email.deletedAt %}
+                                        {{ saved_email.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_saved_email_undelete', {'uuid': saved_email.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ saved_email.updatedAt ? saved_email.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Saved email details'|trans }}{% endblock %}

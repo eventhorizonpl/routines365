@@ -22,6 +22,7 @@ class UserManager
     private ReminderManager $reminderManager;
     private RewardManager $rewardManager;
     private RoutineManager $routineManager;
+    private SavedEmailManager $savedEmailManager;
     private ValidatorInterface $validator;
 
     public function __construct(
@@ -36,6 +37,7 @@ class UserManager
         ReminderManager $reminderManager,
         RewardManager $rewardManager,
         RoutineManager $routineManager,
+        SavedEmailManager $savedEmailManager,
         ValidatorInterface $validator
     ) {
         $this->accountManager = $accountManager;
@@ -49,6 +51,7 @@ class UserManager
         $this->reminderManager = $reminderManager;
         $this->rewardManager = $rewardManager;
         $this->routineManager = $routineManager;
+        $this->savedEmailManager = $savedEmailManager;
         $this->validator = $validator;
     }
 
@@ -148,6 +151,10 @@ class UserManager
 
         foreach ($user->getRoutines() as $routine) {
             $this->routineManager->softDelete($routine, $actor);
+        }
+
+        foreach ($user->getSavedEmails() as $savedEmail) {
+            $this->savedEmailManager->softDelete($savedEmail, $actor);
         }
 
         return $this;

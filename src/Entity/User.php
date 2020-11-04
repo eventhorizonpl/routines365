@@ -97,6 +97,11 @@ class User implements UserInterface
     private Collection $routines;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=SavedEmail::class)
+     */
+    private Collection $savedEmails;
+
+    /**
      * @Assert\Email()
      * @Assert\Length(
      *   max = 180
@@ -164,6 +169,7 @@ class User implements UserInterface
         $this->reminders = new ArrayCollection();
         $this->rewards = new ArrayCollection();
         $this->routines = new ArrayCollection();
+        $this->savedEmails = new ArrayCollection();
         $this->type = self::TYPE_PROSPECT;
     }
 
@@ -586,6 +592,37 @@ class User implements UserInterface
 
     public function getSalt()
     {
+    }
+
+    public function addSavedEmail(SavedEmail $savedEmail): self
+    {
+        if (false === $this->savedEmails->contains($savedEmail)) {
+            $this->savedEmails->add($savedEmail);
+            $savedEmail->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getSavedEmails(): Collection
+    {
+        return $this->savedEmails->filter(function (SavedEmail $savedEmail) {
+            return null === $savedEmail->getDeletedAt();
+        });
+    }
+
+    public function getgetSavedEmailsAll(): Collection
+    {
+        return $this->savedEmails;
+    }
+
+    public function removeSavedEmail(SavedEmail $savedEmail): self
+    {
+        if (true === $this->savedEmails->contains($savedEmail)) {
+            $this->savedEmails->removeElement($savedEmail);
+        }
+
+        return $this;
     }
 
     public function getType(): ?string
