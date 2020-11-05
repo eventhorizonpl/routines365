@@ -37,6 +37,7 @@ Encore
      */
     .addEntry('frontend-dark', './assets/js/frontend-dark.js')
     .addEntry('frontend-light', './assets/js/frontend-light.js')
+    .addEntry('frontend-profile-geolocation', './assets/js/frontend-profile-geolocation.js')
     .addEntry('frontend-routines', './assets/js/frontend-routines.js')
     .addEntry('admin', './assets/js/admin.js')
 

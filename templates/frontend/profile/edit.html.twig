@@ -20,4 +20,12 @@
     </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if profile.timeZone == null %}
+        {{ encore_entry_script_tags('frontend-profile-geolocation') }}
+    {% endif %}
+{% endblock %}
+
 {% block title %}{{ parent() }} - {{ 'Edit profile'|trans }}{% endblock %}
