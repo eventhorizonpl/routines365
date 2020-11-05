@@ -38,6 +38,17 @@
             </div>
         </div>
     </footer>
+    <div class="alert text-center cookiealert" role="alert">
+        <b>{{ 'Do you like cookies?'|trans }}</b> &#x1F36A;
+        {{ 'We use cookies to ensure you get the best experience on our website.'|trans }}
+        <a href="{{ path('frontend_static_page_privacy_policy') }}">
+            {{ 'Learn more'|trans }}
+        </a>
+
+        <button type="button" class="btn btn-primary btn-sm acceptcookies">
+            {{ 'I agree'|trans }}
+        </button>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

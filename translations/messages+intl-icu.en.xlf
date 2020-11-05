@@ -1037,6 +1037,22 @@
         <source>Saved email</source>
         <target>Saved email</target>
       </trans-unit>
+      <trans-unit id="qS.OH4I" resname="Do you like cookies?">
+        <source>Do you like cookies?</source>
+        <target>Do you like cookies?</target>
+      </trans-unit>
+      <trans-unit id="x61_JXw" resname="We use cookies to ensure you get the best experience on our website.">
+        <source>We use cookies to ensure you get the best experience on our website.</source>
+        <target>We use cookies to ensure you get the best experience on our website.</target>
+      </trans-unit>
+      <trans-unit id="FEV5nAM" resname="Learn more">
+        <source>Learn more</source>
+        <target>Learn more</target>
+      </trans-unit>
+      <trans-unit id="mZVbdeB" resname="I agree">
+        <source>I agree</source>
+        <target>I agree</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
