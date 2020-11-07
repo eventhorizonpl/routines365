@@ -36,14 +36,6 @@ class StaticPageController extends AbstractController
     }
 
     /**
-     * @Route("/disclaimer", name="disclaimer")
-     */
-    public function disclaimer(): Response
-    {
-        return $this->render('frontend/static_page/disclaimer.html.twig');
-    }
-
-    /**
      * @Route("/faq", name="faq")
      */
     public function faq(): Response

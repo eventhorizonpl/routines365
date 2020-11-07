@@ -121,10 +121,6 @@
         <source>Contact</source>
         <target>Contact</target>
       </trans-unit>
-      <trans-unit id="Epxnj85" resname="Disclaimer">
-        <source>Disclaimer</source>
-        <target>Disclaimer</target>
-      </trans-unit>
       <trans-unit id="28RooUt" resname="FAQ">
         <source>FAQ</source>
         <target>FAQ</target>
