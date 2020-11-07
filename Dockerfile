@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y \
   libicu-dev \
   libxslt1-dev \
   libzip-dev \
-  unzip
+  unzip \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 #RUN apk add --no-cache \
 #  libxslt \
@@ -48,8 +50,7 @@ COPY composer.json composer.lock package.json symfony.lock webpack.config.js yar
 RUN composer install --prefer-dist --no-scripts --no-progress --no-suggest \
   && composer clear-cache
 
-COPY .env ./
-COPY .env.prod.local ./
+COPY .env .env.prod.local  ./
 RUN composer dump-env prod \
   && rm .env .env.prod.local
 
@@ -65,9 +66,9 @@ VOLUME /var/www/html/var
 
 FROM php_build as php_build_assets
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y nodejs npm yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  && apt-get update && apt-get install -y nodejs npm yarn
 
 #RUN apk add --no-cache \
 #  nodejs \
@@ -75,25 +76,22 @@ RUN apt-get update && apt-get install -y nodejs npm yarn
 #  yarn
 
 COPY assets assets/
-RUN yarn install
-RUN yarn encore production
+RUN yarn install \
+  && yarn encore production
 
 FROM php_build as php_build_final
 COPY --from=php_build_assets /var/www/html/public/build /var/www/html/public/build
-COPY public/.htaccess public/.htaccess
-COPY public/robots.txt public/robots.txt
-COPY public/sitemap.xml public/sitemap.xml
-
+COPY public/.htaccess public/robots.txt public/sitemap.xml public/
 RUN chown -R www-data:www-data /var/www
 
 #COPY docker/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY docker/apache2/sites-enabled/routines365.conf /etc/apache2/sites-enabled/
-RUN rm /etc/apache2/sites-enabled/000-default.conf
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
 #COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
-RUN a2enmod expires
-RUN a2enmod rewrite
+RUN rm /etc/apache2/sites-enabled/000-default.conf \
+  && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+  && a2enmod expires \
+  && a2enmod rewrite
 
 #RUN mkdir -p /run/nginx/
 
