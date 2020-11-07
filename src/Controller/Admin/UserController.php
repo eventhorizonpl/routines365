@@ -4,9 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Factory\UserFactory;
+use App\Form\Admin\UserLeadType;
 use App\Form\Admin\UserType;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
+use App\Service\AccountOperationService;
+use App\Service\EmailService;
 use App\Service\UserService;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
@@ -15,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
@@ -73,6 +77,54 @@ class UserController extends AbstractController
         }
 
         return $this->render('admin/user/new.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/new-lead", name="new_lead", methods={"GET","POST"})
+     */
+    public function newLead(
+        AccountOperationService $accountOperationService,
+        EmailService $emailService,
+        Request $request,
+        TranslatorInterface $translator,
+        UserFactory $userFactory,
+        UserManager $userManager,
+        UserService $userService
+    ): Response {
+        $user = $userFactory->createUserLead();
+        $form = $this->createForm(UserLeadType::class, $user);
+        $form->handleRequest($request);
+
+        if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
+            $password = $form->get('plainPassword')->getData();
+            $user = $userService->encodePassword($user, $password);
+            $userManager->save($user, $this->getUser());
+
+            $accountOperation = $accountOperationService->deposit(
+                $user->getAccount(),
+                'Free notifications',
+                $form->get('emailNotifications')->getData(),
+                $form->get('smsNotifications')->getData()
+            );
+
+            $emailService->sendNewLead(
+                $user->getEmail(),
+                $translator->trans('R365: Your new Routines365 account is now active.'),
+                [
+                    'email_address' => $user->getEmail(),
+                    'password' => $password,
+                ]
+            );
+
+            return $this->redirectToRoute('admin_user_show', [
+                'uuid' => $user->getUuid(),
+            ]);
+        }
+
+        return $this->render('admin/user/new_lead.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
         ]);

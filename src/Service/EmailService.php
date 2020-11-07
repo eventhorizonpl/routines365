@@ -105,6 +105,24 @@ class EmailService
         return $result;
     }
 
+    public function sendNewLead(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/new_lead.html.twig',
+            'email/new_lead.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendReminderMessage(
         string $email,
         string $subject,

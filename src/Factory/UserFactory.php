@@ -21,14 +21,26 @@ class UserFactory
     public function createUser(): User
     {
         $user = new User();
-        $user->setReferrerCode(Uuid::v4());
-        $user->setUuid(Uuid::v4());
+        $user->setReferrerCode(Uuid::v4())
+            ->setUuid(Uuid::v4());
         $account = $this->accountFactory->createAccount();
         $account->setUser($user);
         $profile = $this->profileFactory->createProfile();
         $profile->setUser($user);
-        $user->setAccount($account);
-        $user->setProfile($profile);
+        $user->setAccount($account)
+            ->setProfile($profile);
+
+        return $user;
+    }
+
+    public function createUserLead(): User
+    {
+        $user = $this->createUser();
+
+        $user
+            ->setIsEnabled(true)
+            ->setIsVerified(true)
+            ->setType(User::TYPE_LEAD);
 
         return $user;
     }

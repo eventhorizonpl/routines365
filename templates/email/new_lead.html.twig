@@ -1,0 +1,16 @@
+{% extends 'email_layout.html.twig' %}
+
+{% block content %}
+    <container>
+        <row>
+            Hi,<br><br>
+            We are pleased to inform you that your new Routines365 account is now active.<br><br>
+            Please use following credentials to login.<br>
+            Email: {{ email_address }}<br>
+            Password: {{ password }}<br><br>
+            You can login to the system by clicking the following <a href="{{ url('security_login') }}">link</a><br><br>
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endblock %}

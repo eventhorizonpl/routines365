@@ -15,6 +15,10 @@
     <div class="card">
         <div class="card-header">
             {{ 'Users'|trans }}
+            <a class="btn btn-info btn-sm float-right ml-1" href="{{ path('admin_user_new_lead') }}">
+                <i class="fas fa-plus"></i>
+                {{ 'Create lead'|trans }}
+            </a>
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_new') }}">
                 <i class="fas fa-plus"></i>
                 {{ 'Create'|trans }}

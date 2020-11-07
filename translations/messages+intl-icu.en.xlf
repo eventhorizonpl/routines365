@@ -1049,6 +1049,14 @@
         <source>I agree</source>
         <target>I agree</target>
       </trans-unit>
+      <trans-unit id="wKu6Dy2" resname="R365: Your new Routines365 account is now active.">
+        <source>R365: Your new Routines365 account is now active.</source>
+        <target>R365: Your new Routines365 account is now active.</target>
+      </trans-unit>
+      <trans-unit id="dh82NDu" resname="Create lead">
+        <source>Create lead</source>
+        <target>Create lead</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

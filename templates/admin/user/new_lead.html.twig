@@ -1,0 +1,51 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_user_index') }}">
+            {{ 'Users'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Create lead'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Create lead'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.email) }}
+                {{ form_row(form.profile.phone) }}
+                {{ form_row(form.profile.showMotivationalMessages) }}
+                {{ form_row(form.profile.theme) }}
+                {{ form_row(form.profile.timeZone) }}
+                {{ form_row(form.emailNotifications) }}
+                {{ form_row(form.smsNotifications) }}
+                {{ form_row(form.plainPassword) }}
+
+                <hr>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-save"></i>
+                    {{ button_label|default('Save'|trans) }}
+                </button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Create lead'|trans }} {% endblock %}

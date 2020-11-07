@@ -4,48 +4,28 @@ namespace App\Form\Admin;
 
 use App\Entity\User;
 use App\Form\Type\YesNoType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class UserType extends BaseUserType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $user = $options['data'];
+        parent::buildForm($builder, $options);
+
         $builder
-            ->add('email')
-            ->add('profile', ProfileType::class)
+            ->add('isEnabled', YesNoType::class)
+            ->add('isVerified', YesNoType::class)
             ->add('roles', ChoiceType::class, [
                 'choices' => User::getRolesFormChoices(),
                 'expanded' => false,
                 'multiple' => true,
             ])
-            ->add('isEnabled', YesNoType::class)
-            ->add('isVerified', YesNoType::class)
-            ->add('plainPassword', RepeatedType::class, [
-                'invalid_message' => 'The password fields must match.',
-                'mapped' => false,
-                'required' => (null === $user->getId()) ? true : false,
-                'type' => PasswordType::class,
-                'first_options' => [
-                    'label' => 'Password',
-                ],
-                'second_options' => [
-                    'label' => 'Repeat Password',
-                ],
+            ->add('type', ChoiceType::class, [
+                'choices' => User::getTypeFormChoices(),
+                'expanded' => false,
+                'multiple' => false,
             ])
         ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => User::class,
-            'validation_groups' => ['form'],
-        ]);
     }
 }
