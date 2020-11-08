@@ -29,8 +29,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             {{ form_row(form.timeZone, {'attr': {'class': 'custom-select'}}) }}
+{#
+            <span id="tz-placeholder"></span>
+#}
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-success mt-4" href="#" id="find_time_zone">
+                <i class="fas fa-search-location"></i>
+                {{ 'Find time zone'|trans }}
+            </a>
         </div>
     </div>
     <hr>

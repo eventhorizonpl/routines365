@@ -1161,6 +1161,14 @@
         <source>Edit a goal</source>
         <target>Edit a goal</target>
       </trans-unit>
+      <trans-unit id="cmqFrni" resname="Find time zone">
+        <source>Find time zone</source>
+        <target>Find time zone</target>
+      </trans-unit>
+      <trans-unit id="uSiaJeh" resname="You do not have a selected Time zone yet. This is a very important for proper reminders configuration.">
+        <source>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</source>
+        <target>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
