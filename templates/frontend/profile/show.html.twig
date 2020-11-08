@@ -14,7 +14,9 @@
                 </div>
                 <div class="card-body">
                     <div class="row m-1">
-                        <div class="col-md-3">{{ 'Profile completeness'|trans }}: {{ profile.profileCompletenessPercent }}%</div>
+                        <div class="col-md-3">
+                            {{ 'Profile completeness'|trans }}: {{ profile.profileCompletenessPercent }}%
+                        </div>
                         <div class="col-md-9">
                             <div class="progress">
                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ profile.profileCompletenessPercent }}%" aria-valuenow="{{ profile.profileCompletenessPercent }}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -25,57 +27,93 @@
                     <table class="table table-dark">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Email'|trans }}
+                                </th>
                                 <td>
                                     {{ profile.user.email }}
                                     {% if profile.user.isVerified %}
-                                        <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Verified'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'Not verified'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
                                 <tr>
-                                    <th scope="row">{{ 'First name'|trans }}</th>
-                                    <td>{{ profile.firstName }}</td>
+                                    <th scope="row">
+                                        {{ 'First name'|trans }}
+                                    </th>
+                                    <td>
+                                        {{ profile.firstName }}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">{{ 'Last name'|trans }}</th>
-                                    <td>{{ profile.lastName }}</td>
+                                    <th scope="row">
+                                        {{ 'Last name'|trans }}
+                                    </th>
+                                    <td>
+                                        {{ profile.lastName }}
+                                    </td>
                                 </tr>
                             {% endif %}
                             <tr>
-                                <th scope="row">{{ 'Phone'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Phone'|trans }}
+                                </th>
                                 <td>
                                     {% if profile.phone %}
                                         {{ profile.phone|phone_number_format }}
                                         {% if profile.isVerified %}
-                                            <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                            <span class="badge badge-success">
+                                                {{ 'Verified'|trans }}
+                                            </span>
                                         {% else %}
-                                            <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
-                                            <a href="{{ path('frontend_profile_phone_verification_code') }}">{{ 'I have the code'|trans }}</a>
+                                            <span class="badge badge-danger">
+                                                {{ 'Not verified'|trans }}
+                                            </span>
+                                            <a href="{{ path('frontend_profile_phone_verification_code') }}">
+                                                {{ 'I have the code'|trans }}
+                                            </a>
                                         {% endif %}
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Show motivational messages'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Show motivational messages'|trans }}
+                                </th>
                                 <td>
                                     {% if profile.showMotivationalMessages %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Theme'|trans }}</th>
-                                <td>{{ profile.theme }}</td>
+                                <th scope="row">
+                                    {{ 'Theme'|trans }}
+                                </th>
+                                <td>
+                                    {{ profile.theme }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Time zone'|trans }}</th>
-                                <td>{{ profile.timeZone }}</td>
+                                <th scope="row">
+                                    {{ 'Time zone'|trans }}
+                                </th>
+                                <td>
+                                    {{ profile.timeZone }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -85,4 +123,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Profile details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Profile details'|trans }}
+{% endblock %}

@@ -5,7 +5,7 @@
         {{ 'Notes'|trans }}: {{ routine.notes|length }}
         <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid}) }}">
             <i class="fas fa-pen-fancy"></i>
-            {{ 'Create note'|trans }}
+            {{ 'Create a note'|trans }}
         </a>
     </p>
     {% for note in routine.notes %}

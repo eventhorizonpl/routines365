@@ -5,7 +5,7 @@
         {{ 'Goals'|trans }}: {{ routine.goals|length }}
         <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_goal_new', {'uuid': routine.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}">
             <i class="fas fa-bullseye"></i>
-            {{ 'Create goal'|trans }}
+            {{ 'Create a goal'|trans }}
         </a>
     </p>
     {% if routine.goals|length %}
@@ -31,17 +31,29 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th>{{ 'Name'|trans }}</th>
-                                <th>{{ 'Description'|trans }}</th>
-                                <th>{{ 'Updated at'|trans }}</th>
-                                <th>{{ 'Actions'|trans }}</th>
+                                <th>
+                                    {{ 'Name'|trans }}
+                                </th>
+                                <th>
+                                    {{ 'Description'|trans }}
+                                </th>
+                                <th>
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <th>
+                                    {{ 'Actions'|trans }}
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for goal in routine.goalsNotCompleted %}
                                 <tr>
-                                    <td>{{ goal.name }}</td>
-                                    <td>{{ goal.description }}</td>
+                                    <td>
+                                        {{ goal.name }}
+                                    </td>
+                                    <td>
+                                        {{ goal.description }}
+                                    </td>
                                     <td style="width: 15%;">
                                         {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
                                     </td>
@@ -66,17 +78,29 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th>{{ 'Name'|trans }}</th>
-                                <th>{{ 'Description'|trans }}</th>
-                                <th>{{ 'Updated at'|trans }}</th>
-                                <th>{{ 'Actions'|trans }}</th>
+                                <th>
+                                    {{ 'Name'|trans }}
+                                </th>
+                                <th>
+                                    {{ 'Description'|trans }}
+                                </th>
+                                <th>
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <th>
+                                    {{ 'Actions'|trans }}
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for goal in routine.goalsCompleted %}
                                 <tr>
-                                    <td>{{ goal.name }}</td>
-                                    <td>{{ goal.description }}</td>
+                                    <td>
+                                        {{ goal.name }}
+                                    </td>
+                                    <td>
+                                        {{ goal.description }}
+                                    </td>
                                     <td style="width: 15%;">
                                         {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
                                     </td>

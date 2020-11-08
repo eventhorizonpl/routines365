@@ -40,7 +40,7 @@
                         {{ 'Goals'|trans }}: {{ project.goals|length }}
                         <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_goal_new', {'uuid': project.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
                             <i class="fas fa-bullseye"></i>
-                            {{ 'Create goal'|trans }}
+                            {{ 'Create a goal'|trans }}
                         </a>
                     </p>
                     {% if project.goals|length %}

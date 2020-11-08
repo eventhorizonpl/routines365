@@ -22,7 +22,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 {{ form_row(registrationForm.agree) }}
-                                <a href="{{ path('frontend_static_page_terms_and_conditions') }}">{{ 'Terms and Conditions'|trans }}</a>
+                                <a href="{{ path('frontend_static_page_terms_and_conditions') }}">
+                                    {{ 'Terms and Conditions'|trans }}
+                                </a>
                             </div>
                         </div>
                         <hr>
@@ -41,4 +43,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ 'Register'|trans }}{% endblock %}
+{% block title %}
+    {{ 'Register'|trans }}
+{% endblock %}

@@ -12,12 +12,20 @@
                     <table class="table table-dark">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 25%;">{{ 'Available email notifications'|trans }}</th>
-                                <td>{{ account.availableEmailNotifications }}</td>
+                                <th scope="row" style="width: 25%;">
+                                    {{ 'Available email notifications'|trans }}
+                                </th>
+                                <td>
+                                    {{ account.availableEmailNotifications }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Available sms notifications'|trans }}</th>
-                                <td>{{ account.availableSmsNotifications }}</td>
+                                <th scope="row">
+                                    {{ 'Available sms notifications'|trans }}
+                                </th>
+                                <td>
+                                    {{ account.availableSmsNotifications }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -27,4 +35,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Account details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Account details'|trans }}
+{% endblock %}

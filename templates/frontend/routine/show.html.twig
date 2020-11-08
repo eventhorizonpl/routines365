@@ -16,17 +16,27 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ routine.description }}</p>
-                    <p>{{ 'Type'|trans }}: {{ routine.type }}</p>
+                    <p class="card-text">
+                        {{ routine.description }}
+                    </p>
+                    <p>
+                        {{ 'Type'|trans }}: {{ routine.type }}
+                    </p>
                     <p>
                         {{ 'Is enabled'|trans }}:
                         {% if routine.isEnabled %}
-                            <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                            <span class="badge badge-success">
+                                {{ 'Yes'|trans }}
+                            </span>
                         {% else %}
-                            <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                            <span class="badge badge-danger">
+                                {{ 'No'|trans }}
+                            </span>
                         {% endif %}
                     </p>
-                    <p>{{ 'Devoted time'|trans }}: {{ routine.completedRoutinesDevotedTime }}</p>
+                    <p>
+                        {{ 'Devoted time'|trans }}: {{ routine.completedRoutinesDevotedTime }}
+                    </p>
                     <p>
                         <span>
                             {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
@@ -49,7 +59,9 @@
                     </p>
                     {% if routine.completedRoutinesPercent > 0 or routine.sentRemindersPercent > 0 %}
                         <div class="row">
-                            <div class="col-md-5">{{ 'Completed routines'|trans }} ({{ routine.completedRoutinesCount }}) / {{ 'Sent reminders'|trans }} ({{ routine.sentRemindersCount }})</div>
+                            <div class="col-md-5">
+                                {{ 'Completed routines'|trans }} ({{ routine.completedRoutinesCount }}) / {{ 'Sent reminders'|trans }} ({{ routine.sentRemindersCount }})
+                            </div>
                             <div class="col-md-7">
                                 <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: {{ routine.completedRoutinesPercent }}%" aria-valuenow="{{ routine.completedRoutinesPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.completedRoutinesPercent }} &percnt;</div>
@@ -60,7 +72,9 @@
                     {% endif %}
                     {% if routine.goalsCompletedPercent > 0 or routine.goalsNotCompletedPercent > 0 %}
                         <div class="row">
-                            <div class="col-md-5">{{ 'Goals completed'|trans }} ({{ routine.goalsCompletedCount }}) / {{ 'Goals not completed'|trans }} ({{ routine.goalsNotCompletedCount }})</div>
+                            <div class="col-md-5">
+                                {{ 'Goals completed'|trans }} ({{ routine.goalsCompletedCount }}) / {{ 'Goals not completed'|trans }} ({{ routine.goalsNotCompletedCount }})
+                            </div>
                             <div class="col-md-7">
                                 <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: {{ routine.goalsCompletedPercent }}%" aria-valuenow="{{ routine.goalsCompletedPercent }}" aria-valuemin="0" aria-valuemax="100">{{ routine.goalsCompletedPercent }} &percnt;</div>
@@ -86,4 +100,6 @@
     {{ encore_entry_script_tags('frontend-routines') }}
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routine details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Routine details'|trans }}
+{% endblock %}

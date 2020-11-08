@@ -5,7 +5,7 @@
         <div class="col-md-10 offset-md-1">
             <div class="card bg-dark text-white">
                 <div class="card-header">
-                    {{ 'Send invitation'|trans }}
+                    {{ 'Send an invitation'|trans }}
                 </div>
                 <div class="card-body">
                     {{ 'Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too.'|trans }}
@@ -17,4 +17,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Send invitation'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Send an invitation'|trans }}
+{% endblock %}

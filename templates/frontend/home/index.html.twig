@@ -2,12 +2,20 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1 class="display-2">{{ 'Routines365'|trans }}</h1>
-        <h3 class="display-4">{{ 'We help. You achieve.'|trans }}</h3>
-        <p class="lead">{{ 'We will help you in creating and maintaining your routines. With routines you can achieve amazing things.'|trans }}</p>
+        <h1 class="display-2">
+            {{ 'Routines365'|trans }}
+        </h1>
+        <h3 class="display-4">
+            {{ 'We help. You achieve.'|trans }}
+        </h3>
+        <p class="lead">
+            {{ 'We will help you in creating and maintaining your routines. With routines you can achieve amazing things.'|trans }}
+        </p>
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <hr class="my-2">
-            <p>{{ 'Are you ready to improve your work, hobby, sport or learning habits?'|trans }}</p>
+            <p>
+                {{ 'Are you ready to improve your work, hobby, sport or learning habits?'|trans }}
+            </p>
             <p class="lead">
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">
@@ -24,7 +32,9 @@
     </div>
     <div class="row">
         <div class="col-md-6 mb-4">
-            <h2>{{ 'What we do?'|trans }}</h2>
+            <h2>
+                {{ 'What we do?'|trans }}
+            </h2>
             <br>
             <ul>
                 <li class="mb-2">
@@ -34,7 +44,7 @@
                     {{ 'We have different ways to remind you about your routines.'|trans }}
                 </li>
                 <li class="mb-2">
-                    {{ 'We help you to develop self accountability.'|trans }}
+                    {{ 'We help you to develop self-discipline.'|trans }}
                 </li>
                 <li>
                     {{ 'We help you to motivate yourself.'|trans }}
@@ -42,7 +52,9 @@
             </ul>
         </div>
         <div class="col-md-6 mb-4">
-            <h2>{{ 'What we do not do?'|trans }}</h2>
+            <h2>
+                {{ 'What we do not do?'|trans }}
+            </h2>
             <br>
             <ul>
                 <li class="mb-2">
@@ -59,7 +71,9 @@
     </div>
     <div class="row">
         <div class="col-md-12 mb-4">
-            <h2>{{ 'Features'|trans }}</h2>
+            <h2>
+                {{ 'Features'|trans }}
+            </h2>
         </div>
     </div>
     <div class="row">
@@ -73,15 +87,23 @@
                     {{ 'You can create a few different types of routines.'|trans }}
                 </li>
                 <li class="mb-2">
-                    {{ 'For your self accountability you can mark routine as completed.'|trans }}
+                    {{ 'To improve your self-discipline you can mark routine as completed.'|trans }}
                 </li>
                 <li>
                     {{ 'Each routine can have assigned:'|trans }}
                     <ul>
-                        <li>{{ 'Reminders'|trans }}</li>
-                        <li>{{ 'Goals'|trans }}</li>
-                        <li>{{ 'Notes'|trans }}</li>
-                        <li>{{ 'Rewards'|trans }}</li>
+                        <li>
+                            {{ 'Reminders'|trans }}
+                        </li>
+                        <li>
+                            {{ 'Goals'|trans }}
+                        </li>
+                        <li>
+                            {{ 'Notes'|trans }}
+                        </li>
+                        <li>
+                            {{ 'Rewards'|trans }}
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -165,7 +187,7 @@
             </h5>
             <ul>
                 <li class="mb-2">
-                    {{ 'You can create notes about your progress and struggles with routines.'|trans }}
+                    {{ 'You can create notes about your progress and struggle with routines.'|trans }}
                 </li>
                 <li>
                     {{ 'It is your private journal. Visible only for you.'|trans }}
@@ -175,4 +197,6 @@
     </div>
 {% endblock %}
 
-{% block title %} - {{ 'We help. You achieve.'|trans }}{% endblock %}
+{% block title %}
+    - {{ 'We help. You achieve.'|trans }}
+{% endblock %}

@@ -10,7 +10,7 @@
                 </h3>
                 <a class="btn btn-primary float-right" href="{{ path('frontend_reward_new') }}">
                     <i class="fas fa-pen-fancy"></i>
-                    {{ 'Create reward'|trans }}
+                    {{ 'Create a reward'|trans }}
                 </a>
             </div>
         </div>
@@ -39,7 +39,9 @@
                                 {{ reward.routine.name }}
                             </a>
                         </p>
-                        <p class="card-text">{{ reward.description }}</p>
+                        <p class="card-text">
+                            {{ reward.description }}
+                        </p>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -55,14 +57,14 @@
     {% else %}
         <div class="row mb-5">
             <div class="col-md-4 offset-md-4">
-                <div class="card text-white bg-secondary">
+                <div class="card text-center text-white bg-secondary">
                     <div class="card-body">
                         <p class="card-text">
                             {{ 'You do not have any rewards!'|trans }}
                         </p>
                         <a class="btn btn-primary" href="{{ path('frontend_reward_new') }}">
                             <i class="fas fa-pen-fancy"></i>
-                            {{ 'Create reward'|trans }}
+                            {{ 'Create a reward'|trans }}
                         </a>
                     </div>
                 </div>
@@ -80,4 +82,6 @@
     {% endif %}
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Rewards'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Rewards'|trans }}
+{% endblock %}
