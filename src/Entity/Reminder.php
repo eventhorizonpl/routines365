@@ -85,6 +85,13 @@ class Reminder
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(type="datetimetz_immutable")
      */
+    private ?DateTimeImmutable $nextDateLocalTime;
+
+    /**
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable")
+     */
     private ?DateTimeImmutable $previousDate;
 
     /**
@@ -123,6 +130,7 @@ class Reminder
     {
         $this->isEnabled = true;
         $this->nextDate = null;
+        $this->nextDateLocalTime = null;
         $this->previousDate = null;
         $this->reminderMessages = new ArrayCollection();
         $this->sendEmail = true;
@@ -188,6 +196,18 @@ class Reminder
         return $this;
     }
 
+    public function getNextDateLocalTime(): ?DateTimeImmutable
+    {
+        return $this->nextDateLocalTime;
+    }
+
+    public function setNextDateLocalTime(DateTimeImmutable $nextDateLocalTime): self
+    {
+        $this->nextDateLocalTime = $nextDateLocalTime;
+
+        return $this;
+    }
+
     public function getPreviousDate(): ?DateTimeImmutable
     {
         return $this->previousDate;
@@ -238,7 +258,7 @@ class Reminder
 
     public function getRoutineStartDate(): ?DateTimeImmutable
     {
-        $routineStartDate = DateTime::createFromImmutable($this->getNextDate());
+        $routineStartDate = DateTime::createFromImmutable($this->getNextDateLocalTime());
         $routineStartDate->modify('+'.$this->getMinutesBefore().' minutes');
 
         return DateTimeImmutable::createFromMutable($routineStartDate);

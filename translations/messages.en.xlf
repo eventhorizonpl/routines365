@@ -1169,6 +1169,10 @@
         <source>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</source>
         <target>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</target>
       </trans-unit>
+      <trans-unit id="V9PjAGU" resname="Next date local time">
+        <source>Next date local time</source>
+        <target>Next date local time</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -96,7 +96,7 @@ class PostRemindMessagesService
     public function prepareReminderMessages(Reminder $reminder): Reminder
     {
         $message = 'Your routine '.$reminder->getRoutine()->getName();
-        $message .= ' starts at '.$reminder->getNextDate()->format('H:i:s').'.';
+        $message .= ' starts at '.$reminder->getNextDateLocalTime()->format('H:i:s').'.';
         if ($reminder->getRoutine()->getGoals()->count() > 0) {
             $message .= ' You have '.$reminder->getRoutine()->getGoals()->count().' goals.';
         }

@@ -117,7 +117,12 @@ class ReminderManager
             $reminder->setPreviousDate($reminder->getNextDate());
         }
 
-        $reminder->setNextDate($this->findNextDate($reminder));
+        $nextDateLocalTime = $this->findNextDate($reminder);
+        $nextDateTmp = DateTime::createFromImmutable($nextDateLocalTime);
+        $nextDateTmp->setTimezone(new DateTimeZone('UTC'));
+        $nextDate = DateTimeImmutable::createFromMutable($nextDateTmp);
+        $reminder->setNextDate($nextDate);
+        $reminder->setNextDateLocalTime($nextDateLocalTime);
 
         $errors = $this->validate($reminder);
         if (0 !== count($errors)) {

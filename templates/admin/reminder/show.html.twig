@@ -82,6 +82,16 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Next date local time'|trans }}</th>
+                                <td>
+                                    {% if reminder.nextDateLocalTime %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Previous date'|trans }}</th>
                                 <td>
                                     {% if reminder.previousDate %}

@@ -40,7 +40,7 @@
                     {% for reminder in routine.reminders %}
                         <tr>
                             <td>
-                                {{ reminder.nextDate ? reminder.nextDate|date('Y-m-d H:i:s') : '' }}
+                                {{ reminder.nextDateLocalTime ? reminder.nextDateLocalTime|date('Y-m-d H:i:s') : '' }}
                             </td>
                             <td>
                                 {{ reminder.type }}
