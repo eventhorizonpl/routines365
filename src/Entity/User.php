@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -611,7 +613,7 @@ class User implements UserInterface
         });
     }
 
-    public function getgetSavedEmailsAll(): Collection
+    public function getSavedEmailsAll(): Collection
     {
         return $this->savedEmails;
     }

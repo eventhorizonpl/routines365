@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\ProfileRepository;
@@ -119,6 +121,7 @@ class Profile
 
     public function __construct()
     {
+        $this->country = null;
         $this->firstName = null;
         $this->isVerified = false;
         $this->lastName = null;
@@ -127,6 +130,7 @@ class Profile
         $this->phoneMd5 = null;
         $this->showMotivationalMessages = true;
         $this->theme = self::THEME_DARK;
+        $this->timeZone = null;
     }
 
     public function __toString(): string
