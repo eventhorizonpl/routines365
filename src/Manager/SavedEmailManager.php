@@ -58,10 +58,10 @@ class SavedEmailManager
         $date = new DateTimeImmutable();
         if (null === $savedEmail->getId()) {
             $savedEmail->setCreatedAt($date);
-            $savedEmail->setCreatedBy($actor);
+            $savedEmail->setCreatedBy((string) $actor);
         }
         $savedEmail->setUpdatedAt($date);
-        $savedEmail->setUpdatedBy($actor);
+        $savedEmail->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($savedEmail);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class SavedEmailManager
     {
         $date = new DateTimeImmutable();
         $savedEmail->setDeletedAt($date);
-        $savedEmail->setDeletedBy($actor);
+        $savedEmail->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($savedEmail);
         $this->entityManager->flush();

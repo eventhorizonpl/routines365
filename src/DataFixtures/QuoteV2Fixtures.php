@@ -494,7 +494,7 @@ class QuoteV2Fixtures extends Fixture implements FixtureGroupInterface
         ]);
 
         if (null !== $user) {
-            $this->quoteManager->bulkSave($quotes, $user);
+            $this->quoteManager->bulkSave($quotes, (string) $user);
         }
     }
 }

@@ -61,10 +61,10 @@ class AccountOperationManager
         $date = new DateTimeImmutable();
         if (null === $accountOperation->getId()) {
             $accountOperation->setCreatedAt($date);
-            $accountOperation->setCreatedBy($actor);
+            $accountOperation->setCreatedBy((string) $actor);
         }
         $accountOperation->setUpdatedAt($date);
-        $accountOperation->setUpdatedBy($actor);
+        $accountOperation->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($accountOperation);
         if (0 !== count($errors)) {
@@ -94,7 +94,7 @@ class AccountOperationManager
     {
         $date = new DateTimeImmutable();
         $accountOperation->setDeletedAt($date);
-        $accountOperation->setDeletedBy($actor);
+        $accountOperation->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($accountOperation);
         $this->entityManager->flush();

@@ -28,7 +28,7 @@ class AccountOperationController extends AbstractController
         Request $request
     ): Response {
         $parameters = [
-            'query' => trim($request->query->get('q')),
+            'query' => trim((string) $request->query->get('q')),
         ];
 
         $accountOperationsQuery = $accountOperationRepository->findByParametersForFrontend($this->getUser(), $parameters);

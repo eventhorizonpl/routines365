@@ -58,10 +58,10 @@ class RewardManager
         $date = new DateTimeImmutable();
         if (null === $reward->getId()) {
             $reward->setCreatedAt($date);
-            $reward->setCreatedBy($actor);
+            $reward->setCreatedBy((string) $actor);
         }
         $reward->setUpdatedAt($date);
-        $reward->setUpdatedBy($actor);
+        $reward->setUpdatedBy((string) $actor);
 
         if ($reward->getNumberOfCompletions() >= $reward->getRequiredNumberOfCompletions()) {
             $reward->setIsAwarded(true);
@@ -87,7 +87,7 @@ class RewardManager
     {
         $date = new DateTimeImmutable();
         $reward->setDeletedAt($date);
-        $reward->setDeletedBy($actor);
+        $reward->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($reward);
         $this->entityManager->flush();

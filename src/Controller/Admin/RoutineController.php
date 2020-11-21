@@ -32,7 +32,7 @@ class RoutineController extends AbstractController
     ): Response {
         $parameters = [
             'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
-            'query' => trim($request->query->get('q')),
+            'query' => trim((string) $request->query->get('q')),
             'starts_at' => DateTimeImmutableUtil::startsAtFromString($request->query->get('starts_at')),
             'type' => $request->query->get('type'),
         ];

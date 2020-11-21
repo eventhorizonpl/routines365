@@ -61,10 +61,10 @@ class ProjectManager
         $date = new DateTimeImmutable();
         if (null === $project->getId()) {
             $project->setCreatedAt($date);
-            $project->setCreatedBy($actor);
+            $project->setCreatedBy((string) $actor);
         }
         $project->setUpdatedAt($date);
-        $project->setUpdatedBy($actor);
+        $project->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($project);
         if (0 !== count($errors)) {
@@ -84,7 +84,7 @@ class ProjectManager
     {
         $date = new DateTimeImmutable();
         $project->setDeletedAt($date);
-        $project->setDeletedBy($actor);
+        $project->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($project);
         $this->entityManager->flush();

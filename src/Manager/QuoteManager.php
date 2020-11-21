@@ -51,16 +51,16 @@ class QuoteManager
 
     public function save(Quote $quote, string $actor, bool $flush = true): self
     {
-        $quote->setStringLength(mb_strlen($quote));
+        $quote->setStringLength(mb_strlen((string) $quote));
         $quote->setContentMd5($quote->getContent());
 
         $date = new DateTimeImmutable();
         if (null === $quote->getId()) {
             $quote->setCreatedAt($date);
-            $quote->setCreatedBy($actor);
+            $quote->setCreatedBy((string) $actor);
         }
         $quote->setUpdatedAt($date);
-        $quote->setUpdatedBy($actor);
+        $quote->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($quote);
         if (0 !== count($errors)) {

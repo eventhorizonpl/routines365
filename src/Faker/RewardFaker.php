@@ -46,13 +46,13 @@ class RewardFaker
         }
 
         if (null === $numberOfCompletions) {
-            $numberOfCompletions = (string) $this->faker->randomElement(
+            $numberOfCompletions = (int) $this->faker->randomElement(
                 Reward::getRequiredNumberOfCompletionsValidationChoices()
             );
         }
 
         if (null === $requiredNumberOfCompletions) {
-            $requiredNumberOfCompletions = (string) $this->faker->randomElement(
+            $requiredNumberOfCompletions = (int) $this->faker->randomElement(
                 Reward::getRequiredNumberOfCompletionsValidationChoices()
             );
         }

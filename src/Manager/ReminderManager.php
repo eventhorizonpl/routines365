@@ -69,7 +69,7 @@ class ReminderManager
         }
 
         $dateTime = clone $dateTimeNow;
-        $dateTime->setTime($hour->format('H'), $hour->format('i'), $hour->format('s'));
+        $dateTime->setTime((int) $hour->format('H'), (int) $hour->format('i'), (int) $hour->format('s'));
         $dateTime->modify('-'.$reminder->getMinutesBefore().' minutes');
 
         if (Reminder::TYPE_DAILY === $reminder->getType()) {
@@ -108,10 +108,10 @@ class ReminderManager
         $date = new DateTimeImmutable();
         if (null === $reminder->getId()) {
             $reminder->setCreatedAt($date);
-            $reminder->setCreatedBy($actor);
+            $reminder->setCreatedBy((string) $actor);
         }
         $reminder->setUpdatedAt($date);
-        $reminder->setUpdatedBy($actor);
+        $reminder->setUpdatedBy((string) $actor);
 
         if ((null === $reminder->getPreviousDate()) && (null === $reminder->getNextDate())) {
             $reminder->setPreviousDate($date);
@@ -144,7 +144,7 @@ class ReminderManager
     {
         $date = new DateTimeImmutable();
         $reminder->setDeletedAt($date);
-        $reminder->setDeletedBy($actor);
+        $reminder->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($reminder);
         $this->entityManager->flush();

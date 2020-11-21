@@ -58,10 +58,10 @@ class ContactManager
         $date = new DateTimeImmutable();
         if (null === $contact->getId()) {
             $contact->setCreatedAt($date);
-            $contact->setCreatedBy($actor);
+            $contact->setCreatedBy((string) $actor);
         }
         $contact->setUpdatedAt($date);
-        $contact->setUpdatedBy($actor);
+        $contact->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($contact);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class ContactManager
     {
         $date = new DateTimeImmutable();
         $contact->setDeletedAt($date);
-        $contact->setDeletedBy($actor);
+        $contact->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($contact);
         $this->entityManager->flush();

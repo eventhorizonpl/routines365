@@ -58,10 +58,10 @@ class NoteManager
         $date = new DateTimeImmutable();
         if (null === $note->getId()) {
             $note->setCreatedAt($date);
-            $note->setCreatedBy($actor);
+            $note->setCreatedBy((string) $actor);
         }
         $note->setUpdatedAt($date);
-        $note->setUpdatedBy($actor);
+        $note->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($note);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class NoteManager
     {
         $date = new DateTimeImmutable();
         $note->setDeletedAt($date);
-        $note->setDeletedBy($actor);
+        $note->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($note);
         $this->entityManager->flush();

@@ -58,10 +58,10 @@ class GoalManager
         $date = new DateTimeImmutable();
         if (null === $goal->getId()) {
             $goal->setCreatedAt($date);
-            $goal->setCreatedBy($actor);
+            $goal->setCreatedBy((string) $actor);
         }
         $goal->setUpdatedAt($date);
-        $goal->setUpdatedBy($actor);
+        $goal->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($goal);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class GoalManager
     {
         $date = new DateTimeImmutable();
         $goal->setDeletedAt($date);
-        $goal->setDeletedBy($actor);
+        $goal->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($goal);
         $this->entityManager->flush();

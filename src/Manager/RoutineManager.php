@@ -73,10 +73,10 @@ class RoutineManager
         $date = new DateTimeImmutable();
         if (null === $routine->getId()) {
             $routine->setCreatedAt($date);
-            $routine->setCreatedBy($actor);
+            $routine->setCreatedBy((string) $actor);
         }
         $routine->setUpdatedAt($date);
-        $routine->setUpdatedBy($actor);
+        $routine->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($routine);
         if (0 !== count($errors)) {
@@ -96,7 +96,7 @@ class RoutineManager
     {
         $date = new DateTimeImmutable();
         $routine->setDeletedAt($date);
-        $routine->setDeletedBy($actor);
+        $routine->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($routine);
         $this->entityManager->flush();

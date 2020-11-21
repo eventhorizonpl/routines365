@@ -1661,6 +1661,6 @@ class QuoteFixtures extends Fixture implements DependentFixtureInterface, Fixtur
                 true
             );
         }
-        $this->quoteManager->bulkSave($quotes, $this->getReference(UserAdminFixtures::ADMIN_USER_REFERENCE));
+        $this->quoteManager->bulkSave($quotes, (string) $this->getReference(UserAdminFixtures::ADMIN_USER_REFERENCE));
     }
 }

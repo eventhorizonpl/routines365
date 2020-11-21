@@ -31,7 +31,7 @@ class RoutineController extends AbstractController
         RoutineRepository $routineRepository
     ): Response {
         $parameters = [
-            'query' => trim($request->query->get('q')),
+            'query' => trim((string) $request->query->get('q')),
             'type' => $request->query->get('type'),
         ];
 

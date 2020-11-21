@@ -58,10 +58,10 @@ class CompletedRoutineManager
         $date = new DateTimeImmutable();
         if (null === $completedRoutine->getId()) {
             $completedRoutine->setCreatedAt($date);
-            $completedRoutine->setCreatedBy($actor);
+            $completedRoutine->setCreatedBy((string) $actor);
         }
         $completedRoutine->setUpdatedAt($date);
-        $completedRoutine->setUpdatedBy($actor);
+        $completedRoutine->setUpdatedBy((string) $actor);
 
         $errors = $this->validate($completedRoutine);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class CompletedRoutineManager
     {
         $date = new DateTimeImmutable();
         $completedRoutine->setDeletedAt($date);
-        $completedRoutine->setDeletedBy($actor);
+        $completedRoutine->setDeletedBy((string) $actor);
 
         $this->entityManager->persist($completedRoutine);
         $this->entityManager->flush();
