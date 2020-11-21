@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Reminder;
@@ -7,11 +9,11 @@ use App\Entity\ReminderMessage;
 use App\Entity\Routine;
 use App\Entity\SentReminder;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class ReminderTest extends TestCase
+class ReminderTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -21,7 +23,7 @@ class ReminderTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reminder = new Reminder();
         $reminder->setUuid($uuid);
         $this->assertEquals($uuid, $reminder->__toString());
@@ -35,7 +37,7 @@ class ReminderTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertEquals(null, $reminder->getUuid());
         $reminder->setUuid($uuid);
@@ -45,7 +47,7 @@ class ReminderTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertInstanceOf(Reminder::class, $reminder->setUuid($uuid));
         $this->assertEquals($uuid, $reminder->getUuid());
@@ -53,7 +55,7 @@ class ReminderTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertEquals(null, $reminder->getCreatedBy());
         $reminder->setCreatedBy($createdBy);
@@ -63,7 +65,7 @@ class ReminderTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertInstanceOf(Reminder::class, $reminder->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $reminder->getCreatedBy());
@@ -71,7 +73,7 @@ class ReminderTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertEquals(null, $reminder->getDeletedBy());
         $reminder->setDeletedBy($deletedBy);
@@ -81,7 +83,7 @@ class ReminderTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertInstanceOf(Reminder::class, $reminder->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $reminder->getDeletedBy());
@@ -89,7 +91,7 @@ class ReminderTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertEquals(null, $reminder->getUpdatedBy());
         $reminder->setUpdatedBy($updatedBy);
@@ -99,7 +101,7 @@ class ReminderTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $reminder = new Reminder();
         $this->assertInstanceOf(Reminder::class, $reminder->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $reminder->getUpdatedBy());

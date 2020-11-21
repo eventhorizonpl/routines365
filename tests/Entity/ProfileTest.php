@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Profile;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use libphonenumber\PhoneNumberUtil;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class ProfileTest extends TestCase
+class ProfileTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -19,7 +21,7 @@ class ProfileTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $profile = new Profile();
         $profile->setUuid($uuid);
         $this->assertEquals($uuid, $profile->__toString());
@@ -33,7 +35,7 @@ class ProfileTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertEquals(null, $profile->getUuid());
         $profile->setUuid($uuid);
@@ -43,7 +45,7 @@ class ProfileTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setUuid($uuid));
         $this->assertEquals($uuid, $profile->getUuid());
@@ -51,7 +53,7 @@ class ProfileTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertEquals(null, $profile->getCreatedBy());
         $profile->setCreatedBy($createdBy);
@@ -61,7 +63,7 @@ class ProfileTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $profile->getCreatedBy());
@@ -69,7 +71,7 @@ class ProfileTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertEquals(null, $profile->getDeletedBy());
         $profile->setDeletedBy($deletedBy);
@@ -79,7 +81,7 @@ class ProfileTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $profile->getDeletedBy());
@@ -87,7 +89,7 @@ class ProfileTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertEquals(null, $profile->getUpdatedBy());
         $profile->setUpdatedBy($updatedBy);
@@ -97,7 +99,7 @@ class ProfileTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $profile->getUpdatedBy());

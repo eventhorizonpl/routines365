@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\ResetPasswordRequest;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 
-class ResetPasswordRequestTest extends TestCase
+class ResetPasswordRequestTest extends AbstractTestCase
 {
     public function testConstruct()
     {

@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Goal;
 use App\Entity\Project;
 use App\Entity\Routine;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class GoalTest extends TestCase
+class GoalTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -20,7 +22,7 @@ class GoalTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $goal = new Goal();
         $goal->setUuid($uuid);
         $this->assertEquals($uuid, $goal->__toString());
@@ -34,7 +36,7 @@ class GoalTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertEquals(null, $goal->getUuid());
         $goal->setUuid($uuid);
@@ -44,7 +46,7 @@ class GoalTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertInstanceOf(Goal::class, $goal->setUuid($uuid));
         $this->assertEquals($uuid, $goal->getUuid());
@@ -52,7 +54,7 @@ class GoalTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertEquals(null, $goal->getCreatedBy());
         $goal->setCreatedBy($createdBy);
@@ -62,7 +64,7 @@ class GoalTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertInstanceOf(Goal::class, $goal->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $goal->getCreatedBy());
@@ -70,7 +72,7 @@ class GoalTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertEquals(null, $goal->getDeletedBy());
         $goal->setDeletedBy($deletedBy);
@@ -80,7 +82,7 @@ class GoalTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertInstanceOf(Goal::class, $goal->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $goal->getDeletedBy());
@@ -88,7 +90,7 @@ class GoalTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertEquals(null, $goal->getUpdatedBy());
         $goal->setUpdatedBy($updatedBy);
@@ -98,7 +100,7 @@ class GoalTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $goal = new Goal();
         $this->assertInstanceOf(Goal::class, $goal->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $goal->getUpdatedBy());

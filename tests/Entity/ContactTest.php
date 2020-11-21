@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Contact;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class ContactTest extends TestCase
+class ContactTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -18,7 +20,7 @@ class ContactTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $contact = new Contact();
         $contact->setUuid($uuid);
         $this->assertEquals($uuid, $contact->__toString());
@@ -32,7 +34,7 @@ class ContactTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertEquals(null, $contact->getUuid());
         $contact->setUuid($uuid);
@@ -42,7 +44,7 @@ class ContactTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setUuid($uuid));
         $this->assertEquals($uuid, $contact->getUuid());
@@ -50,7 +52,7 @@ class ContactTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertEquals(null, $contact->getCreatedBy());
         $contact->setCreatedBy($createdBy);
@@ -60,7 +62,7 @@ class ContactTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $contact->getCreatedBy());
@@ -68,7 +70,7 @@ class ContactTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertEquals(null, $contact->getDeletedBy());
         $contact->setDeletedBy($deletedBy);
@@ -78,7 +80,7 @@ class ContactTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $contact->getDeletedBy());
@@ -86,7 +88,7 @@ class ContactTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertEquals(null, $contact->getUpdatedBy());
         $contact->setUpdatedBy($updatedBy);
@@ -96,7 +98,7 @@ class ContactTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $contact->getUpdatedBy());

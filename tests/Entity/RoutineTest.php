@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\CompletedRoutine;
@@ -10,11 +12,11 @@ use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\SentReminder;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class RoutineTest extends TestCase
+class RoutineTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -38,7 +40,7 @@ class RoutineTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertEquals(null, $routine->getUuid());
         $routine->setUuid($uuid);
@@ -48,7 +50,7 @@ class RoutineTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setUuid($uuid));
         $this->assertEquals($uuid, $routine->getUuid());
@@ -56,7 +58,7 @@ class RoutineTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertEquals(null, $routine->getCreatedBy());
         $routine->setCreatedBy($createdBy);
@@ -66,7 +68,7 @@ class RoutineTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $routine->getCreatedBy());
@@ -74,7 +76,7 @@ class RoutineTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertEquals(null, $routine->getDeletedBy());
         $routine->setDeletedBy($deletedBy);
@@ -84,7 +86,7 @@ class RoutineTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $routine->getDeletedBy());
@@ -92,7 +94,7 @@ class RoutineTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertEquals(null, $routine->getUpdatedBy());
         $routine->setUpdatedBy($updatedBy);
@@ -102,7 +104,7 @@ class RoutineTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $routine->getUpdatedBy());

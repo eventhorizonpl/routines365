@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Quote;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class QuoteTest extends TestCase
+class QuoteTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -33,7 +35,7 @@ class QuoteTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertEquals(null, $quote->getUuid());
         $quote->setUuid($uuid);
@@ -43,7 +45,7 @@ class QuoteTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertInstanceOf(Quote::class, $quote->setUuid($uuid));
         $this->assertEquals($uuid, $quote->getUuid());
@@ -51,7 +53,7 @@ class QuoteTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertEquals(null, $quote->getCreatedBy());
         $quote->setCreatedBy($createdBy);
@@ -61,7 +63,7 @@ class QuoteTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertInstanceOf(Quote::class, $quote->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $quote->getCreatedBy());
@@ -69,7 +71,7 @@ class QuoteTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertEquals(null, $quote->getDeletedBy());
         $quote->setDeletedBy($deletedBy);
@@ -79,7 +81,7 @@ class QuoteTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertInstanceOf(Quote::class, $quote->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $quote->getDeletedBy());
@@ -87,7 +89,7 @@ class QuoteTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertEquals(null, $quote->getUpdatedBy());
         $quote->setUpdatedBy($updatedBy);
@@ -97,7 +99,7 @@ class QuoteTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $quote = new Quote();
         $this->assertInstanceOf(Quote::class, $quote->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $quote->getUpdatedBy());

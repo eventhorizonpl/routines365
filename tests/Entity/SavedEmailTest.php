@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\SavedEmail;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class SavedEmailTest extends TestCase
+class SavedEmailTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -18,7 +20,7 @@ class SavedEmailTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $savedEmail->setUuid($uuid);
         $this->assertEquals($uuid, $savedEmail->__toString());
@@ -32,7 +34,7 @@ class SavedEmailTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertEquals(null, $savedEmail->getUuid());
         $savedEmail->setUuid($uuid);
@@ -42,7 +44,7 @@ class SavedEmailTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setUuid($uuid));
         $this->assertEquals($uuid, $savedEmail->getUuid());
@@ -50,7 +52,7 @@ class SavedEmailTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertEquals(null, $savedEmail->getCreatedBy());
         $savedEmail->setCreatedBy($createdBy);
@@ -60,7 +62,7 @@ class SavedEmailTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $savedEmail->getCreatedBy());
@@ -68,7 +70,7 @@ class SavedEmailTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertEquals(null, $savedEmail->getDeletedBy());
         $savedEmail->setDeletedBy($deletedBy);
@@ -78,7 +80,7 @@ class SavedEmailTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $savedEmail->getDeletedBy());
@@ -86,7 +88,7 @@ class SavedEmailTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertEquals(null, $savedEmail->getUpdatedBy());
         $savedEmail->setUpdatedBy($updatedBy);
@@ -96,7 +98,7 @@ class SavedEmailTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $savedEmail->getUpdatedBy());

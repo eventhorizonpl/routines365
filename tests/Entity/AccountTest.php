@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Account;
 use App\Entity\AccountOperation;
 use App\Entity\User;
 use App\Resource\ConfigResource;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class AccountTest extends TestCase
+class AccountTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -20,7 +22,7 @@ class AccountTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $account = new Account();
         $account->setUuid($uuid);
         $this->assertEquals($uuid, $account->__toString());
@@ -34,7 +36,7 @@ class AccountTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $account = new Account();
         $this->assertEquals(null, $account->getUuid());
         $account->setUuid($uuid);
@@ -44,7 +46,7 @@ class AccountTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setUuid($uuid));
         $this->assertEquals($uuid, $account->getUuid());
@@ -52,7 +54,7 @@ class AccountTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertEquals(null, $account->getCreatedBy());
         $account->setCreatedBy($createdBy);
@@ -62,7 +64,7 @@ class AccountTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $account->getCreatedBy());
@@ -70,7 +72,7 @@ class AccountTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertEquals(null, $account->getDeletedBy());
         $account->setDeletedBy($deletedBy);
@@ -80,7 +82,7 @@ class AccountTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $account->getDeletedBy());
@@ -88,7 +90,7 @@ class AccountTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertEquals(null, $account->getUpdatedBy());
         $account->setUpdatedBy($updatedBy);
@@ -98,7 +100,7 @@ class AccountTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $account->getUpdatedBy());

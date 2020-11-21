@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\AccountOperation;
 use App\Entity\Reminder;
 use App\Entity\ReminderMessage;
 use App\Entity\SentReminder;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class ReminderMessageTest extends TestCase
+class ReminderMessageTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -20,7 +22,7 @@ class ReminderMessageTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reminderMessage = new ReminderMessage();
         $reminderMessage->setUuid($uuid);
         $this->assertEquals($uuid, $reminderMessage->__toString());
@@ -34,7 +36,7 @@ class ReminderMessageTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reminderMessage = new ReminderMessage();
         $this->assertEquals(null, $reminderMessage->getUuid());
         $reminderMessage->setUuid($uuid);
@@ -44,7 +46,7 @@ class ReminderMessageTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reminderMessage = new ReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setUuid($uuid));
         $this->assertEquals($uuid, $reminderMessage->getUuid());

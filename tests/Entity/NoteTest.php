@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Note;
 use App\Entity\Routine;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class NoteTest extends TestCase
+class NoteTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -19,7 +21,7 @@ class NoteTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $note = new Note();
         $note->setUuid($uuid);
         $this->assertEquals($uuid, $note->__toString());
@@ -33,7 +35,7 @@ class NoteTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $note = new Note();
         $this->assertEquals(null, $note->getUuid());
         $note->setUuid($uuid);
@@ -43,7 +45,7 @@ class NoteTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setUuid($uuid));
         $this->assertEquals($uuid, $note->getUuid());
@@ -51,7 +53,7 @@ class NoteTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertEquals(null, $note->getCreatedBy());
         $note->setCreatedBy($createdBy);
@@ -61,7 +63,7 @@ class NoteTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $note->getCreatedBy());
@@ -69,7 +71,7 @@ class NoteTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertEquals(null, $note->getDeletedBy());
         $note->setDeletedBy($deletedBy);
@@ -79,7 +81,7 @@ class NoteTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $note->getDeletedBy());
@@ -87,7 +89,7 @@ class NoteTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertEquals(null, $note->getUpdatedBy());
         $note->setUpdatedBy($updatedBy);
@@ -97,7 +99,7 @@ class NoteTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $note->getUpdatedBy());

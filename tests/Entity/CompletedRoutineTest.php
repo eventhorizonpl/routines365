@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\CompletedRoutine;
 use App\Entity\Routine;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class CompletedRoutineTest extends TestCase
+class CompletedRoutineTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -19,7 +21,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $completedRoutine->setUuid($uuid);
         $this->assertEquals($uuid, $completedRoutine->__toString());
@@ -33,7 +35,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertEquals(null, $completedRoutine->getUuid());
         $completedRoutine->setUuid($uuid);
@@ -43,7 +45,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setUuid($uuid));
         $this->assertEquals($uuid, $completedRoutine->getUuid());
@@ -51,7 +53,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertEquals(null, $completedRoutine->getCreatedBy());
         $completedRoutine->setCreatedBy($createdBy);
@@ -61,7 +63,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $completedRoutine->getCreatedBy());
@@ -69,7 +71,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertEquals(null, $completedRoutine->getDeletedBy());
         $completedRoutine->setDeletedBy($deletedBy);
@@ -79,7 +81,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $completedRoutine->getDeletedBy());
@@ -87,7 +89,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertEquals(null, $completedRoutine->getUpdatedBy());
         $completedRoutine->setUpdatedBy($updatedBy);
@@ -97,7 +99,7 @@ class CompletedRoutineTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $completedRoutine->getUpdatedBy());

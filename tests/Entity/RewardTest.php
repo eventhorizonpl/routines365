@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class RewardTest extends TestCase
+class RewardTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -19,7 +21,7 @@ class RewardTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reward = new Reward();
         $reward->setUuid($uuid);
         $this->assertEquals($uuid, $reward->__toString());
@@ -33,7 +35,7 @@ class RewardTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertEquals(null, $reward->getUuid());
         $reward->setUuid($uuid);
@@ -43,7 +45,7 @@ class RewardTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setUuid($uuid));
         $this->assertEquals($uuid, $reward->getUuid());
@@ -51,7 +53,7 @@ class RewardTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertEquals(null, $reward->getCreatedBy());
         $reward->setCreatedBy($createdBy);
@@ -61,7 +63,7 @@ class RewardTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $reward->getCreatedBy());
@@ -69,7 +71,7 @@ class RewardTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertEquals(null, $reward->getDeletedBy());
         $reward->setDeletedBy($deletedBy);
@@ -79,7 +81,7 @@ class RewardTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $reward->getDeletedBy());
@@ -87,7 +89,7 @@ class RewardTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertEquals(null, $reward->getUpdatedBy());
         $reward->setUpdatedBy($updatedBy);
@@ -97,7 +99,7 @@ class RewardTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $reward->getUpdatedBy());

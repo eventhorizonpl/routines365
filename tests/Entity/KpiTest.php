@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Kpi;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class KpiTest extends TestCase
+class KpiTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -17,7 +19,7 @@ class KpiTest extends TestCase
 
     public function testToString()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $kpi = new Kpi();
         $kpi->setUuid($uuid);
         $this->assertEquals($uuid, $kpi->__toString());
@@ -31,7 +33,7 @@ class KpiTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $kpi = new Kpi();
         $this->assertEquals(null, $kpi->getUuid());
         $kpi->setUuid($uuid);
@@ -41,7 +43,7 @@ class KpiTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $kpi = new Kpi();
         $this->assertInstanceOf(Kpi::class, $kpi->setUuid($uuid));
         $this->assertEquals($uuid, $kpi->getUuid());

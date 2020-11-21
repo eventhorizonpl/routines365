@@ -5,11 +5,11 @@ namespace App\Tests\Entity;
 use App\Entity\Goal;
 use App\Entity\Project;
 use App\Entity\User;
+use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class ProjectTest extends TestCase
+class ProjectTest extends AbstractTestCase
 {
     public function testConstruct()
     {
@@ -33,7 +33,7 @@ class ProjectTest extends TestCase
 
     public function testGetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $project = new Project();
         $this->assertEquals(null, $project->getUuid());
         $project->setUuid($uuid);
@@ -43,7 +43,7 @@ class ProjectTest extends TestCase
 
     public function testSetUuid()
     {
-        $uuid = Uuid::v4();
+        $uuid = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setUuid($uuid));
         $this->assertEquals($uuid, $project->getUuid());
@@ -51,7 +51,7 @@ class ProjectTest extends TestCase
 
     public function testGetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertEquals(null, $project->getCreatedBy());
         $project->setCreatedBy($createdBy);
@@ -61,7 +61,7 @@ class ProjectTest extends TestCase
 
     public function testSetCreatedBy()
     {
-        $createdBy = Uuid::v4();
+        $createdBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setCreatedBy($createdBy));
         $this->assertEquals($createdBy, $project->getCreatedBy());
@@ -69,7 +69,7 @@ class ProjectTest extends TestCase
 
     public function testGetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertEquals(null, $project->getDeletedBy());
         $project->setDeletedBy($deletedBy);
@@ -79,7 +79,7 @@ class ProjectTest extends TestCase
 
     public function testSetDeletedBy()
     {
-        $deletedBy = Uuid::v4();
+        $deletedBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setDeletedBy($deletedBy));
         $this->assertEquals($deletedBy, $project->getDeletedBy());
@@ -87,7 +87,7 @@ class ProjectTest extends TestCase
 
     public function testGetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertEquals(null, $project->getUpdatedBy());
         $project->setUpdatedBy($updatedBy);
@@ -97,7 +97,7 @@ class ProjectTest extends TestCase
 
     public function testSetUpdatedBy()
     {
-        $updatedBy = Uuid::v4();
+        $updatedBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setUpdatedBy($updatedBy));
         $this->assertEquals($updatedBy, $project->getUpdatedBy());
