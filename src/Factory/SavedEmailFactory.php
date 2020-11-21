@@ -12,7 +12,7 @@ class SavedEmailFactory
     public function createSavedEmail(): SavedEmail
     {
         $savedEmail = new SavedEmail();
-        $savedEmail->setUuid(Uuid::v4());
+        $savedEmail->setUuid((string) Uuid::v4());
 
         return $savedEmail;
     }

@@ -12,7 +12,7 @@ class GoalFactory
     public function createGoal(): Goal
     {
         $goal = new Goal();
-        $goal->setUuid(Uuid::v4());
+        $goal->setUuid((string) Uuid::v4());
 
         return $goal;
     }

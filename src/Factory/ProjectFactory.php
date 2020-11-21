@@ -12,7 +12,7 @@ class ProjectFactory
     public function createProject(): Project
     {
         $project = new Project();
-        $project->setUuid(Uuid::v4());
+        $project->setUuid((string) Uuid::v4());
 
         return $project;
     }

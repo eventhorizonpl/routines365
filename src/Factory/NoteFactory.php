@@ -12,7 +12,7 @@ class NoteFactory
     public function createNote(): Note
     {
         $note = new Note();
-        $note->setUuid(Uuid::v4());
+        $note->setUuid((string) Uuid::v4());
 
         return $note;
     }

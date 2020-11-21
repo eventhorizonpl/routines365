@@ -12,7 +12,7 @@ class ReminderMessageFactory
     public function createReminderMessage(): ReminderMessage
     {
         $reminderMessage = new ReminderMessage();
-        $reminderMessage->setUuid(Uuid::v4());
+        $reminderMessage->setUuid((string) Uuid::v4());
 
         return $reminderMessage;
     }

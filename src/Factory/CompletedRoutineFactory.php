@@ -12,7 +12,7 @@ class CompletedRoutineFactory
     public function createCompletedRoutine(): CompletedRoutine
     {
         $completedRoutine = new CompletedRoutine();
-        $completedRoutine->setUuid(Uuid::v4());
+        $completedRoutine->setUuid((string) Uuid::v4());
 
         return $completedRoutine;
     }

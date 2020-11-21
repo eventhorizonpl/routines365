@@ -12,7 +12,7 @@ class AccountFactory
     public function createAccount(): Account
     {
         $account = new Account();
-        $account->setUuid(Uuid::v4());
+        $account->setUuid((string) Uuid::v4());
 
         return $account;
     }

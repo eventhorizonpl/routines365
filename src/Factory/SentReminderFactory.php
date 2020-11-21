@@ -12,7 +12,7 @@ class SentReminderFactory
     public function createSentReminder(): SentReminder
     {
         $sentReminder = new SentReminder();
-        $sentReminder->setUuid(Uuid::v4());
+        $sentReminder->setUuid((string) Uuid::v4());
 
         return $sentReminder;
     }

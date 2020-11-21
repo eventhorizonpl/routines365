@@ -12,7 +12,7 @@ class QuoteFactory
     public function createQuote(): Quote
     {
         $quote = new Quote();
-        $quote->setUuid(Uuid::v4());
+        $quote->setUuid((string) Uuid::v4());
 
         return $quote;
     }

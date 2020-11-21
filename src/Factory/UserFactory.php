@@ -23,8 +23,8 @@ class UserFactory
     public function createUser(): User
     {
         $user = new User();
-        $user->setReferrerCode(Uuid::v4())
-            ->setUuid(Uuid::v4());
+        $user->setReferrerCode((string) Uuid::v4())
+            ->setUuid((string) Uuid::v4());
         $account = $this->accountFactory->createAccount();
         $account->setUser($user);
         $profile = $this->profileFactory->createProfile();

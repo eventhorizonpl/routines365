@@ -13,7 +13,7 @@ class KpiFactory
     public function createKpi(): Kpi
     {
         $kpi = new Kpi();
-        $kpi->setUuid(Uuid::v4());
+        $kpi->setUuid((string) Uuid::v4());
 
         return $kpi;
     }

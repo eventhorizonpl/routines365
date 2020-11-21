@@ -12,7 +12,7 @@ class AccountOperationFactory
     public function createAccountOperation(): AccountOperation
     {
         $accountOperation = new AccountOperation();
-        $accountOperation->setUuid(Uuid::v4());
+        $accountOperation->setUuid((string) Uuid::v4());
 
         return $accountOperation;
     }

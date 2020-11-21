@@ -12,7 +12,7 @@ class ContactFactory
     public function createContact(): Contact
     {
         $contact = new Contact();
-        $contact->setUuid(Uuid::v4());
+        $contact->setUuid((string) Uuid::v4());
 
         return $contact;
     }

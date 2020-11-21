@@ -12,7 +12,7 @@ class RewardFactory
     public function createReward(): Reward
     {
         $reward = new Reward();
-        $reward->setUuid(Uuid::v4());
+        $reward->setUuid((string) Uuid::v4());
 
         return $reward;
     }

@@ -13,7 +13,7 @@ class ReminderFactory
     public function createReminder(): Reminder
     {
         $reminder = new Reminder();
-        $reminder->setUuid(Uuid::v4());
+        $reminder->setUuid((string) Uuid::v4());
 
         return $reminder;
     }

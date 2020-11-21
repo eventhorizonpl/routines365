@@ -12,7 +12,7 @@ class RoutineFactory
     public function createRoutine(): Routine
     {
         $routine = new Routine();
-        $routine->setUuid(Uuid::v4());
+        $routine->setUuid((string) Uuid::v4());
 
         return $routine;
     }
