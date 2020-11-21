@@ -38,7 +38,7 @@ class RewardFaker
         }
 
         if (null === $isAwarded) {
-            $isAwarded = (bool) $this->faker->boolean;
+            $isAwarded = false;
         }
 
         if (null === $name) {

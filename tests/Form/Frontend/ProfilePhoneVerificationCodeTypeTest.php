@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Form\Frontend;
 
-use App\Form\Model\ProfilePhoneVerificationCodeFormModel;
 use App\Form\Frontend\ProfilePhoneVerificationCodeType;
+use App\Form\Model\ProfilePhoneVerificationCodeFormModel;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 class ProfilePhoneVerificationCodeTypeTest extends TypeTestCase

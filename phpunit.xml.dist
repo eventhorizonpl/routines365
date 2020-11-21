@@ -23,5 +23,6 @@
   </testsuites>
   <listeners>
     <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+    <listener class="Zalas\Injector\PHPUnit\TestListener\ServiceInjectorListener" />
   </listeners>
 </phpunit>

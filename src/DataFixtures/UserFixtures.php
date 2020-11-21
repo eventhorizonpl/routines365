@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use App\Factory\UserFactory;
+use App\Faker\UserFaker;
 use App\Manager\UserManager;
-use App\Service\UserService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use libphonenumber\PhoneNumberUtil;
@@ -22,30 +21,27 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
     public const REGULAR_USER_REFERENCE = 'regular-user-reference';
 
     private PhoneNumberUtil $phoneNumberUtil;
-    private UserFactory $userFactory;
+    private UserFaker $userFaker;
     private UserManager $userManager;
-    private UserService $userService;
 
     public function __construct(
-        UserFactory $userFactory,
-        UserManager $userManager,
-        UserService $userService
+        UserFaker $userFaker,
+        UserManager $userManager
     ) {
         $this->phoneNumberUtil = PhoneNumberUtil::getInstance();
-        $this->userFactory = $userFactory;
+        $this->userFaker = $userFaker;
         $this->userManager = $userManager;
-        $this->userService = $userService;
     }
 
     public function load(ObjectManager $manager): void
     {
-        $user = $this->userFactory->createUserWithRequired(
+        $user = $this->userFaker->createUser(
             'admin@admin.com',
             true,
+            'admin',
             [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER],
             User::TYPE_STAFF
         );
-        $user = $this->userService->encodePassword($user, 'admin');
         $phone = $this->phoneNumberUtil->parse('+48881573000');
         $user->getProfile()->setPhone($phone);
         $user->getProfile()->setTimezone('Europe/Warsaw');
@@ -57,13 +53,13 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
             $users = [];
             $referrerUser = null;
             for ($userId = 1; $userId <= self::REGULAR_USER_LIMIT; ++$userId) {
-                $user = $this->userFactory->createUserWithRequired(
+                $user = $this->userFaker->createUser(
                     'test'.(string) $userId.'@test.com',
                     true,
+                    'test'.(string) $userId,
                     [User::ROLE_USER],
                     User::TYPE_PROSPECT
                 );
-                $user = $this->userService->encodePassword($user, 'test'.(string) $userId);
                 $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));
                 $user->getProfile()->setFirstName('test'.(string) $userId);
                 $user->getProfile()->setLastName('test'.(string) $userId);

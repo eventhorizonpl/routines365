@@ -79,7 +79,7 @@ class ReminderRepository extends ServiceEntityRepository
             ->leftJoin('ru.profile', 'rup')
             ->where('r.deletedAt IS NULL')
             ->andWhere('r.lockedAt IS NULL')
-            ->andWhere('r.nextDate < :nextDate')
+            ->andWhere('r.nextDate <= :nextDate')
             ->andWhere('r.isEnabled = :isEnabled')
             ->andWhere('rr.isEnabled = :isEnabled')
             ->orderBy('r.nextDate', 'ASC')

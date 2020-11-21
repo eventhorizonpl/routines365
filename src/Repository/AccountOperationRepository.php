@@ -40,8 +40,8 @@ class AccountOperationRepository extends ServiceEntityRepository
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
                         $queryBuilder->expr()->orX(
-                            $queryBuilder->expr()->like('aou.email', ':q'),
-                            $queryBuilder->expr()->like('aou.uuid', ':q')
+                            $queryBuilder->expr()->like('aoau.email', ':q'),
+                            $queryBuilder->expr()->like('aoau.uuid', ':q')
                         )
                     )
                     ->setParameter('q', '%'.$query.'%');

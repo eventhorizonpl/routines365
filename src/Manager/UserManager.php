@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class UserManager
 {
     private AccountManager $accountManager;
+    private AccountOperationManager $accountOperationManager;
     private CompletedRoutineManager $completedRoutineManager;
     private ContactManager $contactManager;
     private EntityManagerInterface $entityManager;
@@ -29,6 +30,7 @@ class UserManager
 
     public function __construct(
         AccountManager $accountManager,
+        AccountOperationManager $accountOperationManager,
         CompletedRoutineManager $completedRoutineManager,
         ContactManager $contactManager,
         EntityManagerInterface $entityManager,
@@ -43,6 +45,7 @@ class UserManager
         ValidatorInterface $validator
     ) {
         $this->accountManager = $accountManager;
+        $this->accountOperationManager = $accountOperationManager;
         $this->completedRoutineManager = $completedRoutineManager;
         $this->contactManager = $contactManager;
         $this->entityManager = $entityManager;
@@ -82,7 +85,7 @@ class UserManager
         return $this;
     }
 
-    public function save(User $user, string $actor = null, bool $flush = true): self
+    public function save(User $user, string $actor = null, bool $flush = true, bool $saveDependencies = false): self
     {
         if (null === $actor) {
             $actor = $user->getUuid();
@@ -102,7 +105,51 @@ class UserManager
 
         $this->entityManager->persist($user);
         $this->accountManager->save($user->getAccount(), $actor, false);
+
+        if (true === $saveDependencies) {
+            foreach ($user->getAccount()->getAccountOperations() as $accountOperation) {
+                $this->accountOperationManager->save($accountOperation, $actor, false);
+            }
+
+            foreach ($user->getContacts() as $contact) {
+                $this->contactManager->save($contact, $actor, false);
+            }
+
+            foreach ($user->getRoutines() as $routine) {
+                $this->routineManager->save($routine, $actor, false);
+            }
+
+            foreach ($user->getCompletedRoutines() as $completedRoutine) {
+                $this->completedRoutineManager->save($completedRoutine, $actor, false);
+            }
+
+            foreach ($user->getGoals() as $goal) {
+                $this->goalManager->save($goal, $actor, false);
+            }
+
+            foreach ($user->getNotes() as $note) {
+                $this->noteManager->save($note, $actor, false);
+            }
+
+            foreach ($user->getProjects() as $project) {
+                $this->projectManager->save($project, $actor, false);
+            }
+
+            foreach ($user->getReminders() as $reminder) {
+                $this->reminderManager->save($reminder, $actor, false);
+            }
+
+            foreach ($user->getRewards() as $reward) {
+                $this->rewardManager->save($reward, $actor, false);
+            }
+
+            foreach ($user->getSavedEmails() as $savedEmail) {
+                $this->savedEmailManager->save($savedEmail, $actor, false);
+            }
+        }
+
         $this->profileManager->save($user->getProfile(), $actor, false);
+
         if (true === $flush) {
             $this->entityManager->flush();
         }

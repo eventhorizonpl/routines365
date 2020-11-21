@@ -81,7 +81,7 @@ class AccountOperationManager
         }
 
         $this->entityManager->persist($accountOperation);
-        $this->accountManager->save($account, $actor, false);
+        $this->accountManager->save($account, (string) $actor, false);
 
         if (true === $flush) {
             $this->entityManager->flush();

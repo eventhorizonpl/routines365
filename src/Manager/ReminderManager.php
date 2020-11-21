@@ -64,7 +64,9 @@ class ReminderManager
 
         $dateTimeNow = new DateTime();
         try {
-            $dateTimeNow->setTimezone(new DateTimeZone($reminder->getUser()->getProfile()->getTimeZone()));
+            if (null !== $reminder->getUser()->getProfile()->getTimeZone()) {
+                $dateTimeNow->setTimezone(new DateTimeZone($reminder->getUser()->getProfile()->getTimeZone()));
+            }
         } catch (Exception $e) {
         }
 
