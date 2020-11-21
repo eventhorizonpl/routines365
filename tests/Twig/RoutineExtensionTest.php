@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Util;
+namespace App\Tests\Twig;
 
 use App\Tests\AbstractTestCase;
 use App\Twig\RoutineExtension;

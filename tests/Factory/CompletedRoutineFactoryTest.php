@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Util;
+namespace App\Tests\Factory;
 
 use App\Entity\CompletedRoutine;
 use App\Factory\CompletedRoutineFactory;
