@@ -6,23 +6,19 @@ namespace App\Faker;
 
 use App\Entity\CompletedRoutine;
 use App\Factory\CompletedRoutineFactory;
-use App\Manager\CompletedRoutineManager;
 use Faker\Factory;
 use Faker\Generator;
 
 class CompletedRoutineFaker
 {
     private CompletedRoutineFactory $completedRoutineFactory;
-    private CompletedRoutineManager $completedRoutineManager;
     private Generator $faker;
 
     public function __construct(
-        CompletedRoutineFactory $completedRoutineFactory,
-        CompletedRoutineManager $completedRoutineManager
+        CompletedRoutineFactory $completedRoutineFactory
     ) {
         $this->faker = Factory::create();
         $this->completedRoutineFactory = $completedRoutineFactory;
-        $this->completedRoutineManager = $completedRoutineManager;
     }
 
     public function createCompletedRoutine(
@@ -42,19 +38,6 @@ class CompletedRoutineFaker
         );
 
         $completedRoutine->setComment($comment);
-
-        return $completedRoutine;
-    }
-
-    public function createCompletedRoutinePersisted(
-        ?string $comment = null,
-        ?int $minutesDevoted = null
-    ): CompletedRoutine {
-        $completedRoutine = $this->createCompletedRoutine(
-            $comment,
-            $minutesDevoted
-        );
-        $this->completedRoutineManager->save($completedRoutine);
 
         return $completedRoutine;
     }

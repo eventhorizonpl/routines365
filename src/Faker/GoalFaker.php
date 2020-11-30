@@ -6,7 +6,6 @@ namespace App\Faker;
 
 use App\Entity\Goal;
 use App\Factory\GoalFactory;
-use App\Manager\GoalManager;
 use Faker\Factory;
 use Faker\Generator;
 
@@ -14,15 +13,12 @@ class GoalFaker
 {
     private Generator $faker;
     private GoalFactory $goalFactory;
-    private GoalManager $goalManager;
 
     public function __construct(
-        GoalFactory $goalFactory,
-        GoalManager $goalManager
+        GoalFactory $goalFactory
     ) {
         $this->faker = Factory::create();
         $this->goalFactory = $goalFactory;
-        $this->goalManager = $goalManager;
     }
 
     public function createGoal(
@@ -48,21 +44,6 @@ class GoalFaker
         );
 
         $goal->setDescription($description);
-
-        return $goal;
-    }
-
-    public function createGoalPersisted(
-        ?string $description = null,
-        ?bool $isCompleted = null,
-        ?string $name = null
-    ): Goal {
-        $goal = $this->createGoal(
-            $description,
-            $isCompleted,
-            $name
-        );
-        $this->goalManager->save($goal);
 
         return $goal;
     }

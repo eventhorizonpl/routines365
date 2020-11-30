@@ -6,23 +6,19 @@ namespace App\Faker;
 
 use App\Entity\Contact;
 use App\Factory\ContactFactory;
-use App\Manager\ContactManager;
 use Faker\Factory;
 use Faker\Generator;
 
 class ContactFaker
 {
     private ContactFactory $contactFactory;
-    private ContactManager $contactManager;
     private Generator $faker;
 
     public function __construct(
-        ContactFactory $contactFactory,
-        ContactManager $contactManager
+        ContactFactory $contactFactory
     ) {
         $this->faker = Factory::create();
         $this->contactFactory = $contactFactory;
-        $this->contactManager = $contactManager;
     }
 
     public function createContact(
@@ -57,23 +53,6 @@ class ContactFaker
             $title,
             $type
         );
-
-        return $contact;
-    }
-
-    public function createContactPersisted(
-        ?string $content = null,
-        ?string $status = null,
-        ?string $title = null,
-        ?string $type = null
-    ): Contact {
-        $contact = $this->createContact(
-            $content,
-            $status,
-            $title,
-            $type
-        );
-        $this->contactManager->save($contact);
 
         return $contact;
     }

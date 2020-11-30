@@ -6,7 +6,6 @@ namespace App\Faker;
 
 use App\Entity\Routine;
 use App\Factory\RoutineFactory;
-use App\Manager\RoutineManager;
 use Faker\Factory;
 use Faker\Generator;
 
@@ -14,15 +13,12 @@ class RoutineFaker
 {
     private Generator $faker;
     private RoutineFactory $routineFactory;
-    private RoutineManager $routineManager;
 
     public function __construct(
-        RoutineFactory $routineFactory,
-        RoutineManager $routineManager
+        RoutineFactory $routineFactory
     ) {
         $this->faker = Factory::create();
         $this->routineFactory = $routineFactory;
-        $this->routineManager = $routineManager;
     }
 
     public function createRoutine(
@@ -56,23 +52,6 @@ class RoutineFaker
         );
 
         $routine->setDescription($description);
-
-        return $routine;
-    }
-
-    public function createRoutinePersisted(
-        ?string $description = null,
-        ?bool $isEnabled = null,
-        ?string $name = null,
-        ?string $type = null
-    ): Routine {
-        $routine = $this->createRoutine(
-            $description,
-            $isEnabled,
-            $name,
-            $type
-        );
-        $this->routineManager->save($routine);
 
         return $routine;
     }

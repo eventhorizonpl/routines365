@@ -6,7 +6,6 @@ namespace App\Faker;
 
 use App\Entity\Reward;
 use App\Factory\RewardFactory;
-use App\Manager\RewardManager;
 use Faker\Factory;
 use Faker\Generator;
 
@@ -14,15 +13,12 @@ class RewardFaker
 {
     private Generator $faker;
     private RewardFactory $rewardFactory;
-    private RewardManager $rewardManager;
 
     public function __construct(
-        RewardFactory $rewardFactory,
-        RewardManager $rewardManager
+        RewardFactory $rewardFactory
     ) {
         $this->faker = Factory::create();
         $this->rewardFactory = $rewardFactory;
-        $this->rewardManager = $rewardManager;
     }
 
     public function createReward(
@@ -72,27 +68,6 @@ class RewardFaker
 
         $reward->setDescription($description);
         $reward->setNumberOfCompletions($numberOfCompletions);
-
-        return $reward;
-    }
-
-    public function createRewardPersisted(
-        ?string $description = null,
-        ?bool $isAwarded = null,
-        ?string $name = null,
-        ?int $numberOfCompletions = null,
-        ?int $requiredNumberOfCompletions = null,
-        ?string $type = null
-    ): Reward {
-        $reward = $this->createReward(
-            $description,
-            $isAwarded,
-            $name,
-            $numberOfCompletions,
-            $requiredNumberOfCompletions,
-            $type
-        );
-        $this->rewardManager->save($reward);
 
         return $reward;
     }

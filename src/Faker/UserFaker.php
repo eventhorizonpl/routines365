@@ -12,7 +12,6 @@ use App\Manager\ReminderMessageManager;
 use App\Manager\SentReminderManager;
 use App\Manager\UserManager;
 use App\Service\UserService;
-use Doctrine\ORM\EntityManagerInterface;
 use Faker\Factory;
 use Faker\Generator;
 
@@ -21,7 +20,6 @@ class UserFaker
     private AccountOperationFaker $accountOperationFaker;
     private CompletedRoutineFaker $completedRoutineFaker;
     private ContactFaker $contactFaker;
-    private EntityManagerInterface $entityManager;
     private Generator $faker;
     private GoalFaker $goalFaker;
     private NoteFaker $noteFaker;
@@ -43,7 +41,6 @@ class UserFaker
         AccountOperationFaker $accountOperationFaker,
         CompletedRoutineFaker $completedRoutineFaker,
         ContactFaker $contactFaker,
-        EntityManagerInterface $entityManager,
         GoalFaker $goalFaker,
         NoteFaker $noteFaker,
         ProjectFaker $projectFaker,
@@ -63,7 +60,6 @@ class UserFaker
         $this->accountOperationFaker = $accountOperationFaker;
         $this->completedRoutineFaker = $completedRoutineFaker;
         $this->contactFaker = $contactFaker;
-        $this->entityManager = $entityManager;
         $this->faker = Factory::create();
         $this->goalFaker = $goalFaker;
         $this->noteFaker = $noteFaker;

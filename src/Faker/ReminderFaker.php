@@ -6,7 +6,6 @@ namespace App\Faker;
 
 use App\Entity\Reminder;
 use App\Factory\ReminderFactory;
-use App\Manager\ReminderManager;
 use DateTimeImmutable;
 use Faker\Factory;
 use Faker\Generator;
@@ -15,15 +14,12 @@ class ReminderFaker
 {
     private Generator $faker;
     private ReminderFactory $reminderFactory;
-    private ReminderManager $reminderManager;
 
     public function __construct(
-        ReminderFactory $reminderFactory,
-        ReminderManager $reminderManager
+        ReminderFactory $reminderFactory
     ) {
         $this->faker = Factory::create();
         $this->reminderFactory = $reminderFactory;
-        $this->reminderManager = $reminderManager;
     }
 
     public function createReminder(
@@ -39,7 +35,9 @@ class ReminderFaker
             $hour = DateTimeImmutable::createFromMutable($this->faker->dateTime);
         }
 
-        $isEnabled = (bool) $this->faker->boolean;
+        if (null === $isEnabled) {
+            $isEnabled = (bool) $this->faker->boolean;
+        }
 
         if (null === $minutesBefore) {
             $minutesBefore = (int) $this->faker->randomElement(
@@ -55,10 +53,10 @@ class ReminderFaker
             $sendMotivationalMessage = (bool) $this->faker->boolean;
         }
 
-        $sendSms = false;
         if ((null === $sendSms) && (false === $isEnabled)) {
             $sendSms = (bool) $this->faker->boolean;
         }
+        $sendSms = false;
 
         if (null === $type) {
             $type = (string) $this->faker->randomElement(
@@ -75,29 +73,6 @@ class ReminderFaker
             $sendSms,
             $type
         );
-
-        return $reminder;
-    }
-
-    public function createReminderPersisted(
-        ?DateTimeImmutable $hour = null,
-        ?bool $isEnabled = null,
-        ?int $minutesBefore = null,
-        ?bool $sendEmail = null,
-        ?bool $sendMotivationalMessage = null,
-        ?bool $sendSms = null,
-        ?string $type = null
-    ): Reminder {
-        $reminder = $this->createReminder(
-            $hour,
-            $isEnabled,
-            $minutesBefore,
-            $sendEmail,
-            $sendMotivationalMessage,
-            $sendSms,
-            $type
-        );
-        $this->reminderManager->save($reminder);
 
         return $reminder;
     }
