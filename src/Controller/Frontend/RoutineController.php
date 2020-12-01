@@ -57,7 +57,7 @@ class RoutineController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $routineManager->save($routine, $this->getUser());
+            $routineManager->save($routine, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_routine_show', [
                 'uuid' => $routine->getUuid(),
@@ -144,7 +144,7 @@ class RoutineController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $routineManager->save($routine, $this->getUser());
+            $routineManager->save($routine, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_routine_show', [
                 'uuid' => $routine->getUuid(),
@@ -171,7 +171,7 @@ class RoutineController extends AbstractController
             'delete'.$routine->getUuid(),
             $request->request->get('_token')
         )) {
-            $routineManager->softDelete($routine, $this->getUser());
+            $routineManager->softDelete($routine, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('frontend_routine_index');

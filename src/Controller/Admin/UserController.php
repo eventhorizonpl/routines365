@@ -71,7 +71,7 @@ class UserController extends AbstractController
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
-            $userManager->save($user, $this->getUser());
+            $userManager->save($user, (string) $this->getUser());
 
             return $this->redirectToRoute('admin_user_show', [
                 'uuid' => $user->getUuid(),
@@ -103,7 +103,7 @@ class UserController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $password = $form->get('plainPassword')->getData();
             $user = $userService->encodePassword($user, $password);
-            $userManager->save($user, $this->getUser());
+            $userManager->save($user, (string) $this->getUser());
 
             $accountOperation = $accountOperationService->deposit(
                 $user->getAccount(),
@@ -158,7 +158,7 @@ class UserController extends AbstractController
             if (null !== $form->get('plainPassword')->getData()) {
                 $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             }
-            $userManager->save($user, $this->getUser());
+            $userManager->save($user, (string) $this->getUser());
 
             return $this->redirectToRoute('admin_user_show', [
                 'uuid' => $user->getUuid(),
@@ -184,7 +184,7 @@ class UserController extends AbstractController
             'delete'.$user->getUuid(),
             $request->request->get('_token')
         )) {
-            $userManager->softDelete($user, $this->getUser());
+            $userManager->softDelete($user, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('admin_user_index');

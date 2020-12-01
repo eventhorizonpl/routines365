@@ -64,7 +64,7 @@ class QuoteController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $quoteManager->save($quote, $this->getUser());
+            $quoteManager->save($quote, (string) $this->getUser());
 
             return $this->redirectToRoute('admin_quote_show', [
                 'uuid' => $quote->getUuid(),
@@ -99,7 +99,7 @@ class QuoteController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $quoteManager->save($quote, $this->getUser());
+            $quoteManager->save($quote, (string) $this->getUser());
 
             return $this->redirectToRoute('admin_quote_show', [
                 'uuid' => $quote->getUuid(),
@@ -125,7 +125,7 @@ class QuoteController extends AbstractController
             'delete'.$quote->getUuid(),
             $request->request->get('_token')
         )) {
-            $quoteManager->softDelete($quote, $this->getUser());
+            $quoteManager->softDelete($quote, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('admin_quote_index');

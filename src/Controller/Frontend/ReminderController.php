@@ -53,7 +53,7 @@ class ReminderController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $reminderManager->save($reminder, $this->getUser());
+            $reminderManager->save($reminder, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_routine_show_reminders', [
                 'uuid' => $routine->getUuid(),
@@ -91,7 +91,7 @@ class ReminderController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $reminderManager->save($reminder, $this->getUser());
+            $reminderManager->save($reminder, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_routine_show_reminders', [
                 'uuid' => $reminder->getRoutine()->getUuid(),
@@ -119,7 +119,7 @@ class ReminderController extends AbstractController
             'delete'.$reminder->getUuid(),
             $request->request->get('_token')
         )) {
-            $reminderManager->softDelete($reminder, $this->getUser());
+            $reminderManager->softDelete($reminder, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('frontend_routine_show_reminders', [

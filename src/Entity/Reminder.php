@@ -137,7 +137,7 @@ class Reminder
         $this->reminderMessages = new ArrayCollection();
         $this->sendEmail = true;
         $this->sentReminders = new ArrayCollection();
-        $this->sendSms = true;
+        $this->sendSms = false;
         $this->type = self::TYPE_DAILY;
     }
 

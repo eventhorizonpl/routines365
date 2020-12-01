@@ -51,7 +51,7 @@ class CompletedRoutineController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $completedRoutineManager->save($completedRoutine, $this->getUser());
+            $completedRoutineManager->save($completedRoutine, (string) $this->getUser());
 
             $reward = $rewardService->manageReward($completedRoutine->getRoutine(), Reward::TYPE_COMPLETED_ROUTINE);
 

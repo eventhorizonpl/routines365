@@ -162,7 +162,7 @@ class PostRemindMessagesService
                     ->setSentReminder($sentReminder);
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $response = $this->emailService->sendReminderMessage(
+                $response = (string) $this->emailService->sendReminderMessage(
                     $reminder->getUser()->getEmail(),
                     'R365: Routine reminder',
                     [

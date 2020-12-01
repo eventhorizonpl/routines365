@@ -74,7 +74,7 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $contactManager->save($contact, $this->getUser());
+            $contactManager->save($contact, (string) $this->getUser());
 
             return $this->redirectToRoute('admin_contact_show', [
                 'uuid' => $contact->getUuid(),

@@ -67,7 +67,7 @@ class GoalController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $goalManager->save($goal, $this->getUser());
+            $goalManager->save($goal, (string) $this->getUser());
 
             if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {
                 return $this->redirectToRoute('frontend_project_show', [
@@ -103,7 +103,7 @@ class GoalController extends AbstractController
         $this->denyAccessUnlessGranted(GoalVoter::EDIT, $goal);
 
         $goal->setIsCompleted(true);
-        $goalManager->save($goal, $this->getUser());
+        $goalManager->save($goal, (string) $this->getUser());
 
         $reward = $rewardService->manageReward($goal->getRoutine(), Reward::TYPE_COMPLETED_GOAL);
 
@@ -157,7 +157,7 @@ class GoalController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $goalManager->save($goal, $this->getUser());
+            $goalManager->save($goal, (string) $this->getUser());
 
             if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {
                 return $this->redirectToRoute('frontend_project_show', [
@@ -194,7 +194,7 @@ class GoalController extends AbstractController
             'delete'.$goal->getUuid(),
             $request->request->get('_token')
         )) {
-            $goalManager->softDelete($goal, $this->getUser());
+            $goalManager->softDelete($goal, (string) $this->getUser());
         }
 
         if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {

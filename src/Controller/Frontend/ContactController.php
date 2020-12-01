@@ -37,7 +37,7 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $contactManager->save($contact, $this->getUser());
+            $contactManager->save($contact, (string) $this->getUser());
 
             $this->addFlash(
                 'success',

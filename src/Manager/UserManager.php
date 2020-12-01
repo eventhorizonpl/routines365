@@ -93,10 +93,10 @@ class UserManager
         $date = new DateTimeImmutable();
         if (null === $user->getId()) {
             $user->setCreatedAt($date);
-            $user->setCreatedBy((string) $actor);
+            $user->setCreatedBy($actor);
         }
         $user->setUpdatedAt($date);
-        $user->setUpdatedBy((string) $actor);
+        $user->setUpdatedBy($actor);
 
         $errors = $this->validate($user);
         if (0 !== count($errors)) {
@@ -161,7 +161,7 @@ class UserManager
     {
         $date = new DateTimeImmutable();
         $user->setDeletedAt($date);
-        $user->setDeletedBy((string) $actor);
+        $user->setDeletedBy($actor);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

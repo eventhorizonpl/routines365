@@ -56,7 +56,7 @@ class ProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $projectManager->save($project, $this->getUser());
+            $projectManager->save($project, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_project_show', [
                 'uuid' => $project->getUuid(),
@@ -95,7 +95,7 @@ class ProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $projectManager->save($project, $this->getUser());
+            $projectManager->save($project, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_project_show', [
                 'uuid' => $project->getUuid(),
@@ -122,7 +122,7 @@ class ProjectController extends AbstractController
             'delete'.$project->getUuid(),
             $request->request->get('_token')
         )) {
-            $projectManager->softDelete($project, $this->getUser());
+            $projectManager->softDelete($project, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('frontend_project_index');

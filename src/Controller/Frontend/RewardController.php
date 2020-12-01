@@ -73,7 +73,7 @@ class RewardController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $rewardManager->save($reward, $this->getUser());
+            $rewardManager->save($reward, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_reward_show', [
                 'uuid' => $reward->getUuid(),
@@ -112,7 +112,7 @@ class RewardController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $rewardManager->save($reward, $this->getUser());
+            $rewardManager->save($reward, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_reward_show', [
                 'uuid' => $reward->getUuid(),
@@ -139,7 +139,7 @@ class RewardController extends AbstractController
             'delete'.$reward->getUuid(),
             $request->request->get('_token')
         )) {
-            $rewardManager->softDelete($reward, $this->getUser());
+            $rewardManager->softDelete($reward, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('frontend_reward_index');

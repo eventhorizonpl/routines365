@@ -67,16 +67,16 @@ class RoutineManager
     public function save(Routine $routine, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $routine->getUser();
+            $actor = (string) $routine->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $routine->getId()) {
             $routine->setCreatedAt($date);
-            $routine->setCreatedBy((string) $actor);
+            $routine->setCreatedBy($actor);
         }
         $routine->setUpdatedAt($date);
-        $routine->setUpdatedBy((string) $actor);
+        $routine->setUpdatedBy($actor);
 
         $errors = $this->validate($routine);
         if (0 !== count($errors)) {
@@ -96,7 +96,7 @@ class RoutineManager
     {
         $date = new DateTimeImmutable();
         $routine->setDeletedAt($date);
-        $routine->setDeletedBy((string) $actor);
+        $routine->setDeletedBy($actor);
 
         $this->entityManager->persist($routine);
         $this->entityManager->flush();

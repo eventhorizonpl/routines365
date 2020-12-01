@@ -73,7 +73,7 @@ class NoteController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $noteManager->save($note, $this->getUser());
+            $noteManager->save($note, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_note_show', [
                 'uuid' => $note->getUuid(),
@@ -112,7 +112,7 @@ class NoteController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $noteManager->save($note, $this->getUser());
+            $noteManager->save($note, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_note_show', [
                 'uuid' => $note->getUuid(),
@@ -139,7 +139,7 @@ class NoteController extends AbstractController
             'delete'.$note->getUuid(),
             $request->request->get('_token')
         )) {
-            $noteManager->softDelete($note, $this->getUser());
+            $noteManager->softDelete($note, (string) $this->getUser());
         }
 
         return $this->redirectToRoute('frontend_note_index');

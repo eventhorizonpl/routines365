@@ -52,16 +52,16 @@ class CompletedRoutineManager
     public function save(CompletedRoutine $completedRoutine, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $completedRoutine->getUser();
+            $actor = (string) $completedRoutine->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $completedRoutine->getId()) {
             $completedRoutine->setCreatedAt($date);
-            $completedRoutine->setCreatedBy((string) $actor);
+            $completedRoutine->setCreatedBy($actor);
         }
         $completedRoutine->setUpdatedAt($date);
-        $completedRoutine->setUpdatedBy((string) $actor);
+        $completedRoutine->setUpdatedBy($actor);
 
         $errors = $this->validate($completedRoutine);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class CompletedRoutineManager
     {
         $date = new DateTimeImmutable();
         $completedRoutine->setDeletedAt($date);
-        $completedRoutine->setDeletedBy((string) $actor);
+        $completedRoutine->setDeletedBy($actor);
 
         $this->entityManager->persist($completedRoutine);
         $this->entityManager->flush();

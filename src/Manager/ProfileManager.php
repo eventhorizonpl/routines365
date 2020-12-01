@@ -60,10 +60,10 @@ class ProfileManager
         $date = new DateTimeImmutable();
         if (null === $profile->getId()) {
             $profile->setCreatedAt($date);
-            $profile->setCreatedBy((string) $actor);
+            $profile->setCreatedBy($actor);
         }
         $profile->setUpdatedAt($date);
-        $profile->setUpdatedBy((string) $actor);
+        $profile->setUpdatedBy($actor);
 
         if (null !== $profile->getPhone()) {
             $descriptionForNumber = PhoneNumberOfflineGeocoder::getInstance()
@@ -108,7 +108,7 @@ class ProfileManager
     {
         $date = new DateTimeImmutable();
         $profile->setDeletedAt($date);
-        $profile->setDeletedBy((string) $actor);
+        $profile->setDeletedBy($actor);
 
         $this->entityManager->persist($profile);
         $this->entityManager->flush();

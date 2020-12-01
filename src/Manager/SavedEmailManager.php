@@ -52,16 +52,16 @@ class SavedEmailManager
     public function save(SavedEmail $savedEmail, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $savedEmail->getUser();
+            $actor = (string) $savedEmail->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $savedEmail->getId()) {
             $savedEmail->setCreatedAt($date);
-            $savedEmail->setCreatedBy((string) $actor);
+            $savedEmail->setCreatedBy($actor);
         }
         $savedEmail->setUpdatedAt($date);
-        $savedEmail->setUpdatedBy((string) $actor);
+        $savedEmail->setUpdatedBy($actor);
 
         $errors = $this->validate($savedEmail);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class SavedEmailManager
     {
         $date = new DateTimeImmutable();
         $savedEmail->setDeletedAt($date);
-        $savedEmail->setDeletedBy((string) $actor);
+        $savedEmail->setDeletedBy($actor);
 
         $this->entityManager->persist($savedEmail);
         $this->entityManager->flush();

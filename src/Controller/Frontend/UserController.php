@@ -49,7 +49,7 @@ class UserController extends AbstractController
             if (null !== $form->get('plainPassword')->getData()) {
                 $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             }
-            $userManager->save($user, $this->getUser());
+            $userManager->save($user, (string) $this->getUser());
 
             return $this->redirectToRoute('frontend_profile_show');
         }

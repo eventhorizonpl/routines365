@@ -55,16 +55,16 @@ class AccountOperationManager
     public function save(AccountOperation $accountOperation, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $accountOperation->getAccount()->getUser();
+            $actor = (string) $accountOperation->getAccount()->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $accountOperation->getId()) {
             $accountOperation->setCreatedAt($date);
-            $accountOperation->setCreatedBy((string) $actor);
+            $accountOperation->setCreatedBy($actor);
         }
         $accountOperation->setUpdatedAt($date);
-        $accountOperation->setUpdatedBy((string) $actor);
+        $accountOperation->setUpdatedBy($actor);
 
         $errors = $this->validate($accountOperation);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class AccountOperationManager
         }
 
         $this->entityManager->persist($accountOperation);
-        $this->accountManager->save($account, (string) $actor, false);
+        $this->accountManager->save($account, $actor, false);
 
         if (true === $flush) {
             $this->entityManager->flush();
@@ -94,7 +94,7 @@ class AccountOperationManager
     {
         $date = new DateTimeImmutable();
         $accountOperation->setDeletedAt($date);
-        $accountOperation->setDeletedBy((string) $actor);
+        $accountOperation->setDeletedBy($actor);
 
         $this->entityManager->persist($accountOperation);
         $this->entityManager->flush();

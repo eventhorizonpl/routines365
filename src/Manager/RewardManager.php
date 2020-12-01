@@ -52,16 +52,16 @@ class RewardManager
     public function save(Reward $reward, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $reward->getUser();
+            $actor = (string) $reward->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $reward->getId()) {
             $reward->setCreatedAt($date);
-            $reward->setCreatedBy((string) $actor);
+            $reward->setCreatedBy($actor);
         }
         $reward->setUpdatedAt($date);
-        $reward->setUpdatedBy((string) $actor);
+        $reward->setUpdatedBy($actor);
 
         if ($reward->getNumberOfCompletions() >= $reward->getRequiredNumberOfCompletions()) {
             $reward->setIsAwarded(true);
@@ -87,7 +87,7 @@ class RewardManager
     {
         $date = new DateTimeImmutable();
         $reward->setDeletedAt($date);
-        $reward->setDeletedBy((string) $actor);
+        $reward->setDeletedBy($actor);
 
         $this->entityManager->persist($reward);
         $this->entityManager->flush();

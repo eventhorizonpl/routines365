@@ -55,16 +55,16 @@ class ProjectManager
     public function save(Project $project, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $project->getUser();
+            $actor = (string) $project->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $project->getId()) {
             $project->setCreatedAt($date);
-            $project->setCreatedBy((string) $actor);
+            $project->setCreatedBy($actor);
         }
         $project->setUpdatedAt($date);
-        $project->setUpdatedBy((string) $actor);
+        $project->setUpdatedBy($actor);
 
         $errors = $this->validate($project);
         if (0 !== count($errors)) {
@@ -84,7 +84,7 @@ class ProjectManager
     {
         $date = new DateTimeImmutable();
         $project->setDeletedAt($date);
-        $project->setDeletedBy((string) $actor);
+        $project->setDeletedBy($actor);
 
         $this->entityManager->persist($project);
         $this->entityManager->flush();

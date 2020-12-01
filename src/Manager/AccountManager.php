@@ -54,10 +54,10 @@ class AccountManager
         $date = new DateTimeImmutable();
         if (null === $account->getId()) {
             $account->setCreatedAt($date);
-            $account->setCreatedBy((string) $actor);
+            $account->setCreatedBy($actor);
         }
         $account->setUpdatedAt($date);
-        $account->setUpdatedBy((string) $actor);
+        $account->setUpdatedBy($actor);
 
         $errors = $this->validate($account);
         if (0 !== count($errors)) {
@@ -77,7 +77,7 @@ class AccountManager
     {
         $date = new DateTimeImmutable();
         $account->setDeletedAt($date);
-        $account->setDeletedBy((string) $actor);
+        $account->setDeletedBy($actor);
 
         $this->entityManager->persist($account);
         $this->entityManager->flush();

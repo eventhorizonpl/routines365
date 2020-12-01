@@ -52,16 +52,16 @@ class NoteManager
     public function save(Note $note, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $note->getUser();
+            $actor = (string) $note->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $note->getId()) {
             $note->setCreatedAt($date);
-            $note->setCreatedBy((string) $actor);
+            $note->setCreatedBy($actor);
         }
         $note->setUpdatedAt($date);
-        $note->setUpdatedBy((string) $actor);
+        $note->setUpdatedBy($actor);
 
         $errors = $this->validate($note);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class NoteManager
     {
         $date = new DateTimeImmutable();
         $note->setDeletedAt($date);
-        $note->setDeletedBy((string) $actor);
+        $note->setDeletedBy($actor);
 
         $this->entityManager->persist($note);
         $this->entityManager->flush();

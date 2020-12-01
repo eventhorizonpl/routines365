@@ -52,16 +52,16 @@ class GoalManager
     public function save(Goal $goal, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $goal->getUser();
+            $actor = (string) $goal->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $goal->getId()) {
             $goal->setCreatedAt($date);
-            $goal->setCreatedBy((string) $actor);
+            $goal->setCreatedBy($actor);
         }
         $goal->setUpdatedAt($date);
-        $goal->setUpdatedBy((string) $actor);
+        $goal->setUpdatedBy($actor);
 
         $errors = $this->validate($goal);
         if (0 !== count($errors)) {
@@ -81,7 +81,7 @@ class GoalManager
     {
         $date = new DateTimeImmutable();
         $goal->setDeletedAt($date);
-        $goal->setDeletedBy((string) $actor);
+        $goal->setDeletedBy($actor);
 
         $this->entityManager->persist($goal);
         $this->entityManager->flush();

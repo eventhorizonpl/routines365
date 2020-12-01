@@ -50,7 +50,7 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $profileManager->save($profile, $this->getUser());
+            $profileManager->save($profile, (string) $this->getUser());
 
             if ((false === $profile->getIsVerified()) &&
                 (null !== $profile->getPhoneVerificationCode()) &&
@@ -111,12 +111,12 @@ class ProfileController extends AbstractController
                 $profile->setNumberOfPhoneVerificationTries(null);
                 $profile->setPhoneMd5(md5($profile->getPhoneString()));
                 $profile->setPhoneVerificationCode(null);
-                $profileManager->save($profile, $this->getUser());
+                $profileManager->save($profile, (string) $this->getUser());
 
                 return $this->redirectToRoute('frontend_profile_show');
             }
 
-            $profileManager->save($profile, $this->getUser());
+            $profileManager->save($profile, (string) $this->getUser());
 
             if ((false === $profile->getIsVerified()) &&
                 (null !== $profile->getPhoneVerificationCode()) &&

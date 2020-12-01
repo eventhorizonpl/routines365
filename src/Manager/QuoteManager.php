@@ -57,10 +57,10 @@ class QuoteManager
         $date = new DateTimeImmutable();
         if (null === $quote->getId()) {
             $quote->setCreatedAt($date);
-            $quote->setCreatedBy((string) $actor);
+            $quote->setCreatedBy($actor);
         }
         $quote->setUpdatedAt($date);
-        $quote->setUpdatedBy((string) $actor);
+        $quote->setUpdatedBy($actor);
 
         $errors = $this->validate($quote);
         if (0 !== count($errors)) {

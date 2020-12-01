@@ -104,16 +104,16 @@ class ReminderManager
     public function save(Reminder $reminder, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = $reminder->getUser();
+            $actor = (string) $reminder->getUser();
         }
 
         $date = new DateTimeImmutable();
         if (null === $reminder->getId()) {
             $reminder->setCreatedAt($date);
-            $reminder->setCreatedBy((string) $actor);
+            $reminder->setCreatedBy($actor);
         }
         $reminder->setUpdatedAt($date);
-        $reminder->setUpdatedBy((string) $actor);
+        $reminder->setUpdatedBy($actor);
 
         if ((null === $reminder->getPreviousDate()) && (null === $reminder->getNextDate())) {
             $reminder->setPreviousDate($date);
@@ -146,7 +146,7 @@ class ReminderManager
     {
         $date = new DateTimeImmutable();
         $reminder->setDeletedAt($date);
-        $reminder->setDeletedBy((string) $actor);
+        $reminder->setDeletedBy($actor);
 
         $this->entityManager->persist($reminder);
         $this->entityManager->flush();
