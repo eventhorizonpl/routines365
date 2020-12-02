@@ -36,7 +36,7 @@ class QuoteFaker
         }
 
         if (null === $content) {
-            $content = (string) $this->faker->sentence;
+            $content = (string) $this->faker->text;
         }
 
         if (null === $isVisible) {

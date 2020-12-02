@@ -38,6 +38,9 @@
                                     {{ 'Description'|trans }}
                                 </th>
                                 <th>
+                                    {{ 'Project'|trans }}
+                                </th>
+                                <th>
                                     {{ 'Updated at'|trans }}
                                 </th>
                                 <th>
@@ -53,6 +56,13 @@
                                     </td>
                                     <td>
                                         {{ goal.description }}
+                                    </td>
+                                    <td>
+                                        {% if goal.project %}
+                                            <a href="{{ path('frontend_project_show', {'uuid': goal.project.uuid}) }}">
+                                                {{ goal.project.name }}
+                                            </a>
+                                        {% endif %}
                                     </td>
                                     <td style="width: 15%;">
                                         {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
@@ -85,6 +95,9 @@
                                     {{ 'Description'|trans }}
                                 </th>
                                 <th>
+                                    {{ 'Project'|trans }}
+                                </th>
+                                <th>
                                     {{ 'Updated at'|trans }}
                                 </th>
                                 <th>
@@ -100,6 +113,13 @@
                                     </td>
                                     <td>
                                         {{ goal.description }}
+                                    </td>
+                                    <td>
+                                        {% if goal.project %}
+                                            <a href="{{ path('frontend_project_show', {'uuid': goal.project.uuid}) }}">
+                                                {{ goal.project.name }}
+                                            </a>
+                                        {% endif %}
                                     </td>
                                     <td style="width: 15%;">
                                         {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}

@@ -38,7 +38,7 @@ class RewardFaker
         }
 
         if (null === $name) {
-            $name = (string) $this->faker->word;
+            $name = (string) $this->faker->text(64);
         }
 
         if (null === $numberOfCompletions) {

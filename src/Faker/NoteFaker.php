@@ -30,7 +30,7 @@ class NoteFaker
         }
 
         if (null === $title) {
-            $title = (string) $this->faker->word;
+            $title = (string) $this->faker->text(255);
         }
 
         $note = $this->noteFactory->createNoteWithRequired(

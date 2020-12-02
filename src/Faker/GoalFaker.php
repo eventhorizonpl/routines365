@@ -35,7 +35,7 @@ class GoalFaker
         }
 
         if (null === $name) {
-            $name = (string) $this->faker->word;
+            $name = (string) $this->faker->text(64);
         }
 
         $goal = $this->goalFactory->createGoalWithRequired(

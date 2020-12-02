@@ -35,7 +35,7 @@ class ProjectFaker
         }
 
         if (null === $name) {
-            $name = (string) $this->faker->word;
+            $name = (string) $this->faker->text(64);
         }
 
         $project = $this->projectFactory->createProjectWithRequired(
