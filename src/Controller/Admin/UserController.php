@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
@@ -101,7 +102,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $password = $form->get('plainPassword')->getData();
+            $password = substr((string) Uuid::v4(), 24);
             $user = $userService->encodePassword($user, $password);
             $userManager->save($user, (string) $this->getUser());
 
