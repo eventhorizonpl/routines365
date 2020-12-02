@@ -45,6 +45,7 @@ class ContactController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $contacts->getTotalItemCount();
 
         return $this->render('admin/contact/index.html.twig', [
             'contacts' => $contacts,

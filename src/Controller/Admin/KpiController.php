@@ -41,6 +41,7 @@ class KpiController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $kpis->getTotalItemCount();
 
         return $this->render('admin/kpi/index.html.twig', [
             'kpis' => $kpis,

@@ -14,7 +14,7 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Reminder messages'|trans }}
+            {{ 'Reminder messages'|trans }} ({{ parameters.count }})
             <form action="{{ path('admin_reminder_message_index') }}" class="form-inline mt-2" method="get">
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
@@ -43,53 +43,55 @@
             </form>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th {% if reminder_messages.isSorted('rm.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'UUID'|trans, 'rm.uuid') }}</th>
-                        <th {% if reminder_messages.isSorted('rmru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Email'|trans, 'rmru.email') }}</th>
-                        <th {% if reminder_messages.isSorted('rm.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Content'|trans, 'rm.content') }}</th>
-                        <th {% if reminder_messages.isSorted('rm.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Type'|trans, 'rm.type') }}</th>
-                        <th {% if reminder_messages.isSorted('rm.PostDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Post date'|trans, 'rm.postDate') }}</th>
-                        <th {% if reminder_messages.isSorted('rm.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Updated at'|trans, 'rm.updatedAt') }}</th>
-                        <th>{{ 'Actions'|trans }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for reminder_message in reminder_messages %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></td>
-                            <td>
-                                {% if reminder_message.reminder.user %}
-                                    <a href="{{ path('admin_user_show', {'uuid': reminder_message.reminder.user.uuid}) }}">{{ reminder_message.reminder.user.email }}</a>
-                                {% endif %}
-                            </td>
-                            <td>{{ reminder_message.content }}</td>
-                            <td>{{ reminder_message.type }}</td>
-                            <td>
-                                {{ reminder_message.postDate ? reminder_message.postDate|date('Y-m-d H:i:s') : '' }}
-                            </td>
-                            <td>{{ reminder_message.updatedAt ? reminder_message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop{{ reminder_message.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ reminder_message.id }}">
-                                        <a class="dropdown-item" href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                            <th {% if reminder_messages.isSorted('rm.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'UUID'|trans, 'rm.uuid') }}</th>
+                            <th {% if reminder_messages.isSorted('rmru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Email'|trans, 'rmru.email') }}</th>
+                            <th {% if reminder_messages.isSorted('rm.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Content'|trans, 'rm.content') }}</th>
+                            <th {% if reminder_messages.isSorted('rm.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Type'|trans, 'rm.type') }}</th>
+                            <th {% if reminder_messages.isSorted('rm.PostDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Post date'|trans, 'rm.postDate') }}</th>
+                            <th {% if reminder_messages.isSorted('rm.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Updated at'|trans, 'rm.updatedAt') }}</th>
+                            <th>{{ 'Actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reminder_message in reminder_messages %}
+                            <tr>
+                                <td><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></td>
+                                <td>
+                                    {% if reminder_message.reminder.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder_message.reminder.user.uuid}) }}">{{ reminder_message.reminder.user.email }}</a>
+                                    {% endif %}
+                                </td>
+                                <td>{{ reminder_message.content }}</td>
+                                <td>{{ reminder_message.type }}</td>
+                                <td>
+                                    {{ reminder_message.postDate ? reminder_message.postDate|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>{{ reminder_message.updatedAt ? reminder_message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ reminder_message.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ reminder_message.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="7">{{ 'No records found'|trans }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="navigation">
-                {{ knp_pagination_render(reminder_messages) }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">{{ 'No records found'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(reminder_messages) }}
+                </div>
             </div>
         </div>
     </div>

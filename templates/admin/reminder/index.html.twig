@@ -14,7 +14,7 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Reminders'|trans }}
+            {{ 'Reminders'|trans }} ({{ parameters.count }})
             <form action="{{ path('admin_reminder_index') }}" class="form-inline mt-2" method="get">
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
@@ -43,123 +43,125 @@
             </form>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th {% if reminders.isSorted('r.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'UUID'|trans, 'r.uuid') }}</th>
-                        <th {% if reminders.isSorted('ru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Email'|trans, 'ru.email') }}</th>
-                        <th {% if reminders.isSorted('r.Hour') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Hour'|trans, 'r.hour') }}</th>
-                        <th {% if reminders.isSorted('r.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Is enabled'|trans, 'r.isEnabled') }}</th>
-                        <th {% if reminders.isSorted('r.MinutesBefore') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Minutes before'|trans, 'r.minutesBefore') }}</th>
-                        <th {% if reminders.isSorted('r.NextDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Next date'|trans, 'r.nextDate') }}</th>
-                        <th {% if reminders.isSorted('r.NextDateLocalTime') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Next date local time'|trans, 'r.nextDateLocalTime') }}</th>
-                        <th {% if reminders.isSorted('r.PreviousDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Previous date'|trans, 'r.previousDate') }}</th>
-                        <th {% if reminders.isSorted('r.SendEmail') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send email'|trans, 'r.sendEmail') }}</th>
-                        <th {% if reminders.isSorted('r.SendSms') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send sms'|trans, 'r.sendSms') }}</th>
-                        <th {% if reminders.isSorted('r.SendMotivationalMessage') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send motivational message'|trans, 'r.sendMotivationalMessage') }}</th>
-                        <th {% if reminders.isSorted('r.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Type'|trans, 'r.type') }}</th>
-                        <th {% if reminders.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Deleted at'|trans, 'r.deletedAt') }}</th>
-                        <th {% if reminders.isSorted('r.LockedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Locked at'|trans, 'r.lockedAt') }}</th>
-                        <th {% if reminders.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Updated at'|trans, 'r.updatedAt') }}</th>
-                        <th>{{ 'Actions'|trans }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for reminder in reminders %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></td>
-                            <td>
-                                {% if reminder.user %}
-                                    <a href="{{ path('admin_user_show', {'uuid': reminder.user.uuid}) }}">{{ reminder.user.email }}</a>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.hour %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.isEnabled %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.minutesBefore %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.nextDate %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.nextDateLocalTime %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.previousDate %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.sendEmail %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.sendSms %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.sendMotivationalMessage %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>{{ reminder.type }}</td>
-                            <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop{{ reminder.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ reminder.id }}">
-                                        <a class="dropdown-item" href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                            <th {% if reminders.isSorted('r.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'UUID'|trans, 'r.uuid') }}</th>
+                            <th {% if reminders.isSorted('ru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Email'|trans, 'ru.email') }}</th>
+                            <th {% if reminders.isSorted('r.Hour') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Hour'|trans, 'r.hour') }}</th>
+                            <th {% if reminders.isSorted('r.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Is enabled'|trans, 'r.isEnabled') }}</th>
+                            <th {% if reminders.isSorted('r.MinutesBefore') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Minutes before'|trans, 'r.minutesBefore') }}</th>
+                            <th {% if reminders.isSorted('r.NextDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Next date'|trans, 'r.nextDate') }}</th>
+                            <th {% if reminders.isSorted('r.NextDateLocalTime') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Next date local time'|trans, 'r.nextDateLocalTime') }}</th>
+                            <th {% if reminders.isSorted('r.PreviousDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Previous date'|trans, 'r.previousDate') }}</th>
+                            <th {% if reminders.isSorted('r.SendEmail') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send email'|trans, 'r.sendEmail') }}</th>
+                            <th {% if reminders.isSorted('r.SendSms') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send sms'|trans, 'r.sendSms') }}</th>
+                            <th {% if reminders.isSorted('r.SendMotivationalMessage') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Send motivational message'|trans, 'r.sendMotivationalMessage') }}</th>
+                            <th {% if reminders.isSorted('r.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Type'|trans, 'r.type') }}</th>
+                            <th {% if reminders.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Deleted at'|trans, 'r.deletedAt') }}</th>
+                            <th {% if reminders.isSorted('r.LockedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Locked at'|trans, 'r.lockedAt') }}</th>
+                            <th {% if reminders.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminders, 'Updated at'|trans, 'r.updatedAt') }}</th>
+                            <th>{{ 'Actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reminder in reminders %}
+                            <tr>
+                                <td><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></td>
+                                <td>
+                                    {% if reminder.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.user.uuid}) }}">{{ reminder.user.email }}</a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.hour %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.isEnabled %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.minutesBefore %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.nextDate %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.nextDateLocalTime %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.previousDate %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.sendEmail %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.sendSms %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reminder.sendMotivationalMessage %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ reminder.type }}</td>
+                                <td>{{ reminder.deletedAt ? reminder.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reminder.lockedAt ? reminder.lockedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ reminder.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ reminder.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="13">{{ 'No records found'|trans }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="navigation">
-                {{ knp_pagination_render(reminders) }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="13">{{ 'No records found'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(reminders) }}
+                </div>
             </div>
         </div>
     </div>

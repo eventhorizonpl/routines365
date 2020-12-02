@@ -42,6 +42,7 @@ class SavedEmailController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $savedEmails->getTotalItemCount();
 
         return $this->render('admin/saved_email/index.html.twig', [
             'parameters' => $parameters,

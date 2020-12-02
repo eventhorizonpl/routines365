@@ -50,6 +50,7 @@ class UserController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $users->getTotalItemCount();
 
         return $this->render('admin/user/index.html.twig', [
             'parameters' => $parameters,

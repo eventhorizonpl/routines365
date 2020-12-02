@@ -44,6 +44,7 @@ class QuoteController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $quotes->getTotalItemCount();
 
         return $this->render('admin/quote/index.html.twig', [
             'parameters' => $parameters,

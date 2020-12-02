@@ -36,9 +36,13 @@ class CronReportController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters = [
+            'count' => $cronReports->getTotalItemCount(),
+        ];
 
         return $this->render('admin/cron_report/index.html.twig', [
             'cron_reports' => $cronReports,
+            'parameters' => $parameters,
         ]);
     }
 }

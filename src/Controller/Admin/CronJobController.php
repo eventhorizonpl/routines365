@@ -39,9 +39,13 @@ class CronJobController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters = [
+            'count' => $cronJobs->getTotalItemCount(),
+        ];
 
         return $this->render('admin/cron_job/index.html.twig', [
             'cron_jobs' => $cronJobs,
+            'parameters' => $parameters,
         ]);
     }
 

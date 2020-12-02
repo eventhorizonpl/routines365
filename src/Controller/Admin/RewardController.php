@@ -43,6 +43,7 @@ class RewardController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $rewards->getTotalItemCount();
 
         return $this->render('admin/reward/index.html.twig', [
             'parameters' => $parameters,

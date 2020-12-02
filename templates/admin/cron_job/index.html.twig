@@ -14,57 +14,59 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Cron jobs'|trans }}
+            {{ 'Cron jobs'|trans }} ({{ parameters.count }})
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_cron_job_new') }}">
                 <i class="fas fa-plus"></i>
                 {{ 'Create'|trans }}
             </a>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th {% if cron_jobs.isSorted('cj.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'ID'|trans, 'cj.id') }}</th>
-                        <th {% if cron_jobs.isSorted('cj.Command') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Command'|trans, 'cj.command') }}</th>
-                        <th {% if cron_jobs.isSorted('cj.Schedule') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Schedule'|trans, 'cj.schedule') }}</th>
-                        <th {% if cron_jobs.isSorted('cj.Enabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Enabled'|trans, 'cj.enabled') }}</th>
-                        <th>{{ 'Actions'|trans }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cron_job in cron_jobs %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><a href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}">{{ cron_job.id }}</a></td>
-                            <td>{{ cron_job.command }}</td>
-                            <td>{{ cron_job.schedule }}</td>
-                            <td>
-                                {% if cron_job.enabled %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
-                                {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop{{ cron_job.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ cron_job.id }}">
-                                        <a class="dropdown-item" href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
-                                        <a class="dropdown-item" href="{{ path('admin_cron_job_edit', {'id': cron_job.id}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                            <th {% if cron_jobs.isSorted('cj.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'ID'|trans, 'cj.id') }}</th>
+                            <th {% if cron_jobs.isSorted('cj.Command') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Command'|trans, 'cj.command') }}</th>
+                            <th {% if cron_jobs.isSorted('cj.Schedule') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Schedule'|trans, 'cj.schedule') }}</th>
+                            <th {% if cron_jobs.isSorted('cj.Enabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Enabled'|trans, 'cj.enabled') }}</th>
+                            <th>{{ 'Actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cron_job in cron_jobs %}
+                            <tr>
+                                <td><a href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}">{{ cron_job.id }}</a></td>
+                                <td>{{ cron_job.command }}</td>
+                                <td>{{ cron_job.schedule }}</td>
+                                <td>
+                                    {% if cron_job.enabled %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ cron_job.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ cron_job.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_cron_job_edit', {'id': cron_job.id}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="5">{{ 'No records found'|trans }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="navigation">
-                {{ knp_pagination_render(cron_jobs) }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">{{ 'No records found'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(cron_jobs) }}
+                </div>
             </div>
         </div>
     </div>

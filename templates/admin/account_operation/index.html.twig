@@ -14,7 +14,7 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Goals'|trans }}
+            {{ 'Account operations'|trans }} ({{ parameters.count }})
             <form action="{{ path('admin_account_operation_index') }}" class="form-inline mt-2" method="get">
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
@@ -43,58 +43,60 @@
             </form>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th {% if account_operations.isSorted('ao.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'UUID'|trans, 'ao.uuid') }}</th>
-                        <th {% if account_operations.isSorted('aoau.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Email'|trans, 'aoau.email') }}</th>
-                        <th {% if account_operations.isSorted('ao.description') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Description'|trans, 'ao.description') }}</th>
-                        <th {% if account_operations.isSorted('ao.EmailNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Email notifications'|trans, 'ao.emailNotifications') }}</th>
-                        <th {% if account_operations.isSorted('ao.SmsNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Sms notifications'|trans, 'ao.smsNotifications') }}</th>
-                        <th {% if account_operations.isSorted('ao.type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Type'|trans, 'ao.type') }}</th>
-                        <th {% if account_operations.isSorted('ao.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Deleted at'|trans, 'ao.deletedAt') }}</th>
-                        <th {% if account_operations.isSorted('ao.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Updated at'|trans, 'ao.updatedAt') }}</th>
-                        <th>{{ 'Actions'|trans }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for account_operation in account_operations %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><a href="{{ path('admin_account_operation_show', {'uuid': account_operation.uuid}) }}">{{ account_operation.uuid }}</a></td>
-                            <td>
-                                {% if account_operation.account and account_operation.account.user %}
-                                    <a href="{{ path('admin_user_show', {'uuid': account_operation.account.user.uuid}) }}">{{ account_operation.account.user.email }}</a>
-                                {% endif %}
-                            </td>
-                            <td>{{ account_operation.description }}</td>
-                            <td>{{ account_operation.emailNotifications }}</td>
-                            <td>{{ account_operation.smsNotifications }}</td>
-                            <td>{{ account_operation.type }}</td>
-                            <td>{{ account_operation.deletedAt ? account_operation.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ account_operation.updatedAt ? account_operation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop{{ account_operation.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ account_operation.id }}">
-                                        <a class="dropdown-item" href="{{ path('admin_account_operation_show', {'uuid': account_operation.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                            <th {% if account_operations.isSorted('ao.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'UUID'|trans, 'ao.uuid') }}</th>
+                            <th {% if account_operations.isSorted('aoau.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Email'|trans, 'aoau.email') }}</th>
+                            <th {% if account_operations.isSorted('ao.description') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Description'|trans, 'ao.description') }}</th>
+                            <th {% if account_operations.isSorted('ao.EmailNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Email notifications'|trans, 'ao.emailNotifications') }}</th>
+                            <th {% if account_operations.isSorted('ao.SmsNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Sms notifications'|trans, 'ao.smsNotifications') }}</th>
+                            <th {% if account_operations.isSorted('ao.type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Type'|trans, 'ao.type') }}</th>
+                            <th {% if account_operations.isSorted('ao.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Deleted at'|trans, 'ao.deletedAt') }}</th>
+                            <th {% if account_operations.isSorted('ao.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(account_operations, 'Updated at'|trans, 'ao.updatedAt') }}</th>
+                            <th>{{ 'Actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for account_operation in account_operations %}
+                            <tr>
+                                <td><a href="{{ path('admin_account_operation_show', {'uuid': account_operation.uuid}) }}">{{ account_operation.uuid }}</a></td>
+                                <td>
+                                    {% if account_operation.account and account_operation.account.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.account.user.uuid}) }}">{{ account_operation.account.user.email }}</a>
+                                    {% endif %}
+                                </td>
+                                <td>{{ account_operation.description }}</td>
+                                <td>{{ account_operation.emailNotifications }}</td>
+                                <td>{{ account_operation.smsNotifications }}</td>
+                                <td>{{ account_operation.type }}</td>
+                                <td>{{ account_operation.deletedAt ? account_operation.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ account_operation.updatedAt ? account_operation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ account_operation.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ account_operation.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_account_operation_show', {'uuid': account_operation.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="9">{{ 'No records found'|trans }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="navigation">
-                {{ knp_pagination_render(account_operations) }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="9">{{ 'No records found'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(account_operations) }}
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Goals'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ 'Account operations'|trans }}{% endblock %}

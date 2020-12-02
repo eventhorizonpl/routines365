@@ -45,6 +45,7 @@ class AccountOperationController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $accountOperations->getTotalItemCount();
 
         return $this->render('admin/account_operation/index.html.twig', [
             'account_operations' => $accountOperations,

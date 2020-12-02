@@ -42,6 +42,7 @@ class NoteController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $notes->getTotalItemCount();
 
         return $this->render('admin/note/index.html.twig', [
             'notes' => $notes,

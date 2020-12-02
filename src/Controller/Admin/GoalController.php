@@ -42,6 +42,7 @@ class GoalController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $goals->getTotalItemCount();
 
         return $this->render('admin/goal/index.html.twig', [
             'goals' => $goals,

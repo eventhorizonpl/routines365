@@ -41,6 +41,7 @@ class SentReminderController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
+        $parameters['count'] = $sentReminders->getTotalItemCount();
 
         return $this->render('admin/sent_reminder/index.html.twig', [
             'parameters' => $parameters,
