@@ -5,15 +5,21 @@
         <div class="col-md-10 offset-md-1">
             <div class="card bg-dark text-white">
                 <div class="card-header">
-                    {{ reward.name }}
-                    <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}">
-                        <i class="fas fa-edit"></i>
-                        {{ 'Edit'|trans }}
-                    </a>
-                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_reward_index') }}">
-                        <i class="fas fa-arrow-left"></i>
-                        {{ 'Back'|trans }}
-                    </a>
+                    <div class="row">
+                        <div class="col-md-8 col-6">
+                            {{ reward.name }}
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}">
+                                <i class="fas fa-edit"></i>
+                                {{ 'Edit'|trans }}
+                            </a>
+                            <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_reward_index') }}">
+                                <i class="fas fa-arrow-left"></i>
+                                {{ 'Back'|trans }}
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     {% if reward.isAwarded %}

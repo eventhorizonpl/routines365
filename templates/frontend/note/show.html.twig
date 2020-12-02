@@ -5,15 +5,21 @@
         <div class="col-md-10 offset-md-1">
             <div class="card bg-dark text-white">
                 <div class="card-header">
-                    {{ note.title }}
-                    <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_note_edit', {'uuid': note.uuid}) }}">
-                        <i class="fas fa-edit"></i>
-                        {{ 'Edit'|trans }}
-                    </a>
-                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_note_index') }}">
-                        <i class="fas fa-arrow-left"></i>
-                        {{ 'Back'|trans }}
-                    </a>
+                    <div class="row">
+                        <div class="col-md-8 col-6">
+                            {{ note.title }}
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_note_edit', {'uuid': note.uuid}) }}">
+                                <i class="fas fa-edit"></i>
+                                {{ 'Edit'|trans }}
+                            </a>
+                            <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_note_index') }}">
+                                <i class="fas fa-arrow-left"></i>
+                                {{ 'Back'|trans }}
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     {% if note.routine %}
