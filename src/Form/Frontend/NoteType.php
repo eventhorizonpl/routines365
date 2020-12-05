@@ -20,11 +20,7 @@ class NoteType extends AbstractType
         $note = $options['data'];
 
         $builder
-            ->add('content', TextareaType::class, [
-                'attr' => [
-                    'rows' => 7,
-                ],
-            ])
+            ->add('content', TextareaType::class)
             ->add('title')
         ;
 

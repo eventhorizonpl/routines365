@@ -69,112 +69,116 @@
                         <div id="myTabContent" class="tab-content mt-1">
                             {% if project.goalsNotCompleted|length %}
                                 <div class="tab-pane fade active show" id="not-completed">
-                                    <table class="table table-dark">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    {{ 'Name'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Description'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Routine'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Updated at'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Actions'|trans }}
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for goal in project.goalsNotCompleted %}
+                                    <div class="table-responsive">
+                                        <table class="table table-dark">
+                                            <thead>
                                                 <tr>
-                                                    <td>
-                                                        {{ goal.name }}
-                                                    </td>
-                                                    <td>
-                                                        {{ goal.description }}
-                                                    </td>
-                                                    <td>
-                                                        {% if goal.routine %}
-                                                            <a href="{{ path('frontend_routine_show', {'uuid': goal.routine.uuid}) }}">
-                                                                {{ goal.routine.name }}
-                                                            </a>
-                                                        {% endif %}
-                                                    </td>
-                                                    <td style="width: 15%;">
-                                                        {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
-                                                    </td>
-                                                    <td style="width: 25%;">
-                                                        <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                                                            <i class="fas fa-check"></i>
-                                                            {{ 'Complete'|trans }}
-                                                        </a>
-                                                        <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                                                            <i class="fas fa-edit"></i>
-                                                            {{ 'Edit'|trans }}
-                                                        </a>
-                                                    </td>
+                                                    <th>
+                                                        {{ 'Name'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Description'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Routine'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Updated at'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Actions'|trans }}
+                                                    </th>
                                                 </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                {% for goal in project.goalsNotCompleted %}
+                                                    <tr>
+                                                        <td>
+                                                            {{ goal.name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ goal.description }}
+                                                        </td>
+                                                        <td>
+                                                            {% if goal.routine %}
+                                                                <a href="{{ path('frontend_routine_show', {'uuid': goal.routine.uuid}) }}">
+                                                                    {{ goal.routine.name }}
+                                                                </a>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td style="width: 15%;">
+                                                            {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                                        </td>
+                                                        <td style="width: 25%;">
+                                                            <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
+                                                                <i class="fas fa-check"></i>
+                                                                {{ 'Complete'|trans }}
+                                                            </a>
+                                                            <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
+                                                                <i class="fas fa-edit"></i>
+                                                                {{ 'Edit'|trans }}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             {% endif %}
                             {% if project.goalsCompleted|length %}
                                 <div class="tab-pane fade{% if project.goalsNotCompleted|length == 0 %} active show{% endif %}" id="completed">
-                                    <table class="table table-dark">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    {{ 'Name'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Description'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Routine'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Updated at'|trans }}
-                                                </th>
-                                                <th>
-                                                    {{ 'Actions'|trans }}
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for goal in project.goalsCompleted %}
+                                    <div class="table-responsive">
+                                        <table class="table table-dark">
+                                            <thead>
                                                 <tr>
-                                                    <td>
-                                                        {{ goal.name }}
-                                                    </td>
-                                                    <td>
-                                                        {{ goal.description }}
-                                                    </td>
-                                                    <td>
-                                                        {% if goal.routine %}
-                                                            <a href="{{ path('frontend_routine_show', {'uuid': goal.routine.uuid}) }}">
-                                                                {{ goal.routine.name }}
-                                                            </a>
-                                                        {% endif %}
-                                                    </td>
-                                                    <td style="width: 15%;">
-                                                        {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
-                                                    </td>
-                                                    <td style="width: 25%;">
-                                                        <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                                                            <i class="fas fa-edit"></i>
-                                                            {{ 'Edit'|trans }}
-                                                        </a>
-                                                    </td>
+                                                    <th>
+                                                        {{ 'Name'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Description'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Routine'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Updated at'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'Actions'|trans }}
+                                                    </th>
                                                 </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                {% for goal in project.goalsCompleted %}
+                                                    <tr>
+                                                        <td>
+                                                            {{ goal.name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ goal.description }}
+                                                        </td>
+                                                        <td>
+                                                            {% if goal.routine %}
+                                                                <a href="{{ path('frontend_routine_show', {'uuid': goal.routine.uuid}) }}">
+                                                                    {{ goal.routine.name }}
+                                                                </a>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td style="width: 15%;">
+                                                            {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                                        </td>
+                                                        <td style="width: 25%;">
+                                                            <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
+                                                                <i class="fas fa-edit"></i>
+                                                                {{ 'Edit'|trans }}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             {% endif %}
                         </div>
