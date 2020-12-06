@@ -1,0 +1,15 @@
+{% extends 'email_layout.html.twig' %}
+
+{% block content %}
+    <container>
+        <row>
+            Hi,<br><br>
+            {{ from_email }} sent a request for contact.<br><br>
+            Contact type: {{ type }}<br><br>
+            {{ title }}<br><br>
+            {{ content }}<br><br>
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endblock %}

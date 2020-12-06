@@ -89,6 +89,24 @@ class EmailService
         return $result;
     }
 
+    public function sendContactRequest(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/contact_request.html.twig',
+            'email/contact_request.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendInvitation(
         string $email,
         string $subject,

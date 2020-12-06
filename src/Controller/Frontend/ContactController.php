@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Factory\ContactFactory;
 use App\Form\Frontend\ContactType;
 use App\Manager\ContactManager;
+use App\Service\EmailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,7 @@ class ContactController extends AbstractController
     public function new(
         ContactFactory $contactFactory,
         ContactManager $contactManager,
+        EmailService $emailService,
         Request $request,
         TranslatorInterface $translator
     ): Response {
@@ -38,6 +40,17 @@ class ContactController extends AbstractController
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $contactManager->save($contact, (string) $this->getUser());
+
+            $emailService->sendContactRequest(
+                'contact@routines365.com',
+                'Contact request from '.$contact->getUser()->getEmail().' '.$contact->getTitle(),
+                [
+                    'from_email' => $contact->getUser()->getEmail(),
+                    'content' => $contact->getContent(),
+                    'title' => $contact->getTitle(),
+                    'type' => $contact->getType(),
+                ]
+            );
 
             $this->addFlash(
                 'success',
