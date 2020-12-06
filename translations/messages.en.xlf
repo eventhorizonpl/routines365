@@ -1173,6 +1173,66 @@
         <source>Next date local time</source>
         <target>Next date local time</target>
       </trans-unit>
+      <trans-unit id="pnc32lK" resname="Name of your routine i.e. &quot;Daily exercises&quot;.">
+        <source>Name of your routine i.e. "Daily exercises".</source>
+        <target>Name of your routine i.e. "Daily exercises".</target>
+      </trans-unit>
+      <trans-unit id="x7QbUbG" resname="Description of your routine.">
+        <source>Description of your routine.</source>
+        <target>Description of your routine.</target>
+      </trans-unit>
+      <trans-unit id="lC2M4WS" resname="Name of your reward.">
+        <source>Name of your reward.</source>
+        <target>Name of your reward.</target>
+      </trans-unit>
+      <trans-unit id="5wlFNtB" resname="Description of your reward.">
+        <source>Description of your reward.</source>
+        <target>Description of your reward.</target>
+      </trans-unit>
+      <trans-unit id="K6tbgF_" resname="Name of your project i.e. &quot;Writing best adventure book ever&quot;.">
+        <source>Name of your project i.e. "Writing best adventure book ever".</source>
+        <target>Name of your project i.e. "Writing best adventure book ever".</target>
+      </trans-unit>
+      <trans-unit id="Kj4BW.q" resname="Description of your project.">
+        <source>Description of your project.</source>
+        <target>Description of your project.</target>
+      </trans-unit>
+      <trans-unit id="7x8fckD" resname="Your comment about your completed routine.">
+        <source>Your comment about your completed routine.</source>
+        <target>Your comment about your completed routine.</target>
+      </trans-unit>
+      <trans-unit id="j0vxlQL" resname="Title of your note.">
+        <source>Title of your note.</source>
+        <target>Title of your note.</target>
+      </trans-unit>
+      <trans-unit id="Bf5Yp99" resname="Content of your note.">
+        <source>Content of your note.</source>
+        <target>Content of your note.</target>
+      </trans-unit>
+      <trans-unit id="wF6gHjw" resname="+xx xxx xxx xxx">
+        <source>+xx xxx xxx xxx</source>
+        <target>+xx xxx xxx xxx</target>
+      </trans-unit>
+      <trans-unit id="U6IZR4H" resname="Email address of the person to whom you want to send an invitation.">
+        <source>Email address of the person to whom you want to send an invitation.</source>
+        <target>Email address of the person to whom you want to send an invitation.</target>
+      </trans-unit>
+      <trans-unit id="5oVxmCB" resname="Title of your contact message.">
+        <source>Title of your contact message.</source>
+        <target>Title of your contact message.</target>
+      </trans-unit>
+      <trans-unit id="15m6Tw6" resname="Content of your contact message.">
+        <source>Content of your contact message.</source>
+        <target>Content of your contact message.</target>
+      </trans-unit>
+      <trans-unit id="gmcyR4g" resname="Name of your goal i.e. &quot;50 push ups daily for 7 days in a row&quot;.">
+        <source>Name of your goal i.e. "50 push ups daily for 7 days in a row".</source>
+        <target>Name of your goal i.e. "50 push ups daily for 7 days in a row".</target>
+      </trans-unit>
+      <trans-unit id="a8cf8wb" resname="Description of your goal.">
+        <source>Description of your goal.</source>
+        <target>Description of your goal.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

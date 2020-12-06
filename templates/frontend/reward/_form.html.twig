@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            {{ form_row(form.name) }}
+            {{ form_row(form.name, {'attr': {'placeholder': 'Name of your reward.'|trans}}) }}
         </div>
     </div>
     {% if not reward.routine %}
@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {{ form_row(form.description, {'attr': {'rows': 5}}) }}
+            {{ form_row(form.description, {'attr': {'placeholder': 'Description of your reward.'|trans, 'rows': 5}}) }}
         </div>
     </div>
     <hr>

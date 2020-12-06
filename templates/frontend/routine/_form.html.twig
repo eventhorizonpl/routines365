@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            {{ form_row(form.name) }}
+            {{ form_row(form.name, {'attr': {'placeholder': 'Name of your routine i.e. "Daily exercises".'|trans}}) }}
         </div>
         <div class="col-md-2">
             {{ form_row(form.type, {'attr': {'class': 'custom-select'}}) }}
@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {{ form_row(form.description, {'attr': {'rows': 5}}) }}
+            {{ form_row(form.description, {'attr': {'placeholder': 'Description of your routine.'|trans, 'rows': 5}}) }}
         </div>
     </div>
     <hr>
