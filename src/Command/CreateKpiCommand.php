@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Service\KpiService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateKpiCommand extends Command
+class CreateKpiCommand extends BaseLockableCommand
 {
-    use LockableTrait;
-
     protected static $defaultName = 'app:create-kpi';
     private KpiService $kpiService;
 
-    public function __construct(KpiService $kpiService)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        KpiService $kpiService
+    ) {
         $this->kpiService = $kpiService;
 
-        parent::__construct();
+        parent::__construct($entityManager);
     }
 
     protected function configure(): void

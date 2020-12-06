@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Service\PostRemindMessagesService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class PostRemindMessagesCommand extends Command
+class PostRemindMessagesCommand extends BaseLockableCommand
 {
-    use LockableTrait;
-
     protected static $defaultName = 'app:post-remind-messages';
     private PostRemindMessagesService $postRemindMessagesService;
 
-    public function __construct(PostRemindMessagesService $postRemindMessagesService)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        PostRemindMessagesService $postRemindMessagesService
+    ) {
         $this->postRemindMessagesService = $postRemindMessagesService;
 
-        parent::__construct();
+        parent::__construct($entityManager);
     }
 
     protected function configure(): void
