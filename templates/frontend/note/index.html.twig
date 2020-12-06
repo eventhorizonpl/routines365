@@ -45,7 +45,7 @@
                         </p>
                         <p class="card-text">
                             <small class="text-muted">
-                                {{ note.createdAt ? note.createdAt|date('Y-m-d H:i:s') : '' }}
+                                {{ note.createdAt ? note.createdAt|date('Y-m-d H:i:s')|format_datetime : '' }}
                             </small>
                         </p>
                     </div>

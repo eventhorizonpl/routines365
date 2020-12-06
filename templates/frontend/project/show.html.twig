@@ -107,7 +107,7 @@
                                                             {% endif %}
                                                         </td>
                                                         <td style="width: 15%;">
-                                                            {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                                            {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s')|format_datetime : '' }}
                                                         </td>
                                                         <td style="width: 25%;">
                                                             <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
@@ -166,7 +166,7 @@
                                                             {% endif %}
                                                         </td>
                                                         <td style="width: 15%;">
-                                                            {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                                            {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s')|format_datetime : '' }}
                                                         </td>
                                                         <td style="width: 25%;">
                                                             <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">

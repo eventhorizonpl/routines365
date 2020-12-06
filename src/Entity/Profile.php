@@ -200,10 +200,14 @@ class Profile
 
     public function getPhoneString(): ?string
     {
-        $phoneNumberUtil = PhoneNumberUtil::getInstance();
-        $phone = $phoneNumberUtil->format($this->getPhone(), PhoneNumberFormat::INTERNATIONAL);
+        if (null !== $this->getPhone()) {
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $phone = $phoneNumberUtil->format($this->getPhone(), PhoneNumberFormat::INTERNATIONAL);
 
-        return $phone;
+            return $phone;
+        } else {
+            return null;
+        }
     }
 
     public function setPhone(?PhoneNumber $phone): self

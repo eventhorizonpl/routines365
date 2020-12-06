@@ -53,6 +53,7 @@ class ProfileController extends AbstractController
             $profileManager->save($profile, (string) $this->getUser());
 
             if ((false === $profile->getIsVerified()) &&
+                (null !== $profile->getPhone()) &&
                 (null !== $profile->getPhoneVerificationCode()) &&
                 (5 > $profile->getNumberOfPhoneVerificationTries())
             ) {

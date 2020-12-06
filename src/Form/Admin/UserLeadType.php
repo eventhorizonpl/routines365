@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class UserLeadType extends BaseUserType
