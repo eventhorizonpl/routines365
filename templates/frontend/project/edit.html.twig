@@ -6,15 +6,10 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Edit a project'|trans }}
-                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}">
-                        <i class="fas fa-times"></i>
-                        {{ 'Close'|trans }}
-                    </a>
+                    {{ include('frontend/project/_delete_form.html.twig') }}
                 </div>
                 <div class="card-body">
                     {{ include('frontend/project/_form.html.twig', {'button_label': 'Update'|trans}) }}
-                    <br>
-                    {{ include('frontend/project/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>

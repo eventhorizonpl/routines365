@@ -1,12 +1,12 @@
-<div class="row">
-    <div class="col-md-12">
-        <form class="float-right" method="post" action="{{ path('frontend_reward_delete', {'uuid': reward.uuid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reward.uuid) }}">
-            <button class="btn btn-sm btn-danger">
-                <i class="fa fa-trash"></i>
-                {{ 'Delete'|trans }}
-            </button>
-        </form>
-    </div>
-</div>
+<form class="float-right" method="post" action="{{ path('frontend_reward_delete', {'uuid': reward.uuid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reward.uuid) }}">
+    <button class="btn btn-sm btn-danger mr-4">
+        <i class="fa fa-trash"></i>
+        {{ 'Delete'|trans }}
+    </button>
+    <a class="btn btn-light btn-sm" href="{{ path('frontend_reward_show', {'uuid': reward.uuid}) }}">
+        <i class="fas fa-times"></i>
+        {{ 'Close'|trans }}
+    </a>
+</form>

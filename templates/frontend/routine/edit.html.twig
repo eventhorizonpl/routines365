@@ -6,15 +6,10 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Edit a routine'|trans }}
-                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">
-                        <i class="fas fa-times"></i>
-                        {{ 'Close'|trans }}
-                    </a>
+                    {{ include('frontend/routine/_delete_form.html.twig') }}
                 </div>
                 <div class="card-body">
                     {{ include('frontend/routine/_form.html.twig', {'button_label': 'Update'|trans}) }}
-                    <br>
-                    {{ include('frontend/routine/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>

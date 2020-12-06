@@ -6,15 +6,10 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Edit a note'|trans }}
-                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_note_show', {'uuid': note.uuid}) }}">
-                        <i class="fas fa-times"></i>
-                        {{ 'Close'|trans }}
-                    </a>
+                    {{ include('frontend/note/_delete_form.html.twig') }}
                 </div>
                 <div class="card-body">
                     {{ include('frontend/note/_form.html.twig', {'button_label': 'Update'|trans}) }}
-                    <br>
-                    {{ include('frontend/note/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>

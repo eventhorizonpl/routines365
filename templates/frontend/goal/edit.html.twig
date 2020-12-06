@@ -6,22 +6,10 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Edit a goal'|trans }}
-                    {% if project %}
-                        <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}">
-                            <i class="fas fa-times"></i>
-                            {{ 'Close'|trans }}
-                        </a>
-                    {% elseif routine %}
-                        <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}">
-                            <i class="fas fa-times"></i>
-                            {{ 'Close'|trans }}
-                        </a>
-                    {% endif %}
+                    {{ include('frontend/goal/_delete_form.html.twig') }}
                 </div>
                 <div class="card-body">
                     {{ include('frontend/goal/_form.html.twig', {'button_label': 'Update'|trans}) }}
-                    <br>
-                    {{ include('frontend/goal/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>
