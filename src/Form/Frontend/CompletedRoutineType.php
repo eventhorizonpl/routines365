@@ -6,6 +6,7 @@ namespace App\Form\Frontend;
 
 use App\Entity\CompletedRoutine;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,6 +18,10 @@ class CompletedRoutineType extends AbstractType
         $builder
             ->add('comment', TextareaType::class, [
                 'required' => false,
+            ])
+            ->add('date', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'input' => 'datetime_immutable',
             ])
             ->add('minutesDevoted')
         ;

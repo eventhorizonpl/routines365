@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\CompletedRoutineRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -42,6 +43,13 @@ class CompletedRoutine
     private ?string $comment;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(type="datetimetz_immutable")
+     */
+    private ?DateTimeImmutable $date;
+
+    /**
      * @Assert\GreaterThanOrEqual(0)
      * @Assert\LessThanOrEqual(1024)
      * @Assert\NotBlank
@@ -68,6 +76,18 @@ class CompletedRoutine
     public function setComment(string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getDate(): ?DateTimeImmutable
+    {
+        return $this->date;
+    }
+
+    public function setDate(DateTimeImmutable $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

@@ -2,8 +2,11 @@
     {{ form_errors(form) }}
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 mt-2">
             {{ form_row(form.minutesDevoted) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.date) }}
         </div>
     </div>
     <div class="row">

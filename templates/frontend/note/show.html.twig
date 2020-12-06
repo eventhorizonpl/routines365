@@ -34,7 +34,7 @@
                     </p>
                     <p class="card-text">
                         <small class="text-muted">
-                            {{ note.createdAt ? note.createdAt|date('Y-m-d H:i:s')|format_datetime : '' }}
+                            {{ note.createdAt ? note.createdAt|date('Y-m-d H:i:s') : '' }}
                         </small>
                     </p>
                 </div>
@@ -43,4 +43,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Note details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Note details'|trans }}
+{% endblock %}

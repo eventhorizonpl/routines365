@@ -12,7 +12,12 @@
         {% for completed_routine in routine.completedRoutines|slice(-7) %}
             <span class="badge badge-success m-1 p-3">
                 <i class="fas fa-star"></i><br><br>
-                {{ completed_routine.createdAt|date('Y-m-d') }}<br><br>
+                {% if completed_routine.date %}
+                    {{ completed_routine.date|date('Y-m-d')|format_datetime('short', 'none') }}
+                {% else %}
+                    {{ completed_routine.createdAt|date('Y-m-d')|format_datetime('short', 'none') }}
+                {% endif %}
+                <br><br>
                 {{ completed_routine.minutesDevoted }}
             </span>
         {% endfor %}
