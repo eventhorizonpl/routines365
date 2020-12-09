@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201206154358 extends AbstractMigration
+final class Version20201210204423 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20201206154358 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE completed_routine ADD date DATETIME NOT NULL COMMENT \'(DC2Type:datetimetz_immutable)\'');
+        $this->addSql('ALTER TABLE achievement ADD requirement INT NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE completed_routine DROP date');
+        $this->addSql('ALTER TABLE achievement DROP requirement');
     }
 }

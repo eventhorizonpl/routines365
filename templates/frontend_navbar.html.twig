@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{{ path('frontend_reward_index') }}"><i class="fas fa-award"></i> {{ 'Rewards'|trans }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link{% if route in ['frontend_achievement_index'] %} active{% endif %}" href="{{ path('frontend_achievement_index') }}"><i class="fas fa-trophy"></i> {{ 'Achievements'|trans }}</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'System'|trans }}

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
+use App\Entity\Achievement;
 use App\Entity\Goal;
 use App\Entity\Reward;
 use App\Entity\User;
@@ -16,6 +17,7 @@ use App\Repository\RoutineRepository;
 use App\Security\Voter\GoalVoter;
 use App\Security\Voter\ProjectVoter;
 use App\Security\Voter\RoutineVoter;
+use App\Service\AchievementService;
 use App\Service\RewardService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -92,6 +94,7 @@ class GoalController extends AbstractController
      * @Route("/{uuid}/{context}/complete", name="complete", methods={"GET"})
      */
     public function complete(
+        AchievementService $achievementService,
         string $context,
         Goal $goal,
         GoalManager $goalManager,
@@ -101,11 +104,20 @@ class GoalController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(GoalVoter::EDIT, $goal);
+        $user = $this->getUser();
 
         $goal->setIsCompleted(true);
-        $goalManager->save($goal, (string) $this->getUser());
+        $goalManager->save($goal, (string) $user);
 
         $reward = $rewardService->manageReward($goal->getRoutine(), Reward::TYPE_COMPLETED_GOAL);
+        $achievement = $achievementService->manageAchievements($user, Achievement::TYPE_COMPLETED_GOAL);
+
+        if (null !== $achievement) {
+            $this->addFlash(
+                'success',
+                $translator->trans('Congratulations! You have a new achievement!')
+            );
+        }
 
         $this->addFlash(
             'success',

@@ -41,6 +41,11 @@ class User implements UserInterface
     private Account $account;
 
     /**
+     * @ORM\ManyToMany(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Achievement::class)
+     */
+    private Collection $achievements;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=CompletedRoutine::class)
      * @ORM\OrderBy({"id" = "ASC"})
      */
@@ -158,6 +163,7 @@ class User implements UserInterface
 
     public function __construct()
     {
+        $this->achievements = new ArrayCollection();
         $this->completedRoutines = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->email = '';
@@ -204,6 +210,38 @@ class User implements UserInterface
     public function setAccount(Account $account): self
     {
         $this->account = $account;
+
+        return $this;
+    }
+
+    public function addAchievement(Achievement $achievement): self
+    {
+        if (false === $this->achievements->contains($achievement)) {
+            $this->achievements->add($achievement);
+        }
+
+        return $this;
+    }
+
+    public function getAchievements(): Collection
+    {
+        return $this->achievements;
+    }
+
+    public function hasAchievement(Achievement $achievement): bool
+    {
+        if (true === $this->achievements->contains($achievement)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function removeAchievement(Achievement $achievement): self
+    {
+        if (true === $this->achievements->contains($achievement)) {
+            $this->achievements->removeElement($achievement);
+        }
 
         return $this;
     }
@@ -308,6 +346,13 @@ class User implements UserInterface
         return $this->goals;
     }
 
+    public function getGoalsCompleted(): Collection
+    {
+        return $this->goals->filter(function (Goal $goal) {
+            return (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
+        });
+    }
+
     public function removeGoal(Goal $goal): self
     {
         if (true === $this->goals->contains($goal)) {
@@ -404,6 +449,13 @@ class User implements UserInterface
     public function getProjectsAll(): Collection
     {
         return $this->projects;
+    }
+
+    public function getProjectsCompleted(): Collection
+    {
+        return $this->projects->filter(function (Project $project) {
+            return (true === $project->getIsCompleted()) && (null === $project->getDeletedAt());
+        });
     }
 
     public function removeProject(Project $project): self

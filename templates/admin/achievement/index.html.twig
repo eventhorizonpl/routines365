@@ -1,0 +1,109 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Achievements'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Achievements'|trans }} ({{ parameters.count }})
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_achievement_new') }}">
+                <i class="fas fa-plus"></i>
+                {{ 'Create'|trans }}
+            </a>
+            <form action="{{ path('admin_achievement_index') }}" class="form-inline mt-2" method="get">
+                <div class="form-group">
+                    <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group">
+                    <select class="custom-select" id="type" name="type">
+                        <option value="" selected>{{ 'Type'|trans }}</option>
+                        {% for type_value in achievementType() %}
+                            <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
+                </div>
+                <button class="btn btn-default" type="submit">
+                    <i class="fa fa-search"></i>
+                    {{ 'Search'|trans }}
+                </button>
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-default" href="{{ path('admin_achievement_index') }}">
+                    <i class="fas fa-times"></i>
+                </a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th {% if achievements.isSorted('q.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'UUID'|trans, 'a.uuid') }}</th>
+                            <th {% if achievements.isSorted('q.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Name'|trans, 'a.name') }}</th>
+                            <th {% if achievements.isSorted('q.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Is enabled'|trans, 'a.isEnabled') }}</th>
+                            <th {% if achievements.isSorted('q.Level') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Level'|trans, 'a.level') }}</th>
+                            <th {% if achievements.isSorted('q.Requirement') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Requirement'|trans, 'a.requirement') }}</th>
+                            <th {% if achievements.isSorted('q.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Type'|trans, 'a.type') }}</th>
+                            <th {% if achievements.isSorted('q.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Deleted at'|trans, 'a.deletedAt') }}</th>
+                            <th {% if achievements.isSorted('q.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Updated at'|trans, 'a.updatedAt') }}</th>
+                            <th>{{ 'Actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for achievement in achievements %}
+                            <tr>
+                                <td><a href="{{ path('admin_achievement_show', {'uuid': achievement.uuid}) }}">{{ achievement.uuid }}</a></td>
+                                <td>{{ achievement.name }}</td>
+                                <td>
+                                    {% if achievement.isEnabled %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ achievement.level }}</td>
+                                <td>{{ achievement.requirement }}</td>
+                                <td>{{ achievement.type }}</td>
+                                <td>{{ achievement.deletedAt ? achievement.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ achievement.updatedAt ? achievement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ achievement.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ achievement.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_achievement_show', {'uuid': achievement.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_achievement_edit', {'uuid': achievement.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="9">{{ 'No records found'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(achievements) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Achievements'|trans }}{% endblock %}

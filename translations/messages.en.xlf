@@ -1233,6 +1233,50 @@
         <source>Description of your goal.</source>
         <target>Description of your goal.</target>
       </trans-unit>
+      <trans-unit id="XcxROdu" resname="Congratulations! You have a new achievement!">
+        <source>Congratulations! You have a new achievement!</source>
+        <target>Congratulations! You have a new achievement!</target>
+      </trans-unit>
+      <trans-unit id="dM8rxj." resname="Achievements">
+        <source>Achievements</source>
+        <target>Achievements</target>
+      </trans-unit>
+      <trans-unit id="BcNdaeI" resname="Achievement details">
+        <source>Achievement details</source>
+        <target>Achievement details</target>
+      </trans-unit>
+      <trans-unit id="FwkwXJ_" resname="Level">
+        <source>Level</source>
+        <target>Level</target>
+      </trans-unit>
+      <trans-unit id="DFhWSBm" resname="Edit achievement">
+        <source>Edit achievement</source>
+        <target>Edit achievement</target>
+      </trans-unit>
+      <trans-unit id=".Neyh20" resname="Create achievement">
+        <source>Create achievement</source>
+        <target>Create achievement</target>
+      </trans-unit>
+      <trans-unit id="wRlmqPv" resname="Completed goals">
+        <source>Completed goals</source>
+        <target>Completed goals</target>
+      </trans-unit>
+      <trans-unit id="DLrrGMo" resname="Completed projects">
+        <source>Completed projects</source>
+        <target>Completed projects</target>
+      </trans-unit>
+      <trans-unit id="YI05IJH" resname="Created notes">
+        <source>Created notes</source>
+        <target>Created notes</target>
+      </trans-unit>
+      <trans-unit id="0KNjBVW" resname="required">
+        <source>required</source>
+        <target>required</target>
+      </trans-unit>
+      <trans-unit id="9fVpCw7" resname="Requirement">
+        <source>Requirement</source>
+        <target>__Requirement</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

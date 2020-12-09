@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
+use App\Entity\Achievement;
 use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\User;
@@ -13,6 +14,7 @@ use App\Manager\CompletedRoutineManager;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderRepository;
 use App\Security\Voter\RoutineVoter;
+use App\Service\AchievementService;
 use App\Service\EmailService;
 use App\Service\RewardService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -32,6 +34,7 @@ class CompletedRoutineController extends AbstractController
      * @Route("/{uuid}/new", name="new", methods={"GET","POST"})
      */
     public function new(
+        AchievementService $achievementService,
         CompletedRoutineFactory $completedRoutineFactory,
         CompletedRoutineManager $completedRoutineManager,
         EmailService $emailService,
@@ -43,24 +46,34 @@ class CompletedRoutineController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(RoutineVoter::EDIT, $routine);
+        $user = $this->getUser();
 
         $completedRoutine = $completedRoutineFactory->createCompletedRoutine();
         $completedRoutine->setRoutine($routine);
-        $completedRoutine->setUser($this->getUser());
+        $completedRoutine->setUser($user);
+        $user->addCompletedRoutine($completedRoutine);
         $form = $this->createForm(CompletedRoutineType::class, $completedRoutine);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $completedRoutineManager->save($completedRoutine, (string) $this->getUser());
+            $completedRoutineManager->save($completedRoutine, (string) $user);
 
             $reward = $rewardService->manageReward($completedRoutine->getRoutine(), Reward::TYPE_COMPLETED_ROUTINE);
+            $achievement = $achievementService->manageAchievements($user, Achievement::TYPE_COMPLETED_ROUTINE);
+
+            if (null !== $achievement) {
+                $this->addFlash(
+                    'success',
+                    $translator->trans('Congratulations! You have a new achievement!')
+                );
+            }
 
             $this->addFlash(
                 'success',
                 $translator->trans('Congratulations for completing your routine!')
             );
 
-            if (true === $this->getUser()->getProfile()->getShowMotivationalMessages()) {
+            if (true === $user->getProfile()->getShowMotivationalMessages()) {
                 $quote = $quoteRepository->findOneByStringLength();
                 if (null !== $quote) {
                     $this->addFlash(
@@ -70,9 +83,9 @@ class CompletedRoutineController extends AbstractController
                 }
 
                 $quote = $quoteRepository->findOneByStringLength();
-                $reminder = $reminderRepository->findOneByUser($this->getUser());
+                $reminder = $reminderRepository->findOneByUser($user);
                 $emailService->sendCompletedRoutineCongratulations(
-                    $this->getUser()->getEmail(),
+                    $user->getEmail(),
                     $translator->trans('R365: Congratulations for completing your routine!'),
                     [
                         'quote' => $quote,
