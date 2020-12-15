@@ -23,7 +23,7 @@
     <footer class="footer">
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <ul class="list-inline list-unstyled">
                         <li class="list-inline-item"><a href="{{ path('frontend_static_page_about') }}">{{ 'About'|trans }}</a></li>
                         <li class="list-inline-item"><a href="{{ path('frontend_static_page_changelog') }}">{{ 'Changelog'|trans }}</a></li>
@@ -32,6 +32,13 @@
                         <li class="list-inline-item"><a href="{{ path('frontend_static_page_privacy_policy') }}">{{ 'Privacy Policy'|trans }}</a></li>
                         <li class="list-inline-item"><a href="{{ path('frontend_static_page_terms_and_conditions') }}">{{ 'Terms and Conditions'|trans }}</a></li>
                     </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline list-unstyled">
+                        <li class="list-inline-item"><a href="https://twitter.com/Routines365" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
                     <p class="text-center">{{ 'Copyright'|trans }} &copy; {{ "now"|date("Y") }} Event Horizon Labs LLP</p>
                 </div>
             </div>
