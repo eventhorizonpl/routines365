@@ -24,6 +24,10 @@
                                 <td>{{ account_operations_count }}</td>
                             </tr>
                             <tr>
+                                <td><a href="{{ path('admin_achievement_index') }}">{{ 'Achievements'|trans }}</a></td>
+                                <td>{{ achievements_count }}</td>
+                            </tr>
+                            <tr>
                                 <td><a href="{{ path('admin_completed_routine_index') }}">{{ 'Completed routines'|trans }}</a></td>
                                 <td>{{ completed_routines_count }}</td>
                             </tr>
@@ -50,6 +54,10 @@
                             <tr>
                                 <td><a href="{{ path('admin_project_index') }}">{{ 'Projects'|trans }}</a></td>
                                 <td>{{ projects_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_promotion_index') }}">{{ 'Promotions'|trans }}</a></td>
+                                <td>{{ promotions_count }}</td>
                             </tr>
                             <tr>
                                 <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
@@ -110,6 +118,16 @@
                                 <td>{{ 'Invitations enabled'|trans }}</td>
                                 <td>
                                     {% if constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'Promotions enabled'|trans }}</td>
+                                <td>
+                                    {% if constant('App\\Resource\\ConfigResource::PROMOTIONS_ENABLED') %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>

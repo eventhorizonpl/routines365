@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Achievement;
+use App\Entity\Promotion;
 use App\Entity\User;
-use App\Factory\AchievementFactory;
-use App\Form\Admin\AchievementType;
-use App\Manager\AchievementManager;
-use App\Repository\AchievementRepository;
+use App\Factory\PromotionFactory;
+use App\Form\Admin\PromotionType;
+use App\Manager\PromotionManager;
+use App\Repository\PromotionRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -20,16 +20,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/achievement", name="admin_achievement_")
+ * @Route("/admin/promotion", name="admin_promotion_")
  */
-class AchievementController extends AbstractController
+class PromotionController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
      */
     public function index(
-        AchievementRepository $achievementRepository,
         PaginatorInterface $paginator,
+        PromotionRepository $promotionRepository,
         Request $request
     ): Response {
         $parameters = [
@@ -39,17 +39,17 @@ class AchievementController extends AbstractController
             'type' => $request->query->get('type'),
         ];
 
-        $achievementsQuery = $achievementRepository->findByParametersForAdmin($parameters);
-        $achievements = $paginator->paginate(
-            $achievementsQuery,
+        $promotionsQuery = $promotionRepository->findByParametersForAdmin($parameters);
+        $promotions = $paginator->paginate(
+            $promotionsQuery,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 50)
         );
-        $parameters['count'] = $achievements->getTotalItemCount();
+        $parameters['count'] = $promotions->getTotalItemCount();
 
-        return $this->render('admin/achievement/index.html.twig', [
-            'achievements' => $achievements,
+        return $this->render('admin/promotion/index.html.twig', [
             'parameters' => $parameters,
+            'promotions' => $promotions,
         ]);
     }
 
@@ -57,35 +57,35 @@ class AchievementController extends AbstractController
      * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(
-        AchievementFactory $achievementFactory,
-        AchievementManager $achievementManager,
+        PromotionFactory $promotionFactory,
+        PromotionManager $promotionManager,
         Request $request
     ): Response {
-        $achievement = $achievementFactory->createAchievement();
-        $form = $this->createForm(AchievementType::class, $achievement);
+        $promotion = $promotionFactory->createPromotion();
+        $form = $this->createForm(PromotionType::class, $promotion);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $achievementManager->save($achievement, (string) $this->getUser());
+            $promotionManager->save($promotion, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_achievement_show', [
-                'uuid' => $achievement->getUuid(),
+            return $this->redirectToRoute('admin_promotion_show', [
+                'uuid' => $promotion->getUuid(),
             ]);
         }
 
-        return $this->render('admin/achievement/new.html.twig', [
+        return $this->render('admin/promotion/new.html.twig', [
             'form' => $form->createView(),
-            'achievement' => $achievement,
+            'promotion' => $promotion,
         ]);
     }
 
     /**
      * @Route("/{uuid}", name="show", methods={"GET"})
      */
-    public function show(Achievement $achievement): Response
+    public function show(Promotion $promotion): Response
     {
-        return $this->render('admin/achievement/show.html.twig', [
-            'achievement' => $achievement,
+        return $this->render('admin/promotion/show.html.twig', [
+            'promotion' => $promotion,
         ]);
     }
 
@@ -93,24 +93,24 @@ class AchievementController extends AbstractController
      * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(
-        Achievement $achievement,
-        AchievementManager $achievementManager,
+        Promotion $promotion,
+        PromotionManager $promotionManager,
         Request $request
     ): Response {
-        $form = $this->createForm(AchievementType::class, $achievement);
+        $form = $this->createForm(PromotionType::class, $promotion);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $achievementManager->save($achievement, (string) $this->getUser());
+            $promotionManager->save($promotion, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_achievement_show', [
-                'uuid' => $achievement->getUuid(),
+            return $this->redirectToRoute('admin_promotion_show', [
+                'uuid' => $promotion->getUuid(),
             ]);
         }
 
-        return $this->render('admin/achievement/edit.html.twig', [
+        return $this->render('admin/promotion/edit.html.twig', [
             'form' => $form->createView(),
-            'achievement' => $achievement,
+            'promotion' => $promotion,
         ]);
     }
 
@@ -119,31 +119,31 @@ class AchievementController extends AbstractController
      * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
     public function delete(
-        Achievement $achievement,
-        AchievementManager $achievementManager,
+        Promotion $promotion,
+        PromotionManager $promotionManager,
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.$achievement->getUuid(),
+            'delete'.$promotion->getUuid(),
             $request->request->get('_token')
         )) {
-            $achievementManager->softDelete($achievement, (string) $this->getUser());
+            $promotionManager->softDelete($promotion, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_achievement_index');
+        return $this->redirectToRoute('admin_promotion_index');
     }
 
     /**
      * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
      */
     public function undelete(
-        Achievement $achievement,
-        AchievementManager $achievementManager
+        Promotion $promotion,
+        PromotionManager $promotionManager
     ): Response {
-        $achievementManager->undelete($achievement);
+        $promotionManager->undelete($promotion);
 
-        return $this->redirectToRoute('admin_achievement_show', [
-            'uuid' => $achievement->getUuid(),
+        return $this->redirectToRoute('admin_promotion_show', [
+            'uuid' => $promotion->getUuid(),
         ]);
     }
 }

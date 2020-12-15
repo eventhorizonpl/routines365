@@ -30,10 +30,13 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
                         <a class="dropdown-item" href="{{ path('frontend_profile_show') }}"><i class="fas fa-cogs"></i> {{ 'Settings'|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('frontend_contact_new') }}"><i class="fas fa-envelope"></i> {{ 'Contact form'|trans }}</a>
                         {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
                             <a class="dropdown-item" href="{{ path('frontend_invitation_new') }}"><i class="fas fa-envelope"></i> {{ 'Invite'|trans }}</a>
                         {% endif %}
-                        <a class="dropdown-item" href="{{ path('frontend_contact_new') }}"><i class="fas fa-envelope"></i> {{ 'Contact form'|trans }}</a>
+                        {% if true == constant('App\\Resource\\ConfigResource::PROMOTIONS_ENABLED') %}
+                            <a class="dropdown-item" href="{{ path('frontend_promotion_code') }}"><i class="fas fa-barcode"></i> {{ 'Promotion codes'|trans }}</a>
+                        {% endif %}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="fas fa-sign-out-alt"></i> {{ 'Logout'|trans }}</a>
                     </div>

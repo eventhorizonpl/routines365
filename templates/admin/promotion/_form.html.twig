@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.code) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.isEnabled) }}
+    {{ form_row(form.emailNotifications) }}
+    {{ form_row(form.smsNotifications) }}
+    {{ form_row(form.type) }}
+
+    <hr>
+    <button class="btn btn-primary" type="submit">
+        <i class="fas fa-save"></i>
+        {{ button_label|default('Save'|trans) }}
+    </button>
+{{ form_end(form) }}

@@ -78,6 +78,11 @@ class User implements UserInterface
     private Collection $projects;
 
     /**
+     * @ORM\ManyToMany(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Promotion::class)
+     */
+    private Collection $promotions;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="referrer", targetEntity=User::class)
      */
     private Collection $recommendations;
@@ -172,6 +177,7 @@ class User implements UserInterface
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
         $this->projects = new ArrayCollection();
+        $this->promotions = new ArrayCollection();
         $this->recommendations = new ArrayCollection();
         $this->referrer = null;
         $this->reminders = new ArrayCollection();
@@ -462,6 +468,38 @@ class User implements UserInterface
     {
         if (true === $this->projects->contains($project)) {
             $this->projects->removeElement($project);
+        }
+
+        return $this;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (false === $this->promotions->contains($promotion)) {
+            $this->promotions->add($promotion);
+        }
+
+        return $this;
+    }
+
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function hasPromotion(Promotion $promotion): bool
+    {
+        if (true === $this->promotions->contains($promotion)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if (true === $this->promotions->contains($promotion)) {
+            $this->promotions->removeElement($promotion);
         }
 
         return $this;

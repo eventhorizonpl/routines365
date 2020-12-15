@@ -7,20 +7,20 @@
         </a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ path('admin_achievement_index') }}">
-            {{ 'Achievements'|trans }}
+        <a href="{{ path('admin_promotion_index') }}">
+            {{ 'Promotions'|trans }}
         </a>
     </li>
     <li class="breadcrumb-item active">
-        {{ 'Achievement details'|trans }}
+        {{ 'Promotion details'|trans }}
     </li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Achievement details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_achievement_index') }}">
+            {{ 'Promotion details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_promotion_index') }}">
                 <i class="fas fa-arrow-left"></i>
                 {{ 'Back'|trans }}
             </a>
@@ -42,17 +42,21 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
-                                <td>{{ achievement.name }}</td>
+                                <th scope="row" style="width: 20%;">{{ 'Code'|trans }}</th>
+                                <td>{{ promotion.code }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Name'|trans }}</th>
+                                <td>{{ promotion.name }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Description'|trans }}</th>
-                                <td>{{ achievement.description }}</td>
+                                <td>{{ promotion.description }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Is enabled'|trans }}</th>
                                 <td>
-                                    {% if achievement.isEnabled %}
+                                    {% if promotion.isEnabled %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
@@ -60,16 +64,16 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Level'|trans }}</th>
-                                <td>{{ achievement.level }}</td>
+                                <th scope="row">{{ 'Email notifications'|trans }}</th>
+                                <td>{{ promotion.emailNotifications }}</td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Requirement'|trans }}</th>
-                                <td>{{ achievement.requirement }}</td>
+                                <th scope="row">{{ 'Sms notifications'|trans }}</th>
+                                <td>{{ promotion.smsNotifications }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ achievement.type }}</td>
+                                <td>{{ promotion.type }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -80,9 +84,9 @@
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'Users'|trans }}</th>
                                 <td>
-                                    {% if achievement.users|length %}
+                                    {% if promotion.users|length %}
                                         <ul>
-                                            {% for user in achievement.users %}
+                                            {% for user in promotion.users %}
                                                 <li><a href="{{ path('admin_user_show', {'uuid': user.uuid}) }}">{{ user.email }}</a></li>
                                             {% endfor %}
                                         </ul>
@@ -97,59 +101,59 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ achievement.id }}</td>
+                                <td>{{ promotion.id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ achievement.uuid }}</td>
+                                <td>{{ promotion.uuid }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created by'|trans }}</th>
                                 <td>
-                                    {% if achievement.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': achievement.createdBy}) }}">{{ achievement.createdBy }}</a>
+                                    {% if promotion.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': promotion.createdBy}) }}">{{ promotion.createdBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted by'|trans }}</th>
                                 <td>
-                                    {% if achievement.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': achievement.deletedBy}) }}">{{ achievement.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_achievement_undelete', {'uuid': achievement.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% if promotion.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': promotion.deletedBy}) }}">{{ promotion.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_promotion_undelete', {'uuid': promotion.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated by'|trans }}</th>
                                 <td>
-                                    {% if achievement.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': achievement.updatedBy}) }}">{{ achievement.updatedBy }}</a>
+                                    {% if promotion.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': promotion.updatedBy}) }}">{{ promotion.updatedBy }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ achievement.createdAt ? achievement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ promotion.createdAt ? promotion.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Deleted at'|trans }}</th>
                                 <td>
-                                    {% if achievement.deletedAt %}
-                                        {{ achievement.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_achievement_undelete', {'uuid': achievement.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% if promotion.deletedAt %}
+                                        {{ promotion.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_promotion_undelete', {'uuid': promotion.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ achievement.updatedAt ? achievement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ promotion.updatedAt ? promotion.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_achievement_edit', {'uuid': achievement.uuid}) }}">
+            <a class="btn btn-success" href="{{ path('admin_promotion_edit', {'uuid': promotion.uuid}) }}">
                 <i class="fas fa-edit"></i>
                 {{ 'Edit'|trans }}
             </a>
@@ -157,4 +161,4 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Achievement details'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ 'Promotion details'|trans }}{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    {{ 'Promotion codes'|trans }}
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.code) }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-check-circle"></i>
+                                    {{ button_label|default('Use promotion code'|trans) }}
+                                </button>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                    {% if promotions|length %}
+                        <hr>
+                        <h4>{{ 'Used promotional codes'|trans }}</h4>
+                        <div class="table-responsive">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            {{ 'Code'|trans }}
+                                        </th>
+                                        <th>
+                                            {{ 'Name'|trans }}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for promotion in promotions %}
+                                        <tr>
+                                            <td>
+                                                {{ promotion.code }}
+                                            </td>
+                                            <td>
+                                                {{ promotion.name }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Promotion codes'|trans }}
+{% endblock %}

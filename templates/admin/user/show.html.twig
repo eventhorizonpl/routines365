@@ -190,7 +190,19 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Completed routines'|trans }}</th>
+                                <th scope="row" style="width: 20%;">{{ 'Achievements'|trans }}</th>
+                                <td>
+                                    {% if user.achievements|length %}
+                                        <ul>
+                                            {% for achievement in user.achievements %}
+                                                <li><a href="{{ path('admin_achievement_show', {'uuid': achievement.uuid}) }}">{{ achievement.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Completed routines'|trans }}</th>
                                 <td>
                                     {% if user.completedRoutinesAll|length %}
                                         <ul>
@@ -232,6 +244,18 @@
                                         <ul>
                                             {% for project in user.projectsAll %}
                                                 <li><a href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">{{ project.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Promotions'|trans }}</th>
+                                <td>
+                                    {% if user.promotions|length %}
+                                        <ul>
+                                            {% for promotion in user.promotions %}
+                                                <li><a href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}">{{ promotion.uuid }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}

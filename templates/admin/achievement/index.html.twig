@@ -51,14 +51,14 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th {% if achievements.isSorted('q.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'UUID'|trans, 'a.uuid') }}</th>
-                            <th {% if achievements.isSorted('q.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Name'|trans, 'a.name') }}</th>
-                            <th {% if achievements.isSorted('q.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Is enabled'|trans, 'a.isEnabled') }}</th>
-                            <th {% if achievements.isSorted('q.Level') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Level'|trans, 'a.level') }}</th>
-                            <th {% if achievements.isSorted('q.Requirement') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Requirement'|trans, 'a.requirement') }}</th>
-                            <th {% if achievements.isSorted('q.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Type'|trans, 'a.type') }}</th>
-                            <th {% if achievements.isSorted('q.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Deleted at'|trans, 'a.deletedAt') }}</th>
-                            <th {% if achievements.isSorted('q.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Updated at'|trans, 'a.updatedAt') }}</th>
+                            <th {% if achievements.isSorted('a.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'UUID'|trans, 'a.uuid') }}</th>
+                            <th {% if achievements.isSorted('a.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Name'|trans, 'a.name') }}</th>
+                            <th {% if achievements.isSorted('a.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Is enabled'|trans, 'a.isEnabled') }}</th>
+                            <th {% if achievements.isSorted('a.Level') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Level'|trans, 'a.level') }}</th>
+                            <th {% if achievements.isSorted('a.Requirement') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Requirement'|trans, 'a.requirement') }}</th>
+                            <th {% if achievements.isSorted('a.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Type'|trans, 'a.type') }}</th>
+                            <th {% if achievements.isSorted('a.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Deleted at'|trans, 'a.deletedAt') }}</th>
+                            <th {% if achievements.isSorted('a.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(achievements, 'Updated at'|trans, 'a.updatedAt') }}</th>
                             <th>{{ 'Actions'|trans }}</th>
                         </tr>
                     </thead>

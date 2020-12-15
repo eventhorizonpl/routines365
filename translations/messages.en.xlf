@@ -1275,7 +1275,51 @@
       </trans-unit>
       <trans-unit id="9fVpCw7" resname="Requirement">
         <source>Requirement</source>
-        <target>__Requirement</target>
+        <target>Requirement</target>
+      </trans-unit>
+      <trans-unit id="TWKsMON" resname="Promotion codes">
+        <source>Promotion codes</source>
+        <target>Promotion codes</target>
+      </trans-unit>
+      <trans-unit id="PnQydYJ" resname="Promotions">
+        <source>Promotions</source>
+        <target>Promotions</target>
+      </trans-unit>
+      <trans-unit id="L26NG5z" resname="Promotions enabled">
+        <source>Promotions enabled</source>
+        <target>Promotions enabled</target>
+      </trans-unit>
+      <trans-unit id=".iD2coz" resname="Promotion details">
+        <source>Promotion details</source>
+        <target>Promotion details</target>
+      </trans-unit>
+      <trans-unit id="NA9GMDP" resname="Code">
+        <source>Code</source>
+        <target>Code</target>
+      </trans-unit>
+      <trans-unit id="DJyQUhD" resname="Edit promotion">
+        <source>Edit promotion</source>
+        <target>Edit promotion</target>
+      </trans-unit>
+      <trans-unit id="1XFggZi" resname="Create promotion">
+        <source>Create promotion</source>
+        <target>Create promotion</target>
+      </trans-unit>
+      <trans-unit id="zjvLpqo" resname="Use promotion code">
+        <source>Use promotion code</source>
+        <target>Use promotion code</target>
+      </trans-unit>
+      <trans-unit id=".ZY6nVO" resname="Used promotional codes">
+        <source>Used promotional codes</source>
+        <target>Used promotional codes</target>
+      </trans-unit>
+      <trans-unit id="spBKVSK" resname="You used promotion code.">
+        <source>You used promotion code.</source>
+        <target>You used promotion code.</target>
+      </trans-unit>
+      <trans-unit id="hrwoXeC" resname="You cannot use this promotion code.">
+        <source>You cannot use this promotion code.</source>
+        <target>You cannot use this promotion code.</target>
       </trans-unit>
     </body>
   </file>

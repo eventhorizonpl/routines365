@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Repository\AccountOperationRepository;
 use App\Repository\AccountRepository;
+use App\Repository\AchievementRepository;
 use App\Repository\CompletedRoutineRepository;
 use App\Repository\ContactRepository;
 use App\Repository\GoalRepository;
@@ -13,6 +14,7 @@ use App\Repository\KpiRepository;
 use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;
 use App\Repository\ProjectRepository;
+use App\Repository\PromotionRepository;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
@@ -35,6 +37,7 @@ class WorkspaceController extends AbstractController
     public function index(
         AccountRepository $accountRepository,
         AccountOperationRepository $accountOperationRepository,
+        AchievementRepository $achievementRepository,
         CompletedRoutineRepository $completedRoutineRepository,
         ContactRepository $contactRepository,
         GoalRepository $goalRepository,
@@ -42,6 +45,7 @@ class WorkspaceController extends AbstractController
         KpiRepository $kpiRepository,
         ProfileRepository $profileRepository,
         ProjectRepository $projectRepository,
+        PromotionRepository $promotionRepository,
         QuoteRepository $quoteRepository,
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
@@ -52,6 +56,7 @@ class WorkspaceController extends AbstractController
     ): Response {
         $accountsCount = $accountRepository->count([]);
         $accountOperationsCount = $accountOperationRepository->count([]);
+        $achievementsCount = $achievementRepository->count([]);
         $completedRoutinesCount = $completedRoutineRepository->count([]);
         $contactsCount = $contactRepository->count([]);
         $goalsCount = $goalRepository->count([]);
@@ -59,6 +64,7 @@ class WorkspaceController extends AbstractController
         $kpisCount = $kpiRepository->count([]);
         $profilesCount = $profileRepository->count([]);
         $projectsCount = $projectRepository->count([]);
+        $promotionsCount = $promotionRepository->count([]);
         $quotesCount = $quoteRepository->count([]);
         $reminderMessagesCount = $reminderMessageRepository->count([]);
         $remindersCount = $reminderRepository->count([]);
@@ -70,6 +76,7 @@ class WorkspaceController extends AbstractController
         return $this->render('admin/workspace/index.html.twig', [
             'accounts_count' => $accountsCount,
             'account_operations_count' => $accountOperationsCount,
+            'achievements_count' => $achievementsCount,
             'completed_routines_count' => $completedRoutinesCount,
             'contacts_count' => $contactsCount,
             'goals_count' => $goalsCount,
@@ -77,6 +84,7 @@ class WorkspaceController extends AbstractController
             'kpis_count' => $kpisCount,
             'profiles_count' => $profilesCount,
             'projects_count' => $projectsCount,
+            'promotions_count' => $promotionsCount,
             'quotes_count' => $quotesCount,
             'reminder_messages_count' => $reminderMessagesCount,
             'reminders_count' => $remindersCount,
