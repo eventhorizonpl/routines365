@@ -9,7 +9,7 @@ use App\Factory\ReminderMessageFactory;
 use App\Faker\ReminderMessageFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class ReminderMessageFakerTest extends AbstractDoctrineTestCase
+final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

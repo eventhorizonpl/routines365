@@ -8,7 +8,7 @@ use App\Entity\Routine;
 use App\Form\Frontend\RoutineType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class RoutineTypeTest extends TypeTestCase
+final class RoutineTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData

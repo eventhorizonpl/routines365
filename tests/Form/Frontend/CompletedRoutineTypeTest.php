@@ -6,9 +6,10 @@ namespace App\Tests\Form\Frontend;
 
 use App\Entity\CompletedRoutine;
 use App\Form\Frontend\CompletedRoutineType;
+use DateTimeImmutable;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class CompletedRoutineTypeTest extends TypeTestCase
+final class CompletedRoutineTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData
@@ -37,6 +38,7 @@ class CompletedRoutineTypeTest extends TypeTestCase
             [
                 'data' => [
                     'comment' => 'test comment',
+                    'date' => new DateTimeImmutable(),
                     'minutesDevoted' => 10,
                 ],
             ],

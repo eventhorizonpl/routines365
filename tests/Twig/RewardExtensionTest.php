@@ -7,7 +7,7 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\RewardExtension;
 
-class RewardExtensionTest extends AbstractTestCase
+final class RewardExtensionTest extends AbstractTestCase
 {
     public function testConstruct()
     {

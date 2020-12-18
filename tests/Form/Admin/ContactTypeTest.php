@@ -8,7 +8,7 @@ use App\Entity\Contact;
 use App\Form\Admin\ContactType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class ContactTypeTest extends TypeTestCase
+final class ContactTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData

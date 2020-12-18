@@ -10,7 +10,7 @@ use Cron\CronBundle\Entity\CronJob;
 use Faker\Factory;
 use Faker\Generator;
 
-class CronJobFactoryTest extends AbstractTestCase
+final class CronJobFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
 

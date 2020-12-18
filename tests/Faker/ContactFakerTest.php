@@ -9,7 +9,7 @@ use App\Factory\ContactFactory;
 use App\Faker\ContactFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class ContactFakerTest extends AbstractDoctrineTestCase
+final class ContactFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

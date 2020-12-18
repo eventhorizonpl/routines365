@@ -10,7 +10,7 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
-class AccountOperationRepositoryTest extends AbstractDoctrineTestCase
+final class AccountOperationRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

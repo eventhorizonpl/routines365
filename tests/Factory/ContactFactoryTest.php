@@ -10,7 +10,7 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
-class ContactFactoryTest extends AbstractTestCase
+final class ContactFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
 

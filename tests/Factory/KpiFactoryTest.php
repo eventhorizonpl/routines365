@@ -11,7 +11,7 @@ use DateTimeImmutable;
 use Faker\Factory;
 use Faker\Generator;
 
-class KpiFactoryTest extends AbstractTestCase
+final class KpiFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
 

@@ -11,7 +11,7 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
-class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
+final class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

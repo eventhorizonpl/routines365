@@ -10,7 +10,7 @@ use App\Faker\QuoteFaker;
 use App\Manager\QuoteManager;
 use App\Tests\AbstractDoctrineTestCase;
 
-class QuoteFakerTest extends AbstractDoctrineTestCase
+final class QuoteFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

@@ -11,7 +11,7 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
-class QuoteRepositoryTest extends AbstractDoctrineTestCase
+final class QuoteRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

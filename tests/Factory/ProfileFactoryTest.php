@@ -8,7 +8,7 @@ use App\Entity\Profile;
 use App\Factory\ProfileFactory;
 use App\Tests\AbstractTestCase;
 
-class ProfileFactoryTest extends AbstractTestCase
+final class ProfileFactoryTest extends AbstractTestCase
 {
     public function testConstruct()
     {

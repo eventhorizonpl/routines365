@@ -16,7 +16,7 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
-class RoutineTest extends AbstractTestCase
+final class RoutineTest extends AbstractTestCase
 {
     public function testConstruct()
     {

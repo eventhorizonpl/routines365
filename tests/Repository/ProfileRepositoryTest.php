@@ -8,7 +8,7 @@ use App\Repository\ProfileRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Doctrine\Persistence\ManagerRegistry;
 
-class ProfileRepositoryTest extends AbstractDoctrineTestCase
+final class ProfileRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

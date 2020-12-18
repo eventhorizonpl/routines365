@@ -11,7 +11,7 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
-class RewardTest extends AbstractTestCase
+final class RewardTest extends AbstractTestCase
 {
     public function testConstruct()
     {

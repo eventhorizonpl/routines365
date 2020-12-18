@@ -8,7 +8,7 @@ use App\Form\Admin\CronJobType;
 use Cron\CronBundle\Entity\CronJob;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class CronJobTypeTest extends TypeTestCase
+final class CronJobTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData

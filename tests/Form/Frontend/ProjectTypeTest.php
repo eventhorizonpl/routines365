@@ -8,7 +8,7 @@ use App\Entity\Project;
 use App\Form\Frontend\ProjectType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class ProjectTypeTest extends TypeTestCase
+final class ProjectTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData

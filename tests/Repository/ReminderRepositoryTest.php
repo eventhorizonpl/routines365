@@ -11,7 +11,7 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
-class ReminderRepositoryTest extends AbstractDoctrineTestCase
+final class ReminderRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

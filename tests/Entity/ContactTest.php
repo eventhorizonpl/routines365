@@ -10,7 +10,7 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
-class ContactTest extends AbstractTestCase
+final class ContactTest extends AbstractTestCase
 {
     public function testConstruct()
     {

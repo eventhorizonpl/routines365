@@ -10,7 +10,7 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
-class ReminderMessageFactoryTest extends AbstractTestCase
+final class ReminderMessageFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
 

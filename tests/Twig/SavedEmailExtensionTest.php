@@ -7,7 +7,7 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\SavedEmailExtension;
 
-class SavedEmailExtensionTest extends AbstractTestCase
+final class SavedEmailExtensionTest extends AbstractTestCase
 {
     public function testConstruct()
     {

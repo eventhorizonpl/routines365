@@ -10,7 +10,7 @@ use App\Faker\ReminderFaker;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 
-class ReminderFakerTest extends AbstractDoctrineTestCase
+final class ReminderFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

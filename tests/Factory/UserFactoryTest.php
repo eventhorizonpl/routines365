@@ -12,7 +12,7 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
-class UserFactoryTest extends AbstractTestCase
+final class UserFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
 

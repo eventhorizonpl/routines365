@@ -9,7 +9,7 @@ use App\Factory\SavedEmailFactory;
 use App\Faker\SavedEmailFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class SavedEmailFakerTest extends AbstractDoctrineTestCase
+final class SavedEmailFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

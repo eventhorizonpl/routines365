@@ -8,7 +8,7 @@ use App\Tests\AbstractTestCase;
 use App\Util\DateTimeImmutableUtil;
 use DateTimeImmutable;
 
-class DateTimeImmutableUtilTest extends AbstractTestCase
+final class DateTimeImmutableUtilTest extends AbstractTestCase
 {
     public function testEndsAtFromString()
     {

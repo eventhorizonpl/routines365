@@ -11,7 +11,7 @@ use DateTimeImmutable;
 use Faker\Factory;
 use Faker\Generator;
 
-class ReminderFactoryTest extends AbstractTestCase
+final class ReminderFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
 

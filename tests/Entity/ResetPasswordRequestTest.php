@@ -9,7 +9,7 @@ use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 
-class ResetPasswordRequestTest extends AbstractTestCase
+final class ResetPasswordRequestTest extends AbstractTestCase
 {
     public function testConstruct()
     {

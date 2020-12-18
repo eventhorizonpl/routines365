@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Validator\Validation;
 
-class UserTypeTest extends TypeTestCase
+final class UserTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData

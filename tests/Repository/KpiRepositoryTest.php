@@ -11,7 +11,7 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
-class KpiRepositoryTest extends AbstractDoctrineTestCase
+final class KpiRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

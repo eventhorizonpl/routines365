@@ -9,7 +9,7 @@ use App\Factory\AccountOperationFactory;
 use App\Faker\AccountOperationFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class AccountOperationFakerTest extends AbstractDoctrineTestCase
+final class AccountOperationFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

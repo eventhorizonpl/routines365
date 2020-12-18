@@ -9,7 +9,7 @@ use App\Factory\NoteFactory;
 use App\Faker\NoteFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class NoteFakerTest extends AbstractDoctrineTestCase
+final class NoteFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

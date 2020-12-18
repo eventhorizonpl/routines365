@@ -9,7 +9,7 @@ use App\Factory\RewardFactory;
 use App\Faker\RewardFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class RewardFakerTest extends AbstractDoctrineTestCase
+final class RewardFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

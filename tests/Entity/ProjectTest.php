@@ -9,7 +9,7 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
-class ProjectTest extends AbstractTestCase
+final class ProjectTest extends AbstractTestCase
 {
     public function testConstruct()
     {

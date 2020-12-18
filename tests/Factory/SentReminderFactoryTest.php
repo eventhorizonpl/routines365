@@ -8,7 +8,7 @@ use App\Entity\SentReminder;
 use App\Factory\SentReminderFactory;
 use App\Tests\AbstractTestCase;
 
-class SentReminderFactoryTest extends AbstractTestCase
+final class SentReminderFactoryTest extends AbstractTestCase
 {
     public function testConstruct()
     {

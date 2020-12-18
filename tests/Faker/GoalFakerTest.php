@@ -9,7 +9,7 @@ use App\Factory\GoalFactory;
 use App\Faker\GoalFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class GoalFakerTest extends AbstractDoctrineTestCase
+final class GoalFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

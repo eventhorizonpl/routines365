@@ -8,7 +8,7 @@ use App\Repository\AccountRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Doctrine\Persistence\ManagerRegistry;
 
-class AccountRepositoryTest extends AbstractDoctrineTestCase
+final class AccountRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

@@ -7,7 +7,7 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\ReminderMessageExtension;
 
-class ReminderMessageExtensionTest extends AbstractTestCase
+final class ReminderMessageExtensionTest extends AbstractTestCase
 {
     public function testConstruct()
     {

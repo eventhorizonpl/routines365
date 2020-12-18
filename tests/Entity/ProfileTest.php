@@ -11,7 +11,7 @@ use DateTimeImmutable;
 use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\Uid\Uuid;
 
-class ProfileTest extends AbstractTestCase
+final class ProfileTest extends AbstractTestCase
 {
     public function testConstruct()
     {

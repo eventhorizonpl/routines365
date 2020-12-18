@@ -8,7 +8,7 @@ use App\Entity\Account;
 use App\Factory\AccountFactory;
 use App\Tests\AbstractTestCase;
 
-class AccountFactoryTest extends AbstractTestCase
+final class AccountFactoryTest extends AbstractTestCase
 {
     public function testConstruct()
     {

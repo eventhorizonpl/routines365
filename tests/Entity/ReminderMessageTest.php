@@ -12,7 +12,7 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
-class ReminderMessageTest extends AbstractTestCase
+final class ReminderMessageTest extends AbstractTestCase
 {
     public function testConstruct()
     {

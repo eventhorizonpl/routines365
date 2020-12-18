@@ -7,7 +7,7 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\RoutineExtension;
 
-class RoutineExtensionTest extends AbstractTestCase
+final class RoutineExtensionTest extends AbstractTestCase
 {
     public function testConstruct()
     {

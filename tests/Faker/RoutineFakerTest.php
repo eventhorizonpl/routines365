@@ -9,7 +9,7 @@ use App\Factory\RoutineFactory;
 use App\Faker\RoutineFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
-class RoutineFakerTest extends AbstractDoctrineTestCase
+final class RoutineFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

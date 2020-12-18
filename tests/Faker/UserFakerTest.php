@@ -26,7 +26,7 @@ use App\Manager\UserManager;
 use App\Service\UserService;
 use App\Tests\AbstractDoctrineTestCase;
 
-class UserFakerTest extends AbstractDoctrineTestCase
+final class UserFakerTest extends AbstractDoctrineTestCase
 {
     /**
      * @inject

@@ -8,7 +8,7 @@ use App\Entity\Quote;
 use App\Form\Admin\QuoteType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-class QuoteTypeTest extends TypeTestCase
+final class QuoteTypeTest extends TypeTestCase
 {
     /**
      * @dataProvider getValidTestData
