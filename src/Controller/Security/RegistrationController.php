@@ -12,6 +12,7 @@ use App\Repository\UserRepository;
 use App\Resource\ConfigResource;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
+use App\Service\AccountOperationService;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +37,7 @@ class RegistrationController extends AbstractController
      * @Route("/register", name="register")
      */
     public function register(
+        AccountOperationService $accountOperationService,
         GuardAuthenticatorHandler $guardHandler,
         LoginFormAuthenticator $authenticator,
         Request $request,
@@ -72,6 +74,17 @@ class RegistrationController extends AbstractController
             }
 
             $userManager->save($user);
+
+            $account = $user->getAccount();
+            $emailNotifications = 10;
+            if (true === $account->canDepositEmailNotifications($emailNotifications)) {
+                $accountOperation = $accountOperationService->deposit(
+                    $account,
+                    'Free email notifications',
+                    $emailNotifications,
+                    0
+                );
+            }
 
             $this->emailVerifier->sendEmailConfirmation($user);
 

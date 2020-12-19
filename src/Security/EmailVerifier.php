@@ -30,7 +30,7 @@ class EmailVerifier
     {
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
             'security_verify_email',
-            $user->getId(),
+            (string) $user->getId(),
             $user->getEmail()
         );
 
