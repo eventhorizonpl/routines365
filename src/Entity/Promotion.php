@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\PromotionRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -58,6 +59,12 @@ class Promotion
      * @ORM\Column(type="integer")
      */
     private int $emailNotifications;
+
+    /**
+     * @Assert\Type("DateTimeImmutable")
+     * @ORM\Column(nullable=true, type="datetimetz_immutable")
+     */
+    protected $expiresAt;
 
     /**
      * @Assert\Length(
@@ -137,6 +144,18 @@ class Promotion
     public function setEmailNotifications(int $emailNotifications): self
     {
         $this->emailNotifications = $emailNotifications;
+
+        return $this;
+    }
+
+    public function getExpiresAt(): ?DateTimeImmutable
+    {
+        return $this->expiresAt;
+    }
+
+    public function setExpiresAt(?DateTimeImmutable $expiresAt): self
+    {
+        $this->expiresAt = $expiresAt;
 
         return $this;
     }

@@ -8,6 +8,7 @@ use App\Entity\Promotion;
 use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,6 +23,10 @@ class PromotionType extends AbstractType
                 'required' => false,
             ])
             ->add('emailNotifications')
+            ->add('expiresAt', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'input' => 'datetime_immutable',
+            ])
             ->add('isEnabled', YesNoType::class)
             ->add('name')
             ->add('smsNotifications')

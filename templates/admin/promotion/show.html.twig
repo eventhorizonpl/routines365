@@ -75,6 +75,10 @@
                                 <th scope="row">{{ 'Type'|trans }}</th>
                                 <td>{{ promotion.type }}</td>
                             </tr>
+                            <tr>
+                                <th scope="row">{{ 'Expires at'|trans }}</th>
+                                <td>{{ promotion.expiresAt ? promotion.expiresAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

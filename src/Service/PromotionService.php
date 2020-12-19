@@ -8,6 +8,7 @@ use App\Entity\Promotion;
 use App\Entity\User;
 use App\Manager\UserManager;
 use App\Repository\PromotionRepository;
+use DateTimeImmutable;
 
 class PromotionService
 {
@@ -25,11 +26,43 @@ class PromotionService
         $this->userManager = $userManager;
     }
 
-    public function applyExistingAccountPromotion(string $code, User $user): bool
+    public function getEnabledAndValidPromotion(string $code, string $type): ?Promotion
     {
         $promotion = $this->promotionRepository->findOneByCodeAndType(
             $code,
+            $type
+        );
+
+        $date = new DateTimeImmutable();
+        if ((null !== $promotion->getExpiresAt()) &&
+            ($promotion->getExpiresAt() < $date)
+        ) {
+            return null;
+        }
+
+        return $promotion;
+    }
+
+    public function applyExistingAccountPromotion(string $code, User $user): bool
+    {
+        $promotion = $this->getEnabledAndValidPromotion(
+            $code,
             Promotion::TYPE_EXISTING_ACCOUNT
+        );
+        $result = false;
+
+        if (null !== $promotion) {
+            $result = $this->applyPromotion($promotion, $user);
+        }
+
+        return $result;
+    }
+
+    public function applyNewAccountPromotion(string $code, User $user): bool
+    {
+        $promotion = $this->getEnabledAndValidPromotion(
+            $code,
+            Promotion::TYPE_NEW_ACCOUNT
         );
         $result = false;
 

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
+use App\Entity\Promotion;
 use App\Entity\SavedEmail;
 use App\Entity\User;
 use App\Form\Frontend\InvitationType;
 use App\Resource\ConfigResource;
 use App\Service\EmailService;
+use App\Service\PromotionService;
 use App\Service\SavedEmailService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,6 +30,7 @@ class InvitationController extends AbstractController
      */
     public function new(
         EmailService $emailService,
+        PromotionService $promotionService,
         Request $request,
         SavedEmailService $savedEmailService,
         TranslatorInterface $translator
@@ -40,8 +43,12 @@ class InvitationController extends AbstractController
         $profile = $user->getProfile();
         $firstName = $profile->getFirstName();
         $lastName = $profile->getLastName();
+        $promotion = $promotionService->getEnabledAndValidPromotion(
+            'PLUS10NR',
+            Promotion::TYPE_NEW_ACCOUNT
+        );
 
-        if ((null === $firstName) or ('' === trim($firstName)) or (null === $lastName) or ('' === trim($lastName))) {
+        if ((null === $firstName) || ('' === trim($firstName)) || (null === $lastName) || ('' === trim($lastName))) {
             $this->addFlash(
                 'danger',
                 $translator->trans('Please provide your first and last name!')
@@ -63,6 +70,7 @@ class InvitationController extends AbstractController
                 [
                     'first_name' => $firstName,
                     'last_name' => $lastName,
+                    'promotion' => $promotion,
                     'referrer_code' => $user->getReferrerCode(),
                 ]
             );
@@ -85,6 +93,7 @@ class InvitationController extends AbstractController
             'first_name' => $firstName,
             'form' => $form->createView(),
             'last_name' => $lastName,
+            'promotion' => $promotion,
             'referrer_code' => $user->getReferrerCode(),
             'subject' => $subject,
         ]);

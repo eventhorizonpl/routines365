@@ -13,6 +13,7 @@ use App\Resource\ConfigResource;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
 use App\Service\AccountOperationService;
+use App\Service\PromotionService;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +41,7 @@ class RegistrationController extends AbstractController
         AccountOperationService $accountOperationService,
         GuardAuthenticatorHandler $guardHandler,
         LoginFormAuthenticator $authenticator,
+        PromotionService $promotionService,
         Request $request,
         UserFactory $userFactory,
         UserManager $userManager,
@@ -50,27 +52,26 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('frontend_home');
         }
 
+        $promotionCode = $request->query->get('promotion_code');
         $referrerCode = $request->query->get('referrer_code');
         $user = $userFactory->createUser();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            if ((null !== $referrerCode) or ('' !== $referrerCode)) {
-                $referrer = $userRepository->findOneBy([
-                    'referrerCode' => $referrerCode,
-                ]);
-            } else {
-                $referrer = null;
-            }
-
             $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             $user->setIsEnabled(true);
             $user->setRoles([User::ROLE_USER]);
             $user->setType(User::TYPE_PROSPECT);
 
-            if (null !== $referrer) {
-                $user->setReferrer($referrer);
+            if ((null !== $referrerCode) || ('' !== $referrerCode)) {
+                $referrer = $userRepository->findOneBy([
+                    'referrerCode' => $referrerCode,
+                ]);
+
+                if (null !== $referrer) {
+                    $user->setReferrer($referrer);
+                }
             }
 
             $userManager->save($user);
@@ -80,9 +81,16 @@ class RegistrationController extends AbstractController
             if (true === $account->canDepositEmailNotifications($emailNotifications)) {
                 $accountOperation = $accountOperationService->deposit(
                     $account,
-                    'Free email notifications',
+                    '+10 notifications promotion for new registration',
                     $emailNotifications,
                     0
+                );
+            }
+
+            if ((null !== $promotionCode) || ('' !== $promotionCode)) {
+                $used = $promotionService->applyNewAccountPromotion(
+                    $promotionCode,
+                    $user
                 );
             }
 

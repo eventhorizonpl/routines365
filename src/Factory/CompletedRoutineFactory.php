@@ -13,7 +13,7 @@ class CompletedRoutineFactory
     public function createCompletedRoutine(): CompletedRoutine
     {
         $completedRoutine = new CompletedRoutine();
-        $completedRoutine->setDate(new DateTimeImmutable('NOW'));
+        $completedRoutine->setDate(new DateTimeImmutable());
         $completedRoutine->setUuid((string) Uuid::v4());
 
         return $completedRoutine;
