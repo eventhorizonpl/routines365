@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\Frontend;
 
+use App\Form\Model\InvitationEmailFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,6 +21,8 @@ class InvitationType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults([
+            'data_class' => InvitationEmailFormModel::class,
+        ]);
     }
 }

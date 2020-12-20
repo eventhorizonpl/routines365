@@ -61,11 +61,11 @@ class InvitationController extends AbstractController
 
         $form = $this->createForm(InvitationType::class);
         $form->handleRequest($request);
-        $data = $form->getData();
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
+            $invitationEmailFormModel = $form->getData();
             $emailService->sendInvitation(
-                $data['email'],
+                $invitationEmailFormModel->email,
                 $subject,
                 [
                     'first_name' => $firstName,
@@ -76,7 +76,7 @@ class InvitationController extends AbstractController
             );
 
             $savedEmailService->create(
-                $data['email'],
+                $invitationEmailFormModel->email,
                 SavedEmail::TYPE_INVITATION,
                 $user
             );
