@@ -14,6 +14,7 @@ use App\Entity\SentReminder;
 use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class RoutineTest extends AbstractTestCase
@@ -667,5 +668,13 @@ final class RoutineTest extends AbstractTestCase
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setType($type));
         $this->assertEquals($type, $routine->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $routine = new Routine();
+        $this->assertInstanceOf(Routine::class, $routine->setType($type));
     }
 }

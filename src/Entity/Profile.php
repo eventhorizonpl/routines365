@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\ProfileRepository;
 use App\Resource\ConfigResource;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use libphonenumber\PhoneNumber;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
@@ -325,6 +326,10 @@ class Profile
 
     public function setTheme(?string $theme): self
     {
+        if (!(in_array($theme, self::getThemeValidationChoices()))) {
+            throw new InvalidArgumentException('Invalid theme');
+        }
+
         $this->theme = $theme;
 
         return $this;

@@ -8,6 +8,7 @@ use App\Entity\SavedEmail;
 use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class SavedEmailTest extends AbstractTestCase
@@ -216,5 +217,13 @@ final class SavedEmailTest extends AbstractTestCase
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setType($type));
         $this->assertEquals($type, $savedEmail->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $savedEmail = new SavedEmail();
+        $this->assertInstanceOf(SavedEmail::class, $savedEmail->setType($type));
     }
 }

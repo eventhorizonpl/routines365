@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\ReminderMessageRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -196,6 +197,10 @@ class ReminderMessage
 
     public function setThirdPartySystemType(?string $thirdPartySystemType): self
     {
+        if (!(in_array($thirdPartySystemType, self::getThirdPartySystemTypeValidationChoices()))) {
+            throw new InvalidArgumentException('Invalid third party system type');
+        }
+
         $this->thirdPartySystemType = $thirdPartySystemType;
 
         return $this;
@@ -221,6 +226,10 @@ class ReminderMessage
 
     public function setType(string $type): self
     {
+        if (!(in_array($type, self::getTypeValidationChoices()))) {
+            throw new InvalidArgumentException('Invalid type');
+        }
+
         $this->type = $type;
 
         return $this;

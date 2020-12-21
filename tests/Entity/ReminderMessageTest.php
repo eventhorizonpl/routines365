@@ -10,6 +10,7 @@ use App\Entity\ReminderMessage;
 use App\Entity\SentReminder;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class ReminderMessageTest extends AbstractTestCase
@@ -232,6 +233,14 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($thirdPartySystemType, $reminderMessage->getThirdPartySystemType());
     }
 
+    public function testSetThirdPartySystemTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $thirdPartySystemType = 'wrong third party system type';
+        $reminderMessage = new ReminderMessage();
+        $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setThirdPartySystemType($thirdPartySystemType));
+    }
+
     public function testGetType()
     {
         $type = ReminderMessage::TYPE_EMAIL;
@@ -259,5 +268,13 @@ final class ReminderMessageTest extends AbstractTestCase
         $reminderMessage = new ReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setType($type));
         $this->assertEquals($type, $reminderMessage->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $reminderMessage = new ReminderMessage();
+        $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setType($type));
     }
 }

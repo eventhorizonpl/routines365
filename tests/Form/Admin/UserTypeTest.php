@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Form\Admin;
 
+use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\Admin\UserType;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
@@ -54,6 +55,7 @@ final class UserTypeTest extends TypeTestCase
                     'type' => User::TYPE_CUSTOMER,
                     'profile' => [
                         'showMotivationalMessages' => true,
+                        'theme' => Profile::THEME_DARK,
                     ],
                 ],
             ],

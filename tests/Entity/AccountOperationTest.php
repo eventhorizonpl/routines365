@@ -9,6 +9,7 @@ use App\Entity\AccountOperation;
 use App\Entity\ReminderMessage;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class AccountOperationTest extends AbstractTestCase
@@ -269,5 +270,13 @@ final class AccountOperationTest extends AbstractTestCase
         $accountOperation = new AccountOperation();
         $this->assertInstanceOf(AccountOperation::class, $accountOperation->setType($type));
         $this->assertEquals($type, $accountOperation->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $accountOperation = new AccountOperation();
+        $this->assertInstanceOf(AccountOperation::class, $accountOperation->setType($type));
     }
 }

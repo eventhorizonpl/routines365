@@ -8,6 +8,7 @@ use App\Entity\Profile;
 use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\Uid\Uuid;
 
@@ -407,6 +408,14 @@ final class ProfileTest extends AbstractTestCase
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setTheme($theme));
         $this->assertEquals($theme, $profile->getTheme());
+    }
+
+    public function testSetThemeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $theme = 'wrong theme';
+        $profile = new Profile();
+        $this->assertInstanceOf(Profile::class, $profile->setTheme($theme));
     }
 
     public function testGetTimeZone()

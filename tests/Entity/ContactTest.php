@@ -8,6 +8,7 @@ use App\Entity\Contact;
 use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class ContactTest extends AbstractTestCase
@@ -236,6 +237,14 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($status, $contact->getStatus());
     }
 
+    public function testSetStatusException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $status = 'wrong status';
+        $contact = new Contact();
+        $this->assertInstanceOf(Contact::class, $contact->setStatus($status));
+    }
+
     public function testGetTitle()
     {
         $title = 'test title';
@@ -281,5 +290,13 @@ final class ContactTest extends AbstractTestCase
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setType($type));
         $this->assertEquals($type, $contact->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $contact = new Contact();
+        $this->assertInstanceOf(Contact::class, $contact->setType($type));
     }
 }

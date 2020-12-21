@@ -47,7 +47,7 @@ final class ReminderFakerTest extends AbstractDoctrineTestCase
         $sendEmail = true;
         $sendMotivationalMessage = true;
         $sendSms = false;
-        $type = 'test type';
+        $type = Reminder::TYPE_DAILY;
         $reminder = $this->reminderFaker->createReminder(
             $hour,
             $isEnabled,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Form\Admin;
 
+use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\Admin\UserLeadType;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
@@ -53,6 +54,7 @@ final class UserLeadTypeTest extends TypeTestCase
                     'smsNotifications' => 10,
                     'profile' => [
                         'showMotivationalMessages' => true,
+                        'theme' => Profile::THEME_DARK,
                     ],
                 ],
             ],

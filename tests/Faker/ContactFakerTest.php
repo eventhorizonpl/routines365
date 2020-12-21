@@ -41,9 +41,9 @@ final class ContactFakerTest extends AbstractDoctrineTestCase
         $contact = $this->contactFaker->createContact();
         $this->assertInstanceOf(Contact::class, $contact);
         $content = 'test content';
-        $status = 'test status';
+        $status = Contact::STATUS_SPAM;
         $title = 'test title';
-        $type = 'test type';
+        $type = Contact::TYPE_FEATURE_IDEA;
         $contact = $this->contactFaker->createContact(
             $content,
             $status,

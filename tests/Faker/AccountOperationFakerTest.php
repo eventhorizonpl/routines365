@@ -43,7 +43,7 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
         $description = 'test description';
         $emailNotifications = 1;
         $smsNotifications = 2;
-        $type = 'test type';
+        $type = AccountOperation::TYPE_DEPOSIT;
         $accountOperation = $this->accountOperationFaker->createAccountOperation(
             $description,
             $emailNotifications,

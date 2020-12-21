@@ -45,7 +45,7 @@ final class RewardFakerTest extends AbstractDoctrineTestCase
         $name = 'test name';
         $numberOfCompletions = 1;
         $requiredNumberOfCompletions = 2;
-        $type = 'test type';
+        $type = Reward::TYPE_ALL;
         $reward = $this->rewardFaker->createReward(
             $description,
             $isAwarded,

@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Repository\SavedEmailRepository;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -94,6 +95,10 @@ class SavedEmail
 
     public function setType(string $type): self
     {
+        if (!(in_array($type, self::getTypeValidationChoices()))) {
+            throw new InvalidArgumentException('Invalid type');
+        }
+
         $this->type = $type;
 
         return $this;

@@ -43,7 +43,7 @@ final class RoutineFakerTest extends AbstractDoctrineTestCase
         $description = 'test description';
         $isEnabled = true;
         $name = 'test name';
-        $type = 'test type';
+        $type = Routine::TYPE_HOBBY;
         $routine = $this->routineFaker->createRoutine(
             $description,
             $isEnabled,

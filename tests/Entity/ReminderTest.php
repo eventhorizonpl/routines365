@@ -11,6 +11,7 @@ use App\Entity\SentReminder;
 use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class ReminderTest extends AbstractTestCase
@@ -504,5 +505,13 @@ final class ReminderTest extends AbstractTestCase
         $reminder = new Reminder();
         $this->assertInstanceOf(Reminder::class, $reminder->setType($type));
         $this->assertEquals($type, $reminder->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $reminder = new Reminder();
+        $this->assertInstanceOf(Reminder::class, $reminder->setType($type));
     }
 }

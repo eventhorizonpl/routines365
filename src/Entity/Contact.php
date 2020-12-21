@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -148,6 +149,10 @@ class Contact
 
     public function setStatus(string $status): self
     {
+        if (!(in_array($status, self::getStatusValidationChoices()))) {
+            throw new InvalidArgumentException('Invalid status');
+        }
+
         $this->status = $status;
 
         return $this;
@@ -185,6 +190,10 @@ class Contact
 
     public function setType(string $type): self
     {
+        if (!(in_array($type, self::getTypeValidationChoices()))) {
+            throw new InvalidArgumentException('Invalid type');
+        }
+
         $this->type = $type;
 
         return $this;

@@ -41,7 +41,7 @@ final class SavedEmailFakerTest extends AbstractDoctrineTestCase
         $savedEmail = $this->savedEmailFaker->createSavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail);
         $email = 'test email';
-        $type = 'test type';
+        $type = SavedEmail::TYPE_INVITATION;
         $savedEmail = $this->savedEmailFaker->createSavedEmail(
             $email,
             $type

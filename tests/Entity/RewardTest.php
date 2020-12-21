@@ -9,6 +9,7 @@ use App\Entity\Routine;
 use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
 final class RewardTest extends AbstractTestCase
@@ -334,5 +335,13 @@ final class RewardTest extends AbstractTestCase
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setType($type));
         $this->assertEquals($type, $reward->getType());
+    }
+
+    public function testSetTypeException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $type = 'wrong type';
+        $reward = new Reward();
+        $this->assertInstanceOf(Reward::class, $reward->setType($type));
     }
 }

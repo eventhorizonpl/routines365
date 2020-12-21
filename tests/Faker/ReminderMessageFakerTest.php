@@ -41,7 +41,7 @@ final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage);
         $content = 'test content';
-        $type = 'test type';
+        $type = ReminderMessage::TYPE_EMAIL;
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage(
             $content,
             $type
