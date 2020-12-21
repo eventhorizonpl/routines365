@@ -52,6 +52,14 @@ class Quote
 
     /**
      * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $popularity;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\LessThanOrEqual(336)
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("int")
@@ -64,6 +72,7 @@ class Quote
         $this->author = '';
         $this->content = '';
         $this->isVisible = false;
+        $this->popularity = 0;
     }
 
     public function __toString(): string
@@ -104,6 +113,25 @@ class Quote
     {
         $contentMd5 = md5(preg_replace('/[^a-z0-9]/i', '', strtolower($contentMd5)));
         $this->contentMd5 = $contentMd5;
+
+        return $this;
+    }
+
+    public function getPopularity(): int
+    {
+        return $this->popularity;
+    }
+
+    public function incrementPopularity(): self
+    {
+        $this->setPopularity($this->getPopularity() + 1);
+
+        return $this;
+    }
+
+    public function setPopularity(int $popularity): self
+    {
+        $this->popularity = $popularity;
 
         return $this;
     }

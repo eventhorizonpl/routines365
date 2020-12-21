@@ -49,6 +49,14 @@ class QuoteManager
         return $this;
     }
 
+    public function incrementPopularity(Quote $quote): self
+    {
+        $quote->incrementPopularity();
+        $this->save($quote, $quote->getUpdatedBy());
+
+        return $this;
+    }
+
     public function save(Quote $quote, string $actor, bool $flush = true): self
     {
         $quote->setStringLength(mb_strlen((string) $quote));

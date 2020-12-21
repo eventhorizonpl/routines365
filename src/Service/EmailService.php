@@ -125,6 +125,24 @@ class EmailService
         return $result;
     }
 
+    public function sendMotivational(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/motivational.html.twig',
+            'email/motivational.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendNewLead(
         string $email,
         string $subject,

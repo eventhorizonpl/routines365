@@ -1,0 +1,46 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    {{ 'Send a motivational email to a friend'|trans }}
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_errors(form) }}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.email, {'attr': {'placeholder': 'Email address of the person to whom you want to send a motivational message.'|trans}}) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ 'Subject'|trans }}: {{ subject }}
+                            </div>
+                            <hr>
+                            <div class="col-md-12">
+                                {{ include('email/motivational_content.html.twig')|inky_to_html }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-envelope"></i>
+                                    {{ button_label|default('Send'|trans) }}
+                                </button>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Send a motivational email to a friend'|trans }}
+{% endblock %}

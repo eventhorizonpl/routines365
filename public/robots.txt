@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://routines365.com/sitemap.xml

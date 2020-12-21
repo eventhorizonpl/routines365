@@ -1319,11 +1319,39 @@
       </trans-unit>
       <trans-unit id="thO57OD" resname="Expires at">
         <source>Expires at</source>
-        <target>__Expires at</target>
+        <target>Expires at</target>
       </trans-unit>
       <trans-unit id="Xf.fTG6" resname="Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.">
         <source>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</source>
         <target>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</target>
+      </trans-unit>
+      <trans-unit id="oMC3ClJ" resname="sends you a motivational message">
+        <source>sends you a motivational message</source>
+        <target>sends you a motivational message</target>
+      </trans-unit>
+      <trans-unit id="5eRg.mY" resname="Email was sent. You can send motivational message to another person.">
+        <source>Email was sent. You can send motivational message to another person.</source>
+        <target>Email was sent. You can send motivational message to another person.</target>
+      </trans-unit>
+      <trans-unit id="nRz9oSn" resname="Motivate a friend">
+        <source>Motivate a friend</source>
+        <target>Motivate a friend</target>
+      </trans-unit>
+      <trans-unit id="C_PPMOQ" resname="Send a motivational email to a friend">
+        <source>Send a motivational email to a friend</source>
+        <target>Send a motivational email to a friend</target>
+      </trans-unit>
+      <trans-unit id="ZRKqDup" resname="Email address of the person to whom you want to send a motivational message.">
+        <source>Email address of the person to whom you want to send a motivational message.</source>
+        <target>Email address of the person to whom you want to send a motivational message.</target>
+      </trans-unit>
+      <trans-unit id="60zevYK" resname="Quote">
+        <source>Quote</source>
+        <target>Quote</target>
+      </trans-unit>
+      <trans-unit id=".mDYURx" resname="Popularity">
+        <source>Popularity</source>
+        <target>Popularity</target>
       </trans-unit>
     </body>
   </file>

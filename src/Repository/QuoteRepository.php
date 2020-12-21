@@ -56,6 +56,34 @@ class QuoteRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
+    public function findByParametersForFrontend(array $parameters = []): Query
+    {
+        $queryBuilder = $this->createQueryBuilder('q')
+            ->select('q')
+            ->where('q.deletedAt IS NULL')
+            ->andWhere('q.isVisible = :isVisible')
+            ->addOrderBy('q.popularity', 'DESC')
+            ->addOrderBy('q.id', 'DESC')
+            ->setParameter('isVisible', true);
+
+        if (!(empty($parameters))) {
+            if (array_key_exists('query', $parameters)) {
+                $query = $parameters['query'];
+                if ((null !== $query) && ('' !== $query)) {
+                    $queryBuilder->andWhere(
+                        $queryBuilder->expr()->orX(
+                            $queryBuilder->expr()->like('q.author', ':q'),
+                            $queryBuilder->expr()->like('q.content', ':q')
+                        )
+                    )
+                    ->setParameter('q', '%'.$query.'%');
+                }
+            }
+        }
+
+        return $queryBuilder->getQuery();
+    }
+
     public function findOneByStringLength(int $stringLength = null): ?Quote
     {
         $queryBuilder = $this->createQueryBuilder('q')
