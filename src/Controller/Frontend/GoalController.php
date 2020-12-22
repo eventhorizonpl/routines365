@@ -19,6 +19,7 @@ use App\Security\Voter\ProjectVoter;
 use App\Security\Voter\RoutineVoter;
 use App\Service\AchievementService;
 use App\Service\RewardService;
+use DateTimeImmutable;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -106,6 +107,7 @@ class GoalController extends AbstractController
         $this->denyAccessUnlessGranted(GoalVoter::EDIT, $goal);
         $user = $this->getUser();
 
+        $goal->setCompletedAt(new DateTimeImmutable());
         $goal->setIsCompleted(true);
         $goalManager->save($goal, (string) $user);
 

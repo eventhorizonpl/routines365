@@ -1353,6 +1353,10 @@
         <source>Popularity</source>
         <target>Popularity</target>
       </trans-unit>
+      <trans-unit id="mWqftK5" resname="Completed at">
+        <source>Completed at</source>
+        <target>Completed at</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

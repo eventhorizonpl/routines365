@@ -66,6 +66,16 @@ class ProjectManager
         $project->setUpdatedAt($date);
         $project->setUpdatedBy($actor);
 
+        if ((false === $project->getIsCompleted()) &&
+            (null !== $project->getCompletedAt())
+        ) {
+            $project->setCompletedAt(null);
+        } elseif ((true === $project->getIsCompleted()) &&
+            (null === $project->getCompletedAt())
+        ) {
+            $project->setCompletedAt($date);
+        }
+
         $errors = $this->validate($project);
         if (0 !== count($errors)) {
             throw new ManagerException((string) $errors.' '.$project);
