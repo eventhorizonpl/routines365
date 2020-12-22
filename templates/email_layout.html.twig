@@ -19,6 +19,10 @@
                         <item href="https://routines365.com/page/about">About</item>
                         <item href="https://routines365.com/page/contact">Contact</item>
                         <item href="https://routines365.com/page/faq">FAQ</item>
+                        <item href="https://routines365.com/login">Login</item>
+                        {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
+                            <item href="https://routines365.com/register">Register</item>
+                        {% endif %}
                     </menu>
                 </center>
             </columns>
