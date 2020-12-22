@@ -1389,6 +1389,26 @@
         <source>Motivate a friend enabled</source>
         <target>Motivate a friend enabled</target>
       </trans-unit>
+      <trans-unit id="SayJfdh" resname="Collect achievements. This is our way to show you how well you are using this system and its features.">
+        <source>Collect achievements. This is our way to show you how well you are using this system and its features.</source>
+        <target>Collect achievements. This is our way to show you how well you are using this system and its features.</target>
+      </trans-unit>
+      <trans-unit id="c0Bb9rs" resname="You can look at this as a form of not formal competition.">
+        <source>You can look at this as a form of not formal competition.</source>
+        <target>You can look at this as a form of not formal competition.</target>
+      </trans-unit>
+      <trans-unit id="I.vY4JY" resname="It is always good to become better in using your tools.">
+        <source>It is always good to become better in using your tools.</source>
+        <target>It is always good to become better in using your tools.</target>
+      </trans-unit>
+      <trans-unit id="EkJ2n8g" resname="You will receive emails with your weekly/monthly/yearly statistics.">
+        <source>You will receive emails with your weekly/monthly/yearly statistics.</source>
+        <target>You will receive emails with your weekly/monthly/yearly statistics.</target>
+      </trans-unit>
+      <trans-unit id="KHBVpPI" resname="These statistics will allow you to even better assess your progress.">
+        <source>These statistics will allow you to even better assess your progress.</source>
+        <target>These statistics will allow you to even better assess your progress.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
