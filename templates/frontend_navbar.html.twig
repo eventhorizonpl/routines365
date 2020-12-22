@@ -32,7 +32,7 @@
                         <a class="dropdown-item" href="{{ path('frontend_profile_show') }}"><i class="fas fa-cogs"></i> {{ 'Settings'|trans }}</a>
                         <a class="dropdown-item" href="{{ path('frontend_contact_new') }}"><i class="fas fa-envelope"></i> {{ 'Contact form'|trans }}</a>
                         {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_invitation_new') }}"><i class="fas fa-envelope"></i> {{ 'Invite'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('frontend_invitation_send') }}"><i class="fas fa-envelope"></i> {{ 'Invite'|trans }}</a>
                         {% endif %}
                         {% if true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED') %}
                             <a class="dropdown-item" href="{{ path('frontend_quote_index') }}"><i class="fas fa-quote-left"></i> {{ 'Motivate a friend'|trans }}</a>

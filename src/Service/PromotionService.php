@@ -34,7 +34,8 @@ class PromotionService
         );
 
         $date = new DateTimeImmutable();
-        if ((null !== $promotion->getExpiresAt()) &&
+        if ((null !== $promotion) &&
+            (null !== $promotion->getExpiresAt()) &&
             ($promotion->getExpiresAt() < $date)
         ) {
             return null;

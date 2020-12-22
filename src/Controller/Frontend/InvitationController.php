@@ -26,9 +26,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class InvitationController extends AbstractController
 {
     /**
-     * @Route("/new", name="new", methods={"GET","POST"})
+     * @Route("/send", name="send", methods={"GET","POST"})
      */
-    public function new(
+    public function send(
         EmailService $emailService,
         PromotionService $promotionService,
         Request $request,
@@ -86,10 +86,10 @@ class InvitationController extends AbstractController
                 $translator->trans('Email was sent. You can invite another person.')
             );
 
-            return $this->redirectToRoute('frontend_invitation_new');
+            return $this->redirectToRoute('frontend_invitation_send');
         }
 
-        return $this->render('frontend/invitation/new.html.twig', [
+        return $this->render('frontend/invitation/send.html.twig', [
             'first_name' => $firstName,
             'form' => $form->createView(),
             'last_name' => $lastName,
