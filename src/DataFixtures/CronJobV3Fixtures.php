@@ -37,6 +37,24 @@ class CronJobV3Fixtures extends Fixture implements FixtureGroupInterface
                 'name' => 'app:cleanup-sessions',
                 'schedule' => '0 3 * * *',
             ],
+            [
+                'command' => 'app:create-user-kpi --type=weekly',
+                'description' => 'app:create-user-kpi --type=weekly',
+                'name' => 'app:create-user-kpi --type=weekly',
+                'schedule' => '0 4 * * 1',
+            ],
+            [
+                'command' => 'app:create-user-kpi --type=monthly',
+                'description' => 'app:create-user-kpi --type=monthly',
+                'name' => 'app:create-user-kpi --type=monthly',
+                'schedule' => '20 4 1 * *',
+            ],
+            [
+                'command' => 'app:create-user-kpi --type=annually',
+                'description' => 'app:create-user-kpi --type=annually',
+                'name' => 'app:create-user-kpi --type=annually',
+                'schedule' => '40 4 1 1 *',
+            ],
         ];
 
         $cronJobs = [];

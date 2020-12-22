@@ -53,6 +53,7 @@ final class UserLeadTypeTest extends TypeTestCase
                     'emailNotifications' => 10,
                     'smsNotifications' => 10,
                     'profile' => [
+                        'sendWeeklyMonthlyStatistics' => true,
                         'showMotivationalMessages' => true,
                         'theme' => Profile::THEME_DARK,
                     ],

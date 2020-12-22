@@ -14,20 +14,20 @@ trait TimestampableTrait
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(type="datetimetz_immutable")
      */
-    protected $createdAt;
+    protected ?DateTimeImmutable $createdAt = null;
 
     /**
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
-    protected $deletedAt;
+    protected ?DateTimeImmutable $deletedAt = null;
 
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(type="datetimetz_immutable")
      */
-    protected $updatedAt;
+    protected ?DateTimeImmutable $updatedAt = null;
 
     public function getCreatedAt(): ?DateTimeImmutable
     {

@@ -19,12 +19,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
+            {{ form_row(form.sendWeeklyMonthlyStatistics, {'attr': {'class': 'custom-select'}}) }}
+        </div>
+        <div class="col-md-4">
             {{ form_row(form.showMotivationalMessages, {'attr': {'class': 'custom-select'}}) }}
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
             {{ form_row(form.theme, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>

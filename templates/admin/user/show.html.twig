@@ -96,6 +96,16 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Send weekly monthly statistics'|trans }}</th>
+                                <td>
+                                    {% if user.profile.sendWeeklyMonthlyStatistics %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Show motivational messages'|trans }}</th>
                                 <td>
                                     {% if user.profile.showMotivationalMessages %}
@@ -312,6 +322,18 @@
                                         <ul>
                                             {% for routine in user.routinesAll %}
                                                 <li><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'User KPIs'|trans }}</th>
+                                <td>
+                                    {% if user.userKpisAll|length %}
+                                        <ul>
+                                            {% for userKpi in user.userKpisAll %}
+                                                <li><a href="{{ path('admin_user_kpi_show', {'uuid': userKpi.uuid}) }}">{{ userKpi.uuid }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}

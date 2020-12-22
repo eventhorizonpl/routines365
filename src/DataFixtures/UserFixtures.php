@@ -43,8 +43,9 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
             User::TYPE_STAFF
         );
         $phone = $this->phoneNumberUtil->parse('+48881573000');
-        $user->getProfile()->setPhone($phone);
-        $user->getProfile()->setTimezone('Europe/Warsaw');
+        $user->getProfile()->setPhone($phone)
+            ->setSendWeeklyMonthlyStatistics(false)
+            ->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
 
@@ -61,11 +62,12 @@ class UserFixtures extends Fixture implements ContainerAwareInterface
                     User::TYPE_PROSPECT
                 );
                 $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));
-                $user->getProfile()->setFirstName('test'.(string) $userId);
-                $user->getProfile()->setLastName('test'.(string) $userId);
-                $user->getProfile()->setShowMotivationalMessages(true);
-                $user->getProfile()->setPhone($phone);
-                $user->getProfile()->setTimezone('Europe/Warsaw');
+                $user->getProfile()->setFirstName('test'.(string) $userId)
+                    ->setLastName('test'.(string) $userId)
+                    ->setPhone($phone)
+                    ->setSendWeeklyMonthlyStatistics(false)
+                    ->setShowMotivationalMessages(true)
+                    ->setTimezone('Europe/Warsaw');
                 if (null !== $referrerUser) {
                     $user->setReferrer($referrerUser);
                 }

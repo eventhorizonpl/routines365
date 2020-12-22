@@ -1,0 +1,51 @@
+{% extends 'email_layout.html.twig' %}
+
+{% block content %}
+    <container>
+        <row>
+            Hi,<br><br>
+            Here are your {{ user_kpi.type }} statistics.<br><br>
+            <container>
+                <row>
+                    <columns>Awarded rewards: {{ user_kpi.awardedRewardCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.awardedRewardCounter - user_kpi.previousUserKpi.awardedRewardCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>Completed goals: {{ user_kpi.completedGoalCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.completedGoalCounter - user_kpi.previousUserKpi.completedGoalCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>Completed projects: {{ user_kpi.completedProjectCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.completedProjectCounter - user_kpi.previousUserKpi.completedProjectCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>Completed routines: {{ user_kpi.completedRoutineCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.completedRoutineCounter - user_kpi.previousUserKpi.completedRoutineCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>All goals: {{ user_kpi.goalCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.goalCounter - user_kpi.previousUserKpi.goalCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>All notes: {{ user_kpi.noteCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.noteCounter - user_kpi.previousUserKpi.noteCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>All projects: {{ user_kpi.projectCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.projectCounter - user_kpi.previousUserKpi.projectCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>All rewards: {{ user_kpi.rewardCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.rewardCounter - user_kpi.previousUserKpi.rewardCounter }}{% endif %}</columns>
+                </row>
+                <row>
+                    <columns>All routines: {{ user_kpi.routineCounter }}</columns>
+                    <columns>{% if user_kpi.previousUserKpi %}progress: {{ user_kpi.routineCounter - user_kpi.previousUserKpi.routineCounter }}{% endif %}</columns>
+                </row>
+            </container>
+            <br><br>
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endblock %}

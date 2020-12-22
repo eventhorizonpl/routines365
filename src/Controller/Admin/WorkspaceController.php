@@ -21,6 +21,7 @@ use App\Repository\ReminderRepository;
 use App\Repository\RoutineRepository;
 use App\Repository\SavedEmailRepository;
 use App\Repository\SentReminderRepository;
+use App\Repository\UserKpiRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,6 +53,7 @@ class WorkspaceController extends AbstractController
         RoutineRepository $routineRepository,
         SavedEmailRepository $savedEmailRepository,
         SentReminderRepository $sentReminderRepository,
+        UserKpiRepository $userKpiRepository,
         UserRepository $userRepository
     ): Response {
         $accountsCount = $accountRepository->count([]);
@@ -71,6 +73,7 @@ class WorkspaceController extends AbstractController
         $routinesCount = $routineRepository->count([]);
         $savedEmailsCount = $savedEmailRepository->count([]);
         $sentRemindersCount = $sentReminderRepository->count([]);
+        $userKpisCount = $userKpiRepository->count([]);
         $usersCount = $userRepository->count([]);
 
         return $this->render('admin/workspace/index.html.twig', [
@@ -91,6 +94,7 @@ class WorkspaceController extends AbstractController
             'routines_count' => $routinesCount,
             'saved_emails_count' => $savedEmailsCount,
             'sent_reminders_count' => $sentRemindersCount,
+            'user_kpis_count' => $userKpisCount,
             'users_count' => $usersCount,
         ]);
     }

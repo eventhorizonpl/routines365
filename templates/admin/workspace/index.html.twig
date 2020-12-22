@@ -84,6 +84,10 @@
                                 <td>{{ sent_reminders_count }}</td>
                             </tr>
                             <tr>
+                                <td><a href="{{ path('admin_user_kpi_index') }}">{{ 'User KPIs'|trans }}</a></td>
+                                <td>{{ user_kpis_count }}</td>
+                            </tr>
+                            <tr>
                                 <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
                                 <td>{{ users_count }}</td>
                             </tr>
@@ -118,6 +122,16 @@
                                 <td>{{ 'Invitations enabled'|trans }}</td>
                                 <td>
                                     {% if constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'Motivate a friend enabled'|trans }}</td>
+                                <td>
+                                    {% if constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED') %}
                                         <span class="badge badge-success">{{ 'Yes'|trans }}</span>
                                     {% else %}
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>

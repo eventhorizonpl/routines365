@@ -115,6 +115,11 @@ class User implements UserInterface
     private Collection $savedEmails;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserKpi::class)
+     */
+    private Collection $userKpis;
+
+    /**
      * @Assert\Email()
      * @Assert\Length(
      *   max = 180
@@ -186,6 +191,7 @@ class User implements UserInterface
         $this->routines = new ArrayCollection();
         $this->savedEmails = new ArrayCollection();
         $this->type = self::TYPE_PROSPECT;
+        $this->userKpis = new ArrayCollection();
     }
 
     public function __serialize(): array
@@ -614,6 +620,13 @@ class User implements UserInterface
         return $this->rewards;
     }
 
+    public function getRewardsAwarded(): Collection
+    {
+        return $this->rewards->filter(function (Reward $reward) {
+            return (true === $reward->getIsAwarded()) && (null === $reward->getDeletedAt());
+        });
+    }
+
     public function removeReward(Reward $reward): self
     {
         if (true === $this->rewards->contains($reward)) {
@@ -745,6 +758,37 @@ class User implements UserInterface
         }
 
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function adUserKpi(UserKpi $userKpi): self
+    {
+        if (false === $this->userKpis->contains($userKpi)) {
+            $this->userKpis->add($userKpi);
+            $userKpi->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getUserKpis(): Collection
+    {
+        return $this->userKpis->filter(function (UserKpi $userKpi) {
+            return null === $userKpi->getDeletedAt();
+        });
+    }
+
+    public function getUserKpisAll(): Collection
+    {
+        return $this->userKpis;
+    }
+
+    public function removeUserKpi(UserKpi $userKpi): self
+    {
+        if (true === $this->userKpis->contains($userKpi)) {
+            $this->userKpis->removeElement($userKpi);
+        }
 
         return $this;
     }

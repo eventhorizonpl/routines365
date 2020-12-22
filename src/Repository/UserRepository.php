@@ -70,6 +70,24 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $queryBuilder->getQuery();
     }
 
+    public function findByParametersForKpi(): Query
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->select('u, ua, up')
+            ->leftJoin('u.account', 'ua')
+            ->leftJoin('u.profile', 'up')
+            ->where('u.deletedAt IS NULL')
+            ->andWhere('u.isEnabled = :isEnabled')
+            ->andWhere('u.isVerified = :isVerified')
+            ->andWhere('up.sendWeeklyMonthlyStatistics = :sendWeeklyMonthlyStatistics')
+            ->addOrderBy('u.createdAt', 'DESC')
+            ->setParameter('isEnabled', true)
+            ->setParameter('isVerified', true)
+            ->setParameter('sendWeeklyMonthlyStatistics', true);
+
+        return $queryBuilder->getQuery();
+    }
+
     public function findOneByEmail(string $email): ?User
     {
         $queryBuilder = $this->createQueryBuilder('u')

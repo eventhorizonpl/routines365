@@ -13,7 +13,7 @@ trait IsVerifiedTrait
      * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
-    private bool $isVerified;
+    protected bool $isVerified;
 
     public function getIsVerified(): bool
     {

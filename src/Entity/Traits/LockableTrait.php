@@ -13,7 +13,7 @@ trait LockableTrait
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
-    protected $lockedAt;
+    protected ?DateTimeImmutable $lockedAt = null;
 
     public function getLockedAt(): ?DateTimeImmutable
     {

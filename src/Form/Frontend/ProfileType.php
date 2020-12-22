@@ -25,6 +25,10 @@ class ProfileType extends BaseProfileType
                 'help' => 'The phone number is required for proper work of SMS notifications.',
                 'required' => false,
             ])
+            ->add('sendWeeklyMonthlyStatistics', YesNoType::class, [
+                'help' => 'Send weekly/monthly statistics email.',
+                'required' => true,
+            ])
             ->add('showMotivationalMessages', YesNoType::class, [
                 'help' => 'Indicates if you want to see a motivational messages in user interface.',
                 'required' => true,

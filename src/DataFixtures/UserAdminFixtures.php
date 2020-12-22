@@ -51,7 +51,8 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
             User::TYPE_STAFF
         );
         $user = $this->userService->encodePassword($user, 'michal');
-        $user->getProfile()->setTimezone('Europe/Warsaw');
+        $user->getProfile()->setSendWeeklyMonthlyStatistics(false)
+            ->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
 
@@ -65,11 +66,12 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
         );
         $user = $this->userService->encodePassword($user, 'michal');
         $phone = $this->phoneNumberUtil->parse('+48881573056');
-        $user->getProfile()->setFirstName('Michal');
-        $user->getProfile()->setLastName('Piotrowski');
-        $user->getProfile()->setShowMotivationalMessages(true);
-        $user->getProfile()->setPhone($phone);
-        $user->getProfile()->setTimezone('Europe/Warsaw');
+        $user->getProfile()->setFirstName('Michal')
+            ->setLastName('Piotrowski')
+            ->setPhone($phone)
+            ->setSendWeeklyMonthlyStatistics(false)
+            ->setShowMotivationalMessages(true)
+            ->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
 
@@ -81,11 +83,12 @@ class UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fixt
         );
         $user = $this->userService->encodePassword($user, 'ewelina');
         $phone = $this->phoneNumberUtil->parse('+48530573056');
-        $user->getProfile()->setFirstName('Ewelina');
-        $user->getProfile()->setLastName('Piotrowska');
-        $user->getProfile()->setShowMotivationalMessages(true);
-        $user->getProfile()->setPhone($phone);
-        $user->getProfile()->setTimezone('Europe/Warsaw');
+        $user->getProfile()->setFirstName('Ewelina')
+            ->setLastName('Piotrowska')
+            ->setPhone($phone)
+            ->setSendWeeklyMonthlyStatistics(false)
+            ->setShowMotivationalMessages(true)
+            ->setTimezone('Europe/Warsaw');
 
         $this->userManager->save($user);
     }

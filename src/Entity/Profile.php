@@ -94,6 +94,12 @@ class Profile
     private ?int $phoneVerificationCode;
 
     /**
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private ?bool $sendWeeklyMonthlyStatistics;
+
+    /**
      * @Assert\NotNull
      * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
@@ -129,6 +135,7 @@ class Profile
         $this->numberOfPhoneVerificationTries = null;
         $this->phone = null;
         $this->phoneMd5 = null;
+        $this->sendWeeklyMonthlyStatistics = true;
         $this->showMotivationalMessages = true;
         $this->theme = self::THEME_DARK;
         $this->timeZone = null;
@@ -292,6 +299,18 @@ class Profile
         }
 
         return (int) (($itemsCompleted / $itemsToComplete) * 100);
+    }
+
+    public function getSendWeeklyMonthlyStatistics(): ?bool
+    {
+        return $this->sendWeeklyMonthlyStatistics;
+    }
+
+    public function setSendWeeklyMonthlyStatistics(bool $sendWeeklyMonthlyStatistics): self
+    {
+        $this->sendWeeklyMonthlyStatistics = $sendWeeklyMonthlyStatistics;
+
+        return $this;
     }
 
     public function getShowMotivationalMessages(): ?bool

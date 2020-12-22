@@ -23,7 +23,7 @@ class EmailService
         string $email,
         string $subject,
         string $template,
-        string $textTemplate,
+        string $textTemplate = null,
         array $context = []
     ): TemplatedEmail {
         $templatedEmail = (new TemplatedEmail())
@@ -31,8 +31,11 @@ class EmailService
             ->to($email)
             ->subject($subject)
             ->htmlTemplate($template)
-            ->textTemplate($textTemplate)
         ;
+
+        if (null !== $textTemplate) {
+            $templatedEmail->textTemplate($textTemplate);
+        }
 
         if (!(empty($context))) {
             $templatedEmail->context($context);
@@ -189,6 +192,24 @@ class EmailService
             $subject,
             'email/reset_password.html.twig',
             'email/reset_password.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKpi(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kpi.html.twig',
+            null,
             $context
         );
 

@@ -1357,6 +1357,38 @@
         <source>Completed at</source>
         <target>Completed at</target>
       </trans-unit>
+      <trans-unit id="TwHGgSs" resname="Send weekly monthly statistics">
+        <source>Send weekly monthly statistics</source>
+        <target>Send weekly monthly statistics</target>
+      </trans-unit>
+      <trans-unit id="tjMYY8O" resname="R365: Your type statistics">
+        <source>R365: Your type statistics</source>
+        <target>R365: Your type statistics</target>
+      </trans-unit>
+      <trans-unit id="OwiDTgq" resname="User KPIs">
+        <source>User KPIs</source>
+        <target>User KPIs</target>
+      </trans-unit>
+      <trans-unit id="cu7XlgJ" resname="User KPI details">
+        <source>User KPI details</source>
+        <target>User KPI details</target>
+      </trans-unit>
+      <trans-unit id="Vvn6erz" resname="Awarded rewards">
+        <source>Awarded rewards</source>
+        <target>Awarded rewards</target>
+      </trans-unit>
+      <trans-unit id="X4wtjfS" resname="Next User KPI">
+        <source>Next User KPI</source>
+        <target>Next User KPI</target>
+      </trans-unit>
+      <trans-unit id="tXfdj8." resname="Previous User KPI">
+        <source>Previous User KPI</source>
+        <target>Previous User KPI</target>
+      </trans-unit>
+      <trans-unit id="lJyhcbP" resname="Motivate a friend enabled">
+        <source>Motivate a friend enabled</source>
+        <target>Motivate a friend enabled</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

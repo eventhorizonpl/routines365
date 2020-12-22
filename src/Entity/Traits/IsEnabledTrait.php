@@ -13,7 +13,7 @@ trait IsEnabledTrait
      * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
-    private bool $isEnabled;
+    protected bool $isEnabled;
 
     public function getIsEnabled(): ?bool
     {

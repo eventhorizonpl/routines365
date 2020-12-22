@@ -13,14 +13,14 @@ trait IsCompletedTrait
      * @Assert\Type("DateTimeImmutable")
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
-    protected ?DateTimeImmutable $completedAt;
+    protected ?DateTimeImmutable $completedAt = null;
 
     /**
      * @Assert\NotNull
      * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
-    private bool $isCompleted;
+    protected bool $isCompleted;
 
     public function getCompletedAt(): ?DateTimeImmutable
     {

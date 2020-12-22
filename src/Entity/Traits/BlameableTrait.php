@@ -13,20 +13,20 @@ trait BlameableTrait
      * @Assert\Uuid
      * @ORM\Column(type="guid")
      */
-    protected $createdBy;
+    protected ?string $createdBy = null;
 
     /**
      * @Assert\Uuid
      * @ORM\Column(type="guid", nullable=true)
      */
-    protected $deletedBy;
+    protected ?string $deletedBy = null;
 
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Uuid
      * @ORM\Column(type="guid")
      */
-    protected $updatedBy;
+    protected ?string $updatedBy = null;
 
     public function getCreatedBy(): ?string
     {

@@ -85,6 +85,22 @@
                             </tr>
                             <tr>
                                 <th scope="row">
+                                    {{ 'Send weekly monthly statistics'|trans }}
+                                </th>
+                                <td>
+                                    {% if profile.sendWeeklyMonthlyStatistics %}
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
                                     {{ 'Show motivational messages'|trans }}
                                 </th>
                                 <td>

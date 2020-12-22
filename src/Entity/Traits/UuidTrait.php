@@ -13,7 +13,7 @@ trait UuidTrait
      * @Assert\Uuid
      * @ORM\Column(type="guid", unique=true)
      */
-    protected $uuid;
+    protected ?string $uuid = null;
 
     public function getUuid(): ?string
     {

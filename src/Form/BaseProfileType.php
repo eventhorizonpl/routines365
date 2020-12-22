@@ -21,6 +21,7 @@ abstract class BaseProfileType extends AbstractType
             ->add('phone', PhoneNumberType::class, [
                 'required' => false,
             ])
+            ->add('sendWeeklyMonthlyStatistics', YesNoType::class)
             ->add('showMotivationalMessages', YesNoType::class)
             ->add('theme', ChoiceType::class, [
                 'choices' => Profile::getThemeFormChoices(),

@@ -13,7 +13,7 @@ trait IsVisibleTrait
      * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
-    private bool $isVisible;
+    protected bool $isVisible;
 
     public function getIsVisible(): ?bool
     {

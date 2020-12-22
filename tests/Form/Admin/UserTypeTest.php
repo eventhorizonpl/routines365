@@ -54,6 +54,7 @@ final class UserTypeTest extends TypeTestCase
                     'isVerified' => true,
                     'type' => User::TYPE_CUSTOMER,
                     'profile' => [
+                        'sendWeeklyMonthlyStatistics' => true,
                         'showMotivationalMessages' => true,
                         'theme' => Profile::THEME_DARK,
                     ],
