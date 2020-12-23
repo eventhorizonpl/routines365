@@ -136,6 +136,24 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($accountOperationCounter, $kpi->getAccountOperationCounter());
     }
 
+    public function testGetAchievementCounter()
+    {
+        $achievementCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getAchievementCounter());
+        $kpi->setAchievementCounter($achievementCounter);
+        $this->assertEquals($achievementCounter, $kpi->getAchievementCounter());
+        $this->assertIsInt($kpi->getAchievementCounter());
+    }
+
+    public function testSetAchievementCounter()
+    {
+        $achievementCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setAchievementCounter($achievementCounter));
+        $this->assertEquals($achievementCounter, $kpi->getAchievementCounter());
+    }
+
     public function testGetCompletedRoutineCounter()
     {
         $completedRoutineCounter = 10;
@@ -258,6 +276,24 @@ final class KpiTest extends AbstractTestCase
         $kpi = new Kpi();
         $this->assertInstanceOf(Kpi::class, $kpi->setProjectCounter($projectCounter));
         $this->assertEquals($projectCounter, $kpi->getProjectCounter());
+    }
+
+    public function testGetPromotionCounter()
+    {
+        $promotionCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getPromotionCounter());
+        $kpi->setPromotionCounter($promotionCounter);
+        $this->assertEquals($promotionCounter, $kpi->getPromotionCounter());
+        $this->assertIsInt($kpi->getPromotionCounter());
+    }
+
+    public function testSetPromotionCounter()
+    {
+        $promotionCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setPromotionCounter($promotionCounter));
+        $this->assertEquals($promotionCounter, $kpi->getPromotionCounter());
     }
 
     public function testGetQuoteCounter()
@@ -402,5 +438,23 @@ final class KpiTest extends AbstractTestCase
         $kpi = new Kpi();
         $this->assertInstanceOf(Kpi::class, $kpi->setUserCounter($userCounter));
         $this->assertEquals($userCounter, $kpi->getUserCounter());
+    }
+
+    public function testGetUserKpiCounter()
+    {
+        $userKpiCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getUserKpiCounter());
+        $kpi->setUserKpiCounter($userKpiCounter);
+        $this->assertEquals($userKpiCounter, $kpi->getUserKpiCounter());
+        $this->assertIsInt($kpi->getUserKpiCounter());
+    }
+
+    public function testSetUserKpiCounter()
+    {
+        $userKpiCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setUserKpiCounter($userKpiCounter));
+        $this->assertEquals($userKpiCounter, $kpi->getUserKpiCounter());
     }
 }

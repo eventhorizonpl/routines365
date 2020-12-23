@@ -154,6 +154,23 @@ final class ProjectTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $project->getUpdatedAt());
     }
 
+    public function testGetCompletedAt()
+    {
+        $completedAt = new DateTimeImmutable();
+        $project = new Project();
+        $this->assertEquals(null, $project->getCompletedAt());
+        $project->setCompletedAt($completedAt);
+        $this->assertEquals($completedAt, $project->getCompletedAt());
+    }
+
+    public function testSetCompletedAt()
+    {
+        $completedAt = new DateTimeImmutable();
+        $project = new Project();
+        $this->assertInstanceOf(Project::class, $project->setCompletedAt($completedAt));
+        $this->assertEquals($completedAt, $project->getCompletedAt());
+    }
+
     public function testGetIsCompleted()
     {
         $isCompleted = true;

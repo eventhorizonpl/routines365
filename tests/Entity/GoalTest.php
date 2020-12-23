@@ -157,6 +157,23 @@ final class GoalTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $goal->getUpdatedAt());
     }
 
+    public function testGetCompletedAt()
+    {
+        $completedAt = new DateTimeImmutable();
+        $goal = new Goal();
+        $this->assertEquals(null, $goal->getCompletedAt());
+        $goal->setCompletedAt($completedAt);
+        $this->assertEquals($completedAt, $goal->getCompletedAt());
+    }
+
+    public function testSetCompletedAt()
+    {
+        $completedAt = new DateTimeImmutable();
+        $goal = new Goal();
+        $this->assertInstanceOf(Goal::class, $goal->setCompletedAt($completedAt));
+        $this->assertEquals($completedAt, $goal->getCompletedAt());
+    }
+
     public function testGetIsCompleted()
     {
         $isCompleted = true;

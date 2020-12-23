@@ -227,6 +227,31 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals(md5($contentMd5), $quote->getContentMd5());
     }
 
+    public function testGetPopularity()
+    {
+        $popularity = 10;
+        $quote = new Quote();
+        $quote->setPopularity($popularity);
+        $this->assertEquals($popularity, $quote->getPopularity());
+        $this->assertIsInt($quote->getPopularity());
+    }
+
+    public function testIncrementPopularity()
+    {
+        $quote = new Quote();
+        $this->assertEquals(0, $quote->getPopularity());
+        $this->assertInstanceOf(Quote::class, $quote->incrementPopularity());
+        $this->assertEquals(1, $quote->getPopularity());
+    }
+
+    public function testSetPopularity()
+    {
+        $popularity = 10;
+        $quote = new Quote();
+        $this->assertInstanceOf(Quote::class, $quote->setPopularity($popularity));
+        $this->assertEquals($popularity, $quote->getPopularity());
+    }
+
     public function testGetStringLength()
     {
         $stringLength = 10;

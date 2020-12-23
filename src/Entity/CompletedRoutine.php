@@ -61,6 +61,7 @@ class CompletedRoutine
     public function __construct()
     {
         $this->comment = null;
+        $this->date = null;
     }
 
     public function __toString(): string

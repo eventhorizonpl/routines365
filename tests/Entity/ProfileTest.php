@@ -286,6 +286,7 @@ final class ProfileTest extends AbstractTestCase
         $phoneString = '+48 881 573 056';
         $phone = $phoneNumberUtil->parse($phoneString);
         $profile = new Profile();
+        $this->assertEquals(null, $profile->getPhoneString());
         $profile->setPhone($phone);
         $this->assertEquals($phoneString, $profile->getPhoneString());
     }
@@ -361,6 +362,24 @@ final class ProfileTest extends AbstractTestCase
         $profile->setUser($user);
         $this->assertEquals(100, $profile->getProfileCompletenessPercent());
         $this->assertIsInt($profile->getProfileCompletenessPercent());
+    }
+
+    public function testGetSendWeeklyMonthlyStatistics()
+    {
+        $sendWeeklyMonthlyStatistics = true;
+        $profile = new Profile();
+        $this->assertEquals(true, $profile->getSendWeeklyMonthlyStatistics());
+        $profile->setSendWeeklyMonthlyStatistics($sendWeeklyMonthlyStatistics);
+        $this->assertEquals($sendWeeklyMonthlyStatistics, $profile->getSendWeeklyMonthlyStatistics());
+        $this->assertIsBool($profile->getSendWeeklyMonthlyStatistics());
+    }
+
+    public function testSetSendWeeklyMonthlyStatistics()
+    {
+        $sendWeeklyMonthlyStatistics = true;
+        $profile = new Profile();
+        $this->assertInstanceOf(Profile::class, $profile->setSendWeeklyMonthlyStatistics($sendWeeklyMonthlyStatistics));
+        $this->assertEquals($sendWeeklyMonthlyStatistics, $profile->getSendWeeklyMonthlyStatistics());
     }
 
     public function testGetShowMotivationalMessages()

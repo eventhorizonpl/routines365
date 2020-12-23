@@ -5,17 +5,20 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Account;
+use App\Entity\Achievement;
 use App\Entity\CompletedRoutine;
 use App\Entity\Contact;
 use App\Entity\Goal;
 use App\Entity\Note;
 use App\Entity\Profile;
 use App\Entity\Project;
+use App\Entity\Promotion;
 use App\Entity\Reminder;
 use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\SavedEmail;
 use App\Entity\User;
+use App\Entity\UserKpi;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -245,6 +248,50 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($account, $user->getAccount());
     }
 
+    public function testAddAchievement()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getAchievements());
+        $achievement1 = new Achievement();
+        $this->assertInstanceOf(User::class, $user->addAchievement($achievement1));
+        $this->assertCount(1, $user->getAchievements());
+        $achievement2 = new Achievement();
+        $this->assertInstanceOf(User::class, $user->addAchievement($achievement2));
+        $this->assertCount(2, $user->getAchievements());
+    }
+
+    public function testGetAchievements()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getAchievements());
+        $achievement = new Achievement();
+        $this->assertInstanceOf(User::class, $user->addAchievement($achievement));
+        $this->assertCount(1, $user->getAchievements());
+    }
+
+    public function testHasAchievement()
+    {
+        $user = new User();
+        $achievement = new Achievement();
+        $this->assertFalse($user->hasAchievement($achievement));
+        $this->assertInstanceOf(User::class, $user->addAchievement($achievement));
+        $this->assertTrue($user->hasAchievement($achievement));
+        $this->assertIsBool($user->hasAchievement($achievement));
+    }
+
+    public function testRemoveAchievement()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getAchievements());
+        $achievement1 = new Achievement();
+        $this->assertInstanceOf(User::class, $user->addAchievement($achievement1));
+        $this->assertCount(1, $user->getAchievements());
+        $achievement2 = new Achievement();
+        $this->assertInstanceOf(User::class, $user->addAchievement($achievement2));
+        $this->assertCount(2, $user->getAchievements());
+        $this->assertInstanceOf(User::class, $user->removeAchievement($achievement1));
+    }
+
     public function testAddCompletedRoutine()
     {
         $user = new User();
@@ -403,6 +450,19 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getGoalsAll());
     }
 
+    public function testGetGoalsCompleted()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getGoalsCompleted());
+        $goal = new Goal();
+        $this->assertInstanceOf(User::class, $user->addGoal($goal));
+        $this->assertCount(0, $user->getGoalsCompleted());
+        $completedAt = new DateTimeImmutable();
+        $goal->setCompletedAt($completedAt);
+        $goal->setIsCompleted(true);
+        $this->assertCount(1, $user->getGoalsCompleted());
+    }
+
     public function testRemoveGoal()
     {
         $user = new User();
@@ -551,6 +611,19 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getProjectsAll());
     }
 
+    public function testGetProjectsCompleted()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getProjectsCompleted());
+        $project = new Project();
+        $this->assertInstanceOf(User::class, $user->addProject($project));
+        $this->assertCount(0, $user->getProjectsCompleted());
+        $completedAt = new DateTimeImmutable();
+        $project->setCompletedAt($completedAt);
+        $project->setIsCompleted(true);
+        $this->assertCount(1, $user->getProjectsCompleted());
+    }
+
     public function testRemoveProject()
     {
         $user = new User();
@@ -562,6 +635,50 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->addProject($project2));
         $this->assertCount(2, $user->getProjects());
         $this->assertInstanceOf(User::class, $user->removeProject($project1));
+    }
+
+    public function testAddPromotion()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getPromotions());
+        $promotion1 = new Promotion();
+        $this->assertInstanceOf(User::class, $user->addPromotion($promotion1));
+        $this->assertCount(1, $user->getPromotions());
+        $promotion2 = new Promotion();
+        $this->assertInstanceOf(User::class, $user->addPromotion($promotion2));
+        $this->assertCount(2, $user->getPromotions());
+    }
+
+    public function testGetPromotions()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getPromotions());
+        $promotion = new Promotion();
+        $this->assertInstanceOf(User::class, $user->addPromotion($promotion));
+        $this->assertCount(1, $user->getPromotions());
+    }
+
+    public function testHasPromotion()
+    {
+        $user = new User();
+        $promotion = new Promotion();
+        $this->assertFalse($user->hasPromotion($promotion));
+        $this->assertInstanceOf(User::class, $user->addPromotion($promotion));
+        $this->assertTrue($user->hasPromotion($promotion));
+        $this->assertIsBool($user->hasPromotion($promotion));
+    }
+
+    public function testRemovePromotion()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getPromotions());
+        $promotion1 = new Promotion();
+        $this->assertInstanceOf(User::class, $user->addPromotion($promotion1));
+        $this->assertCount(1, $user->getPromotions());
+        $promotion2 = new Promotion();
+        $this->assertInstanceOf(User::class, $user->addPromotion($promotion2));
+        $this->assertCount(2, $user->getPromotions());
+        $this->assertInstanceOf(User::class, $user->removePromotion($promotion1));
     }
 
     public function testAddRecommendation()
@@ -729,6 +846,17 @@ final class UserTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $reward->setDeletedAt($deletedAt);
         $this->assertCount(1, $user->getRewardsAll());
+    }
+
+    public function testGetRewardsAwarded()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getRewardsAwarded());
+        $reward = new Reward();
+        $this->assertInstanceOf(User::class, $user->addReward($reward));
+        $this->assertCount(0, $user->getRewardsAwarded());
+        $reward->setIsAwarded(true);
+        $this->assertCount(1, $user->getRewardsAwarded());
     }
 
     public function testRemoveReward()
@@ -912,6 +1040,55 @@ final class UserTest extends AbstractTestCase
         $type = 'wrong type';
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setType($type));
+    }
+
+    public function testAddUserKpi()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserKpis());
+        $userKpi1 = new UserKpi();
+        $this->assertInstanceOf(User::class, $user->addUserKpi($userKpi1));
+        $this->assertCount(1, $user->getUserKpis());
+        $userKpi2 = new UserKpi();
+        $this->assertInstanceOf(User::class, $user->addUserKpi($userKpi2));
+        $this->assertCount(2, $user->getUserKpis());
+        $deletedAt = new DateTimeImmutable();
+        $userKpi2->setDeletedAt($deletedAt);
+        $this->assertCount(1, $user->getUserKpis());
+    }
+
+    public function testGetUserKpis()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserKpis());
+        $userKpi = new UserKpi();
+        $this->assertInstanceOf(User::class, $user->addUserKpi($userKpi));
+        $this->assertCount(1, $user->getUserKpis());
+    }
+
+    public function testGetUserKpisAll()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserKpisAll());
+        $userKpi = new UserKpi();
+        $this->assertInstanceOf(User::class, $user->addUserKpi($userKpi));
+        $this->assertCount(1, $user->getUserKpisAll());
+        $deletedAt = new DateTimeImmutable();
+        $userKpi->setDeletedAt($deletedAt);
+        $this->assertCount(1, $user->getUserKpisAll());
+    }
+
+    public function testRemoveUserKpi()
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserKpis());
+        $userKpi1 = new UserKpi();
+        $this->assertInstanceOf(User::class, $user->addUserKpi($userKpi1));
+        $this->assertCount(1, $user->getUserKpis());
+        $userKpi2 = new UserKpi();
+        $this->assertInstanceOf(User::class, $user->addUserKpi($userKpi2));
+        $this->assertCount(2, $user->getUserKpis());
+        $this->assertInstanceOf(User::class, $user->removeUserKpi($userKpi1));
     }
 
     public function testGetUsername()

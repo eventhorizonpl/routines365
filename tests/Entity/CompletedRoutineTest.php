@@ -206,6 +206,23 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($comment, $completedRoutine->getComment());
     }
 
+    public function testGetDate()
+    {
+        $date = new DateTimeImmutable();
+        $completedRoutine = new CompletedRoutine();
+        $this->assertEquals(null, $completedRoutine->getDate());
+        $completedRoutine->setDate($date);
+        $this->assertEquals($date, $completedRoutine->getDate());
+    }
+
+    public function testSetDate()
+    {
+        $date = new DateTimeImmutable();
+        $completedRoutine = new CompletedRoutine();
+        $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setDate($date));
+        $this->assertEquals($date, $completedRoutine->getDate());
+    }
+
     public function testGetMinutesDevoted()
     {
         $minutesDevoted = 10;

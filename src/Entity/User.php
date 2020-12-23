@@ -762,7 +762,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function adUserKpi(UserKpi $userKpi): self
+    public function addUserKpi(UserKpi $userKpi): self
     {
         if (false === $this->userKpis->contains($userKpi)) {
             $this->userKpis->add($userKpi);
