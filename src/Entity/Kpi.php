@@ -40,6 +40,14 @@ class Kpi
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */
+    private int $achievementCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
     private int $completedRoutineCounter;
 
     /**
@@ -88,6 +96,14 @@ class Kpi
      * @ORM\Column(type="integer")
      */
     private int $projectCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $promotionCounter;
 
     /**
      * @Assert\GreaterThanOrEqual(0)
@@ -153,16 +169,26 @@ class Kpi
      */
     private int $userCounter;
 
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @ORM\Column(type="integer")
+     */
+    private int $userKpiCounter;
+
     public function __construct()
     {
         $this->accountCounter = 0;
         $this->accountOperationCounter = 0;
+        $this->achievementCounter = 0;
         $this->completedRoutineCounter = 0;
         $this->contactCounter = 0;
         $this->goalCounter = 0;
         $this->noteCounter = 0;
         $this->profileCounter = 0;
         $this->projectCounter = 0;
+        $this->promotionCounter = 0;
         $this->quoteCounter = 0;
         $this->reminderCounter = 0;
         $this->reminderMessageCounter = 0;
@@ -171,6 +197,7 @@ class Kpi
         $this->savedEmailCounter = 0;
         $this->sentReminderCounter = 0;
         $this->userCounter = 0;
+        $this->userKpiCounter = 0;
     }
 
     public function __toString(): string
@@ -198,6 +225,18 @@ class Kpi
     public function setAccountOperationCounter(int $accountOperationCounter): self
     {
         $this->accountOperationCounter = $accountOperationCounter;
+
+        return $this;
+    }
+
+    public function getAchievementCounter(): int
+    {
+        return $this->achievementCounter;
+    }
+
+    public function setAchievementCounter(int $achievementCounter): self
+    {
+        $this->achievementCounter = $achievementCounter;
 
         return $this;
     }
@@ -282,6 +321,18 @@ class Kpi
     public function setProjectCounter(int $projectCounter): self
     {
         $this->projectCounter = $projectCounter;
+
+        return $this;
+    }
+
+    public function getPromotionCounter(): int
+    {
+        return $this->promotionCounter;
+    }
+
+    public function setPromotionCounter(int $promotionCounter): self
+    {
+        $this->promotionCounter = $promotionCounter;
 
         return $this;
     }
@@ -378,6 +429,18 @@ class Kpi
     public function setUserCounter(int $userCounter): self
     {
         $this->userCounter = $userCounter;
+
+        return $this;
+    }
+
+    public function getUserKpiCounter(): int
+    {
+        return $this->userKpiCounter;
+    }
+
+    public function setUserKpiCounter(int $userKpiCounter): self
+    {
+        $this->userKpiCounter = $userKpiCounter;
 
         return $this;
     }

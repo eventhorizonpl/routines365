@@ -629,10 +629,6 @@
         <source>Profiles</source>
         <target>Profiles</target>
       </trans-unit>
-      <trans-unit id="mFlZeFM" resname="Project">
-        <source>Project</source>
-        <target>Project</target>
-      </trans-unit>
       <trans-unit id="Pv08lHB" resname="Routine details">
         <source>Routine details</source>
         <target>Routine details</target>
@@ -1408,6 +1404,26 @@
       <trans-unit id="KHBVpPI" resname="These statistics will allow you to even better assess your progress.">
         <source>These statistics will allow you to even better assess your progress.</source>
         <target>These statistics will allow you to even better assess your progress.</target>
+      </trans-unit>
+      <trans-unit id="6oMuPig" resname="Motivational messages">
+        <source>Motivational messages</source>
+        <target>Motivational messages</target>
+      </trans-unit>
+      <trans-unit id="1hH45eM" resname="You will see motivational messages while using this system.">
+        <source>You will see motivational messages while using this system.</source>
+        <target>You will see motivational messages while using this system.</target>
+      </trans-unit>
+      <trans-unit id="qUZSAwJ" resname="You can receive motivational messages in reminders.">
+        <source>You can receive motivational messages in reminders.</source>
+        <target>You can receive motivational messages in reminders.</target>
+      </trans-unit>
+      <trans-unit id="l6KNkE7" resname="You can send a motivational message to your friend.">
+        <source>You can send a motivational message to your friend.</source>
+        <target>You can send a motivational message to your friend.</target>
+      </trans-unit>
+      <trans-unit id="mFlZeFM" resname="Project">
+        <source>Project</source>
+        <target>Project</target>
       </trans-unit>
     </body>
   </file>

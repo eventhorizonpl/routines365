@@ -72,6 +72,10 @@
                                 <td>{{ reminder_messages_count }}</td>
                             </tr>
                             <tr>
+                                <td><a href="{{ path('admin_reward_index') }}">{{ 'Rewards'|trans }}</a></td>
+                                <td>{{ rewards_count }}</td>
+                            </tr>
+                            <tr>
                                 <td><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></td>
                                 <td>{{ routines_count }}</td>
                             </tr>
@@ -84,12 +88,12 @@
                                 <td>{{ sent_reminders_count }}</td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_kpi_index') }}">{{ 'User KPIs'|trans }}</a></td>
-                                <td>{{ user_kpis_count }}</td>
-                            </tr>
-                            <tr>
                                 <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
                                 <td>{{ users_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_user_kpi_index') }}">{{ 'User KPIs'|trans }}</a></td>
+                                <td>{{ user_kpis_count }}</td>
                             </tr>
                         </tbody>
                     </table>
