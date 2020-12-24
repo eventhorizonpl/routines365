@@ -18,12 +18,14 @@ use Faker\Generator;
 class UserFaker
 {
     private AccountOperationFaker $accountOperationFaker;
+    private AchievementFaker $achievementFaker;
     private CompletedRoutineFaker $completedRoutineFaker;
     private ContactFaker $contactFaker;
     private Generator $faker;
     private GoalFaker $goalFaker;
     private NoteFaker $noteFaker;
     private ProjectFaker $projectFaker;
+    private PromotionFaker $promotionFaker;
     private QuoteFaker $quoteFaker;
     private ReminderFaker $reminderFaker;
     private ReminderMessageFaker $reminderMessageFaker;
@@ -39,11 +41,13 @@ class UserFaker
 
     public function __construct(
         AccountOperationFaker $accountOperationFaker,
+        AchievementFaker $achievementFaker,
         CompletedRoutineFaker $completedRoutineFaker,
         ContactFaker $contactFaker,
         GoalFaker $goalFaker,
         NoteFaker $noteFaker,
         ProjectFaker $projectFaker,
+        PromotionFaker $promotionFaker,
         QuoteFaker $quoteFaker,
         ReminderFaker $reminderFaker,
         ReminderMessageFaker $reminderMessageFaker,
@@ -58,12 +62,14 @@ class UserFaker
         UserService $userService
     ) {
         $this->accountOperationFaker = $accountOperationFaker;
+        $this->achievementFaker = $achievementFaker;
         $this->completedRoutineFaker = $completedRoutineFaker;
         $this->contactFaker = $contactFaker;
         $this->faker = Factory::create();
         $this->goalFaker = $goalFaker;
         $this->noteFaker = $noteFaker;
         $this->projectFaker = $projectFaker;
+        $this->promotionFaker = $promotionFaker;
         $this->quoteFaker = $quoteFaker;
         $this->reminderFaker = $reminderFaker;
         $this->reminderMessageFaker = $reminderMessageFaker;

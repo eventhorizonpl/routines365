@@ -79,7 +79,7 @@ class UserKpiService
         $page = 1;
         $limit = 5;
 
-        $usersQuery = $this->userRepository->findByParametersForKpi();
+        $usersQuery = $this->userRepository->findForKpi();
 
         do {
             $users = $this->paginator->paginate($usersQuery, $page, $limit);

@@ -80,6 +80,38 @@ final class QuoteRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($quotes);
     }
 
+    public function testFindByParametersForFrontend()
+    {
+        $this->purge();
+        $quote = $this->quoteFaker->createQuotePersisted();
+
+        $quotes = $this->quoteRepository->findByParametersForFrontend()->getResult();
+        if (true === $quote->getIsVisible()) {
+            $this->assertCount(1, $quotes);
+        } else {
+            $this->assertCount(0, $quotes);
+        }
+        $this->assertIsArray($quotes);
+
+        $parameters = [
+            'query' => $quote->getAuthor(),
+        ];
+        $quotes = $this->quoteRepository->findByParametersForFrontend($parameters)->getResult();
+        if (true === $quote->getIsVisible()) {
+            $this->assertCount(1, $quotes);
+        } else {
+            $this->assertCount(0, $quotes);
+        }
+        $this->assertIsArray($quotes);
+
+        $parameters = [
+            'query' => 'wrong email',
+        ];
+        $quotes = $this->quoteRepository->findByParametersForFrontend($parameters)->getResult();
+        $this->assertCount(0, $quotes);
+        $this->assertIsArray($quotes);
+    }
+
     public function testFindOneByStringLength()
     {
         $this->purge();

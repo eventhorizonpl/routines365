@@ -8,11 +8,13 @@ use App\Entity\User;
 use App\Factory\SentReminderFactory;
 use App\Factory\UserFactory;
 use App\Faker\AccountOperationFaker;
+use App\Faker\AchievementFaker;
 use App\Faker\CompletedRoutineFaker;
 use App\Faker\ContactFaker;
 use App\Faker\GoalFaker;
 use App\Faker\NoteFaker;
 use App\Faker\ProjectFaker;
+use App\Faker\PromotionFaker;
 use App\Faker\QuoteFaker;
 use App\Faker\ReminderFaker;
 use App\Faker\ReminderMessageFaker;
@@ -35,6 +37,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?AchievementFaker $achievementFaker;
+    /**
+     * @inject
+     */
     private ?CompletedRoutineFaker $completedRoutineFaker;
     /**
      * @inject
@@ -52,6 +58,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
      * @inject
      */
     private ?ProjectFaker $projectFaker;
+    /**
+     * @inject
+     */
+    private ?PromotionFaker $promotionFaker;
     /**
      * @inject
      */
@@ -108,11 +118,13 @@ final class UserFakerTest extends AbstractDoctrineTestCase
     protected function tearDown(): void
     {
         unset($this->accountOperationFaker);
+        unset($this->achievementFaker);
         unset($this->completedRoutineFaker);
         unset($this->contactFaker);
         unset($this->goalFaker);
         unset($this->noteFaker);
         unset($this->projectFaker);
+        unset($this->promotionFaker);
         unset($this->quoteFaker);
         unset($this->reminderFaker);
         unset($this->reminderMessageFaker);
@@ -134,11 +146,13 @@ final class UserFakerTest extends AbstractDoctrineTestCase
     {
         $userFaker = new UserFaker(
             $this->accountOperationFaker,
+            $this->achievementFaker,
             $this->completedRoutineFaker,
             $this->contactFaker,
             $this->goalFaker,
             $this->noteFaker,
             $this->projectFaker,
+            $this->promotionFaker,
             $this->quoteFaker,
             $this->reminderFaker,
             $this->reminderMessageFaker,

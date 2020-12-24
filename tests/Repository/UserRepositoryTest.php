@@ -87,6 +87,20 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($users);
     }
 
+    public function testFindForKpi()
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $users = $this->userRepository->findForKpi()->getResult();
+        if ((true === $user->getIsEnabled()) && (true === $user->getIsVerified())) {
+            $this->assertCount(1, $users);
+        } else {
+            $this->assertCount(0, $users);
+        }
+        $this->assertIsArray($users);
+    }
+
     public function testFindOneByEmail()
     {
         $this->purge();

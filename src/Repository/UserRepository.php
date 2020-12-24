@@ -70,7 +70,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $queryBuilder->getQuery();
     }
 
-    public function findByParametersForKpi(): Query
+    public function findForKpi(): Query
     {
         $queryBuilder = $this->createQueryBuilder('u')
             ->select('u, ua, up')
