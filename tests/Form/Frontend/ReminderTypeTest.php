@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Form\Frontend;
 
-use App\Entity\Project;
+use App\Entity\Reminder;
 use App\Faker\UserFaker;
-use App\Form\Frontend\ProjectType;
+use App\Form\Frontend\ReminderType;
 use App\Tests\AbstractTypeDoctrineTestCase;
+use DateTimeImmutable;
 
-final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
+final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
 {
     /**
      * @inject
@@ -28,32 +29,23 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
      */
     public function testSubmitValidData(array $formData)
     {
-        $model = new Project();
-        $form = $this->factory->create(ProjectType::class, $model);
-        $expected = new Project();
-        $form->submit($formData);
-        $this->assertTrue($form->isSynchronized());
-    }
-
-    /**
-     * @dataProvider getValidTestData
-     */
-    public function testSubmitValidData2(array $formData)
-    {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
 
-        $model = $user->getProjects()->first();
-        $form = $this->factory->create(ProjectType::class, $model);
-        $expected = new Project();
+        $model = $user->getReminders()->first();
+        $form = $this->factory->create(ReminderType::class, $model);
+        $expected = new Reminder();
         $form->submit($formData);
         $this->assertTrue($form->isSynchronized());
     }
 
     public function testCustomFormView()
     {
-        $formData = new Project();
-        $view = $this->factory->create(ProjectType::class, $formData)
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $formData = $user->getReminders()->first();
+        $view = $this->factory->create(ReminderType::class, $formData)
             ->createView();
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
@@ -64,9 +56,13 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
         return [
             [
                 'data' => [
-                    'description' => 'test description',
-                    'name' => 'test name',
-                    'isCompleted' => true,
+                    'hour' => new DateTimeImmutable(),
+                    'isEnabled' => true,
+                    'minutesBefore' => 5,
+                    'sendEmail' => true,
+                    'sendMotivationalMessage' => true,
+                    'sendSms' => true,
+                    'type' => Reminder::TYPE_DAILY,
                 ],
             ],
         ];

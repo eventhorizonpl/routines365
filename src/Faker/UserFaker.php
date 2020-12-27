@@ -147,6 +147,7 @@ class UserFaker
     public function createRichUserPersisted()
     {
         $user = $this->createUser();
+        $user->getProfile()->setCountry('US');
         $accountOperation = $this->accountOperationFaker->createAccountOperation(
             null,
             null,
