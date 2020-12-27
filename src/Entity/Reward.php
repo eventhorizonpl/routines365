@@ -25,71 +25,65 @@ class Reward
     public const TYPE_COMPLETED_GOAL = 'completed_goal';
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="rewards", targetEntity=Routine::class)
      */
     private ?Routine $routine;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="rewards", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
     private bool $isAwarded;
 
     /**
-     * @Assert\Length(
-     *   max = 64
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 64, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(90)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(90, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $numberOfCompletions;
 
     /**
-     * @Assert\Choice(callback="getRequiredNumberOfCompletionsValidationChoices")
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(90)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Choice(callback="getRequiredNumberOfCompletionsValidationChoices", groups={"system"})
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(90, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $requiredNumberOfCompletions;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 24
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
+     * @Assert\Length(max = 24, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=24, type="string")
      */
     private string $type;

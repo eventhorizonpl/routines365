@@ -11,20 +11,20 @@ trait TimestampableTrait
 {
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $createdAt = null;
 
     /**
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $deletedAt = null;
 
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $updatedAt = null;

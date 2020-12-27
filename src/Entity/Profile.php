@@ -36,27 +36,21 @@ class Profile
     private User $user;
 
     /**
-     * @Assert\Length(
-     *   max = 2
-     * )
+     * @Assert\Length(max = 2)
      * @Assert\Type("string")
      * @ORM\Column(length=2, nullable=true, type="string")
      */
     private ?string $country;
 
     /**
-     * @Assert\Length(
-     *   max = 64
-     * )
+     * @Assert\Length(max = 64)
      * @Assert\Type("string")
      * @ORM\Column(length=64, nullable=true, type="string")
      */
     private ?string $firstName;
 
     /**
-     * @Assert\Length(
-     *   max = 64
-     * )
+     * @Assert\Length(max = 64)
      * @Assert\Type("string")
      * @ORM\Column(length=64, nullable=true, type="string")
      */

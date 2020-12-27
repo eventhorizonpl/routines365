@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IdTrait
 {
     /**
-     * @Assert\Type("int")
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue()
      * @ORM\Id()

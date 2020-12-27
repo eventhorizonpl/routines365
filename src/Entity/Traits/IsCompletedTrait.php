@@ -10,14 +10,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IsCompletedTrait
 {
     /**
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $completedAt = null;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
     protected bool $isCompleted;

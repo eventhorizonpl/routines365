@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IsEnabledTrait
 {
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
     protected bool $isEnabled;

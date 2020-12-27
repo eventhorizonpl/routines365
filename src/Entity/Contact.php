@@ -30,59 +30,49 @@ class Contact
     public const TYPE_QUESTION = 'question';
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="contacts", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\Length(
-     *   max = 2048
-     * )
-     * @Assert\Type("string")
+     * @Assert\Length(max = 2048, groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=2048, nullable=true, type="string")
      */
     private ?string $comment;
 
     /**
-     * @Assert\Length(
-     *   max = 2048
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 2048, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=2048, type="string")
      */
     private string $content;
 
     /**
-     * @Assert\Choice(callback="getStatusValidationChoices")
-     * @Assert\Length(
-     *   max = 8
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getStatusValidationChoices", groups={"system"})
+     * @Assert\Length(max = 8, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
     private string $status;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
     private string $title;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 16
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
+     * @Assert\Length(max = 16, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=16, type="string")
      */
     private string $type;

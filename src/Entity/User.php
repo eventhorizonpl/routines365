@@ -120,54 +120,48 @@ class User implements UserInterface
     private Collection $userKpis;
 
     /**
-     * @Assert\Email()
-     * @Assert\Length(
-     *   max = 180
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Email(groups={"system"})
+     * @Assert\Length(max = 180, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=180, type="string", unique=true)
      */
     private string $email;
 
     /**
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected $lastLoginAt;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
+     * @Assert\Length(max = 255, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string")
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
     private string $password;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Uuid
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid", unique=true)
      */
     private string $referrerCode;
 
     /**
-     * @Assert\Choice(callback="getRolesFormChoices", multiple=true)
-     * @Assert\NotNull
-     * @Assert\Type("array")
+     * @Assert\Choice(callback="getRolesFormChoices", multiple=true, groups={"system"})
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("array", groups={"system"})
      * @ORM\Column(type="json")
      */
     private array $roles = [];
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 8
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
+     * @Assert\Length(max = 8, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
     private string $type;

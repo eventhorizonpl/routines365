@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait LockableTrait
 {
     /**
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $lockedAt = null;

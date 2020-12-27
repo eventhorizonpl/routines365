@@ -30,7 +30,7 @@ class Account
     private Collection $accountOperations;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid()
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="account", targetEntity=User::class)
      */
@@ -38,7 +38,7 @@ class Account
 
     /**
      * @Assert\GreaterThanOrEqual(0)
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */
@@ -46,7 +46,7 @@ class Account
 
     /**
      * @Assert\GreaterThanOrEqual(0)
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type("int")
      * @ORM\Column(type="integer")
      */

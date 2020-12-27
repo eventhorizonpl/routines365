@@ -19,35 +19,31 @@ class Note
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="notes", targetEntity=Routine::class)
      */
     private ?Routine $routine;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="notes", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\Length(
-     *   max = 2048
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 2048, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=2048, type="string")
      */
     private string $content;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
     private string $title;

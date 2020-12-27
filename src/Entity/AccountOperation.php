@@ -24,53 +24,49 @@ class AccountOperation
     public const TYPE_WITHDRAW = 'withdraw';
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="accountOperations", targetEntity=Account::class)
      */
     private Account $account;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="accountOperation", targetEntity=ReminderMessage::class)
      */
     private ?ReminderMessage $reminderMessage;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
     private string $description;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(1024)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(1024, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $emailNotifications;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(1024)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(1024, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $smsNotifications;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 8
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
+     * @Assert\Length(max = 8, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
     private string $type;

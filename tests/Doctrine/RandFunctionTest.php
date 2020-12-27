@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Entity;
+namespace App\Tests\Doctrine;
 
 use App\Doctrine\RandFunction;
 use App\Tests\AbstractTestCase;

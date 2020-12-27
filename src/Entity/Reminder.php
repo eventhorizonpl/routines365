@@ -46,85 +46,83 @@ class Reminder
     private Collection $sentReminders;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=Routine::class)
      */
     private Routine $routine;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="time_immutable")
      */
     private DateTimeImmutable $hour;
 
     /**
-     * @Assert\Choice(callback="getMinutesBeforeValidationChoices")
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(60)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Choice(callback="getMinutesBeforeValidationChoices", groups={"system"})
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(60, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $minutesBefore;
 
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $nextDate;
 
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $nextDateLocalTime;
 
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $previousDate;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendEmail;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendMotivationalMessage;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendSms;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 10
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
+     * @Assert\Length(max = 10, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=10, type="string")
      */
     private string $type;

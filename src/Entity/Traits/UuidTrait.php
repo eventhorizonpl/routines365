@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait UuidTrait
 {
     /**
-     * @Assert\NotBlank
-     * @Assert\Uuid
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid", unique=true)
      */
     protected ?string $uuid = null;

@@ -194,6 +194,7 @@ class UserFaker
             ->setReminder($reminder)
             ->setRoutine($routine);
         $this->sentReminderManager->save($sentReminder);
+        $user->getRoutines()->first()->addSentReminder($sentReminder);
 
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage();
         $reminderMessage
@@ -201,6 +202,7 @@ class UserFaker
             ->setReminder($reminder)
             ->setSentReminder($sentReminder);
         $this->reminderMessageManager->save($reminderMessage);
+        $user->getReminders()->first()->addReminderMessage($reminderMessage);
 
         return $user;
     }

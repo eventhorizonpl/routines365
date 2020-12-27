@@ -20,40 +20,38 @@ class CompletedRoutine
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="completedRoutines", targetEntity=Routine::class)
      */
     private Routine $routine;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="completedRoutines", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $comment;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Type("DateTimeImmutable")
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $date;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(1024)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(1024, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $minutesDevoted;

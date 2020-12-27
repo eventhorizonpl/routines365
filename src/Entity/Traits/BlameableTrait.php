@@ -10,20 +10,20 @@ trait BlameableTrait
 {
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Uuid
+     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid")
      */
     protected ?string $createdBy = null;
 
     /**
-     * @Assert\Uuid
+     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid", nullable=true)
      */
     protected ?string $deletedBy = null;
 
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Uuid
+     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid")
      */
     protected ?string $updatedBy = null;

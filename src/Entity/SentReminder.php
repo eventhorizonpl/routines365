@@ -20,7 +20,7 @@ class SentReminder
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="sentReminders", targetEntity=Reminder::class)
      */
@@ -32,7 +32,7 @@ class SentReminder
     private Collection $reminderMessages;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="sentReminders", targetEntity=Routine::class)
      */

@@ -42,7 +42,7 @@ class AchievementFaker
         }
 
         if (null === $name) {
-            $name = $this->faker->sentence(5);
+            $name = $this->faker->sentence(1);
         }
 
         if (null === $requirement) {

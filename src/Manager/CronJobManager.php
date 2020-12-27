@@ -66,7 +66,7 @@ class CronJobManager
 
     public function validate(CronJob $cronJob): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($cronJob, null, ['system']);
+        $errors = $this->validator->validate($cronJob);
 
         return $errors;
     }

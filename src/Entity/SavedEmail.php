@@ -24,30 +24,26 @@ class SavedEmail
     public const TYPE_MOTIVATIONAL = 'motivational';
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="savedEmails", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\Email()
-     * @Assert\Length(
-     *   max = 180
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Email(groups={"system"})
+     * @Assert\Length(max = 180, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=180, type="string")
      */
     private string $email;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices")
-     * @Assert\Length(
-     *   max = 16
-     * )
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
+     * @Assert\Length(max = 16, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=16, type="string")
      */
     private string $type;

@@ -21,48 +21,42 @@ class Quote
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Length(
-     *   max = 64
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 64, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=64, type="string")
      */
     private string $author;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
     private string $content;
 
     /**
-     * @Assert\Length(
-     *   max = 32
-     * )
+     * @Assert\Length(max = 32, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string")
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=32, type="string", unique=true)
      */
     private string $contentMd5;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $popularity;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(336)
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(336, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int")
+     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
     private int $stringLength;

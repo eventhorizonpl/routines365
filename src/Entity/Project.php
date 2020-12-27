@@ -28,27 +28,23 @@ class Project
     private Collection $goals;
 
     /**
-     * @Assert\Valid
+     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="projects", targetEntity=User::class)
      */
     private User $user;
 
     /**
-     * @Assert\Length(
-     *   max = 255
-     * )
-     * @Assert\Type("string")
+     * @Assert\Length(max = 255, groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
 
     /**
-     * @Assert\Length(
-     *   max = 64
-     * )
-     * @Assert\NotBlank
-     * @Assert\Type("string")
+     * @Assert\Length(max = 64, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;
