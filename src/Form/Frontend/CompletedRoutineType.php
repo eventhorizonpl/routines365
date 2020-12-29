@@ -31,6 +31,7 @@ class CompletedRoutineType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => CompletedRoutine::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

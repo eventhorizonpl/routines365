@@ -34,43 +34,43 @@ class Achievement
     private Collection $users;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 255, groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
 
     /**
-     * @Assert\GreaterThanOrEqual(1, groups={"system"})
-     * @Assert\LessThanOrEqual(10, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
+     * @Assert\GreaterThanOrEqual(1, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
     private int $level;
 
     /**
-     * @Assert\Length(max = 64, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 64, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;
 
     /**
-     * @Assert\GreaterThanOrEqual(1, groups={"system"})
-     * @Assert\LessThanOrEqual(1000, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
+     * @Assert\GreaterThanOrEqual(1, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(1000, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
     private int $requirement;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 24, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
+     * @Assert\Length(max = 24, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=24, type="string")
      */
     private string $type;
@@ -79,8 +79,9 @@ class Achievement
     {
         $this->description = null;
         $this->isEnabled = true;
-        $this->level = 0;
+        $this->level = 1;
         $this->name = '';
+        $this->requirement = 1;
         $this->users = new ArrayCollection();
     }
 

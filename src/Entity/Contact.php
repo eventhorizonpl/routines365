@@ -37,16 +37,16 @@ class Contact
     private User $user;
 
     /**
-     * @Assert\Length(max = 2048, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 2048, groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=2048, nullable=true, type="string")
      */
     private ?string $comment;
 
     /**
-     * @Assert\Length(max = 2048, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 2048, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=2048, type="string")
      */
     private string $content;
@@ -61,18 +61,18 @@ class Contact
     private string $status;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 255, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
     private string $title;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 16, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
+     * @Assert\Length(max = 16, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=16, type="string")
      */
     private string $type;

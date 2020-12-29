@@ -10,11 +10,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
  * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
+ * @UniqueEntity("code", groups={"form", "system"})
  */
 class Promotion
 {
@@ -34,57 +36,57 @@ class Promotion
     private Collection $users;
 
     /**
-     * @Assert\Length(max = 64, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 64, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string", unique=true)
      */
     private string $code;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 255, groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(10, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
+     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
     private int $emailNotifications;
 
     /**
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected $expiresAt;
 
     /**
-     * @Assert\Length(max = 128, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 128, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=128, type="string")
      */
     private string $name;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(10, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
+     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
     private int $smsNotifications;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 24, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
+     * @Assert\Length(max = 24, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=24, type="string")
      */
     private string $type;

@@ -34,6 +34,7 @@ class AchievementType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Achievement::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

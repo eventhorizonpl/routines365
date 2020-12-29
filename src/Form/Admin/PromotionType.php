@@ -26,6 +26,7 @@ class PromotionType extends AbstractType
             ->add('expiresAt', DateTimeType::class, [
                 'date_widget' => 'single_text',
                 'input' => 'datetime_immutable',
+                'required' => false,
             ])
             ->add('isEnabled', YesNoType::class)
             ->add('name')
@@ -40,6 +41,7 @@ class PromotionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Promotion::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

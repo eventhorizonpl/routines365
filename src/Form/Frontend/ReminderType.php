@@ -44,6 +44,7 @@ class ReminderType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reminder::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

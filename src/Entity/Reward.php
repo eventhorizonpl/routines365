@@ -39,8 +39,8 @@ class Reward
     private User $user;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 255, groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
@@ -53,9 +53,9 @@ class Reward
     private bool $isAwarded;
 
     /**
-     * @Assert\Length(max = 64, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 64, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;
@@ -70,20 +70,20 @@ class Reward
     private int $numberOfCompletions;
 
     /**
-     * @Assert\Choice(callback="getRequiredNumberOfCompletionsValidationChoices", groups={"system"})
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(90, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
+     * @Assert\Choice(callback="getRequiredNumberOfCompletionsValidationChoices", groups={"form", "system"})
+     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(90, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
     private int $requiredNumberOfCompletions;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 24, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
+     * @Assert\Length(max = 24, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=24, type="string")
      */
     private string $type;

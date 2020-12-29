@@ -21,17 +21,17 @@ class Quote
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Length(max = 64, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 64, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string")
      */
     private string $author;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Length(max = 255, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
     private string $content;

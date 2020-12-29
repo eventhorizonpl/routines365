@@ -26,6 +26,7 @@ class QuoteType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Quote::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

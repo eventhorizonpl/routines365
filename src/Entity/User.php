@@ -120,10 +120,10 @@ class User implements UserInterface
     private Collection $userKpis;
 
     /**
-     * @Assert\Email(groups={"system"})
-     * @Assert\Length(max = 180, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Email(groups={"form", "system"})
+     * @Assert\Length(max = 180, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=180, type="string", unique=true)
      */
     private string $email;

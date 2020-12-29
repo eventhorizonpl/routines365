@@ -32,6 +32,7 @@ class RoutineType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Routine::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

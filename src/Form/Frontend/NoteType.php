@@ -44,6 +44,7 @@ class NoteType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Note::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

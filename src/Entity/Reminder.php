@@ -60,18 +60,18 @@ class Reminder
     private User $user;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @ORM\Column(type="time_immutable")
      */
     private DateTimeImmutable $hour;
 
     /**
-     * @Assert\Choice(callback="getMinutesBeforeValidationChoices", groups={"system"})
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(60, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
+     * @Assert\Choice(callback="getMinutesBeforeValidationChoices", groups={"form", "system"})
+     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(60, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
     private int $minutesBefore;
@@ -98,31 +98,31 @@ class Reminder
     private ?DateTimeImmutable $previousDate;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
+     * @Assert\NotNull(groups={"form", "system"})
+     * @Assert\Type("bool", groups={"form", "system"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendEmail;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
+     * @Assert\NotNull(groups={"form", "system"})
+     * @Assert\Type("bool", groups={"form", "system"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendMotivationalMessage;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
+     * @Assert\NotNull(groups={"form", "system"})
+     * @Assert\Type("bool", groups={"form", "system"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendSms;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 10, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
+     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
+     * @Assert\Length(max = 10, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=10, type="string")
      */
     private string $type;

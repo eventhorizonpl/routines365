@@ -33,6 +33,7 @@ class ProjectType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Project::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

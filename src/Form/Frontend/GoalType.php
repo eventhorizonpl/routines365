@@ -62,6 +62,7 @@ class GoalType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Goal::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }

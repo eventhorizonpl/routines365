@@ -55,6 +55,7 @@ class RewardType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reward::class,
+            'validation_groups' => ['form'],
         ]);
     }
 }
