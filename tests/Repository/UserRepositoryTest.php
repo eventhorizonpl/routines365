@@ -120,7 +120,8 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
 
-        $userResult = $this->userRepository->upgradePassword($user, 'new password');
-        $this->assertEquals(null, $userResult);
+        $password1 = $user->getPassword();
+        $this->userRepository->upgradePassword($user, 'new password');
+        $this->assertFalse($password1 === $user->getPassword());
     }
 }
