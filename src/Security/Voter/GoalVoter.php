@@ -15,7 +15,7 @@ class GoalVoter extends Voter
     public const DELETE = 'delete';
     public const EDIT = 'edit';
 
-    protected function supports($attribute, $subject): bool
+    public function supports($attribute, $subject): bool
     {
         return in_array($attribute, [self::DELETE, self::EDIT])
             && $subject instanceof Goal;
