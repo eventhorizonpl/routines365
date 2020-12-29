@@ -117,27 +117,29 @@ final class UserFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->accountOperationFaker);
-        unset($this->achievementFaker);
-        unset($this->completedRoutineFaker);
-        unset($this->contactFaker);
-        unset($this->goalFaker);
-        unset($this->noteFaker);
-        unset($this->projectFaker);
-        unset($this->promotionFaker);
-        unset($this->quoteFaker);
-        unset($this->reminderFaker);
-        unset($this->reminderMessageFaker);
-        unset($this->reminderMessageManager);
-        unset($this->rewardFaker);
-        unset($this->routineFaker);
-        unset($this->savedEmailFaker);
-        unset($this->sentReminderFactory);
-        unset($this->sentReminderManager);
-        unset($this->userFactory);
-        unset($this->userFaker);
-        unset($this->userManager);
-        unset($this->userService);
+        unset(
+            $this->accountOperationFaker,
+            $this->achievementFaker,
+            $this->completedRoutineFaker,
+            $this->contactFaker,
+            $this->goalFaker,
+            $this->noteFaker,
+            $this->projectFaker,
+            $this->promotionFaker,
+            $this->quoteFaker,
+            $this->reminderFaker,
+            $this->reminderMessageFaker,
+            $this->reminderMessageManager,
+            $this->rewardFaker,
+            $this->routineFaker,
+            $this->savedEmailFaker,
+            $this->sentReminderFactory,
+            $this->sentReminderManager,
+            $this->userFactory,
+            $this->userFaker,
+            $this->userManager,
+            $this->userService
+        );
 
         parent::tearDown();
     }

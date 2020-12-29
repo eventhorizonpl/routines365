@@ -27,9 +27,11 @@ final class AccountOperationRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->accountOperationRepository);
-        unset($this->managerRegistry);
-        unset($this->userFaker);
+        unset(
+            $this->accountOperationRepository,
+            $this->managerRegistry,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

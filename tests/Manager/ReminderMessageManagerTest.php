@@ -33,10 +33,12 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->reminderMessageManager);
-        unset($this->reminderMessageRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->reminderMessageManager,
+            $this->reminderMessageRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

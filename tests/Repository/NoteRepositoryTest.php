@@ -27,9 +27,11 @@ final class NoteRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->managerRegistry);
-        unset($this->noteRepository);
-        unset($this->userFaker);
+        unset(
+            $this->managerRegistry,
+            $this->noteRepository,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

@@ -22,33 +22,34 @@ abstract class AbstractTypeDoctrineTestCase extends TypeTestCase implements Serv
 
     public function purge(): void
     {
-        $purger = new ORMPurger($this->entityManager);
-        $purger->purge();
+        //$purger = new ORMPurger($this->entityManager);
+        //$purger->purge();
     }
 
     protected function setUp(): void
     {
         parent::setUp();
 
-//        $this->entityManager->getConnection()->beginTransaction();
+        $this->entityManager->getConnection()->beginTransaction();
     }
 
     protected function tearDown(): void
     {
-//        $this->entityManager->getConnection()->rollBack();
+        $this->entityManager->getConnection()->rollBack();
         $this->entityManager->close();
         $this->entityManager = null;
         unset($this->entityManager);
 
         $refl = new ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {
-            if ((!($prop->isStatic()))
-                and (0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_'))
+            if ((!($prop->isStatic())) &&
+                (0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_'))
             ) {
                 $prop->setAccessible(true);
                 $prop->setValue($this, null);
             }
         }
+        unset($refl);
 
         parent::tearDown();
     }

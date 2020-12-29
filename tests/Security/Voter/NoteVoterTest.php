@@ -29,9 +29,11 @@ final class NoteVoterTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->noteFaker);
-        unset($this->noteVoter);
-        unset($this->userFaker);
+        unset(
+            $this->noteFaker,
+            $this->noteVoter,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

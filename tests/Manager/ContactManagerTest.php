@@ -33,10 +33,12 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->contactManager);
-        unset($this->contactRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->contactManager,
+            $this->contactRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

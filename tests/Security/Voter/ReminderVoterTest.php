@@ -28,9 +28,11 @@ final class ReminderVoterTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->reminderFaker);
-        unset($this->reminderVoter);
-        unset($this->userFaker);
+        unset(
+            $this->reminderFaker,
+            $this->reminderVoter,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

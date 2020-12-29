@@ -22,8 +22,10 @@ final class RoutineFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->routineFactory);
-        unset($this->routineFaker);
+        unset(
+            $this->routineFactory,
+            $this->routineFaker
+        );
 
         parent::tearDown();
     }

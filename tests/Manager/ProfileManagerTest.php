@@ -39,11 +39,13 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->profileManager);
-        unset($this->profileRepository);
-        unset($this->reminderManager);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->profileManager,
+            $this->profileRepository,
+            $this->reminderManager,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

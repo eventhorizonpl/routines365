@@ -28,9 +28,11 @@ final class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->managerRegistry);
-        unset($this->resetPasswordRequestRepository);
-        unset($this->userFaker);
+        unset(
+            $this->managerRegistry,
+            $this->resetPasswordRequestRepository,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

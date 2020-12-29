@@ -38,11 +38,13 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->quoteFaker);
-        unset($this->quoteManager);
-        unset($this->quoteRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->quoteFaker,
+            $this->quoteManager,
+            $this->quoteRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

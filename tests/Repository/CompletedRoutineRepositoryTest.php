@@ -27,9 +27,11 @@ final class CompletedRoutineRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->completedRoutineRepository);
-        unset($this->managerRegistry);
-        unset($this->userFaker);
+        unset(
+            $this->completedRoutineRepository,
+            $this->managerRegistry,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

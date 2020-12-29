@@ -21,8 +21,10 @@ final class ProfileRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->managerRegistry);
-        unset($this->profileRepository);
+        unset(
+            $this->managerRegistry,
+            $this->profileRepository
+        );
 
         parent::tearDown();
     }

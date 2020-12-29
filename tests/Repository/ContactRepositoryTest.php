@@ -27,9 +27,11 @@ final class ContactRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->contactRepository);
-        unset($this->managerRegistry);
-        unset($this->userFaker);
+        unset(
+            $this->contactRepository,
+            $this->managerRegistry,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

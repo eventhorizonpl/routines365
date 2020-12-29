@@ -29,9 +29,11 @@ final class RoutineVoterTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->routineFaker);
-        unset($this->routineVoter);
-        unset($this->userFaker);
+        unset(
+            $this->routineFaker,
+            $this->routineVoter,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

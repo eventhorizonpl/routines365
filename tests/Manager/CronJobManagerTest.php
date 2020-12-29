@@ -22,8 +22,10 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->cronJobManager);
-        unset($this->validator);
+        unset(
+            $this->cronJobManager,
+            $this->validator
+        );
 
         parent::tearDown();
     }

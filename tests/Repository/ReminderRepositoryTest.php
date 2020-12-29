@@ -28,9 +28,11 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->managerRegistry);
-        unset($this->reminderRepository);
-        unset($this->userFaker);
+        unset(
+            $this->managerRegistry,
+            $this->reminderRepository,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

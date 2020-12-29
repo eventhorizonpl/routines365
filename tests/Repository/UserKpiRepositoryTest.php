@@ -55,14 +55,16 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->managerRegistry);
-        unset($this->paginator);
-        unset($this->translator);
-        unset($this->userFaker);
-        unset($this->userKpiFactory);
-        unset($this->userKpiManager);
-        unset($this->userKpiRepository);
-        unset($this->userRepository);
+        unset(
+            $this->managerRegistry,
+            $this->paginator,
+            $this->translator,
+            $this->userFaker,
+            $this->userKpiFactory,
+            $this->userKpiManager,
+            $this->userKpiRepository,
+            $this->userRepository
+        );
 
         parent::tearDown();
     }

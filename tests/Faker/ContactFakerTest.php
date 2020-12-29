@@ -22,8 +22,10 @@ final class ContactFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->contactFactory);
-        unset($this->contactFaker);
+        unset(
+            $this->contactFactory,
+            $this->contactFaker
+        );
 
         parent::tearDown();
     }

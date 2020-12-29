@@ -33,10 +33,12 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->savedEmailManager);
-        unset($this->savedEmailRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->savedEmailManager,
+            $this->savedEmailRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

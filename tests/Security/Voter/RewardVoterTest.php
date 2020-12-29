@@ -29,9 +29,11 @@ final class RewardVoterTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->rewardFaker);
-        unset($this->rewardVoter);
-        unset($this->userFaker);
+        unset(
+            $this->rewardFaker,
+            $this->rewardVoter,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }

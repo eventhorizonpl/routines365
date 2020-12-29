@@ -38,11 +38,13 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->promotionFaker);
-        unset($this->promotionManager);
-        unset($this->promotionRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->promotionFaker,
+            $this->promotionManager,
+            $this->promotionRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

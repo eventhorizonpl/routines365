@@ -27,9 +27,11 @@ final class QuoteFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->quoteFactory);
-        unset($this->quoteFaker);
-        unset($this->quoteManager);
+        unset(
+            $this->quoteFactory,
+            $this->quoteFaker,
+            $this->quoteManager
+        );
 
         parent::tearDown();
     }

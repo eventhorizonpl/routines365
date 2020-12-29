@@ -33,10 +33,12 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->rewardManager);
-        unset($this->rewardRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->rewardManager,
+            $this->rewardRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

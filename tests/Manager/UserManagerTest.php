@@ -93,22 +93,24 @@ final class UserManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->accountManager);
-        unset($this->accountOperationManager);
-        unset($this->completedRoutineManager);
-        unset($this->contactManager);
-        unset($this->goalManager);
-        unset($this->noteManager);
-        unset($this->profileManager);
-        unset($this->projectManager);
-        unset($this->reminderManager);
-        unset($this->rewardManager);
-        unset($this->routineManager);
-        unset($this->savedEmailManager);
-        unset($this->userFaker);
-        unset($this->userManager);
-        unset($this->userRepository);
-        unset($this->validator);
+        unset(
+            $this->accountManager,
+            $this->accountOperationManager,
+            $this->completedRoutineManager,
+            $this->contactManager,
+            $this->goalManager,
+            $this->noteManager,
+            $this->profileManager,
+            $this->projectManager,
+            $this->reminderManager,
+            $this->rewardManager,
+            $this->routineManager,
+            $this->savedEmailManager,
+            $this->userFaker,
+            $this->userManager,
+            $this->userRepository,
+            $this->validator
+        );
 
         parent::tearDown();
     }

@@ -22,8 +22,10 @@ final class GoalFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->goalFactory);
-        unset($this->goalFaker);
+        unset(
+            $this->goalFactory,
+            $this->goalFaker
+        );
 
         parent::tearDown();
     }

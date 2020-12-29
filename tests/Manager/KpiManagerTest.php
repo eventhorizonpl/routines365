@@ -38,11 +38,13 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->kpiManager);
-        unset($this->kpiRepository);
-        unset($this->kpiService);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->kpiManager,
+            $this->kpiRepository,
+            $this->kpiService,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

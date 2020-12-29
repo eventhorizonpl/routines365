@@ -33,10 +33,12 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->noteManager);
-        unset($this->noteRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->noteManager,
+            $this->noteRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

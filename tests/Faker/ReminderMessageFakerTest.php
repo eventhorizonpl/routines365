@@ -22,8 +22,10 @@ final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->reminderMessageFactory);
-        unset($this->reminderMessageFaker);
+        unset(
+            $this->reminderMessageFactory,
+            $this->reminderMessageFaker
+        );
 
         parent::tearDown();
     }

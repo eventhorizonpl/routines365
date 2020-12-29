@@ -58,15 +58,17 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->completedRoutineManager);
-        unset($this->goalManager);
-        unset($this->noteManager);
-        unset($this->reminderManager);
-        unset($this->rewardManager);
-        unset($this->routineManager);
-        unset($this->routineRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->completedRoutineManager,
+            $this->goalManager,
+            $this->noteManager,
+            $this->reminderManager,
+            $this->rewardManager,
+            $this->routineManager,
+            $this->routineRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

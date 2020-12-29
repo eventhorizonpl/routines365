@@ -39,11 +39,13 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->goalManager);
-        unset($this->projectManager);
-        unset($this->projectRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->goalManager,
+            $this->projectManager,
+            $this->projectRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

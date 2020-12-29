@@ -34,10 +34,12 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->goalManager);
-        unset($this->goalRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->goalManager,
+            $this->goalRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

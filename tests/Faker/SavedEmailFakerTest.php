@@ -22,8 +22,10 @@ final class SavedEmailFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->savedEmailFactory);
-        unset($this->savedEmailFaker);
+        unset(
+            $this->savedEmailFactory,
+            $this->savedEmailFaker
+        );
 
         parent::tearDown();
     }

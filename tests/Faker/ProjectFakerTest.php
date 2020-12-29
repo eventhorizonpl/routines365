@@ -22,8 +22,10 @@ final class ProjectFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->projectFactory);
-        unset($this->projectFaker);
+        unset(
+            $this->projectFactory,
+            $this->projectFaker
+        );
 
         parent::tearDown();
     }

@@ -27,9 +27,11 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->achievementFactory);
-        unset($this->achievementFaker);
-        unset($this->achievementManager);
+        unset(
+            $this->achievementFactory,
+            $this->achievementFaker,
+            $this->achievementManager
+        );
 
         parent::tearDown();
     }

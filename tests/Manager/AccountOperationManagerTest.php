@@ -38,11 +38,13 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->accountManager);
-        unset($this->accountOperationManager);
-        unset($this->accountOperationRepository);
-        unset($this->userFaker);
-        unset($this->validator);
+        unset(
+            $this->accountManager,
+            $this->accountOperationManager,
+            $this->accountOperationRepository,
+            $this->userFaker,
+            $this->validator
+        );
 
         parent::tearDown();
     }

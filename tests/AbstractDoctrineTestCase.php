@@ -20,20 +20,20 @@ abstract class AbstractDoctrineTestCase extends AbstractTestCase implements Serv
 
     public function purge(): void
     {
-        $purger = new ORMPurger($this->entityManager);
-        $purger->purge();
+        //$purger = new ORMPurger($this->entityManager);
+        //$purger->purge();
     }
 
     protected function setUp(): void
     {
         parent::setUp();
 
-//        $this->entityManager->getConnection()->beginTransaction();
+        $this->entityManager->getConnection()->beginTransaction();
     }
 
     protected function tearDown(): void
     {
-//        $this->entityManager->getConnection()->rollBack();
+        $this->entityManager->getConnection()->rollBack();
         $this->entityManager->close();
         $this->entityManager = null;
         unset($this->entityManager);

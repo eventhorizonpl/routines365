@@ -22,8 +22,10 @@ final class NoteFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->noteFactory);
-        unset($this->noteFaker);
+        unset(
+            $this->noteFactory,
+            $this->noteFaker
+        );
 
         parent::tearDown();
     }

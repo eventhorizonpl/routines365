@@ -22,8 +22,10 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->accountOperationFactory);
-        unset($this->accountOperationFaker);
+        unset(
+            $this->accountOperationFactory,
+            $this->accountOperationFaker
+        );
 
         parent::tearDown();
     }

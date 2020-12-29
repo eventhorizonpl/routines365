@@ -27,9 +27,11 @@ final class GoalRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->goalRepository);
-        unset($this->managerRegistry);
-        unset($this->userFaker);
+        unset(
+            $this->goalRepository,
+            $this->managerRegistry,
+            $this->userFaker
+        );
 
         parent::tearDown();
     }
