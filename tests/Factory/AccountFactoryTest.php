@@ -10,14 +10,14 @@ use App\Tests\AbstractTestCase;
 
 final class AccountFactoryTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountFactory = new AccountFactory();
 
         $this->assertInstanceOf(AccountFactory::class, $accountFactory);
     }
 
-    public function testCreateAccount()
+    public function testCreateAccount(): void
     {
         $accountFactory = new AccountFactory();
         $account = $accountFactory->createAccount();

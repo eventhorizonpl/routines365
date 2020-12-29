@@ -9,14 +9,14 @@ use App\Twig\ReminderExtension;
 
 final class ReminderExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderExtension = new ReminderExtension();
 
         $this->assertInstanceOf(ReminderExtension::class, $reminderExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $reminderExtension = new ReminderExtension();
 
@@ -24,7 +24,7 @@ final class ReminderExtensionTest extends AbstractTestCase
         $this->assertIsArray($reminderExtension->getFunctions());
     }
 
-    public function testReminderType()
+    public function testReminderType(): void
     {
         $reminderExtension = new ReminderExtension();
 

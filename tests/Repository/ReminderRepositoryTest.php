@@ -35,14 +35,14 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderRepository = new ReminderRepository($this->managerRegistry);
 
         $this->assertInstanceOf(ReminderRepository::class, $reminderRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -87,7 +87,7 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($reminders);
     }
 
-    public function testFindOneByNextDate()
+    public function testFindOneByNextDate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -102,7 +102,7 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
         }
     }
 
-    public function testFindOneByUser()
+    public function testFindOneByUser(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -117,7 +117,7 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
         }
     }
 
-    public function testFindByLockedAt()
+    public function testFindByLockedAt(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

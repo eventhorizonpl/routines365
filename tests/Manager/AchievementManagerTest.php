@@ -47,14 +47,14 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $achievementManager = new AchievementManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(AchievementManager::class, $achievementManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -73,7 +73,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($level, $achievement2->getLevel());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted();
@@ -86,7 +86,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($achievement2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -96,7 +96,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(AchievementManager::class, $achievementManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -107,7 +107,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         $achievementManager = $this->achievementManager->save($achievement, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -122,7 +122,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $achievement2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -144,7 +144,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $achievement3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted();

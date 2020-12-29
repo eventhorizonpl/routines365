@@ -142,7 +142,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $userFaker = new UserFaker(
             $this->accountOperationFaker,
@@ -170,7 +170,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(UserFaker::class, $userFaker);
     }
 
-    public function testCreateUser()
+    public function testCreateUser(): void
     {
         $this->purge();
         $user = $this->userFaker->createUser();
@@ -193,7 +193,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $this->assertEquals($type, $user->getType());
     }
 
-    public function testCreateUserPersisted()
+    public function testCreateUserPersisted(): void
     {
         $this->purge();
         $user = $this->userFaker->createUserPersisted();
@@ -216,7 +216,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $this->assertEquals($type, $user->getType());
     }
 
-    public function testCreateRichUserPersisted()
+    public function testCreateRichUserPersisted(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

@@ -28,14 +28,14 @@ final class CompletedRoutineFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $completedRoutineFaker = new CompletedRoutineFaker($this->completedRoutineFactory);
 
         $this->assertInstanceOf(CompletedRoutineFaker::class, $completedRoutineFaker);
     }
 
-    public function testCreateCompletedRoutine()
+    public function testCreateCompletedRoutine(): void
     {
         $this->purge();
         $completedRoutine = $this->completedRoutineFaker->createCompletedRoutine();

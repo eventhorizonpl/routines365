@@ -34,14 +34,14 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $promotionFaker = new PromotionFaker($this->promotionFactory, $this->promotionManager);
 
         $this->assertInstanceOf(PromotionFaker::class, $promotionFaker);
     }
 
-    public function testCreatePromotion()
+    public function testCreatePromotion(): void
     {
         $this->purge();
         $promotion = $this->promotionFaker->createPromotion();
@@ -69,7 +69,7 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
         $this->assertEquals($type, $promotion->getType());
     }
 
-    public function testCreatePromotionPersisted()
+    public function testCreatePromotionPersisted(): void
     {
         $this->purge();
         $promotion = $this->promotionFaker->createPromotionPersisted();

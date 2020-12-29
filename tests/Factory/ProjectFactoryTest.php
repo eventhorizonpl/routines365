@@ -28,21 +28,21 @@ final class ProjectFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $projectFactory = new ProjectFactory();
 
         $this->assertInstanceOf(ProjectFactory::class, $projectFactory);
     }
 
-    public function testCreateProject()
+    public function testCreateProject(): void
     {
         $projectFactory = new ProjectFactory();
         $project = $projectFactory->createProject();
         $this->assertInstanceOf(Project::class, $project);
     }
 
-    public function testCreateProjectWithRequired()
+    public function testCreateProjectWithRequired(): void
     {
         $isCompleted = $this->faker->boolean;
         $name = $this->faker->sentence;

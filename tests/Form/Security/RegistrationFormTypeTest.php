@@ -15,7 +15,7 @@ final class RegistrationFormTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new User();
         $form = $this->factory->create(RegistrationFormType::class, $model);
@@ -24,7 +24,7 @@ final class RegistrationFormTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new User();
         $view = $this->factory->create(RegistrationFormType::class, $formData)
@@ -33,6 +33,11 @@ final class RegistrationFormTypeTest extends TypeTestCase
         $this->assertSame($formData, $view->vars['value']);
     }
 
+    /**
+     * @return ValidatorExtension[]
+     *
+     * @psalm-return array{0: ValidatorExtension}
+     */
     protected function getExtensions()
     {
         $validator = Validation::createValidator();

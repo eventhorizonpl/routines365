@@ -28,14 +28,14 @@ final class NoteFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $noteFaker = new NoteFaker($this->noteFactory);
 
         $this->assertInstanceOf(NoteFaker::class, $noteFaker);
     }
 
-    public function testCreateNote()
+    public function testCreateNote(): void
     {
         $this->purge();
         $note = $this->noteFaker->createNote();

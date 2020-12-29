@@ -41,14 +41,14 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $savedEmailManager = new SavedEmailManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(SavedEmailManager::class, $savedEmailManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -67,7 +67,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($email, $savedEmail2->getEmail());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -81,7 +81,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($savedEmail2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -94,7 +94,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(SavedEmailManager::class, $savedEmailManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -105,7 +105,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         $savedEmailManager = $this->savedEmailManager->save($savedEmail, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -120,7 +120,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $savedEmail2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -142,7 +142,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $savedEmail3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

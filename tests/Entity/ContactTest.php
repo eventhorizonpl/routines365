@@ -13,13 +13,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class ContactTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $contact = new Contact();
@@ -27,13 +27,13 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($uuid, $contact->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $contact = new Contact();
         $this->assertEquals(null, $contact->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $contact = new Contact();
@@ -43,7 +43,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $contact = new Contact();
@@ -51,7 +51,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($uuid, $contact->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $contact = new Contact();
@@ -61,7 +61,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $contact = new Contact();
@@ -69,7 +69,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($createdBy, $contact->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $contact = new Contact();
@@ -79,7 +79,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $contact = new Contact();
@@ -87,7 +87,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $contact->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $contact = new Contact();
@@ -97,7 +97,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $contact = new Contact();
@@ -105,7 +105,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $contact->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $contact = new Contact();
@@ -114,7 +114,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($createdAt, $contact->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $contact = new Contact();
@@ -122,7 +122,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($createdAt, $contact->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $contact = new Contact();
@@ -131,7 +131,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $contact->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $contact = new Contact();
@@ -139,7 +139,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $contact->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $contact = new Contact();
@@ -148,7 +148,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $contact->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $contact = new Contact();
@@ -156,7 +156,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $contact->getUpdatedAt());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $contact = new Contact();
@@ -164,7 +164,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($user, $contact->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $user = new User();
         $contact = new Contact();
@@ -172,7 +172,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($user, $contact->getUser());
     }
 
-    public function testGetComment()
+    public function testGetComment(): void
     {
         $comment = 'test comment';
         $contact = new Contact();
@@ -182,7 +182,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getComment());
     }
 
-    public function testSetComment()
+    public function testSetComment(): void
     {
         $comment = 'test comment';
         $contact = new Contact();
@@ -190,7 +190,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($comment, $contact->getComment());
     }
 
-    public function testGetContent()
+    public function testGetContent(): void
     {
         $content = 'test content';
         $contact = new Contact();
@@ -200,7 +200,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getContent());
     }
 
-    public function testSetContent()
+    public function testSetContent(): void
     {
         $content = 'test content';
         $contact = new Contact();
@@ -208,7 +208,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($content, $contact->getContent());
     }
 
-    public function testGetStatus()
+    public function testGetStatus(): void
     {
         $status = Contact::STATUS_CLOSED;
         $contact = new Contact();
@@ -217,19 +217,19 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getStatus());
     }
 
-    public function testGetStatusFormChoices()
+    public function testGetStatusFormChoices(): void
     {
         $this->assertCount(6, Contact::getStatusFormChoices());
         $this->assertIsArray(Contact::getStatusFormChoices());
     }
 
-    public function testGetStatusValidationChoices()
+    public function testGetStatusValidationChoices(): void
     {
         $this->assertCount(6, Contact::getStatusValidationChoices());
         $this->assertIsArray(Contact::getStatusValidationChoices());
     }
 
-    public function testSetStatus()
+    public function testSetStatus(): void
     {
         $status = Contact::STATUS_CLOSED;
         $contact = new Contact();
@@ -237,7 +237,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($status, $contact->getStatus());
     }
 
-    public function testSetStatusException()
+    public function testSetStatusException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $status = 'wrong status';
@@ -245,7 +245,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertInstanceOf(Contact::class, $contact->setStatus($status));
     }
 
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $title = 'test title';
         $contact = new Contact();
@@ -255,7 +255,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getTitle());
     }
 
-    public function testSetTitle()
+    public function testSetTitle(): void
     {
         $title = 'test title';
         $contact = new Contact();
@@ -263,7 +263,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($title, $contact->getTitle());
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $type = Contact::TYPE_FEATURE_IDEA;
         $contact = new Contact();
@@ -272,19 +272,19 @@ final class ContactTest extends AbstractTestCase
         $this->assertIsString($contact->getType());
     }
 
-    public function testGetTypeFormChoices()
+    public function testGetTypeFormChoices(): void
     {
         $this->assertCount(2, Contact::getTypeFormChoices());
         $this->assertIsArray(Contact::getTypeFormChoices());
     }
 
-    public function testGetTypeValidationChoices()
+    public function testGetTypeValidationChoices(): void
     {
         $this->assertCount(2, Contact::getTypeValidationChoices());
         $this->assertIsArray(Contact::getTypeValidationChoices());
     }
 
-    public function testSetType()
+    public function testSetType(): void
     {
         $type = Contact::TYPE_FEATURE_IDEA;
         $contact = new Contact();
@@ -292,7 +292,7 @@ final class ContactTest extends AbstractTestCase
         $this->assertEquals($type, $contact->getType());
     }
 
-    public function testSetTypeException()
+    public function testSetTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $type = 'wrong type';

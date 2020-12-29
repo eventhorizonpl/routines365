@@ -9,14 +9,14 @@ use App\Twig\RewardExtension;
 
 final class RewardExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $rewardExtension = new RewardExtension();
 
         $this->assertInstanceOf(RewardExtension::class, $rewardExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $rewardExtension = new RewardExtension();
 
@@ -24,7 +24,7 @@ final class RewardExtensionTest extends AbstractTestCase
         $this->assertIsArray($rewardExtension->getFunctions());
     }
 
-    public function testRewardType()
+    public function testRewardType(): void
     {
         $rewardExtension = new RewardExtension();
 

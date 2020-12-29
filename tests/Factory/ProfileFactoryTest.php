@@ -10,14 +10,14 @@ use App\Tests\AbstractTestCase;
 
 final class ProfileFactoryTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $profileFactory = new ProfileFactory();
 
         $this->assertInstanceOf(ProfileFactory::class, $profileFactory);
     }
 
-    public function testCreateProfile()
+    public function testCreateProfile(): void
     {
         $profileFactory = new ProfileFactory();
         $profile = $profileFactory->createProfile();

@@ -35,14 +35,14 @@ final class PromotionRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $promotionRepository = new PromotionRepository($this->managerRegistry);
 
         $this->assertInstanceOf(PromotionRepository::class, $promotionRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $promotion = $this->promotionFaker->createPromotionPersisted();
@@ -87,7 +87,7 @@ final class PromotionRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($promotions);
     }
 
-    public function testFindOneByCodeAndType()
+    public function testFindOneByCodeAndType(): void
     {
         $this->purge();
         $promotion = $this->promotionFaker->createPromotionPersisted(null, null, true);

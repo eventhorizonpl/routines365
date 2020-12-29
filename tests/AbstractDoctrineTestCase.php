@@ -18,7 +18,7 @@ abstract class AbstractDoctrineTestCase extends AbstractTestCase implements Serv
      */
     protected ?EntityManagerInterface $entityManager;
 
-    public function purge()
+    public function purge(): void
     {
         $purger = new ORMPurger($this->entityManager);
         $purger->purge();

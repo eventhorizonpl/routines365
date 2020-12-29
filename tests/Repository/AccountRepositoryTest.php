@@ -27,7 +27,7 @@ final class AccountRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountRepository = new AccountRepository($this->managerRegistry);
 

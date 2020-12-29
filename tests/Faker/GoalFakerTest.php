@@ -28,14 +28,14 @@ final class GoalFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $goalFaker = new GoalFaker($this->goalFactory);
 
         $this->assertInstanceOf(GoalFaker::class, $goalFaker);
     }
 
-    public function testCreateGoal()
+    public function testCreateGoal(): void
     {
         $this->purge();
         $goal = $this->goalFaker->createGoal();

@@ -14,13 +14,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class RewardTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $reward = new Reward();
@@ -28,13 +28,13 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($uuid, $reward->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $reward = new Reward();
         $this->assertEquals(null, $reward->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $reward = new Reward();
@@ -44,7 +44,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $reward = new Reward();
@@ -52,7 +52,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($uuid, $reward->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $reward = new Reward();
@@ -62,7 +62,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $reward = new Reward();
@@ -70,7 +70,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($createdBy, $reward->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $reward = new Reward();
@@ -80,7 +80,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $reward = new Reward();
@@ -88,7 +88,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $reward->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $reward = new Reward();
@@ -98,7 +98,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $reward = new Reward();
@@ -106,7 +106,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $reward->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $reward = new Reward();
@@ -115,7 +115,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($createdAt, $reward->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $reward = new Reward();
@@ -123,7 +123,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($createdAt, $reward->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $reward = new Reward();
@@ -132,7 +132,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $reward->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $reward = new Reward();
@@ -140,7 +140,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $reward->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $reward = new Reward();
@@ -149,7 +149,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $reward->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $reward = new Reward();
@@ -157,7 +157,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $reward->getUpdatedAt());
     }
 
-    public function testGetIsAwarded()
+    public function testGetIsAwarded(): void
     {
         $isAwarded = true;
         $reward = new Reward();
@@ -167,7 +167,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsBool($reward->getIsAwarded());
     }
 
-    public function testSetIsAwarded()
+    public function testSetIsAwarded(): void
     {
         $isAwarded = true;
         $reward = new Reward();
@@ -175,7 +175,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($isAwarded, $reward->getIsAwarded());
     }
 
-    public function testGetRoutine()
+    public function testGetRoutine(): void
     {
         $routine = new Routine();
         $reward = new Reward();
@@ -183,7 +183,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($routine, $reward->getRoutine());
     }
 
-    public function testSetRoutine()
+    public function testSetRoutine(): void
     {
         $routine = new Routine();
         $reward = new Reward();
@@ -191,7 +191,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($routine, $reward->getRoutine());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $reward = new Reward();
@@ -199,7 +199,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($user, $reward->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $user = new User();
         $reward = new Reward();
@@ -207,7 +207,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($user, $reward->getUser());
     }
 
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $description = 'test description';
         $reward = new Reward();
@@ -217,7 +217,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getDescription());
     }
 
-    public function testSetDescription()
+    public function testSetDescription(): void
     {
         $description = 'test description';
         $reward = new Reward();
@@ -225,7 +225,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($description, $reward->getDescription());
     }
 
-    public function testGetName()
+    public function testGetName(): void
     {
         $name = 'test name';
         $reward = new Reward();
@@ -235,7 +235,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getName());
     }
 
-    public function testSetName()
+    public function testSetName(): void
     {
         $name = 'test name';
         $reward = new Reward();
@@ -243,7 +243,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($name, $reward->getName());
     }
 
-    public function testIncrementNumberOfCompletions()
+    public function testIncrementNumberOfCompletions(): void
     {
         $reward = new Reward();
         $this->assertEquals(0, $reward->getNumberOfCompletions());
@@ -251,7 +251,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals(1, $reward->getNumberOfCompletions());
     }
 
-    public function testGetNumberOfCompletions()
+    public function testGetNumberOfCompletions(): void
     {
         $numberOfCompletions = 10;
         $reward = new Reward();
@@ -261,7 +261,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsInt($reward->getNumberOfCompletions());
     }
 
-    public function testGetNumberOfCompletionsPercent()
+    public function testGetNumberOfCompletionsPercent(): void
     {
         $requiredNumberOfCompletions = 5;
         $numberOfCompletions = 2;
@@ -271,7 +271,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals(40, $reward->getNumberOfCompletionsPercent());
     }
 
-    public function testSetNumberOfCompletions()
+    public function testSetNumberOfCompletions(): void
     {
         $numberOfCompletions = 10;
         $reward = new Reward();
@@ -279,7 +279,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($numberOfCompletions, $reward->getNumberOfCompletions());
     }
 
-    public function testGetRequiredNumberOfCompletions()
+    public function testGetRequiredNumberOfCompletions(): void
     {
         $requiredNumberOfCompletions = 5;
         $reward = new Reward();
@@ -288,19 +288,19 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsInt($reward->getRequiredNumberOfCompletions());
     }
 
-    public function testGetRequiredNumberOfCompletionsFormChoices()
+    public function testGetRequiredNumberOfCompletionsFormChoices(): void
     {
         $this->assertCount(12, Reward::getRequiredNumberOfCompletionsFormChoices());
         $this->assertIsArray(Reward::getRequiredNumberOfCompletionsFormChoices());
     }
 
-    public function testGetRequiredNumberOfCompletionsValidationChoices()
+    public function testGetRequiredNumberOfCompletionsValidationChoices(): void
     {
         $this->assertCount(12, Reward::getRequiredNumberOfCompletionsValidationChoices());
         $this->assertIsArray(Reward::getRequiredNumberOfCompletionsValidationChoices());
     }
 
-    public function testSetRequiredNumberOfCompletions()
+    public function testSetRequiredNumberOfCompletions(): void
     {
         $requiredNumberOfCompletions = 5;
         $reward = new Reward();
@@ -308,7 +308,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $type = Reward::TYPE_ALL;
         $reward = new Reward();
@@ -317,19 +317,19 @@ final class RewardTest extends AbstractTestCase
         $this->assertIsString($reward->getType());
     }
 
-    public function testGetTypeFormChoices()
+    public function testGetTypeFormChoices(): void
     {
         $this->assertCount(3, Reward::getTypeFormChoices());
         $this->assertIsArray(Reward::getTypeFormChoices());
     }
 
-    public function testGetTypeValidationChoices()
+    public function testGetTypeValidationChoices(): void
     {
         $this->assertCount(3, Reward::getTypeValidationChoices());
         $this->assertIsArray(Reward::getTypeValidationChoices());
     }
 
-    public function testSetType()
+    public function testSetType(): void
     {
         $type = Reward::TYPE_ALL;
         $reward = new Reward();
@@ -337,7 +337,7 @@ final class RewardTest extends AbstractTestCase
         $this->assertEquals($type, $reward->getType());
     }
 
-    public function testSetTypeException()
+    public function testSetTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $type = 'wrong type';

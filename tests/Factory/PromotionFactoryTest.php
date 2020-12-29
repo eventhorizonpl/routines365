@@ -28,21 +28,21 @@ final class PromotionFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $promotionFactory = new PromotionFactory();
 
         $this->assertInstanceOf(PromotionFactory::class, $promotionFactory);
     }
 
-    public function testCreatePromotion()
+    public function testCreatePromotion(): void
     {
         $promotionFactory = new PromotionFactory();
         $promotion = $promotionFactory->createPromotion();
         $this->assertInstanceOf(Promotion::class, $promotion);
     }
 
-    public function testCreatePromotionWithRequired()
+    public function testCreatePromotionWithRequired(): void
     {
         $code = $this->faker->sentence;
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));

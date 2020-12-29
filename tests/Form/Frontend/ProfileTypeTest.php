@@ -13,7 +13,7 @@ final class ProfileTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Profile();
         $form = $this->factory->create(ProfileType::class, $model);
@@ -22,7 +22,7 @@ final class ProfileTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Profile();
         $view = $this->factory->create(ProfileType::class, $formData)

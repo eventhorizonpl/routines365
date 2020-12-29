@@ -28,14 +28,14 @@ final class SavedEmailFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $savedEmailFaker = new SavedEmailFaker($this->savedEmailFactory);
 
         $this->assertInstanceOf(SavedEmailFaker::class, $savedEmailFaker);
     }
 
-    public function testCreateSavedEmail()
+    public function testCreateSavedEmail(): void
     {
         $this->purge();
         $savedEmail = $this->savedEmailFaker->createSavedEmail();

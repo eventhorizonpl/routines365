@@ -41,14 +41,14 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderMessageManager = new ReminderMessageManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(ReminderMessageManager::class, $reminderMessageManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -64,7 +64,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage2);
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -78,7 +78,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($reminderMessage2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -91,7 +91,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(ReminderMessageManager::class, $reminderMessageManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -102,7 +102,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         $reminderMessageManager = $this->reminderMessageManager->save($reminderMessage, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -117,7 +117,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $reminderMessage2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -139,7 +139,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $reminderMessage3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

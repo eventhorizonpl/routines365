@@ -26,13 +26,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class UserTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $user = new User();
         $this->assertInstanceOf(User::class, $user);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $user = new User();
@@ -40,7 +40,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($uuid, $user->__toString());
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
         $email = 'test email';
         $password = 'test password';
@@ -50,7 +50,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsArray($user->__serialize());
     }
 
-    public function testUnserialize()
+    public function testUnserialize(): void
     {
         $id = 1;
         $email = 'test email';
@@ -67,13 +67,13 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($password, $user->getPassword());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $user = new User();
         $this->assertEquals(null, $user->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $user = new User();
@@ -83,7 +83,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $user = new User();
@@ -91,7 +91,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($uuid, $user->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $user = new User();
@@ -101,7 +101,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $user = new User();
@@ -109,7 +109,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($createdBy, $user->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $user = new User();
@@ -119,7 +119,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $user = new User();
@@ -127,7 +127,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $user->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $user = new User();
@@ -137,7 +137,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $user = new User();
@@ -145,7 +145,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $user->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $user = new User();
@@ -154,7 +154,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($createdAt, $user->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $user = new User();
@@ -162,7 +162,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($createdAt, $user->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $user = new User();
@@ -171,7 +171,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $user->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $user = new User();
@@ -179,7 +179,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $user->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $user = new User();
@@ -188,7 +188,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $user->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $user = new User();
@@ -196,7 +196,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $user->getUpdatedAt());
     }
 
-    public function testGetIsEnabled()
+    public function testGetIsEnabled(): void
     {
         $isEnabled = true;
         $user = new User();
@@ -206,7 +206,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsBool($user->getIsEnabled());
     }
 
-    public function testSetIsEnabled()
+    public function testSetIsEnabled(): void
     {
         $isEnabled = true;
         $user = new User();
@@ -214,7 +214,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($isEnabled, $user->getIsEnabled());
     }
 
-    public function testGetIsVerified()
+    public function testGetIsVerified(): void
     {
         $isVerified = true;
         $user = new User();
@@ -224,7 +224,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsBool($user->getIsVerified());
     }
 
-    public function testSetIsVerified()
+    public function testSetIsVerified(): void
     {
         $isVerified = true;
         $user = new User();
@@ -232,7 +232,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($isVerified, $user->getIsVerified());
     }
 
-    public function testGetAccount()
+    public function testGetAccount(): void
     {
         $account = new Account();
         $user = new User();
@@ -240,7 +240,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($account, $user->getAccount());
     }
 
-    public function testSetAccount()
+    public function testSetAccount(): void
     {
         $account = new Account();
         $user = new User();
@@ -248,7 +248,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($account, $user->getAccount());
     }
 
-    public function testAddAchievement()
+    public function testAddAchievement(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getAchievements());
@@ -260,7 +260,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(2, $user->getAchievements());
     }
 
-    public function testGetAchievements()
+    public function testGetAchievements(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getAchievements());
@@ -269,7 +269,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getAchievements());
     }
 
-    public function testHasAchievement()
+    public function testHasAchievement(): void
     {
         $user = new User();
         $achievement = new Achievement();
@@ -279,7 +279,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsBool($user->hasAchievement($achievement));
     }
 
-    public function testRemoveAchievement()
+    public function testRemoveAchievement(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getAchievements());
@@ -292,7 +292,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeAchievement($achievement1));
     }
 
-    public function testAddCompletedRoutine()
+    public function testAddCompletedRoutine(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getCompletedRoutines());
@@ -307,7 +307,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getCompletedRoutines());
     }
 
-    public function testGetCompletedRoutines()
+    public function testGetCompletedRoutines(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getCompletedRoutines());
@@ -316,7 +316,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getCompletedRoutines());
     }
 
-    public function testGetCompletedRoutinesAll()
+    public function testGetCompletedRoutinesAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getCompletedRoutinesAll());
@@ -328,7 +328,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getCompletedRoutinesAll());
     }
 
-    public function testRemoveCompletedRoutine()
+    public function testRemoveCompletedRoutine(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getCompletedRoutines());
@@ -341,7 +341,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeCompletedRoutine($completedRoutine1));
     }
 
-    public function testAddContact()
+    public function testAddContact(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getContacts());
@@ -356,7 +356,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getContacts());
     }
 
-    public function testGetContacts()
+    public function testGetContacts(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getContacts());
@@ -365,7 +365,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getContacts());
     }
 
-    public function testGetContactsAll()
+    public function testGetContactsAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getContactsAll());
@@ -377,7 +377,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getContactsAll());
     }
 
-    public function testRemoveContact()
+    public function testRemoveContact(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getContacts());
@@ -390,13 +390,13 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeContact($contact1));
     }
 
-    public function testEraseCredentials()
+    public function testEraseCredentials(): void
     {
         $user = new User();
         $this->assertEquals(null, $user->eraseCredentials());
     }
 
-    public function testGetEmail()
+    public function testGetEmail(): void
     {
         $email = 'test email';
         $user = new User();
@@ -406,7 +406,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getEmail());
     }
 
-    public function testSetEmail()
+    public function testSetEmail(): void
     {
         $email = 'test email';
         $user = new User();
@@ -414,7 +414,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($email, $user->getEmail());
     }
 
-    public function testAddGoal()
+    public function testAddGoal(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getGoals());
@@ -429,7 +429,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getGoals());
     }
 
-    public function testGetGoals()
+    public function testGetGoals(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getGoals());
@@ -438,7 +438,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getGoals());
     }
 
-    public function testGetGoalsAll()
+    public function testGetGoalsAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getGoalsAll());
@@ -450,7 +450,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getGoalsAll());
     }
 
-    public function testGetGoalsCompleted()
+    public function testGetGoalsCompleted(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getGoalsCompleted());
@@ -463,7 +463,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getGoalsCompleted());
     }
 
-    public function testRemoveGoal()
+    public function testRemoveGoal(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getGoals());
@@ -476,7 +476,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeGoal($goal1));
     }
 
-    public function testGetLastLoginAt()
+    public function testGetLastLoginAt(): void
     {
         $lastLoginAt = new DateTimeImmutable();
         $user = new User();
@@ -485,7 +485,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($lastLoginAt, $user->getLastLoginAt());
     }
 
-    public function testSetLastLoginAt()
+    public function testSetLastLoginAt(): void
     {
         $lastLoginAt = new DateTimeImmutable();
         $user = new User();
@@ -493,7 +493,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($lastLoginAt, $user->getLastLoginAt());
     }
 
-    public function testAddNote()
+    public function testAddNote(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getNotes());
@@ -508,7 +508,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getNotes());
     }
 
-    public function testGetNotes()
+    public function testGetNotes(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getNotes());
@@ -517,7 +517,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getNotes());
     }
 
-    public function testGetNotesAll()
+    public function testGetNotesAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getNotesAll());
@@ -529,7 +529,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getNotesAll());
     }
 
-    public function testRemoveNote()
+    public function testRemoveNote(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getNotes());
@@ -542,7 +542,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeNote($note1));
     }
 
-    public function testGetPassword()
+    public function testGetPassword(): void
     {
         $password = 'test password';
         $user = new User();
@@ -551,7 +551,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getPassword());
     }
 
-    public function testSetPassword()
+    public function testSetPassword(): void
     {
         $password = 'test password';
         $user = new User();
@@ -559,7 +559,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($password, $user->getPassword());
     }
 
-    public function testGetProfile()
+    public function testGetProfile(): void
     {
         $profile = new Profile();
         $user = new User();
@@ -567,7 +567,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($profile, $user->getProfile());
     }
 
-    public function testSetProfile()
+    public function testSetProfile(): void
     {
         $profile = new Profile();
         $user = new User();
@@ -575,7 +575,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($profile, $user->getProfile());
     }
 
-    public function testAddProject()
+    public function testAddProject(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getProjects());
@@ -590,7 +590,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getProjects());
     }
 
-    public function testGetProjects()
+    public function testGetProjects(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getProjects());
@@ -599,7 +599,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getProjects());
     }
 
-    public function testGetProjectsAll()
+    public function testGetProjectsAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getProjectsAll());
@@ -611,7 +611,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getProjectsAll());
     }
 
-    public function testGetProjectsCompleted()
+    public function testGetProjectsCompleted(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getProjectsCompleted());
@@ -624,7 +624,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getProjectsCompleted());
     }
 
-    public function testRemoveProject()
+    public function testRemoveProject(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getProjects());
@@ -637,7 +637,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeProject($project1));
     }
 
-    public function testAddPromotion()
+    public function testAddPromotion(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getPromotions());
@@ -649,7 +649,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(2, $user->getPromotions());
     }
 
-    public function testGetPromotions()
+    public function testGetPromotions(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getPromotions());
@@ -658,7 +658,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getPromotions());
     }
 
-    public function testHasPromotion()
+    public function testHasPromotion(): void
     {
         $user = new User();
         $promotion = new Promotion();
@@ -668,7 +668,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsBool($user->hasPromotion($promotion));
     }
 
-    public function testRemovePromotion()
+    public function testRemovePromotion(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getPromotions());
@@ -681,7 +681,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removePromotion($promotion1));
     }
 
-    public function testAddRecommendation()
+    public function testAddRecommendation(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRecommendations());
@@ -696,7 +696,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRecommendations());
     }
 
-    public function testGetRecommendations()
+    public function testGetRecommendations(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRecommendations());
@@ -705,7 +705,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRecommendations());
     }
 
-    public function testGetRecommendationsAll()
+    public function testGetRecommendationsAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRecommendationsAll());
@@ -717,7 +717,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRecommendationsAll());
     }
 
-    public function testRemoveRecommendation()
+    public function testRemoveRecommendation(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRecommendations());
@@ -730,7 +730,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeRecommendation($recommendation1));
     }
 
-    public function testGetReferrer()
+    public function testGetReferrer(): void
     {
         $referrer = new User();
         $user = new User();
@@ -738,7 +738,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($referrer, $user->getReferrer());
     }
 
-    public function testSetReferrer()
+    public function testSetReferrer(): void
     {
         $referrer = new User();
         $user = new User();
@@ -746,7 +746,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($referrer, $user->getReferrer());
     }
 
-    public function testGetReferrerCode()
+    public function testGetReferrerCode(): void
     {
         $referrerCode = 'test referrer code';
         $user = new User();
@@ -755,7 +755,7 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getReferrerCode());
     }
 
-    public function testSetReferrerCode()
+    public function testSetReferrerCode(): void
     {
         $referrerCode = 'test referrer code';
         $user = new User();
@@ -763,7 +763,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($referrerCode, $user->getReferrerCode());
     }
 
-    public function testAddReminder()
+    public function testAddReminder(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getReminders());
@@ -778,7 +778,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getReminders());
     }
 
-    public function testGetReminders()
+    public function testGetReminders(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getReminders());
@@ -787,7 +787,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getReminders());
     }
 
-    public function testGetRemindersAll()
+    public function testGetRemindersAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRemindersAll());
@@ -799,7 +799,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRemindersAll());
     }
 
-    public function testRemoveReminder()
+    public function testRemoveReminder(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getReminders());
@@ -812,7 +812,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeReminder($reminder1));
     }
 
-    public function testAddReward()
+    public function testAddReward(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRewards());
@@ -827,7 +827,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRewards());
     }
 
-    public function testGetRewards()
+    public function testGetRewards(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRewards());
@@ -836,7 +836,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRewards());
     }
 
-    public function testGetRewardsAll()
+    public function testGetRewardsAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRewardsAll());
@@ -848,7 +848,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRewardsAll());
     }
 
-    public function testGetRewardsAwarded()
+    public function testGetRewardsAwarded(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRewardsAwarded());
@@ -859,7 +859,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRewardsAwarded());
     }
 
-    public function testRemoveReward()
+    public function testRemoveReward(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRewards());
@@ -872,7 +872,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeReward($reward1));
     }
 
-    public function testGetRoles()
+    public function testGetRoles(): void
     {
         $roles = [User::ROLE_USER];
         $user = new User();
@@ -881,19 +881,19 @@ final class UserTest extends AbstractTestCase
         $this->assertIsArray($user->getRoles());
     }
 
-    public function testGetRolesFormChoices()
+    public function testGetRolesFormChoices(): void
     {
         $this->assertCount(3, User::getRolesFormChoices());
         $this->assertIsArray(User::getRolesFormChoices());
     }
 
-    public function testGetRolesValidationChoices()
+    public function testGetRolesValidationChoices(): void
     {
         $this->assertCount(3, User::getRolesValidationChoices());
         $this->assertIsArray(User::getRolesValidationChoices());
     }
 
-    public function testSetRoles()
+    public function testSetRoles(): void
     {
         $roles = [User::ROLE_USER];
         $user = new User();
@@ -901,7 +901,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($roles, $user->getRoles());
     }
 
-    public function testAddRoutine()
+    public function testAddRoutine(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRoutines());
@@ -916,7 +916,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRoutines());
     }
 
-    public function testGetRoutines()
+    public function testGetRoutines(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRoutines());
@@ -925,7 +925,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRoutines());
     }
 
-    public function testGetRoutinesAll()
+    public function testGetRoutinesAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRoutinesAll());
@@ -937,7 +937,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getRoutinesAll());
     }
 
-    public function testRemoveRoutine()
+    public function testRemoveRoutine(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getRoutines());
@@ -950,13 +950,13 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeRoutine($routine1));
     }
 
-    public function testGetSalt()
+    public function testGetSalt(): void
     {
         $user = new User();
         $this->assertEquals(null, $user->getSalt());
     }
 
-    public function testAddSavedEmail()
+    public function testAddSavedEmail(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getSavedEmails());
@@ -971,7 +971,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getSavedEmails());
     }
 
-    public function testGetSavedEmails()
+    public function testGetSavedEmails(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getSavedEmails());
@@ -980,7 +980,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getSavedEmails());
     }
 
-    public function testGetSavedEmailsAll()
+    public function testGetSavedEmailsAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getSavedEmailsAll());
@@ -992,7 +992,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getSavedEmailsAll());
     }
 
-    public function testRemoveSavedEmail()
+    public function testRemoveSavedEmail(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getSavedEmails());
@@ -1005,7 +1005,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeSavedEmail($savedEmail1));
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $type = User::TYPE_CUSTOMER;
         $user = new User();
@@ -1014,19 +1014,19 @@ final class UserTest extends AbstractTestCase
         $this->assertIsString($user->getType());
     }
 
-    public function testGetTypeFormChoices()
+    public function testGetTypeFormChoices(): void
     {
         $this->assertCount(4, User::getTypeFormChoices());
         $this->assertIsArray(User::getTypeFormChoices());
     }
 
-    public function testGetTypeValidationChoices()
+    public function testGetTypeValidationChoices(): void
     {
         $this->assertCount(4, User::getTypeValidationChoices());
         $this->assertIsArray(User::getTypeValidationChoices());
     }
 
-    public function testSetType()
+    public function testSetType(): void
     {
         $type = User::TYPE_CUSTOMER;
         $user = new User();
@@ -1034,7 +1034,7 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($type, $user->getType());
     }
 
-    public function testSetTypeException()
+    public function testSetTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $type = 'wrong type';
@@ -1042,7 +1042,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->setType($type));
     }
 
-    public function testAddUserKpi()
+    public function testAddUserKpi(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getUserKpis());
@@ -1057,7 +1057,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getUserKpis());
     }
 
-    public function testGetUserKpis()
+    public function testGetUserKpis(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getUserKpis());
@@ -1066,7 +1066,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getUserKpis());
     }
 
-    public function testGetUserKpisAll()
+    public function testGetUserKpisAll(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getUserKpisAll());
@@ -1078,7 +1078,7 @@ final class UserTest extends AbstractTestCase
         $this->assertCount(1, $user->getUserKpisAll());
     }
 
-    public function testRemoveUserKpi()
+    public function testRemoveUserKpi(): void
     {
         $user = new User();
         $this->assertCount(0, $user->getUserKpis());
@@ -1091,7 +1091,7 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeUserKpi($userKpi1));
     }
 
-    public function testGetUsername()
+    public function testGetUsername(): void
     {
         $email = 'test email';
         $user = new User();

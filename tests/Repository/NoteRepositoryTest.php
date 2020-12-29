@@ -34,14 +34,14 @@ final class NoteRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $noteRepository = new NoteRepository($this->managerRegistry);
 
         $this->assertInstanceOf(NoteRepository::class, $noteRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -79,7 +79,7 @@ final class NoteRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($notes);
     }
 
-    public function testFindByParametersForFrontend()
+    public function testFindByParametersForFrontend(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

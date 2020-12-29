@@ -34,14 +34,14 @@ final class SentReminderRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $sentReminderRepository = new SentReminderRepository($this->managerRegistry);
 
         $this->assertInstanceOf(SentReminderRepository::class, $sentReminderRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

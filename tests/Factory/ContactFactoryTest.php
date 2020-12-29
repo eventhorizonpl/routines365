@@ -28,21 +28,21 @@ final class ContactFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $contactFactory = new ContactFactory();
 
         $this->assertInstanceOf(ContactFactory::class, $contactFactory);
     }
 
-    public function testCreateContact()
+    public function testCreateContact(): void
     {
         $contactFactory = new ContactFactory();
         $contact = $contactFactory->createContact();
         $this->assertInstanceOf(Contact::class, $contact);
     }
 
-    public function testCreateContactWithRequired()
+    public function testCreateContactWithRequired(): void
     {
         $content = $this->faker->sentence;
         $status = $this->faker->randomElement(

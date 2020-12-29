@@ -28,21 +28,21 @@ final class GoalFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $goalFactory = new GoalFactory();
 
         $this->assertInstanceOf(GoalFactory::class, $goalFactory);
     }
 
-    public function testCreateGoal()
+    public function testCreateGoal(): void
     {
         $goalFactory = new GoalFactory();
         $goal = $goalFactory->createGoal();
         $this->assertInstanceOf(Goal::class, $goal);
     }
 
-    public function testCreateGoalWithRequired()
+    public function testCreateGoalWithRequired(): void
     {
         $isCompleted = $this->faker->boolean;
         $name = $this->faker->sentence;

@@ -26,7 +26,7 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Project();
         $form = $this->factory->create(ProjectType::class, $model);
@@ -38,7 +38,7 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData2(array $formData)
+    public function testSubmitValidData2(array $formData): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -50,7 +50,7 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Project();
         $view = $this->factory->create(ProjectType::class, $formData)

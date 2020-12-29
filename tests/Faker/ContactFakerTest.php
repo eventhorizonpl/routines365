@@ -28,14 +28,14 @@ final class ContactFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $contactFaker = new ContactFaker($this->contactFactory);
 
         $this->assertInstanceOf(ContactFaker::class, $contactFaker);
     }
 
-    public function testCreateContact()
+    public function testCreateContact(): void
     {
         $this->purge();
         $contact = $this->contactFaker->createContact();

@@ -29,21 +29,21 @@ final class ReminderFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderFactory = new ReminderFactory();
 
         $this->assertInstanceOf(ReminderFactory::class, $reminderFactory);
     }
 
-    public function testCreateReminder()
+    public function testCreateReminder(): void
     {
         $reminderFactory = new ReminderFactory();
         $reminder = $reminderFactory->createReminder();
         $this->assertInstanceOf(Reminder::class, $reminder);
     }
 
-    public function testCreateReminderWithRequired()
+    public function testCreateReminderWithRequired(): void
     {
         $hour = new DateTimeImmutable();
         $isEnabled = $this->faker->boolean;

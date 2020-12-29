@@ -29,14 +29,14 @@ final class ReminderFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderFaker = new ReminderFaker($this->reminderFactory);
 
         $this->assertInstanceOf(ReminderFaker::class, $reminderFaker);
     }
 
-    public function testCreateReminder()
+    public function testCreateReminder(): void
     {
         $this->purge();
         $reminder = $this->reminderFaker->createReminder();

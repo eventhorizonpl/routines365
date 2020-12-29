@@ -41,14 +41,14 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $noteManager = new NoteManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(NoteManager::class, $noteManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -67,7 +67,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($title, $note2->getTitle());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -81,7 +81,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($note2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -94,7 +94,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(NoteManager::class, $noteManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -105,7 +105,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         $noteManager = $this->noteManager->save($note, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -120,7 +120,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $note2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -142,7 +142,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $note3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

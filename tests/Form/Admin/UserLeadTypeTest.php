@@ -16,7 +16,7 @@ final class UserLeadTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new User();
         $form = $this->factory->create(UserLeadType::class, $model);
@@ -25,7 +25,7 @@ final class UserLeadTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new User();
         $view = $this->factory->create(UserLeadType::class, $formData)
@@ -34,6 +34,11 @@ final class UserLeadTypeTest extends TypeTestCase
         $this->assertSame($formData, $view->vars['value']);
     }
 
+    /**
+     * @return ValidatorExtension[]
+     *
+     * @psalm-return array{0: ValidatorExtension}
+     */
     protected function getExtensions()
     {
         $validator = Validation::createValidator();

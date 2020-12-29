@@ -9,14 +9,14 @@ use App\Twig\SavedEmailExtension;
 
 final class SavedEmailExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $savedEmailExtension = new SavedEmailExtension();
 
         $this->assertInstanceOf(SavedEmailExtension::class, $savedEmailExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $savedEmailExtension = new SavedEmailExtension();
 
@@ -24,7 +24,7 @@ final class SavedEmailExtensionTest extends AbstractTestCase
         $this->assertIsArray($savedEmailExtension->getFunctions());
     }
 
-    public function testSavedEmailType()
+    public function testSavedEmailType(): void
     {
         $savedEmailExtension = new SavedEmailExtension();
 

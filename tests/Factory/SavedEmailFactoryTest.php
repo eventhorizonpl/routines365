@@ -28,21 +28,21 @@ final class SavedEmailFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $savedEmailFactory = new SavedEmailFactory();
 
         $this->assertInstanceOf(SavedEmailFactory::class, $savedEmailFactory);
     }
 
-    public function testCreateSavedEmail()
+    public function testCreateSavedEmail(): void
     {
         $savedEmailFactory = new SavedEmailFactory();
         $savedEmail = $savedEmailFactory->createSavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail);
     }
 
-    public function testCreateSavedEmailWithRequired()
+    public function testCreateSavedEmailWithRequired(): void
     {
         $email = $this->faker->safeEmail;
         $type = $this->faker->randomElement(

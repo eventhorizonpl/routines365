@@ -9,14 +9,14 @@ use App\Twig\UserKpiExtension;
 
 final class UserKpiExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $userKpiExtension = new UserKpiExtension();
 
         $this->assertInstanceOf(UserKpiExtension::class, $userKpiExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $userKpiExtension = new UserKpiExtension();
 
@@ -24,7 +24,7 @@ final class UserKpiExtensionTest extends AbstractTestCase
         $this->assertIsArray($userKpiExtension->getFunctions());
     }
 
-    public function testUserKpiType()
+    public function testUserKpiType(): void
     {
         $userKpiExtension = new UserKpiExtension();
 

@@ -41,14 +41,14 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $completedRoutineManager = new CompletedRoutineManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(CompletedRoutineManager::class, $completedRoutineManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -67,7 +67,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($minutesDevoted, $completedRoutine2->getMinutesDevoted());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -81,7 +81,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($completedRoutine2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -94,7 +94,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(CompletedRoutineManager::class, $completedRoutineManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -105,7 +105,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         $completedRoutineManager = $this->completedRoutineManager->save($completedRoutine, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -120,7 +120,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $completedRoutine2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -142,7 +142,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $completedRoutine3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

@@ -9,14 +9,14 @@ use App\Twig\ContactExtension;
 
 final class ContactExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $contactExtension = new ContactExtension();
 
         $this->assertInstanceOf(ContactExtension::class, $contactExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $contactExtension = new ContactExtension();
 
@@ -24,7 +24,7 @@ final class ContactExtensionTest extends AbstractTestCase
         $this->assertIsArray($contactExtension->getFunctions());
     }
 
-    public function testContactStatus()
+    public function testContactStatus(): void
     {
         $contactExtension = new ContactExtension();
 
@@ -32,7 +32,7 @@ final class ContactExtensionTest extends AbstractTestCase
         $this->assertIsArray($contactExtension->contactStatus());
     }
 
-    public function testContactType()
+    public function testContactType(): void
     {
         $contactExtension = new ContactExtension();
 

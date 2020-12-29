@@ -13,13 +13,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class AchievementTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -27,13 +27,13 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($uuid, $achievement->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $achievement = new Achievement();
         $this->assertEquals(null, $achievement->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -43,7 +43,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -51,7 +51,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($uuid, $achievement->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -61,7 +61,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -69,7 +69,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($createdBy, $achievement->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -79,7 +79,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -87,7 +87,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $achievement->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -97,7 +97,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $achievement = new Achievement();
@@ -105,7 +105,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $achievement->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $achievement = new Achievement();
@@ -114,7 +114,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($createdAt, $achievement->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $achievement = new Achievement();
@@ -122,7 +122,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($createdAt, $achievement->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $achievement = new Achievement();
@@ -131,7 +131,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $achievement->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $achievement = new Achievement();
@@ -139,7 +139,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $achievement->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $achievement = new Achievement();
@@ -148,7 +148,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $achievement->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $achievement = new Achievement();
@@ -156,7 +156,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $achievement->getUpdatedAt());
     }
 
-    public function testGetIsEnabled()
+    public function testGetIsEnabled(): void
     {
         $isEnabled = true;
         $achievement = new Achievement();
@@ -166,7 +166,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsBool($achievement->getIsEnabled());
     }
 
-    public function testSetIsEnabled()
+    public function testSetIsEnabled(): void
     {
         $isEnabled = true;
         $achievement = new Achievement();
@@ -174,7 +174,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($isEnabled, $achievement->getIsEnabled());
     }
 
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $description = 'test description';
         $achievement = new Achievement();
@@ -184,7 +184,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getDescription());
     }
 
-    public function testSetDescription()
+    public function testSetDescription(): void
     {
         $description = 'test description';
         $achievement = new Achievement();
@@ -192,7 +192,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($description, $achievement->getDescription());
     }
 
-    public function testGetLevel()
+    public function testGetLevel(): void
     {
         $level = 10;
         $achievement = new Achievement();
@@ -201,7 +201,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsInt($achievement->getLevel());
     }
 
-    public function testSetLevel()
+    public function testSetLevel(): void
     {
         $level = 10;
         $achievement = new Achievement();
@@ -209,7 +209,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($level, $achievement->getLevel());
     }
 
-    public function testGetName()
+    public function testGetName(): void
     {
         $name = 'test name';
         $achievement = new Achievement();
@@ -219,7 +219,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getName());
     }
 
-    public function testSetName()
+    public function testSetName(): void
     {
         $name = 'test name';
         $achievement = new Achievement();
@@ -227,7 +227,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($name, $achievement->getName());
     }
 
-    public function testGetRequirement()
+    public function testGetRequirement(): void
     {
         $requirement = 10;
         $achievement = new Achievement();
@@ -236,7 +236,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsInt($achievement->getRequirement());
     }
 
-    public function testSetRequirement()
+    public function testSetRequirement(): void
     {
         $requirement = 10;
         $achievement = new Achievement();
@@ -244,7 +244,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($requirement, $achievement->getRequirement());
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $type = Achievement::TYPE_COMPLETED_ROUTINE;
         $achievement = new Achievement();
@@ -253,19 +253,19 @@ final class AchievementTest extends AbstractTestCase
         $this->assertIsString($achievement->getType());
     }
 
-    public function testGetTypeFormChoices()
+    public function testGetTypeFormChoices(): void
     {
         $this->assertCount(4, Achievement::getTypeFormChoices());
         $this->assertIsArray(Achievement::getTypeFormChoices());
     }
 
-    public function testGetTypeValidationChoices()
+    public function testGetTypeValidationChoices(): void
     {
         $this->assertCount(4, Achievement::getTypeValidationChoices());
         $this->assertIsArray(Achievement::getTypeValidationChoices());
     }
 
-    public function testSetType()
+    public function testSetType(): void
     {
         $type = Achievement::TYPE_COMPLETED_ROUTINE;
         $achievement = new Achievement();
@@ -273,7 +273,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertEquals($type, $achievement->getType());
     }
 
-    public function testSetTypeException()
+    public function testSetTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $type = 'wrong type';
@@ -281,7 +281,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertInstanceOf(Achievement::class, $achievement->setType($type));
     }
 
-    public function testAddUser()
+    public function testAddUser(): void
     {
         $achievement = new Achievement();
         $this->assertCount(0, $achievement->getUsers());
@@ -293,7 +293,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertCount(2, $achievement->getUsers());
     }
 
-    public function testGetUsers()
+    public function testGetUsers(): void
     {
         $achievement = new Achievement();
         $this->assertCount(0, $achievement->getUsers());
@@ -302,7 +302,7 @@ final class AchievementTest extends AbstractTestCase
         $this->assertCount(1, $achievement->getUsers());
     }
 
-    public function testRemoveUser()
+    public function testRemoveUser(): void
     {
         $achievement = new Achievement();
         $this->assertCount(0, $achievement->getUsers());

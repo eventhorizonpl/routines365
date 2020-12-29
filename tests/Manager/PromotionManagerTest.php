@@ -47,14 +47,14 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $promotionManager = new PromotionManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(PromotionManager::class, $promotionManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -73,7 +73,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($emailNotifications, $promotion2->getEmailNotifications());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $promotion = $this->promotionFaker->createPromotionPersisted();
@@ -86,7 +86,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($promotion2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -96,7 +96,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(PromotionManager::class, $promotionManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -107,7 +107,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $promotionManager = $this->promotionManager->save($promotion, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -122,7 +122,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $promotion2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -144,7 +144,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $promotion3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $promotion = $this->promotionFaker->createPromotionPersisted();

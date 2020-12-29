@@ -28,21 +28,21 @@ final class AchievementFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $achievementFactory = new AchievementFactory();
 
         $this->assertInstanceOf(AchievementFactory::class, $achievementFactory);
     }
 
-    public function testCreateAchievement()
+    public function testCreateAchievement(): void
     {
         $achievementFactory = new AchievementFactory();
         $achievement = $achievementFactory->createAchievement();
         $this->assertInstanceOf(Achievement::class, $achievement);
     }
 
-    public function testCreateAchievementWithRequired()
+    public function testCreateAchievementWithRequired(): void
     {
         $isEnabled = $this->faker->boolean;
         $level = $this->faker->numberBetween(1, 10);

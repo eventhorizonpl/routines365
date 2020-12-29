@@ -34,14 +34,14 @@ final class CompletedRoutineRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $completedRoutineRepository = new CompletedRoutineRepository($this->managerRegistry);
 
         $this->assertInstanceOf(CompletedRoutineRepository::class, $completedRoutineRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

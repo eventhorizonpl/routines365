@@ -9,14 +9,14 @@ use App\Twig\AchievementExtension;
 
 final class AchievementExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $achievementExtension = new AchievementExtension();
 
         $this->assertInstanceOf(AchievementExtension::class, $achievementExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $achievementExtension = new AchievementExtension();
 
@@ -24,7 +24,7 @@ final class AchievementExtensionTest extends AbstractTestCase
         $this->assertIsArray($achievementExtension->getFunctions());
     }
 
-    public function testAchievementType()
+    public function testAchievementType(): void
     {
         $achievementExtension = new AchievementExtension();
 

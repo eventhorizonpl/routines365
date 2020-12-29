@@ -13,7 +13,7 @@ final class CronJobTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new CronJob();
         $form = $this->factory->create(CronJobType::class, $model);
@@ -22,7 +22,7 @@ final class CronJobTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new CronJob();
         $view = $this->factory->create(CronJobType::class, $formData)

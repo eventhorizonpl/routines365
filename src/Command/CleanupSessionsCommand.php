@@ -40,17 +40,13 @@ class CleanupSessionsCommand extends BaseLockableCommand
 
         $timestamp = (new DateTimeImmutable())->getTimestamp();
 
-        $output->writeln('Deleting sessions older than '.$timestamp);
-
         $queryBuilder = $this->entityManager->getConnection()->createQueryBuilder();
-        $number = $queryBuilder
+        $queryBuilder
             ->delete('session')
             ->where('slifetime < :timestamp')
             ->setParameter('timestamp', $timestamp)
             ->execute()
         ;
-
-        $output->writeln('Number of deleted sessions = '.$number);
 
         $this->release();
 

@@ -34,14 +34,14 @@ final class AccountOperationRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountOperationRepository = new AccountOperationRepository($this->managerRegistry);
 
         $this->assertInstanceOf(AccountOperationRepository::class, $accountOperationRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -86,7 +86,7 @@ final class AccountOperationRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($accountOperations);
     }
 
-    public function testFindByParametersForFrontend()
+    public function testFindByParametersForFrontend(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

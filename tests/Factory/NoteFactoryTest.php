@@ -28,21 +28,21 @@ final class NoteFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $noteFactory = new NoteFactory();
 
         $this->assertInstanceOf(NoteFactory::class, $noteFactory);
     }
 
-    public function testCreateNote()
+    public function testCreateNote(): void
     {
         $noteFactory = new NoteFactory();
         $note = $noteFactory->createNote();
         $this->assertInstanceOf(Note::class, $note);
     }
 
-    public function testCreateNoteWithRequired()
+    public function testCreateNoteWithRequired(): void
     {
         $content = $this->faker->sentence;
         $title = $this->faker->sentence;

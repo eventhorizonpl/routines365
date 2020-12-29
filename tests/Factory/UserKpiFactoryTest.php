@@ -29,21 +29,21 @@ final class UserKpiFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $userKpiFactory = new UserKpiFactory();
 
         $this->assertInstanceOf(UserKpiFactory::class, $userKpiFactory);
     }
 
-    public function testCreateUserKpi()
+    public function testCreateUserKpi(): void
     {
         $userKpiFactory = new UserKpiFactory();
         $userKpi = $userKpiFactory->createUserKpi();
         $this->assertInstanceOf(UserKpi::class, $userKpi);
     }
 
-    public function testCreateUserKpiWithRequired()
+    public function testCreateUserKpiWithRequired(): void
     {
         $accountOperationCounter = $this->faker->randomNumber;
         $awardedRewardCounter = $this->faker->randomNumber;

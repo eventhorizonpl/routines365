@@ -11,13 +11,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class KpiTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $kpi = new Kpi();
         $this->assertInstanceOf(Kpi::class, $kpi);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $kpi = new Kpi();
@@ -25,13 +25,13 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($uuid, $kpi->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $kpi = new Kpi();
         $this->assertEquals(null, $kpi->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $kpi = new Kpi();
@@ -41,7 +41,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsString($kpi->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $kpi = new Kpi();
@@ -49,7 +49,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($uuid, $kpi->getUuid());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -58,7 +58,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($createdAt, $kpi->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -66,7 +66,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($createdAt, $kpi->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -75,7 +75,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $kpi->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -83,7 +83,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $kpi->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -92,7 +92,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $kpi->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -100,7 +100,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $kpi->getUpdatedAt());
     }
 
-    public function testGetAccountCounter()
+    public function testGetAccountCounter(): void
     {
         $accountCounter = 10;
         $kpi = new Kpi();
@@ -110,7 +110,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getAccountCounter());
     }
 
-    public function testSetAccountCounter()
+    public function testSetAccountCounter(): void
     {
         $accountCounter = 10;
         $kpi = new Kpi();
@@ -118,7 +118,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($accountCounter, $kpi->getAccountCounter());
     }
 
-    public function testGetAccountOperationCounter()
+    public function testGetAccountOperationCounter(): void
     {
         $accountOperationCounter = 10;
         $kpi = new Kpi();
@@ -128,7 +128,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getAccountOperationCounter());
     }
 
-    public function testSetAccountOperationCounter()
+    public function testSetAccountOperationCounter(): void
     {
         $accountOperationCounter = 10;
         $kpi = new Kpi();
@@ -136,7 +136,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($accountOperationCounter, $kpi->getAccountOperationCounter());
     }
 
-    public function testGetAchievementCounter()
+    public function testGetAchievementCounter(): void
     {
         $achievementCounter = 10;
         $kpi = new Kpi();
@@ -146,7 +146,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getAchievementCounter());
     }
 
-    public function testSetAchievementCounter()
+    public function testSetAchievementCounter(): void
     {
         $achievementCounter = 10;
         $kpi = new Kpi();
@@ -154,7 +154,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($achievementCounter, $kpi->getAchievementCounter());
     }
 
-    public function testGetCompletedRoutineCounter()
+    public function testGetCompletedRoutineCounter(): void
     {
         $completedRoutineCounter = 10;
         $kpi = new Kpi();
@@ -164,7 +164,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getCompletedRoutineCounter());
     }
 
-    public function testSetCompletedRoutineCounter()
+    public function testSetCompletedRoutineCounter(): void
     {
         $completedRoutineCounter = 10;
         $kpi = new Kpi();
@@ -172,7 +172,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($completedRoutineCounter, $kpi->getCompletedRoutineCounter());
     }
 
-    public function testGetContactCounter()
+    public function testGetContactCounter(): void
     {
         $contactCounter = 10;
         $kpi = new Kpi();
@@ -182,7 +182,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getContactCounter());
     }
 
-    public function testSetContactCounter()
+    public function testSetContactCounter(): void
     {
         $contactCounter = 10;
         $kpi = new Kpi();
@@ -190,7 +190,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($contactCounter, $kpi->getContactCounter());
     }
 
-    public function testGetDate()
+    public function testGetDate(): void
     {
         $date = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -198,7 +198,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($date, $kpi->getDate());
     }
 
-    public function testSetDate()
+    public function testSetDate(): void
     {
         $date = new DateTimeImmutable();
         $kpi = new Kpi();
@@ -206,7 +206,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($date, $kpi->getDate());
     }
 
-    public function testGetGoalCounter()
+    public function testGetGoalCounter(): void
     {
         $goalCounter = 10;
         $kpi = new Kpi();
@@ -216,7 +216,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getGoalCounter());
     }
 
-    public function testSetGoalCounter()
+    public function testSetGoalCounter(): void
     {
         $goalCounter = 10;
         $kpi = new Kpi();
@@ -224,7 +224,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($goalCounter, $kpi->getGoalCounter());
     }
 
-    public function testGetNoteCounter()
+    public function testGetNoteCounter(): void
     {
         $noteCounter = 10;
         $kpi = new Kpi();
@@ -234,7 +234,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getNoteCounter());
     }
 
-    public function testSetNoteCounter()
+    public function testSetNoteCounter(): void
     {
         $noteCounter = 10;
         $kpi = new Kpi();
@@ -242,7 +242,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($noteCounter, $kpi->getNoteCounter());
     }
 
-    public function testGetProfileCounter()
+    public function testGetProfileCounter(): void
     {
         $profileCounter = 10;
         $kpi = new Kpi();
@@ -252,7 +252,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getProfileCounter());
     }
 
-    public function testSetProfileCounter()
+    public function testSetProfileCounter(): void
     {
         $profileCounter = 10;
         $kpi = new Kpi();
@@ -260,7 +260,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($profileCounter, $kpi->getProfileCounter());
     }
 
-    public function testGetProjectCounter()
+    public function testGetProjectCounter(): void
     {
         $projectCounter = 10;
         $kpi = new Kpi();
@@ -270,7 +270,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getProjectCounter());
     }
 
-    public function testSetProjectCounter()
+    public function testSetProjectCounter(): void
     {
         $projectCounter = 10;
         $kpi = new Kpi();
@@ -278,7 +278,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($projectCounter, $kpi->getProjectCounter());
     }
 
-    public function testGetPromotionCounter()
+    public function testGetPromotionCounter(): void
     {
         $promotionCounter = 10;
         $kpi = new Kpi();
@@ -288,7 +288,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getPromotionCounter());
     }
 
-    public function testSetPromotionCounter()
+    public function testSetPromotionCounter(): void
     {
         $promotionCounter = 10;
         $kpi = new Kpi();
@@ -296,7 +296,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($promotionCounter, $kpi->getPromotionCounter());
     }
 
-    public function testGetQuoteCounter()
+    public function testGetQuoteCounter(): void
     {
         $quoteCounter = 10;
         $kpi = new Kpi();
@@ -306,7 +306,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getQuoteCounter());
     }
 
-    public function testSetQuoteCounter()
+    public function testSetQuoteCounter(): void
     {
         $quoteCounter = 10;
         $kpi = new Kpi();
@@ -314,7 +314,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($quoteCounter, $kpi->getQuoteCounter());
     }
 
-    public function testGetReminderCounter()
+    public function testGetReminderCounter(): void
     {
         $reminderCounter = 10;
         $kpi = new Kpi();
@@ -324,7 +324,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getReminderCounter());
     }
 
-    public function testSetReminderCounter()
+    public function testSetReminderCounter(): void
     {
         $reminderCounter = 10;
         $kpi = new Kpi();
@@ -332,7 +332,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($reminderCounter, $kpi->getReminderCounter());
     }
 
-    public function testGetReminderMessageCounter()
+    public function testGetReminderMessageCounter(): void
     {
         $reminderMessageCounter = 10;
         $kpi = new Kpi();
@@ -342,7 +342,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getReminderMessageCounter());
     }
 
-    public function testSetReminderMessageCounter()
+    public function testSetReminderMessageCounter(): void
     {
         $reminderMessageCounter = 10;
         $kpi = new Kpi();
@@ -350,7 +350,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($reminderMessageCounter, $kpi->getReminderMessageCounter());
     }
 
-    public function testGetRewardCounter()
+    public function testGetRewardCounter(): void
     {
         $rewardCounter = 10;
         $kpi = new Kpi();
@@ -360,7 +360,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getRewardCounter());
     }
 
-    public function testSetRewardCounter()
+    public function testSetRewardCounter(): void
     {
         $rewardCounter = 10;
         $kpi = new Kpi();
@@ -368,7 +368,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($rewardCounter, $kpi->getRewardCounter());
     }
 
-    public function testGetRoutineCounter()
+    public function testGetRoutineCounter(): void
     {
         $routineCounter = 10;
         $kpi = new Kpi();
@@ -378,7 +378,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getRoutineCounter());
     }
 
-    public function testSetRoutineCounter()
+    public function testSetRoutineCounter(): void
     {
         $routineCounter = 10;
         $kpi = new Kpi();
@@ -386,7 +386,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($routineCounter, $kpi->getRoutineCounter());
     }
 
-    public function testGetSavedEmailCounter()
+    public function testGetSavedEmailCounter(): void
     {
         $savedEmailCounter = 10;
         $kpi = new Kpi();
@@ -396,7 +396,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getSavedEmailCounter());
     }
 
-    public function testSetSavedEmailCounter()
+    public function testSetSavedEmailCounter(): void
     {
         $savedEmailCounter = 10;
         $kpi = new Kpi();
@@ -404,7 +404,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($savedEmailCounter, $kpi->getSavedEmailCounter());
     }
 
-    public function testGetSentReminderCounter()
+    public function testGetSentReminderCounter(): void
     {
         $sentReminderCounter = 10;
         $kpi = new Kpi();
@@ -414,7 +414,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getSentReminderCounter());
     }
 
-    public function testSetSentReminderCounter()
+    public function testSetSentReminderCounter(): void
     {
         $sentReminderCounter = 10;
         $kpi = new Kpi();
@@ -422,7 +422,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($sentReminderCounter, $kpi->getSentReminderCounter());
     }
 
-    public function testGetUserCounter()
+    public function testGetUserCounter(): void
     {
         $userCounter = 10;
         $kpi = new Kpi();
@@ -432,7 +432,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getUserCounter());
     }
 
-    public function testSetUserCounter()
+    public function testSetUserCounter(): void
     {
         $userCounter = 10;
         $kpi = new Kpi();
@@ -440,7 +440,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($userCounter, $kpi->getUserCounter());
     }
 
-    public function testGetUserKpiCounter()
+    public function testGetUserKpiCounter(): void
     {
         $userKpiCounter = 10;
         $kpi = new Kpi();
@@ -450,7 +450,7 @@ final class KpiTest extends AbstractTestCase
         $this->assertIsInt($kpi->getUserKpiCounter());
     }
 
-    public function testSetUserKpiCounter()
+    public function testSetUserKpiCounter(): void
     {
         $userKpiCounter = 10;
         $kpi = new Kpi();

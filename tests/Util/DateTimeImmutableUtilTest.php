@@ -10,7 +10,7 @@ use DateTimeImmutable;
 
 final class DateTimeImmutableUtilTest extends AbstractTestCase
 {
-    public function testEndsAtFromString()
+    public function testEndsAtFromString(): void
     {
         $endsAt = '2020-01-01';
         $result = DateTimeImmutableUtil::endsAtFromString($endsAt);
@@ -28,7 +28,7 @@ final class DateTimeImmutableUtilTest extends AbstractTestCase
         $this->assertEquals(null, $result);
     }
 
-    public function testStartsAtFromString()
+    public function testStartsAtFromString(): void
     {
         $startsAt = '2020-01-01';
         $result = DateTimeImmutableUtil::startsAtFromString($startsAt);

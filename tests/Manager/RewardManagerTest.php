@@ -41,14 +41,14 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $rewardManager = new RewardManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(RewardManager::class, $rewardManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -67,7 +67,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($name, $reward2->getName());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -81,7 +81,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($reward2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -94,7 +94,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(RewardManager::class, $rewardManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -105,7 +105,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         $rewardManager = $this->rewardManager->save($reward, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -120,7 +120,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $reward2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -142,7 +142,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $reward3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

@@ -9,14 +9,14 @@ use App\Twig\AccountOperationExtension;
 
 final class AccountOperationExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountOperationExtension = new AccountOperationExtension();
 
         $this->assertInstanceOf(AccountOperationExtension::class, $accountOperationExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $accountOperationExtension = new AccountOperationExtension();
 
@@ -24,7 +24,7 @@ final class AccountOperationExtensionTest extends AbstractTestCase
         $this->assertIsArray($accountOperationExtension->getFunctions());
     }
 
-    public function testAccountOperationType()
+    public function testAccountOperationType(): void
     {
         $accountOperationExtension = new AccountOperationExtension();
 

@@ -13,7 +13,7 @@ final class SendMotivationalEmailTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new SendMotivationalEmailFormModel();
         $form = $this->factory->create(SendMotivationalEmailType::class, $model);
@@ -22,7 +22,7 @@ final class SendMotivationalEmailTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new SendMotivationalEmailFormModel();
         $view = $this->factory->create(SendMotivationalEmailType::class, $formData)

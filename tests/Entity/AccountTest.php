@@ -14,13 +14,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class AccountTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $account = new Account();
@@ -28,13 +28,13 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($uuid, $account->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $account = new Account();
         $this->assertEquals(null, $account->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $account = new Account();
@@ -44,7 +44,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertIsString($account->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $account = new Account();
@@ -52,7 +52,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($uuid, $account->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $account = new Account();
@@ -62,7 +62,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertIsString($account->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $account = new Account();
@@ -70,7 +70,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($createdBy, $account->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $account = new Account();
@@ -80,7 +80,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertIsString($account->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $account = new Account();
@@ -88,7 +88,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $account->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $account = new Account();
@@ -98,7 +98,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertIsString($account->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $account = new Account();
@@ -106,7 +106,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $account->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $account = new Account();
@@ -115,7 +115,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($createdAt, $account->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $account = new Account();
@@ -123,7 +123,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($createdAt, $account->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $account = new Account();
@@ -132,7 +132,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $account->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $account = new Account();
@@ -140,7 +140,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $account->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $account = new Account();
@@ -149,7 +149,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $account->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $account = new Account();
@@ -157,7 +157,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $account->getUpdatedAt());
     }
 
-    public function testAddAccountOperation()
+    public function testAddAccountOperation(): void
     {
         $account = new Account();
         $this->assertCount(0, $account->getAccountOperations());
@@ -172,7 +172,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertCount(1, $account->getAccountOperations());
     }
 
-    public function testGetAccountOperations()
+    public function testGetAccountOperations(): void
     {
         $account = new Account();
         $this->assertCount(0, $account->getAccountOperations());
@@ -181,7 +181,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertCount(1, $account->getAccountOperations());
     }
 
-    public function testGetAccountOperationsAll()
+    public function testGetAccountOperationsAll(): void
     {
         $account = new Account();
         $this->assertCount(0, $account->getAccountOperationsAll());
@@ -193,7 +193,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertCount(1, $account->getAccountOperationsAll());
     }
 
-    public function testRemoveAccountOperation()
+    public function testRemoveAccountOperation(): void
     {
         $account = new Account();
         $this->assertCount(0, $account->getAccountOperations());
@@ -206,7 +206,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertInstanceOf(Account::class, $account->removeAccountOperation($accountOperation1));
     }
 
-    public function testCanDepositEmailNotifications()
+    public function testCanDepositEmailNotifications(): void
     {
         $emailNotificationsLess = ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT - 10;
         $emailNotificationsMore = ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT + 10;
@@ -215,7 +215,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertFalse($account->canDepositEmailNotifications($emailNotificationsMore));
     }
 
-    public function testDepositEmailNotifications()
+    public function testDepositEmailNotifications(): void
     {
         $emailNotifications = 10;
         $account = new Account();
@@ -224,7 +224,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($emailNotifications, $account->getAvailableEmailNotifications());
     }
 
-    public function testGetAvailableEmailNotifications()
+    public function testGetAvailableEmailNotifications(): void
     {
         $availableEmailNotifications = 10;
         $account = new Account();
@@ -234,7 +234,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($availableEmailNotifications, $account->getAvailableEmailNotifications());
     }
 
-    public function testSetAvailableEmailNotifications()
+    public function testSetAvailableEmailNotifications(): void
     {
         $availableEmailNotifications = 10;
         $account = new Account();
@@ -242,7 +242,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($availableEmailNotifications, $account->getAvailableEmailNotifications());
     }
 
-    public function testCanWithdrawEmailNotifications()
+    public function testCanWithdrawEmailNotifications(): void
     {
         $availableEmailNotifications = 10;
         $account = new Account();
@@ -251,7 +251,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertFalse($account->canWithdrawEmailNotifications($availableEmailNotifications + 1));
     }
 
-    public function testWithdrawEmailNotifications()
+    public function testWithdrawEmailNotifications(): void
     {
         $availableEmailNotifications = 10;
         $account = new Account();
@@ -262,7 +262,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals(0, $account->getAvailableEmailNotifications());
     }
 
-    public function testCanDepositSmsNotifications()
+    public function testCanDepositSmsNotifications(): void
     {
         $smsNotificationsLess = ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT - 10;
         $smsNotificationsMore = ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT + 10;
@@ -271,7 +271,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertFalse($account->canDepositSmsNotifications($smsNotificationsMore));
     }
 
-    public function testDepositSmsNotifications()
+    public function testDepositSmsNotifications(): void
     {
         $smsNotifications = 10;
         $account = new Account();
@@ -280,7 +280,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($smsNotifications, $account->getAvailableSmsNotifications());
     }
 
-    public function testGetAvailableSmsNotifications()
+    public function testGetAvailableSmsNotifications(): void
     {
         $availableSmsNotifications = 10;
         $account = new Account();
@@ -290,7 +290,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($availableSmsNotifications, $account->getAvailableSmsNotifications());
     }
 
-    public function testSetAvailableSmsNotifications()
+    public function testSetAvailableSmsNotifications(): void
     {
         $availableSmsNotifications = 10;
         $account = new Account();
@@ -298,7 +298,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($availableSmsNotifications, $account->getAvailableSmsNotifications());
     }
 
-    public function testCanWithdrawSmsNotifications()
+    public function testCanWithdrawSmsNotifications(): void
     {
         $availableSmsNotifications = 10;
         $account = new Account();
@@ -307,7 +307,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertFalse($account->canWithdrawSmsNotifications($availableSmsNotifications + 1));
     }
 
-    public function testWithdrawSmsNotifications()
+    public function testWithdrawSmsNotifications(): void
     {
         $availableSmsNotifications = 10;
         $account = new Account();
@@ -318,7 +318,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals(0, $account->getAvailableSmsNotifications());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $account = new Account();
@@ -326,7 +326,7 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals($user, $account->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $user = new User();
         $account = new Account();

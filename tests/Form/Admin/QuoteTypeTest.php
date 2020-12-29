@@ -13,7 +13,7 @@ final class QuoteTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Quote();
         $form = $this->factory->create(QuoteType::class, $model);
@@ -22,7 +22,7 @@ final class QuoteTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Quote();
         $view = $this->factory->create(QuoteType::class, $formData)

@@ -14,13 +14,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class ProfileTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $profile = new Profile();
@@ -28,13 +28,13 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($uuid, $profile->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $profile = new Profile();
         $this->assertEquals(null, $profile->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $profile = new Profile();
@@ -44,7 +44,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $profile = new Profile();
@@ -52,7 +52,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($uuid, $profile->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $profile = new Profile();
@@ -62,7 +62,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $profile = new Profile();
@@ -70,7 +70,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($createdBy, $profile->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $profile = new Profile();
@@ -80,7 +80,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $profile = new Profile();
@@ -88,7 +88,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $profile->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $profile = new Profile();
@@ -98,7 +98,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $profile = new Profile();
@@ -106,7 +106,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $profile->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $profile = new Profile();
@@ -115,7 +115,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($createdAt, $profile->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $profile = new Profile();
@@ -123,7 +123,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($createdAt, $profile->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $profile = new Profile();
@@ -132,7 +132,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $profile->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $profile = new Profile();
@@ -140,7 +140,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $profile->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $profile = new Profile();
@@ -149,7 +149,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $profile->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $profile = new Profile();
@@ -157,7 +157,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $profile->getUpdatedAt());
     }
 
-    public function testGetIsVerified()
+    public function testGetIsVerified(): void
     {
         $isVerified = true;
         $profile = new Profile();
@@ -167,7 +167,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsBool($profile->getIsVerified());
     }
 
-    public function testSetIsVerified()
+    public function testSetIsVerified(): void
     {
         $isVerified = true;
         $profile = new Profile();
@@ -175,7 +175,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($isVerified, $profile->getIsVerified());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $profile = new Profile();
@@ -183,7 +183,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($user, $profile->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $user = new User();
         $profile = new Profile();
@@ -191,7 +191,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($user, $profile->getUser());
     }
 
-    public function testGetCountry()
+    public function testGetCountry(): void
     {
         $country = 'pl';
         $profile = new Profile();
@@ -200,7 +200,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getCountry());
     }
 
-    public function testSetCountry()
+    public function testSetCountry(): void
     {
         $country = 'pl';
         $profile = new Profile();
@@ -208,7 +208,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($country, $profile->getCountry());
     }
 
-    public function testGetFirstName()
+    public function testGetFirstName(): void
     {
         $firstName = 'test first name';
         $profile = new Profile();
@@ -218,7 +218,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getFirstName());
     }
 
-    public function testSetFirstName()
+    public function testSetFirstName(): void
     {
         $firstName = 'test first name';
         $profile = new Profile();
@@ -226,7 +226,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($firstName, $profile->getFirstName());
     }
 
-    public function testGetLastName()
+    public function testGetLastName(): void
     {
         $lastName = 'test last name';
         $profile = new Profile();
@@ -236,7 +236,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getLastName());
     }
 
-    public function testSetLastName()
+    public function testSetLastName(): void
     {
         $lastName = 'test last name';
         $profile = new Profile();
@@ -244,7 +244,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($lastName, $profile->getLastName());
     }
 
-    public function testGetNumberOfPhoneVerificationTries()
+    public function testGetNumberOfPhoneVerificationTries(): void
     {
         $numberOfPhoneVerificationTries = 10;
         $profile = new Profile();
@@ -254,7 +254,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsInt($profile->getNumberOfPhoneVerificationTries());
     }
 
-    public function testIncrementNumberOfPhoneVerificationTries()
+    public function testIncrementNumberOfPhoneVerificationTries(): void
     {
         $profile = new Profile();
         $this->assertEquals(0, $profile->getNumberOfPhoneVerificationTries());
@@ -262,7 +262,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals(1, $profile->getNumberOfPhoneVerificationTries());
     }
 
-    public function testSetNumberOfPhoneVerificationTries()
+    public function testSetNumberOfPhoneVerificationTries(): void
     {
         $numberOfPhoneVerificationTries = 10;
         $profile = new Profile();
@@ -270,7 +270,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($numberOfPhoneVerificationTries, $profile->getNumberOfPhoneVerificationTries());
     }
 
-    public function testGetPhone()
+    public function testGetPhone(): void
     {
         $phoneNumberUtil = PhoneNumberUtil::getInstance();
         $phone = $phoneNumberUtil->parse('+48881573056');
@@ -280,7 +280,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($phone, $profile->getPhone());
     }
 
-    public function testGetPhoneString()
+    public function testGetPhoneString(): void
     {
         $phoneNumberUtil = PhoneNumberUtil::getInstance();
         $phoneString = '+48 881 573 056';
@@ -291,7 +291,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($phoneString, $profile->getPhoneString());
     }
 
-    public function testSetPhone()
+    public function testSetPhone(): void
     {
         $phoneNumberUtil = PhoneNumberUtil::getInstance();
         $phone = $phoneNumberUtil->parse('+48881573056');
@@ -300,7 +300,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($phone, $profile->getPhone());
     }
 
-    public function testGetPhoneMd5()
+    public function testGetPhoneMd5(): void
     {
         $phoneMd5 = md5('test phone md5');
         $profile = new Profile();
@@ -310,7 +310,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getPhoneMd5());
     }
 
-    public function testSetPhoneMd5()
+    public function testSetPhoneMd5(): void
     {
         $phoneMd5 = md5('test phone md5');
         $profile = new Profile();
@@ -318,7 +318,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($phoneMd5, $profile->getPhoneMd5());
     }
 
-    public function testGetPhoneVerificationCode()
+    public function testGetPhoneVerificationCode(): void
     {
         $phoneVerificationCode = 10;
         $profile = new Profile();
@@ -327,7 +327,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsInt($profile->getPhoneVerificationCode());
     }
 
-    public function testSetPhoneVerificationCode()
+    public function testSetPhoneVerificationCode(): void
     {
         $phoneVerificationCode = 10;
         $profile = new Profile();
@@ -335,7 +335,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($phoneVerificationCode, $profile->getPhoneVerificationCode());
     }
 
-    public function testGetProfileCompletenessPercent()
+    public function testGetProfileCompletenessPercent(): void
     {
         $country = 'pl';
         $firstName = 'test first name';
@@ -364,7 +364,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsInt($profile->getProfileCompletenessPercent());
     }
 
-    public function testGetSendWeeklyMonthlyStatistics()
+    public function testGetSendWeeklyMonthlyStatistics(): void
     {
         $sendWeeklyMonthlyStatistics = true;
         $profile = new Profile();
@@ -374,7 +374,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsBool($profile->getSendWeeklyMonthlyStatistics());
     }
 
-    public function testSetSendWeeklyMonthlyStatistics()
+    public function testSetSendWeeklyMonthlyStatistics(): void
     {
         $sendWeeklyMonthlyStatistics = true;
         $profile = new Profile();
@@ -382,7 +382,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($sendWeeklyMonthlyStatistics, $profile->getSendWeeklyMonthlyStatistics());
     }
 
-    public function testGetShowMotivationalMessages()
+    public function testGetShowMotivationalMessages(): void
     {
         $showMotivationalMessages = true;
         $profile = new Profile();
@@ -392,7 +392,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsBool($profile->getShowMotivationalMessages());
     }
 
-    public function testSetShowMotivationalMessages()
+    public function testSetShowMotivationalMessages(): void
     {
         $showMotivationalMessages = true;
         $profile = new Profile();
@@ -400,7 +400,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($showMotivationalMessages, $profile->getShowMotivationalMessages());
     }
 
-    public function testGetTheme()
+    public function testGetTheme(): void
     {
         $theme = Profile::THEME_DARK;
         $profile = new Profile();
@@ -409,19 +409,19 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getTheme());
     }
 
-    public function testGetThemeFormChoices()
+    public function testGetThemeFormChoices(): void
     {
         $this->assertCount(1, Profile::getThemeFormChoices());
         $this->assertIsArray(Profile::getThemeFormChoices());
     }
 
-    public function testGetThemeValidationChoices()
+    public function testGetThemeValidationChoices(): void
     {
         $this->assertCount(1, Profile::getThemeValidationChoices());
         $this->assertIsArray(Profile::getThemeValidationChoices());
     }
 
-    public function testSetTheme()
+    public function testSetTheme(): void
     {
         $theme = Profile::THEME_DARK;
         $profile = new Profile();
@@ -429,7 +429,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertEquals($theme, $profile->getTheme());
     }
 
-    public function testSetThemeException()
+    public function testSetThemeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $theme = 'wrong theme';
@@ -437,7 +437,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertInstanceOf(Profile::class, $profile->setTheme($theme));
     }
 
-    public function testGetTimeZone()
+    public function testGetTimeZone(): void
     {
         $timeZone = 'test time zone';
         $profile = new Profile();
@@ -447,7 +447,7 @@ final class ProfileTest extends AbstractTestCase
         $this->assertIsString($profile->getTimeZone());
     }
 
-    public function testSetTimeZone()
+    public function testSetTimeZone(): void
     {
         $timeZone = 'test time zone';
         $profile = new Profile();

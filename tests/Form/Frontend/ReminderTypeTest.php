@@ -27,7 +27,7 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -39,7 +39,7 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

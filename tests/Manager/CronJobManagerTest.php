@@ -28,14 +28,14 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $cronJobManager = new CronJobManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(CronJobManager::class, $cronJobManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $name = 'test name';
@@ -60,7 +60,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($name, $cronJob2->getName());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $cronJob = new CronJob();
@@ -81,7 +81,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($cronJob2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $cronJob = new CronJob();
@@ -98,7 +98,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(CronJobManager::class, $cronJobManager);
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $cronJob = new CronJob();

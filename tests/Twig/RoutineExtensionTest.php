@@ -9,14 +9,14 @@ use App\Twig\RoutineExtension;
 
 final class RoutineExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $routineExtension = new RoutineExtension();
 
         $this->assertInstanceOf(RoutineExtension::class, $routineExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $routineExtension = new RoutineExtension();
 
@@ -24,7 +24,7 @@ final class RoutineExtensionTest extends AbstractTestCase
         $this->assertIsArray($routineExtension->getFunctions());
     }
 
-    public function testRoutineType()
+    public function testRoutineType(): void
     {
         $routineExtension = new RoutineExtension();
 

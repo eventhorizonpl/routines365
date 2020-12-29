@@ -28,21 +28,21 @@ final class RewardFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $rewardFactory = new RewardFactory();
 
         $this->assertInstanceOf(RewardFactory::class, $rewardFactory);
     }
 
-    public function testCreateReward()
+    public function testCreateReward(): void
     {
         $rewardFactory = new RewardFactory();
         $reward = $rewardFactory->createReward();
         $this->assertInstanceOf(Reward::class, $reward);
     }
 
-    public function testCreateRewardWithRequired()
+    public function testCreateRewardWithRequired(): void
     {
         $isAwarded = $this->faker->boolean;
         $name = $this->faker->sentence;

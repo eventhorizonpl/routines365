@@ -28,14 +28,14 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountOperationFaker = new AccountOperationFaker($this->accountOperationFactory);
 
         $this->assertInstanceOf(AccountOperationFaker::class, $accountOperationFaker);
     }
 
-    public function testCreateAccountOperation()
+    public function testCreateAccountOperation(): void
     {
         $this->purge();
         $accountOperation = $this->accountOperationFaker->createAccountOperation();

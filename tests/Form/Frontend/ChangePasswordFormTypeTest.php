@@ -14,13 +14,18 @@ final class ChangePasswordFormTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $form = $this->factory->create(ChangePasswordFormType::class);
         $form->submit($formData);
         $this->assertTrue($form->isSynchronized());
     }
 
+    /**
+     * @return ValidatorExtension[]
+     *
+     * @psalm-return array{0: ValidatorExtension}
+     */
     protected function getExtensions()
     {
         $validator = Validation::createValidator();

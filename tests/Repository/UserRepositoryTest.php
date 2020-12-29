@@ -35,14 +35,14 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $userRepository = new UserRepository($this->managerRegistry);
 
         $this->assertInstanceOf(UserRepository::class, $userRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -87,7 +87,7 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($users);
     }
 
-    public function testFindForKpi()
+    public function testFindForKpi(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -101,7 +101,7 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($users);
     }
 
-    public function testFindOneByEmail()
+    public function testFindOneByEmail(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -115,7 +115,7 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         }
     }
 
-    public function testUpgradePassword()
+    public function testUpgradePassword(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

@@ -35,14 +35,14 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $rewardRepository = new RewardRepository($this->managerRegistry);
 
         $this->assertInstanceOf(RewardRepository::class, $rewardRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -87,7 +87,7 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($rewards);
     }
 
-    public function testFindByParametersForFrontend()
+    public function testFindByParametersForFrontend(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -112,7 +112,7 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($rewards);
     }
 
-    public function testFindOneByUserAndTypesAndRoutine()
+    public function testFindOneByUserAndTypesAndRoutine(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

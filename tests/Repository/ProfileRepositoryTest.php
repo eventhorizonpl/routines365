@@ -27,7 +27,7 @@ final class ProfileRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $profileRepository = new ProfileRepository($this->managerRegistry);
 

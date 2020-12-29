@@ -28,21 +28,21 @@ final class QuoteFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $quoteFactory = new QuoteFactory();
 
         $this->assertInstanceOf(QuoteFactory::class, $quoteFactory);
     }
 
-    public function testCreateQuote()
+    public function testCreateQuote(): void
     {
         $quoteFactory = new QuoteFactory();
         $quote = $quoteFactory->createQuote();
         $this->assertInstanceOf(Quote::class, $quote);
     }
 
-    public function testCreateQuoteWithRequired()
+    public function testCreateQuoteWithRequired(): void
     {
         $author = $this->faker->sentence;
         $content = $this->faker->sentence;

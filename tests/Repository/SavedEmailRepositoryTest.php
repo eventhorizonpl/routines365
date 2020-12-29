@@ -34,14 +34,14 @@ final class SavedEmailRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $savedEmailRepository = new SavedEmailRepository($this->managerRegistry);
 
         $this->assertInstanceOf(SavedEmailRepository::class, $savedEmailRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

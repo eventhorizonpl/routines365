@@ -48,7 +48,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $profileManager = new ProfileManager(
             $this->entityManager,
@@ -59,7 +59,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(ProfileManager::class, $profileManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -78,7 +78,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($country, $profile2->getCountry());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -92,7 +92,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($profile2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -108,7 +108,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(ProfileManager::class, $profileManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -119,7 +119,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $profileManager = $this->profileManager->save($profile, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -134,7 +134,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $profile2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -156,7 +156,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $profile3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

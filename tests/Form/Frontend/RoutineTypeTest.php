@@ -13,7 +13,7 @@ final class RoutineTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Routine();
         $form = $this->factory->create(RoutineType::class, $model);
@@ -22,7 +22,7 @@ final class RoutineTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Routine();
         $view = $this->factory->create(RoutineType::class, $formData)

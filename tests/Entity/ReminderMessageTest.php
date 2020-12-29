@@ -15,13 +15,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class ReminderMessageTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderMessage = new ReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $reminderMessage = new ReminderMessage();
@@ -29,13 +29,13 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($uuid, $reminderMessage->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $reminderMessage = new ReminderMessage();
         $this->assertEquals(null, $reminderMessage->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $reminderMessage = new ReminderMessage();
@@ -45,7 +45,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertIsString($reminderMessage->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $reminderMessage = new ReminderMessage();
@@ -53,7 +53,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($uuid, $reminderMessage->getUuid());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -62,7 +62,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($createdAt, $reminderMessage->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -70,7 +70,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($createdAt, $reminderMessage->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -79,7 +79,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $reminderMessage->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -87,7 +87,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $reminderMessage->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -96,7 +96,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $reminderMessage->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -104,7 +104,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $reminderMessage->getUpdatedAt());
     }
 
-    public function testGetAccountOperation()
+    public function testGetAccountOperation(): void
     {
         $accountOperation = new AccountOperation();
         $reminderMessage = new ReminderMessage();
@@ -112,7 +112,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($accountOperation, $reminderMessage->getAccountOperation());
     }
 
-    public function testSetAccountOperation()
+    public function testSetAccountOperation(): void
     {
         $accountOperation = new AccountOperation();
         $reminderMessage = new ReminderMessage();
@@ -120,7 +120,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($accountOperation, $reminderMessage->getAccountOperation());
     }
 
-    public function testGetReminder()
+    public function testGetReminder(): void
     {
         $reminder = new Reminder();
         $reminderMessage = new ReminderMessage();
@@ -128,7 +128,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($reminder, $reminderMessage->getReminder());
     }
 
-    public function testSetReminder()
+    public function testSetReminder(): void
     {
         $reminder = new Reminder();
         $reminderMessage = new ReminderMessage();
@@ -136,7 +136,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($reminder, $reminderMessage->getReminder());
     }
 
-    public function testGetSentReminder()
+    public function testGetSentReminder(): void
     {
         $sentReminder = new SentReminder();
         $reminderMessage = new ReminderMessage();
@@ -144,7 +144,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($sentReminder, $reminderMessage->getSentReminder());
     }
 
-    public function testSetSentReminder()
+    public function testSetSentReminder(): void
     {
         $sentReminder = new SentReminder();
         $reminderMessage = new ReminderMessage();
@@ -152,7 +152,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($sentReminder, $reminderMessage->getSentReminder());
     }
 
-    public function testGetContent()
+    public function testGetContent(): void
     {
         $content = 'test content';
         $reminderMessage = new ReminderMessage();
@@ -162,7 +162,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertIsString($reminderMessage->getContent());
     }
 
-    public function testSetContent()
+    public function testSetContent(): void
     {
         $content = 'test content';
         $reminderMessage = new ReminderMessage();
@@ -170,7 +170,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($content, $reminderMessage->getContent());
     }
 
-    public function testGetPostDate()
+    public function testGetPostDate(): void
     {
         $postDate = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -178,7 +178,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($postDate, $reminderMessage->getPostDate());
     }
 
-    public function testSetPostDate()
+    public function testSetPostDate(): void
     {
         $postDate = new DateTimeImmutable();
         $reminderMessage = new ReminderMessage();
@@ -186,7 +186,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($postDate, $reminderMessage->getPostDate());
     }
 
-    public function testGetThirdPartySystemResponse()
+    public function testGetThirdPartySystemResponse(): void
     {
         $thirdPartySystemResponse = 'test third party system response';
         $reminderMessage = new ReminderMessage();
@@ -196,7 +196,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertIsString($reminderMessage->getThirdPartySystemResponse());
     }
 
-    public function testSetThirdPartySystemResponse()
+    public function testSetThirdPartySystemResponse(): void
     {
         $thirdPartySystemResponse = 'test third party system response';
         $reminderMessage = new ReminderMessage();
@@ -204,7 +204,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($thirdPartySystemResponse, $reminderMessage->getThirdPartySystemResponse());
     }
 
-    public function testGetThirdPartySystemType()
+    public function testGetThirdPartySystemType(): void
     {
         $thirdPartySystemType = ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES;
         $reminderMessage = new ReminderMessage();
@@ -213,19 +213,19 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertIsString($reminderMessage->getThirdPartySystemType());
     }
 
-    public function testGetThirdPartySystemTypeFormChoices()
+    public function testGetThirdPartySystemTypeFormChoices(): void
     {
         $this->assertCount(2, ReminderMessage::getThirdPartySystemTypeFormChoices());
         $this->assertIsArray(ReminderMessage::getThirdPartySystemTypeFormChoices());
     }
 
-    public function testGetThirdPartySystemTypeValidationChoices()
+    public function testGetThirdPartySystemTypeValidationChoices(): void
     {
         $this->assertCount(2, ReminderMessage::getThirdPartySystemTypeValidationChoices());
         $this->assertIsArray(ReminderMessage::getThirdPartySystemTypeValidationChoices());
     }
 
-    public function testSetThirdPartySystemType()
+    public function testSetThirdPartySystemType(): void
     {
         $thirdPartySystemType = ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES;
         $reminderMessage = new ReminderMessage();
@@ -233,7 +233,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($thirdPartySystemType, $reminderMessage->getThirdPartySystemType());
     }
 
-    public function testSetThirdPartySystemTypeException()
+    public function testSetThirdPartySystemTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $thirdPartySystemType = 'wrong third party system type';
@@ -241,7 +241,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setThirdPartySystemType($thirdPartySystemType));
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $type = ReminderMessage::TYPE_EMAIL;
         $reminderMessage = new ReminderMessage();
@@ -250,19 +250,19 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertIsString($reminderMessage->getType());
     }
 
-    public function testGetTypeFormChoices()
+    public function testGetTypeFormChoices(): void
     {
         $this->assertCount(2, ReminderMessage::getTypeFormChoices());
         $this->assertIsArray(ReminderMessage::getTypeFormChoices());
     }
 
-    public function testGetTypeValidationChoices()
+    public function testGetTypeValidationChoices(): void
     {
         $this->assertCount(2, ReminderMessage::getTypeValidationChoices());
         $this->assertIsArray(ReminderMessage::getTypeValidationChoices());
     }
 
-    public function testSetType()
+    public function testSetType(): void
     {
         $type = ReminderMessage::TYPE_EMAIL;
         $reminderMessage = new ReminderMessage();
@@ -270,7 +270,7 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($type, $reminderMessage->getType());
     }
 
-    public function testSetTypeException()
+    public function testSetTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $type = 'wrong type';

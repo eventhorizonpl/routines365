@@ -48,14 +48,14 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $projectManager = new ProjectManager($this->entityManager, $this->goalManager, $this->validator);
 
         $this->assertInstanceOf(ProjectManager::class, $projectManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -74,7 +74,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($name, $project2->getName());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -88,7 +88,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($project2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -103,7 +103,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(ProjectManager::class, $projectManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -114,7 +114,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         $projectManager = $this->projectManager->save($project, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -131,7 +131,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $project2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -153,7 +153,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $project3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

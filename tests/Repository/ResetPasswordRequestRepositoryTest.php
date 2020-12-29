@@ -35,14 +35,14 @@ final class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $resetPasswordRequestRepository = new ResetPasswordRequestRepository($this->managerRegistry);
 
         $this->assertInstanceOf(ResetPasswordRequestRepository::class, $resetPasswordRequestRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

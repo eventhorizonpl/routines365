@@ -11,13 +11,13 @@ use Doctrine\ORM\Query\SqlWalker;
 
 final class RandFunctionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $randFunction = new RandFunction('RAND');
         $this->assertInstanceOf(RandFunction::class, $randFunction);
     }
 
-    public function testGetSql()
+    public function testGetSql(): void
     {
         $randFunction = new RandFunction('RAND');
         $sqlWalker = $this->getMockBuilder(SqlWalker::class)
@@ -27,7 +27,7 @@ final class RandFunctionTest extends AbstractTestCase
         $this->assertIsString($randFunction->getSql($sqlWalker));
     }
 
-    public function testParse()
+    public function testParse(): void
     {
         $randFunction = new RandFunction('RAND');
         $parser = $this->getMockBuilder(Parser::class)

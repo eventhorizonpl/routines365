@@ -11,13 +11,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class QuoteTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $quote = new Quote();
         $this->assertInstanceOf(Quote::class, $quote);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $author = 'test author';
         $content = 'test content';
@@ -27,13 +27,13 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals('"'.$content.'" - '.$author, $quote->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $quote = new Quote();
         $this->assertEquals(null, $quote->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $quote = new Quote();
@@ -43,7 +43,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $quote = new Quote();
@@ -51,7 +51,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($uuid, $quote->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $quote = new Quote();
@@ -61,7 +61,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $quote = new Quote();
@@ -69,7 +69,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($createdBy, $quote->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $quote = new Quote();
@@ -79,7 +79,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $quote = new Quote();
@@ -87,7 +87,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $quote->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $quote = new Quote();
@@ -97,7 +97,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $quote = new Quote();
@@ -105,7 +105,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $quote->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $quote = new Quote();
@@ -114,7 +114,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($createdAt, $quote->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $quote = new Quote();
@@ -122,7 +122,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($createdAt, $quote->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $quote = new Quote();
@@ -131,7 +131,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $quote->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $quote = new Quote();
@@ -139,7 +139,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $quote->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $quote = new Quote();
@@ -148,7 +148,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $quote->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $quote = new Quote();
@@ -156,7 +156,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $quote->getUpdatedAt());
     }
 
-    public function testGetIsVisible()
+    public function testGetIsVisible(): void
     {
         $isVisible = true;
         $quote = new Quote();
@@ -166,7 +166,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsBool($quote->getIsVisible());
     }
 
-    public function testSetIsVisible()
+    public function testSetIsVisible(): void
     {
         $isVisible = true;
         $quote = new Quote();
@@ -174,7 +174,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($isVisible, $quote->getIsVisible());
     }
 
-    public function testGetAuthor()
+    public function testGetAuthor(): void
     {
         $author = 'test author';
         $quote = new Quote();
@@ -184,7 +184,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getAuthor());
     }
 
-    public function testSetAuthor()
+    public function testSetAuthor(): void
     {
         $author = 'test author';
         $quote = new Quote();
@@ -192,7 +192,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($author, $quote->getAuthor());
     }
 
-    public function testGetContent()
+    public function testGetContent(): void
     {
         $content = 'test content';
         $quote = new Quote();
@@ -202,7 +202,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getContent());
     }
 
-    public function testSetContent()
+    public function testSetContent(): void
     {
         $content = 'test content';
         $quote = new Quote();
@@ -210,7 +210,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($content, $quote->getContent());
     }
 
-    public function testGetContentMd5()
+    public function testGetContentMd5(): void
     {
         $contentMd5 = 'testcontentmd5';
         $quote = new Quote();
@@ -219,7 +219,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsString($quote->getContentMd5());
     }
 
-    public function testSetContentMd5()
+    public function testSetContentMd5(): void
     {
         $contentMd5 = 'testcontentmd5';
         $quote = new Quote();
@@ -227,7 +227,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals(md5($contentMd5), $quote->getContentMd5());
     }
 
-    public function testGetPopularity()
+    public function testGetPopularity(): void
     {
         $popularity = 10;
         $quote = new Quote();
@@ -236,7 +236,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsInt($quote->getPopularity());
     }
 
-    public function testIncrementPopularity()
+    public function testIncrementPopularity(): void
     {
         $quote = new Quote();
         $this->assertEquals(0, $quote->getPopularity());
@@ -244,7 +244,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals(1, $quote->getPopularity());
     }
 
-    public function testSetPopularity()
+    public function testSetPopularity(): void
     {
         $popularity = 10;
         $quote = new Quote();
@@ -252,7 +252,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertEquals($popularity, $quote->getPopularity());
     }
 
-    public function testGetStringLength()
+    public function testGetStringLength(): void
     {
         $stringLength = 10;
         $quote = new Quote();
@@ -261,7 +261,7 @@ final class QuoteTest extends AbstractTestCase
         $this->assertIsInt($quote->getStringLength());
     }
 
-    public function testSetStringLength()
+    public function testSetStringLength(): void
     {
         $stringLength = 10;
         $quote = new Quote();

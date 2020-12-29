@@ -35,14 +35,14 @@ final class QuoteRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $quoteRepository = new QuoteRepository($this->managerRegistry);
 
         $this->assertInstanceOf(QuoteRepository::class, $quoteRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();
@@ -80,7 +80,7 @@ final class QuoteRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($quotes);
     }
 
-    public function testFindByParametersForFrontend()
+    public function testFindByParametersForFrontend(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();
@@ -112,7 +112,7 @@ final class QuoteRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($quotes);
     }
 
-    public function testFindOneByStringLength()
+    public function testFindOneByStringLength(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();

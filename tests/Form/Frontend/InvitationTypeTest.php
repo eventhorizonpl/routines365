@@ -13,7 +13,7 @@ final class InvitationTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new InvitationEmailFormModel();
         $form = $this->factory->create(InvitationType::class, $model);
@@ -22,7 +22,7 @@ final class InvitationTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new InvitationEmailFormModel();
         $view = $this->factory->create(InvitationType::class, $formData)

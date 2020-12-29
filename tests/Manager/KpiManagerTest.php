@@ -47,14 +47,14 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $kpiManager = new KpiManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(KpiManager::class, $kpiManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -73,7 +73,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($accountCounter, $kpi2->getAccountCounter());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -87,7 +87,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($kpi2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -100,7 +100,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(KpiManager::class, $kpiManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -111,7 +111,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         $kpiManager = $this->kpiManager->save($kpi, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -126,7 +126,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $kpi2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -148,7 +148,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $kpi3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

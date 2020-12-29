@@ -34,14 +34,14 @@ final class AchievementRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $achievementRepository = new AchievementRepository($this->managerRegistry);
 
         $this->assertInstanceOf(AchievementRepository::class, $achievementRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted();
@@ -86,7 +86,7 @@ final class AchievementRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($achievements);
     }
 
-    public function testFindByRequirementAndType()
+    public function testFindByRequirementAndType(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted(true);
@@ -96,7 +96,7 @@ final class AchievementRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($achievements);
     }
 
-    public function testFindForFrontend()
+    public function testFindForFrontend(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted();

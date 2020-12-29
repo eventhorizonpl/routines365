@@ -30,7 +30,7 @@ final class UserFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
@@ -39,7 +39,7 @@ final class UserFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(UserFactory::class, $userFactory);
     }
 
-    public function testCreateUser()
+    public function testCreateUser(): void
     {
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
@@ -48,7 +48,7 @@ final class UserFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user);
     }
 
-    public function testCreateUserLead()
+    public function testCreateUserLead(): void
     {
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
@@ -60,7 +60,7 @@ final class UserFactoryTest extends AbstractTestCase
         $this->assertEquals(User::TYPE_LEAD, $user->getType());
     }
 
-    public function testCreateUserWithRequired()
+    public function testCreateUserWithRequired(): void
     {
         $email = $this->faker->safeEmail;
         $isEnabled = $this->faker->boolean;

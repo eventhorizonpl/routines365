@@ -14,13 +14,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class SentReminderTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $sentReminder = new SentReminder();
@@ -28,13 +28,13 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($uuid, $sentReminder->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $sentReminder = new SentReminder();
         $this->assertEquals(null, $sentReminder->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $sentReminder = new SentReminder();
@@ -44,7 +44,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertIsString($sentReminder->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $sentReminder = new SentReminder();
@@ -52,7 +52,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($uuid, $sentReminder->getUuid());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
@@ -61,7 +61,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($createdAt, $sentReminder->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
@@ -69,7 +69,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($createdAt, $sentReminder->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
@@ -78,7 +78,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $sentReminder->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
@@ -86,7 +86,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $sentReminder->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
@@ -95,7 +95,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $sentReminder->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
@@ -103,7 +103,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $sentReminder->getUpdatedAt());
     }
 
-    public function testGetReminder()
+    public function testGetReminder(): void
     {
         $reminder = new Reminder();
         $sentReminder = new SentReminder();
@@ -111,7 +111,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($reminder, $sentReminder->getReminder());
     }
 
-    public function testSetReminder()
+    public function testSetReminder(): void
     {
         $reminder = new Reminder();
         $sentReminder = new SentReminder();
@@ -119,7 +119,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($reminder, $sentReminder->getReminder());
     }
 
-    public function testAddReminderMessage()
+    public function testAddReminderMessage(): void
     {
         $sentReminder = new SentReminder();
         $this->assertCount(0, $sentReminder->getReminderMessages());
@@ -134,7 +134,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertCount(1, $sentReminder->getReminderMessages());
     }
 
-    public function testGetReminderMessages()
+    public function testGetReminderMessages(): void
     {
         $sentReminder = new SentReminder();
         $this->assertCount(0, $sentReminder->getReminderMessages());
@@ -143,7 +143,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertCount(1, $sentReminder->getReminderMessages());
     }
 
-    public function testGetReminderMessagesAll()
+    public function testGetReminderMessagesAll(): void
     {
         $sentReminder = new SentReminder();
         $this->assertCount(0, $sentReminder->getReminderMessagesAll());
@@ -155,7 +155,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertCount(1, $sentReminder->getReminderMessagesAll());
     }
 
-    public function testRemoveReminderMessage()
+    public function testRemoveReminderMessage(): void
     {
         $sentReminder = new SentReminder();
         $this->assertCount(0, $sentReminder->getReminderMessages());
@@ -168,7 +168,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertInstanceOf(SentReminder::class, $sentReminder->removeReminderMessage($reminderMessage1));
     }
 
-    public function testGetRoutine()
+    public function testGetRoutine(): void
     {
         $routine = new Routine();
         $sentReminder = new SentReminder();
@@ -176,7 +176,7 @@ final class SentReminderTest extends AbstractTestCase
         $this->assertEquals($routine, $sentReminder->getRoutine());
     }
 
-    public function testSetRoutine()
+    public function testSetRoutine(): void
     {
         $routine = new Routine();
         $sentReminder = new SentReminder();

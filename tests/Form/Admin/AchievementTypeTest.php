@@ -13,7 +13,7 @@ final class AchievementTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Achievement();
         $form = $this->factory->create(AchievementType::class, $model);
@@ -22,7 +22,7 @@ final class AchievementTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Achievement();
         $view = $this->factory->create(AchievementType::class, $formData)

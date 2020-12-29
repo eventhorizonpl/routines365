@@ -34,14 +34,14 @@ final class GoalRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $goalRepository = new GoalRepository($this->managerRegistry);
 
         $this->assertInstanceOf(GoalRepository::class, $goalRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

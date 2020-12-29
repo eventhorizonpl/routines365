@@ -47,14 +47,14 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $quoteManager = new QuoteManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(QuoteManager::class, $quoteManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -73,7 +73,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($popularity, $quote2->getPopularity());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();
@@ -86,7 +86,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($quote2);
     }
 
-    public function testIncrementPopularity()
+    public function testIncrementPopularity(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();
@@ -101,7 +101,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals(($popularity + 1), $quote2->getPopularity());
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -111,7 +111,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(QuoteManager::class, $quoteManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -122,7 +122,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $quoteManager = $this->quoteManager->save($quote, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -137,7 +137,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $quote2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -159,7 +159,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $quote3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();

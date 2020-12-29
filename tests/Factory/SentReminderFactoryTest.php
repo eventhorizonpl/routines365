@@ -10,14 +10,14 @@ use App\Tests\AbstractTestCase;
 
 final class SentReminderFactoryTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $sentReminderFactory = new SentReminderFactory();
 
         $this->assertInstanceOf(SentReminderFactory::class, $sentReminderFactory);
     }
 
-    public function testCreateSentReminder()
+    public function testCreateSentReminder(): void
     {
         $sentReminderFactory = new SentReminderFactory();
         $sentReminder = $sentReminderFactory->createSentReminder();

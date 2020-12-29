@@ -28,21 +28,21 @@ final class RoutineFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $routineFactory = new RoutineFactory();
 
         $this->assertInstanceOf(RoutineFactory::class, $routineFactory);
     }
 
-    public function testCreateRoutine()
+    public function testCreateRoutine(): void
     {
         $routineFactory = new RoutineFactory();
         $routine = $routineFactory->createRoutine();
         $this->assertInstanceOf(Routine::class, $routine);
     }
 
-    public function testCreateRoutineWithRequired()
+    public function testCreateRoutineWithRequired(): void
     {
         $isEnabled = $this->faker->boolean;
         $name = $this->faker->sentence;

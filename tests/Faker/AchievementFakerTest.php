@@ -34,14 +34,14 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $achievementFaker = new AchievementFaker($this->achievementFactory, $this->achievementManager);
 
         $this->assertInstanceOf(AchievementFaker::class, $achievementFaker);
     }
 
-    public function testCreateAchievement()
+    public function testCreateAchievement(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievement();
@@ -65,7 +65,7 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
         $this->assertEquals($type, $achievement->getType());
     }
 
-    public function testCreateAchievementPersisted()
+    public function testCreateAchievementPersisted(): void
     {
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted();

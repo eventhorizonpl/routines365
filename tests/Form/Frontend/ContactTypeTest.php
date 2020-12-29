@@ -13,7 +13,7 @@ final class ContactTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Contact();
         $form = $this->factory->create(ContactType::class, $model);
@@ -22,7 +22,7 @@ final class ContactTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Contact();
         $view = $this->factory->create(ContactType::class, $formData)

@@ -13,13 +13,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class CompletedRoutineTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -27,13 +27,13 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($uuid, $completedRoutine->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $completedRoutine = new CompletedRoutine();
         $this->assertEquals(null, $completedRoutine->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -43,7 +43,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertIsString($completedRoutine->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -51,7 +51,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($uuid, $completedRoutine->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -61,7 +61,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertIsString($completedRoutine->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -69,7 +69,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($createdBy, $completedRoutine->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -79,7 +79,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertIsString($completedRoutine->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -87,7 +87,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $completedRoutine->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -97,7 +97,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertIsString($completedRoutine->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
@@ -105,7 +105,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $completedRoutine->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -114,7 +114,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($createdAt, $completedRoutine->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -122,7 +122,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($createdAt, $completedRoutine->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -131,7 +131,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $completedRoutine->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -139,7 +139,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $completedRoutine->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -148,7 +148,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $completedRoutine->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -156,7 +156,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $completedRoutine->getUpdatedAt());
     }
 
-    public function testGetRoutine()
+    public function testGetRoutine(): void
     {
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
@@ -164,7 +164,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($routine, $completedRoutine->getRoutine());
     }
 
-    public function testSetRoutine()
+    public function testSetRoutine(): void
     {
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
@@ -172,7 +172,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($routine, $completedRoutine->getRoutine());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $completedRoutine = new CompletedRoutine();
@@ -180,7 +180,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($user, $completedRoutine->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $user = new User();
         $completedRoutine = new CompletedRoutine();
@@ -188,7 +188,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($user, $completedRoutine->getUser());
     }
 
-    public function testGetComment()
+    public function testGetComment(): void
     {
         $comment = 'test comment';
         $completedRoutine = new CompletedRoutine();
@@ -198,7 +198,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertIsString($completedRoutine->getComment());
     }
 
-    public function testSetComment()
+    public function testSetComment(): void
     {
         $comment = 'test comment';
         $completedRoutine = new CompletedRoutine();
@@ -206,7 +206,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($comment, $completedRoutine->getComment());
     }
 
-    public function testGetDate()
+    public function testGetDate(): void
     {
         $date = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -215,7 +215,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($date, $completedRoutine->getDate());
     }
 
-    public function testSetDate()
+    public function testSetDate(): void
     {
         $date = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
@@ -223,7 +223,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertEquals($date, $completedRoutine->getDate());
     }
 
-    public function testGetMinutesDevoted()
+    public function testGetMinutesDevoted(): void
     {
         $minutesDevoted = 10;
         $completedRoutine = new CompletedRoutine();
@@ -232,7 +232,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $this->assertIsInt($completedRoutine->getMinutesDevoted());
     }
 
-    public function testSetMinutesDevoted()
+    public function testSetMinutesDevoted(): void
     {
         $minutesDevoted = 10;
         $completedRoutine = new CompletedRoutine();

@@ -67,14 +67,14 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $userKpiRepository = new UserKpiRepository($this->managerRegistry);
 
         $this->assertInstanceOf(UserKpiRepository::class, $userKpiRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -125,7 +125,7 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($userKpis);
     }
 
-    public function testFindOneByTypeAndUser()
+    public function testFindOneByTypeAndUser(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

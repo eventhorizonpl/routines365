@@ -42,14 +42,14 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $goalManager = new GoalManager($this->entityManager, $this->validator);
 
         $this->assertInstanceOf(GoalManager::class, $goalManager);
     }
 
-    public function testBulkSave()
+    public function testBulkSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -68,7 +68,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         $this->assertEquals($name, $goal2->getName());
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -82,7 +82,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($goal2);
     }
 
-    public function testSave()
+    public function testSave(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -97,7 +97,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(GoalManager::class, $goalManager);
     }
 
-    public function testSaveException()
+    public function testSaveException(): void
     {
         $this->expectException(ManagerException::class);
         $this->purge();
@@ -108,7 +108,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         $goalManager = $this->goalManager->save($goal, (string) $user, true);
     }
 
-    public function testSoftDelete()
+    public function testSoftDelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -123,7 +123,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null !== $goal2->getDeletedAt());
     }
 
-    public function testUndelete()
+    public function testUndelete(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -145,7 +145,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         $this->assertTrue(null === $goal3->getDeletedAt());
     }
 
-    public function testValidate()
+    public function testValidate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

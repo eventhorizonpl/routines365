@@ -14,13 +14,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class AccountOperationTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountOperation = new AccountOperation();
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -28,13 +28,13 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($uuid, $accountOperation->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $accountOperation = new AccountOperation();
         $this->assertEquals(null, $accountOperation->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -44,7 +44,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsString($accountOperation->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -52,7 +52,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($uuid, $accountOperation->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -62,7 +62,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsString($accountOperation->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -70,7 +70,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($createdBy, $accountOperation->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -80,7 +80,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsString($accountOperation->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -88,7 +88,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $accountOperation->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -98,7 +98,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsString($accountOperation->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $accountOperation = new AccountOperation();
@@ -106,7 +106,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $accountOperation->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $accountOperation = new AccountOperation();
@@ -115,7 +115,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($createdAt, $accountOperation->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $accountOperation = new AccountOperation();
@@ -123,7 +123,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($createdAt, $accountOperation->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $accountOperation = new AccountOperation();
@@ -132,7 +132,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $accountOperation->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $accountOperation = new AccountOperation();
@@ -140,7 +140,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $accountOperation->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $accountOperation = new AccountOperation();
@@ -149,7 +149,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $accountOperation->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $accountOperation = new AccountOperation();
@@ -157,7 +157,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $accountOperation->getUpdatedAt());
     }
 
-    public function testGetAccount()
+    public function testGetAccount(): void
     {
         $account = new Account();
         $accountOperation = new AccountOperation();
@@ -165,7 +165,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($account, $accountOperation->getAccount());
     }
 
-    public function testSetAccount()
+    public function testSetAccount(): void
     {
         $account = new Account();
         $accountOperation = new AccountOperation();
@@ -173,7 +173,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($account, $accountOperation->getAccount());
     }
 
-    public function testGetReminderMessage()
+    public function testGetReminderMessage(): void
     {
         $reminderMessage = new ReminderMessage();
         $accountOperation = new AccountOperation();
@@ -181,7 +181,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($reminderMessage, $accountOperation->getReminderMessage());
     }
 
-    public function testSetReminderMessage()
+    public function testSetReminderMessage(): void
     {
         $reminderMessage = new ReminderMessage();
         $accountOperation = new AccountOperation();
@@ -189,7 +189,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($reminderMessage, $accountOperation->getReminderMessage());
     }
 
-    public function testGetDescription()
+    public function testGetDescription(): void
     {
         $description = 'test description';
         $accountOperation = new AccountOperation();
@@ -199,7 +199,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsString($accountOperation->getDescription());
     }
 
-    public function testSetDescription()
+    public function testSetDescription(): void
     {
         $description = 'test description';
         $accountOperation = new AccountOperation();
@@ -207,7 +207,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($description, $accountOperation->getDescription());
     }
 
-    public function testGetEmailNotifications()
+    public function testGetEmailNotifications(): void
     {
         $emailNotifications = 10;
         $accountOperation = new AccountOperation();
@@ -217,7 +217,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsInt($accountOperation->getEmailNotifications());
     }
 
-    public function testSetEmailNotifications()
+    public function testSetEmailNotifications(): void
     {
         $emailNotifications = 10;
         $accountOperation = new AccountOperation();
@@ -225,7 +225,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
     }
 
-    public function testGetSmsNotifications()
+    public function testGetSmsNotifications(): void
     {
         $smsNotifications = 10;
         $accountOperation = new AccountOperation();
@@ -235,7 +235,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsInt($accountOperation->getSmsNotifications());
     }
 
-    public function testSetSmsNotifications()
+    public function testSetSmsNotifications(): void
     {
         $smsNotifications = 10;
         $accountOperation = new AccountOperation();
@@ -243,7 +243,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $type = AccountOperation::TYPE_DEPOSIT;
         $accountOperation = new AccountOperation();
@@ -252,19 +252,19 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertIsString($accountOperation->getType());
     }
 
-    public function testGetTypeFormChoices()
+    public function testGetTypeFormChoices(): void
     {
         $this->assertCount(2, AccountOperation::getTypeFormChoices());
         $this->assertIsArray(AccountOperation::getTypeFormChoices());
     }
 
-    public function testGetTypeValidationChoices()
+    public function testGetTypeValidationChoices(): void
     {
         $this->assertCount(2, AccountOperation::getTypeValidationChoices());
         $this->assertIsArray(AccountOperation::getTypeValidationChoices());
     }
 
-    public function testSetType()
+    public function testSetType(): void
     {
         $type = AccountOperation::TYPE_DEPOSIT;
         $accountOperation = new AccountOperation();
@@ -272,7 +272,7 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($type, $accountOperation->getType());
     }
 
-    public function testSetTypeException()
+    public function testSetTypeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $type = 'wrong type';

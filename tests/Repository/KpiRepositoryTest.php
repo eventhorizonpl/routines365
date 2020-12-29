@@ -40,14 +40,14 @@ final class KpiRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $kpiRepository = new KpiRepository($this->managerRegistry);
 
         $this->assertInstanceOf(KpiRepository::class, $kpiRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

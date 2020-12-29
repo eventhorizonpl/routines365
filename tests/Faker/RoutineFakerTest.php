@@ -28,14 +28,14 @@ final class RoutineFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $routineFaker = new RoutineFaker($this->routineFactory);
 
         $this->assertInstanceOf(RoutineFaker::class, $routineFaker);
     }
 
-    public function testCreateRoutine()
+    public function testCreateRoutine(): void
     {
         $this->purge();
         $routine = $this->routineFaker->createRoutine();

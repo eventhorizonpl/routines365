@@ -28,21 +28,21 @@ final class CompletedRoutineFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $completedRoutineFactory = new CompletedRoutineFactory();
 
         $this->assertInstanceOf(CompletedRoutineFactory::class, $completedRoutineFactory);
     }
 
-    public function testCreateCompletedRoutine()
+    public function testCreateCompletedRoutine(): void
     {
         $completedRoutineFactory = new CompletedRoutineFactory();
         $completedRoutine = $completedRoutineFactory->createCompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine);
     }
 
-    public function testCreateCompletedRoutineWithRequired()
+    public function testCreateCompletedRoutineWithRequired(): void
     {
         $minutesDevoted = $this->faker->randomNumber;
         $completedRoutineFactory = new CompletedRoutineFactory();

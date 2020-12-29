@@ -9,14 +9,14 @@ use App\Twig\PromotionExtension;
 
 final class PromotionExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $promotionExtension = new PromotionExtension();
 
         $this->assertInstanceOf(PromotionExtension::class, $promotionExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $promotionExtension = new PromotionExtension();
 
@@ -24,7 +24,7 @@ final class PromotionExtensionTest extends AbstractTestCase
         $this->assertIsArray($promotionExtension->getFunctions());
     }
 
-    public function testPromotionType()
+    public function testPromotionType(): void
     {
         $promotionExtension = new PromotionExtension();
 

@@ -9,14 +9,14 @@ use App\Twig\UserExtension;
 
 final class UserExtensionTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $userExtension = new UserExtension();
 
         $this->assertInstanceOf(UserExtension::class, $userExtension);
     }
 
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $userExtension = new UserExtension();
 
@@ -24,7 +24,7 @@ final class UserExtensionTest extends AbstractTestCase
         $this->assertIsArray($userExtension->getFunctions());
     }
 
-    public function testUserType()
+    public function testUserType(): void
     {
         $userExtension = new UserExtension();
 

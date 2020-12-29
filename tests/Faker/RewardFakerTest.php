@@ -28,14 +28,14 @@ final class RewardFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $rewardFaker = new RewardFaker($this->rewardFactory);
 
         $this->assertInstanceOf(RewardFaker::class, $rewardFaker);
     }
 
-    public function testCreateReward()
+    public function testCreateReward(): void
     {
         $this->purge();
         $reward = $this->rewardFaker->createReward();

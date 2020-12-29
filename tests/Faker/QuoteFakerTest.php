@@ -34,14 +34,14 @@ final class QuoteFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $quoteFaker = new QuoteFaker($this->quoteFactory, $this->quoteManager);
 
         $this->assertInstanceOf(QuoteFaker::class, $quoteFaker);
     }
 
-    public function testCreateQuote()
+    public function testCreateQuote(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuote();
@@ -59,7 +59,7 @@ final class QuoteFakerTest extends AbstractDoctrineTestCase
         $this->assertEquals($isVisible, $quote->getIsVisible());
     }
 
-    public function testCreateQuotePersisted()
+    public function testCreateQuotePersisted(): void
     {
         $this->purge();
         $quote = $this->quoteFaker->createQuotePersisted();

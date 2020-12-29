@@ -13,13 +13,13 @@ use Symfony\Component\Uid\Uuid;
 
 final class NoteTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $uuid = (string) Uuid::v4();
         $note = new Note();
@@ -27,13 +27,13 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($uuid, $note->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $note = new Note();
         $this->assertEquals(null, $note->getId());
     }
 
-    public function testGetUuid()
+    public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $note = new Note();
@@ -43,7 +43,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertIsString($note->getUuid());
     }
 
-    public function testSetUuid()
+    public function testSetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $note = new Note();
@@ -51,7 +51,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($uuid, $note->getUuid());
     }
 
-    public function testGetCreatedBy()
+    public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $note = new Note();
@@ -61,7 +61,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertIsString($note->getCreatedBy());
     }
 
-    public function testSetCreatedBy()
+    public function testSetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $note = new Note();
@@ -69,7 +69,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($createdBy, $note->getCreatedBy());
     }
 
-    public function testGetDeletedBy()
+    public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $note = new Note();
@@ -79,7 +79,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertIsString($note->getDeletedBy());
     }
 
-    public function testSetDeletedBy()
+    public function testSetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $note = new Note();
@@ -87,7 +87,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($deletedBy, $note->getDeletedBy());
     }
 
-    public function testGetUpdatedBy()
+    public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $note = new Note();
@@ -97,7 +97,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertIsString($note->getUpdatedBy());
     }
 
-    public function testSetUpdatedBy()
+    public function testSetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $note = new Note();
@@ -105,7 +105,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($updatedBy, $note->getUpdatedBy());
     }
 
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $note = new Note();
@@ -114,7 +114,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($createdAt, $note->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $note = new Note();
@@ -122,7 +122,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($createdAt, $note->getCreatedAt());
     }
 
-    public function testGetDeletedAt()
+    public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $note = new Note();
@@ -131,7 +131,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $note->getDeletedAt());
     }
 
-    public function testSetDeletedAt()
+    public function testSetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $note = new Note();
@@ -139,7 +139,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($deletedAt, $note->getDeletedAt());
     }
 
-    public function testGetUpdatedAt()
+    public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $note = new Note();
@@ -148,7 +148,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $note->getUpdatedAt());
     }
 
-    public function testSetUpdatedAt()
+    public function testSetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $note = new Note();
@@ -156,7 +156,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($updatedAt, $note->getUpdatedAt());
     }
 
-    public function testGetRoutine()
+    public function testGetRoutine(): void
     {
         $routine = new Routine();
         $note = new Note();
@@ -164,7 +164,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($routine, $note->getRoutine());
     }
 
-    public function testSetRoutine()
+    public function testSetRoutine(): void
     {
         $routine = new Routine();
         $note = new Note();
@@ -172,7 +172,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($routine, $note->getRoutine());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $note = new Note();
@@ -180,7 +180,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($user, $note->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $user = new User();
         $note = new Note();
@@ -188,7 +188,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($user, $note->getUser());
     }
 
-    public function testGetContent()
+    public function testGetContent(): void
     {
         $content = 'test content';
         $note = new Note();
@@ -198,7 +198,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertIsString($note->getContent());
     }
 
-    public function testSetContent()
+    public function testSetContent(): void
     {
         $content = 'test content';
         $note = new Note();
@@ -206,7 +206,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertEquals($content, $note->getContent());
     }
 
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $title = 'test title';
         $note = new Note();
@@ -216,7 +216,7 @@ final class NoteTest extends AbstractTestCase
         $this->assertIsString($note->getTitle());
     }
 
-    public function testSetTitle()
+    public function testSetTitle(): void
     {
         $title = 'test title';
         $note = new Note();

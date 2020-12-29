@@ -28,21 +28,21 @@ final class AccountOperationFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $accountOperationFactory = new AccountOperationFactory();
 
         $this->assertInstanceOf(AccountOperationFactory::class, $accountOperationFactory);
     }
 
-    public function testCreateAccountOperation()
+    public function testCreateAccountOperation(): void
     {
         $accountOperationFactory = new AccountOperationFactory();
         $accountOperation = $accountOperationFactory->createAccountOperation();
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
     }
 
-    public function testCreateAccountOperationWithRequired()
+    public function testCreateAccountOperationWithRequired(): void
     {
         $description = $this->faker->sentence;
         $emailNotifications = $this->faker->randomNumber;

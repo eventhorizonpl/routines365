@@ -28,21 +28,21 @@ final class CronJobFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $cronJobFactory = new CronJobFactory();
 
         $this->assertInstanceOf(CronJobFactory::class, $cronJobFactory);
     }
 
-    public function testCreateCronJob()
+    public function testCreateCronJob(): void
     {
         $cronJobFactory = new CronJobFactory();
         $cronJob = $cronJobFactory->createCronJob();
         $this->assertInstanceOf(CronJob::class, $cronJob);
     }
 
-    public function testCreateCronJobWithRequired()
+    public function testCreateCronJobWithRequired(): void
     {
         $command = $this->faker->sentence;
         $description = $this->faker->sentence;

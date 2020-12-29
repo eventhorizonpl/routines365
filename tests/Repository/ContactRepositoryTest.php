@@ -34,14 +34,14 @@ final class ContactRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $contactRepository = new ContactRepository($this->managerRegistry);
 
         $this->assertInstanceOf(ContactRepository::class, $contactRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

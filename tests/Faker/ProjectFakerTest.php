@@ -28,14 +28,14 @@ final class ProjectFakerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $projectFaker = new ProjectFaker($this->projectFactory);
 
         $this->assertInstanceOf(ProjectFaker::class, $projectFaker);
     }
 
-    public function testCreateProject()
+    public function testCreateProject(): void
     {
         $this->purge();
         $project = $this->projectFaker->createProject();

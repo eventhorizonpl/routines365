@@ -13,7 +13,7 @@ final class PromotionTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new Promotion();
         $form = $this->factory->create(PromotionType::class, $model);
@@ -22,7 +22,7 @@ final class PromotionTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new Promotion();
         $view = $this->factory->create(PromotionType::class, $formData)

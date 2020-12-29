@@ -34,14 +34,14 @@ final class RoutineRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $routineRepository = new RoutineRepository($this->managerRegistry);
 
         $this->assertInstanceOf(RoutineRepository::class, $routineRepository);
     }
 
-    public function testFindByParametersForAdmin()
+    public function testFindByParametersForAdmin(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
@@ -86,7 +86,7 @@ final class RoutineRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($routines);
     }
 
-    public function testFindByParametersForFrontend()
+    public function testFindByParametersForFrontend(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

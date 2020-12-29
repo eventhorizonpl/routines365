@@ -28,21 +28,21 @@ final class ReminderMessageFactoryTest extends AbstractTestCase
         parent::tearDown();
     }
 
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $reminderMessageFactory = new ReminderMessageFactory();
 
         $this->assertInstanceOf(ReminderMessageFactory::class, $reminderMessageFactory);
     }
 
-    public function testCreateReminderMessage()
+    public function testCreateReminderMessage(): void
     {
         $reminderMessageFactory = new ReminderMessageFactory();
         $reminderMessage = $reminderMessageFactory->createReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage);
     }
 
-    public function testCreateReminderMessageWithRequired()
+    public function testCreateReminderMessageWithRequired(): void
     {
         $content = $this->faker->sentence;
         $type = $this->faker->randomElement(

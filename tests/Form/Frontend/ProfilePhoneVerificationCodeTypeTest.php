@@ -13,7 +13,7 @@ final class ProfilePhoneVerificationCodeTypeTest extends TypeTestCase
     /**
      * @dataProvider getValidTestData
      */
-    public function testSubmitValidData(array $formData)
+    public function testSubmitValidData(array $formData): void
     {
         $model = new ProfilePhoneVerificationCodeFormModel();
         $form = $this->factory->create(ProfilePhoneVerificationCodeType::class, $model);
@@ -22,7 +22,7 @@ final class ProfilePhoneVerificationCodeTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
     }
 
-    public function testCustomFormView()
+    public function testCustomFormView(): void
     {
         $formData = new ProfilePhoneVerificationCodeFormModel();
         $view = $this->factory->create(ProfilePhoneVerificationCodeType::class, $formData)

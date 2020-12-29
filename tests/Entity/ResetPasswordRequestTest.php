@@ -11,7 +11,7 @@ use DateTimeImmutable;
 
 final class ResetPasswordRequestTest extends AbstractTestCase
 {
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $user = new User();
         $expiresAt = new DateTimeImmutable();
@@ -21,7 +21,7 @@ final class ResetPasswordRequestTest extends AbstractTestCase
         $this->assertInstanceOf(ResetPasswordRequest::class, $resetPasswordRequest);
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $user = new User();
         $expiresAt = new DateTimeImmutable();
@@ -31,7 +31,7 @@ final class ResetPasswordRequestTest extends AbstractTestCase
         $this->assertEquals(null, $resetPasswordRequest->getId());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $user = new User();
         $expiresAt = new DateTimeImmutable();
