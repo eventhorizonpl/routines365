@@ -15,7 +15,7 @@ use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class UserAdminFixtures extends Fixture implements ContainerAwareInterface, FixtureGroupInterface
+class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, FixtureGroupInterface
 {
     use ContainerAwareTrait;
 

@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class NoteFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V1NoteFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,8 +33,8 @@ class NoteFixtures extends Fixture implements ContainerAwareInterface, Dependent
     public function getDependencies(): array
     {
         return [
-            RoutineFixtures::class,
-            UserFixtures::class,
+            V1RoutineFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -43,12 +43,12 @@ class NoteFixtures extends Fixture implements ContainerAwareInterface, Dependent
         $kernel = $this->container->get('kernel');
         $notes = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
-                for ($routineId = 1; $routineId <= RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+                for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($noteId = 1; $noteId <= self::NOTE_LIMIT; ++$noteId) {
                         $note = $this->noteFaker->createNote();
-                        $note->setRoutine($this->getReference(RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $note->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $note->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
+                        $note->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                         $notes[] = $note;
                         $this->addReference(self::NOTE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $noteId, $note);
                     }

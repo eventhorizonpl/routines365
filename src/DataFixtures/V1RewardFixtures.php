@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class RewardFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V1RewardFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,8 +33,8 @@ class RewardFixtures extends Fixture implements ContainerAwareInterface, Depende
     public function getDependencies(): array
     {
         return [
-            RoutineFixtures::class,
-            UserFixtures::class,
+            V1RoutineFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -43,12 +43,12 @@ class RewardFixtures extends Fixture implements ContainerAwareInterface, Depende
         $kernel = $this->container->get('kernel');
         $rewards = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
-                for ($routineId = 1; $routineId <= RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+                for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($rewardId = 1; $rewardId <= self::REWARD_LIMIT; ++$rewardId) {
                         $reward = $this->rewardFaker->createReward();
-                        $reward->setRoutine($this->getReference(RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $reward->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $reward->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
+                        $reward->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                         $rewards[] = $reward;
                         $this->addReference(self::REWARD_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $rewardId, $reward);
                     }

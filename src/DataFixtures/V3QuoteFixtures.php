@@ -10,9 +10,10 @@ use App\Manager\QuoteManager;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class QuoteV3Fixtures extends Fixture implements FixtureGroupInterface
+class V3QuoteFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
     private QuoteFactory $quoteFactory;
     private QuoteManager $quoteManager;
@@ -26,6 +27,13 @@ class QuoteV3Fixtures extends Fixture implements FixtureGroupInterface
         $this->quoteFactory = $quoteFactory;
         $this->quoteManager = $quoteManager;
         $this->userRepository = $userRepository;
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            V1UserAdminFixtures::class,
+        ];
     }
 
     public static function getGroups(): array

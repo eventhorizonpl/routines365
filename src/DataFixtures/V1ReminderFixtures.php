@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class ReminderFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V1ReminderFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,8 +33,8 @@ class ReminderFixtures extends Fixture implements ContainerAwareInterface, Depen
     public function getDependencies(): array
     {
         return [
-            RoutineFixtures::class,
-            UserFixtures::class,
+            V1RoutineFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -43,12 +43,12 @@ class ReminderFixtures extends Fixture implements ContainerAwareInterface, Depen
         $kernel = $this->container->get('kernel');
         $reminders = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
-                for ($routineId = 1; $routineId <= RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+                for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($reminderId = 1; $reminderId <= self::REMINDER_LIMIT; ++$reminderId) {
                         $reminder = $this->reminderFaker->createReminder();
-                        $reminder->setRoutine($this->getReference(RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $reminder->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $reminder->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
+                        $reminder->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                         $reminders[] = $reminder;
                         $this->addReference(self::REMINDER_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $reminderId, $reminder);
                     }

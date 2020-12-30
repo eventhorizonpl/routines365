@@ -10,7 +10,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CronJobV3Fixtures extends Fixture implements FixtureGroupInterface
+class V3CronJobFixtures extends Fixture implements FixtureGroupInterface
 {
     private CronJobFactory $cronJobFactory;
     private CronJobManager $cronJobManager;

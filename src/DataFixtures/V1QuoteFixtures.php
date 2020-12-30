@@ -11,7 +11,7 @@ use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class QuoteFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
+class V1QuoteFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
     private QuoteFactory $quoteFactory;
     private QuoteManager $quoteManager;
@@ -27,7 +27,7 @@ class QuoteFixtures extends Fixture implements DependentFixtureInterface, Fixtur
     public function getDependencies(): array
     {
         return [
-            UserAdminFixtures::class,
+            V1UserAdminFixtures::class,
         ];
     }
 
@@ -1661,6 +1661,6 @@ class QuoteFixtures extends Fixture implements DependentFixtureInterface, Fixtur
                 true
             );
         }
-        $this->quoteManager->bulkSave($quotes, (string) $this->getReference(UserAdminFixtures::ADMIN_USER_REFERENCE));
+        $this->quoteManager->bulkSave($quotes, (string) $this->getReference(V1UserAdminFixtures::ADMIN_USER_REFERENCE));
     }
 }

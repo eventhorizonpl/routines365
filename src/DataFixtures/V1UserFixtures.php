@@ -13,7 +13,7 @@ use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class UserFixtures extends Fixture implements ContainerAwareInterface
+class V1UserFixtures extends Fixture implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 

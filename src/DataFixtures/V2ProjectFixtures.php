@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class ProjectFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V2ProjectFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,7 +33,7 @@ class ProjectFixtures extends Fixture implements ContainerAwareInterface, Depend
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -42,10 +42,10 @@ class ProjectFixtures extends Fixture implements ContainerAwareInterface, Depend
         $kernel = $this->container->get('kernel');
         $projects = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($projectId = 1; $projectId <= self::PROJECT_LIMIT; ++$projectId) {
                     $project = $this->projectFaker->createProject();
-                    $project->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                    $project->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                     $projects[] = $project;
                     $this->addReference(self::PROJECT_REFERENCE.'-'.(string) $userId.'-'.(string) $projectId, $project);
                 }

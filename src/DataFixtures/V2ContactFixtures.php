@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class ContactFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V2ContactFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,7 +33,7 @@ class ContactFixtures extends Fixture implements ContainerAwareInterface, Depend
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -42,10 +42,10 @@ class ContactFixtures extends Fixture implements ContainerAwareInterface, Depend
         $kernel = $this->container->get('kernel');
         $contacts = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($contactId = 1; $contactId <= self::CONTACT_LIMIT; ++$contactId) {
                     $contact = $this->contactFaker->createContact();
-                    $contact->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                    $contact->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                     $contacts[] = $contact;
                     $this->addReference(self::CONTACT_REFERENCE.'-'.(string) $userId.'-'.(string) $contactId, $contact);
                 }

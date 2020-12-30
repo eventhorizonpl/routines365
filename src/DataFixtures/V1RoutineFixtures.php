@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class RoutineFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V1RoutineFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,7 +33,7 @@ class RoutineFixtures extends Fixture implements ContainerAwareInterface, Depend
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -42,10 +42,10 @@ class RoutineFixtures extends Fixture implements ContainerAwareInterface, Depend
         $kernel = $this->container->get('kernel');
         $routines = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= self::ROUTINE_LIMIT; ++$routineId) {
                     $routine = $this->routineFaker->createRoutine();
-                    $routine->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                    $routine->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                     $routines[] = $routine;
                     $this->addReference(self::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId, $routine);
                 }

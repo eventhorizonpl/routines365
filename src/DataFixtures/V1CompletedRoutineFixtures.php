@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class CompletedRoutineFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
+class V1CompletedRoutineFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {
     use ContainerAwareTrait;
 
@@ -33,8 +33,8 @@ class CompletedRoutineFixtures extends Fixture implements ContainerAwareInterfac
     public function getDependencies(): array
     {
         return [
-            RoutineFixtures::class,
-            UserFixtures::class,
+            V1RoutineFixtures::class,
+            V1UserFixtures::class,
         ];
     }
 
@@ -43,12 +43,12 @@ class CompletedRoutineFixtures extends Fixture implements ContainerAwareInterfac
         $kernel = $this->container->get('kernel');
         $completedRoutines = [];
         if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
-            for ($userId = 1; $userId <= UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
-                for ($routineId = 1; $routineId <= RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
+            for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
+                for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($completedRoutineId = 1; $completedRoutineId <= self::COMPLETED_ROUTINE_LIMIT; ++$completedRoutineId) {
                         $completedRoutine = $this->completedRoutineFaker->createCompletedRoutine();
-                        $completedRoutine->setRoutine($this->getReference(RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $completedRoutine->setUser($this->getReference(UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $completedRoutine->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
+                        $completedRoutine->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
                         $completedRoutines[] = $completedRoutine;
                         $this->addReference(self::COMPLETED_ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $completedRoutineId, $completedRoutine);
                     }

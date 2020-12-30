@@ -11,9 +11,10 @@ use App\Manager\AchievementManager;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AchievementFixtures extends Fixture implements FixtureGroupInterface
+class V3AchievementFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
     private AchievementFactory $achievementFactory;
     private AchievementManager $achievementManager;
@@ -27,6 +28,13 @@ class AchievementFixtures extends Fixture implements FixtureGroupInterface
         $this->achievementFactory = $achievementFactory;
         $this->achievementManager = $achievementManager;
         $this->userRepository = $userRepository;
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            V1UserAdminFixtures::class,
+        ];
     }
 
     public static function getGroups(): array
