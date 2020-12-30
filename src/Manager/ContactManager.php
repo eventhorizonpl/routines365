@@ -24,8 +24,9 @@ class ContactManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $contacts, string $actor = null, int $saveEvery = 100): self
+    public function bulkSave(array $contacts, string $actor = null, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($contacts as $contact) {
             $this->save($contact, $actor, false);

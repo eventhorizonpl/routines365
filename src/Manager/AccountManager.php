@@ -24,8 +24,9 @@ class AccountManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $accounts, string $actor, int $saveEvery = 100): self
+    public function bulkSave(array $accounts, string $actor, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($accounts as $account) {
             $this->save($account, $actor, false);

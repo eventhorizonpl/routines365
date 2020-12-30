@@ -24,8 +24,9 @@ class UserKpiManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $userKpis, int $saveEvery = 100): self
+    public function bulkSave(array $userKpis, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($userKpis as $userKpi) {
             $this->save($userKpi, false);

@@ -39,8 +39,9 @@ class RoutineManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $routines, string $actor = null, int $saveEvery = 100): self
+    public function bulkSave(array $routines, string $actor = null, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($routines as $routine) {
             $this->save($routine, $actor, false);

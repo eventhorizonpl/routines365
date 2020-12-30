@@ -24,8 +24,9 @@ class PromotionManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $promotions, string $actor, int $saveEvery = 100): self
+    public function bulkSave(array $promotions, string $actor, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($promotions as $promotion) {
             $this->save($promotion, $actor, false);

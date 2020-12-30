@@ -24,8 +24,9 @@ class SentReminderManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $sentReminders, int $saveEvery = 100): self
+    public function bulkSave(array $sentReminders, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($sentReminders as $sentReminder) {
             $this->save($sentReminder, false);

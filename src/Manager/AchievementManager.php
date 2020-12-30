@@ -24,8 +24,9 @@ class AchievementManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $achievements, string $actor, int $saveEvery = 100): self
+    public function bulkSave(array $achievements, string $actor, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($achievements as $achievement) {
             $this->save($achievement, $actor, false);

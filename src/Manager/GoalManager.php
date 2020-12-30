@@ -24,8 +24,9 @@ class GoalManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $goals, string $actor = null, int $saveEvery = 100): self
+    public function bulkSave(array $goals, string $actor = null, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($goals as $goal) {
             $this->save($goal, $actor, false);

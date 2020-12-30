@@ -60,8 +60,9 @@ class UserManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $users, string $actor = null, int $saveEvery = 100): self
+    public function bulkSave(array $users, string $actor = null, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($users as $user) {
             $this->save($user, $actor, false);

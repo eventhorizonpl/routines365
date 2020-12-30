@@ -30,8 +30,9 @@ class ProfileManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $profiles, string $actor, int $saveEvery = 100): self
+    public function bulkSave(array $profiles, string $actor, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($profiles as $profile) {
             $this->save($profile, $actor, false);

@@ -23,8 +23,9 @@ class CronJobManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $cronJobs, int $saveEvery = 100): self
+    public function bulkSave(array $cronJobs, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($cronJobs as $cronJob) {
             $this->save($cronJob, false);

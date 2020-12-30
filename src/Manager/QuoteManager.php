@@ -24,8 +24,9 @@ class QuoteManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $quotes, string $actor, int $saveEvery = 100): self
+    public function bulkSave(array $quotes, string $actor, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($quotes as $quote) {
             $this->save($quote, $actor, false);

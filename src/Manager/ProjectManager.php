@@ -27,8 +27,9 @@ class ProjectManager
         $this->validator = $validator;
     }
 
-    public function bulkSave(array $projects, string $actor = null, int $saveEvery = 100): self
+    public function bulkSave(array $projects, string $actor = null, int $saveEvery = 200): self
     {
+        $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
         foreach ($projects as $project) {
             $this->save($project, $actor, false);
