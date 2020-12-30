@@ -151,7 +151,7 @@ class NoteController extends AbstractController
         $this->denyAccessUnlessGranted(NoteVoter::DELETE, $note);
 
         if (true === $this->isCsrfTokenValid(
-            'delete'.$note->getUuid(),
+            'delete'.(string) $note->getUuid(),
             $request->request->get('_token')
         )) {
             $noteManager->softDelete($note, (string) $this->getUser());

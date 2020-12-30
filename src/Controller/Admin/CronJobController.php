@@ -120,10 +120,10 @@ class CronJobController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.$cronJob->getId(),
+            'delete'.(string) $cronJob->getId(),
             $request->request->get('_token')
         )) {
-            $cronJobManager->delete($cronJob, $this->getUser());
+            $cronJobManager->delete($cronJob);
         }
 
         return $this->redirectToRoute('admin_cron_job_index');

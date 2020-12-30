@@ -123,7 +123,7 @@ class QuoteController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.$quote->getUuid(),
+            'delete'.(string) $quote->getUuid(),
             $request->request->get('_token')
         )) {
             $quoteManager->softDelete($quote, (string) $this->getUser());
