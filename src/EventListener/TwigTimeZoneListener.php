@@ -24,7 +24,7 @@ class TwigTimeZoneListener
         $this->security = $security;
     }
 
-    public function onKernelControllerArguments(ControllerArgumentsEvent $event)
+    public function onKernelControllerArguments(ControllerArgumentsEvent $event): void
     {
         if ((null !== $this->security->getUser()) &&
             (null !== $this->security->getUser()->getProfile()) &&
