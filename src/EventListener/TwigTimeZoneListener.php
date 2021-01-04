@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
+use App\Util\PeterkahlLocale;
 use Locale;
-use peterkahl\locale\locale as PeterkahlLocale;
 use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 use Symfony\Component\Security\Core\Security;
 use Twig\Environment;

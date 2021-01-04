@@ -180,9 +180,6 @@
             "config/packages/misd_phone_number.yaml"
         ]
     },
-    "peterkahl/country-to-locale": {
-        "version": "v1.0.1"
-    },
     "phar-io/manifest": {
         "version": "2.0.1"
     },

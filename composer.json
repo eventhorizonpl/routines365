@@ -17,7 +17,6 @@
         "knplabs/knp-paginator-bundle": "^5.2",
         "league/iso3166": "^2.1",
         "odolbeau/phone-number-bundle": "^3.1",
-        "peterkahl/country-to-locale": "^1.0",
         "phpdocumentor/reflection-docblock": "^5.1",
         "prolix/maintenance-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.6",
