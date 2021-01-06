@@ -55,6 +55,9 @@ COPY translations translations/
 RUN mkdir -p var/cache var/log
 VOLUME /var/www/html/var
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
+
 FROM php_build as php_build_assets
 RUN apk add --no-cache \
   nodejs \
@@ -66,9 +69,6 @@ RUN yarn install \
 
 FROM php_build as php_build_final
 COPY --from=php_build_assets /var/www/html/public/build /var/www/html/public/build
-
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
 
 STOPSIGNAL SIGQUIT
 EXPOSE 9000

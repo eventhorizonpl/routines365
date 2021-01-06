@@ -36,7 +36,7 @@ WORKDIR /var/www/html
 
 ARG APP_ENV=prod
 
-COPY composer.json composer.lock symfony.lock ./
+COPY composer.json composer.lock package.json symfony.lock webpack.config.js yarn.lock ./
 
 RUN composer install --prefer-dist --no-scripts --no-progress --no-suggest \
   && composer clear-cache
