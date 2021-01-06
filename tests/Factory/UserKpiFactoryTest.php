@@ -62,6 +62,7 @@ final class UserKpiFactoryTest extends AbstractTestCase
         $type = $this->faker->randomElement(
             UserKpi::getTypeFormChoices()
         );
+        $userQuestionnaireCounter = $this->faker->randomNumber;
         $userKpiFactory = new UserKpiFactory();
         $userKpi = $userKpiFactory->createUserKpiWithRequired(
             $accountOperationCounter,
@@ -78,7 +79,8 @@ final class UserKpiFactoryTest extends AbstractTestCase
             $rewardCounter,
             $routineCounter,
             $savedEmailCounter,
-            $type
+            $type,
+            $userQuestionnaireCounter
         );
         $this->assertInstanceOf(UserKpi::class, $userKpi);
         $this->assertEquals($accountOperationCounter, $userKpi->getAccountOperationCounter());
@@ -96,5 +98,6 @@ final class UserKpiFactoryTest extends AbstractTestCase
         $this->assertEquals($routineCounter, $userKpi->getRoutineCounter());
         $this->assertEquals($savedEmailCounter, $userKpi->getSavedEmailCounter());
         $this->assertEquals($type, $userKpi->getType());
+        $this->assertEquals($userQuestionnaireCounter, $userKpi->getUserQuestionnaireCounter());
     }
 }

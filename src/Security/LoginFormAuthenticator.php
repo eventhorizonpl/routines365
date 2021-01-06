@@ -106,7 +106,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             $this->userService->changeTypeToProspect($token->getUser());
         }
 
-        $this->userService->updateLastLoginAt($token->getUser());
+        $this->userService->onAuthenticationSuccess($token->getUser());
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);

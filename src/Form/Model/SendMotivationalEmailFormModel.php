@@ -13,5 +13,5 @@ class SendMotivationalEmailFormModel
      * @Assert\NotBlank()
      * @Assert\Type("string")
      */
-    public $email;
+    public string $email;
 }

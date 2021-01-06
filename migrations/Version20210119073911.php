@@ -10,14 +10,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210118165222 extends AbstractMigration
+final class Version20210119073911 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE answer (id INT AUTO_INCREMENT NOT NULL, question_id INT NOT NULL, content VARCHAR(255) NOT NULL, type VARCHAR(24) NOT NULL, uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', is_enabled TINYINT(1) NOT NULL, position INT NOT NULL, created_by CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', deleted_by CHAR(36) DEFAULT NULL COMMENT \'(DC2Type:guid)\', updated_by CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetimetz_immutable)\', deleted_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetimetz_immutable)\', updated_at DATETIME NOT NULL COMMENT \'(DC2Type:datetimetz_immutable)\', UNIQUE INDEX UNIQ_DADD4A25D17F50A6 (uuid), INDEX IDX_DADD4A251E27F6BF (question_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -35,10 +35,12 @@ final class Version20210118165222 extends AbstractMigration
         $this->addSql('ALTER TABLE user_questionnaire_answer ADD CONSTRAINT FK_FD5A9663AA334807 FOREIGN KEY (answer_id) REFERENCES answer (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE user_questionnaire_answer ADD CONSTRAINT FK_FD5A9663B312AA22 FOREIGN KEY (user_questionnaire_id) REFERENCES user_questionnaire (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kpi ADD answer_counter INT NOT NULL, ADD question_counter INT NOT NULL, ADD questionnaire_counter INT NOT NULL, ADD retention_counter INT NOT NULL, ADD user_kyt_counter INT NOT NULL, ADD user_questionnaire_counter INT NOT NULL, ADD user_questionnaire_answer_counter INT NOT NULL');
+        $this->addSql('ALTER TABLE user ADD api_token VARCHAR(255) DEFAULT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D6497BA2F5EB ON user (api_token)');
         $this->addSql('ALTER TABLE user_kpi ADD efficiency11 INT NOT NULL, ADD user_questionnaire_counter INT NOT NULL');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE user_questionnaire_answer DROP FOREIGN KEY FK_FD5A9663AA334807');
@@ -54,6 +56,8 @@ final class Version20210118165222 extends AbstractMigration
         $this->addSql('DROP TABLE user_questionnaire');
         $this->addSql('DROP TABLE user_questionnaire_answer');
         $this->addSql('ALTER TABLE kpi DROP answer_counter, DROP question_counter, DROP questionnaire_counter, DROP retention_counter, DROP user_kyt_counter, DROP user_questionnaire_counter, DROP user_questionnaire_answer_counter');
+        $this->addSql('DROP INDEX UNIQ_8D93D6497BA2F5EB ON user');
+        $this->addSql('ALTER TABLE user DROP api_token');
         $this->addSql('ALTER TABLE user_kpi DROP efficiency11, DROP user_questionnaire_counter');
     }
 }

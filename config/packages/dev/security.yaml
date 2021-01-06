@@ -1,0 +1,4 @@
+security:
+    firewalls:
+        api:
+            host: ^api\.routines365\.local$

@@ -143,6 +143,12 @@ class User implements UserInterface
     private Collection $userQuestionnaires;
 
     /**
+     * @Assert\Type("string", groups={"system"})
+     * @ORM\Column(type="guid", unique=true, nullable=true)
+     */
+    private ?string $apiToken = null;
+
+    /**
      * @Assert\Email(groups={"form", "system"})
      * @Assert\Length(max = 180, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
@@ -157,7 +163,7 @@ class User implements UserInterface
      * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
-    protected $lastLoginAt;
+    private ?DateTimeImmutable $lastLoginAt = null;
 
     /**
      * @Assert\Length(max = 255, groups={"system"})
@@ -276,6 +282,18 @@ class User implements UserInterface
         if (true === $this->achievements->contains($achievement)) {
             $this->achievements->removeElement($achievement);
         }
+
+        return $this;
+    }
+
+    public function getApiToken(): ?string
+    {
+        return $this->apiToken;
+    }
+
+    public function setApiToken(string $apiToken): self
+    {
+        $this->apiToken = $apiToken;
 
         return $this;
     }

@@ -15,5 +15,5 @@ class PromotionCodeFormModel
      * @Assert\NotBlank()
      * @Assert\Type("string")
      */
-    public $code;
+    public string $code;
 }

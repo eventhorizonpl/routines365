@@ -1517,6 +1517,10 @@
         <source>User questionnaire answers</source>
         <target>User questionnaire answers</target>
       </trans-unit>
+      <trans-unit id="Y6bQ9hF" resname="API token">
+        <source>API token</source>
+        <target>API token</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

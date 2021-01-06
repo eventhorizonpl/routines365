@@ -14,5 +14,5 @@ class ProfilePhoneVerificationCodeFormModel
      * @Assert\NotBlank()
      * @Assert\Type("int")
      */
-    public $phoneVerificationCode;
+    public string $phoneVerificationCode;
 }

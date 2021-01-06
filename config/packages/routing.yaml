@@ -1,4 +1,4 @@
 framework:
     router:
         utf8: true
-        default_uri: https://routines365.com
+        default_uri: https://%domain%

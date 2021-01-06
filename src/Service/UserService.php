@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Manager\UserManager;
 use DateTimeImmutable;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Uid\Uuid;
 
 class UserService
 {
@@ -50,9 +51,11 @@ class UserService
         return $user;
     }
 
-    public function updateLastLoginAt(User $user): User
+    public function onAuthenticationSuccess(User $user): User
     {
-        $user->setLastLoginAt(new DateTimeImmutable());
+        $user
+            ->setApiToken((string) Uuid::v4())
+            ->setLastLoginAt(new DateTimeImmutable());
         $this->userManager->save($user);
 
         return $user;

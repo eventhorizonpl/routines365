@@ -21,4 +21,5 @@ return [
     Sentry\SentryBundle\SentryBundle::class => ['all' => true],
     Cron\CronBundle\CronCronBundle::class => ['all' => true],
     Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle::class => ['all' => true],
+    FOS\RestBundle\FOSRestBundle::class => ['all' => true],
 ];
