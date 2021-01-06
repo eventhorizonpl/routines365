@@ -30,7 +30,7 @@ RUN docker-php-ext-configure intl \
 RUN rm -rf /tmp/pear/ \
   && apk del .build-deps
 
-COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
