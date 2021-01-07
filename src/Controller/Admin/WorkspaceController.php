@@ -7,6 +7,7 @@ namespace App\Controller\Admin;
 use App\Repository\AccountOperationRepository;
 use App\Repository\AccountRepository;
 use App\Repository\AchievementRepository;
+use App\Repository\AnswerRepository;
 use App\Repository\CompletedRoutineRepository;
 use App\Repository\ContactRepository;
 use App\Repository\GoalRepository;
@@ -15,6 +16,8 @@ use App\Repository\NoteRepository;
 use App\Repository\ProfileRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\PromotionRepository;
+use App\Repository\QuestionnaireRepository;
+use App\Repository\QuestionRepository;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
@@ -23,6 +26,8 @@ use App\Repository\RoutineRepository;
 use App\Repository\SavedEmailRepository;
 use App\Repository\SentReminderRepository;
 use App\Repository\UserKpiRepository;
+use App\Repository\UserQuestionnaireAnswerRepository;
+use App\Repository\UserQuestionnaireRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,6 +45,7 @@ class WorkspaceController extends AbstractController
         AccountRepository $accountRepository,
         AccountOperationRepository $accountOperationRepository,
         AchievementRepository $achievementRepository,
+        AnswerRepository $answerRepository,
         CompletedRoutineRepository $completedRoutineRepository,
         ContactRepository $contactRepository,
         GoalRepository $goalRepository,
@@ -48,6 +54,8 @@ class WorkspaceController extends AbstractController
         ProfileRepository $profileRepository,
         ProjectRepository $projectRepository,
         PromotionRepository $promotionRepository,
+        QuestionnaireRepository $questionnaireRepository,
+        QuestionRepository $questionRepository,
         QuoteRepository $quoteRepository,
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
@@ -56,11 +64,14 @@ class WorkspaceController extends AbstractController
         SavedEmailRepository $savedEmailRepository,
         SentReminderRepository $sentReminderRepository,
         UserKpiRepository $userKpiRepository,
+        UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository,
+        UserQuestionnaireRepository $userQuestionnaireRepository,
         UserRepository $userRepository
     ): Response {
         $accountsCount = $accountRepository->count([]);
         $accountOperationsCount = $accountOperationRepository->count([]);
         $achievementsCount = $achievementRepository->count([]);
+        $answersCount = $answerRepository->count([]);
         $completedRoutinesCount = $completedRoutineRepository->count([]);
         $contactsCount = $contactRepository->count([]);
         $goalsCount = $goalRepository->count([]);
@@ -69,6 +80,8 @@ class WorkspaceController extends AbstractController
         $profilesCount = $profileRepository->count([]);
         $projectsCount = $projectRepository->count([]);
         $promotionsCount = $promotionRepository->count([]);
+        $questionnairesCount = $questionnaireRepository->count([]);
+        $questionsCount = $questionRepository->count([]);
         $quotesCount = $quoteRepository->count([]);
         $reminderMessagesCount = $reminderMessageRepository->count([]);
         $remindersCount = $reminderRepository->count([]);
@@ -77,12 +90,15 @@ class WorkspaceController extends AbstractController
         $savedEmailsCount = $savedEmailRepository->count([]);
         $sentRemindersCount = $sentReminderRepository->count([]);
         $userKpisCount = $userKpiRepository->count([]);
+        $userQuestionnaireAnswersCount = $userQuestionnaireAnswerRepository->count([]);
+        $userQuestionnairesCount = $userQuestionnaireRepository->count([]);
         $usersCount = $userRepository->count([]);
 
         return $this->render('admin/workspace/index.html.twig', [
             'accounts_count' => $accountsCount,
             'account_operations_count' => $accountOperationsCount,
             'achievements_count' => $achievementsCount,
+            'answers_count' => $answersCount,
             'completed_routines_count' => $completedRoutinesCount,
             'contacts_count' => $contactsCount,
             'goals_count' => $goalsCount,
@@ -91,6 +107,8 @@ class WorkspaceController extends AbstractController
             'profiles_count' => $profilesCount,
             'projects_count' => $projectsCount,
             'promotions_count' => $promotionsCount,
+            'questionnaires_count' => $questionnairesCount,
+            'questions_count' => $questionsCount,
             'quotes_count' => $quotesCount,
             'reminder_messages_count' => $reminderMessagesCount,
             'reminders_count' => $remindersCount,
@@ -99,6 +117,8 @@ class WorkspaceController extends AbstractController
             'saved_emails_count' => $savedEmailsCount,
             'sent_reminders_count' => $sentRemindersCount,
             'user_kpis_count' => $userKpisCount,
+            'user_questionnaire_answers_count' => $userQuestionnaireAnswersCount,
+            'user_questionnaires_count' => $userQuestionnairesCount,
             'users_count' => $usersCount,
         ]);
     }

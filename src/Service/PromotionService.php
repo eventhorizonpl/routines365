@@ -78,7 +78,10 @@ class PromotionService
     {
         $saveUser = false;
 
-        if (false === $user->hasPromotion($promotion)) {
+        if ((Promotion::TYPE_SYSTEM === $promotion->getType()) ||
+            ((in_array($promotion->getType(), [Promotion::TYPE_EXISTING_ACCOUNT, Promotion::TYPE_NEW_ACCOUNT])) &&
+            (false === $user->hasPromotion($promotion)))
+        ) {
             $user->addPromotion($promotion);
             $this->accountOperationService->deposit(
                 $user->getAccount(),
@@ -94,5 +97,21 @@ class PromotionService
         }
 
         return $saveUser;
+    }
+
+    public function applySystemPromotion(string $code, User $user): bool
+    {
+        $promotion = $this->getEnabledAndValidPromotion(
+            $code,
+            Promotion::TYPE_SYSTEM
+        );
+
+        $result = false;
+
+        if (null !== $promotion) {
+            $result = $this->applyPromotion($promotion, $user);
+        }
+
+        return $result;
     }
 }

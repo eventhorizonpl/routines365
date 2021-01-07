@@ -28,6 +28,10 @@
                                 <td>{{ achievements_count }}</td>
                             </tr>
                             <tr>
+                                <td><a href="{{ path('admin_questionnaire_index') }}">{{ 'Answers'|trans }}</a></td>
+                                <td>{{ answers_count }}</td>
+                            </tr>
+                            <tr>
                                 <td><a href="{{ path('admin_completed_routine_index') }}">{{ 'Completed routines'|trans }}</a></td>
                                 <td>{{ completed_routines_count }}</td>
                             </tr>
@@ -58,6 +62,14 @@
                             <tr>
                                 <td><a href="{{ path('admin_promotion_index') }}">{{ 'Promotions'|trans }}</a></td>
                                 <td>{{ promotions_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_questionnaire_index') }}">{{ 'Questionnaires'|trans }}</a></td>
+                                <td>{{ questionnaires_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_questionnaire_index') }}">{{ 'Questions'|trans }}</a></td>
+                                <td>{{ questions_count }}</td>
                             </tr>
                             <tr>
                                 <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
@@ -94,6 +106,14 @@
                             <tr>
                                 <td><a href="{{ path('admin_user_kpi_index') }}">{{ 'User KPIs'|trans }}</a></td>
                                 <td>{{ user_kpis_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_user_questionnaire_index') }}">{{ 'Users questionnaires'|trans }}</a></td>
+                                <td>{{ user_questionnaires_count }}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('admin_user_questionnaire_index') }}">{{ 'Users questionnaire answers'|trans }}</a></td>
+                                <td>{{ user_questionnaire_answers_count }}</td>
                             </tr>
                         </tbody>
                     </table>

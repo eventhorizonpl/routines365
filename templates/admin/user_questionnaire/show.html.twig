@@ -1,0 +1,182 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_user_questionnaire_index') }}">
+            {{ 'Users questionnaires'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'User questionnaire details'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'User questionnaire details'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_questionnaire_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ 'Back'|trans }}
+            </a>
+            <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr scope="row" style="width: 20%;">
+                                <th scope="row">{{ 'Is completed'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.isCompleted %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr scope="row">
+                                <th scope="row">{{ 'Is rewarded'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.isRewarded %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade show" id="relations" role="tabpanel" aria-labelledby="relations-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'Question'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.questionnaire %}
+                                        <a href="{{ path('admin_questionnaire_show', {'uuid': user_questionnaire.questionnaire.uuid}) }}">{{ user_questionnaire.questionnaire.title }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'User'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user_questionnaire.user.uuid}) }}">{{ user_questionnaire.user.email }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ user_questionnaire.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ user_questionnaire.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user_questionnaire.createdBy}) }}">{{ user_questionnaire.createdBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user_questionnaire.deletedBy}) }}">{{ user_questionnaire.deletedBy }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_questionnaire_undelete', {'uuid': user_questionnaire.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user_questionnaire.updatedBy}) }}">{{ user_questionnaire.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ user_questionnaire.createdAt ? user_questionnaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>
+                                    {% if user_questionnaire.deletedAt %}
+                                        {{ user_questionnaire.deletedAt|date('Y-m-d H:i:s') }}
+                                        <a class="btn btn-warning" href="{{ path('admin_user_questionnaire_undelete', {'uuid': user_questionnaire.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ user_questionnaire.updatedAt ? user_questionnaire.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% if user_questionnaire.questionnaire.questions|length %}
+                <ol>
+                    {% for question in user_questionnaire.questionnaire.questions %}
+                        {% if question.isEnabled %}
+                            <li class="mb-4">
+                                {{ question.title }}
+                                {% if question.answers|length %}
+                                    <ol type="a">
+                                        {% for answer in question.answers %}
+                                            {% if answer.isEnabled %}
+                                                <li class="mb-2">
+                                                    {% if user_questionnaire.hasUserQuestionnaireAnswer(answer) %}
+                                                        <b>{{ answer.content }}</b>
+                                                    {% else %}
+                                                        {{ answer.content }}
+                                                    {% endif %}
+                                                    {% if answer.type == constant('App\\Entity\\Answer::TYPE_OWN') %}
+                                                        {% set user_questionnaire_answer = user_questionnaire.getUserQuestionnaireAnswer(answer) %}
+                                                        {% if user_questionnaire_answer %}
+                                                            : {{ user_questionnaire_answer.content }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ol>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'User questionnaire details'|trans }}{% endblock %}

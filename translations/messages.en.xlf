@@ -1429,6 +1429,102 @@
         <source>Efficiency11 will show you your efficiency taking into account 11 factors.</source>
         <target>Efficiency11 will show you your efficiency taking into account 11 factors.</target>
       </trans-unit>
+      <trans-unit id="GsS9BAG" resname="You already completed this survey.">
+        <source>You already completed this survey.</source>
+        <target>You already completed this survey.</target>
+      </trans-unit>
+      <trans-unit id="Fx4.uo." resname="Thank you for completing this survey!">
+        <source>Thank you for completing this survey!</source>
+        <target>Thank you for completing this survey!</target>
+      </trans-unit>
+      <trans-unit id="IJTw001" resname="We added a small reward to your account.">
+        <source>We added a small reward to your account.</source>
+        <target>We added a small reward to your account.</target>
+      </trans-unit>
+      <trans-unit id="YlYzh0C" resname="System operations">
+        <source>System operations</source>
+        <target>System operations</target>
+      </trans-unit>
+      <trans-unit id="LCXVqjb" resname="Questionnaires">
+        <source>Questionnaires</source>
+        <target>Questionnaires</target>
+      </trans-unit>
+      <trans-unit id="nEYTo2p" resname="Users questionnaires">
+        <source>Users questionnaires</source>
+        <target>Users questionnaires</target>
+      </trans-unit>
+      <trans-unit id="hteCbMz" resname="Question details">
+        <source>Question details</source>
+        <target>Question details</target>
+      </trans-unit>
+      <trans-unit id="vCKGcGV" resname="Answer details">
+        <source>Answer details</source>
+        <target>Answer details</target>
+      </trans-unit>
+      <trans-unit id="bQMa8Q2" resname="Position">
+        <source>Position</source>
+        <target>Position</target>
+      </trans-unit>
+      <trans-unit id="KJr.ErB" resname="Question">
+        <source>Question</source>
+        <target>Question</target>
+      </trans-unit>
+      <trans-unit id="ZYaPH0D" resname="Edit answer">
+        <source>Edit answer</source>
+        <target>Edit answer</target>
+      </trans-unit>
+      <trans-unit id="eTesD5x" resname="Create answer">
+        <source>Create answer</source>
+        <target>Create answer</target>
+      </trans-unit>
+      <trans-unit id="StCgpq5" resname="Answers">
+        <source>Answers</source>
+        <target>Answers</target>
+      </trans-unit>
+      <trans-unit id="mnIiGid" resname="Questions">
+        <source>Questions</source>
+        <target>Questions</target>
+      </trans-unit>
+      <trans-unit id="edNxjJv" resname="Users questionnaire answers">
+        <source>Users questionnaire answers</source>
+        <target>Users questionnaire answers</target>
+      </trans-unit>
+      <trans-unit id="TxJeetY" resname="User questionnaire details">
+        <source>User questionnaire details</source>
+        <target>User questionnaire details</target>
+      </trans-unit>
+      <trans-unit id="tBZwLH9" resname="Is rewarded">
+        <source>Is rewarded</source>
+        <target>Is rewarded</target>
+      </trans-unit>
+      <trans-unit id="66niyCt" resname="Questionnaire">
+        <source>Questionnaire</source>
+        <target>Questionnaire</target>
+      </trans-unit>
+      <trans-unit id="bl1zBRQ" resname="Questionnaire details">
+        <source>Questionnaire details</source>
+        <target>Questionnaire details</target>
+      </trans-unit>
+      <trans-unit id="Lh4izS." resname="Edit questionnaire">
+        <source>Edit questionnaire</source>
+        <target>Edit questionnaire</target>
+      </trans-unit>
+      <trans-unit id="Kfenm4_" resname="Create questionnaire">
+        <source>Create questionnaire</source>
+        <target>Create questionnaire</target>
+      </trans-unit>
+      <trans-unit id="NpbHEI7" resname="Edit question">
+        <source>Edit question</source>
+        <target>Edit question</target>
+      </trans-unit>
+      <trans-unit id="yiK4MLN" resname="Create question">
+        <source>Create question</source>
+        <target>Create question</target>
+      </trans-unit>
+      <trans-unit id="IRuz3la" resname="Survey">
+        <source>Survey</source>
+        <target>Survey</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

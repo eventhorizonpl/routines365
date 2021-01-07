@@ -1,0 +1,76 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-8 col-6">
+                            {{ questionnaire.title }}
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_home') }}">
+                                <i class="fas fa-arrow-left"></i>
+                                {{ 'Back'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ questionnaire.description }}
+                    </p>
+                    <div>
+                        {% if questionnaire.questions|length %}
+                            <form id="{{ questionnaire.uuid }}" method="post" name="questionnaire">
+                                <ol>
+                                    {% for question in questionnaire.questions %}
+                                        {% if question.isEnabled %}
+                                            <li class="mb-4">
+                                                {{ question.title }}
+                                                {% if question.answers|length %}
+                                                    <ol type="a">
+                                                        {% for answer in question.answers %}
+                                                            {% if answer.isEnabled %}
+                                                                <li class="mb-2">
+                                                                    <div class="row">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input ml-1 mt-2" id="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}" name="{{ question.uuid }}{% if question.type == constant('App\\Entity\\Question::TYPE_MULTIPLE_ANSWER') %}[]{% endif %}" type="{% if question.type == constant('App\\Entity\\Question::TYPE_MULTIPLE_ANSWER') %}checkbox{% else %}radio{% endif %}" value="{{ answer.uuid }}" {% if question.type == constant('App\\Entity\\Question::TYPE_SINGLE_ANSWER') %}required{% endif %}>
+                                                                            <label class="form-check-label ml-4 mt-1" for="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}">
+                                                                                {{ answer.content }}
+                                                                            </label>
+                                                                            {% if answer.type == constant('App\\Entity\\Answer::TYPE_OWN') %}
+                                                                                <input class="form-control mt-3" id="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}_own" name="{{ question.uuid }}_{{ answer.uuid }}_{{ constant('App\\Entity\\Answer::TYPE_OWN') }}" type="text">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ol>
+                                                {% endif %}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ol>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-save"></i>
+                                            {{ button_label|default('Save'|trans) }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Survey'|trans }}
+{% endblock %}

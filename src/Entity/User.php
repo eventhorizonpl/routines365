@@ -120,6 +120,11 @@ class User implements UserInterface
     private Collection $userKpis;
 
     /**
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserQuestionnaire::class)
+     */
+    private Collection $userQuestionnaires;
+
+    /**
      * @Assert\Email(groups={"form", "system"})
      * @Assert\Length(max = 180, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
@@ -186,6 +191,7 @@ class User implements UserInterface
         $this->savedEmails = new ArrayCollection();
         $this->type = self::TYPE_PROSPECT;
         $this->userKpis = new ArrayCollection();
+        $this->userQuestionnaires = new ArrayCollection();
     }
 
     public function __serialize(): array
@@ -790,5 +796,36 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
+    }
+
+    public function addUserQuestionnaire(UserQuestionnaire $userQuestionnaire): self
+    {
+        if (false === $this->userQuestionnaires->contains($userQuestionnaire)) {
+            $this->userQuestionnaires->add($userQuestionnaire);
+            $userQuestionnaire->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getUserQuestionnaires(): Collection
+    {
+        return $this->userQuestionnaires->filter(function (UserQuestionnaire $userQuestionnaire) {
+            return null === $userQuestionnaire->getDeletedAt();
+        });
+    }
+
+    public function getUserQuestionnairesAll(): Collection
+    {
+        return $this->userQuestionnaires;
+    }
+
+    public function removeUserQuestionnaire(UserQuestionnaire $userQuestionnaire): self
+    {
+        if (true === $this->userQuestionnaires->contains($userQuestionnaire)) {
+            $this->userQuestionnaires->removeElement($userQuestionnaire);
+        }
+
+        return $this;
     }
 }
