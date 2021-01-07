@@ -83,6 +83,7 @@ class UserKpiService
 
         do {
             $users = $this->paginator->paginate($usersQuery, $page, $limit);
+
             foreach ($users as $user) {
                 $previousUserKpi = $this->userKpiRepository->findOneByTypeAndUser(
                     $type,
@@ -93,13 +94,15 @@ class UserKpiService
                     $user,
                     $previousUserKpi
                 );
-                $this->emailService->sendUserKpi(
-                    $user->getEmail(),
-                    $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()]),
-                    [
-                        'user_kpi' => $userKpi,
-                    ]
-                );
+                if (in_array($type, [UserKpi::TYPE_ANNUALLY, UserKpi::TYPE_MONTHLY, UserKpi::TYPE_WEEKLY])) {
+                    $this->emailService->sendUserKpi(
+                        $user->getEmail(),
+                        $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()]),
+                        [
+                            'user_kpi' => $userKpi,
+                        ]
+                    );
+                }
             }
             ++$page;
         } while ($users->getCurrentPageNumber() <= $users->getPageCount());

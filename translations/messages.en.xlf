@@ -1425,6 +1425,10 @@
         <source>Project</source>
         <target>Project</target>
       </trans-unit>
+      <trans-unit id="3kuhPif" resname="Efficiency11 will show you your efficiency taking into account 11 factors.">
+        <source>Efficiency11 will show you your efficiency taking into account 11 factors.</source>
+        <target>Efficiency11 will show you your efficiency taking into account 11 factors.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

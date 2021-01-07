@@ -395,13 +395,13 @@ final class UserKpiTest extends AbstractTestCase
 
     public function testGetTypeFormChoices(): void
     {
-        $this->assertCount(3, UserKpi::getTypeFormChoices());
+        $this->assertCount(4, UserKpi::getTypeFormChoices());
         $this->assertIsArray(UserKpi::getTypeFormChoices());
     }
 
     public function testGetTypeValidationChoices(): void
     {
-        $this->assertCount(3, UserKpi::getTypeValidationChoices());
+        $this->assertCount(4, UserKpi::getTypeValidationChoices());
         $this->assertIsArray(UserKpi::getTypeValidationChoices());
     }
 

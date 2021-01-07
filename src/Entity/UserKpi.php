@@ -21,6 +21,7 @@ class UserKpi
     use Traits\TimestampableTrait;
 
     public const TYPE_ANNUALLY = 'annually';
+    public const TYPE_DAILY = 'daily';
     public const TYPE_MONTHLY = 'monthly';
     public const TYPE_WEEKLY = 'weekly';
 
@@ -91,6 +92,14 @@ class UserKpi
      * @ORM\Column(type="integer")
      */
     private int $contactCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $efficiency11;
 
     /**
      * @Assert\NotBlank(groups={"system"})
@@ -258,6 +267,18 @@ class UserKpi
         return $this;
     }
 
+    public function getEfficiency11(): int
+    {
+        return $this->efficiency11;
+    }
+
+    public function setEfficiency11(int $efficiency11): self
+    {
+        $this->efficiency11 = $efficiency11;
+
+        return $this;
+    }
+
     public function getDate(): ?DateTimeImmutable
     {
         return $this->date;
@@ -387,6 +408,7 @@ class UserKpi
     {
         return [
             self::TYPE_ANNUALLY => self::TYPE_ANNUALLY,
+            self::TYPE_DAILY => self::TYPE_DAILY,
             self::TYPE_MONTHLY => self::TYPE_MONTHLY,
             self::TYPE_WEEKLY => self::TYPE_WEEKLY,
         ];

@@ -28,7 +28,7 @@ final class UserKpiExtensionTest extends AbstractTestCase
     {
         $userKpiExtension = new UserKpiExtension();
 
-        $this->assertCount(3, $userKpiExtension->userKpiType());
+        $this->assertCount(4, $userKpiExtension->userKpiType());
         $this->assertIsArray($userKpiExtension->userKpiType());
     }
 }
