@@ -18,7 +18,7 @@ class StaticPageController extends AbstractController
      */
     public function about(): Response
     {
-        return $this->render('frontend/static_page/about.html.twig');
+        return $this->redirectToRoute('frontend_home');
     }
 
     /**

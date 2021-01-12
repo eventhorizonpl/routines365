@@ -113,9 +113,17 @@
         <source>question</source>
         <target>Question</target>
       </trans-unit>
+      <trans-unit id="tjMYY8O" resname="R365: Your type statistics">
+        <source>R365: Your type statistics</source>
+        <target>R365: Your type statistics</target>
+      </trans-unit>
       <trans-unit id="wKu6Dy2" resname="R365: Your new Routines365 account is now active.">
         <source>R365: Your new Routines365 account is now active.</source>
         <target>R365: Your new Routines365 account is now active.</target>
+      </trans-unit>
+      <trans-unit id="XcxROdu" resname="Congratulations! You have a new achievement!">
+        <source>Congratulations! You have a new achievement!</source>
+        <target>Congratulations! You have a new achievement!</target>
       </trans-unit>
       <trans-unit id="h0eQDkh" resname="Congratulations for completing your routine!">
         <source>Congratulations for completing your routine!</source>
@@ -161,6 +169,34 @@
         <source>Your phone number is already verified!</source>
         <target>Your phone number is already verified!</target>
       </trans-unit>
+      <trans-unit id="spBKVSK" resname="You used promotion code.">
+        <source>You used promotion code.</source>
+        <target>You used promotion code.</target>
+      </trans-unit>
+      <trans-unit id="hrwoXeC" resname="You cannot use this promotion code.">
+        <source>You cannot use this promotion code.</source>
+        <target>You cannot use this promotion code.</target>
+      </trans-unit>
+      <trans-unit id="GsS9BAG" resname="You already completed this survey.">
+        <source>You already completed this survey.</source>
+        <target>You already completed this survey.</target>
+      </trans-unit>
+      <trans-unit id="Fx4.uo." resname="Thank you for completing this survey!">
+        <source>Thank you for completing this survey!</source>
+        <target>Thank you for completing this survey!</target>
+      </trans-unit>
+      <trans-unit id="IJTw001" resname="We added a small reward to your account.">
+        <source>We added a small reward to your account.</source>
+        <target>We added a small reward to your account.</target>
+      </trans-unit>
+      <trans-unit id="oMC3ClJ" resname="sends you a motivational message">
+        <source>sends you a motivational message</source>
+        <target>sends you a motivational message</target>
+      </trans-unit>
+      <trans-unit id="5eRg.mY" resname="Email was sent. You can send motivational message to another person.">
+        <source>Email was sent. You can send motivational message to another person.</source>
+        <target>Email was sent. You can send motivational message to another person.</target>
+      </trans-unit>
       <trans-unit id="Ea8RmOs" resname="Please set up time zone!">
         <source>Please set up time zone!</source>
         <target>Please set up time zone!</target>
@@ -189,6 +225,10 @@
         <source>Rewards</source>
         <target>Rewards</target>
       </trans-unit>
+      <trans-unit id="dM8rxj." resname="Achievements">
+        <source>Achievements</source>
+        <target>Achievements</target>
+      </trans-unit>
       <trans-unit id="ZyXnu80" resname="System">
         <source>System</source>
         <target>System</target>
@@ -197,13 +237,21 @@
         <source>Settings</source>
         <target>Settings</target>
       </trans-unit>
+      <trans-unit id="JSCgulZ" resname="Contact form">
+        <source>Contact form</source>
+        <target>Contact form</target>
+      </trans-unit>
       <trans-unit id="H9muFge" resname="Invite">
         <source>Invite</source>
         <target>Invite</target>
       </trans-unit>
-      <trans-unit id="JSCgulZ" resname="Contact form">
-        <source>Contact form</source>
-        <target>Contact form</target>
+      <trans-unit id="nRz9oSn" resname="Motivate a friend">
+        <source>Motivate a friend</source>
+        <target>Motivate a friend</target>
+      </trans-unit>
+      <trans-unit id="TWKsMON" resname="Promotion codes">
+        <source>Promotion codes</source>
+        <target>Promotion codes</target>
       </trans-unit>
       <trans-unit id="0FJ_Sz1" resname="Logout">
         <source>Logout</source>
@@ -241,17 +289,13 @@
         <source>Reminders</source>
         <target>Reminders</target>
       </trans-unit>
-      <trans-unit id="6b31__i" resname="Account operations">
+      <trans-unit id="YlYzh0C" resname="System operations">
+        <source>System operations</source>
+        <target>System operations</target>
+      </trans-unit>
+      <trans-unit id="6b31i" resname="Account operations">
         <source>Account operations</source>
         <target>Account operations</target>
-      </trans-unit>
-      <trans-unit id="tFBkXev" resname="Contacts">
-        <source>Contacts</source>
-        <target>Contacts</target>
-      </trans-unit>
-      <trans-unit id="WvuxyIf" resname="Cron jobs">
-        <source>Cron jobs</source>
-        <target>Cron jobs</target>
       </trans-unit>
       <trans-unit id="AYfUiBq" resname="Cron reports">
         <source>Cron reports</source>
@@ -261,25 +305,49 @@
         <source>KPIs</source>
         <target>KPIs</target>
       </trans-unit>
-      <trans-unit id="jcN4adY" resname="Quotes">
-        <source>Quotes</source>
-        <target>Quotes</target>
-      </trans-unit>
       <trans-unit id="NoYNTvh" resname="Reminder messages">
         <source>Reminder messages</source>
         <target>Reminder messages</target>
-      </trans-unit>
-      <trans-unit id="xMTCm4l" resname="Saved emails">
-        <source>Saved emails</source>
-        <target>Saved emails</target>
       </trans-unit>
       <trans-unit id="257F4MS" resname="Sent reminders">
         <source>Sent reminders</source>
         <target>Sent reminders</target>
       </trans-unit>
+      <trans-unit id="OwiDTgq" resname="User KPIs">
+        <source>User KPIs</source>
+        <target>User KPIs</target>
+      </trans-unit>
+      <trans-unit id="tFBkXev" resname="Contacts">
+        <source>Contacts</source>
+        <target>Contacts</target>
+      </trans-unit>
+      <trans-unit id="WvuxyIf" resname="Cron jobs">
+        <source>Cron jobs</source>
+        <target>Cron jobs</target>
+      </trans-unit>
+      <trans-unit id="LCXVqjb" resname="Questionnaires">
+        <source>Questionnaires</source>
+        <target>Questionnaires</target>
+      </trans-unit>
+      <trans-unit id="jcN4adY" resname="Quotes">
+        <source>Quotes</source>
+        <target>Quotes</target>
+      </trans-unit>
+      <trans-unit id="PnQydYJ" resname="Promotions">
+        <source>Promotions</source>
+        <target>Promotions</target>
+      </trans-unit>
+      <trans-unit id="xMTCm4l" resname="Saved emails">
+        <source>Saved emails</source>
+        <target>Saved emails</target>
+      </trans-unit>
       <trans-unit id="awzJBNC" resname="Users">
         <source>Users</source>
         <target>Users</target>
+      </trans-unit>
+      <trans-unit id="nEYTo2p" resname="Users questionnaires">
+        <source>Users questionnaires</source>
+        <target>Users questionnaires</target>
       </trans-unit>
       <trans-unit id="1pajW90" resname="Profile">
         <source>Profile</source>
@@ -292,10 +360,6 @@
       <trans-unit id="P5yZH2O" resname="Change password">
         <source>Change password</source>
         <target>Change password</target>
-      </trans-unit>
-      <trans-unit id="Tvyg0Qx" resname="About">
-        <source>About</source>
-        <target>About</target>
       </trans-unit>
       <trans-unit id="6tB8hLq" resname="Changelog">
         <source>Changelog</source>
@@ -337,6 +401,14 @@
         <source>I agree</source>
         <target>I agree</target>
       </trans-unit>
+      <trans-unit id="VA0eT9m" resname="We will help you in creating and maintaining your routines. With routines you can achieve amazing things.">
+        <source>We will help you in creating and maintaining your routines. With routines you can achieve amazing things.</source>
+        <target>We will help you in creating and maintaining your routines. With routines you can achieve amazing things.</target>
+      </trans-unit>
+      <trans-unit id="_4sB3Tf" resname="We help. You achieve.">
+        <source>We help. You achieve.</source>
+        <target>We help. You achieve.</target>
+      </trans-unit>
       <trans-unit id="WfpDeb4" resname="Reset your password">
         <source>Reset your password</source>
         <target>Reset your password</target>
@@ -377,9 +449,13 @@
         <source>Forgot password?</source>
         <target>Forgot password?</target>
       </trans-unit>
-      <trans-unit id="1PffHia" resname="Completed routine details">
-        <source>Completed routine details</source>
-        <target>Completed routine details</target>
+      <trans-unit id="cu7XlgJ" resname="User KPI details">
+        <source>User KPI details</source>
+        <target>User KPI details</target>
+      </trans-unit>
+      <trans-unit id="ndg1sAu" resname="KPI details">
+        <source>KPI details</source>
+        <target>KPI details</target>
       </trans-unit>
       <trans-unit id="dpAPG.0" resname="Back">
         <source>Back</source>
@@ -397,25 +473,33 @@
         <source>Additional</source>
         <target>Additional</target>
       </trans-unit>
-      <trans-unit id="RPXj__x" resname="Comment">
-        <source>Comment</source>
-        <target>Comment</target>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
       </trans-unit>
-      <trans-unit id="haOas0X" resname="Yes">
-        <source>Yes</source>
-        <target>Yes</target>
+      <trans-unit id="Vvn6erz" resname="Awarded rewards">
+        <source>Awarded rewards</source>
+        <target>Awarded rewards</target>
       </trans-unit>
-      <trans-unit id="HqRCoTS" resname="No">
-        <source>No</source>
-        <target>No</target>
+      <trans-unit id="wRlmqPv" resname="Completed goals">
+        <source>Completed goals</source>
+        <target>Completed goals</target>
       </trans-unit>
-      <trans-unit id="c8w43gc" resname="Minutes devoted">
-        <source>Minutes devoted</source>
-        <target>Minutes devoted</target>
+      <trans-unit id="DLrrGMo" resname="Completed projects">
+        <source>Completed projects</source>
+        <target>Completed projects</target>
       </trans-unit>
-      <trans-unit id="C1uvMJi" resname="Routine">
-        <source>Routine</source>
-        <target>Routine</target>
+      <trans-unit id="uq3fcPt" resname="Type">
+        <source>Type</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="X4wtjfS" resname="Next User KPI">
+        <source>Next User KPI</source>
+        <target>Next User KPI</target>
+      </trans-unit>
+      <trans-unit id="tXfdj8." resname="Previous User KPI">
+        <source>Previous User KPI</source>
+        <target>Previous User KPI</target>
       </trans-unit>
       <trans-unit id="tRLZfny" resname="User">
         <source>User</source>
@@ -429,22 +513,6 @@
         <source>UUID</source>
         <target>UUID</target>
       </trans-unit>
-      <trans-unit id="N0zZ0iD" resname="Created by">
-        <source>Created by</source>
-        <target>Created by</target>
-      </trans-unit>
-      <trans-unit id=".msQX2I" resname="Deleted by">
-        <source>Deleted by</source>
-        <target>Deleted by</target>
-      </trans-unit>
-      <trans-unit id="Mc3G5YF" resname="Undelete">
-        <source>Undelete</source>
-        <target>Undelete</target>
-      </trans-unit>
-      <trans-unit id="IPDEcp3" resname="Updated by">
-        <source>Updated by</source>
-        <target>Updated by</target>
-      </trans-unit>
       <trans-unit id="d1tb_WR" resname="Created at">
         <source>Created at</source>
         <target>Created at</target>
@@ -452,6 +520,10 @@
       <trans-unit id="dYTfsUZ" resname="Deleted at">
         <source>Deleted at</source>
         <target>Deleted at</target>
+      </trans-unit>
+      <trans-unit id="Mc3G5YF" resname="Undelete">
+        <source>Undelete</source>
+        <target>Undelete</target>
       </trans-unit>
       <trans-unit id="PCEFPeg" resname="Updated at">
         <source>Updated at</source>
@@ -473,6 +545,42 @@
         <source>No records found</source>
         <target>No records found</target>
       </trans-unit>
+      <trans-unit id="1PffHia" resname="Completed routine details">
+        <source>Completed routine details</source>
+        <target>Completed routine details</target>
+      </trans-unit>
+      <trans-unit id="RPXjx" resname="Comment">
+        <source>Comment</source>
+        <target>Comment</target>
+      </trans-unit>
+      <trans-unit id="haOas0X" resname="Yes">
+        <source>Yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="HqRCoTS" resname="No">
+        <source>No</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="c8w43gc" resname="Minutes devoted">
+        <source>Minutes devoted</source>
+        <target>Minutes devoted</target>
+      </trans-unit>
+      <trans-unit id="C1uvMJi" resname="Routine">
+        <source>Routine</source>
+        <target>Routine</target>
+      </trans-unit>
+      <trans-unit id="N0zZ0iD" resname="Created by">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id=".msQX2I" resname="Deleted by">
+        <source>Deleted by</source>
+        <target>Deleted by</target>
+      </trans-unit>
+      <trans-unit id="IPDEcp3" resname="Updated by">
+        <source>Updated by</source>
+        <target>Updated by</target>
+      </trans-unit>
       <trans-unit id="UnYAjgM" resname="Note details">
         <source>Note details</source>
         <target>Note details</target>
@@ -484,6 +592,50 @@
       <trans-unit id="R70pB1_" resname="Content">
         <source>Content</source>
         <target>Content</target>
+      </trans-unit>
+      <trans-unit id="hteCbMz" resname="Question details">
+        <source>Question details</source>
+        <target>Question details</target>
+      </trans-unit>
+      <trans-unit id="vCKGcGV" resname="Answer details">
+        <source>Answer details</source>
+        <target>Answer details</target>
+      </trans-unit>
+      <trans-unit id="bQMa8Q2" resname="Position">
+        <source>Position</source>
+        <target>Position</target>
+      </trans-unit>
+      <trans-unit id="yUavCHz" resname="Is enabled">
+        <source>Is enabled</source>
+        <target>Is enabled</target>
+      </trans-unit>
+      <trans-unit id="KJr.ErB" resname="Question">
+        <source>Question</source>
+        <target>Question</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="FQn1YfJ" resname="Save">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="ZYaPH0D" resname="Edit answer">
+        <source>Edit answer</source>
+        <target>Edit answer</target>
+      </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Update</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="eTesD5x" resname="Create answer">
+        <source>Create answer</source>
+        <target>Create answer</target>
       </trans-unit>
       <trans-unit id="P4.Epqs" resname="Cron job details">
         <source>Cron job details</source>
@@ -509,14 +661,6 @@
         <source>Enabled</source>
         <target>Enabled</target>
       </trans-unit>
-      <trans-unit id="RkxP.QG" resname="Edit">
-        <source>Edit</source>
-        <target>Edit</target>
-      </trans-unit>
-      <trans-unit id="FQn1YfJ" resname="Save">
-        <source>Save</source>
-        <target>Save</target>
-      </trans-unit>
       <trans-unit id="R1lJisK" resname="Create">
         <source>Create</source>
         <target>Create</target>
@@ -524,14 +668,6 @@
       <trans-unit id="wunbzpB" resname="Edit cron job">
         <source>Edit cron job</source>
         <target>Edit cron job</target>
-      </trans-unit>
-      <trans-unit id="wcEAnT8" resname="Update">
-        <source>Update</source>
-        <target>Update</target>
-      </trans-unit>
-      <trans-unit id="4tClSWj" resname="Delete">
-        <source>Delete</source>
-        <target>Delete</target>
       </trans-unit>
       <trans-unit id="X5kCqIL" resname="Create cron job">
         <source>Create cron job</source>
@@ -545,10 +681,6 @@
         <source>Hour</source>
         <target>Hour</target>
       </trans-unit>
-      <trans-unit id="yUavCHz" resname="Is enabled">
-        <source>Is enabled</source>
-        <target>Is enabled</target>
-      </trans-unit>
       <trans-unit id="IFAtLrN" resname="Minutes before">
         <source>Minutes before</source>
         <target>Minutes before</target>
@@ -556,6 +688,10 @@
       <trans-unit id="JZ9XffU" resname="Next date">
         <source>Next date</source>
         <target>Next date</target>
+      </trans-unit>
+      <trans-unit id="V9PjAGU" resname="Next date local time">
+        <source>Next date local time</source>
+        <target>Next date local time</target>
       </trans-unit>
       <trans-unit id="3y0NyOJ" resname="Previous date">
         <source>Previous date</source>
@@ -573,10 +709,6 @@
         <source>Send motivational message</source>
         <target>Send motivational message</target>
       </trans-unit>
-      <trans-unit id="uq3fcPt" resname="Type">
-        <source>Type</source>
-        <target>Type</target>
-      </trans-unit>
       <trans-unit id="uJS9uwk" resname="Locked at">
         <source>Locked at</source>
         <target>Locked at</target>
@@ -584,6 +716,26 @@
       <trans-unit id="SscJqli" resname="Unlock">
         <source>Unlock</source>
         <target>Unlock</target>
+      </trans-unit>
+      <trans-unit id="BcNdaeI" resname="Achievement details">
+        <source>Achievement details</source>
+        <target>Achievement details</target>
+      </trans-unit>
+      <trans-unit id="FwkwXJ_" resname="Level">
+        <source>Level</source>
+        <target>Level</target>
+      </trans-unit>
+      <trans-unit id="9fVpCw7" resname="Requirement">
+        <source>Requirement</source>
+        <target>Requirement</target>
+      </trans-unit>
+      <trans-unit id="DFhWSBm" resname="Edit achievement">
+        <source>Edit achievement</source>
+        <target>Edit achievement</target>
+      </trans-unit>
+      <trans-unit id=".Neyh20" resname="Create achievement">
+        <source>Create achievement</source>
+        <target>Create achievement</target>
       </trans-unit>
       <trans-unit id="Gsc544l" resname="Quote details">
         <source>Quote details</source>
@@ -613,14 +765,6 @@
         <source>Create quote</source>
         <target>Create quote</target>
       </trans-unit>
-      <trans-unit id="ndg1sAu" resname="KPI details">
-        <source>KPI details</source>
-        <target>KPI details</target>
-      </trans-unit>
-      <trans-unit id="mcQKtAW" resname="Date">
-        <source>Date</source>
-        <target>Date</target>
-      </trans-unit>
       <trans-unit id="inyLZ.6" resname="Accounts">
         <source>Accounts</source>
         <target>Accounts</target>
@@ -636,6 +780,18 @@
       <trans-unit id="plYQfpn" resname="Statistics">
         <source>Statistics</source>
         <target>Statistics</target>
+      </trans-unit>
+      <trans-unit id="StCgpq5" resname="Answers">
+        <source>Answers</source>
+        <target>Answers</target>
+      </trans-unit>
+      <trans-unit id="mnIiGid" resname="Questions">
+        <source>Questions</source>
+        <target>Questions</target>
+      </trans-unit>
+      <trans-unit id="edNxjJv" resname="Users questionnaire answers">
+        <source>Users questionnaire answers</source>
+        <target>Users questionnaire answers</target>
       </trans-unit>
       <trans-unit id="szLDSS1" resname="Configuration">
         <source>Configuration</source>
@@ -657,9 +813,53 @@
         <source>Invitations enabled</source>
         <target>Invitations enabled</target>
       </trans-unit>
+      <trans-unit id="lJyhcbP" resname="Motivate a friend enabled">
+        <source>Motivate a friend enabled</source>
+        <target>Motivate a friend enabled</target>
+      </trans-unit>
+      <trans-unit id="L26NG5z" resname="Promotions enabled">
+        <source>Promotions enabled</source>
+        <target>Promotions enabled</target>
+      </trans-unit>
       <trans-unit id="1OO5Pas" resname="Registration enabled">
         <source>Registration enabled</source>
         <target>Registration enabled</target>
+      </trans-unit>
+      <trans-unit id="TxJeetY" resname="User questionnaire details">
+        <source>User questionnaire details</source>
+        <target>User questionnaire details</target>
+      </trans-unit>
+      <trans-unit id="cN5NTQL" resname="Is completed">
+        <source>Is completed</source>
+        <target>Is completed</target>
+      </trans-unit>
+      <trans-unit id="tBZwLH9" resname="Is rewarded">
+        <source>Is rewarded</source>
+        <target>Is rewarded</target>
+      </trans-unit>
+      <trans-unit id="66niyCt" resname="Questionnaire">
+        <source>Questionnaire</source>
+        <target>Questionnaire</target>
+      </trans-unit>
+      <trans-unit id="bl1zBRQ" resname="Questionnaire details">
+        <source>Questionnaire details</source>
+        <target>Questionnaire details</target>
+      </trans-unit>
+      <trans-unit id="Lh4izS." resname="Edit questionnaire">
+        <source>Edit questionnaire</source>
+        <target>Edit questionnaire</target>
+      </trans-unit>
+      <trans-unit id="Kfenm4_" resname="Create questionnaire">
+        <source>Create questionnaire</source>
+        <target>Create questionnaire</target>
+      </trans-unit>
+      <trans-unit id="NpbHEI7" resname="Edit question">
+        <source>Edit question</source>
+        <target>Edit question</target>
+      </trans-unit>
+      <trans-unit id="yiK4MLN" resname="Create question">
+        <source>Create question</source>
+        <target>Create question</target>
       </trans-unit>
       <trans-unit id="R8iKEzZ" resname="Account operation details">
         <source>Account operation details</source>
@@ -689,6 +889,26 @@
         <source>Edit contact</source>
         <target>Edit contact</target>
       </trans-unit>
+      <trans-unit id=".iD2coz" resname="Promotion details">
+        <source>Promotion details</source>
+        <target>Promotion details</target>
+      </trans-unit>
+      <trans-unit id="NA9GMDP" resname="Code">
+        <source>Code</source>
+        <target>Code</target>
+      </trans-unit>
+      <trans-unit id="thO57OD" resname="Expires at">
+        <source>Expires at</source>
+        <target>Expires at</target>
+      </trans-unit>
+      <trans-unit id="DJyQUhD" resname="Edit promotion">
+        <source>Edit promotion</source>
+        <target>Edit promotion</target>
+      </trans-unit>
+      <trans-unit id="1XFggZi" resname="Create promotion">
+        <source>Create promotion</source>
+        <target>Create promotion</target>
+      </trans-unit>
       <trans-unit id="3ntLEV1" resname="Saved email details">
         <source>Saved email details</source>
         <target>Saved email details</target>
@@ -716,10 +936,6 @@
       <trans-unit id="X3cKjeN" resname="Project details">
         <source>Project details</source>
         <target>Project details</target>
-      </trans-unit>
-      <trans-unit id="cN5NTQL" resname="Is completed">
-        <source>Is completed</source>
-        <target>Is completed</target>
       </trans-unit>
       <trans-unit id="wV66TTk" resname="Sent reminder details">
         <source>Sent reminder details</source>
@@ -789,6 +1005,10 @@
         <source>Phone</source>
         <target>Phone</target>
       </trans-unit>
+      <trans-unit id="TwHGgSs" resname="Send weekly monthly statistics">
+        <source>Send weekly monthly statistics</source>
+        <target>Send weekly monthly statistics</target>
+      </trans-unit>
       <trans-unit id="kW0n_uO" resname="Show motivational messages">
         <source>Show motivational messages</source>
         <target>Show motivational messages</target>
@@ -857,6 +1077,10 @@
         <source>Goal details</source>
         <target>Goal details</target>
       </trans-unit>
+      <trans-unit id="mFlZeFM" resname="Project">
+        <source>Project</source>
+        <target>Project</target>
+      </trans-unit>
       <trans-unit id="5LrlpgP" resname="Reminder message details">
         <source>Reminder message details</source>
         <target>Reminder message details</target>
@@ -877,6 +1101,10 @@
         <source>Third party system type</source>
         <target>Third party system type</target>
       </trans-unit>
+      <trans-unit id="7x8fckD" resname="Your comment about your completed routine.">
+        <source>Your comment about your completed routine.</source>
+        <target>Your comment about your completed routine.</target>
+      </trans-unit>
       <trans-unit id="QvFVrnQ" resname="Complete a routine">
         <source>Complete a routine</source>
         <target>Complete a routine</target>
@@ -884,6 +1112,14 @@
       <trans-unit id="fZ63rLE" resname="Close">
         <source>Close</source>
         <target>Close</target>
+      </trans-unit>
+      <trans-unit id="j0vxlQL" resname="Title of your note.">
+        <source>Title of your note.</source>
+        <target>Title of your note.</target>
+      </trans-unit>
+      <trans-unit id="Bf5Yp99" resname="Content of your note.">
+        <source>Content of your note.</source>
+        <target>Content of your note.</target>
       </trans-unit>
       <trans-unit id="KO8IH.x" resname="Create a note">
         <source>Create a note</source>
@@ -905,6 +1141,14 @@
         <source>Create a reminder</source>
         <target>Create a reminder</target>
       </trans-unit>
+      <trans-unit id="0KNjBVW" resname="required">
+        <source>required</source>
+        <target>required</target>
+      </trans-unit>
+      <trans-unit id="YI05IJH" resname="Created notes">
+        <source>Created notes</source>
+        <target>Created notes</target>
+      </trans-unit>
       <trans-unit id="c5Sbsb2" resname="Profile details">
         <source>Profile details</source>
         <target>Profile details</target>
@@ -925,133 +1169,57 @@
         <source>Verify</source>
         <target>Verify</target>
       </trans-unit>
+      <trans-unit id="wF6gHjw" resname="+xx xxx xxx xxx">
+        <source>+xx xxx xxx xxx</source>
+        <target>+xx xxx xxx xxx</target>
+      </trans-unit>
+      <trans-unit id="cmqFrni" resname="Find time zone">
+        <source>Find time zone</source>
+        <target>Find time zone</target>
+      </trans-unit>
       <trans-unit id="FcSqEwN" resname="Edit profile">
         <source>Edit profile</source>
         <target>Edit profile</target>
+      </trans-unit>
+      <trans-unit id="uSiaJeh" resname="You do not have a selected Time zone yet. This is a very important for proper reminders configuration.">
+        <source>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</source>
+        <target>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</target>
       </trans-unit>
       <trans-unit id="F76V4aG" resname="Account details">
         <source>Account details</source>
         <target>Account details</target>
       </trans-unit>
-      <trans-unit id="_4sB3Tf" resname="We help. You achieve.">
-        <source>We help. You achieve.</source>
-        <target>We help. You achieve.</target>
+      <trans-unit id="C_PPMOQ" resname="Send a motivational email to a friend">
+        <source>Send a motivational email to a friend</source>
+        <target>Send a motivational email to a friend</target>
       </trans-unit>
-      <trans-unit id="VA0eT9m" resname="We will help you in creating and maintaining your routines. With routines you can achieve amazing things.">
-        <source>We will help you in creating and maintaining your routines. With routines you can achieve amazing things.</source>
-        <target>We will help you in creating and maintaining your routines. With routines you can achieve amazing things.</target>
+      <trans-unit id="ZRKqDup" resname="Email address of the person to whom you want to send a motivational message.">
+        <source>Email address of the person to whom you want to send a motivational message.</source>
+        <target>Email address of the person to whom you want to send a motivational message.</target>
       </trans-unit>
-      <trans-unit id="5cwFz33" resname="Are you ready to improve your work, hobby, sport or learning habits?">
-        <source>Are you ready to improve your work, hobby, sport or learning habits?</source>
-        <target>Are you ready to improve your work, hobby, sport or learning habits?</target>
+      <trans-unit id="aJcSg4Q" resname="Subject">
+        <source>Subject</source>
+        <target>Subject</target>
       </trans-unit>
-      <trans-unit id="jdS6gFV" resname="What we do?">
-        <source>What we do?</source>
-        <target>What we do?</target>
+      <trans-unit id="9vRoj.I" resname="Send">
+        <source>Send</source>
+        <target>Send</target>
       </trans-unit>
-      <trans-unit id="Zya6HPv" resname="We help you to create and maintain routines. Because not goals but routines are key to success.">
-        <source>We help you to create and maintain routines. Because not goals but routines are key to success.</source>
-        <target>We help you to create and maintain routines. Because not goals but routines are key to success.</target>
+      <trans-unit id="60zevYK" resname="Quote">
+        <source>Quote</source>
+        <target>Quote</target>
       </trans-unit>
-      <trans-unit id="sP9KSGw" resname="We have different ways to remind you about your routines.">
-        <source>We have different ways to remind you about your routines.</source>
-        <target>We have different ways to remind you about your routines.</target>
+      <trans-unit id=".mDYURx" resname="Popularity">
+        <source>Popularity</source>
+        <target>Popularity</target>
       </trans-unit>
-      <trans-unit id="M1qaqrG" resname="We help you to develop self-discipline.">
-        <source>We help you to develop self-discipline.</source>
-        <target>We help you to develop self-discipline.</target>
+      <trans-unit id="6oMuPig" resname="Motivational messages">
+        <source>Motivational messages</source>
+        <target>Motivational messages</target>
       </trans-unit>
-      <trans-unit id="ELIFs5k" resname="We help you to motivate yourself.">
-        <source>We help you to motivate yourself.</source>
-        <target>We help you to motivate yourself.</target>
-      </trans-unit>
-      <trans-unit id="GZjfOpU" resname="What we do not do?">
-        <source>What we do not do?</source>
-        <target>What we do not do?</target>
-      </trans-unit>
-      <trans-unit id="zCZtBCt" resname="We do not sell your data. Everything that you do in this system stays your private thing.">
-        <source>We do not sell your data. Everything that you do in this system stays your private thing.</source>
-        <target>We do not sell your data. Everything that you do in this system stays your private thing.</target>
-      </trans-unit>
-      <trans-unit id="oh.siCY" resname="It is not a social network. We do not want your constant attention. This is a tool that should work for you.">
-        <source>It is not a social network. We do not want your constant attention. This is a tool that should work for you.</source>
-        <target>It is not a social network. We do not want your constant attention. This is a tool that should work for you.</target>
-      </trans-unit>
-      <trans-unit id="xZAgdNh" resname="We can not make your work for you. But we can help you develop good habits that will make your tasks easier.">
-        <source>We can not make your work for you. But we can help you develop good habits that will make your tasks easier.</source>
-        <target>We can not make your work for you. But we can help you develop good habits that will make your tasks easier.</target>
-      </trans-unit>
-      <trans-unit id="VpfQPa7" resname="Features">
-        <source>Features</source>
-        <target>Features</target>
-      </trans-unit>
-      <trans-unit id="VPtEugA" resname="You can create a few different types of routines.">
-        <source>You can create a few different types of routines.</source>
-        <target>You can create a few different types of routines.</target>
-      </trans-unit>
-      <trans-unit id="YrInLYe" resname="To improve your self-discipline you can mark routine as completed.">
-        <source>To improve your self-discipline you can mark routine as completed.</source>
-        <target>To improve your self-discipline you can mark routine as completed.</target>
-      </trans-unit>
-      <trans-unit id="bFwwCfA" resname="Each routine can have assigned:">
-        <source>Each routine can have assigned:</source>
-        <target>Each routine can have assigned:</target>
-      </trans-unit>
-      <trans-unit id="OyA1sz2" resname="You can create reminders that will remind you about your routine before it starts.">
-        <source>You can create reminders that will remind you about your routine before it starts.</source>
-        <target>You can create reminders that will remind you about your routine before it starts.</target>
-      </trans-unit>
-      <trans-unit id="562oq5r" resname="We send each reminder by email or sms.">
-        <source>We send each reminder by email or sms.</source>
-        <target>We send each reminder by email or sms.</target>
-      </trans-unit>
-      <trans-unit id="un3M_x5" resname="We send you a motivational message.">
-        <source>We send you a motivational message.</source>
-        <target>We send you a motivational message.</target>
-      </trans-unit>
-      <trans-unit id="_OTFNKL" resname="We keep track how many reminders we sent and how many routines you completed to show you your progress.">
-        <source>We keep track how many reminders we sent and how many routines you completed to show you your progress.</source>
-        <target>We keep track how many reminders we sent and how many routines you completed to show you your progress.</target>
-      </trans-unit>
-      <trans-unit id="it3rfIs" resname="You can create goals that you want to realize in your routines.">
-        <source>You can create goals that you want to realize in your routines.</source>
-        <target>You can create goals that you want to realize in your routines.</target>
-      </trans-unit>
-      <trans-unit id="Y9s8jWn" resname="Goals are not most important. Routines are. We will help you to use your routines to complete goals.">
-        <source>Goals are not most important. Routines are. We will help you to use your routines to complete goals.</source>
-        <target>Goals are not most important. Routines are. We will help you to use your routines to complete goals.</target>
-      </trans-unit>
-      <trans-unit id="s2buA7A" resname="We keep track on how many goals you completed to show you your progress.">
-        <source>We keep track on how many goals you completed to show you your progress.</source>
-        <target>We keep track on how many goals you completed to show you your progress.</target>
-      </trans-unit>
-      <trans-unit id="LzddAbO" resname="You can create personal projects.">
-        <source>You can create personal projects.</source>
-        <target>You can create personal projects.</target>
-      </trans-unit>
-      <trans-unit id="5fQw7dg" resname="In project you can create goals that you will realize in routines.">
-        <source>In project you can create goals that you will realize in routines.</source>
-        <target>In project you can create goals that you will realize in routines.</target>
-      </trans-unit>
-      <trans-unit id="fJzicTd" resname="We keep track on how many goals you realized to show you progress of your project.">
-        <source>We keep track on how many goals you realized to show you progress of your project.</source>
-        <target>We keep track on how many goals you realized to show you progress of your project.</target>
-      </trans-unit>
-      <trans-unit id="HqmhT2." resname="Self motivate yourself with small rewards for your achievements.">
-        <source>Self motivate yourself with small rewards for your achievements.</source>
-        <target>Self motivate yourself with small rewards for your achievements.</target>
-      </trans-unit>
-      <trans-unit id="Ed9c5lj" resname="We keep track on your completed routines and goals, We will let you know when you deserve your reward.">
-        <source>We keep track on your completed routines and goals, We will let you know when you deserve your reward.</source>
-        <target>We keep track on your completed routines and goals, We will let you know when you deserve your reward.</target>
-      </trans-unit>
-      <trans-unit id="wjOjDAd" resname="You can create notes about your progress and struggle with routines.">
-        <source>You can create notes about your progress and struggle with routines.</source>
-        <target>You can create notes about your progress and struggle with routines.</target>
-      </trans-unit>
-      <trans-unit id="goFQbaa" resname="It is your private journal. Visible only for you.">
-        <source>It is your private journal. Visible only for you.</source>
-        <target>It is your private journal. Visible only for you.</target>
+      <trans-unit id="3kuhPif" resname="Efficiency11 will show you your efficiency taking into account 11 factors.">
+        <source>Efficiency11 will show you your efficiency taking into account 11 factors.</source>
+        <target>Efficiency11 will show you your efficiency taking into account 11 factors.</target>
       </trans-unit>
       <trans-unit id="QfV3QfP" resname="Devoted time">
         <source>Devoted time</source>
@@ -1077,6 +1245,14 @@
         <source>The first thing you should do is to create a reminder.</source>
         <target>The first thing you should do is to create a reminder.</target>
       </trans-unit>
+      <trans-unit id="pnc32lK" resname="Name of your routine i.e. &quot;Daily exercises&quot;.">
+        <source>Name of your routine i.e. "Daily exercises".</source>
+        <target>Name of your routine i.e. "Daily exercises".</target>
+      </trans-unit>
+      <trans-unit id="x7QbUbG" resname="Description of your routine.">
+        <source>Description of your routine.</source>
+        <target>Description of your routine.</target>
+      </trans-unit>
       <trans-unit id="j80HfUJ" resname="Create a routine">
         <source>Create a routine</source>
         <target>Create a routine</target>
@@ -1101,6 +1277,10 @@
         <source>Complete</source>
         <target>Complete</target>
       </trans-unit>
+      <trans-unit id="mWqftK5" resname="Completed at">
+        <source>Completed at</source>
+        <target>Completed at</target>
+      </trans-unit>
       <trans-unit id="MECBJx7" resname="Edit a routine">
         <source>Edit a routine</source>
         <target>Edit a routine</target>
@@ -1109,25 +1289,53 @@
         <source>Create a reward</source>
         <target>Create a reward</target>
       </trans-unit>
-      <trans-unit id="aJcSg4Q" resname="Subject">
-        <source>Subject</source>
-        <target>Subject</target>
-      </trans-unit>
-      <trans-unit id="9vRoj.I" resname="Send">
-        <source>Send</source>
-        <target>Send</target>
-      </trans-unit>
       <trans-unit id="bcS8gOh" resname="Send an invitation">
         <source>Send an invitation</source>
         <target>Send an invitation</target>
+      </trans-unit>
+      <trans-unit id="Xf.fTG6" resname="Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.">
+        <source>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</source>
+        <target>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</target>
+      </trans-unit>
+      <trans-unit id="U6IZR4H" resname="Email address of the person to whom you want to send an invitation.">
+        <source>Email address of the person to whom you want to send an invitation.</source>
+        <target>Email address of the person to whom you want to send an invitation.</target>
+      </trans-unit>
+      <trans-unit id="IRuz3la" resname="Survey">
+        <source>Survey</source>
+        <target>Survey</target>
+      </trans-unit>
+      <trans-unit id="5oVxmCB" resname="Title of your contact message.">
+        <source>Title of your contact message.</source>
+        <target>Title of your contact message.</target>
+      </trans-unit>
+      <trans-unit id="15m6Tw6" resname="Content of your contact message.">
+        <source>Content of your contact message.</source>
+        <target>Content of your contact message.</target>
       </trans-unit>
       <trans-unit id="CGh3fxc" resname="For interesting feature ideas we offer rewards in the form of free notifications.">
         <source>For interesting feature ideas we offer rewards in the form of free notifications.</source>
         <target>For interesting feature ideas we offer rewards in the form of free notifications.</target>
       </trans-unit>
+      <trans-unit id="zjvLpqo" resname="Use promotion code">
+        <source>Use promotion code</source>
+        <target>Use promotion code</target>
+      </trans-unit>
+      <trans-unit id=".ZY6nVO" resname="Used promotional codes">
+        <source>Used promotional codes</source>
+        <target>Used promotional codes</target>
+      </trans-unit>
       <trans-unit id="KnCwuCr" resname="Awarded">
         <source>Awarded</source>
         <target>Awarded</target>
+      </trans-unit>
+      <trans-unit id="lC2M4WS" resname="Name of your reward.">
+        <source>Name of your reward.</source>
+        <target>Name of your reward.</target>
+      </trans-unit>
+      <trans-unit id="5wlFNtB" resname="Description of your reward.">
+        <source>Description of your reward.</source>
+        <target>Description of your reward.</target>
       </trans-unit>
       <trans-unit id="pI86GOk" resname="You do not have any rewards!">
         <source>You do not have any rewards!</source>
@@ -1136,6 +1344,14 @@
       <trans-unit id="9Zf0949" resname="Edit a reward">
         <source>Edit a reward</source>
         <target>Edit a reward</target>
+      </trans-unit>
+      <trans-unit id="K6tbgF_" resname="Name of your project i.e. &quot;Writing best adventure book ever&quot;.">
+        <source>Name of your project i.e. "Writing best adventure book ever".</source>
+        <target>Name of your project i.e. "Writing best adventure book ever".</target>
+      </trans-unit>
+      <trans-unit id="Kj4BW.q" resname="Description of your project.">
+        <source>Description of your project.</source>
+        <target>Description of your project.</target>
       </trans-unit>
       <trans-unit id="xSrwSM6" resname="Create a project">
         <source>Create a project</source>
@@ -1149,74 +1365,6 @@
         <source>Edit a project</source>
         <target>Edit a project</target>
       </trans-unit>
-      <trans-unit id="L8jgrZx" resname="Edit a goal">
-        <source>Edit a goal</source>
-        <target>Edit a goal</target>
-      </trans-unit>
-      <trans-unit id="cmqFrni" resname="Find time zone">
-        <source>Find time zone</source>
-        <target>Find time zone</target>
-      </trans-unit>
-      <trans-unit id="uSiaJeh" resname="You do not have a selected Time zone yet. This is a very important for proper reminders configuration.">
-        <source>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</source>
-        <target>You do not have a selected Time zone yet. This is a very important for proper reminders configuration.</target>
-      </trans-unit>
-      <trans-unit id="V9PjAGU" resname="Next date local time">
-        <source>Next date local time</source>
-        <target>Next date local time</target>
-      </trans-unit>
-      <trans-unit id="pnc32lK" resname="Name of your routine i.e. &quot;Daily exercises&quot;.">
-        <source>Name of your routine i.e. "Daily exercises".</source>
-        <target>Name of your routine i.e. "Daily exercises".</target>
-      </trans-unit>
-      <trans-unit id="x7QbUbG" resname="Description of your routine.">
-        <source>Description of your routine.</source>
-        <target>Description of your routine.</target>
-      </trans-unit>
-      <trans-unit id="lC2M4WS" resname="Name of your reward.">
-        <source>Name of your reward.</source>
-        <target>Name of your reward.</target>
-      </trans-unit>
-      <trans-unit id="5wlFNtB" resname="Description of your reward.">
-        <source>Description of your reward.</source>
-        <target>Description of your reward.</target>
-      </trans-unit>
-      <trans-unit id="K6tbgF_" resname="Name of your project i.e. &quot;Writing best adventure book ever&quot;.">
-        <source>Name of your project i.e. "Writing best adventure book ever".</source>
-        <target>Name of your project i.e. "Writing best adventure book ever".</target>
-      </trans-unit>
-      <trans-unit id="Kj4BW.q" resname="Description of your project.">
-        <source>Description of your project.</source>
-        <target>Description of your project.</target>
-      </trans-unit>
-      <trans-unit id="7x8fckD" resname="Your comment about your completed routine.">
-        <source>Your comment about your completed routine.</source>
-        <target>Your comment about your completed routine.</target>
-      </trans-unit>
-      <trans-unit id="j0vxlQL" resname="Title of your note.">
-        <source>Title of your note.</source>
-        <target>Title of your note.</target>
-      </trans-unit>
-      <trans-unit id="Bf5Yp99" resname="Content of your note.">
-        <source>Content of your note.</source>
-        <target>Content of your note.</target>
-      </trans-unit>
-      <trans-unit id="wF6gHjw" resname="+xx xxx xxx xxx">
-        <source>+xx xxx xxx xxx</source>
-        <target>+xx xxx xxx xxx</target>
-      </trans-unit>
-      <trans-unit id="U6IZR4H" resname="Email address of the person to whom you want to send an invitation.">
-        <source>Email address of the person to whom you want to send an invitation.</source>
-        <target>Email address of the person to whom you want to send an invitation.</target>
-      </trans-unit>
-      <trans-unit id="5oVxmCB" resname="Title of your contact message.">
-        <source>Title of your contact message.</source>
-        <target>Title of your contact message.</target>
-      </trans-unit>
-      <trans-unit id="15m6Tw6" resname="Content of your contact message.">
-        <source>Content of your contact message.</source>
-        <target>Content of your contact message.</target>
-      </trans-unit>
       <trans-unit id="gmcyR4g" resname="Name of your goal i.e. &quot;50 push ups daily for 7 days in a row&quot;.">
         <source>Name of your goal i.e. "50 push ups daily for 7 days in a row".</source>
         <target>Name of your goal i.e. "50 push ups daily for 7 days in a row".</target>
@@ -1225,305 +1373,9 @@
         <source>Description of your goal.</source>
         <target>Description of your goal.</target>
       </trans-unit>
-      <trans-unit id="XcxROdu" resname="Congratulations! You have a new achievement!">
-        <source>Congratulations! You have a new achievement!</source>
-        <target>Congratulations! You have a new achievement!</target>
-      </trans-unit>
-      <trans-unit id="dM8rxj." resname="Achievements">
-        <source>Achievements</source>
-        <target>Achievements</target>
-      </trans-unit>
-      <trans-unit id="BcNdaeI" resname="Achievement details">
-        <source>Achievement details</source>
-        <target>Achievement details</target>
-      </trans-unit>
-      <trans-unit id="FwkwXJ_" resname="Level">
-        <source>Level</source>
-        <target>Level</target>
-      </trans-unit>
-      <trans-unit id="DFhWSBm" resname="Edit achievement">
-        <source>Edit achievement</source>
-        <target>Edit achievement</target>
-      </trans-unit>
-      <trans-unit id=".Neyh20" resname="Create achievement">
-        <source>Create achievement</source>
-        <target>Create achievement</target>
-      </trans-unit>
-      <trans-unit id="wRlmqPv" resname="Completed goals">
-        <source>Completed goals</source>
-        <target>Completed goals</target>
-      </trans-unit>
-      <trans-unit id="DLrrGMo" resname="Completed projects">
-        <source>Completed projects</source>
-        <target>Completed projects</target>
-      </trans-unit>
-      <trans-unit id="YI05IJH" resname="Created notes">
-        <source>Created notes</source>
-        <target>Created notes</target>
-      </trans-unit>
-      <trans-unit id="0KNjBVW" resname="required">
-        <source>required</source>
-        <target>required</target>
-      </trans-unit>
-      <trans-unit id="9fVpCw7" resname="Requirement">
-        <source>Requirement</source>
-        <target>Requirement</target>
-      </trans-unit>
-      <trans-unit id="TWKsMON" resname="Promotion codes">
-        <source>Promotion codes</source>
-        <target>Promotion codes</target>
-      </trans-unit>
-      <trans-unit id="PnQydYJ" resname="Promotions">
-        <source>Promotions</source>
-        <target>Promotions</target>
-      </trans-unit>
-      <trans-unit id="L26NG5z" resname="Promotions enabled">
-        <source>Promotions enabled</source>
-        <target>Promotions enabled</target>
-      </trans-unit>
-      <trans-unit id=".iD2coz" resname="Promotion details">
-        <source>Promotion details</source>
-        <target>Promotion details</target>
-      </trans-unit>
-      <trans-unit id="NA9GMDP" resname="Code">
-        <source>Code</source>
-        <target>Code</target>
-      </trans-unit>
-      <trans-unit id="DJyQUhD" resname="Edit promotion">
-        <source>Edit promotion</source>
-        <target>Edit promotion</target>
-      </trans-unit>
-      <trans-unit id="1XFggZi" resname="Create promotion">
-        <source>Create promotion</source>
-        <target>Create promotion</target>
-      </trans-unit>
-      <trans-unit id="zjvLpqo" resname="Use promotion code">
-        <source>Use promotion code</source>
-        <target>Use promotion code</target>
-      </trans-unit>
-      <trans-unit id=".ZY6nVO" resname="Used promotional codes">
-        <source>Used promotional codes</source>
-        <target>Used promotional codes</target>
-      </trans-unit>
-      <trans-unit id="spBKVSK" resname="You used promotion code.">
-        <source>You used promotion code.</source>
-        <target>You used promotion code.</target>
-      </trans-unit>
-      <trans-unit id="hrwoXeC" resname="You cannot use this promotion code.">
-        <source>You cannot use this promotion code.</source>
-        <target>You cannot use this promotion code.</target>
-      </trans-unit>
-      <trans-unit id="thO57OD" resname="Expires at">
-        <source>Expires at</source>
-        <target>Expires at</target>
-      </trans-unit>
-      <trans-unit id="Xf.fTG6" resname="Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.">
-        <source>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</source>
-        <target>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free points too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</target>
-      </trans-unit>
-      <trans-unit id="oMC3ClJ" resname="sends you a motivational message">
-        <source>sends you a motivational message</source>
-        <target>sends you a motivational message</target>
-      </trans-unit>
-      <trans-unit id="5eRg.mY" resname="Email was sent. You can send motivational message to another person.">
-        <source>Email was sent. You can send motivational message to another person.</source>
-        <target>Email was sent. You can send motivational message to another person.</target>
-      </trans-unit>
-      <trans-unit id="nRz9oSn" resname="Motivate a friend">
-        <source>Motivate a friend</source>
-        <target>Motivate a friend</target>
-      </trans-unit>
-      <trans-unit id="C_PPMOQ" resname="Send a motivational email to a friend">
-        <source>Send a motivational email to a friend</source>
-        <target>Send a motivational email to a friend</target>
-      </trans-unit>
-      <trans-unit id="ZRKqDup" resname="Email address of the person to whom you want to send a motivational message.">
-        <source>Email address of the person to whom you want to send a motivational message.</source>
-        <target>Email address of the person to whom you want to send a motivational message.</target>
-      </trans-unit>
-      <trans-unit id="60zevYK" resname="Quote">
-        <source>Quote</source>
-        <target>Quote</target>
-      </trans-unit>
-      <trans-unit id=".mDYURx" resname="Popularity">
-        <source>Popularity</source>
-        <target>Popularity</target>
-      </trans-unit>
-      <trans-unit id="mWqftK5" resname="Completed at">
-        <source>Completed at</source>
-        <target>Completed at</target>
-      </trans-unit>
-      <trans-unit id="TwHGgSs" resname="Send weekly monthly statistics">
-        <source>Send weekly monthly statistics</source>
-        <target>Send weekly monthly statistics</target>
-      </trans-unit>
-      <trans-unit id="tjMYY8O" resname="R365: Your type statistics">
-        <source>R365: Your type statistics</source>
-        <target>R365: Your type statistics</target>
-      </trans-unit>
-      <trans-unit id="OwiDTgq" resname="User KPIs">
-        <source>User KPIs</source>
-        <target>User KPIs</target>
-      </trans-unit>
-      <trans-unit id="cu7XlgJ" resname="User KPI details">
-        <source>User KPI details</source>
-        <target>User KPI details</target>
-      </trans-unit>
-      <trans-unit id="Vvn6erz" resname="Awarded rewards">
-        <source>Awarded rewards</source>
-        <target>Awarded rewards</target>
-      </trans-unit>
-      <trans-unit id="X4wtjfS" resname="Next User KPI">
-        <source>Next User KPI</source>
-        <target>Next User KPI</target>
-      </trans-unit>
-      <trans-unit id="tXfdj8." resname="Previous User KPI">
-        <source>Previous User KPI</source>
-        <target>Previous User KPI</target>
-      </trans-unit>
-      <trans-unit id="lJyhcbP" resname="Motivate a friend enabled">
-        <source>Motivate a friend enabled</source>
-        <target>Motivate a friend enabled</target>
-      </trans-unit>
-      <trans-unit id="SayJfdh" resname="Collect achievements. This is our way to show you how well you are using this system and its features.">
-        <source>Collect achievements. This is our way to show you how well you are using this system and its features.</source>
-        <target>Collect achievements. This is our way to show you how well you are using this system and its features.</target>
-      </trans-unit>
-      <trans-unit id="c0Bb9rs" resname="You can look at this as a form of not formal competition.">
-        <source>You can look at this as a form of not formal competition.</source>
-        <target>You can look at this as a form of not formal competition.</target>
-      </trans-unit>
-      <trans-unit id="I.vY4JY" resname="It is always good to become better in using your tools.">
-        <source>It is always good to become better in using your tools.</source>
-        <target>It is always good to become better in using your tools.</target>
-      </trans-unit>
-      <trans-unit id="EkJ2n8g" resname="You will receive emails with your weekly/monthly/yearly statistics.">
-        <source>You will receive emails with your weekly/monthly/yearly statistics.</source>
-        <target>You will receive emails with your weekly/monthly/yearly statistics.</target>
-      </trans-unit>
-      <trans-unit id="KHBVpPI" resname="These statistics will allow you to even better assess your progress.">
-        <source>These statistics will allow you to even better assess your progress.</source>
-        <target>These statistics will allow you to even better assess your progress.</target>
-      </trans-unit>
-      <trans-unit id="6oMuPig" resname="Motivational messages">
-        <source>Motivational messages</source>
-        <target>Motivational messages</target>
-      </trans-unit>
-      <trans-unit id="1hH45eM" resname="You will see motivational messages while using this system.">
-        <source>You will see motivational messages while using this system.</source>
-        <target>You will see motivational messages while using this system.</target>
-      </trans-unit>
-      <trans-unit id="qUZSAwJ" resname="You can receive motivational messages in reminders.">
-        <source>You can receive motivational messages in reminders.</source>
-        <target>You can receive motivational messages in reminders.</target>
-      </trans-unit>
-      <trans-unit id="l6KNkE7" resname="You can send a motivational message to your friend.">
-        <source>You can send a motivational message to your friend.</source>
-        <target>You can send a motivational message to your friend.</target>
-      </trans-unit>
-      <trans-unit id="mFlZeFM" resname="Project">
-        <source>Project</source>
-        <target>Project</target>
-      </trans-unit>
-      <trans-unit id="3kuhPif" resname="Efficiency11 will show you your efficiency taking into account 11 factors.">
-        <source>Efficiency11 will show you your efficiency taking into account 11 factors.</source>
-        <target>Efficiency11 will show you your efficiency taking into account 11 factors.</target>
-      </trans-unit>
-      <trans-unit id="GsS9BAG" resname="You already completed this survey.">
-        <source>You already completed this survey.</source>
-        <target>You already completed this survey.</target>
-      </trans-unit>
-      <trans-unit id="Fx4.uo." resname="Thank you for completing this survey!">
-        <source>Thank you for completing this survey!</source>
-        <target>Thank you for completing this survey!</target>
-      </trans-unit>
-      <trans-unit id="IJTw001" resname="We added a small reward to your account.">
-        <source>We added a small reward to your account.</source>
-        <target>We added a small reward to your account.</target>
-      </trans-unit>
-      <trans-unit id="YlYzh0C" resname="System operations">
-        <source>System operations</source>
-        <target>System operations</target>
-      </trans-unit>
-      <trans-unit id="LCXVqjb" resname="Questionnaires">
-        <source>Questionnaires</source>
-        <target>Questionnaires</target>
-      </trans-unit>
-      <trans-unit id="nEYTo2p" resname="Users questionnaires">
-        <source>Users questionnaires</source>
-        <target>Users questionnaires</target>
-      </trans-unit>
-      <trans-unit id="hteCbMz" resname="Question details">
-        <source>Question details</source>
-        <target>Question details</target>
-      </trans-unit>
-      <trans-unit id="vCKGcGV" resname="Answer details">
-        <source>Answer details</source>
-        <target>Answer details</target>
-      </trans-unit>
-      <trans-unit id="bQMa8Q2" resname="Position">
-        <source>Position</source>
-        <target>Position</target>
-      </trans-unit>
-      <trans-unit id="KJr.ErB" resname="Question">
-        <source>Question</source>
-        <target>Question</target>
-      </trans-unit>
-      <trans-unit id="ZYaPH0D" resname="Edit answer">
-        <source>Edit answer</source>
-        <target>Edit answer</target>
-      </trans-unit>
-      <trans-unit id="eTesD5x" resname="Create answer">
-        <source>Create answer</source>
-        <target>Create answer</target>
-      </trans-unit>
-      <trans-unit id="StCgpq5" resname="Answers">
-        <source>Answers</source>
-        <target>Answers</target>
-      </trans-unit>
-      <trans-unit id="mnIiGid" resname="Questions">
-        <source>Questions</source>
-        <target>Questions</target>
-      </trans-unit>
-      <trans-unit id="edNxjJv" resname="Users questionnaire answers">
-        <source>Users questionnaire answers</source>
-        <target>Users questionnaire answers</target>
-      </trans-unit>
-      <trans-unit id="TxJeetY" resname="User questionnaire details">
-        <source>User questionnaire details</source>
-        <target>User questionnaire details</target>
-      </trans-unit>
-      <trans-unit id="tBZwLH9" resname="Is rewarded">
-        <source>Is rewarded</source>
-        <target>Is rewarded</target>
-      </trans-unit>
-      <trans-unit id="66niyCt" resname="Questionnaire">
-        <source>Questionnaire</source>
-        <target>Questionnaire</target>
-      </trans-unit>
-      <trans-unit id="bl1zBRQ" resname="Questionnaire details">
-        <source>Questionnaire details</source>
-        <target>Questionnaire details</target>
-      </trans-unit>
-      <trans-unit id="Lh4izS." resname="Edit questionnaire">
-        <source>Edit questionnaire</source>
-        <target>Edit questionnaire</target>
-      </trans-unit>
-      <trans-unit id="Kfenm4_" resname="Create questionnaire">
-        <source>Create questionnaire</source>
-        <target>Create questionnaire</target>
-      </trans-unit>
-      <trans-unit id="NpbHEI7" resname="Edit question">
-        <source>Edit question</source>
-        <target>Edit question</target>
-      </trans-unit>
-      <trans-unit id="yiK4MLN" resname="Create question">
-        <source>Create question</source>
-        <target>Create question</target>
-      </trans-unit>
-      <trans-unit id="IRuz3la" resname="Survey">
-        <source>Survey</source>
-        <target>Survey</target>
+      <trans-unit id="L8jgrZx" resname="Edit a goal">
+        <source>Edit a goal</source>
+        <target>Edit a goal</target>
       </trans-unit>
     </body>
   </file>
