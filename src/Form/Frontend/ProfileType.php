@@ -43,7 +43,9 @@ class ProfileType extends BaseProfileType
             ])
         ;
 
-        if (true === ConfigResource::INVITATIONS_ENABLED) {
+        if ((true === ConfigResource::INVITATIONS_ENABLED) ||
+            (true === ConfigResource::MOTIVATE_A_FRIEND_ENABLED)
+        ) {
             $builder
                 ->add('firstName', TextType::class, [
                     'help' => 'First name is required for sending invitations.',

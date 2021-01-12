@@ -1,0 +1,40 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - {{ 'Goals'|trans }}
+                </h5>
+                <div>
+                    You can visit project "Goals" section by clicking <a href="{{ path('frontend_project_index') }}"><i class="fas fa-tools"></i> {{ 'Projects'|trans }}</a> in navigation menu.
+                    Than please click <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</button> next to name of project that you want to select.
+                </div>
+                <br>
+                <div>
+                    You can visit routine "Goals" section by clicking <a href="{{ path('frontend_routine_index') }}"> <i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a> navigation menu.
+                    Than please click <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</button> next to name of routine that you want to select.
+                    And finally please choose "Goals" section at the bottom of screen.
+                </div>
+                <br>
+                <div>
+                    Goals are important part of this system. With goals you can realize some more specific tasks in your routines or projects.
+                </div>
+                <br>
+                <div>
+                    To add new Goal you need to click on <button class="btn btn-primary btn-sm"><i class="fas fa-bullseye"></i> {{ 'Create a goal'|trans }}</button>.
+                    You need to provide goal name and select routine. You can assign goal to particular project. You can provide a description.
+                </div>
+                <br>
+                <div>
+                    You can edit each goal created by yourself. You can change it's name, routine, project and description. You can also change it's completed state.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Goals'|trans }}
+{% endblock %}

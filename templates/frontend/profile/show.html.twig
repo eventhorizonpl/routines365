@@ -6,6 +6,9 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Profile details'|trans }}
+                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_basic_configuration') }}">
+                        <i class="fas fa-question"></i>
+                    </a>
                     <a class="btn btn-success btn-sm float-right ml-2" href="{{ path('frontend_profile_edit') }}">
                         <i class="fas fa-edit"></i>
                         {{ 'Edit'|trans }}
@@ -43,7 +46,7 @@
                                     {% endif %}
                                 </td>
                             </tr>
-                            {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
+                            {% if (true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED')) or (true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED')) %}
                                 <tr>
                                     <th scope="row">
                                         {{ 'First name'|trans }}

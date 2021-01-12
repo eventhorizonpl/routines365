@@ -1,0 +1,56 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - {{ 'Routines'|trans }}
+                </h5>
+                <div>
+                    You can visit "Routines" section by clicking <a href="{{ path('frontend_routine_index') }}"><i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a> in navigation menu.
+                </div>
+                <br>
+                <div>
+                    Routines are core of this system. You can organize your life activities around them. At the begining you may limit yourself to two routines.
+                    For example "Daily exercises" and "Work". Later when you will be more familiar with whole system you will add other routines that you would like
+                    to train. For example you can add routine like "Night work" where you will perform things like writing or "Friday cleaning" that will
+                    be your home cleaning routine.
+                </div>
+                <br>
+                <div>
+                    To add new Routine you need to click on <button class="btn btn-primary btn-sm"><i class="fas fa-sync"></i> {{ 'Create a routine'|trans }}</button>.
+                    You need to provide a name of routine. Lets start with "Daily exercises". Type of routine should be "Sport". By default created routines are enabled.
+                    If you will disable it you will not receive any reminders. You can also provide an optional description of the routine if you want - for excercises it could be
+                    something like "My daily serie of push-ups". When you click on <button class="btn btn-primary btn-sm"><i class="fas fa-save"></i> {{ button_label|default('Save'|trans) }}</button>
+                    your routine will be created.
+                </div>
+                <br>
+                <div>
+                    You can edit each routine created by yourself. You can change it's name, type, enabled state and description.
+                </div>
+                <br>
+                <div>
+                    Now when you visit "Routines" section by clicking <a href="{{ path('frontend_routine_index') }}"><i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a> in navigation menu again you will see a list of your routines.
+                    You can view more details about each routine when you click <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</button> next to its name.
+                </div>
+                <br>
+                <div>
+                    Your next step should be creating a reminder. Please read more in <a href="{{ path('frontend_static_page_how_to_reminders') }}">{{ 'Reminders'|trans }}</a> documentation.
+                </div>
+                <br>
+                <div>
+                    <a href="{{ path('frontend_static_page_how_to_reminders') }}">{{ 'Reminders'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">{{ 'Completeing routines'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_notes') }}">{{ 'Notes'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_rewards') }}">{{ 'Rewards'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_goals') }}">{{ 'Goals'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Routines'|trans }}
+{% endblock %}

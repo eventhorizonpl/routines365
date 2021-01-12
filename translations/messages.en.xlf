@@ -293,7 +293,7 @@
         <source>System operations</source>
         <target>System operations</target>
       </trans-unit>
-      <trans-unit id="6b31i" resname="Account operations">
+      <trans-unit id="6b31__i" resname="Account operations">
         <source>Account operations</source>
         <target>Account operations</target>
       </trans-unit>
@@ -549,7 +549,7 @@
         <source>Completed routine details</source>
         <target>Completed routine details</target>
       </trans-unit>
-      <trans-unit id="RPXjx" resname="Comment">
+      <trans-unit id="RPXj__x" resname="Comment">
         <source>Comment</source>
         <target>Comment</target>
       </trans-unit>
@@ -1376,6 +1376,14 @@
       <trans-unit id="L8jgrZx" resname="Edit a goal">
         <source>Edit a goal</source>
         <target>Edit a goal</target>
+      </trans-unit>
+      <trans-unit id="7grTtVV" resname="How to">
+        <source>How to</source>
+        <target>How to</target>
+      </trans-unit>
+      <trans-unit id="MuXKpuq" resname="Basic configuration">
+        <source>Basic configuration</source>
+        <target>Basic configuration</target>
       </trans-unit>
     </body>
   </file>

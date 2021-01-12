@@ -1,0 +1,27 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    How to
+                </h5>
+                <div>
+                    <a href="{{ path('frontend_static_page_how_to_basic_configuration') }}">{{ 'Basic configuration'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_routines') }}">{{ 'Routines'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_reminders') }}">{{ 'Reminders'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">{{ 'Completeing routines'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_notes') }}">{{ 'Notes'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_rewards') }}">{{ 'Rewards'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_projects') }}">{{ 'Projects'|trans }}</a><br>
+                    <a href="{{ path('frontend_static_page_how_to_goals') }}">{{ 'Goals'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'How to'|trans }}
+{% endblock %}

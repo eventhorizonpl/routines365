@@ -87,7 +87,7 @@ class RegistrationController extends AbstractController
                 );
             }
 
-            if ((null !== $promotionCode) || ('' !== $promotionCode)) {
+            if ((null !== $promotionCode) && ('' !== $promotionCode)) {
                 $used = $promotionService->applyNewAccountPromotion(
                     $promotionCode,
                     $user

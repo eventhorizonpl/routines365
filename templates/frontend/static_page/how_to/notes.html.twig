@@ -1,0 +1,42 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - {{ 'Notes'|trans }}
+                </h5>
+                <div>
+                    You can visit "Notes" section by clicking <a href="{{ path('frontend_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a> in navigation menu.
+                </div>
+                <br>
+                <div>
+                    Notes are important part of this system. With notes you can clarify your thoughts and feelings. Describing problems allows you to solve them more effectively.
+                </div>
+                <br>
+                <div>
+                    To add new Note you need to click on <button class="btn btn-primary btn-sm"><i class="fas fa-pen-fancy"></i> {{ 'Create a note'|trans }}</button>.
+                    You need to provide note title and content. You can assign note to particular routine.
+                </div>
+                <br>
+                <div>
+                    You can edit each note created by yourself. You can change it's title and content.
+                </div>
+                <br>
+                <div>
+                    Now when you visit "Notes" section by clicking <a href="{{ path('frontend_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a> in navigation menu again you will see a list of your notes.
+                    You can view more details about each note when you click <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</button> next to its name.
+                </div>
+                <br>
+                <div>
+                    Your next step could be creating a reward. Please read more in <a href="{{ path('frontend_static_page_how_to_rewards') }}">{{ 'Rewards'|trans }}</a> documentation.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Notes'|trans }}
+{% endblock %}
