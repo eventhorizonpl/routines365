@@ -5,7 +5,7 @@
         <div class="card bg-dark text-white col-md-10 offset-md-1">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - <a href="{{ path('frontend_static_page_how_to_routines') }}">{{ 'Routines'|trans }}</a> - {{ 'Completeing routines'|trans }}
+                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - <a href="{{ path('frontend_static_page_how_to_routines') }}">{{ 'Routines'|trans }}</a> - {{ 'Completing routines'|trans }}
                 </h5>
                 <div>
                     You can visit routine "Completed routines" section by clicking <a href="{{ path('frontend_routine_index') }}"> <i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a> in navigation menu.
@@ -26,5 +26,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Routines'|trans }} - {{ 'Completeing routines'|trans }}
+    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Routines'|trans }} - {{ 'Completing routines'|trans }}
 {% endblock %}

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use App\Util\PeterkahlLocale;
+use App\Vendor\Util\PeterkahlLocale;
 use Locale;
 use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 use Symfony\Component\Security\Core\Security;

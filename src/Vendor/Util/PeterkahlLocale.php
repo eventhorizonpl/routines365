@@ -21,7 +21,7 @@
  * limitations under the License.
  */
 
-namespace App\Util;
+namespace App\Vendor\Util;
 
 class PeterkahlLocale
 {
