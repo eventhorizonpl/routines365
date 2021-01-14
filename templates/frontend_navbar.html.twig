@@ -8,50 +8,108 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            {% if know_your_tools is defined and know_your_tools %}
+                {% if know_your_tools == constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_START') %}
+                    {% set know_your_tools_basic_configuration = constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_SHOW') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_START') %}
+                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_LIST') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_START') %}
+                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::GOALS_LIST') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::NOTES_START') %}
+                    {% set know_your_tools_note = constant('App\\Resource\\KytResource::NOTES_LIST') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_START') %}
+                    {% set know_your_tools_project = constant('App\\Resource\\KytResource::PROJECTS_LIST') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_START') %}
+                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::REMINDERS_LIST') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::REWARDS_START') %}
+                    {% set know_your_tools_reward = constant('App\\Resource\\KytResource::REWARDS_LIST') %}
+                {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_START') %}
+                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::ROUTINES_LIST') %}
+                {% endif %}
+            {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_routine_edit', 'frontend_routine_index', 'frontend_routine_new', 'frontend_routine_show'] %} active{% endif %}" href="{{ path('frontend_routine_index') }}"><i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_routine_edit', 'frontend_routine_index', 'frontend_routine_new', 'frontend_routine_show'] %} active{% endif %}" href="{% if know_your_tools_routine is defined and know_your_tools_routine %}{{ path('frontend_routine_index', {'know_your_tools': know_your_tools_routine}) }}{% else %}{{ path('frontend_routine_index') }}{% endif %}">
+                        <i class="fas fa-sync"></i>
+                        {{ 'Routines'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_note_edit', 'frontend_note_index', 'frontend_note_new', 'frontend_note_show'] %} active{% endif %}" href="{{ path('frontend_note_index') }}"><i class="fas fa-pen-fancy"></i> {{ 'Notes'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_note_edit', 'frontend_note_index', 'frontend_note_new', 'frontend_note_show'] %} active{% endif %}" href="{% if know_your_tools_note is defined and know_your_tools_note %}{{ path('frontend_note_index', {'know_your_tools': know_your_tools_note}) }}{% else %}{{ path('frontend_note_index') }}{% endif %}">
+                        <i class="fas fa-pen-fancy"></i>
+                        {{ 'Notes'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_project_edit', 'frontend_project_index', 'frontend_project_new', 'frontend_project_show'] %} active{% endif %}" href="{{ path('frontend_project_index') }}"><i class="fas fa-tools"></i> {{ 'Projects'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_project_edit', 'frontend_project_index', 'frontend_project_new', 'frontend_project_show'] %} active{% endif %}" href="{% if know_your_tools_project is defined and know_your_tools_project %}{{ path('frontend_project_index', {'know_your_tools': know_your_tools_project}) }}{% else %}{{ path('frontend_project_index') }}{% endif %}">
+                        <i class="fas fa-tools"></i>
+                        {{ 'Projects'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{{ path('frontend_reward_index') }}"><i class="fas fa-award"></i> {{ 'Rewards'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{% if know_your_tools_reward is defined and know_your_tools_reward %}{{ path('frontend_reward_index', {'know_your_tools': know_your_tools_reward}) }}{% else %}{{ path('frontend_reward_index') }}{% endif %}">
+                        <i class="fas fa-award"></i>
+                        {{ 'Rewards'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_achievement_index'] %} active{% endif %}" href="{{ path('frontend_achievement_index') }}"><i class="fas fa-trophy"></i> {{ 'Achievements'|trans }}</a>
+                    <a class="nav-link{% if route in ['frontend_achievement_index'] %} active{% endif %}" href="{{ path('frontend_achievement_index') }}">
+                        <i class="fas fa-trophy"></i>
+                        {{ 'Achievements'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ 'System'|trans }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
-                        <a class="dropdown-item" href="{{ path('frontend_profile_show') }}"><i class="fas fa-cogs"></i> {{ 'Settings'|trans }}</a>
-                        <a class="dropdown-item" href="{{ path('frontend_contact_new') }}"><i class="fas fa-envelope"></i> {{ 'Contact form'|trans }}</a>
+                        <a class="dropdown-item" href="{% if know_your_tools_basic_configuration is defined and know_your_tools_basic_configuration %}{{ path('frontend_profile_show', {'know_your_tools': know_your_tools_basic_configuration}) }}{% else %}{{ path('frontend_profile_show') }}{% endif %}">
+                            <i class="fas fa-cogs"></i>
+                            {{ 'Settings'|trans }}
+                        </a>
+                        <a class="dropdown-item" href="{{ path('frontend_contact_new') }}">
+                            <i class="fas fa-envelope"></i>
+                            {{ 'Contact form'|trans }}
+                        </a>
                         {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_invitation_send') }}"><i class="fas fa-envelope"></i> {{ 'Invite'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('frontend_invitation_send') }}">
+                                <i class="fas fa-envelope"></i>
+                                {{ 'Invite'|trans }}
+                            </a>
                         {% endif %}
                         {% if true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_quote_index') }}"><i class="fas fa-quote-left"></i> {{ 'Motivate a friend'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('frontend_quote_index') }}">
+                                <i class="fas fa-quote-left"></i>
+                                {{ 'Motivate a friend'|trans }}
+                            </a>
                         {% endif %}
                         {% if true == constant('App\\Resource\\ConfigResource::PROMOTIONS_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_promotion_code') }}"><i class="fas fa-barcode"></i> {{ 'Promotion codes'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('frontend_promotion_code') }}">
+                                <i class="fas fa-barcode"></i>
+                                {{ 'Promotion codes'|trans }}
+                            </a>
                         {% endif %}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('security_logout') }}"><i class="fas fa-sign-out-alt"></i> {{ 'Logout'|trans }}</a>
+                        <a class="dropdown-item" href="{{ path('security_logout') }}">
+                            <i class="fas fa-sign-out-alt"></i>
+                            {{ 'Logout'|trans }}
+                        </a>
                     </div>
                 </li>
             {% else %}
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('security_register') }}"><i class="fas fa-plus-square"></i> {{ 'Register'|trans }}</a>
+                        <a class="nav-link" href="{{ path('security_register') }}">
+                            <i class="fas fa-plus-square"></i>
+                            {{ 'Register'|trans }}
+                        </a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}"><i class="fas fa-sign-in-alt"></i> {{ 'Login'|trans }}</a>
+                    <a class="nav-link" href="{{ path('security_login') }}">
+                        <i class="fas fa-sign-in-alt"></i>
+                        {{ 'Login'|trans }}
+                    </a>
                 </li>
             {% endif %}
         </ul>

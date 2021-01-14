@@ -26,6 +26,7 @@ class UserManager
     private RewardManager $rewardManager;
     private RoutineManager $routineManager;
     private SavedEmailManager $savedEmailManager;
+    private UserKytManager $userKytManager;
     private ValidatorInterface $validator;
 
     public function __construct(
@@ -42,6 +43,7 @@ class UserManager
         RewardManager $rewardManager,
         RoutineManager $routineManager,
         SavedEmailManager $savedEmailManager,
+        UserKytManager $userKytManager,
         ValidatorInterface $validator
     ) {
         $this->accountManager = $accountManager;
@@ -57,6 +59,7 @@ class UserManager
         $this->rewardManager = $rewardManager;
         $this->routineManager = $routineManager;
         $this->savedEmailManager = $savedEmailManager;
+        $this->userKytManager = $userKytManager;
         $this->validator = $validator;
     }
 
@@ -106,6 +109,9 @@ class UserManager
 
         $this->entityManager->persist($user);
         $this->accountManager->save($user->getAccount(), $actor, false);
+        if (null !== $user->getUserKyt()) {
+            $this->userKytManager->save($user->getUserKyt(), $actor, false);
+        }
 
         if (true === $saveDependencies) {
             foreach ($user->getAccount()->getAccountOperations() as $accountOperation) {

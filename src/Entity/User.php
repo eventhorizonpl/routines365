@@ -120,6 +120,11 @@ class User implements UserInterface
     private Collection $userKpis;
 
     /**
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=UserKyt::class)
+     */
+    private ?UserKyt $userKyt = null;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserQuestionnaire::class)
      */
     private Collection $userQuestionnaires;
@@ -789,6 +794,18 @@ class User implements UserInterface
         if (true === $this->userKpis->contains($userKpi)) {
             $this->userKpis->removeElement($userKpi);
         }
+
+        return $this;
+    }
+
+    public function getUserKyt(): ?UserKyt
+    {
+        return $this->userKyt;
+    }
+
+    public function setUserKyt(UserKyt $userKyt): self
+    {
+        $this->userKyt = $userKyt;
 
         return $this;
     }

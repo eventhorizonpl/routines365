@@ -11,6 +11,7 @@ use App\Factory\RewardFactory;
 use App\Form\Frontend\RewardType;
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
+use App\Resource\KytResource;
 use App\Security\Voter\RewardVoter;
 use App\Security\Voter\RoutineVoter;
 use App\Util\DateTimeImmutableUtil;
@@ -35,6 +36,8 @@ class RewardController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
+
         $parameters = [
             'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
             'query' => trim((string) $request->query->get('q')),
@@ -49,6 +52,7 @@ class RewardController extends AbstractController
         );
 
         return $this->render('frontend/reward/index.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'parameters' => $parameters,
             'rewards' => $rewards,
         ]);
@@ -63,6 +67,8 @@ class RewardController extends AbstractController
         RewardManager $rewardManager,
         Routine $routine = null
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
+
         $reward = $rewardFactory->createReward();
         if (null !== $routine) {
             $this->denyAccessUnlessGranted(RoutineVoter::EDIT, $routine);
@@ -75,13 +81,21 @@ class RewardController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $rewardManager->save($reward, (string) $this->getUser());
 
-            return $this->redirectToRoute('frontend_reward_show', [
-                'uuid' => $reward->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'know_your_tools' => KytResource::REWARDS_SHOW,
+                    'uuid' => $reward->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'uuid' => $reward->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/reward/new.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'reward' => $reward,
         ]);
     }
@@ -89,11 +103,13 @@ class RewardController extends AbstractController
     /**
      * @Route("/{uuid}", name="show", methods={"GET"})
      */
-    public function show(Reward $reward): Response
+    public function show(Request $request, Reward $reward): Response
     {
         $this->denyAccessUnlessGranted(RewardVoter::VIEW, $reward);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         return $this->render('frontend/reward/show.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'reward' => $reward,
         ]);
     }
@@ -107,6 +123,7 @@ class RewardController extends AbstractController
         Request $request
     ): Response {
         $this->denyAccessUnlessGranted(RewardVoter::EDIT, $reward);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         $form = $this->createForm(RewardType::class, $reward);
         $form->handleRequest($request);
@@ -114,13 +131,21 @@ class RewardController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $rewardManager->save($reward, (string) $this->getUser());
 
-            return $this->redirectToRoute('frontend_reward_show', [
-                'uuid' => $reward->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'know_your_tools' => KytResource::REWARDS_FINISH,
+                    'uuid' => $reward->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'uuid' => $reward->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/reward/edit.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'reward' => $reward,
         ]);
     }

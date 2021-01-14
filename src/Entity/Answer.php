@@ -34,7 +34,7 @@ class Answer
     private Question $question;
 
     /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserQuestionnaireAnswer::class)
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="answer", orphanRemoval=true, targetEntity=UserQuestionnaireAnswer::class)
      */
     private Collection $userQuestionnaireAnswers;
 

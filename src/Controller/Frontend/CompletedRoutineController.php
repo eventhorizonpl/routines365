@@ -13,6 +13,7 @@ use App\Form\Frontend\CompletedRoutineType;
 use App\Manager\CompletedRoutineManager;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderRepository;
+use App\Resource\KytResource;
 use App\Security\Voter\RoutineVoter;
 use App\Service\AchievementService;
 use App\Service\EmailService;
@@ -46,6 +47,7 @@ class CompletedRoutineController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(RoutineVoter::EDIT, $routine);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
         $user = $this->getUser();
 
         $completedRoutine = $completedRoutineFactory->createCompletedRoutine();
@@ -105,14 +107,22 @@ class CompletedRoutineController extends AbstractController
                 ]);
             }
 
-            return $this->redirectToRoute('frontend_routine_show', [
-                'uuid' => $routine->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_routine_show', [
+                    'know_your_tools' => KytResource::COMPLETING_ROUTINES_FINISH,
+                    'uuid' => $routine->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_routine_show', [
+                    'uuid' => $routine->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/completed_routine/new.html.twig', [
             'completed_routine' => $completedRoutine,
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'routine' => $routine,
         ]);
     }

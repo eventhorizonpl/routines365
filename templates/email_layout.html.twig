@@ -15,13 +15,14 @@
             <columns>
                 <center>
                     <menu class="text-center">
-                        <item href="https://routines365.com/">Homepage</item>
-                        <item href="https://routines365.com/page/contact">Contact</item>
-                        <item href="https://routines365.com/page/faq">FAQ</item>
-                        <item href="https://routines365.com/page/how-to">How to</item>
-                        <item href="https://routines365.com/login">Login</item>
+                        <item href="{{ url('frontend_home') }}">Homepage</item>
+                        | <item href="{{ url('frontend_static_page_contact') }}">Contact</item>
+                        | <item href="{{ url('frontend_static_page_faq') }}">FAQ</item>
+                        | <item href="{{ url('frontend_static_page_how_to') }}">How to</item>
+                        | <item href="{{ url('frontend_user_kyt_start') }}">Know your tools</item>
+                        | <item href="{{ url('security_login') }}">Login</item>
                         {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
-                            <item href="https://routines365.com/register">Register</item>
+                            | <item href="{{ url('security_register') }}">Register</item>
                         {% endif %}
                     </menu>
                 </center>

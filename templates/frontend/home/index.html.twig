@@ -2,14 +2,20 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1 class="display-5">
-            Here’s the perfect solution if you want to systematize your life and start achieving your goals.
+        <h1 class="display-5 mb-3">
+            {{ 'Routines365'|trans }}
         </h1>
+        <h2 class="display-5 mb-3">
+            {{ 'We help. You achieve.'|trans }}
+        </h1>
+        <h2 class="display-5">
+            Here’s the perfect solution if you want to systematize your life and start achieving your goals.
+        </h2>
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <hr class="m-4">
             <p class="lead">
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
-                    <a class="btn btn-primary btn-lg" href="{{ path('security_register') }}" role="button">
+                    <a class="btn btn-primary btn-lg mr-2" href="{{ path('security_register') }}" role="button">
                         <i class="fas fa-plus-square"></i>
                         {{ 'Register'|trans }}
                     </a>

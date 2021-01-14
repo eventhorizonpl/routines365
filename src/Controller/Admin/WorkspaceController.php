@@ -26,6 +26,7 @@ use App\Repository\RoutineRepository;
 use App\Repository\SavedEmailRepository;
 use App\Repository\SentReminderRepository;
 use App\Repository\UserKpiRepository;
+use App\Repository\UserKytRepository;
 use App\Repository\UserQuestionnaireAnswerRepository;
 use App\Repository\UserQuestionnaireRepository;
 use App\Repository\UserRepository;
@@ -64,6 +65,7 @@ class WorkspaceController extends AbstractController
         SavedEmailRepository $savedEmailRepository,
         SentReminderRepository $sentReminderRepository,
         UserKpiRepository $userKpiRepository,
+        UserKytRepository $userKytRepository,
         UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository,
         UserQuestionnaireRepository $userQuestionnaireRepository,
         UserRepository $userRepository
@@ -90,6 +92,7 @@ class WorkspaceController extends AbstractController
         $savedEmailsCount = $savedEmailRepository->count([]);
         $sentRemindersCount = $sentReminderRepository->count([]);
         $userKpisCount = $userKpiRepository->count([]);
+        $userKytsCount = $userKytRepository->count([]);
         $userQuestionnaireAnswersCount = $userQuestionnaireAnswerRepository->count([]);
         $userQuestionnairesCount = $userQuestionnaireRepository->count([]);
         $usersCount = $userRepository->count([]);
@@ -117,6 +120,7 @@ class WorkspaceController extends AbstractController
             'saved_emails_count' => $savedEmailsCount,
             'sent_reminders_count' => $sentRemindersCount,
             'user_kpis_count' => $userKpisCount,
+            'user_kyts_count' => $userKytsCount,
             'user_questionnaire_answers_count' => $userQuestionnaireAnswersCount,
             'user_questionnaires_count' => $userQuestionnairesCount,
             'users_count' => $usersCount,

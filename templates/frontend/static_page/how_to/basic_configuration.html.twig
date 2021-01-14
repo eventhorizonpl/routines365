@@ -7,49 +7,27 @@
                 <h5 class="card-title">
                     <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - {{ 'Basic configuration'|trans }}
                 </h5>
-                <div>
-                    You can visit "Profile details" section by clicking System -> <a href="{{ path('frontend_profile_show') }}"><i class="fas fa-cogs"></i> {{ 'Settings'|trans }}</a> in navigation menu.
-                </div>
+                <hr>
+                {{ include('frontend/static_page/how_to/_basic_configuration_start.html.twig') }}
                 <br>
                 <div>
-                    On this screen you have link to 3 other sections:
+                    In "Profile details" section you have link to 3 other sections:
                     <ul>
-                        <li><a href="{{ path('frontend_account_show') }}">{{ 'Account'|trans }}</a></li>
-                        <li><a href="{{ path('frontend_account_operation_index') }}">{{ 'Account operations'|trans }}</a></li>
-                        <li><a href="{{ path('frontend_user_change_password') }}">{{ 'Change password'|trans }}</a></li>
+                        <li>
+                            {{ 'Account'|trans }}
+                        </li>
+                        <li>
+                            {{ 'Account operations'|trans }}
+                        </li>
+                        <li>
+                            {{ 'Change password'|trans }}
+                        </li>
                     </ul>
-                    and link to profile <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button>
                 </div>
                 <br>
-                <div>
-                    <b>
-                        There are two most important things that you need to check before you start using system:
-                        <ul>
-                            <li>Email verification status</li>
-                            <li>Time zone</li>
-                        </ul>
-                    </b>
-                </div>
+                {{ include('frontend/static_page/how_to/_basic_configuration_show.html.twig') }}
                 <br>
-                <div>
-                    <h6><b>Verifying email</b></h6>
-                    After registration you will have a <span class="badge badge-danger">{{ 'Not verified'|trans }}</span> label next to your email address.
-                    Please check your email account for email with subject "R365: Please confirm your email". There is a verification link inside that allows
-                    to confirm your email address. This step is essential, because system can not sent you reminders to not verified email. After you
-                    confirm email you will have a <span class="badge badge-success">{{ 'Verified'|trans }}</span> label next to it.
-                </div>
-                <br>
-                <div>
-                    <h6><b>Selecting Time zone</b></h6>
-                    After registration you will not have selected time zone. This step is essential, because system can not send you reminders on time
-                    if you don't provide a time zone information. Please click on <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button>.
-                    Now please click on <button class="btn btn-success btn-sm"><i class="fas fa-search-location"></i> {{ 'Find time zone'|trans }}</button>.
-                    System will try to autodetect your time zone. You will have a popup message in your browser. System asks for permission to use geolocation
-                    to detect your time zone.<br><br>
-                    If for some reason system is not able to detect your time zone, please select it. System displays time zones in format
-                    "Continent/City" where "City" is capital of your country, state or bigger city in your region.<br><br>
-                    For more information about time zones please check <a href="https://en.wikipedia.org/wiki/Time_zone" rel="nofollow" target="_blank">Wikipedia article</a>.
-                </div>
+                {{ include('frontend/static_page/how_to/_basic_configuration_edit.html.twig') }}
                 <br>
                 <div>
                     <div>

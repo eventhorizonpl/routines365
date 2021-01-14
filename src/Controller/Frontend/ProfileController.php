@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\Frontend\ProfilePhoneVerificationCodeType;
 use App\Form\Frontend\ProfileType;
 use App\Manager\ProfileManager;
+use App\Resource\KytResource;
 use App\Service\Sms\SmsService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,11 +27,13 @@ class ProfileController extends AbstractController
     /**
      * @Route("/", name="show", methods={"GET"})
      */
-    public function show(): Response
+    public function show(Request $request): Response
     {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
         $profile = $this->getUser()->getProfile();
 
         return $this->render('frontend/profile/show.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'profile' => $profile,
         ]);
     }
@@ -44,6 +47,7 @@ class ProfileController extends AbstractController
         SmsService $smsService,
         TranslatorInterface $translator
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
         $profile = $this->getUser()->getProfile();
 
         $form = $this->createForm(ProfileType::class, $profile);
@@ -74,11 +78,18 @@ class ProfileController extends AbstractController
                 );
             }
 
-            return $this->redirectToRoute('frontend_profile_show');
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_profile_show', [
+                    'know_your_tools' => KytResource::BASIC_CONFIGURATION_FINISH,
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_profile_show');
+            }
         }
 
         return $this->render('frontend/profile/edit.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'profile' => $profile,
         ]);
     }

@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Factory\AccountFactory;
 use App\Factory\ProfileFactory;
 use App\Factory\UserFactory;
+use App\Factory\UserKytFactory;
 use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
@@ -34,7 +35,8 @@ final class UserFactoryTest extends AbstractTestCase
     {
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
-        $userFactory = new UserFactory($accountFactory, $profileFactory);
+        $userKytFactory = new UserKytFactory();
+        $userFactory = new UserFactory($accountFactory, $profileFactory, $userKytFactory);
 
         $this->assertInstanceOf(UserFactory::class, $userFactory);
     }
@@ -43,7 +45,8 @@ final class UserFactoryTest extends AbstractTestCase
     {
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
-        $userFactory = new UserFactory($accountFactory, $profileFactory);
+        $userKytFactory = new UserKytFactory();
+        $userFactory = new UserFactory($accountFactory, $profileFactory, $userKytFactory);
         $user = $userFactory->createUser();
         $this->assertInstanceOf(User::class, $user);
     }
@@ -52,7 +55,8 @@ final class UserFactoryTest extends AbstractTestCase
     {
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
-        $userFactory = new UserFactory($accountFactory, $profileFactory);
+        $userKytFactory = new UserKytFactory();
+        $userFactory = new UserFactory($accountFactory, $profileFactory, $userKytFactory);
         $user = $userFactory->createUserLead();
         $this->assertInstanceOf(User::class, $user);
         $this->assertTrue($user->getIsEnabled());
@@ -72,7 +76,8 @@ final class UserFactoryTest extends AbstractTestCase
         );
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
-        $userFactory = new UserFactory($accountFactory, $profileFactory);
+        $userKytFactory = new UserKytFactory();
+        $userFactory = new UserFactory($accountFactory, $profileFactory, $userKytFactory);
         $user = $userFactory->createUserWithRequired(
             $email,
             $isEnabled,

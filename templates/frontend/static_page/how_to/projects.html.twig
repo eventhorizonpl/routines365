@@ -7,25 +7,17 @@
                 <h5 class="card-title">
                     <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - {{ 'Projects'|trans }}
                 </h5>
-                <div>
-                    You can visit "Projects" section by clicking <a href="{{ path('frontend_project_index') }}"><i class="fas fa-tools"></i> {{ 'Projects'|trans }}</a> in navigation menu.
-                </div>
+                <hr>
+                {{ include('frontend/static_page/how_to/_projects_start.html.twig') }}
+                <br>
+                {{ include('frontend/static_page/how_to/_projects_list.html.twig') }}
+                <br>
+                {{ include('frontend/static_page/how_to/_projects_new.html.twig') }}
+                <br>
+                {{ include('frontend/static_page/how_to/_projects_edit.html.twig') }}
                 <br>
                 <div>
-                    Projects are important part of this system. Projects allows you to work on more complicated problems. You can divide a problem into simpler, easier to achieve goals.
-                </div>
-                <br>
-                <div>
-                    To add new Project you need to click on <button class="btn btn-primary btn-sm" href="{{ path('frontend_project_new') }}"><i class="fas fa-tools"></i> {{ 'Create a project'|trans }}</button>.
-                    You need to provide project name. You can also provide project description.
-                </div>
-                <br>
-                <div>
-                    You can edit each project created by yourself. You can change it's name and description. You can also mark project as completed.
-                </div>
-                <br>
-                <div>
-                    Now when you visit "Projects" section by clicking <a href="{{ path('frontend_project_index') }}"><i class="fas fa-tools"></i> {{ 'Projects'|trans }}</a> in navigation menu again you will see a list of your projects.
+                    Now when you visit "Projects" section by clicking <a href="#"><i class="fas fa-tools"></i> {{ 'Projects'|trans }}</a> in navigation menu again you will see a list of your projects.
                     You can view more details about each project when you click <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</button> next to its name.
                 </div>
                 <br>

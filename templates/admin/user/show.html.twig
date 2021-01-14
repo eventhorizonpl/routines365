@@ -38,6 +38,9 @@
                     <a class="nav-link" id="additional-profile-tab" data-toggle="tab" href="#additional-profile" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional profile details'|trans }}</a>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="additional-user-kyt-tab" data-toggle="tab" href="#additional-user-kyt" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional user KYT'|trans }}</a>
+                </li>
+                <li class="nav-item" role="presentation">
                     <a class="nav-link" id="additional-user-tab" data-toggle="tab" href="#additional-user" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional user details'|trans }}</a>
                 </li>
             </ul>
@@ -438,6 +441,220 @@
                             <tr>
                                 <th scope="row">{{ 'Updated at'|trans }}</th>
                                 <td>{{ user.profile.updatedAt ? user.profile.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="additional-user-kyt" role="tabpanel" aria-labelledby="contact-tab">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
+                                <td>{{ user.userKyt.id }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'UUID'|trans }}</th>
+                                <td>{{ user.userKyt.uuid }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Basic configuration learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.basicConfigurationLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Basic configuration sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.basicConfigurationSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Completing routines learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.completingRoutinesLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Completing routines sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.completingRoutinesSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Date of last message'|trans }}</th>
+                                <td>{{ user.userKyt.dateOfLastMessage ? user.userKyt.dateOfLastMessage|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Goals learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.goalsLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Goals sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.goalsSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Notes learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.notesLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Notes sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.notesSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Projects learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.projectsLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Projects sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.projectsSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Reminders learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.remindersLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Reminders sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.remindersSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Rewards learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.rewardsLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Rewards sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.rewardsSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Routines learned'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.routinesLearned %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Routines sent'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.routinesSent %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.createdBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.createdBy}) }}">{{ user.userKyt.createdBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.deletedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.deletedBy}) }}">{{ user.userKyt.deletedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <td>
+                                    {% if user.userKyt.updatedBy %}
+                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.updatedBy}) }}">{{ user.userKyt.updatedBy }}</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Created at'|trans }}</th>
+                                <td>{{ user.userKyt.createdAt ? user.userKyt.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <td>{{ user.userKyt.deletedAt ? user.userKyt.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">{{ 'Updated at'|trans }}</th>
+                                <td>{{ user.userKyt.updatedAt ? user.userKyt.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             </tr>
                         </tbody>
                     </table>

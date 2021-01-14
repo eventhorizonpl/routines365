@@ -1,6 +1,17 @@
 {% extends 'frontend_layout.html.twig' %}
 
 {% block content %}
+    {% if know_your_tools is defined and know_your_tools %}
+        <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
+            {% if know_your_tools == constant('App\\Resource\\KytResource::NOTES_LIST') %}
+                {{ include('frontend/static_page/how_to/_notes_list.html.twig') }}
+            {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+
     {% if notes|length %}
         <div class="row mb-3">
             <div class="col-md-10 offset-md-1">
@@ -11,7 +22,7 @@
                 <a class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_notes') }}">
                     <i class="fas fa-question"></i>
                 </a>
-                <a class="btn btn-primary float-right" href="{{ path('frontend_note_new') }}">
+                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_note_new', {'know_your_tools': constant('App\\Resource\\KytResource::NOTES_NEW')}) }}{% else %}{{ path('frontend_note_new') }}{% endif %}">
                     <i class="fas fa-pen-fancy"></i>
                     {{ 'Create a note'|trans }}
                 </a>
@@ -57,15 +68,19 @@
         </div>
     {% else %}
         <div class="row mb-5">
-            <div class="col-md-4 offset-md-4">
+            <div class="col-md-6 offset-md-3">
                 <div class="card text-center text-white bg-secondary">
                     <div class="card-body">
                         <p class="card-text">
                             {{ 'You do not have any notes!'|trans }}
                         </p>
-                        <a class="btn btn-primary" href="{{ path('frontend_note_new') }}">
+                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_note_new', {'know_your_tools': constant('App\\Resource\\KytResource::NOTES_NEW')}) }}{% else %}{{ path('frontend_note_new') }}{% endif %}">
                             <i class="fas fa-pen-fancy"></i>
                             {{ 'Create a note'|trans }}
+                        </a>
+                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}">
+                            <i class="fas fa-lightbulb"></i>
+                            {{ 'Know your tools'|trans }}
                         </a>
                         <a class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_notes') }}">
                             <i class="fas fa-question"></i>

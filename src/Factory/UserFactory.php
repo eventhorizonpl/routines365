@@ -11,13 +11,16 @@ class UserFactory
 {
     private AccountFactory $accountFactory;
     private ProfileFactory $profileFactory;
+    private UserKytFactory $userKytFactory;
 
     public function __construct(
         AccountFactory $accountFactory,
-        ProfileFactory $profileFactory
+        ProfileFactory $profileFactory,
+        UserKytFactory $userKytFactory
     ) {
         $this->accountFactory = $accountFactory;
         $this->profileFactory = $profileFactory;
+        $this->userKytFactory = $userKytFactory;
     }
 
     public function createUser(): User
@@ -29,8 +32,11 @@ class UserFactory
         $account->setUser($user);
         $profile = $this->profileFactory->createProfile();
         $profile->setUser($user);
+        $userKyt = $this->userKytFactory->createUserKyt();
+        $userKyt->setUser($user);
         $user->setAccount($account)
-            ->setProfile($profile);
+            ->setProfile($profile)
+            ->setUserKyt($userKyt);
 
         return $user;
     }

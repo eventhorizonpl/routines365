@@ -1,6 +1,17 @@
 {% extends 'frontend_layout.html.twig' %}
 
 {% block content %}
+    {% if know_your_tools is defined and know_your_tools %}
+        <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
+            {% if know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_LIST') %}
+                {{ include('frontend/static_page/how_to/_projects_list.html.twig') }}
+            {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+
     {% if projects|length %}
         <div class="row mb-3">
             <div class="col-md-10 offset-md-1">
@@ -11,7 +22,7 @@
                 <a class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_projects') }}">
                     <i class="fas fa-question"></i>
                 </a>
-                <a class="btn btn-primary float-right" href="{{ path('frontend_project_new') }}">
+                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_project_new', {'know_your_tools': constant('App\\Resource\\KytResource::PROJECTS_NEW')}) }}{% else %}{{ path('frontend_project_new') }}{% endif %}">
                     <i class="fas fa-tools"></i>
                     {{ 'Create a project'|trans }}
                 </a>
@@ -67,15 +78,19 @@
         </div>
     {% else %}
         <div class="row mb-5">
-            <div class="col-md-4 offset-md-4">
+            <div class="col-md-6 offset-md-3">
                 <div class="card text-center text-white bg-secondary">
                     <div class="card-body">
                         <p class="card-text">
                             {{ 'You do not have any projects!'|trans }}
                         </p>
-                        <a class="btn btn-primary" href="{{ path('frontend_project_new') }}">
+                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_project_new', {'know_your_tools': constant('App\\Resource\\KytResource::PROJECTS_NEW')}) }}{% else %}{{ path('frontend_project_new') }}{% endif %}">
                             <i class="fas fa-sync"></i>
                             {{ 'Create a project'|trans }}
+                        </a>
+                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}">
+                            <i class="fas fa-lightbulb"></i>
+                            {{ 'Know your tools'|trans }}
                         </a>
                         <a class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_projects') }}">
                             <i class="fas fa-question"></i>

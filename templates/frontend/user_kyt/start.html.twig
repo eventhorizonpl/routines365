@@ -1,0 +1,59 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ 'Know your tools'|trans }}
+                </h5>
+                <hr>
+                <div>
+                    {% if user_kyt.basicConfigurationLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_basic_configuration') }}">{{ 'Basic configuration'|trans }}</a>
+                    <br>
+                    {% if user_kyt.routinesLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_routines') }}">{{ 'Routines'|trans }}</a>
+                    <br>
+                    {% if user_kyt.remindersLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_reminders') }}">{{ 'Reminders'|trans }}</a>
+                    <br>
+                    {% if user_kyt.completingRoutinesLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_completing_routines') }}">{{ 'Completing routines'|trans }}</a>
+                    <br>
+                    {% if user_kyt.notesLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_notes') }}">{{ 'Notes'|trans }}</a>
+                    <br>
+                    {% if user_kyt.rewardsLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_rewards') }}">{{ 'Rewards'|trans }}</a>
+                    <br>
+                    {% if user_kyt.projectsLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_projects') }}">{{ 'Projects'|trans }}</a>
+                    <br>
+                    {% if user_kyt.goalsLearned %}
+                        <span class="badge badge-success"><i class="fas fa-check"></i></span>
+                    {% endif %}
+                    <a href="{{ path('frontend_user_kyt_goals') }}">{{ 'Goals'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Know your tools'|trans }}
+{% endblock %}

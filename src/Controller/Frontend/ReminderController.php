@@ -10,6 +10,7 @@ use App\Entity\User;
 use App\Factory\ReminderFactory;
 use App\Form\Frontend\ReminderType;
 use App\Manager\ReminderManager;
+use App\Resource\KytResource;
 use App\Security\Voter\ReminderVoter;
 use App\Security\Voter\RoutineVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -36,6 +37,7 @@ class ReminderController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(RoutineVoter::EDIT, $routine);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         if (null === $this->getUser()->getProfile()->getTimeZone()) {
             $this->addFlash(
@@ -55,13 +57,21 @@ class ReminderController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $reminderManager->save($reminder, (string) $this->getUser());
 
-            return $this->redirectToRoute('frontend_routine_show_reminders', [
-                'uuid' => $routine->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_routine_show_reminders', [
+                    'know_your_tools' => KytResource::REMINDERS_SHOW3,
+                    'uuid' => $routine->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_routine_show_reminders', [
+                    'uuid' => $routine->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/reminder/new.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'reminder' => $reminder,
             'routine' => $routine,
         ]);
@@ -77,6 +87,7 @@ class ReminderController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(ReminderVoter::EDIT, $reminder);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         if (null === $this->getUser()->getProfile()->getTimeZone()) {
             $this->addFlash(
@@ -93,13 +104,21 @@ class ReminderController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $reminderManager->save($reminder, (string) $this->getUser());
 
-            return $this->redirectToRoute('frontend_routine_show_reminders', [
-                'uuid' => $reminder->getRoutine()->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_routine_show_reminders', [
+                    'know_your_tools' => KytResource::REMINDERS_FINISH,
+                    'uuid' => $reminder->getRoutine()->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_routine_show_reminders', [
+                    'uuid' => $reminder->getRoutine()->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/reminder/edit.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'reminder' => $reminder,
             'routine' => $reminder->getRoutine(),
         ]);

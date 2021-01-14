@@ -1,6 +1,31 @@
 {% extends 'frontend_layout.html.twig' %}
 
 {% block content %}
+    {% if know_your_tools is defined and know_your_tools %}
+        {% if know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_LIST') %}
+            {% set know_your_tools_routines_show = constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_SHOW') %}
+        {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_LIST') %}
+            {% set know_your_tools_routines_show = constant('App\\Resource\\KytResource::GOALS_SHOW') %}
+        {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_LIST') %}
+            {% set know_your_tools_routines_show = constant('App\\Resource\\KytResource::REMINDERS_SHOW') %}
+        {% endif %}
+
+        <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
+            {% if know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_LIST') %}
+                {{ include('frontend/static_page/how_to/_completing_routines_list.html.twig') }}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_LIST') %}
+                {{ include('frontend/static_page/how_to/_goals_list.html.twig') }}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_LIST') %}
+                {{ include('frontend/static_page/how_to/_reminders_list.html.twig') }}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_LIST') %}
+                {{ include('frontend/static_page/how_to/_routines_list.html.twig') }}
+            {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+
     {% if routines|length %}
         <div class="row mb-3">
             <div class="col-md-10 offset-md-1">
@@ -11,7 +36,7 @@
                 <a class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_routines') }}">
                     <i class="fas fa-question"></i>
                 </a>
-                <a class="btn btn-primary float-right" href="{{ path('frontend_routine_new') }}">
+                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_new', {'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_NEW')}) }}{% else %}{{ path('frontend_routine_new') }}{% endif %}">
                     <i class="fas fa-sync"></i>
                     {{ 'Create a routine'|trans }}
                 </a>
@@ -28,7 +53,7 @@
                                 {{ routine.name }}
                             </div>
                             <div class="col-4">
-                                <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}">
+                                <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_routines_show is defined and know_your_tools_routines_show %}{{ path('frontend_routine_show', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_routines_show}) }}{% else %}{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}{% endif %}">
                                     <i class="fas fa-eye"></i>
                                     {{ 'Show'|trans }}
                                 </a>
@@ -108,15 +133,19 @@
         </div>
     {% else %}
         <div class="row mb-5">
-            <div class="col-md-4 offset-md-4">
+            <div class="col-md-6 offset-md-3">
                 <div class="card text-center text-white bg-secondary">
                     <div class="card-body">
                         <p class="card-text">
                             {{ 'You do not have any routines!'|trans }}
                         </p>
-                        <a class="btn btn-primary" href="{{ path('frontend_routine_new') }}">
+                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_new', {'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_NEW')}) }}{% else %}{{ path('frontend_routine_new') }}{% endif %}">
                             <i class="fas fa-sync"></i>
                             {{ 'Create a routine'|trans }}
+                        </a>
+                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}">
+                            <i class="fas fa-lightbulb"></i>
+                            {{ 'Know your tools'|trans }}
                         </a>
                         <a class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_routines') }}">
                             <i class="fas fa-question"></i>

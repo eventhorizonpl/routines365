@@ -1,9 +1,13 @@
 {% extends 'frontend/routine/show.html.twig' %}
 
 {% block routine_content %}
+    {% if know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_SHOW') %}
+        {% set know_your_tools_completing_routines_new = constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_NEW') %}
+    {% endif %}
+
     <p>
         {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
+        <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_completing_routines_new is defined and know_your_tools_completing_routines_new %}{{ path('frontend_completed_routine_new', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_completing_routines_new}) }}{% else %}{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}{% endif %}">
             <i class="fas fa-star"></i>
             {{ 'Complete a routine'|trans }}
         </a>

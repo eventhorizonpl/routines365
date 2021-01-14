@@ -1,0 +1,21 @@
+<div>
+    <b>
+        There are two most important things that you need to check before you start using system:
+        <ul>
+            <li>Email verification status</li>
+            <li>Time zone</li>
+        </ul>
+    </b>
+</div>
+<br>
+<div>
+    <h6><b>Verifying email</b></h6>
+    After registration you will have a <span class="badge badge-danger">{{ 'Not verified'|trans }}</span> label next to your email address.
+    Please check your email account for email with subject "R365: Please confirm your email". There is a verification link inside that allows
+    to confirm your email address. This step is essential, because system can not sent you reminders to not verified email. After you
+    confirm email please refresh "Profile details" section and you will have a <span class="badge badge-success">{{ 'Verified'|trans }}</span> label next to email.
+</div>
+<br>
+<div>
+    Click on <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button>.
+</div>

@@ -11,6 +11,7 @@ use App\Factory\ProjectFactory;
 use App\Form\Frontend\ProjectType;
 use App\Manager\ProjectManager;
 use App\Repository\ProjectRepository;
+use App\Resource\KytResource;
 use App\Security\Voter\ProjectVoter;
 use App\Service\AchievementService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -33,6 +34,8 @@ class ProjectController extends AbstractController
         ProjectRepository $projectRepository,
         Request $request
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
+
         $parameters = [
             'query' => trim((string) $request->query->get('q')),
         ];
@@ -40,6 +43,7 @@ class ProjectController extends AbstractController
         $projects = $projectRepository->findByParametersForFrontend($this->getUser(), $parameters);
 
         return $this->render('frontend/project/index.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'parameters' => $parameters,
             'projects' => $projects,
         ]);
@@ -53,6 +57,8 @@ class ProjectController extends AbstractController
         ProjectManager $projectManager,
         Request $request
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
+
         $project = $projectFactory->createProject();
         $project->setUser($this->getUser());
         $form = $this->createForm(ProjectType::class, $project);
@@ -61,13 +67,21 @@ class ProjectController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $projectManager->save($project, (string) $this->getUser());
 
-            return $this->redirectToRoute('frontend_project_show', [
-                'uuid' => $project->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_project_show', [
+                    'know_your_tools' => KytResource::PROJECTS_SHOW,
+                    'uuid' => $project->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_project_show', [
+                    'uuid' => $project->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/project/new.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'project' => $project,
         ]);
     }
@@ -75,11 +89,13 @@ class ProjectController extends AbstractController
     /**
      * @Route("/{uuid}", name="show", methods={"GET"})
      */
-    public function show(Project $project): Response
+    public function show(Project $project, Request $request): Response
     {
         $this->denyAccessUnlessGranted(ProjectVoter::VIEW, $project);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         return $this->render('frontend/project/show.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'project' => $project,
         ]);
     }
@@ -95,6 +111,7 @@ class ProjectController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         $this->denyAccessUnlessGranted(ProjectVoter::EDIT, $project);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
         $user = $this->getUser();
 
         $form = $this->createForm(ProjectType::class, $project);
@@ -111,13 +128,21 @@ class ProjectController extends AbstractController
                 );
             }
 
-            return $this->redirectToRoute('frontend_project_show', [
-                'uuid' => $project->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_project_show', [
+                    'know_your_tools' => KytResource::PROJECTS_FINISH,
+                    'uuid' => $project->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_project_show', [
+                    'uuid' => $project->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/project/edit.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'project' => $project,
         ]);
     }

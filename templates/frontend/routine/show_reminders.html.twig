@@ -1,9 +1,15 @@
 {% extends 'frontend/routine/show.html.twig' %}
 
 {% block routine_content %}
+    {% if know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW2') %}
+        {% set know_your_tools_reminders_new = constant('App\\Resource\\KytResource::REMINDERS_NEW') %}
+    {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW3') %}
+        {% set know_your_tools_reminders_edit = constant('App\\Resource\\KytResource::REMINDERS_EDIT') %}
+    {% endif %}
+
     <p>
         {{ 'Reminders'|trans }}: {{ routine.reminders|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reminder_new', {'uuid': routine.uuid}) }}">
+        <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_reminders_new is defined and know_your_tools_reminders_new %}{{ path('frontend_reminder_new', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_reminders_new}) }}{% else %}{{ path('frontend_reminder_new', {'uuid': routine.uuid}) }}{% endif %}">
             <i class="fas fa-clock"></i>
             {{ 'Create a reminder'|trans }}
         </a>
@@ -91,7 +97,7 @@
                                     {% endif %}
                                 </td>
                                 <td style="width: 10%;">
-                                    <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_reminder_edit', {'uuid': reminder.uuid}) }}">
+                                    <a class="btn btn-success btn-sm m-1" href="{% if know_your_tools_reminders_edit is defined and know_your_tools_reminders_edit %}{{ path('frontend_reminder_edit', {'uuid': reminder.uuid, 'know_your_tools': know_your_tools_reminders_edit}) }}{% else %}{{ path('frontend_reminder_edit', {'uuid': reminder.uuid}) }}{% endif %}">
                                         <i class="fas fa-edit"></i>
                                         {{ 'Edit'|trans }}
                                     </a>

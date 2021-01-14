@@ -14,6 +14,7 @@ use App\Manager\GoalManager;
 use App\Repository\ProjectRepository;
 use App\Repository\QuoteRepository;
 use App\Repository\RoutineRepository;
+use App\Resource\KytResource;
 use App\Security\Voter\GoalVoter;
 use App\Security\Voter\ProjectVoter;
 use App\Security\Voter\RoutineVoter;
@@ -45,6 +46,7 @@ class GoalController extends AbstractController
         RoutineRepository $routineRepository,
         string $uuid
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
         $goal = $goalFactory->createGoal();
         $project = null;
         $routine = null;
@@ -77,15 +79,23 @@ class GoalController extends AbstractController
                     'uuid' => $goal->getProject()->getUuid(),
                 ]);
             } elseif ((Goal::CONTEXT_ROUTINE === $context) || (null === $goal->getProject())) {
-                return $this->redirectToRoute('frontend_routine_show_goals', [
-                    'uuid' => $goal->getRoutine()->getUuid(),
-                ]);
+                if ($knowYourTools) {
+                    return $this->redirectToRoute('frontend_routine_show_goals', [
+                        'know_your_tools' => KytResource::GOALS_SHOW3,
+                        'uuid' => $goal->getRoutine()->getUuid(),
+                    ]);
+                } else {
+                    return $this->redirectToRoute('frontend_routine_show_goals', [
+                        'uuid' => $goal->getRoutine()->getUuid(),
+                    ]);
+                }
             }
         }
 
         return $this->render('frontend/goal/new.html.twig', [
             'form' => $form->createView(),
             'goal' => $goal,
+            'know_your_tools' => $knowYourTools,
             'project' => $project,
             'routine' => $routine,
         ]);
@@ -166,6 +176,7 @@ class GoalController extends AbstractController
         Request $request
     ): Response {
         $this->denyAccessUnlessGranted(GoalVoter::EDIT, $goal);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         $form = $this->createForm(GoalType::class, $goal);
         $form->handleRequest($request);
@@ -178,9 +189,16 @@ class GoalController extends AbstractController
                     'uuid' => $goal->getProject()->getUuid(),
                 ]);
             } elseif ((Goal::CONTEXT_ROUTINE === $context) || (null === $goal->getProject())) {
-                return $this->redirectToRoute('frontend_routine_show_goals', [
-                    'uuid' => $goal->getRoutine()->getUuid(),
-                ]);
+                if ($knowYourTools) {
+                    return $this->redirectToRoute('frontend_routine_show_goals', [
+                        'know_your_tools' => KytResource::GOALS_FINISH,
+                        'uuid' => $goal->getRoutine()->getUuid(),
+                    ]);
+                } else {
+                    return $this->redirectToRoute('frontend_routine_show_goals', [
+                        'uuid' => $goal->getRoutine()->getUuid(),
+                    ]);
+                }
             }
         }
 
@@ -188,6 +206,7 @@ class GoalController extends AbstractController
             'context' => $context,
             'form' => $form->createView(),
             'goal' => $goal,
+            'know_your_tools' => $knowYourTools,
             'project' => $goal->getProject(),
             'routine' => $goal->getRoutine(),
         ]);

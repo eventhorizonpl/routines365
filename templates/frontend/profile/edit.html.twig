@@ -1,6 +1,17 @@
 {% extends 'frontend_layout.html.twig' %}
 
 {% block content %}
+    {% if know_your_tools is defined and know_your_tools %}
+        <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
+            {% if know_your_tools == constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_EDIT') %}
+                {{ include('frontend/static_page/how_to/_basic_configuration_edit.html.twig') }}
+            {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
             <div class="card bg-dark text-white">

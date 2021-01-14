@@ -12,6 +12,7 @@ use App\Factory\NoteFactory;
 use App\Form\Frontend\NoteType;
 use App\Manager\NoteManager;
 use App\Repository\NoteRepository;
+use App\Resource\KytResource;
 use App\Security\Voter\NoteVoter;
 use App\Security\Voter\RoutineVoter;
 use App\Service\AchievementService;
@@ -38,6 +39,8 @@ class NoteController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
+
         $parameters = [
             'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
             'query' => trim((string) $request->query->get('q')),
@@ -52,6 +55,7 @@ class NoteController extends AbstractController
         );
 
         return $this->render('frontend/note/index.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'notes' => $notes,
             'parameters' => $parameters,
         ]);
@@ -68,6 +72,8 @@ class NoteController extends AbstractController
         TranslatorInterface $translator,
         Routine $routine = null
     ): Response {
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
+
         $user = $this->getUser();
         $note = $noteFactory->createNote();
         if (null !== $routine) {
@@ -90,13 +96,21 @@ class NoteController extends AbstractController
                 );
             }
 
-            return $this->redirectToRoute('frontend_note_show', [
-                'uuid' => $note->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_note_show', [
+                    'know_your_tools' => KytResource::NOTES_SHOW,
+                    'uuid' => $note->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_note_show', [
+                    'uuid' => $note->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/note/new.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'note' => $note,
         ]);
     }
@@ -104,11 +118,13 @@ class NoteController extends AbstractController
     /**
      * @Route("/{uuid}", name="show", methods={"GET"})
      */
-    public function show(Note $note): Response
+    public function show(Note $note, Request $request): Response
     {
         $this->denyAccessUnlessGranted(NoteVoter::VIEW, $note);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         return $this->render('frontend/note/show.html.twig', [
+            'know_your_tools' => $knowYourTools,
             'note' => $note,
         ]);
     }
@@ -122,6 +138,7 @@ class NoteController extends AbstractController
         Request $request
     ): Response {
         $this->denyAccessUnlessGranted(NoteVoter::EDIT, $note);
+        $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         $form = $this->createForm(NoteType::class, $note);
         $form->handleRequest($request);
@@ -129,13 +146,21 @@ class NoteController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $noteManager->save($note, (string) $this->getUser());
 
-            return $this->redirectToRoute('frontend_note_show', [
-                'uuid' => $note->getUuid(),
-            ]);
+            if ($knowYourTools) {
+                return $this->redirectToRoute('frontend_note_show', [
+                    'know_your_tools' => KytResource::NOTES_FINISH,
+                    'uuid' => $note->getUuid(),
+                ]);
+            } else {
+                return $this->redirectToRoute('frontend_note_show', [
+                    'uuid' => $note->getUuid(),
+                ]);
+            }
         }
 
         return $this->render('frontend/note/edit.html.twig', [
             'form' => $form->createView(),
+            'know_your_tools' => $knowYourTools,
             'note' => $note,
         ]);
     }

@@ -83,14 +83,15 @@ class UserQuestionnaireService
 
     public function rewardUserQuestionnaire(UserQuestionnaire $userQuestionnaire): UserQuestionnaire
     {
+        $user = $userQuestionnaire->getUser();
         $used = $this->promotionService->applySystemPromotion(
             'REWARD10',
-            $userQuestionnaire->getUser()
+            $user
         );
 
         if (true === $used) {
             $userQuestionnaire->setIsRewarded(true);
-            $this->userQuestionnaireManager->save($userQuestionnaire, (string) $userQuestionnaire->getUser());
+            $this->userQuestionnaireManager->save($userQuestionnaire, (string) $user);
         }
 
         return $userQuestionnaire;

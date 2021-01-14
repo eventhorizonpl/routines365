@@ -7,22 +7,18 @@
                 <h5 class="card-title">
                     <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - <a href="{{ path('frontend_static_page_how_to_routines') }}">{{ 'Routines'|trans }}</a> - {{ 'Reminders'|trans }}
                 </h5>
-                <div>
-                    You can visit routine "Reminders" section by clicking <a href="{{ path('frontend_routine_index') }}"> <i class="fas fa-sync"></i> {{ 'Routines'|trans }}</a> navigation menu.
-                    Than please click <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</button> next to name of routine that you want to select.
-                    And finally please choose "Reminders" section at the bottom of screen.
-                </div>
+                <hr>
+                {{ include('frontend/static_page/how_to/_reminders_start.html.twig') }}
                 <br>
-                <div>
-                    To add new reminder you need to click on <button class="btn btn-primary btn-sm"><i class="fas fa-clock"></i> {{ 'Create a reminder'|trans }}</button>.
-                    You need to specify Hour on which your routine should start. Using Minutes before parameter you specify how many minutes before the start of the routine you want to receive reminder.
-                    With Type parameter you can choose in what day of the week you want to receive a reminder about routine. For "Daily exercises" routine reminder choose "Daily" type.
-                    Now you need to choose if you want to receive reminder in form of email/SMS and if you want to have there a motivational message. By default created reminders are enabled.
-                </div>
+                {{ include('frontend/static_page/how_to/_reminders_list.html.twig') }}
                 <br>
-                <div>
-                    You can edit each reminder created by yourself. You can change it's hour, type, enabled state etc.
-                </div>
+                {{ include('frontend/static_page/how_to/_reminders_show.html.twig') }}
+                <br>
+                {{ include('frontend/static_page/how_to/_reminders_show2.html.twig') }}
+                <br>
+                {{ include('frontend/static_page/how_to/_reminders_new.html.twig') }}
+                <br>
+                {{ include('frontend/static_page/how_to/_reminders_edit.html.twig') }}
                 <br>
                 <div>
                     Your next step should be completing a routine. Please read more in <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">{{ 'Completing routines'|trans }}</a> documentation.
