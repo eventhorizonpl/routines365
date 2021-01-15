@@ -97,6 +97,22 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $queryBuilder->getQuery();
     }
 
+    public function findForPostUserKytMessages(): Query
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->select('u, up, uuk')
+            ->leftJoin('u.profile', 'up')
+            ->leftJoin('u.userKyt', 'uuk')
+            ->where('u.deletedAt IS NULL')
+            ->andWhere('u.isEnabled = :isEnabled')
+            ->andWhere('u.isVerified = :isVerified')
+            ->addOrderBy('u.id', 'ASC')
+            ->setParameter('isEnabled', true)
+            ->setParameter('isVerified', true);
+
+        return $queryBuilder->getQuery();
+    }
+
     public function findOneByEmail(string $email): ?User
     {
         $queryBuilder = $this->createQueryBuilder('u')

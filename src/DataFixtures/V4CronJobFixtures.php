@@ -37,6 +37,12 @@ class V4CronJobFixtures extends Fixture implements FixtureGroupInterface
                 'name' => 'app:create-user-kpi --type=daily',
                 'schedule' => '0 5 * * *',
             ],
+            [
+                'command' => 'app:post-user-kyt-messages',
+                'description' => 'app:post-user-kyt-messages',
+                'name' => 'app:post-user-kyt-messages',
+                'schedule' => '0 14 * * *',
+            ],
         ];
 
         $cronJobs = [];

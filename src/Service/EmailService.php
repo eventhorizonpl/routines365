@@ -128,6 +128,150 @@ class EmailService
         return $result;
     }
 
+    public function sendUserKytBasicConfiguration(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/basic_configuration.html.twig',
+            'email/user_kyt/basic_configuration.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytCompletingRoutines(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/completing_routines.html.twig',
+            'email/user_kyt/completing_routines.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytGoals(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/goals.html.twig',
+            'email/user_kyt/goals.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytNotes(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/notes.html.twig',
+            'email/user_kyt/notes.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytProjects(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/projects.html.twig',
+            'email/user_kyt/projects.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytReminders(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/reminders.html.twig',
+            'email/user_kyt/reminders.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytRewards(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/rewards.html.twig',
+            'email/user_kyt/rewards.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKytRoutines(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kyt/routines.html.twig',
+            'email/user_kyt/routines.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendMotivational(
         string $email,
         string $subject,

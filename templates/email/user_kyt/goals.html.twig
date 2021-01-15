@@ -1,0 +1,15 @@
+{% extends 'email_layout.html.twig' %}
+
+{% block content %}
+    <container>
+        <row>
+            Hi,<br><br>
+            We noticed that you didn't created any goals.<br><br>
+            You can read the <a href="{{ url('frontend_static_page_how_to_goals') }}">documentation</a>.<br><br>
+            You can take a <a href="{{ url('frontend_user_kyt_goals') }}">tutorial</a>.<br><br>
+            We encourage you to take a tutorial. It will lead you through the process and you will get a reward for completing it.<br><br>
+            Thanks,<br>
+            Routines365 Team
+        </row>
+    </container>
+{% endblock %}
