@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\User;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -111,6 +112,25 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setParameter('isVerified', true);
 
         return $queryBuilder->getQuery();
+    }
+
+    public function findForRetention(DateTimeImmutable $endDate, DateTimeImmutable $lastLoginAt, DateTimeImmutable $startDate): int
+    {
+        $query = $this->_em->createQuery('SELECT COUNT(u.id) FROM '.User::class.' u WHERE u.createdAt <= :endDate AND u.createdAt >= :startDate AND u.lastLoginAt >= :lastLoginAt')
+            ->setParameter('endDate', $endDate)
+            ->setParameter('lastLoginAt', $lastLoginAt)
+            ->setParameter('startDate', $startDate);
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function findForRetentionTotal(DateTimeImmutable $endDate, DateTimeImmutable $startDate): int
+    {
+        $query = $this->_em->createQuery('SELECT COUNT(u.id) FROM '.User::class.' u WHERE u.createdAt <= :endDate AND u.createdAt >= :startDate')
+            ->setParameter('endDate', $endDate)
+            ->setParameter('startDate', $startDate);
+
+        return (int) $query->getSingleScalarResult();
     }
 
     public function findOneByEmail(string $email): ?User

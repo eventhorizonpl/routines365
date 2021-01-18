@@ -1485,6 +1485,30 @@
         <source>Export</source>
         <target>Export</target>
       </trans-unit>
+      <trans-unit id="tqbul3Z" resname="Retentions">
+        <source>Retentions</source>
+        <target>__Retentions</target>
+      </trans-unit>
+      <trans-unit id="coXGDsA" resname="Retention details">
+        <source>Retention details</source>
+        <target>__Retention details</target>
+      </trans-unit>
+      <trans-unit id="zsOpuJs" resname="Data">
+        <source>Data</source>
+        <target>__Data</target>
+      </trans-unit>
+      <trans-unit id="N7rElSv" resname="Count">
+        <source>Count</source>
+        <target>__Count</target>
+      </trans-unit>
+      <trans-unit id="9f8sPZp" resname="New customers">
+        <source>New customers</source>
+        <target>__New customers</target>
+      </trans-unit>
+      <trans-unit id="cW1jOxJ" resname="Percent">
+        <source>Percent</source>
+        <target>__Percent</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

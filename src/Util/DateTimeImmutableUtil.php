@@ -10,6 +10,21 @@ use Exception;
 
 class DateTimeImmutableUtil
 {
+    public static function dateFromString(?string $date): ?DateTimeImmutable
+    {
+        if ((null !== $date) && ('' !== $date)) {
+            try {
+                $dateTime = new DateTime(trim($date));
+            } catch (Exception $e) {
+                return null;
+            }
+
+            return DateTimeImmutable::createFromMutable($dateTime);
+        }
+
+        return null;
+    }
+
     public static function endsAtFromString(?string $endsAt): ?DateTimeImmutable
     {
         if ((null !== $endsAt) && ('' !== $endsAt)) {

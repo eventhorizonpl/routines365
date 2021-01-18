@@ -43,6 +43,12 @@ class V4CronJobFixtures extends Fixture implements FixtureGroupInterface
                 'name' => 'app:post-user-kyt-messages',
                 'schedule' => '0 14 * * *',
             ],
+            [
+                'command' => 'app:create-retention',
+                'description' => 'app:create-retention',
+                'name' => 'app:create-retention',
+                'schedule' => '0 1 1 * *',
+            ],
         ];
 
         $cronJobs = [];
