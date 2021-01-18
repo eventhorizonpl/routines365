@@ -13,4 +13,7 @@
     <li class="nav-item">
         <a class="nav-link{% if route == 'frontend_user_change_password' %} active{% endif %}" href="{{ path('frontend_user_change_password') }}">{{ 'Change password'|trans }}</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link{% if route == 'frontend_gdpr_show' %} active{% endif %}" href="{{ path('frontend_gdpr_show') }}">{{ 'GDPR data export'|trans }}</a>
+    </li>
 </ul>

@@ -12,6 +12,7 @@ use libphonenumber\PhoneNumber;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -45,6 +46,7 @@ class Profile
     /**
      * @Assert\Length(max = 64)
      * @Assert\Type("string")
+     * @Groups({"gdpr"})
      * @ORM\Column(length=64, nullable=true, type="string")
      */
     private ?string $firstName;
@@ -52,6 +54,7 @@ class Profile
     /**
      * @Assert\Length(max = 64)
      * @Assert\Type("string")
+     * @Groups({"gdpr"})
      * @ORM\Column(length=64, nullable=true, type="string")
      */
     private ?string $lastName;
@@ -66,6 +69,7 @@ class Profile
 
     /**
      * @AssertPhoneNumber(type="mobile")
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="phone_number", unique=true)
      */
     private ?PhoneNumber $phone;
@@ -89,6 +93,7 @@ class Profile
 
     /**
      * @Assert\Type("bool")
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     private ?bool $sendWeeklyMonthlyStatistics;
@@ -96,6 +101,7 @@ class Profile
     /**
      * @Assert\NotNull
      * @Assert\Type("bool")
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     private bool $showMotivationalMessages;
@@ -106,6 +112,7 @@ class Profile
      *   max = 8
      * )
      * @Assert\Type("string")
+     * @Groups({"gdpr"})
      * @ORM\Column(length=8, nullable=true, type="string")
      */
     private ?string $theme;
@@ -116,6 +123,7 @@ class Profile
      * )
      * @Assert\Timezone
      * @Assert\Type("string")
+     * @Groups({"gdpr"})
      * @ORM\Column(length=36, nullable=true, type="string")
      */
     private ?string $timeZone;

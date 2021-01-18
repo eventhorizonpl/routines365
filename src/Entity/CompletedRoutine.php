@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\CompletedRoutineRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -36,6 +37,7 @@ class CompletedRoutine
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $comment;
@@ -43,6 +45,7 @@ class CompletedRoutine
     /**
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $date;
@@ -52,6 +55,7 @@ class CompletedRoutine
      * @Assert\LessThanOrEqual(1024, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("int", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     private int $minutesDevoted;

@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -62,6 +63,7 @@ class Reminder
     /**
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="time_immutable")
      */
     private DateTimeImmutable $hour;
@@ -72,6 +74,7 @@ class Reminder
      * @Assert\LessThanOrEqual(60, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("int", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     private int $minutesBefore;
@@ -79,6 +82,7 @@ class Reminder
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $nextDate;
@@ -86,6 +90,7 @@ class Reminder
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $nextDateLocalTime;
@@ -93,6 +98,7 @@ class Reminder
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     private ?DateTimeImmutable $previousDate;
@@ -100,6 +106,7 @@ class Reminder
     /**
      * @Assert\NotNull(groups={"form", "system"})
      * @Assert\Type("bool", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendEmail;
@@ -107,6 +114,7 @@ class Reminder
     /**
      * @Assert\NotNull(groups={"form", "system"})
      * @Assert\Type("bool", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendMotivationalMessage;
@@ -114,6 +122,7 @@ class Reminder
     /**
      * @Assert\NotNull(groups={"form", "system"})
      * @Assert\Type("bool", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     private bool $sendSms;
@@ -123,6 +132,7 @@ class Reminder
      * @Assert\Length(max = 10, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=10, type="string")
      */
     private string $type;

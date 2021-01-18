@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Repository\GoalRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -46,6 +47,7 @@ class Goal
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
@@ -54,6 +56,7 @@ class Goal
      * @Assert\Length(max = 64, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;

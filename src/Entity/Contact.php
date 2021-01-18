@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -47,6 +48,7 @@ class Contact
      * @Assert\Length(max = 2048, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
     private string $content;
@@ -64,6 +66,7 @@ class Contact
      * @Assert\Length(max = 255, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
     private string $title;
@@ -73,6 +76,7 @@ class Contact
      * @Assert\Length(max = 16, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
     private string $type;

@@ -1,0 +1,22 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    {{ 'GDPR data export'|trans }}
+                    {% include('frontend_settings_nav.html.twig') %}
+                </div>
+                <div class="card-body">
+                    {{ 'You can get your data here.'|trans }}<br><br>
+                    <a class="btn btn-primary" href="{{ path('frontend_gdpr_export') }}">{{ 'Export'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'GDPR data export'|trans }}
+{% endblock %}

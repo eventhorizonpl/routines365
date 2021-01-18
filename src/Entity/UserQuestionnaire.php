@@ -8,6 +8,7 @@ use App\Repository\UserQuestionnaireRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -36,6 +37,7 @@ class UserQuestionnaire
     private User $user;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="userQuestionnaire", orphanRemoval=true, targetEntity=UserQuestionnaireAnswer::class)
      */
     private Collection $userQuestionnaireAnswers;
@@ -43,6 +45,7 @@ class UserQuestionnaire
     /**
      * @Assert\NotNull(groups={"system"})
      * @Assert\Type("bool", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     protected bool $isRewarded;

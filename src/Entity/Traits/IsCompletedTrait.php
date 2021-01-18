@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Entity\Traits;
 
 use DateTimeImmutable;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait IsCompletedTrait
 {
     /**
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $completedAt = null;
@@ -18,6 +20,7 @@ trait IsCompletedTrait
     /**
      * @Assert\NotNull(groups={"system"})
      * @Assert\Type("bool", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     protected bool $isCompleted;

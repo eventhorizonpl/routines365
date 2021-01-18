@@ -1389,6 +1389,102 @@
         <source>Completing routines</source>
         <target>Completing routines</target>
       </trans-unit>
+      <trans-unit id="jg.0gXp" resname="GDPR data export">
+        <source>GDPR data export</source>
+        <target>GDPR data export</target>
+      </trans-unit>
+      <trans-unit id="xJMpS0l" resname="Know your tools">
+        <source>Know your tools</source>
+        <target>Know your tools</target>
+      </trans-unit>
+      <trans-unit id="7XcW9S4" resname="User KYTs">
+        <source>User KYTs</source>
+        <target>User KYTs</target>
+      </trans-unit>
+      <trans-unit id="QIJAWeB" resname="Additional user KYT">
+        <source>Additional user KYT</source>
+        <target>Additional user KYT</target>
+      </trans-unit>
+      <trans-unit id="aHxovFe" resname="Basic configuration learned">
+        <source>Basic configuration learned</source>
+        <target>Basic configuration learned</target>
+      </trans-unit>
+      <trans-unit id="aBbDAF6" resname="Basic configuration sent">
+        <source>Basic configuration sent</source>
+        <target>Basic configuration sent</target>
+      </trans-unit>
+      <trans-unit id="D.vD9ph" resname="Completing routines learned">
+        <source>Completing routines learned</source>
+        <target>Completing routines learned</target>
+      </trans-unit>
+      <trans-unit id="bzHxUJ9" resname="Completing routines sent">
+        <source>Completing routines sent</source>
+        <target>Completing routines sent</target>
+      </trans-unit>
+      <trans-unit id="6AZf0kL" resname="Date of last message">
+        <source>Date of last message</source>
+        <target>Date of last message</target>
+      </trans-unit>
+      <trans-unit id="rIGoom_" resname="Goals learned">
+        <source>Goals learned</source>
+        <target>Goals learned</target>
+      </trans-unit>
+      <trans-unit id="xAqmXyS" resname="Goals sent">
+        <source>Goals sent</source>
+        <target>Goals sent</target>
+      </trans-unit>
+      <trans-unit id="LIl1t98" resname="Notes learned">
+        <source>Notes learned</source>
+        <target>Notes learned</target>
+      </trans-unit>
+      <trans-unit id="zVf4wtZ" resname="Notes sent">
+        <source>Notes sent</source>
+        <target>Notes sent</target>
+      </trans-unit>
+      <trans-unit id="3nNwnDo" resname="Projects learned">
+        <source>Projects learned</source>
+        <target>Projects learned</target>
+      </trans-unit>
+      <trans-unit id="nX9UmrE" resname="Projects sent">
+        <source>Projects sent</source>
+        <target>Projects sent</target>
+      </trans-unit>
+      <trans-unit id="ftkF9oT" resname="Reminders learned">
+        <source>Reminders learned</source>
+        <target>Reminders learned</target>
+      </trans-unit>
+      <trans-unit id="SdKcC4G" resname="Reminders sent">
+        <source>Reminders sent</source>
+        <target>Reminders sent</target>
+      </trans-unit>
+      <trans-unit id="RqyU7bH" resname="Rewards learned">
+        <source>Rewards learned</source>
+        <target>Rewards learned</target>
+      </trans-unit>
+      <trans-unit id="J8i_CjR" resname="Rewards sent">
+        <source>Rewards sent</source>
+        <target>Rewards sent</target>
+      </trans-unit>
+      <trans-unit id="ltldEZU" resname="Routines learned">
+        <source>Routines learned</source>
+        <target>Routines learned</target>
+      </trans-unit>
+      <trans-unit id="hzuznXO" resname="Routines sent">
+        <source>Routines sent</source>
+        <target>Routines sent</target>
+      </trans-unit>
+      <trans-unit id="MGVPKya" resname="Click here to finish">
+        <source>Click here to finish</source>
+        <target>Click here to finish</target>
+      </trans-unit>
+      <trans-unit id="VIiCLwN" resname="You can get your data here.">
+        <source>You can get your data here.</source>
+        <target>You can get your data here.</target>
+      </trans-unit>
+      <trans-unit id="NmSJVXn" resname="Export">
+        <source>Export</source>
+        <target>Export</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

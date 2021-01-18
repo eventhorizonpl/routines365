@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\RewardRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -41,6 +42,7 @@ class Reward
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
@@ -48,6 +50,7 @@ class Reward
     /**
      * @Assert\NotNull(groups={"system"})
      * @Assert\Type("bool", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     private bool $isAwarded;
@@ -56,6 +59,7 @@ class Reward
      * @Assert\Length(max = 64, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;
@@ -65,6 +69,7 @@ class Reward
      * @Assert\LessThanOrEqual(90, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("int", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     private int $numberOfCompletions;
@@ -75,6 +80,7 @@ class Reward
      * @Assert\LessThanOrEqual(90, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("int", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     private int $requiredNumberOfCompletions;
@@ -84,6 +90,7 @@ class Reward
      * @Assert\Length(max = 24, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=24, type="string")
      */
     private string $type;

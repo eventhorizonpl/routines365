@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,6 +38,7 @@ class User implements UserInterface
 
     /**
      * @Assert\Valid(groups={"form"})
+     * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Account::class)
      */
     private Account $account;
@@ -47,33 +49,39 @@ class User implements UserInterface
     private Collection $achievements;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=CompletedRoutine::class)
      * @ORM\OrderBy({"id" = "ASC"})
      */
     private Collection $completedRoutines;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Contact::class)
      */
     private Collection $contacts;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
      */
     private Collection $goals;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Note::class)
      */
     private Collection $notes;
 
     /**
      * @Assert\Valid(groups={"form"})
+     * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
     private Profile $profile;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Project::class)
      */
     private Collection $projects;
@@ -95,21 +103,25 @@ class User implements UserInterface
     private ?User $referrer = null;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reminder::class)
      */
     private Collection $reminders;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reward::class)
      */
     private Collection $rewards;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Routine::class)
      */
     private Collection $routines;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=SavedEmail::class)
      */
     private Collection $savedEmails;
@@ -125,6 +137,7 @@ class User implements UserInterface
     private ?UserKyt $userKyt = null;
 
     /**
+     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserQuestionnaire::class)
      */
     private Collection $userQuestionnaires;
@@ -134,12 +147,14 @@ class User implements UserInterface
      * @Assert\Length(max = 180, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string", unique=true)
      */
     private string $email;
 
     /**
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     protected $lastLoginAt;
@@ -155,6 +170,7 @@ class User implements UserInterface
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Uuid(groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="guid", unique=true)
      */
     private string $referrerCode;

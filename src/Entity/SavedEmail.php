@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\SavedEmailRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -35,6 +36,7 @@ class SavedEmail
      * @Assert\Length(max = 180, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("string", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string")
      */
     private string $email;
@@ -44,6 +46,7 @@ class SavedEmail
      * @Assert\Length(max = 16, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("string", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
     private string $type;

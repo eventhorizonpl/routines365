@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Traits;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait UuidTrait
@@ -11,6 +12,7 @@ trait UuidTrait
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Uuid(groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="guid", unique=true)
      */
     protected ?string $uuid = null;

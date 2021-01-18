@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity\Traits;
 
 use DateTimeImmutable;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait TimestampableTrait
@@ -12,6 +13,7 @@ trait TimestampableTrait
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $createdAt = null;
@@ -19,12 +21,14 @@ trait TimestampableTrait
     /**
      * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
+     * @Groups({"gdpr"})
      */
     protected ?DateTimeImmutable $deletedAt = null;
 
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("DateTimeImmutable", groups={"system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     protected ?DateTimeImmutable $updatedAt = null;

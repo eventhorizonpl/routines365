@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Repository\UserQuestionnaireAnswerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -35,6 +36,7 @@ class UserQuestionnaireAnswer
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $content;

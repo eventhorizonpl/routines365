@@ -9,6 +9,7 @@ use App\Resource\ConfigResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -40,6 +41,7 @@ class Account
      * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank()
      * @Assert\Type("int")
+     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     private int $availableEmailNotifications;
@@ -48,6 +50,7 @@ class Account
      * @Assert\GreaterThanOrEqual(0)
      * @Assert\NotBlank()
      * @Assert\Type("int")
+     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     private int $availableSmsNotifications;

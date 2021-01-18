@@ -8,6 +8,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,6 +38,7 @@ class Project
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     private ?string $description;
@@ -45,6 +47,7 @@ class Project
      * @Assert\Length(max = 64, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
      * @Assert\Type("string", groups={"form", "system"})
+     * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
     private string $name;
