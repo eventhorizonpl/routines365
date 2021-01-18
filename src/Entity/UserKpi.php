@@ -173,6 +173,14 @@ class UserKpi
      */
     private string $type;
 
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $userQuestionnaireCounter;
+
     public function __construct()
     {
         $this->accountOperationCounter = 0;
@@ -188,6 +196,7 @@ class UserKpi
         $this->rewardCounter = 0;
         $this->routineCounter = 0;
         $this->savedEmailCounter = 0;
+        $this->userQuestionnaireCounter = 0;
     }
 
     public function __toString(): string
@@ -438,6 +447,18 @@ class UserKpi
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUserQuestionnaireCounter(): int
+    {
+        return $this->userQuestionnaireCounter;
+    }
+
+    public function setUserQuestionnaireCounter(int $userQuestionnaireCounter): self
+    {
+        $this->userQuestionnaireCounter = $userQuestionnaireCounter;
 
         return $this;
     }

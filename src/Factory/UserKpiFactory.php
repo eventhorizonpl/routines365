@@ -33,7 +33,8 @@ class UserKpiFactory
         int $rewardCounter,
         int $routineCounter,
         int $savedEmailCounter,
-        string $type
+        string $type,
+        int $userQuestionnaireCounter
     ): UserKpi {
         $userUserKpi = $this->createUserKpi();
 
@@ -52,7 +53,8 @@ class UserKpiFactory
             ->setRewardCounter($rewardCounter)
             ->setRoutineCounter($routineCounter)
             ->setSavedEmailCounter($savedEmailCounter)
-            ->setType($type);
+            ->setType($type)
+            ->setUserQuestionnaireCounter($userQuestionnaireCounter);
 
         return $userUserKpi;
     }

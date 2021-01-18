@@ -63,7 +63,8 @@ class UserKpiService
             count($user->getRewards()),
             count($user->getRoutines()),
             count($user->getSavedEmails()),
-            $type
+            $type,
+            count($user->getUserQuestionnaires())
         );
         $userKpi->setUser($user);
         if (null !== $userKpi) {

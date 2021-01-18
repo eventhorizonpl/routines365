@@ -48,6 +48,14 @@ class Kpi
      * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    private int $answerCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
     private int $completedRoutineCounter;
 
     /**
@@ -111,6 +119,22 @@ class Kpi
      * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    private int $questionCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $questionnaireCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
     private int $quoteCounter;
 
     /**
@@ -128,6 +152,14 @@ class Kpi
      * @ORM\Column(type="integer")
      */
     private int $reminderMessageCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $retentionCounter;
 
     /**
      * @Assert\GreaterThanOrEqual(0, groups={"system"})
@@ -177,11 +209,36 @@ class Kpi
      */
     private int $userKpiCounter;
 
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $userKytCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $userQuestionnaireCounter;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $userQuestionnaireAnswerCounter;
+
     public function __construct()
     {
         $this->accountCounter = 0;
         $this->accountOperationCounter = 0;
         $this->achievementCounter = 0;
+        $this->answerCounter = 0;
         $this->completedRoutineCounter = 0;
         $this->contactCounter = 0;
         $this->goalCounter = 0;
@@ -189,15 +246,21 @@ class Kpi
         $this->profileCounter = 0;
         $this->projectCounter = 0;
         $this->promotionCounter = 0;
+        $this->questionCounter = 0;
+        $this->questionnaireCounter = 0;
         $this->quoteCounter = 0;
         $this->reminderCounter = 0;
         $this->reminderMessageCounter = 0;
+        $this->retentionCounter = 0;
         $this->rewardCounter = 0;
         $this->routineCounter = 0;
         $this->savedEmailCounter = 0;
         $this->sentReminderCounter = 0;
         $this->userCounter = 0;
         $this->userKpiCounter = 0;
+        $this->userKytCounter = 0;
+        $this->userQuestionnaireCounter = 0;
+        $this->userQuestionnaireAnswerCounter = 0;
     }
 
     public function __toString(): string
@@ -237,6 +300,18 @@ class Kpi
     public function setAchievementCounter(int $achievementCounter): self
     {
         $this->achievementCounter = $achievementCounter;
+
+        return $this;
+    }
+
+    public function getAnswerCounter(): int
+    {
+        return $this->answerCounter;
+    }
+
+    public function setAnswerCounter(int $answerCounter): self
+    {
+        $this->answerCounter = $answerCounter;
 
         return $this;
     }
@@ -337,6 +412,30 @@ class Kpi
         return $this;
     }
 
+    public function getQuestionCounter(): int
+    {
+        return $this->questionCounter;
+    }
+
+    public function setQuestionCounter(int $questionCounter): self
+    {
+        $this->questionCounter = $questionCounter;
+
+        return $this;
+    }
+
+    public function getQuestionnaireCounter(): int
+    {
+        return $this->questionnaireCounter;
+    }
+
+    public function setQuestionnaireCounter(int $questionnaireCounter): self
+    {
+        $this->questionnaireCounter = $questionnaireCounter;
+
+        return $this;
+    }
+
     public function getQuoteCounter(): int
     {
         return $this->quoteCounter;
@@ -369,6 +468,18 @@ class Kpi
     public function setReminderMessageCounter(int $reminderMessageCounter): self
     {
         $this->reminderMessageCounter = $reminderMessageCounter;
+
+        return $this;
+    }
+
+    public function getRetentionCounter(): int
+    {
+        return $this->retentionCounter;
+    }
+
+    public function setRetentionCounter(int $retentionCounter): self
+    {
+        $this->retentionCounter = $retentionCounter;
 
         return $this;
     }
@@ -441,6 +552,42 @@ class Kpi
     public function setUserKpiCounter(int $userKpiCounter): self
     {
         $this->userKpiCounter = $userKpiCounter;
+
+        return $this;
+    }
+
+    public function getUserKytCounter(): int
+    {
+        return $this->userKytCounter;
+    }
+
+    public function setUserKytCounter(int $userKytCounter): self
+    {
+        $this->userKytCounter = $userKytCounter;
+
+        return $this;
+    }
+
+    public function getUserQuestionnaireCounter(): int
+    {
+        return $this->userQuestionnaireCounter;
+    }
+
+    public function setUserQuestionnaireCounter(int $userQuestionnaireCounter): self
+    {
+        $this->userQuestionnaireCounter = $userQuestionnaireCounter;
+
+        return $this;
+    }
+
+    public function getUserQuestionnaireAnswerCounter(): int
+    {
+        return $this->userQuestionnaireAnswerCounter;
+    }
+
+    public function setUserQuestionnaireAnswerCounter(int $userQuestionnaireAnswerCounter): self
+    {
+        $this->userQuestionnaireAnswerCounter = $userQuestionnaireAnswerCounter;
 
         return $this;
     }

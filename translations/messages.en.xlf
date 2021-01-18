@@ -1487,27 +1487,35 @@
       </trans-unit>
       <trans-unit id="tqbul3Z" resname="Retentions">
         <source>Retentions</source>
-        <target>__Retentions</target>
+        <target>Retentions</target>
       </trans-unit>
       <trans-unit id="coXGDsA" resname="Retention details">
         <source>Retention details</source>
-        <target>__Retention details</target>
+        <target>Retention details</target>
       </trans-unit>
       <trans-unit id="zsOpuJs" resname="Data">
         <source>Data</source>
-        <target>__Data</target>
+        <target>Data</target>
       </trans-unit>
       <trans-unit id="N7rElSv" resname="Count">
         <source>Count</source>
-        <target>__Count</target>
+        <target>Count</target>
       </trans-unit>
       <trans-unit id="9f8sPZp" resname="New customers">
         <source>New customers</source>
-        <target>__New customers</target>
+        <target>New customers</target>
       </trans-unit>
       <trans-unit id="cW1jOxJ" resname="Percent">
         <source>Percent</source>
-        <target>__Percent</target>
+        <target>Percent</target>
+      </trans-unit>
+      <trans-unit id="vn4YV3Y" resname="User questionnaires">
+        <source>User questionnaires</source>
+        <target>User questionnaires</target>
+      </trans-unit>
+      <trans-unit id="O5Rx1Qb" resname="User questionnaire answers">
+        <source>User questionnaire answers</source>
+        <target>User questionnaire answers</target>
       </trans-unit>
     </body>
   </file>

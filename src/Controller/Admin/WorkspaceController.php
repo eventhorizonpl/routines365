@@ -21,6 +21,7 @@ use App\Repository\QuestionRepository;
 use App\Repository\QuoteRepository;
 use App\Repository\ReminderMessageRepository;
 use App\Repository\ReminderRepository;
+use App\Repository\RetentionRepository;
 use App\Repository\RewardRepository;
 use App\Repository\RoutineRepository;
 use App\Repository\SavedEmailRepository;
@@ -60,6 +61,7 @@ class WorkspaceController extends AbstractController
         QuoteRepository $quoteRepository,
         ReminderMessageRepository $reminderMessageRepository,
         ReminderRepository $reminderRepository,
+        RetentionRepository $retentionRepository,
         RewardRepository $rewardRepository,
         RoutineRepository $routineRepository,
         SavedEmailRepository $savedEmailRepository,
@@ -87,6 +89,7 @@ class WorkspaceController extends AbstractController
         $quotesCount = $quoteRepository->count([]);
         $reminderMessagesCount = $reminderMessageRepository->count([]);
         $remindersCount = $reminderRepository->count([]);
+        $retentionsCount = $retentionRepository->count([]);
         $rewardsCount = $rewardRepository->count([]);
         $routinesCount = $routineRepository->count([]);
         $savedEmailsCount = $savedEmailRepository->count([]);
@@ -115,6 +118,7 @@ class WorkspaceController extends AbstractController
             'quotes_count' => $quotesCount,
             'reminder_messages_count' => $reminderMessagesCount,
             'reminders_count' => $remindersCount,
+            'retentions_count' => $retentionsCount,
             'rewards_count' => $rewardsCount,
             'routines_count' => $routinesCount,
             'saved_emails_count' => $savedEmailsCount,
