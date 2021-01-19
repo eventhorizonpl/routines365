@@ -64,19 +64,54 @@ class AccountOperationController extends AbstractController
     }
 
     /**
+     * @Route("/{uuid}/add-free-browser", name="add_free_browser", methods={"GET"})
+     */
+    public function addFreeBrowser(
+        Account $account,
+        AccountOperationService $accountOperationService
+    ): Response {
+        $browserNotifications = 10;
+        $emailNotifications = 0;
+        $smsNotifications = 0;
+
+        if ((true === $account->canDepositBrowserNotifications($browserNotifications)) &&
+            (true === $account->canDepositEmailNotifications($emailNotifications)) &&
+            (true === $account->canDepositSmsNotifications($smsNotifications))) {
+            $accountOperation = $accountOperationService->deposit(
+                $account,
+                $browserNotifications,
+                'Free browser notifications',
+                $emailNotifications,
+                $smsNotifications
+            );
+
+            return $this->redirectToRoute('admin_account_operation_show', [
+                'uuid' => $accountOperation->getUuid(),
+            ]);
+        }
+
+        return $this->redirectToRoute('admin_user_show', [
+            'uuid' => $account->getUser()->getUuid(),
+        ]);
+    }
+
+    /**
      * @Route("/{uuid}/add-free-email", name="add_free_email", methods={"GET"})
      */
     public function addFreeEmail(
         Account $account,
         AccountOperationService $accountOperationService
     ): Response {
+        $browserNotifications = 0;
         $emailNotifications = 10;
         $smsNotifications = 0;
 
-        if ((true === $account->canDepositEmailNotifications($emailNotifications)) &&
+        if ((true === $account->canDepositBrowserNotifications($browserNotifications)) &&
+            (true === $account->canDepositEmailNotifications($emailNotifications)) &&
             (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $accountOperationService->deposit(
                 $account,
+                $browserNotifications,
                 'Free email notifications',
                 $emailNotifications,
                 $smsNotifications
@@ -99,13 +134,16 @@ class AccountOperationController extends AbstractController
         Account $account,
         AccountOperationService $accountOperationService
     ): Response {
+        $browserNotifications = 0;
         $emailNotifications = 0;
         $smsNotifications = 10;
 
-        if ((true === $account->canDepositEmailNotifications($emailNotifications)) &&
+        if ((true === $account->canDepositBrowserNotifications($browserNotifications)) &&
+            (true === $account->canDepositEmailNotifications($emailNotifications)) &&
             (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $accountOperationService->deposit(
                 $account,
+                $browserNotifications,
                 'Free sms notifications',
                 $emailNotifications,
                 $smsNotifications

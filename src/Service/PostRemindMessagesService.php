@@ -102,6 +102,7 @@ class PostRemindMessagesService
         if ($reminder->getRoutine()->getGoals()->count() > 0) {
             $message .= ' You have '.$reminder->getRoutine()->getGoals()->count().' goals.';
         }
+        $browserMessage = $message;
         $emailMessage = $message;
         $emailOriginalMessage = $message;
         $emailQuote = null;
@@ -135,7 +136,9 @@ class PostRemindMessagesService
         $account = $reminder->getUser()->getAccount();
         $createSentReminder = false;
         if (((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) ||
-            ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1)))) {
+            ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) ||
+            (true === $reminder->getSendToBrowser())
+        ) {
             $createSentReminder = true;
         }
 
@@ -182,6 +185,7 @@ class PostRemindMessagesService
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
+                    0,
                     'Email notification',
                     1,
                     0,
@@ -216,9 +220,32 @@ class PostRemindMessagesService
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
+                    0,
                     'SMS notification',
                     0,
                     1,
+                    $reminderMessage
+                );
+            }
+            if ((true === $reminder->getSendToBrowser()) &&
+                (true === $account->canWithdrawBrowserNotifications(1))
+            ) {
+                $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
+                    $browserMessage,
+                    ReminderMessage::TYPE_BROWSER
+                );
+                $reminderMessage
+                    ->setPostDate(new DateTimeImmutable())
+                    ->setReminder($reminder)
+                    ->setSentReminder($sentReminder);
+                $this->reminderMessageManager->save($reminderMessage);
+
+                $accountOperation = $this->accountOperationService->withdraw(
+                    $account,
+                    1,
+                    'Browser notification',
+                    0,
+                    0,
                     $reminderMessage
                 );
             }

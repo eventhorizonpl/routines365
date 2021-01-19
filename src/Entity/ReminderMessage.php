@@ -8,6 +8,7 @@ use App\Repository\ReminderMessageRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -22,6 +23,7 @@ class ReminderMessage
 
     public const THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES = 'amazon_ses';
     public const THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS = 'amazon_sns';
+    public const TYPE_BROWSER = 'browser';
     public const TYPE_EMAIL = 'email';
     public const TYPE_SMS = 'sms';
 
@@ -29,7 +31,7 @@ class ReminderMessage
      * @Assert\Valid(groups={"system"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="reminderMessage", targetEntity=AccountOperation::class)
      */
-    private AccountOperation $accountOperation;
+    private ?AccountOperation $accountOperation = null;
 
     /**
      * @Assert\Valid(groups={"system"})
@@ -49,9 +51,18 @@ class ReminderMessage
      * @Assert\Length(max = 512, groups={"system"})
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Type("string", groups={"system"})
+     * @Groups({"list", "show"})
      * @ORM\Column(length=512, type="string")
      */
     private string $content;
+
+    /**
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
+     * @Groups({"list", "show"})
+     * @ORM\Column(type="boolean")
+     */
+    protected bool $isReadFromBrowser;
 
     /**
      * @Assert\Type("DateTimeImmutable", groups={"system"})
@@ -86,6 +97,7 @@ class ReminderMessage
     public function __construct()
     {
         $this->content = '';
+        $this->isReadFromBrowser = false;
         $this->thirdPartySystemResponse = null;
         $this->thirdPartySystemType = null;
         $this->type = self::TYPE_EMAIL;
@@ -96,7 +108,7 @@ class ReminderMessage
         return $this->getUuid();
     }
 
-    public function getAccountOperation(): AccountOperation
+    public function getAccountOperation(): ?AccountOperation
     {
         return $this->accountOperation;
     }
@@ -116,6 +128,18 @@ class ReminderMessage
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getIsReadFromBrowser(): ?bool
+    {
+        return $this->isReadFromBrowser;
+    }
+
+    public function setIsReadFromBrowser(bool $isReadFromBrowser): self
+    {
+        $this->isReadFromBrowser = $isReadFromBrowser;
 
         return $this;
     }
@@ -205,6 +229,7 @@ class ReminderMessage
     public static function getTypeFormChoices(): array
     {
         return [
+            self::TYPE_BROWSER => self::TYPE_BROWSER,
             self::TYPE_EMAIL => self::TYPE_EMAIL,
             self::TYPE_SMS => self::TYPE_SMS,
         ];

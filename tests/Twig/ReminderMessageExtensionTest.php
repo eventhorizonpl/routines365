@@ -28,7 +28,7 @@ final class ReminderMessageExtensionTest extends AbstractTestCase
     {
         $reminderMessageExtension = new ReminderMessageExtension();
 
-        $this->assertCount(2, $reminderMessageExtension->reminderMessageType());
+        $this->assertCount(3, $reminderMessageExtension->reminderMessageType());
         $this->assertIsArray($reminderMessageExtension->reminderMessageType());
     }
 }

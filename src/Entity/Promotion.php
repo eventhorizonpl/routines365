@@ -57,6 +57,15 @@ class Promotion
      * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
+    private int $browserNotifications;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
+     * @ORM\Column(type="integer")
+     */
     private int $emailNotifications;
 
     /**
@@ -93,6 +102,7 @@ class Promotion
 
     public function __construct()
     {
+        $this->browserNotifications = 0;
         $this->code = '';
         $this->description = null;
         $this->isEnabled = true;
@@ -105,6 +115,18 @@ class Promotion
     public function __toString(): string
     {
         return $this->getCode();
+    }
+
+    public function getBrowserNotifications(): int
+    {
+        return $this->browserNotifications;
+    }
+
+    public function setBrowserNotifications(int $browserNotifications): self
+    {
+        $this->browserNotifications = abs($browserNotifications);
+
+        return $this;
     }
 
     public function getCode(): string

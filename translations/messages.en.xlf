@@ -1521,6 +1521,22 @@
         <source>API token</source>
         <target>API token</target>
       </trans-unit>
+      <trans-unit id="d2G1cqu" resname="Browser notifications">
+        <source>Browser notifications</source>
+        <target>Browser notifications</target>
+      </trans-unit>
+      <trans-unit id="A2S_u.3" resname="Available browser notifications">
+        <source>Available browser notifications</source>
+        <target>Available browser notifications</target>
+      </trans-unit>
+      <trans-unit id="lORgZ6V" resname="Add free browser notifications">
+        <source>Add free browser notifications</source>
+        <target>Add free browser notifications</target>
+      </trans-unit>
+      <trans-unit id="06BuJwU" resname="Send to browser">
+        <source>Send to browser</source>
+        <target>Send to browser</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

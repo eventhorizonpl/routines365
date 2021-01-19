@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\ReminderMessage;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -67,5 +69,29 @@ class ReminderMessageRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder->getQuery();
+    }
+
+    public function findByRemindersAndPostDateAndType(
+        ArrayCollection $reminders,
+        DateTimeImmutable $postDate,
+        string $type
+    ): array {
+        if (0 === count($reminders)) {
+            return [];
+        }
+
+        $queryBuilder = $this->createQueryBuilder('rm')
+            ->select('rm')
+            ->where('rm.reminder IN (:reminders)')
+            ->andWhere('rm.type = :type')
+            ->andWhere('rm.isReadFromBrowser = :isReadFromBrowser')
+            ->andWhere('rm.postDate >= :postDate')
+            ->addOrderBy('rm.createdAt', 'DESC')
+            ->setParameter('postDate', $postDate)
+            ->setParameter('reminders', $reminders)
+            ->setParameter('type', $type)
+            ->setParameter('isReadFromBrowser', false);
+
+        return $queryBuilder->getQuery()->getResult();
     }
 }

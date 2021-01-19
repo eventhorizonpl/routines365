@@ -38,6 +38,15 @@ class AccountOperation
     private ?ReminderMessage $reminderMessage;
 
     /**
+     * @Assert\GreaterThanOrEqual(0, groups={"system"})
+     * @Assert\LessThanOrEqual(1024, groups={"system"})
+     * @Assert\NotBlank(groups={"system"})
+     * @Assert\Type("int", groups={"system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $browserNotifications;
+
+    /**
      * @Assert\Length(max = 255, groups={"system"})
      * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
@@ -73,6 +82,7 @@ class AccountOperation
 
     public function __construct()
     {
+        $this->browserNotifications = 0;
         $this->description = '';
         $this->emailNotifications = 0;
         $this->reminderMessage = null;
@@ -92,6 +102,18 @@ class AccountOperation
     public function setAccount(Account $account): self
     {
         $this->account = $account;
+
+        return $this;
+    }
+
+    public function getBrowserNotifications(): int
+    {
+        return $this->browserNotifications;
+    }
+
+    public function setBrowserNotifications(int $browserNotifications): self
+    {
+        $this->browserNotifications = abs($browserNotifications);
 
         return $this;
     }

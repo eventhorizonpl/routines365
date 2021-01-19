@@ -44,6 +44,15 @@ class Account
      * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
+    private int $availableBrowserNotifications;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\NotBlank()
+     * @Assert\Type("int")
+     * @Groups({"gdpr"})
+     * @ORM\Column(type="integer")
+     */
     private int $availableEmailNotifications;
 
     /**
@@ -57,6 +66,7 @@ class Account
 
     public function __construct()
     {
+        $this->availableBrowserNotifications = 0;
         $this->accountOperations = new ArrayCollection();
         $this->availableEmailNotifications = 0;
         $this->availableSmsNotifications = 0;
@@ -94,6 +104,50 @@ class Account
         if (true === $this->accountOperations->contains($accountOperation)) {
             $this->accountOperations->removeElement($accountOperation);
         }
+
+        return $this;
+    }
+
+    public function canDepositBrowserNotifications(int $browserNotifications): bool
+    {
+        if (ConfigResource::ACCOUNT_AVAILABLE_BROWSER_NOTIFICATIONS_LIMIT > ($this->getAvailableBrowserNotifications() + $browserNotifications)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function depositBrowserNotifications(int $browserNotifications): self
+    {
+        $this->setAvailableBrowserNotifications($this->getAvailableBrowserNotifications() + $browserNotifications);
+
+        return $this;
+    }
+
+    public function getAvailableBrowserNotifications(): int
+    {
+        return $this->availableBrowserNotifications;
+    }
+
+    public function setAvailableBrowserNotifications(int $availableBrowserNotifications): self
+    {
+        $this->availableBrowserNotifications = $availableBrowserNotifications;
+
+        return $this;
+    }
+
+    public function canWithdrawBrowserNotifications(int $browserNotifications): bool
+    {
+        if (0 <= ($this->getAvailableBrowserNotifications() - $browserNotifications)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function withdrawBrowserNotifications(int $browserNotifications): self
+    {
+        $this->setAvailableBrowserNotifications($this->getAvailableBrowserNotifications() - $browserNotifications);
 
         return $this;
     }

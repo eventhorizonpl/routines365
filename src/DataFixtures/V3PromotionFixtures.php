@@ -46,6 +46,7 @@ class V3PromotionFixtures extends Fixture implements DependentFixtureInterface, 
     {
         $dataset = [
             [
+                'browser_notifications' => 10,
                 'code' => 'PLUS10NR',
                 'email_notifications' => 10,
                 'name' => '+10 notifications promotion for new registration',
@@ -53,6 +54,7 @@ class V3PromotionFixtures extends Fixture implements DependentFixtureInterface, 
                 'type' => Promotion::TYPE_NEW_ACCOUNT,
             ],
             [
+                'browser_notifications' => 10,
                 'code' => 'PLUS10EC',
                 'email_notifications' => 10,
                 'name' => '+10 notifications promotion for existing customer',
@@ -64,6 +66,7 @@ class V3PromotionFixtures extends Fixture implements DependentFixtureInterface, 
         $promotions = [];
         foreach ($dataset as $data) {
             $promotions[] = $this->promotionFactory->createPromotionWithRequired(
+                $data['browser_notifications'],
                 $data['code'],
                 $data['email_notifications'],
                 true,

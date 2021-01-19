@@ -15,6 +15,10 @@ class UserLeadType extends BaseUserType
         parent::buildForm($builder, $options);
 
         $builder
+            ->add('browserNotifications', IntegerType::class, [
+                'data' => 10,
+                'mapped' => false,
+            ])
             ->add('emailNotifications', IntegerType::class, [
                 'data' => 10,
                 'mapped' => false,

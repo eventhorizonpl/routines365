@@ -18,6 +18,7 @@ class PromotionFactory
     }
 
     public function createPromotionWithRequired(
+        int $browserNotifications,
         string $code,
         int $emailNotifications,
         bool $isEnabled,
@@ -28,6 +29,7 @@ class PromotionFactory
         $promotion = $this->createPromotion();
 
         $promotion
+            ->setBrowserNotifications($browserNotifications)
             ->setCode($code)
             ->setEmailNotifications($emailNotifications)
             ->setIsEnabled($isEnabled)

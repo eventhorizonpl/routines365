@@ -30,6 +30,7 @@ class ReminderType extends AbstractType
             ])
             ->add('sendEmail', YesNoType::class)
             ->add('sendMotivationalMessage', YesNoType::class)
+            ->add('sendToBrowser', YesNoType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => Reminder::getTypeFormChoices(),
             ])

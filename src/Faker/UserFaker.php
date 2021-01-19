@@ -152,6 +152,7 @@ class UserFaker
             null,
             null,
             null,
+            null,
             AccountOperation::TYPE_DEPOSIT
         );
         $user->getAccount()->addAccountOperation($accountOperation);

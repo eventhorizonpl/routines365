@@ -14,9 +14,9 @@
     </div>
     <div class="row">
         {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
-            {% set width = 3 %}
-        {% else %}
             {% set width = 4 %}
+        {% else %}
+            {% set width = 6 %}
         {% endif %}
         <div class="col-md-{{ width }}">
             {{ form_row(form.sendEmail, {'attr': {'class': 'custom-select'}}) }}
@@ -27,9 +27,14 @@
             </div>
         {% endif %}
         <div class="col-md-{{ width }}">
+            {{ form_row(form.sendToBrowser, {'attr': {'class': 'custom-select'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             {{ form_row(form.sendMotivationalMessage, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        <div class="col-md-{{ width }}">
+        <div class="col-md-6">
             {{ form_row(form.isEnabled, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>

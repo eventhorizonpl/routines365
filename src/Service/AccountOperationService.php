@@ -26,14 +26,17 @@ class AccountOperationService
 
     public function deposit(
         Account $account,
+        int $browserNotifications,
         string $description,
         int $emailNotifications,
         int $smsNotifications,
         bool $topupReferrerAccount = true
     ): AccountOperation {
-        if ((true === $account->canDepositEmailNotifications($emailNotifications)) &&
+        if ((true === $account->canDepositBrowserNotifications($browserNotifications)) &&
+            (true === $account->canDepositEmailNotifications($emailNotifications)) &&
             (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
+                $browserNotifications,
                 $description,
                 $emailNotifications,
                 $smsNotifications,
@@ -44,6 +47,10 @@ class AccountOperationService
 
             if ((null !== $account->getUser()->getReferrer()) && (true === $topupReferrerAccount)) {
                 $referrerAccount = $account->getUser()->getReferrer()->getAccount();
+                $referrerBrowserNotifications = (int) ($browserNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
+                if ((0 < $emailNotifications) && (0 === $referrerBrowserNotifications)) {
+                    $referrerBrowserNotifications = 1;
+                }
                 $referrerEmailNotifications = (int) ($emailNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
                 if ((0 < $emailNotifications) && (0 === $referrerEmailNotifications)) {
                     $referrerEmailNotifications = 1;
@@ -54,6 +61,7 @@ class AccountOperationService
                 }
                 $referrerAccountOperation = $this->deposit(
                     $referrerAccount,
+                    $referrerBrowserNotifications,
                     'Referrer bonus',
                     $referrerEmailNotifications,
                     $referrerSmsNotifications,
@@ -69,6 +77,7 @@ class AccountOperationService
 
     public function withdraw(
         Account $account,
+        int $browserNotifications,
         string $description,
         int $emailNotifications,
         int $smsNotifications,
@@ -77,6 +86,7 @@ class AccountOperationService
         if ((true === $account->canWithdrawEmailNotifications($emailNotifications)) &&
             (true === $account->canWithdrawSmsNotifications($smsNotifications))) {
             $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
+                $browserNotifications,
                 $description,
                 $emailNotifications,
                 $smsNotifications,

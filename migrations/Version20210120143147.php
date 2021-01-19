@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210119073911 extends AbstractMigration
+final class Version20210120143147 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -34,8 +34,13 @@ final class Version20210119073911 extends AbstractMigration
         $this->addSql('ALTER TABLE user_questionnaire ADD CONSTRAINT FK_E928E0FFA76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE user_questionnaire_answer ADD CONSTRAINT FK_FD5A9663AA334807 FOREIGN KEY (answer_id) REFERENCES answer (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE user_questionnaire_answer ADD CONSTRAINT FK_FD5A9663B312AA22 FOREIGN KEY (user_questionnaire_id) REFERENCES user_questionnaire (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE account ADD available_browser_notifications INT NOT NULL');
+        $this->addSql('ALTER TABLE account_operation ADD browser_notifications INT NOT NULL');
         $this->addSql('ALTER TABLE kpi ADD answer_counter INT NOT NULL, ADD question_counter INT NOT NULL, ADD questionnaire_counter INT NOT NULL, ADD retention_counter INT NOT NULL, ADD user_kyt_counter INT NOT NULL, ADD user_questionnaire_counter INT NOT NULL, ADD user_questionnaire_answer_counter INT NOT NULL');
-        $this->addSql('ALTER TABLE user ADD api_token VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE promotion ADD browser_notifications INT NOT NULL');
+        $this->addSql('ALTER TABLE reminder ADD send_to_browser TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE reminder_message ADD is_read_from_browser TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE user ADD api_token CHAR(36) DEFAULT NULL COMMENT \'(DC2Type:guid)\'');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D6497BA2F5EB ON user (api_token)');
         $this->addSql('ALTER TABLE user_kpi ADD efficiency11 INT NOT NULL, ADD user_questionnaire_counter INT NOT NULL');
     }
@@ -55,7 +60,12 @@ final class Version20210119073911 extends AbstractMigration
         $this->addSql('DROP TABLE user_kyt');
         $this->addSql('DROP TABLE user_questionnaire');
         $this->addSql('DROP TABLE user_questionnaire_answer');
+        $this->addSql('ALTER TABLE account DROP available_browser_notifications');
+        $this->addSql('ALTER TABLE account_operation DROP browser_notifications');
         $this->addSql('ALTER TABLE kpi DROP answer_counter, DROP question_counter, DROP questionnaire_counter, DROP retention_counter, DROP user_kyt_counter, DROP user_questionnaire_counter, DROP user_questionnaire_answer_counter');
+        $this->addSql('ALTER TABLE promotion DROP browser_notifications');
+        $this->addSql('ALTER TABLE reminder DROP send_to_browser');
+        $this->addSql('ALTER TABLE reminder_message DROP is_read_from_browser');
         $this->addSql('DROP INDEX UNIQ_8D93D6497BA2F5EB ON user');
         $this->addSql('ALTER TABLE user DROP api_token');
         $this->addSql('ALTER TABLE user_kpi DROP efficiency11, DROP user_questionnaire_counter');

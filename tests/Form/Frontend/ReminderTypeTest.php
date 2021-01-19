@@ -62,6 +62,7 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
                     'sendEmail' => true,
                     'sendMotivationalMessage' => true,
                     'sendSms' => true,
+                    'sendToBrowser' => true,
                     'type' => Reminder::TYPE_DAILY,
                 ],
             ],

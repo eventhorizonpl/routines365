@@ -128,6 +128,14 @@ class Reminder
     private bool $sendSms;
 
     /**
+     * @Assert\NotNull(groups={"form", "system"})
+     * @Assert\Type("bool", groups={"form", "system"})
+     * @Groups({"gdpr"})
+     * @ORM\Column(type="boolean")
+     */
+    private bool $sendToBrowser;
+
+    /**
      * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
      * @Assert\Length(max = 10, groups={"form", "system"})
      * @Assert\NotBlank(groups={"form", "system"})
@@ -147,6 +155,7 @@ class Reminder
         $this->sendEmail = true;
         $this->sentReminders = new ArrayCollection();
         $this->sendSms = false;
+        $this->sendToBrowser = true;
         $this->type = self::TYPE_DAILY;
     }
 
@@ -314,6 +323,18 @@ class Reminder
     public function setSendSms(bool $sendSms): self
     {
         $this->sendSms = $sendSms;
+
+        return $this;
+    }
+
+    public function getSendToBrowser(): ?bool
+    {
+        return $this->sendToBrowser;
+    }
+
+    public function setSendToBrowser(bool $sendToBrowser): self
+    {
+        $this->sendToBrowser = $sendToBrowser;
 
         return $this;
     }

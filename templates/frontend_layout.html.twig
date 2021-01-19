@@ -57,15 +57,29 @@
             {{ 'I agree'|trans }}
         </button>
     </div>
+{#
+    {% if app.user and app.user.apiToken %}
+        <span data-value="{{ app.user.apiToken }}" id="token"></span>
+    {% endif %}
+#}
 {% endblock %}
 
 {% block javascripts %}
+{#
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/fos_js_routes.js') }}"></script>
+#}
     {% if app.user %}
         {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
             {{ encore_entry_script_tags('frontend-light') }}
         {% else %}
             {{ encore_entry_script_tags('frontend-dark') }}
         {% endif %}
+{#
+        {% if app.user.apiToken %}
+            {{ encore_entry_script_tags('frontend-reminder-message-show') }}
+        {% endif %}
+#}
     {% else %}
         {{ encore_entry_script_tags('frontend-dark') }}
     {% endif %}

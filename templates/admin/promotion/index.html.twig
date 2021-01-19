@@ -56,6 +56,7 @@
                             <th {% if promotions.isSorted('p.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Name'|trans, 'p.name') }}</th>
                             <th {% if promotions.isSorted('p.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Type'|trans, 'p.type') }}</th>
                             <th {% if promotions.isSorted('p.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Is enabled'|trans, 'p.isEnabled') }}</th>
+                            <th {% if promotions.isSorted('p.BrowserNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Browser notifications'|trans, 'p.browserNotifications') }}</th>
                             <th {% if promotions.isSorted('p.EmailNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Email notifications'|trans, 'p.emailNotifications') }}</th>
                             <th {% if promotions.isSorted('p.SmsNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Sms notifications'|trans, 'p.smsNotifications') }}</th>
                             <th {% if promotions.isSorted('p.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Deleted at'|trans, 'p.deletedAt') }}</th>
@@ -77,6 +78,7 @@
                                         <span class="badge badge-danger">{{ 'No'|trans }}</span>
                                     {% endif %}
                                 </td>
+                                <td>{{ promotion.browserNotifications }}</td>
                                 <td>{{ promotion.emailNotifications }}</td>
                                 <td>{{ promotion.smsNotifications }}</td>
                                 <td>{{ promotion.deletedAt ? promotion.deletedAt|date('Y-m-d H:i:s') : '' }}</td>

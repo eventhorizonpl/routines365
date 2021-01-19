@@ -42,16 +42,19 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
         $this->purge();
         $accountOperation = $this->accountOperationFaker->createAccountOperation();
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
+        $browserNotifications = 1;
         $description = 'test description';
         $emailNotifications = 1;
         $smsNotifications = 2;
         $type = AccountOperation::TYPE_DEPOSIT;
         $accountOperation = $this->accountOperationFaker->createAccountOperation(
+            $browserNotifications,
             $description,
             $emailNotifications,
             $smsNotifications,
             $type
         );
+        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
         $this->assertEquals($description, $accountOperation->getDescription());
         $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
         $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());

@@ -22,11 +22,16 @@ class AccountOperationFaker
     }
 
     public function createAccountOperation(
+        ?int $browserNotifications = null,
         ?string $description = null,
         ?int $emailNotifications = null,
         ?int $smsNotifications = null,
         ?string $type = null
     ): AccountOperation {
+        if (null === $browserNotifications) {
+            $browserNotifications = (int) $this->faker->numberBetween(10, 100);
+        }
+
         if (null === $description) {
             $description = (string) $this->faker->sentence;
         }
@@ -46,6 +51,7 @@ class AccountOperationFaker
         }
 
         $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
+            $browserNotifications,
             $description,
             $emailNotifications,
             $smsNotifications,

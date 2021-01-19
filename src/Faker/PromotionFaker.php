@@ -27,6 +27,7 @@ class PromotionFaker
     }
 
     public function createPromotion(
+        ?int $browserNotifications = null,
         ?string $code = null,
         ?int $emailNotifications = null,
         ?bool $isEnabled = null,
@@ -34,6 +35,10 @@ class PromotionFaker
         ?int $smsNotifications = null,
         ?string $type = null
     ): Promotion {
+        if (null === $browserNotifications) {
+            $browserNotifications = (int) $this->faker->numberBetween(1, 10);
+        }
+
         if (null === $code) {
             $code = (string) $this->faker->word;
         }
@@ -61,6 +66,7 @@ class PromotionFaker
         }
 
         $promotion = $this->promotionFactory->createPromotionWithRequired(
+            $browserNotifications,
             $code,
             $emailNotifications,
             $isEnabled,
@@ -73,6 +79,7 @@ class PromotionFaker
     }
 
     public function createPromotionPersisted(
+        ?int $browserNotifications = null,
         ?string $code = null,
         ?int $emailNotifications = null,
         ?bool $isEnabled = null,
@@ -81,6 +88,7 @@ class PromotionFaker
         ?string $type = null
     ): Promotion {
         $promotion = $this->createPromotion(
+            $browserNotifications,
             $code,
             $emailNotifications,
             $isEnabled,

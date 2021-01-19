@@ -135,6 +135,19 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">{{ 'Available browser notifications'|trans }}</th>
+                                <td>
+                                    {% if user.account %}
+                                        {{ user.account.availableBrowserNotifications }}
+                                    {% endif %}
+
+                                    <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_browser', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                        <i class="fas fa-plus"></i>
+                                        {{ 'Add free browser notifications'|trans }}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">{{ 'Available email notifications'|trans }}</th>
                                 <td>
                                     {% if user.account %}

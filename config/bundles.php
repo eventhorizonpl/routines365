@@ -22,4 +22,5 @@ return [
     Cron\CronBundle\CronCronBundle::class => ['all' => true],
     Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle::class => ['all' => true],
     FOS\RestBundle\FOSRestBundle::class => ['all' => true],
+    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
 ];

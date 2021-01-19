@@ -252,13 +252,13 @@ final class ReminderMessageTest extends AbstractTestCase
 
     public function testGetTypeFormChoices(): void
     {
-        $this->assertCount(2, ReminderMessage::getTypeFormChoices());
+        $this->assertCount(3, ReminderMessage::getTypeFormChoices());
         $this->assertIsArray(ReminderMessage::getTypeFormChoices());
     }
 
     public function testGetTypeValidationChoices(): void
     {
-        $this->assertCount(2, ReminderMessage::getTypeValidationChoices());
+        $this->assertCount(3, ReminderMessage::getTypeValidationChoices());
         $this->assertIsArray(ReminderMessage::getTypeValidationChoices());
     }
 

@@ -38,6 +38,7 @@ class V4PromotionFixtures extends Fixture implements FixtureGroupInterface
     {
         $dataset = [
             [
+                'browser_notifications' => 10,
                 'code' => 'REWARD10',
                 'email_notifications' => 10,
                 'name' => '+10 notifications reward promotion',
@@ -49,6 +50,7 @@ class V4PromotionFixtures extends Fixture implements FixtureGroupInterface
         $promotions = [];
         foreach ($dataset as $data) {
             $promotions[] = $this->promotionFactory->createPromotionWithRequired(
+                $data['browser_notifications'],
                 $data['code'],
                 $data['email_notifications'],
                 true,

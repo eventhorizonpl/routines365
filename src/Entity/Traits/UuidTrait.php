@@ -12,7 +12,7 @@ trait UuidTrait
     /**
      * @Assert\NotBlank(groups={"system"})
      * @Assert\Uuid(groups={"system"})
-     * @Groups({"gdpr"})
+     * @Groups({"gdpr", "list", "show"})
      * @ORM\Column(type="guid", unique=true)
      */
     protected ?string $uuid = null;
