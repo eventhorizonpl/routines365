@@ -10,6 +10,24 @@ use DateTimeImmutable;
 
 final class DateTimeImmutableUtilTest extends AbstractTestCase
 {
+    public function testDateFromString(): void
+    {
+        $endsAt = '2020-01-01';
+        $result = DateTimeImmutableUtil::dateFromString($endsAt);
+        $this->assertInstanceOf(DateTimeImmutable::class, $result);
+        $this->assertEquals($endsAt, $result->format('Y-m-d'));
+        $this->assertEquals('00:00:00', $result->format('H:i:s'));
+        $endsAt = '';
+        $result = DateTimeImmutableUtil::dateFromString($endsAt);
+        $this->assertEquals(null, $result);
+        $endsAt = null;
+        $result = DateTimeImmutableUtil::dateFromString($endsAt);
+        $this->assertEquals(null, $result);
+        $endsAt = 'something wrong';
+        $result = DateTimeImmutableUtil::dateFromString($endsAt);
+        $this->assertEquals(null, $result);
+    }
+
     public function testEndsAtFromString(): void
     {
         $endsAt = '2020-01-01';
