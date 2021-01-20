@@ -98,7 +98,7 @@ class RetentionService
             $data[$endDate->format('Y-m')] = [
                 'count' => $usersCountMonth,
                 'newCustomers' => $usersCountThisMonth,
-                'percent' => (($usersCountActive / $usersCountAll) * 100),
+                'percent' => ($usersCountAll > 0) ? (($usersCountActive / $usersCountAll) * 100) : 0,
             ];
             $pointerTime->modify('+1 month');
             $endDate = $this->getEndDate($pointerTime);
