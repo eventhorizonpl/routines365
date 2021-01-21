@@ -6,6 +6,7 @@ namespace App\Faker;
 
 use App\Entity\ReminderMessage;
 use App\Factory\ReminderMessageFactory;
+use DateTimeImmutable;
 use Faker\Factory;
 use Faker\Generator;
 
@@ -39,6 +40,7 @@ class ReminderMessageFaker
             $content,
             $type
         );
+        $reminderMessage->setPostDate(new DateTimeImmutable());
 
         return $reminderMessage;
     }

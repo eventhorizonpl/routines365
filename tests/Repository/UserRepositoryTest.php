@@ -89,6 +89,16 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($users);
     }
 
+    public function testFindForCreateMissingUserKyt(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $users = $this->userRepository->findForCreateMissingUserKyt()->getResult();
+        $this->assertCount(1, $users);
+        $this->assertIsArray($users);
+    }
+
     public function testFindForKpi(): void
     {
         $this->purge();
@@ -101,6 +111,48 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
             $this->assertCount(0, $users);
         }
         $this->assertIsArray($users);
+    }
+
+    public function testFindForPostUserKytMessages(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $users = $this->userRepository->findForPostUserKytMessages()->getResult();
+        if ((true === $user->getIsEnabled()) && (true === $user->getIsVerified())) {
+            $this->assertCount(1, $users);
+        } else {
+            $this->assertCount(0, $users);
+        }
+        $this->assertIsArray($users);
+    }
+
+    public function testFindForRetention(): void
+    {
+        $startDate = new DateTimeImmutable();
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $endDate = new DateTimeImmutable();
+
+        $users = $this->userRepository->findForRetention($endDate, $endDate, $startDate);
+        $this->assertEquals(0, $users);
+        $this->assertIsInt($users);
+    }
+
+    public function testFindForRetentionTotal(): void
+    {
+        $startDate = new DateTimeImmutable();
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $endDate = new DateTimeImmutable();
+
+        $users = $this->userRepository->findForRetentionTotal($endDate, $startDate);
+        $this->assertEquals(1, $users);
+        $this->assertIsInt($users);
+
+        $users = $this->userRepository->findForRetentionTotal($startDate, $endDate);
+        $this->assertEquals(0, $users);
+        $this->assertIsInt($users);
     }
 
     public function testFindOneByEmail(): void

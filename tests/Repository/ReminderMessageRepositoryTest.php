@@ -8,6 +8,7 @@ use App\Faker\UserFaker;
 use App\Repository\ReminderMessageRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
@@ -84,6 +85,23 @@ final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
             'starts_at' => new DateTimeImmutable('+1 minute'),
         ];
         $reminderMessages = $this->reminderMessageRepository->findByParametersForAdmin($parameters)->getResult();
+        $this->assertCount(0, $reminderMessages);
+        $this->assertIsArray($reminderMessages);
+    }
+
+    public function testFindByRemindersAndPostDateAndType(): void
+    {
+        $postDate = new DateTimeImmutable();
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $reminders = $user->getReminders();
+        $type = $reminders->first()->getReminderMessages()->first()->getType();
+
+        $reminderMessages = $this->reminderMessageRepository->findByRemindersAndPostDateAndType($reminders, $postDate, $type);
+        $this->assertCount(1, $reminderMessages);
+        $this->assertIsArray($reminderMessages);
+
+        $reminderMessages = $this->reminderMessageRepository->findByRemindersAndPostDateAndType(new ArrayCollection(), $postDate, $type);
         $this->assertCount(0, $reminderMessages);
         $this->assertIsArray($reminderMessages);
     }
