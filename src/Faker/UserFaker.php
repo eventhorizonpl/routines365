@@ -132,6 +132,8 @@ class UserFaker
             $type
         );
 
+        $user->setApiToken(uniqid());
+
         $user = $this->userService->encodePassword($user, $password);
 
         return $user;

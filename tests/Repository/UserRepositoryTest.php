@@ -149,10 +149,6 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $users = $this->userRepository->findForRetentionTotal($endDate, $startDate);
         $this->assertEquals(1, $users);
         $this->assertIsInt($users);
-
-        $users = $this->userRepository->findForRetentionTotal($startDate, $endDate);
-        $this->assertEquals(0, $users);
-        $this->assertIsInt($users);
     }
 
     public function testFindOneByEmail(): void
