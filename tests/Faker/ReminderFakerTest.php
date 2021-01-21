@@ -66,5 +66,11 @@ final class ReminderFakerTest extends AbstractDoctrineTestCase
         $this->assertEquals($sendMotivationalMessage, $reminder->getSendMotivationalMessage());
         $this->assertEquals($sendSms, $reminder->getSendSms());
         $this->assertEquals($type, $reminder->getType());
+
+        $reminder = $this->reminderFaker->createReminder(
+            null,
+            false
+        );
+        $this->assertEquals(false, $reminder->getSendSms());
     }
 }

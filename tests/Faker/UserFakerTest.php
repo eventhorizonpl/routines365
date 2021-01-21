@@ -9,12 +9,15 @@ use App\Factory\SentReminderFactory;
 use App\Factory\UserFactory;
 use App\Faker\AccountOperationFaker;
 use App\Faker\AchievementFaker;
+use App\Faker\AnswerFaker;
 use App\Faker\CompletedRoutineFaker;
 use App\Faker\ContactFaker;
 use App\Faker\GoalFaker;
 use App\Faker\NoteFaker;
 use App\Faker\ProjectFaker;
 use App\Faker\PromotionFaker;
+use App\Faker\QuestionFaker;
+use App\Faker\QuestionnaireFaker;
 use App\Faker\QuoteFaker;
 use App\Faker\ReminderFaker;
 use App\Faker\ReminderMessageFaker;
@@ -22,6 +25,7 @@ use App\Faker\RewardFaker;
 use App\Faker\RoutineFaker;
 use App\Faker\SavedEmailFaker;
 use App\Faker\UserFaker;
+use App\Faker\UserQuestionnaireFaker;
 use App\Manager\ReminderMessageManager;
 use App\Manager\SentReminderManager;
 use App\Manager\UserManager;
@@ -38,6 +42,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
      * @inject
      */
     private ?AchievementFaker $achievementFaker;
+    /**
+     * @inject
+     */
+    private ?AnswerFaker $answerFaker;
     /**
      * @inject
      */
@@ -62,6 +70,14 @@ final class UserFakerTest extends AbstractDoctrineTestCase
      * @inject
      */
     private ?PromotionFaker $promotionFaker;
+    /**
+     * @inject
+     */
+    private ?QuestionFaker $questionFaker;
+    /**
+     * @inject
+     */
+    private ?QuestionnaireFaker $questionnaireFaker;
     /**
      * @inject
      */
@@ -113,6 +129,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?UserQuestionnaireFaker $userQuestionnaireFaker;
+    /**
+     * @inject
+     */
     private ?UserService $userService;
 
     protected function tearDown(): void
@@ -120,12 +140,15 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         unset(
             $this->accountOperationFaker,
             $this->achievementFaker,
+            $this->answerFaker,
             $this->completedRoutineFaker,
             $this->contactFaker,
             $this->goalFaker,
             $this->noteFaker,
             $this->projectFaker,
             $this->promotionFaker,
+            $this->questionFaker,
+            $this->questionnaireFaker,
             $this->quoteFaker,
             $this->reminderFaker,
             $this->reminderMessageFaker,
@@ -138,6 +161,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
             $this->userFactory,
             $this->userFaker,
             $this->userManager,
+            $this->userQuestionnaireFaker,
             $this->userService
         );
 
@@ -149,12 +173,15 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $userFaker = new UserFaker(
             $this->accountOperationFaker,
             $this->achievementFaker,
+            $this->answerFaker,
             $this->completedRoutineFaker,
             $this->contactFaker,
             $this->goalFaker,
             $this->noteFaker,
             $this->projectFaker,
             $this->promotionFaker,
+            $this->questionFaker,
+            $this->questionnaireFaker,
             $this->quoteFaker,
             $this->reminderFaker,
             $this->reminderMessageFaker,
@@ -166,6 +193,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
             $this->sentReminderManager,
             $this->userFactory,
             $this->userManager,
+            $this->userQuestionnaireFaker,
             $this->userService
         );
 

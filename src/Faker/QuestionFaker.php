@@ -9,7 +9,6 @@ use App\Factory\QuestionFactory;
 use App\Manager\QuestionManager;
 use Faker\Factory;
 use Faker\Generator;
-use Symfony\Component\Uid\Uuid;
 
 class QuestionFaker
 {
@@ -56,23 +55,6 @@ class QuestionFaker
             $title,
             $type
         );
-
-        return $question;
-    }
-
-    public function createQuestionPersisted(
-        ?bool $isEnabled = null,
-        ?int $position = null,
-        ?string $title = null,
-        ?string $type = null
-    ): Question {
-        $question = $this->createQuestion(
-            $isEnabled,
-            $position,
-            $title,
-            $type
-        );
-        $this->questionManager->save($question, (string) Uuid::v4());
 
         return $question;
     }

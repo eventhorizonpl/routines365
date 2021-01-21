@@ -13,13 +13,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class QuestionManager
 {
+    private AnswerManager $answerManager;
     private EntityManagerInterface $entityManager;
     private ValidatorInterface $validator;
 
     public function __construct(
+        AnswerManager $answerManager,
         EntityManagerInterface $entityManager,
         ValidatorInterface $validator
     ) {
+        $this->answerManager = $answerManager;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
     }
@@ -50,7 +53,7 @@ class QuestionManager
         return $this;
     }
 
-    public function save(Question $question, string $actor, bool $flush = true): self
+    public function save(Question $question, string $actor, bool $flush = true, bool $saveDependencies = false): self
     {
         $date = new DateTimeImmutable();
         if (null === $question->getId()) {
@@ -59,6 +62,12 @@ class QuestionManager
         }
         $question->setUpdatedAt($date);
         $question->setUpdatedBy($actor);
+
+        if (true === $saveDependencies) {
+            foreach ($question->getAnswers() as $answer) {
+                $this->answerManager->save($answer, $actor, false, true);
+            }
+        }
 
         $errors = $this->validate($question);
         if (0 !== count($errors)) {
@@ -82,6 +91,10 @@ class QuestionManager
 
         $this->entityManager->persist($question);
         $this->entityManager->flush();
+
+        foreach ($question->getAnswers() as $answer) {
+            $this->answerManager->softDelete($answer, $actor);
+        }
 
         return $this;
     }

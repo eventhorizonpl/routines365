@@ -13,15 +13,21 @@ use Symfony\Component\Uid\Uuid;
 
 class QuestionnaireFaker
 {
+    private AnswerFaker $answerFaker;
     private Generator $faker;
+    private QuestionFaker $questionFaker;
     private QuestionnaireFactory $questionnaireFactory;
     private QuestionnaireManager $questionnaireManager;
 
     public function __construct(
+        AnswerFaker $answerFaker,
+        QuestionFaker $questionFaker,
         QuestionnaireFactory $questionnaireFactory,
         QuestionnaireManager $questionnaireManager
     ) {
+        $this->answerFaker = $answerFaker;
         $this->faker = Factory::create();
+        $this->questionFaker = $questionFaker;
         $this->questionnaireFactory = $questionnaireFactory;
         $this->questionnaireManager = $questionnaireManager;
     }
@@ -46,15 +52,20 @@ class QuestionnaireFaker
         return $questionnaire;
     }
 
-    public function createQuestionnairePersisted(
-        ?bool $isEnabled = null,
-        ?string $title = null
-    ): Questionnaire {
-        $questionnaire = $this->createQuestionnaire(
-            $isEnabled,
-            $title
+    public function createRichQuestionnairePersisted(): Questionnaire
+    {
+        $questionnaire = $this->createQuestionnaire(true);
+
+        $question = $this->questionFaker->createQuestion(true);
+        $questionnaire->addQuestion($question);
+
+        $answer = $this->answerFaker->createAnswer(
+            null,
+            true
         );
-        $this->questionnaireManager->save($questionnaire, (string) Uuid::v4());
+        $question->addAnswer($answer);
+
+        $this->questionnaireManager->save($questionnaire, (string) Uuid::v4(), true, true);
 
         return $questionnaire;
     }

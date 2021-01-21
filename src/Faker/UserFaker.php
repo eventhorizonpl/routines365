@@ -19,6 +19,7 @@ class UserFaker
 {
     private AccountOperationFaker $accountOperationFaker;
     private AchievementFaker $achievementFaker;
+    private AnswerFaker $answerFaker;
     private CompletedRoutineFaker $completedRoutineFaker;
     private ContactFaker $contactFaker;
     private Generator $faker;
@@ -26,6 +27,8 @@ class UserFaker
     private NoteFaker $noteFaker;
     private ProjectFaker $projectFaker;
     private PromotionFaker $promotionFaker;
+    private QuestionFaker $questionFaker;
+    private QuestionnaireFaker $questionnaireFaker;
     private QuoteFaker $quoteFaker;
     private ReminderFaker $reminderFaker;
     private ReminderMessageFaker $reminderMessageFaker;
@@ -37,17 +40,21 @@ class UserFaker
     private SentReminderManager $sentReminderManager;
     private UserFactory $userFactory;
     private UserManager $userManager;
+    private UserQuestionnaireFaker $userQuestionnaireFaker;
     private UserService $userService;
 
     public function __construct(
         AccountOperationFaker $accountOperationFaker,
         AchievementFaker $achievementFaker,
+        AnswerFaker $answerFaker,
         CompletedRoutineFaker $completedRoutineFaker,
         ContactFaker $contactFaker,
         GoalFaker $goalFaker,
         NoteFaker $noteFaker,
         ProjectFaker $projectFaker,
         PromotionFaker $promotionFaker,
+        QuestionFaker $questionFaker,
+        QuestionnaireFaker $questionnaireFaker,
         QuoteFaker $quoteFaker,
         ReminderFaker $reminderFaker,
         ReminderMessageFaker $reminderMessageFaker,
@@ -59,10 +66,12 @@ class UserFaker
         SentReminderManager $sentReminderManager,
         UserFactory $userFactory,
         UserManager $userManager,
+        UserQuestionnaireFaker $userQuestionnaireFaker,
         UserService $userService
     ) {
         $this->accountOperationFaker = $accountOperationFaker;
         $this->achievementFaker = $achievementFaker;
+        $this->answerFaker = $answerFaker;
         $this->completedRoutineFaker = $completedRoutineFaker;
         $this->contactFaker = $contactFaker;
         $this->faker = Factory::create();
@@ -70,6 +79,8 @@ class UserFaker
         $this->noteFaker = $noteFaker;
         $this->projectFaker = $projectFaker;
         $this->promotionFaker = $promotionFaker;
+        $this->questionFaker = $questionFaker;
+        $this->questionnaireFaker = $questionnaireFaker;
         $this->quoteFaker = $quoteFaker;
         $this->reminderFaker = $reminderFaker;
         $this->reminderMessageFaker = $reminderMessageFaker;
@@ -81,6 +92,7 @@ class UserFaker
         $this->sentReminderManager = $sentReminderManager;
         $this->userFactory = $userFactory;
         $this->userManager = $userManager;
+        $this->userQuestionnaireFaker = $userQuestionnaireFaker;
         $this->userService = $userService;
     }
 

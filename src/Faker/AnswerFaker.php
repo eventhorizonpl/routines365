@@ -9,7 +9,6 @@ use App\Factory\AnswerFactory;
 use App\Manager\AnswerManager;
 use Faker\Factory;
 use Faker\Generator;
-use Symfony\Component\Uid\Uuid;
 
 class AnswerFaker
 {
@@ -56,23 +55,6 @@ class AnswerFaker
             $position,
             $type
         );
-
-        return $answer;
-    }
-
-    public function createAnswerPersisted(
-        ?string $content = null,
-        ?bool $isEnabled = null,
-        ?int $position = null,
-        ?string $type = null
-    ): Answer {
-        $answer = $this->createAnswer(
-            $content,
-            $isEnabled,
-            $position,
-            $type
-        );
-        $this->answerManager->save($answer, (string) Uuid::v4());
 
         return $answer;
     }

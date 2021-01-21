@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Faker;
 
+use App\Entity\Questionnaire;
+use App\Entity\User;
 use App\Entity\UserQuestionnaire;
 use App\Factory\UserQuestionnaireFactory;
 use App\Manager\UserQuestionnaireManager;
@@ -41,11 +43,16 @@ class UserQuestionnaireFaker
     }
 
     public function createUserQuestionnairePersisted(
+        User $user,
+        Questionnaire $questionnaire,
         ?bool $isRewarded = null
     ): UserQuestionnaire {
         $userQuestionnaire = $this->createUserQuestionnaire(
             $isRewarded
         );
+        $userQuestionnaire
+            ->setQuestionnaire($questionnaire)
+            ->setUser($user);
         $this->userQuestionnaireManager->save($userQuestionnaire, (string) Uuid::v4());
 
         return $userQuestionnaire;

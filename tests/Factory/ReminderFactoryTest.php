@@ -70,7 +70,7 @@ final class ReminderFactoryTest extends AbstractTestCase
         $this->assertEquals($minutesBefore, $reminder->getMinutesBefore());
         $this->assertEquals($sendEmail, $reminder->getSendEmail());
         $this->assertEquals($sendMotivationalMessage, $reminder->getSendMotivationalMessage());
-        $this->assertEquals($sendSms, $reminder->getSendSms());
         $this->assertEquals($type, $reminder->getType());
+        $this->assertEquals($sendSms, $reminder->getSendSms());
     }
 }
