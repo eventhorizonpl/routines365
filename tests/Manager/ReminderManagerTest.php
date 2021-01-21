@@ -12,6 +12,7 @@ use App\Manager\ReminderMessageManager;
 use App\Manager\SentReminderManager;
 use App\Repository\ReminderRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use DateTimeImmutable;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class ReminderManagerTest extends AbstractDoctrineTestCase
@@ -100,6 +101,17 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
         $this->assertNull($reminder2);
     }
 
+    public function testFindNextDate(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $user->getReminders()->first();
+
+        $nextDate = $reminderManager = $this->reminderManager->findNextDate($reminder);
+
+        $this->assertInstanceOf(DateTimeImmutable::class, $nextDate);
+    }
+
     public function testSave(): void
     {
         $this->purge();
@@ -159,6 +171,32 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
         $reminder3 = $this->reminderRepository->findOneById($reminderId);
         $this->assertInstanceOf(Reminder::class, $reminder3);
         $this->assertTrue(null === $reminder3->getDeletedAt());
+    }
+
+    public function testLock(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $user->getReminders()->first();
+
+        $reminderManager = $this->reminderManager->lock($reminder);
+        $this->assertInstanceOf(ReminderManager::class, $reminderManager);
+        $this->assertTrue(null !== $reminder->getLockedAt());
+    }
+
+    public function testUnlock(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $user->getReminders()->first();
+
+        $reminderManager = $this->reminderManager->lock($reminder);
+        $this->assertInstanceOf(ReminderManager::class, $reminderManager);
+        $this->assertTrue(null !== $reminder->getLockedAt());
+
+        $reminderManager = $this->reminderManager->unlock($reminder);
+        $this->assertInstanceOf(ReminderManager::class, $reminderManager);
+        $this->assertTrue(null === $reminder->getLockedAt());
     }
 
     public function testValidate(): void
