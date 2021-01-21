@@ -226,6 +226,24 @@ final class UserKpiTest extends AbstractTestCase
         $this->assertEquals($date, $userKpi->getDate());
     }
 
+    public function testGetEfficiency11(): void
+    {
+        $efficiency11 = 10;
+        $userKpi = new UserKpi();
+        $this->assertEquals(0, $userKpi->getEfficiency11());
+        $userKpi->setEfficiency11($efficiency11);
+        $this->assertEquals($efficiency11, $userKpi->getEfficiency11());
+        $this->assertIsInt($userKpi->getEfficiency11());
+    }
+
+    public function testSetEfficiency11(): void
+    {
+        $efficiency11 = 10;
+        $userKpi = new UserKpi();
+        $this->assertInstanceOf(UserKpi::class, $userKpi->setEfficiency11($efficiency11));
+        $this->assertEquals($efficiency11, $userKpi->getEfficiency11());
+    }
+
     public function testGetGoalCounter(): void
     {
         $goalCounter = 10;
@@ -435,5 +453,23 @@ final class UserKpiTest extends AbstractTestCase
         $userKpi = new UserKpi();
         $this->assertInstanceOf(UserKpi::class, $userKpi->setUser($user));
         $this->assertEquals($user, $userKpi->getUser());
+    }
+
+    public function testGetUserQuestionnaireCounter(): void
+    {
+        $userQuestionnaireCounter = 10;
+        $userKpi = new UserKpi();
+        $this->assertEquals(0, $userKpi->getUserQuestionnaireCounter());
+        $userKpi->setUserQuestionnaireCounter($userQuestionnaireCounter);
+        $this->assertEquals($userQuestionnaireCounter, $userKpi->getUserQuestionnaireCounter());
+        $this->assertIsInt($userKpi->getUserQuestionnaireCounter());
+    }
+
+    public function testSetUserQuestionnaireCounter(): void
+    {
+        $userQuestionnaireCounter = 10;
+        $userKpi = new UserKpi();
+        $this->assertInstanceOf(UserKpi::class, $userKpi->setUserQuestionnaireCounter($userQuestionnaireCounter));
+        $this->assertEquals($userQuestionnaireCounter, $userKpi->getUserQuestionnaireCounter());
     }
 }

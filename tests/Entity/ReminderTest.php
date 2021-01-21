@@ -395,6 +395,24 @@ final class ReminderTest extends AbstractTestCase
         $this->assertEquals($sendEmail, $reminder->getSendEmail());
     }
 
+    public function testGetSendToBrowser(): void
+    {
+        $sendToBrowser = true;
+        $reminder = new Reminder();
+        $this->assertEquals(true, $reminder->getSendToBrowser());
+        $reminder->setSendToBrowser($sendToBrowser);
+        $this->assertEquals($sendToBrowser, $reminder->getSendToBrowser());
+        $this->assertIsBool($reminder->getSendToBrowser());
+    }
+
+    public function testSetSendToBrowser(): void
+    {
+        $sendToBrowser = true;
+        $reminder = new Reminder();
+        $this->assertInstanceOf(Reminder::class, $reminder->setSendToBrowser($sendToBrowser));
+        $this->assertEquals($sendToBrowser, $reminder->getSendToBrowser());
+    }
+
     public function testGetSendMotivationalMessage(): void
     {
         $sendMotivationalMessage = true;

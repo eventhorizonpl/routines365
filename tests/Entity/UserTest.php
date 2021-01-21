@@ -19,6 +19,8 @@ use App\Entity\Routine;
 use App\Entity\SavedEmail;
 use App\Entity\User;
 use App\Entity\UserKpi;
+use App\Entity\UserKyt;
+use App\Entity\UserQuestionnaire;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -290,6 +292,24 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->addAchievement($achievement2));
         $this->assertCount(2, $user->getAchievements());
         $this->assertInstanceOf(User::class, $user->removeAchievement($achievement1));
+    }
+
+    public function testGetApiToken(): void
+    {
+        $apiToken = 'test apiToken';
+        $user = new User();
+        $this->assertEquals(null, $user->getApiToken());
+        $user->setApiToken($apiToken);
+        $this->assertEquals($apiToken, $user->getApiToken());
+        $this->assertIsString($user->getApiToken());
+    }
+
+    public function testSetApiToken(): void
+    {
+        $apiToken = 'test apiToken';
+        $user = new User();
+        $this->assertInstanceOf(User::class, $user->setApiToken($apiToken));
+        $this->assertEquals($apiToken, $user->getApiToken());
     }
 
     public function testAddCompletedRoutine(): void
@@ -1091,6 +1111,22 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeUserKpi($userKpi1));
     }
 
+    public function testGetUserKyt(): void
+    {
+        $userKyt = new UserKyt();
+        $user = new User();
+        $user->setUserKyt($userKyt);
+        $this->assertEquals($userKyt, $user->getUserKyt());
+    }
+
+    public function testSetUserKyt(): void
+    {
+        $userKyt = new UserKyt();
+        $user = new User();
+        $this->assertInstanceOf(User::class, $user->setUserKyt($userKyt));
+        $this->assertEquals($userKyt, $user->getUserKyt());
+    }
+
     public function testGetUsername(): void
     {
         $email = 'test email';
@@ -1099,5 +1135,54 @@ final class UserTest extends AbstractTestCase
         $user->setEmail($email);
         $this->assertEquals($email, $user->getUsername());
         $this->assertIsString($user->getUsername());
+    }
+
+    public function testAddUserQuestionnaire(): void
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserQuestionnaires());
+        $userQuestionnaire1 = new UserQuestionnaire();
+        $this->assertInstanceOf(User::class, $user->addUserQuestionnaire($userQuestionnaire1));
+        $this->assertCount(1, $user->getUserQuestionnaires());
+        $userQuestionnaire2 = new UserQuestionnaire();
+        $this->assertInstanceOf(User::class, $user->addUserQuestionnaire($userQuestionnaire2));
+        $this->assertCount(2, $user->getUserQuestionnaires());
+        $deletedAt = new DateTimeImmutable();
+        $userQuestionnaire2->setDeletedAt($deletedAt);
+        $this->assertCount(1, $user->getUserQuestionnaires());
+    }
+
+    public function testGetUserQuestionnaires(): void
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserQuestionnaires());
+        $userQuestionnaire = new UserQuestionnaire();
+        $this->assertInstanceOf(User::class, $user->addUserQuestionnaire($userQuestionnaire));
+        $this->assertCount(1, $user->getUserQuestionnaires());
+    }
+
+    public function testGetUserQuestionnairesAll(): void
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserQuestionnairesAll());
+        $userQuestionnaire = new UserQuestionnaire();
+        $this->assertInstanceOf(User::class, $user->addUserQuestionnaire($userQuestionnaire));
+        $this->assertCount(1, $user->getUserQuestionnairesAll());
+        $deletedAt = new DateTimeImmutable();
+        $userQuestionnaire->setDeletedAt($deletedAt);
+        $this->assertCount(1, $user->getUserQuestionnairesAll());
+    }
+
+    public function testRemoveUserQuestionnaire(): void
+    {
+        $user = new User();
+        $this->assertCount(0, $user->getUserQuestionnaires());
+        $userQuestionnaire1 = new UserQuestionnaire();
+        $this->assertInstanceOf(User::class, $user->addUserQuestionnaire($userQuestionnaire1));
+        $this->assertCount(1, $user->getUserQuestionnaires());
+        $userQuestionnaire2 = new UserQuestionnaire();
+        $this->assertInstanceOf(User::class, $user->addUserQuestionnaire($userQuestionnaire2));
+        $this->assertCount(2, $user->getUserQuestionnaires());
+        $this->assertInstanceOf(User::class, $user->removeUserQuestionnaire($userQuestionnaire1));
     }
 }

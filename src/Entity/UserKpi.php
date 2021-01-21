@@ -189,6 +189,7 @@ class UserKpi
         $this->completedProjectCounter = 0;
         $this->completedRoutineCounter = 0;
         $this->contactCounter = 0;
+        $this->efficiency11 = 0;
         $this->goalCounter = 0;
         $this->noteCounter = 0;
         $this->projectCounter = 0;

@@ -173,6 +173,24 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($account, $accountOperation->getAccount());
     }
 
+    public function testGetBrowserNotifications(): void
+    {
+        $browserNotifications = 10;
+        $accountOperation = new AccountOperation();
+        $this->assertEquals(0, $accountOperation->getBrowserNotifications());
+        $accountOperation->setBrowserNotifications($browserNotifications);
+        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
+        $this->assertIsInt($accountOperation->getBrowserNotifications());
+    }
+
+    public function testSetBrowserNotifications(): void
+    {
+        $browserNotifications = 10;
+        $accountOperation = new AccountOperation();
+        $this->assertInstanceOf(AccountOperation::class, $accountOperation->setBrowserNotifications($browserNotifications));
+        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
+    }
+
     public function testGetReminderMessage(): void
     {
         $reminderMessage = new ReminderMessage();

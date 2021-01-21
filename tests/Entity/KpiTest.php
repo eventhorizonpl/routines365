@@ -154,6 +154,24 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($achievementCounter, $kpi->getAchievementCounter());
     }
 
+    public function testGetAnswerCounter(): void
+    {
+        $answerCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getAnswerCounter());
+        $kpi->setAnswerCounter($answerCounter);
+        $this->assertEquals($answerCounter, $kpi->getAnswerCounter());
+        $this->assertIsInt($kpi->getAnswerCounter());
+    }
+
+    public function testSetAnswerCounter(): void
+    {
+        $answerCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setAnswerCounter($answerCounter));
+        $this->assertEquals($answerCounter, $kpi->getAnswerCounter());
+    }
+
     public function testGetCompletedRoutineCounter(): void
     {
         $completedRoutineCounter = 10;
@@ -296,6 +314,42 @@ final class KpiTest extends AbstractTestCase
         $this->assertEquals($promotionCounter, $kpi->getPromotionCounter());
     }
 
+    public function testGetQuestionCounter(): void
+    {
+        $questionCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getQuestionCounter());
+        $kpi->setQuestionCounter($questionCounter);
+        $this->assertEquals($questionCounter, $kpi->getQuestionCounter());
+        $this->assertIsInt($kpi->getQuestionCounter());
+    }
+
+    public function testSetQuestionCounter(): void
+    {
+        $questionCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setQuestionCounter($questionCounter));
+        $this->assertEquals($questionCounter, $kpi->getQuestionCounter());
+    }
+
+    public function testGetQuestionnaireCounter(): void
+    {
+        $questionnaireCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getQuestionnaireCounter());
+        $kpi->setQuestionnaireCounter($questionnaireCounter);
+        $this->assertEquals($questionnaireCounter, $kpi->getQuestionnaireCounter());
+        $this->assertIsInt($kpi->getQuestionnaireCounter());
+    }
+
+    public function testSetQuestionnaireCounter(): void
+    {
+        $questionnaireCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setQuestionnaireCounter($questionnaireCounter));
+        $this->assertEquals($questionnaireCounter, $kpi->getQuestionnaireCounter());
+    }
+
     public function testGetQuoteCounter(): void
     {
         $quoteCounter = 10;
@@ -348,6 +402,24 @@ final class KpiTest extends AbstractTestCase
         $kpi = new Kpi();
         $this->assertInstanceOf(Kpi::class, $kpi->setReminderMessageCounter($reminderMessageCounter));
         $this->assertEquals($reminderMessageCounter, $kpi->getReminderMessageCounter());
+    }
+
+    public function testGetRetentionCounter(): void
+    {
+        $retentionCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getRetentionCounter());
+        $kpi->setRetentionCounter($retentionCounter);
+        $this->assertEquals($retentionCounter, $kpi->getRetentionCounter());
+        $this->assertIsInt($kpi->getRetentionCounter());
+    }
+
+    public function testSetRetentionCounter(): void
+    {
+        $retentionCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setRetentionCounter($retentionCounter));
+        $this->assertEquals($retentionCounter, $kpi->getRetentionCounter());
     }
 
     public function testGetRewardCounter(): void
@@ -456,5 +528,59 @@ final class KpiTest extends AbstractTestCase
         $kpi = new Kpi();
         $this->assertInstanceOf(Kpi::class, $kpi->setUserKpiCounter($userKpiCounter));
         $this->assertEquals($userKpiCounter, $kpi->getUserKpiCounter());
+    }
+
+    public function testGetUserKytCounter(): void
+    {
+        $userKytCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getUserKytCounter());
+        $kpi->setUserKytCounter($userKytCounter);
+        $this->assertEquals($userKytCounter, $kpi->getUserKytCounter());
+        $this->assertIsInt($kpi->getUserKytCounter());
+    }
+
+    public function testSetUserKytCounter(): void
+    {
+        $userKytCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setUserKytCounter($userKytCounter));
+        $this->assertEquals($userKytCounter, $kpi->getUserKytCounter());
+    }
+
+    public function testGetUserQuestionnaireCounter(): void
+    {
+        $userQuestionnaireCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getUserQuestionnaireCounter());
+        $kpi->setUserQuestionnaireCounter($userQuestionnaireCounter);
+        $this->assertEquals($userQuestionnaireCounter, $kpi->getUserQuestionnaireCounter());
+        $this->assertIsInt($kpi->getUserQuestionnaireCounter());
+    }
+
+    public function testSetUserQuestionnaireCounter(): void
+    {
+        $userQuestionnaireCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setUserQuestionnaireCounter($userQuestionnaireCounter));
+        $this->assertEquals($userQuestionnaireCounter, $kpi->getUserQuestionnaireCounter());
+    }
+
+    public function testGetUserQuestionnaireAnswerCounter(): void
+    {
+        $userQuestionnaireAnswerCounter = 10;
+        $kpi = new Kpi();
+        $this->assertEquals(0, $kpi->getUserQuestionnaireAnswerCounter());
+        $kpi->setUserQuestionnaireAnswerCounter($userQuestionnaireAnswerCounter);
+        $this->assertEquals($userQuestionnaireAnswerCounter, $kpi->getUserQuestionnaireAnswerCounter());
+        $this->assertIsInt($kpi->getUserQuestionnaireAnswerCounter());
+    }
+
+    public function testSetUserQuestionnaireAnswerCounter(): void
+    {
+        $userQuestionnaireAnswerCounter = 10;
+        $kpi = new Kpi();
+        $this->assertInstanceOf(Kpi::class, $kpi->setUserQuestionnaireAnswerCounter($userQuestionnaireAnswerCounter));
+        $this->assertEquals($userQuestionnaireAnswerCounter, $kpi->getUserQuestionnaireAnswerCounter());
     }
 }

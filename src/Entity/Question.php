@@ -74,7 +74,7 @@ class Question
     {
         if (false === $this->answers->contains($answer)) {
             $this->answers->add($answer);
-            $answer->setAnswernaire($this);
+            $answer->setQuestion($this);
         }
 
         return $this;

@@ -175,6 +175,23 @@ final class PromotionTest extends AbstractTestCase
         $this->assertEquals($isEnabled, $promotion->getIsEnabled());
     }
 
+    public function testGetBrowserNotifications(): void
+    {
+        $browserNotifications = 10;
+        $promotion = new Promotion();
+        $promotion->setBrowserNotifications($browserNotifications);
+        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
+        $this->assertIsInt($promotion->getBrowserNotifications());
+    }
+
+    public function testSetBrowserNotifications(): void
+    {
+        $browserNotifications = 10;
+        $promotion = new Promotion();
+        $this->assertInstanceOf(Promotion::class, $promotion->setBrowserNotifications($browserNotifications));
+        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
+    }
+
     public function testGetCode(): void
     {
         $code = 'test code';

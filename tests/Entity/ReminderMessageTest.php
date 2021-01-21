@@ -170,6 +170,24 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertEquals($content, $reminderMessage->getContent());
     }
 
+    public function testGetIsReadFromBrowser(): void
+    {
+        $isReadFromBrowser = true;
+        $reminderMessage = new ReminderMessage();
+        $this->assertEquals(false, $reminderMessage->getIsReadFromBrowser());
+        $reminderMessage->setIsReadFromBrowser($isReadFromBrowser);
+        $this->assertEquals($isReadFromBrowser, $reminderMessage->getIsReadFromBrowser());
+        $this->assertIsBool($reminderMessage->getIsReadFromBrowser());
+    }
+
+    public function testSetIsReadFromBrowser(): void
+    {
+        $isReadFromBrowser = true;
+        $reminderMessage = new ReminderMessage();
+        $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setIsReadFromBrowser($isReadFromBrowser));
+        $this->assertEquals($isReadFromBrowser, $reminderMessage->getIsReadFromBrowser());
+    }
+
     public function testGetPostDate(): void
     {
         $postDate = new DateTimeImmutable();

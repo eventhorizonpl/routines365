@@ -24,7 +24,7 @@ class UserQuestionnaireAnswer
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaireAnswers", targetEntity=Answer::class)
      */
-    private Answer $answer;
+    private ?Answer $answer;
 
     /**
      * @Assert\Valid(groups={"system"})
@@ -43,6 +43,7 @@ class UserQuestionnaireAnswer
 
     public function __construct()
     {
+        $this->answer = null;
         $this->content = null;
     }
 
