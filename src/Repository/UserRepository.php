@@ -71,15 +71,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $queryBuilder->getQuery();
     }
 
-    public function findForCreateMissingUserKyt(): Query
-    {
-        $queryBuilder = $this->createQueryBuilder('u')
-            ->select('u')
-            ->addOrderBy('u.id', 'ASC');
-
-        return $queryBuilder->getQuery();
-    }
-
     public function findForKpi(): Query
     {
         $queryBuilder = $this->createQueryBuilder('u')

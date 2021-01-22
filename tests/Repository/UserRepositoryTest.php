@@ -89,16 +89,6 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($users);
     }
 
-    public function testFindForCreateMissingUserKyt(): void
-    {
-        $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-
-        $users = $this->userRepository->findForCreateMissingUserKyt()->getResult();
-        $this->assertCount(1, $users);
-        $this->assertIsArray($users);
-    }
-
     public function testFindForKpi(): void
     {
         $this->purge();

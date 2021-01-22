@@ -17,7 +17,6 @@ class UserKytService
     private EmailService $emailService;
     private PaginatorInterface $paginator;
     private PromotionService $promotionService;
-    private UserKytFactory $userKytFactory;
     private UserKytManager $userKytManager;
     private UserRepository $userRepository;
 
@@ -25,46 +24,14 @@ class UserKytService
         EmailService $emailService,
         PaginatorInterface $paginator,
         PromotionService $promotionService,
-        UserKytFactory $userKytFactory,
         UserKytManager $userKytManager,
         UserRepository $userRepository
     ) {
         $this->emailService = $emailService;
         $this->paginator = $paginator;
         $this->promotionService = $promotionService;
-        $this->userKytFactory = $userKytFactory;
         $this->userKytManager = $userKytManager;
         $this->userRepository = $userRepository;
-    }
-
-    public function create(User $user): UserKyt
-    {
-        $userKyt = $this->userKytFactory->createUserKyt();
-        $userKyt->setUser($user);
-        $this->userKytManager->save($userKyt, (string) $user);
-
-        return $userKyt;
-    }
-
-    public function createMissingUserKyt(): UserKytService
-    {
-        $page = 1;
-        $limit = 5;
-
-        $usersQuery = $this->userRepository->findForCreateMissingUserKyt();
-
-        do {
-            $users = $this->paginator->paginate($usersQuery, $page, $limit);
-
-            foreach ($users as $user) {
-                if (null === $user->getUserKyt()) {
-                    $userKyt = $this->create($user);
-                }
-            }
-            ++$page;
-        } while ($users->getCurrentPageNumber() <= $users->getPageCount());
-
-        return $this;
     }
 
     public function nurture(): UserKytService
