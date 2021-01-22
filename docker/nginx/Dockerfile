@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine as nginx_build
+FROM nginx:1.18.0-alpine as nginx_build
 
 WORKDIR /var/www/html
 

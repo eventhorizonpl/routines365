@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine AS php_build
+FROM php:7.4.14-fpm-alpine3.13 AS php_build
 
 RUN apk add --no-cache \
   acl \
