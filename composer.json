@@ -17,7 +17,7 @@
         "friendsofsymfony/jsrouting-bundle": "^2.7",
         "friendsofsymfony/rest-bundle": "^3.0",
         "knplabs/knp-paginator-bundle": "^5.2",
-        "league/iso3166": "^2.1",
+        "league/iso3166": "^3.0",
         "odolbeau/phone-number-bundle": "^3.1",
         "phpdocumentor/reflection-docblock": "^5.1",
         "prolix/maintenance-bundle": "^2.1",
