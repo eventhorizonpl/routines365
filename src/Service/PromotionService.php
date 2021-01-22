@@ -85,8 +85,8 @@ class PromotionService
             $user->addPromotion($promotion);
             $this->accountOperationService->deposit(
                 $user->getAccount(),
-                'Deposit for promotion '.$promotion->getCode().' '.$promotion->getName(),
                 $promotion->getBrowserNotifications(),
+                'Deposit for promotion '.$promotion->getCode().' '.$promotion->getName(),
                 $promotion->getEmailNotifications(),
                 $promotion->getSmsNotifications()
             );
