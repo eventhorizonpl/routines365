@@ -114,6 +114,9 @@
     "egulias/email-validator": {
         "version": "2.1.18"
     },
+    "fakerphp/faker": {
+        "version": "v1.13.0"
+    },
     "friendsofsymfony/jsrouting-bundle": {
         "version": "2.3",
         "recipe": {
@@ -137,9 +140,6 @@
         "files": [
             "config/packages/fos_rest.yaml"
         ]
-    },
-    "fzaninotto/faker": {
-        "version": "v1.9.1"
     },
     "giggsey/libphonenumber-for-php": {
         "version": "8.12.7"
