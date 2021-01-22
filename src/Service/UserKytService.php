@@ -6,7 +6,6 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Entity\UserKyt;
-use App\Factory\UserKytFactory;
 use App\Manager\UserKytManager;
 use App\Repository\UserRepository;
 use DateTimeImmutable;

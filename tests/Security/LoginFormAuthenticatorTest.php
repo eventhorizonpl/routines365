@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Security;
 
-use App\Faker\UserFaker;
 use App\Security\LoginFormAuthenticator;
 use App\Service\UserService;
 use App\Tests\AbstractDoctrineTestCase;
@@ -13,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
 {
@@ -32,19 +30,11 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
-    private ?UserFaker $userFaker;
-    /**
-     * @inject
-     */
     private ?UserPasswordEncoderInterface $userPasswordEncoder;
     /**
      * @inject
      */
     private ?UserService $userService;
-    /**
-     * @inject
-     */
-    private ?VerifyEmailHelperInterface $verifyEmailHelper;
 
     protected function tearDown(): void
     {
@@ -52,10 +42,8 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
             $this->csrfTokenManager,
             $this->loginFormAuthenticator,
             $this->urlGenerator,
-            $this->userFaker,
             $this->userPasswordEncoder,
-            $this->userService,
-            $this->verifyEmailHelper
+            $this->userService
         );
 
         parent::tearDown();

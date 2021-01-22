@@ -6,21 +6,12 @@ namespace App\Tests\Security;
 
 use App\Faker\UserFaker;
 use App\Security\TokenAuthenticator;
-use App\Service\UserService;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
 {
-    /**
-     * @inject
-     */
-    private ?CsrfTokenManagerInterface $csrfTokenManager;
     /**
      * @inject
      */
@@ -28,34 +19,13 @@ final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
-    private ?UrlGeneratorInterface $urlGenerator;
-    /**
-     * @inject
-     */
     private ?UserFaker $userFaker;
-    /**
-     * @inject
-     */
-    private ?UserPasswordEncoderInterface $userPasswordEncoder;
-    /**
-     * @inject
-     */
-    private ?UserService $userService;
-    /**
-     * @inject
-     */
-    private ?VerifyEmailHelperInterface $verifyEmailHelper;
 
     protected function tearDown(): void
     {
         unset(
-            $this->csrfTokenManager,
             $this->tokenAuthenticator,
-            $this->urlGenerator,
-            $this->userFaker,
-            $this->userPasswordEncoder,
-            $this->userService,
-            $this->verifyEmailHelper
+            $this->userFaker
         );
 
         parent::tearDown();
