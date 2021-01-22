@@ -10,7 +10,7 @@
     <p>
         {{ 'Goals'|trans }}: {{ routine.goals|length }}
         <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_goals_new is defined and know_your_tools_goals_new %}{{ path('frontend_goal_new', {'uuid': routine.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE'), 'know_your_tools': know_your_tools_goals_new}) }}{% else %}{{ path('frontend_goal_new', {'uuid': routine.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}{% endif %}">
-            <i class="fas fa-bullseye"></i>
+            <i aria-hidden="true" class="bi bi-bullseye"></i>
             {{ 'Create a goal'|trans }}
         </a>
     </p>
@@ -76,11 +76,11 @@
                                         </td>
                                         <td style="width: 25%;">
                                             <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}">
-                                                <i class="fas fa-check"></i>
+                                                <i aria-hidden="true" class="bi bi-check"></i>
                                                 {{ 'Complete'|trans }}
                                             </a>
                                             <a class="btn btn-success btn-sm m-1" href="{% if know_your_tools_goals_edit is defined and know_your_tools_goals_edit %}{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE'), 'know_your_tools': know_your_tools_goals_edit}) }}{% else %}{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}{% endif %}">
-                                                <i class="fas fa-edit"></i>
+                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                                 {{ 'Edit'|trans }}
                                             </a>
                                         </td>
@@ -135,7 +135,7 @@
                                         </td>
                                         <td style="width: 25%;">
                                             <a class="btn btn-success btn-sm m-1" href="{% if know_your_tools_goals_edit is defined and know_your_tools_goals_edit %}{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE'), 'know_your_tools': know_your_tools_goals_edit}) }}{% else %}{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_ROUTINE')}) }}{% endif %}">
-                                                <i class="fas fa-edit"></i>
+                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                                 {{ 'Edit'|trans }}
                                             </a>
                                         </td>

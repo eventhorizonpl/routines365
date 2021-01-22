@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'Quote details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_quote_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -91,7 +91,7 @@
                                 <td>
                                     {% if quote.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': quote.deletedBy}) }}">{{ quote.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_quote_undelete', {'uuid': quote.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_quote_undelete', {'uuid': quote.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -112,7 +112,7 @@
                                 <td>
                                     {% if quote.deletedAt %}
                                         {{ quote.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_quote_undelete', {'uuid': quote.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_quote_undelete', {'uuid': quote.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <a class="btn btn-success" href="{{ path('admin_quote_edit', {'uuid': quote.uuid}) }}">
-                <i class="fas fa-edit"></i>
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                 {{ 'Edit'|trans }}
             </a>
         </div>

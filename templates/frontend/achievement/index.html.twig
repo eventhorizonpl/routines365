@@ -5,7 +5,7 @@
         <div class="row mb-3">
             <div class="col-md-10 offset-md-1">
                 <h3 class="float-left">
-                    <i class="fas fa-trophy"></i>
+                    <i aria-hidden="true" class="bi bi-trophy"></i>
                     {{ 'Achievements'|trans }}
                 </h3>
             </div>
@@ -17,7 +17,7 @@
             {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_COMPLETED_ROUTINE') %}
                 <div class="col-4 col-sm-3 col-md-2 mb-3 ml-3 mt-3">
                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-dark{% endif %} p-3" style="min-width: 151px;">
-                        <h4><i class="fas fa-star"></i></h4><br><br>
+                        <h4><i aria-hidden="true" class="bi bi-star"></i></h4><br><br>
                         <h5>{{ 'Level'|trans }} {{ achievement.level }}</h5><br><br>
                         {{ achievement.name }}<br><br>
                         ({{ achievement.requirement }} {{ 'required'|trans }})
@@ -32,7 +32,7 @@
             {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_COMPLETED_GOAL') %}
                 <div class="col-4 col-sm-3 col-md-2 mb-3 ml-3 mt-3">
                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-dark{% endif %} p-3" style="min-width: 151px;">
-                        <h4><i class="fas fa-check"></i></h4><br><br>
+                        <h4><i aria-hidden="true" class="bi bi-check"></i></h4><br><br>
                         <h5>{{ 'Level'|trans }} {{ achievement.level }}</h5><br><br>
                         {{ achievement.name }}<br><br>
                         ({{ achievement.requirement }} {{ 'required'|trans }})
@@ -47,7 +47,7 @@
             {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_COMPLETED_PROJECT') %}
                 <div class="col-4 col-sm-3 col-md-2 mb-3 ml-3 mt-3">
                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-dark{% endif %} p-3" style="min-width: 151px;">
-                        <h4><i class="fas fa-check"></i></h4><br><br>
+                        <h4><i aria-hidden="true" class="bi bi-check"></i></h4><br><br>
                         <h5>{{ 'Level'|trans }} {{ achievement.level }}</h5><br><br>
                         {{ achievement.name }}<br><br>
                         ({{ achievement.requirement }} {{ 'required'|trans }})
@@ -62,7 +62,7 @@
             {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_CREATED_NOTE') %}
                 <div class="col-4 col-sm-3 col-md-2 mb-3 ml-3 mt-3">
                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-dark{% endif %} p-3" style="min-width: 151px;">
-                        <h4><i class="fas fa-pen-fancy"></i></h4><br><br>
+                        <h4><i aria-hidden="true" class="bi bi-pen"></i></h4><br><br>
                         <h5>{{ 'Level'|trans }} {{ achievement.level }}</h5><br><br>
                         {{ achievement.name }}<br><br>
                         ({{ achievement.requirement }} {{ 'required'|trans }})

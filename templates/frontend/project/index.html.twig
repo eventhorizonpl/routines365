@@ -16,14 +16,14 @@
         <div class="row mb-3">
             <div class="col-md-10 offset-md-1">
                 <h3 class="float-left">
-                    <i class="fas fa-tools"></i>
+                    <i aria-hidden="true" class="bi bi-tools"></i>
                     {{ 'Projects'|trans }}
                 </h3>
                 <a class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_projects') }}">
-                    <i class="fas fa-question"></i>
+                    <i aria-hidden="true" class="bi bi-question-square"></i>
                 </a>
                 <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_project_new', {'know_your_tools': constant('App\\Resource\\KytResource::PROJECTS_NEW')}) }}{% else %}{{ path('frontend_project_new') }}{% endif %}">
-                    <i class="fas fa-tools"></i>
+                    <i aria-hidden="true" class="bi bi-tools"></i>
                     {{ 'Create a project'|trans }}
                 </a>
             </div>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-4">
                                 <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}">
-                                    <i class="fas fa-eye"></i>
+                                    <i aria-hidden="true" class="bi bi-eye"></i>
                                     {{ 'Show'|trans }}
                                 </a>
                             </div>
@@ -85,15 +85,15 @@
                             {{ 'You do not have any projects!'|trans }}
                         </p>
                         <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_project_new', {'know_your_tools': constant('App\\Resource\\KytResource::PROJECTS_NEW')}) }}{% else %}{{ path('frontend_project_new') }}{% endif %}">
-                            <i class="fas fa-sync"></i>
+                            <i aria-hidden="true" class="bi bi-arrow-repeat"></i>
                             {{ 'Create a project'|trans }}
                         </a>
                         <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}">
-                            <i class="fas fa-lightbulb"></i>
+                            <i aria-hidden="true" class="bi bi-lightbulb"></i>
                             {{ 'Know your tools'|trans }}
                         </a>
                         <a class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_projects') }}">
-                            <i class="fas fa-question"></i>
+                            <i aria-hidden="true" class="bi bi-question-square"></i>
                         </a>
                     </div>
                 </div>

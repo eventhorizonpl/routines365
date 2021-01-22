@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'Reminder details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_reminder_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -208,7 +208,7 @@
                                 <td>
                                     {% if reminder.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': reminder.deletedBy}) }}">{{ reminder.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -229,7 +229,7 @@
                                 <td>
                                     {% if reminder.deletedAt %}
                                         {{ reminder.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -238,7 +238,7 @@
                                 <td>
                                     {% if reminder.lockedAt %}
                                         {{ reminder.lockedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_reminder_unlock', {'uuid': reminder.uuid}) }}"><i class="fa fa-lock-open"></i> {{ 'Unlock'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_unlock', {'uuid': reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-unlock"></i> {{ 'Unlock'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>

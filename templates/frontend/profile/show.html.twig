@@ -20,10 +20,10 @@
                 <div class="card-header">
                     {{ 'Profile details'|trans }}
                     <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_basic_configuration') }}">
-                        <i class="fas fa-question"></i>
+                        <i aria-hidden="true" class="bi bi-question-square"></i>
                     </a>
                     <a class="btn btn-success btn-sm float-right ml-2" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_profile_edit', {'know_your_tools': constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_EDIT')}) }}{% else %}{{ path('frontend_profile_edit') }}{% endif %}">
-                        <i class="fas fa-edit"></i>
+                        <i aria-hidden="true" class="bi bi-pencil-square"></i>
                         {{ 'Edit'|trans }}
                     </a>
                     {% include('frontend_settings_nav.html.twig') %}

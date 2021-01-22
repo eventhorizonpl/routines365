@@ -42,11 +42,11 @@
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
                 <button class="btn btn-default" type="submit">
-                    <i class="fa fa-search"></i>
+                    <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
                 <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type or parameters.status) %}disabled{% endif %} btn-default" href="{{ path('admin_contact_index') }}">
-                    <i class="fas fa-times"></i>
+                    <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
         </div>
@@ -80,11 +80,11 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ contact.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
+                                            <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ contact.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_contact_show', {'uuid': contact.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('admin_contact_edit', {'uuid': contact.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_contact_show', {'uuid': contact.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_contact_edit', {'uuid': contact.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
                                         </div>
                                     </div>
                                 </td>

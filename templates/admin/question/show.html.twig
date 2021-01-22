@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'Question details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_questionnaire_show', {'uuid': question.questionnaire.uuid}) }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -116,7 +116,7 @@
                                 <td>
                                     {% if question.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': question.deletedBy}) }}">{{ question.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -137,7 +137,7 @@
                                 <td>
                                     {% if question.deletedAt %}
                                         {{ question.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -161,7 +161,7 @@
                         <th>
                             {{ 'Actions'|trans }}
                             <a class="btn btn-info btn-sm ml-3" href="{{ path('admin_answer_new', {'uuid': question.uuid}) }}">
-                                <i class="fas fa-plus"></i>
+                                <i aria-hidden="true" class="bi bi-plus-square"></i>
                                 {{ 'Create'|trans }}
                             </a>
                         </th>
@@ -182,11 +182,11 @@
                             <td>
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop{{ answer.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
+                                        <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ answer.id }}">
-                                        <a class="dropdown-item" href="{{ path('admin_answer_show', {'uuid': answer.uuid}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
-                                        <a class="dropdown-item" href="{{ path('admin_answer_edit', {'uuid': answer.uuid}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                                        <a class="dropdown-item" href="{{ path('admin_answer_show', {'uuid': answer.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                        <a class="dropdown-item" href="{{ path('admin_answer_edit', {'uuid': answer.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
                                     </div>
                                 </div>
                             </td>
@@ -195,7 +195,7 @@
                 </tbody>
             </table>
             <a class="btn btn-success" href="{{ path('admin_question_edit', {'uuid': question.uuid}) }}">
-                <i class="fas fa-edit"></i>
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                 {{ 'Edit'|trans }}
             </a>
         </div>

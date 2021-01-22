@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'Promotion details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_promotion_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -128,7 +128,7 @@
                                 <td>
                                     {% if promotion.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': promotion.deletedBy}) }}">{{ promotion.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_promotion_undelete', {'uuid': promotion.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_promotion_undelete', {'uuid': promotion.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -149,7 +149,7 @@
                                 <td>
                                     {% if promotion.deletedAt %}
                                         {{ promotion.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_promotion_undelete', {'uuid': promotion.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_promotion_undelete', {'uuid': promotion.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -162,7 +162,7 @@
                 </div>
             </div>
             <a class="btn btn-success" href="{{ path('admin_promotion_edit', {'uuid': promotion.uuid}) }}">
-                <i class="fas fa-edit"></i>
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                 {{ 'Edit'|trans }}
             </a>
         </div>

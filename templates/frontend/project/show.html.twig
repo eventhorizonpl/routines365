@@ -6,7 +6,7 @@
             {% if know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_FINISH') %}
                 <a href="{{ path('frontend_user_kyt_projects_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_SHOW') %}
-                Click on <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button>.
+                Click on <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button>.
             {% endif %}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -24,14 +24,14 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_projects') }}">
-                                <i class="fas fa-question"></i>
+                                <i aria-hidden="true" class="bi bi-question-square"></i>
                             </a>
                             <a class="btn btn-success btn-sm float-right ml-2" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_project_edit', {'uuid': project.uuid, 'know_your_tools': constant('App\\Resource\\KytResource::PROJECTS_EDIT')}) }}{% else %}{{ path('frontend_project_edit', {'uuid': project.uuid}) }}{% endif %}">
-                                <i class="fas fa-edit"></i>
+                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                 {{ 'Edit'|trans }}
                             </a>
                             <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_project_index') }}">
-                                <i class="fas fa-arrow-left"></i>
+                                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                                 {{ 'Back'|trans }}
                             </a>
                         </div>
@@ -61,7 +61,7 @@
                     <p>
                         {{ 'Goals'|trans }}: {{ project.goals|length }}
                         <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_goal_new', {'uuid': project.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                            <i class="fas fa-bullseye"></i>
+                            <i aria-hidden="true" class="bi bi-bullseye"></i>
                             {{ 'Create a goal'|trans }}
                         </a>
                     </p>
@@ -127,11 +127,11 @@
                                                         </td>
                                                         <td style="width: 25%;">
                                                             <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                                                                <i class="fas fa-check"></i>
+                                                                <i aria-hidden="true" class="bi bi-check"></i>
                                                                 {{ 'Complete'|trans }}
                                                             </a>
                                                             <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                                                                <i class="fas fa-edit"></i>
+                                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                                                 {{ 'Edit'|trans }}
                                                             </a>
                                                         </td>
@@ -186,7 +186,7 @@
                                                         </td>
                                                         <td style="width: 25%;">
                                                             <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}">
-                                                                <i class="fas fa-edit"></i>
+                                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                                                 {{ 'Edit'|trans }}
                                                             </a>
                                                         </td>

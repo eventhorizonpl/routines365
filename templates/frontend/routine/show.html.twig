@@ -14,7 +14,7 @@
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_SHOW2') %}
                 {{ include('frontend/static_page/how_to/_goals_show2.html.twig') }}
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_SHOW3') %}
-                Click <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button> in "Goals" list.
+                Click <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button> in "Goals" list.
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_FINISH') %}
                 <a href="{{ path('frontend_user_kyt_reminders_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW') %}
@@ -22,11 +22,11 @@
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW2') %}
                 {{ include('frontend/static_page/how_to/_reminders_show2.html.twig') }}
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW3') %}
-                Click <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button> in "Reminders" list.
+                Click <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button> in "Reminders" list.
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_FINISH') %}
                 <a href="{{ path('frontend_user_kyt_routines_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_SHOW') %}
-                Click <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</button>.
+                Click <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button>.
             {% endif %}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -44,14 +44,14 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_routines') }}">
-                                <i class="fas fa-question"></i>
+                                <i aria-hidden="true" class="bi bi-question-square"></i>
                             </a>
                             <a class="btn btn-success btn-sm float-right ml-2" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_edit', {'uuid': routine.uuid, 'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_EDIT')}) }}{% else %}{{ path('frontend_routine_edit', {'uuid': routine.uuid}) }}{% endif %}">
-                                <i class="fas fa-edit"></i>
+                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                 {{ 'Edit'|trans }}
                             </a>
                             <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_index') }}">
-                                <i class="fas fa-arrow-left"></i>
+                                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                                 {{ 'Back'|trans }}
                             </a>
                         </div>

@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'User questionnaire details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_questionnaire_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -110,7 +110,7 @@
                                 <td>
                                     {% if user_questionnaire.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': user_questionnaire.deletedBy}) }}">{{ user_questionnaire.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_user_questionnaire_undelete', {'uuid': user_questionnaire.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_questionnaire_undelete', {'uuid': user_questionnaire.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -131,7 +131,7 @@
                                 <td>
                                     {% if user_questionnaire.deletedAt %}
                                         {{ user_questionnaire.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_user_questionnaire_undelete', {'uuid': user_questionnaire.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_questionnaire_undelete', {'uuid': user_questionnaire.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>

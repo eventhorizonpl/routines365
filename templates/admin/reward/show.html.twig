@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'Reward details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_reward_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -144,7 +144,7 @@
                                 <td>
                                     {% if reward.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': reward.deletedBy}) }}">{{ reward.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_reward_undelete', {'uuid': reward.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reward_undelete', {'uuid': reward.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -165,7 +165,7 @@
                                 <td>
                                     {% if reward.deletedAt %}
                                         {{ reward.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_reward_undelete', {'uuid': reward.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reward_undelete', {'uuid': reward.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>

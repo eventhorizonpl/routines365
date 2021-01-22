@@ -16,7 +16,7 @@
         <div class="card-header">
             {{ 'Cron jobs'|trans }} ({{ parameters.count }})
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_cron_job_new') }}">
-                <i class="fas fa-plus"></i>
+                <i aria-hidden="true" class="bi bi-plus-square"></i>
                 {{ 'Create'|trans }}
             </a>
         </div>
@@ -48,11 +48,11 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ cron_job.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
+                                            <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ cron_job.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('admin_cron_job_edit', {'id': cron_job.id}) }}"><i class="fas fa-edit"></i> {{ 'Edit'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_cron_job_edit', {'id': cron_job.id}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
                                         </div>
                                     </div>
                                 </td>

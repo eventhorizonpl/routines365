@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'KPI details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_kpi_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -158,7 +158,7 @@
                                 <td>
                                     {% if user_kpi.deletedAt %}
                                         {{ user_kpi.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_user_kpi_undelete', {'uuid': user_kpi.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_kpi_undelete', {'uuid': user_kpi.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>

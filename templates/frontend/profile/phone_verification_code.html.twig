@@ -7,7 +7,7 @@
                 <div class="card-header">
                     {{ 'Phone verification'|trans }}
                     <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_profile_show') }}">
-                        <i class="fas fa-times"></i>
+                        <i aria-hidden="true" class="bi bi-x-square"></i>
                         {{ 'Close'|trans }}
                     </a>
                     {% include('frontend_settings_nav.html.twig') %}
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-check-circle"></i>
+                                    <i aria-hidden="true" class="bi bi-check"></i>
                                     {{ button_label|default('Verify'|trans) }}
                                 </button>
                             </div>

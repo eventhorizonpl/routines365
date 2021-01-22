@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'User details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -142,7 +142,7 @@
                                     {% endif %}
 
                                     <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_browser', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
-                                        <i class="fas fa-plus"></i>
+                                        <i aria-hidden="true" class="bi bi-plus-square"></i>
                                         {{ 'Add free browser notifications'|trans }}
                                     </a>
                                 </td>
@@ -155,7 +155,7 @@
                                     {% endif %}
 
                                     <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_email', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
-                                        <i class="fas fa-plus"></i>
+                                        <i aria-hidden="true" class="bi bi-plus-square"></i>
                                         {{ 'Add free email notifications'|trans }}
                                     </a>
                                 </td>
@@ -168,7 +168,7 @@
                                     {% endif %}
 
                                     <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_sms', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
-                                        <i class="fas fa-plus"></i>
+                                        <i aria-hidden="true" class="bi bi-plus-square"></i>
                                         {{ 'Add free sms notifications'|trans }}
                                     </a>
                                 </td>
@@ -700,7 +700,7 @@
                                 <td>
                                     {% if user.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': user.deletedBy}) }}">{{ user.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -721,7 +721,7 @@
                                 <td>
                                     {% if user.deletedAt %}
                                         {{ user.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -738,7 +738,7 @@
                 </div>
             </div>
             <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}">
-                <i class="fas fa-edit"></i>
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
                 {{ 'Edit'|trans }}
             </a>
         </div>

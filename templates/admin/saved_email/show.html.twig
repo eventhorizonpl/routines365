@@ -21,7 +21,7 @@
         <div class="card-header">
             {{ 'Saved email details'|trans }}
             <a class="btn btn-info btn-sm float-right" href="{{ path('admin_saved_email_index') }}">
-                <i class="fas fa-arrow-left"></i>
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
                 {{ 'Back'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
@@ -90,7 +90,7 @@
                                 <td>
                                     {% if saved_email.deletedBy %}
                                         <a href="{{ path('admin_user_show', {'uuid': saved_email.deletedBy}) }}">{{ saved_email.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_saved_email_undelete', {'uuid': saved_email.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_saved_email_undelete', {'uuid': saved_email.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -111,7 +111,7 @@
                                 <td>
                                     {% if saved_email.deletedAt %}
                                         {{ saved_email.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_saved_email_undelete', {'uuid': saved_email.uuid}) }}"><i class="fa fa-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_saved_email_undelete', {'uuid': saved_email.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
