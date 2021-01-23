@@ -17,20 +17,20 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Create a goal'|trans }}
-                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_goals') }}">
-                        <i aria-hidden="true" class="bi bi-question-square"></i>
-                    </a>
-                    {% if project %}
-                        <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}">
-                            <i aria-hidden="true" class="bi bi-x-square"></i>
-                            {{ 'Close'|trans }}
+                    <span class="float-right">
+                        <a aria-label="{{ 'Information'|trans }}" class="btn btn-info btn-sm" href="{{ path('frontend_static_page_how_to_goals') }}" title="{{ 'Information'|trans }}">
+                            <i aria-hidden="true" class="bi bi-question-square"></i>
                         </a>
-                    {% elseif routine %}
-                        <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}">
-                            <i aria-hidden="true" class="bi bi-x-square"></i>
-                            {{ 'Close'|trans }}
-                        </a>
-                    {% endif %}
+                        {% if project %}
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}" title="{{ 'Close'|trans }}">
+                                <i aria-hidden="true" class="bi bi-x-square"></i>
+                            </a>
+                        {% elseif routine %}
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}" title="{{ 'Close'|trans }}">
+                                <i aria-hidden="true" class="bi bi-x-square"></i>
+                            </a>
+                        {% endif %}
+                    </span>
                 </div>
                 <div class="card-body">
                     {{ include('frontend/goal/_form.html.twig') }}

@@ -9,10 +9,9 @@
                         <div class="col-md-8 col-6">
                             {{ questionnaire.title }}
                         </div>
-                        <div class="col-md-4 col-6">
-                            <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_home') }}">
-                                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                                {{ 'Back'|trans }}
+                        <div class="col-md-4 col-6 text-right">
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm" href="{{ path('frontend_home') }}" title="{{ 'Close'|trans }}">
+                                <i aria-hidden="true" class="bi bi-x-square"></i>
                             </a>
                         </div>
                     </div>

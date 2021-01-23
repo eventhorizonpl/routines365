@@ -17,13 +17,14 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Create a reminder'|trans }}
-                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_reminders') }}">
-                        <i aria-hidden="true" class="bi bi-question-square"></i>
-                    </a>
-                    <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_show_reminders', {'uuid': routine.uuid}) }}">
-                        <i aria-hidden="true" class="bi bi-x-square"></i>
-                        {{ 'Close'|trans }}
-                    </a>
+                    <span class="float-right">
+                        <a aria-label="{{ 'Information'|trans }}" class="btn btn-info btn-sm" href="{{ path('frontend_static_page_how_to_reminders') }}" title="{{ 'Information'|trans }}">
+                            <i aria-hidden="true" class="bi bi-question-square"></i>
+                        </a>
+                        <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_routine_show_reminders', {'uuid': routine.uuid}) }}" title="{{ 'Close'|trans }}">
+                            <i aria-hidden="true" class="bi bi-x-square"></i>
+                        </a>
+                    </span>
                 </div>
                 <div class="card-body">
                     {{ include('frontend/reminder/_form.html.twig') }}

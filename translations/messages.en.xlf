@@ -1537,6 +1537,10 @@
         <source>Send to browser</source>
         <target>Send to browser</target>
       </trans-unit>
+      <trans-unit id="HLC6El_" resname="Information">
+        <source>Information</source>
+        <target>Information</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

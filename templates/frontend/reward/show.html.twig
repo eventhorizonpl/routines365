@@ -22,17 +22,16 @@
                         <div class="col-md-8 col-6">
                             {{ reward.name }}
                         </div>
-                        <div class="col-md-4 col-6">
-                            <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}">
-                                <i aria-hidden="true" class="bi bi-question-square"></i>
-                            </a>
-                            <a class="btn btn-success btn-sm float-right ml-2" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_edit', {'uuid': reward.uuid, 'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_EDIT')}) }}{% else %}{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}{% endif %}">
+                        <div class="col-md-4 col-6 text-right">
+                            <a class="btn btn-success btn-sm" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_edit', {'uuid': reward.uuid, 'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_EDIT')}) }}{% else %}{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}{% endif %}" title="{{ 'Edit'|trans }}">
                                 <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                 {{ 'Edit'|trans }}
                             </a>
-                            <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_reward_index') }}">
-                                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                                {{ 'Back'|trans }}
+                            <a aria-label="{{ 'Information'|trans }}" class="btn btn-info btn-sm ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}" title="{{ 'Information'|trans }}">
+                                <i aria-hidden="true" class="bi bi-question-square"></i>
+                            </a>
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_reward_index') }}" title="{{ 'Close'|trans }}">
+                                <i aria-hidden="true" class="bi bi-x-square"></i>
                             </a>
                         </div>
                     </div>

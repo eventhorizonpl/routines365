@@ -17,20 +17,20 @@
             <div class="card bg-dark text-white">
                 <div class="card-header">
                     {{ 'Create a reward'|trans }}
-                    <a class="btn btn-info btn-sm float-right ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}">
-                        <i aria-hidden="true" class="bi bi-question-square"></i>
-                    </a>
-                    {% if reward.routine %}
-                        <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_routine_show_rewards', {'uuid': reward.routine.uuid }) }}">
-                            <i aria-hidden="true" class="bi bi-x-square"></i>
-                            {{ 'Close'|trans }}
+                    <span class="float-right">
+                        <a aria-label="{{ 'Information'|trans }}" class="btn btn-info btn-sm" href="{{ path('frontend_static_page_how_to_rewards') }}" title="{{ 'Information'|trans }}">
+                            <i aria-hidden="true" class="bi bi-question-square"></i>
                         </a>
-                    {% else %}
-                        <a class="btn btn-light btn-sm float-right" href="{{ path('frontend_reward_index') }}">
-                            <i aria-hidden="true" class="bi bi-x-square"></i>
-                            {{ 'Close'|trans }}
-                        </a>
-                    {% endif %}
+                        {% if reward.routine %}
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_routine_show_rewards', {'uuid': reward.routine.uuid }) }}" title="{{ 'Close'|trans }}">
+                                <i aria-hidden="true" class="bi bi-x-square"></i>
+                            </a>
+                        {% else %}
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_reward_index') }}" title="{{ 'Close'|trans }}">
+                                <i aria-hidden="true" class="bi bi-x-square"></i>
+                            </a>
+                        {% endif %}
+                    </span>
                 </div>
                 <div class="card-body">
                     {{ include('frontend/reward/_form.html.twig') }}
