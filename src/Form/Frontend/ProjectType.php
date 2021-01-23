@@ -19,13 +19,18 @@ class ProjectType extends AbstractType
 
         $builder
             ->add('description', TextareaType::class, [
+                'help' => 'Short description of the project.',
                 'required' => false,
             ])
-            ->add('name')
+            ->add('name', null, [
+                'help' => 'Name of the project.',
+            ])
         ;
 
         if (null !== $project->getId()) {
-            $builder->add('isCompleted', YesNoType::class);
+            $builder->add('isCompleted', YesNoType::class, [
+                'help' => 'Determines whether you completed the project.',
+            ]);
         }
     }
 

@@ -22,23 +22,24 @@ class ProfileType extends BaseProfileType
 
         $builder
             ->add('phone', PhoneNumberType::class, [
-                'help' => 'The phone number is required for proper work of SMS notifications.',
+                'help' => 'System requires mobile phone number for proper work of SMS reminders.',
                 'required' => false,
             ])
             ->add('sendWeeklyMonthlyStatistics', YesNoType::class, [
-                'help' => 'Send weekly/monthly statistics email.',
+                'help' => 'Determines whether you want to receive weekly/monthly/yearly statistics email.',
                 'required' => true,
             ])
             ->add('showMotivationalMessages', YesNoType::class, [
-                'help' => 'Indicates if you want to see a motivational messages in user interface.',
+                'help' => 'Determines whether you want to see a motivational messages in the user interface.',
                 'required' => true,
             ])
             ->add('theme', ChoiceType::class, [
                 'choices' => Profile::getThemeFormChoices(),
+                'help' => 'Determines what user interface theme you want to use.',
                 'required' => true,
             ])
             ->add('timeZone', TimezoneType::class, [
-                'help' => 'The time zone information is required for proper work of notifications.',
+                'help' => 'System requires time zone information for proper work of reminders.',
                 'required' => true,
             ])
         ;
@@ -48,11 +49,11 @@ class ProfileType extends BaseProfileType
         ) {
             $builder
                 ->add('firstName', TextType::class, [
-                    'help' => 'First name is required for sending invitations.',
+                    'help' => 'System requires first name for sending invitations and motivational messages to friends.',
                     'required' => false,
                 ])
                 ->add('lastName', TextType::class, [
-                    'help' => 'Last name is required for sending invitations.',
+                    'help' => 'System requires last name for sending invitations and motivational messages to friends.',
                     'required' => false,
                 ])
             ;

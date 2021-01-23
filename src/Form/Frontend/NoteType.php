@@ -20,14 +20,19 @@ class NoteType extends AbstractType
         $note = $options['data'];
 
         $builder
-            ->add('content', TextareaType::class)
-            ->add('title')
+            ->add('content', TextareaType::class, [
+                'help' => 'Content of the note.',
+            ])
+            ->add('title', null, [
+                'help' => 'Title of the note.',
+            ])
         ;
 
         if (null === $note->getRoutine()) {
             $user = $note->getUser();
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
+                'help' => 'Routine associated with the note.',
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
                     return $entityRepository->createQueryBuilder('r')
                         ->where('r.user = :user')

@@ -2,19 +2,21 @@
     {{ form_errors(form) }}
 
     <div class="row">
-        <div class="col-md-8">
-            {{ form_row(form.name, {'attr': {'placeholder': 'Name of your routine i.e. "Daily exercises".'|trans}}) }}
+        <div class="col-md-12">
+            {{ form_row(form.name, {'attr': {'placeholder': 'Name of the routine i.e. "Daily exercises".'|trans}}) }}
         </div>
-        <div class="col-md-2">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             {{ form_row(form.type, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6">
             {{ form_row(form.isEnabled, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            {{ form_row(form.description, {'attr': {'placeholder': 'Description of your routine.'|trans, 'rows': 5}}) }}
+            {{ form_row(form.description, {'attr': {'placeholder': 'Short description of the routine.'|trans, 'rows': 5}}) }}
         </div>
     </div>
     <hr>

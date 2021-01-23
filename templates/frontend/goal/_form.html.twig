@@ -2,26 +2,31 @@
     {{ form_errors(form) }}
 
     <div class="row">
-        <div class="col-md-{% if goal.id %}10{% else %}12{% endif %}">
-            {{ form_row(form.name, {'attr': {'placeholder': 'Name of your goal i.e. "50 push ups daily for 7 days in a row".'|trans}}) }}
+        <div class="col-md-12">
+            {{ form_row(form.name, {'attr': {'placeholder': 'Name of the goal i.e. "50 push ups daily for 7 days in a row".'|trans}}) }}
+        </div>
+    </div>
+    <div class="row">
+        {% if goal.id %}
+            {% set width = 4 %}
+        {% else %}
+            {% set width = 6 %}
+        {% endif %}
+        <div class="col-md-{{ width }}">
+            {{ form_row(form.routine, {'attr': {'class': 'custom-select'}}) }}
+        </div>
+        <div class="col-md-{{ width }}">
+            {{ form_row(form.project, {'attr': {'class': 'custom-select'}}) }}
         </div>
         {% if goal.id %}
-            <div class="col-md-2">
+            <div class="col-md-{{ width }}">
                 {{ form_row(form.isCompleted, {'attr': {'class': 'custom-select'}}) }}
             </div>
         {% endif %}
     </div>
     <div class="row">
-        <div class="col-md-6">
-            {{ form_row(form.routine, {'attr': {'class': 'custom-select'}}) }}
-        </div>
-        <div class="col-md-6">
-            {{ form_row(form.project, {'attr': {'class': 'custom-select'}}) }}
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-12">
-            {{ form_row(form.description, {'attr': {'placeholder': 'Description of your goal.'|trans, 'rows': 5}}) }}
+            {{ form_row(form.description, {'attr': {'placeholder': 'Short description of the goal.'|trans, 'rows': 5}}) }}
         </div>
     </div>
     <hr>

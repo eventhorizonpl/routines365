@@ -18,12 +18,18 @@ class RoutineType extends AbstractType
     {
         $builder
             ->add('description', TextareaType::class, [
+                'help' => 'Short description of the routine.',
                 'required' => false,
             ])
-            ->add('isEnabled', YesNoType::class)
-            ->add('name')
+            ->add('isEnabled', YesNoType::class, [
+                'help' => 'System does not send reminders for routine that is not enabled.',
+            ])
+            ->add('name', null, [
+                'help' => 'Name of the routine. System uses it in reminders.',
+            ])
             ->add('type', ChoiceType::class, [
                 'choices' => Routine::getTypeFormChoices(),
+                'help' => 'Type of the routine.',
             ])
         ;
     }

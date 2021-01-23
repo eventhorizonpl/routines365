@@ -22,22 +22,35 @@ class ReminderType extends AbstractType
 
         $builder
             ->add('hour', TimeType::class, [
+                'help' => 'Time when the routine should start.',
                 'input' => 'datetime_immutable',
             ])
-            ->add('isEnabled', YesNoType::class)
+            ->add('isEnabled', YesNoType::class, [
+                'help' => 'Determines whether the system should send reminder.',
+            ])
             ->add('minutesBefore', ChoiceType::class, [
                 'choices' => Reminder::getMinutesBeforeFormChoices(),
+                'help' => 'How many minutes before routine start system should send a reminder.',
             ])
-            ->add('sendEmail', YesNoType::class)
-            ->add('sendMotivationalMessage', YesNoType::class)
-            ->add('sendToBrowser', YesNoType::class)
+            ->add('sendEmail', YesNoType::class, [
+                'help' => 'Determines whether the system should send reminder to the email address.',
+            ])
+            ->add('sendMotivationalMessage', YesNoType::class, [
+                'help' => 'Determines whether the system should send a motivational messages in reminder.',
+            ])
+            ->add('sendToBrowser', YesNoType::class, [
+                'help' => 'Determines whether the system should send reminder to the web browser.',
+            ])
             ->add('type', ChoiceType::class, [
                 'choices' => Reminder::getTypeFormChoices(),
+                'help' => 'Type of the reminder.',
             ])
         ;
 
         if (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS)) {
-            $builder->add('sendSms', YesNoType::class);
+            $builder->add('sendSms', YesNoType::class, [
+                'help' => 'Determines whether the system should send reminder to phone number.',
+            ]);
         }
     }
 

@@ -22,15 +22,20 @@ class RewardType extends AbstractType
 
         $builder
             ->add('description', TextareaType::class, [
+                'help' => 'Short description of the reward.',
                 'required' => false,
             ])
-            ->add('name')
+            ->add('name', null, [
+                'help' => 'Name of the reward.',
+            ])
             ->add('requiredNumberOfCompletions', ChoiceType::class, [
                 'choices' => Reward::getRequiredNumberOfCompletionsFormChoices(),
+                'help' => 'Required number of completions before system will award this reward.',
                 'required' => true,
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => Reward::getTypeFormChoices(),
+                'help' => 'Type of the reward.',
                 'required' => true,
             ])
         ;
@@ -39,6 +44,7 @@ class RewardType extends AbstractType
             $user = $reward->getUser();
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
+                'help' => 'Routine associated with the reward.',
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
                     return $entityRepository->createQueryBuilder('r')
                         ->where('r.user = :user')

@@ -16,10 +16,15 @@ class BaseContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('content', TextareaType::class)
-            ->add('title')
+            ->add('content', TextareaType::class, [
+                'help' => 'Content of the contact message.',
+            ])
+            ->add('title', null, [
+                'help' => 'Title of the contact message.',
+            ])
             ->add('type', ChoiceType::class, [
                 'choices' => Contact::getTypeFormChoices(),
+                'help' => 'Type of the contact message.',
             ])
         ;
     }

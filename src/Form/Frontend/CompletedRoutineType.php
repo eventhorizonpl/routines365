@@ -17,13 +17,17 @@ class CompletedRoutineType extends AbstractType
     {
         $builder
             ->add('comment', TextareaType::class, [
+                'help' => 'Comment about completed routine.',
                 'required' => false,
             ])
             ->add('date', DateTimeType::class, [
                 'date_widget' => 'single_text',
+                'help' => 'Time of the ending of the routine.',
                 'input' => 'datetime_immutable',
             ])
-            ->add('minutesDevoted')
+            ->add('minutesDevoted', null, [
+                'help' => 'Number of minutes devoted for the routine.',
+            ])
         ;
     }
 
