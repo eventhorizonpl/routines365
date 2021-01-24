@@ -12,18 +12,28 @@ use App\Repository\ReminderMessageRepository;
 use DateTime;
 use DateTimeImmutable;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Nelmio\ApiDocBundle\Annotation\Security;
+use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/api/v1/reminder-message", name="api_v1_reminder_message_", host="api.routines365.{topdomain}", defaults={"topdomain"="com"}, requirements={"topdomain"="com|local"})
+ * @Route("/api/v1/reminder-messages", name="api_v1_reminder_message_", host="api.routines365.{topdomain}", defaults={"topdomain"="com"}, requirements={"topdomain"="com|local"})
  */
 class ReminderMessageController extends AbstractFOSRestController
 {
     /**
+     * @OA\Response(
+     *     response=200,
+     *     description="Returns the browser notifications of an user",
+     *     @Model(type=ReminderMessageListDto::class, groups={"list"})
+     * )
+     * @OA\Tag(name="ReminderMessages")
      * @Route("/browser-notifications-list", name="browser_notifications_list", methods={"GET"}, options={"expose"=true})
+     * @Security(name="api_key")
      */
     public function getBrowserNotificationsList(ReminderMessageRepository $reminderMessageRepository)
     {

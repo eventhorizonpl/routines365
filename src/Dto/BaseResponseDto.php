@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace App\Dto;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 
 abstract class BaseResponseDto
 {
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
      * @Groups({"list", "show"})
+     * @OA\Property(type="string")
      */
     public int $code;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
      * @Groups({"list", "show"})
+     * @OA\Property(type="string")
      */
     public string $status;
 

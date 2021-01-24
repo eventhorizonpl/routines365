@@ -59,7 +59,7 @@ class ReminderMessage
     /**
      * @Assert\NotNull(groups={"system"})
      * @Assert\Type("bool", groups={"system"})
-     * @Groups({"list", "show"})
+     * @Groups({"show"})
      * @ORM\Column(type="boolean")
      */
     protected bool $isReadFromBrowser;
