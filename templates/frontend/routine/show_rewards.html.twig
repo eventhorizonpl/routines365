@@ -3,7 +3,7 @@
 {% block routine_content %}
     <p>
         {{ 'Rewards'|trans }}: {{ routine.rewards|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reward_new', {'uuid': routine.uuid}) }}">
+        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reward_new', {'uuid': routine.uuid}) }}" title="{{ 'Create a reward'|trans }}">
             <i aria-hidden="true" class="bi bi-award"></i>
             {{ 'Create a reward'|trans }}
         </a>

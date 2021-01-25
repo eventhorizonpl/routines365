@@ -19,10 +19,10 @@
                     <i aria-hidden="true" class="bi bi-award"></i>
                     {{ 'Rewards'|trans }}
                 </h3>
-                <a class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}">
+                <a aria-label="{{ 'Information'|trans }}" class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}" title="{{ 'Information'|trans }}">
                     <i aria-hidden="true" class="bi bi-question-square"></i>
                 </a>
-                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_new', {'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_NEW')}) }}{% else %}{{ path('frontend_reward_new') }}{% endif %}">
+                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_new', {'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_NEW')}) }}{% else %}{{ path('frontend_reward_new') }}{% endif %}" title="{{ 'Create a reward'|trans }}">
                     <i aria-hidden="true" class="bi bi-award"></i>
                     {{ 'Create a reward'|trans }}
                 </a>
@@ -39,7 +39,7 @@
                                 {{ reward.name }}
                             </div>
                             <div class="col-4">
-                                <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reward_show', {'uuid': reward.uuid}) }}">
+                                <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_reward_show', {'uuid': reward.uuid}) }}" title="{{ 'Show'|trans }}">
                                     <i aria-hidden="true" class="bi bi-eye"></i>
                                     {{ 'Show'|trans }}
                                 </a>
@@ -82,15 +82,15 @@
                         <p class="card-text">
                             {{ 'You do not have any rewards!'|trans }}
                         </p>
-                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_new', {'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_NEW')}) }}{% else %}{{ path('frontend_reward_new') }}{% endif %}">
+                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_new', {'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_NEW')}) }}{% else %}{{ path('frontend_reward_new') }}{% endif %}" title="{{ 'Create a reward'|trans }}">
                             <i aria-hidden="true" class="bi bi-award"></i>
                             {{ 'Create a reward'|trans }}
                         </a>
-                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}">
+                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}" title="{{ 'Know your tools'|trans }}">
                             <i aria-hidden="true" class="bi bi-lightbulb"></i>
                             {{ 'Know your tools'|trans }}
                         </a>
-                        <a class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}">
+                        <a aria-label="{{ 'Information'|trans }}" class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_rewards') }}" title="{{ 'Information'|trans }}">
                             <i aria-hidden="true" class="bi bi-question-square"></i>
                         </a>
                     </div>

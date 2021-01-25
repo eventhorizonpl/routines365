@@ -19,12 +19,12 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_goals'] %} active{% endif %}" href="{% if know_your_tools_goals_show is defined and know_your_tools_goals_show %}{{ path('frontend_routine_show_goals', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_goals_show}) }}{% else %}{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}{% endif %}">
+        <a class="nav-link{% if route in ['frontend_routine_show_goals'] %} active{% endif %}" href="{% if know_your_tools_goals_show is defined and know_your_tools_goals_show %}{{ path('frontend_routine_show_goals', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_goals_show}) }}{% else %}{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}{% endif %}" title="{{ 'Goals'|trans }}">
             {{ 'Goals'|trans }}
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_notes'] %} active{% endif %}" href="{{ path('frontend_routine_show_notes', {'uuid': routine.uuid}) }}">
+        <a class="nav-link{% if route in ['frontend_routine_show_notes'] %} active{% endif %}" href="{{ path('frontend_routine_show_notes', {'uuid': routine.uuid}) }}" title="{{ 'Notes'|trans }}">
             {{ 'Notes'|trans }}
         </a>
     </li>
@@ -34,7 +34,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_routine_show_rewards'] %} active{% endif %}" href="{{ path('frontend_routine_show_rewards', {'uuid': routine.uuid}) }}">
+        <a class="nav-link{% if route in ['frontend_routine_show_rewards'] %} active{% endif %}" href="{{ path('frontend_routine_show_rewards', {'uuid': routine.uuid}) }}" title="{{ 'Rewards'|trans }}">
             {{ 'Rewards'|trans }}
         </a>
     </li>

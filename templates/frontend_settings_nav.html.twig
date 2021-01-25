@@ -2,18 +2,28 @@
 
 <ul class="nav nav-tabs card-header-tabs mt-2">
     <li class="nav-item">
-        <a class="nav-link{% if route in ['frontend_profile_show', 'frontend_profile_edit'] %} active{% endif %}" href="{{ path('frontend_profile_show') }}">{{ 'Profile'|trans }}</a>
+        <a class="nav-link{% if route in ['frontend_profile_show', 'frontend_profile_edit'] %} active{% endif %}" href="{{ path('frontend_profile_show') }}" title="{{ 'Profile'|trans }}">
+            {{ 'Profile'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route == 'frontend_account_show' %} active{% endif %}" href="{{ path('frontend_account_show') }}">{{ 'Account'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_account_show' %} active{% endif %}" href="{{ path('frontend_account_show') }}" title="{{ 'Account'|trans }}">
+            {{ 'Account'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route == 'frontend_account_operation_index' %} active{% endif %}" href="{{ path('frontend_account_operation_index') }}">{{ 'Account operations'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_account_operation_index' %} active{% endif %}" href="{{ path('frontend_account_operation_index') }}" title="{{ 'Account operations'|trans }}">
+            {{ 'Account operations'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route == 'frontend_user_change_password' %} active{% endif %}" href="{{ path('frontend_user_change_password') }}">{{ 'Change password'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_user_change_password' %} active{% endif %}" href="{{ path('frontend_user_change_password') }}" title="{{ 'Change password'|trans }}">
+            {{ 'Change password'|trans }}
+        </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if route == 'frontend_gdpr_show' %} active{% endif %}" href="{{ path('frontend_gdpr_show') }}">{{ 'GDPR data export'|trans }}</a>
+        <a class="nav-link{% if route == 'frontend_gdpr_show' %} active{% endif %}" href="{{ path('frontend_gdpr_show') }}" title="{{ 'GDPR data export'|trans }}">
+            {{ 'GDPR data export'|trans }}
+        </a>
     </li>
 </ul>

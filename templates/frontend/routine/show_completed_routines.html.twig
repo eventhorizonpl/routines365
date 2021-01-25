@@ -7,7 +7,7 @@
 
     <p>
         {{ 'Completed routines'|trans }}: {{ routine.completedRoutines|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_completing_routines_new is defined and know_your_tools_completing_routines_new %}{{ path('frontend_completed_routine_new', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_completing_routines_new}) }}{% else %}{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}{% endif %}">
+        <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_completing_routines_new is defined and know_your_tools_completing_routines_new %}{{ path('frontend_completed_routine_new', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_completing_routines_new}) }}{% else %}{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}{% endif %}" title="{{ 'Complete a routine'|trans }}">
             <i aria-hidden="true" class="bi bi-star"></i>
             {{ 'Complete a routine'|trans }}
         </a>

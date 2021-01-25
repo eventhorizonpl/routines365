@@ -1,6 +1,6 @@
 {% set route = app.request.get('_route') %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
     <a class="navbar-brand" href="{{ path('frontend_home') }}">{{ 'Routines365'|trans }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,68 +29,68 @@
             {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_routine_edit', 'frontend_routine_index', 'frontend_routine_new', 'frontend_routine_show'] %} active{% endif %}" href="{% if know_your_tools_routine is defined and know_your_tools_routine %}{{ path('frontend_routine_index', {'know_your_tools': know_your_tools_routine}) }}{% else %}{{ path('frontend_routine_index') }}{% endif %}">
+                    <a class="nav-link{% if route in ['frontend_routine_edit', 'frontend_routine_index', 'frontend_routine_new', 'frontend_routine_show'] %} active{% endif %}" href="{% if know_your_tools_routine is defined and know_your_tools_routine %}{{ path('frontend_routine_index', {'know_your_tools': know_your_tools_routine}) }}{% else %}{{ path('frontend_routine_index') }}{% endif %}" title="{{ 'Routines'|trans }}">
                         <i aria-hidden="true" class="bi bi-arrow-repeat"></i>
                         {{ 'Routines'|trans }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_note_edit', 'frontend_note_index', 'frontend_note_new', 'frontend_note_show'] %} active{% endif %}" href="{% if know_your_tools_note is defined and know_your_tools_note %}{{ path('frontend_note_index', {'know_your_tools': know_your_tools_note}) }}{% else %}{{ path('frontend_note_index') }}{% endif %}">
+                    <a class="nav-link{% if route in ['frontend_note_edit', 'frontend_note_index', 'frontend_note_new', 'frontend_note_show'] %} active{% endif %}" href="{% if know_your_tools_note is defined and know_your_tools_note %}{{ path('frontend_note_index', {'know_your_tools': know_your_tools_note}) }}{% else %}{{ path('frontend_note_index') }}{% endif %}" title="{{ 'Notes'|trans }}">
                         <i aria-hidden="true" class="bi bi-pen"></i>
                         {{ 'Notes'|trans }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_project_edit', 'frontend_project_index', 'frontend_project_new', 'frontend_project_show'] %} active{% endif %}" href="{% if know_your_tools_project is defined and know_your_tools_project %}{{ path('frontend_project_index', {'know_your_tools': know_your_tools_project}) }}{% else %}{{ path('frontend_project_index') }}{% endif %}">
+                    <a class="nav-link{% if route in ['frontend_project_edit', 'frontend_project_index', 'frontend_project_new', 'frontend_project_show'] %} active{% endif %}" href="{% if know_your_tools_project is defined and know_your_tools_project %}{{ path('frontend_project_index', {'know_your_tools': know_your_tools_project}) }}{% else %}{{ path('frontend_project_index') }}{% endif %}" title="{{ 'Projects'|trans }}">
                         <i aria-hidden="true" class="bi bi-tools"></i>
                         {{ 'Projects'|trans }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{% if know_your_tools_reward is defined and know_your_tools_reward %}{{ path('frontend_reward_index', {'know_your_tools': know_your_tools_reward}) }}{% else %}{{ path('frontend_reward_index') }}{% endif %}">
+                    <a class="nav-link{% if route in ['frontend_reward_edit', 'frontend_reward_index', 'frontend_reward_new', 'frontend_reward_show'] %} active{% endif %}" href="{% if know_your_tools_reward is defined and know_your_tools_reward %}{{ path('frontend_reward_index', {'know_your_tools': know_your_tools_reward}) }}{% else %}{{ path('frontend_reward_index') }}{% endif %}" title="{{ 'Rewards'|trans }}">
                         <i aria-hidden="true" class="bi bi-award"></i>
                         {{ 'Rewards'|trans }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if route in ['frontend_achievement_index'] %} active{% endif %}" href="{{ path('frontend_achievement_index') }}">
+                    <a class="nav-link{% if route in ['frontend_achievement_index'] %} active{% endif %}" href="{{ path('frontend_achievement_index') }}" title="{{ 'Achievements'|trans }}">
                         <i aria-hidden="true" class="bi bi-trophy"></i>
                         {{ 'Achievements'|trans }}
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ 'System'|trans }}">
                         {{ 'System'|trans }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
-                        <a class="dropdown-item" href="{% if know_your_tools_basic_configuration is defined and know_your_tools_basic_configuration %}{{ path('frontend_profile_show', {'know_your_tools': know_your_tools_basic_configuration}) }}{% else %}{{ path('frontend_profile_show') }}{% endif %}">
+                        <a class="dropdown-item" href="{% if know_your_tools_basic_configuration is defined and know_your_tools_basic_configuration %}{{ path('frontend_profile_show', {'know_your_tools': know_your_tools_basic_configuration}) }}{% else %}{{ path('frontend_profile_show') }}{% endif %}" title="{{ 'Settings'|trans }}">
                             <i aria-hidden="true" class="bi bi-gear"></i>
                             {{ 'Settings'|trans }}
                         </a>
-                        <a class="dropdown-item" href="{{ path('frontend_contact_new') }}">
+                        <a class="dropdown-item" href="{{ path('frontend_contact_new') }}" title="{{ 'Contact form'|trans }}">
                             <i aria-hidden="true" class="bi bi-envelope"></i>
                             {{ 'Contact form'|trans }}
                         </a>
                         {% if true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_invitation_send') }}">
+                            <a class="dropdown-item" href="{{ path('frontend_invitation_send') }}" title="{{ 'Invite'|trans }}">
                                 <i aria-hidden="true" class="bi bi-envelope"></i>
                                 {{ 'Invite'|trans }}
                             </a>
                         {% endif %}
                         {% if true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_quote_index') }}">
+                            <a class="dropdown-item" href="{{ path('frontend_quote_index') }}" title="{{ 'Motivate a friend'|trans }}">
                                 <i aria-hidden="true" class="bi bi-chat-left-quote"></i>
                                 {{ 'Motivate a friend'|trans }}
                             </a>
                         {% endif %}
                         {% if true == constant('App\\Resource\\ConfigResource::PROMOTIONS_ENABLED') %}
-                            <a class="dropdown-item" href="{{ path('frontend_promotion_code') }}">
+                            <a class="dropdown-item" href="{{ path('frontend_promotion_code') }}" title="{{ 'Promotion codes'|trans }}">
                                 <i aria-hidden="true" class="bi bi-plus-square"></i>
                                 {{ 'Promotion codes'|trans }}
                             </a>
                         {% endif %}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('security_logout') }}">
+                        <a class="dropdown-item" href="{{ path('security_logout') }}" title="{{ 'Logout'|trans }}">
                             <i aria-hidden="true" class="fas bi bi-box-arrow-right"></i>
                             {{ 'Logout'|trans }}
                         </a>
@@ -99,14 +99,14 @@
             {% else %}
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('security_register') }}">
+                        <a class="nav-link" href="{{ path('security_register') }}" title="{{ 'Register'|trans }}">
                             <i aria-hidden="true" class="bi bi-plus-square-square"></i>
                             {{ 'Register'|trans }}
                         </a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}">
+                    <a class="nav-link" href="{{ path('security_login') }}" title="{{ 'Login'|trans }}">
                         <i aria-hidden="true" class="bi bi-box-arrow-in-right"></i>
                         {{ 'Login'|trans }}
                     </a>

@@ -10,7 +10,10 @@
                 </div>
                 <div class="card-body">
                     {{ 'You can get your data here.'|trans }}<br><br>
-                    <a class="btn btn-primary" href="{{ path('frontend_gdpr_export') }}">{{ 'Export'|trans }}</a>
+                    <a class="btn btn-primary" href="{{ path('frontend_gdpr_export') }}" title="{{ 'Export'|trans }}">
+                        <i aria-hidden="true" class="bi bi-cloud-download"></i>
+                        {{ 'Export'|trans }}
+                    </a>
                 </div>
             </div>
         </div>

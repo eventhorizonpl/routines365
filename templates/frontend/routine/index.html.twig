@@ -33,10 +33,10 @@
                     <i aria-hidden="true" class="bi bi-arrow-repeat"></i>
                     {{ 'Routines'|trans }}
                 </h3>
-                <a class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_routines') }}">
+                <a aria-label="{{ 'Information'|trans }}" class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_routines') }}" title="{{ 'Information'|trans }}">
                     <i aria-hidden="true" class="bi bi-question-square"></i>
                 </a>
-                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_new', {'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_NEW')}) }}{% else %}{{ path('frontend_routine_new') }}{% endif %}">
+                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_new', {'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_NEW')}) }}{% else %}{{ path('frontend_routine_new') }}{% endif %}" title="{{ 'Create a routine'|trans }}">
                     <i aria-hidden="true" class="bi bi-arrow-repeat"></i>
                     {{ 'Create a routine'|trans }}
                 </a>
@@ -53,7 +53,7 @@
                                 {{ routine.name }}
                             </div>
                             <div class="col-4">
-                                <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_routines_show is defined and know_your_tools_routines_show %}{{ path('frontend_routine_show', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_routines_show}) }}{% else %}{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}{% endif %}">
+                                <a class="btn btn-primary btn-sm float-right" href="{% if know_your_tools_routines_show is defined and know_your_tools_routines_show %}{{ path('frontend_routine_show', {'uuid': routine.uuid, 'know_your_tools': know_your_tools_routines_show}) }}{% else %}{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}{% endif %}" title="{{ 'Show'|trans }}">
                                     <i aria-hidden="true" class="bi bi-eye"></i>
                                     {{ 'Show'|trans }}
                                 </a>
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-2 mt-2">
-                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}">
+                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_completed_routine_new', {'uuid': routine.uuid}) }}" title="{{ 'Complete a routine'|trans }}">
                                         <i aria-hidden="true" class="bi bi-star"></i>
                                         {{ 'Complete a routine'|trans }}
                                     </a>
@@ -139,15 +139,15 @@
                         <p class="card-text">
                             {{ 'You do not have any routines!'|trans }}
                         </p>
-                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_new', {'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_NEW')}) }}{% else %}{{ path('frontend_routine_new') }}{% endif %}">
+                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_routine_new', {'know_your_tools': constant('App\\Resource\\KytResource::ROUTINES_NEW')}) }}{% else %}{{ path('frontend_routine_new') }}{% endif %}" title="{{ 'Create a routine'|trans }}">
                             <i aria-hidden="true" class="bi bi-arrow-repeat"></i>
                             {{ 'Create a routine'|trans }}
                         </a>
-                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}">
+                        <a class="btn btn-info ml-2" href="{{ path('frontend_user_kyt_start') }}" title="{{ 'Know your tools'|trans }}">
                             <i aria-hidden="true" class="bi bi-lightbulb"></i>
                             {{ 'Know your tools'|trans }}
                         </a>
-                        <a class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_routines') }}">
+                        <a aria-label="{{ 'Information'|trans }}" class="btn btn-info ml-2" href="{{ path('frontend_static_page_how_to_routines') }}" title="{{ 'Information'|trans }}">
                             <i aria-hidden="true" class="bi bi-question-square"></i>
                         </a>
                     </div>
@@ -157,4 +157,6 @@
     {% endfor %}
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routines'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Routines'|trans }}
+{% endblock %}

@@ -10,28 +10,38 @@
                 <div class="card-body">
                     <div class="row mb-1 p-3">
                         <div class="col-md-4">
-                            <span {% if quotes.isSorted('q.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Quote'|trans, 'q.content') }}</span>
+                            <span {% if quotes.isSorted('q.Content') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Quote'|trans, 'q.content') }}
+                            </span>
                         </div>
                         <div class="col-md-4">
-                            <span {% if quotes.isSorted('q.Author') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Author'|trans, 'q.author') }}</span>
+                            <span {% if quotes.isSorted('q.Author') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Author'|trans, 'q.author') }}
+                            </span>
                         </div>
                         <div class="col-md-2">
-                            <span {% if quotes.isSorted('q.Popularity') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Popularity'|trans, 'q.popularity') }}</span>
+                            <span {% if quotes.isSorted('q.Popularity') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Popularity'|trans, 'q.popularity') }}
+                            </span>
                         </div>
                     </div>
                     {% for quote in quotes %}
                         <div class="row mb-1 p-3">
                             <div class="col-md-8">
                                 <blockquote class="blockquote">
-                                    <p class="mb-0">{{ quote.content }}</p>
-                                    <footer class="blockquote-footer">{{ quote.author }}</footer>
+                                    <p class="mb-0">
+                                        {{ quote.content }}
+                                    </p>
+                                    <footer class="blockquote-footer">
+                                        {{ quote.author }}
+                                    </footer>
                                 </blockquote>
                             </div>
                             <div class="col-md-2">
                                 {{ quote.popularity }}
                             </div>
                             <div class="col-md-2">
-                                <a class="btn btn-primary" href="{{ path('frontend_quote_send', {'uuid': quote.uuid}) }}">
+                                <a class="btn btn-primary" href="{{ path('frontend_quote_send', {'uuid': quote.uuid}) }}" title="{{ 'Send'|trans }}">
                                     <i aria-hidden="true" class="bi bi-envelope"></i>
                                     {{ 'Send'|trans }}
                                 </a>

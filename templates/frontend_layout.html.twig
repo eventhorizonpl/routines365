@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% include('frontend_navbar.html.twig') %}
-
     <main role="main">
+        {% include('frontend_navbar.html.twig') %}
         <div class="container-fluid mt-4">
             {% if app.request.hasPreviousSession %}
                 {% for label, messages in app.flashes %}
@@ -19,44 +18,44 @@
             {% endif %}
             {% block content %}{% endblock %}
         </div>
-    </main>
-    <footer class="footer">
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-10">
-                    <ul class="list-inline list-unstyled">
-                        <li class="list-inline-item"><a href="{{ path('frontend_static_page_changelog') }}">{{ 'Changelog'|trans }}</a></li>
-                        <li class="list-inline-item"><a href="{{ path('frontend_static_page_contact') }}">{{ 'Contact'|trans }}</a></li>
-                        <li class="list-inline-item"><a href="{{ path('frontend_static_page_faq') }}">{{ 'FAQ'|trans }}</a></li>
-                        <li class="list-inline-item"><a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a></li>
-                        <li class="list-inline-item"><a href="{{ path('frontend_user_kyt_start') }}">{{ 'Know your tools'|trans }}</a></li>
-                        <li class="list-inline-item"><a href="{{ path('frontend_static_page_privacy_policy') }}">{{ 'Privacy Policy'|trans }}</a></li>
-                        <li class="list-inline-item"><a href="{{ path('frontend_static_page_terms_and_conditions') }}">{{ 'Terms and Conditions'|trans }}</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <ul class="list-inline list-unstyled">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/Routines365-105566111435427" target="_blank"><i aria-hidden="true" class="bi bi-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/Routines365" target="_blank"><i aria-hidden="true" class="bi bi-twitter"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-12">
-                    <p class="text-center">{{ 'Copyright'|trans }} &copy; {{ "now"|date("Y") }} Event Horizon Labs</p>
+        <footer class="footer">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul class="list-inline list-unstyled">
+                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_changelog') }}">{{ 'Changelog'|trans }}</a></li>
+                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_contact') }}">{{ 'Contact'|trans }}</a></li>
+                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_faq') }}">{{ 'FAQ'|trans }}</a></li>
+                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a></li>
+                            <li class="list-inline-item"><a href="{{ path('frontend_user_kyt_start') }}">{{ 'Know your tools'|trans }}</a></li>
+                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_privacy_policy') }}">{{ 'Privacy Policy'|trans }}</a></li>
+                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_terms_and_conditions') }}">{{ 'Terms and Conditions'|trans }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <ul class="list-inline list-unstyled">
+                            <li class="list-inline-item"><a aria-label="{{ 'Facebook'|trans }}" href="https://www.facebook.com/Routines365-105566111435427" target="_blank"><i aria-hidden="true" class="bi bi-facebook"></i></a></li>
+                            <li class="list-inline-item"><a aria-label="{{ 'Twitter'|trans }}" href="https://twitter.com/Routines365" target="_blank"><i aria-hidden="true" class="bi bi-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center">{{ 'Copyright'|trans }} &copy; {{ "now"|date("Y") }} Event Horizon Labs</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <div class="alert text-center cookiealert" role="alert">
-        <b>{{ 'Do you like cookies?'|trans }}</b> &#x1F36A;
-        {{ 'We use cookies to ensure you get the best experience on our website.'|trans }}
-        <a href="{{ path('frontend_static_page_privacy_policy') }}">
-            {{ 'Learn more'|trans }}
-        </a>
+        </footer>
+        <div class="alert text-center cookiealert" role="alert">
+            <b>{{ 'Do you like cookies?'|trans }}</b> &#x1F36A;
+            {{ 'We use cookies to ensure you get the best experience on our website.'|trans }}
+            <a href="{{ path('frontend_static_page_privacy_policy') }}">
+                {{ 'Learn more'|trans }}
+            </a>
 
-        <button type="button" class="btn btn-primary btn-sm acceptcookies">
-            {{ 'I agree'|trans }}
-        </button>
-    </div>
+            <button type="button" class="btn btn-primary btn-sm acceptcookies">
+                {{ 'I agree'|trans }}
+            </button>
+        </div>
+    </main>
 {#
     {% if app.user and app.user.apiToken %}
         <span data-value="{{ app.user.apiToken }}" id="token"></span>

@@ -3,7 +3,7 @@
 {% block routine_content %}
     <p>
         {{ 'Notes'|trans }}: {{ routine.notes|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid}) }}">
+        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid}) }}" title="{{ 'Create a note'|trans }}">
             <i aria-hidden="true" class="bi bi-pen"></i>
             {{ 'Create a note'|trans }}
         </a>
