@@ -1,0 +1,9 @@
+/* TEAM */
+Your title: Michal Piotrowski.
+Site: michal@eventhorizonlabs.eu
+Location: Poland.
+
+/* SITE */
+Last update: 2021
+Standards: HTML5, CSS3
+Software: Atom

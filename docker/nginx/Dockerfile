@@ -14,7 +14,7 @@ RUN yarn install \
 
 FROM nginx_build as nginx_build_final
 COPY --from=nginx_build_assets /var/www/html/public/build /var/www/html/public/build
-COPY public/robots.txt public/sitemap.xml public/
+COPY public/humans.txt public/robots.txt public/sitemap.xml public/
 COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 STOPSIGNAL SIGQUIT
