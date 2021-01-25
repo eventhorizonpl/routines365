@@ -33,6 +33,7 @@ class NoteType extends AbstractType
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
                 'help' => 'Routine associated with the note.',
+                'label' => 'Routine (optional)',
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
                     return $entityRepository->createQueryBuilder('r')
                         ->where('r.user = :user')

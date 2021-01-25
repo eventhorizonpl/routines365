@@ -23,6 +23,7 @@ class ProfileType extends BaseProfileType
         $builder
             ->add('phone', PhoneNumberType::class, [
                 'help' => 'System requires mobile phone number for proper work of SMS reminders.',
+                'label' => 'Phone (optional)',
                 'required' => false,
             ])
             ->add('sendWeeklyMonthlyStatistics', YesNoType::class, [
@@ -50,10 +51,12 @@ class ProfileType extends BaseProfileType
             $builder
                 ->add('firstName', TextType::class, [
                     'help' => 'System requires first name for sending invitations and motivational messages to friends.',
+                    'label' => 'First name (optional)',
                     'required' => false,
                 ])
                 ->add('lastName', TextType::class, [
                     'help' => 'System requires last name for sending invitations and motivational messages to friends.',
+                    'label' => 'Last name (optional)',
                     'required' => false,
                 ])
             ;

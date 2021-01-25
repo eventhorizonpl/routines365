@@ -19,6 +19,7 @@ class RoutineType extends AbstractType
         $builder
             ->add('description', TextareaType::class, [
                 'help' => 'Short description of the routine.',
+                'label' => 'Description (optional)',
                 'required' => false,
             ])
             ->add('isEnabled', YesNoType::class, [

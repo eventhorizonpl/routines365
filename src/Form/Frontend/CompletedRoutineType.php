@@ -18,6 +18,7 @@ class CompletedRoutineType extends AbstractType
         $builder
             ->add('comment', TextareaType::class, [
                 'help' => 'Comment about completed routine.',
+                'label' => 'Comment (optional)',
                 'required' => false,
             ])
             ->add('date', DateTimeType::class, [

@@ -25,6 +25,7 @@ class GoalType extends AbstractType
         $builder
             ->add('description', TextareaType::class, [
                 'help' => 'Short description of the goal.',
+                'label' => 'Description (optional)',
                 'required' => false,
             ])
             ->add('name', null, [
@@ -33,6 +34,7 @@ class GoalType extends AbstractType
             ->add('project', EntityType::class, [
                 'class' => Project::class,
                 'help' => 'Project associated with the goal.',
+                'label' => 'Project (optional)',
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
                     return $entityRepository->createQueryBuilder('p')
                         ->where('p.user = :user')
@@ -61,6 +63,7 @@ class GoalType extends AbstractType
         if (null !== $goal->getId()) {
             $builder->add('isCompleted', YesNoType::class, [
                 'help' => 'Determines whether you achieved the goal.',
+                'label' => 'Project (optional)',
             ]);
         }
     }

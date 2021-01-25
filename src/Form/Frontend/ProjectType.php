@@ -20,6 +20,7 @@ class ProjectType extends AbstractType
         $builder
             ->add('description', TextareaType::class, [
                 'help' => 'Short description of the project.',
+                'label' => 'Description (optional)',
                 'required' => false,
             ])
             ->add('name', null, [

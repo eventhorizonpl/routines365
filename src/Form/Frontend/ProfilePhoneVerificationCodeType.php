@@ -16,7 +16,7 @@ class ProfilePhoneVerificationCodeType extends AbstractType
     {
         $builder
             ->add('phoneVerificationCode', IntegerType::class, [
-                'help' => 'You should receive verification code on your phone number.',
+                'help' => 'You should receive a verification code on your phone number.',
                 'required' => true,
             ])
         ;

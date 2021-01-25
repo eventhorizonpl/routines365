@@ -23,6 +23,7 @@ class RewardType extends AbstractType
         $builder
             ->add('description', TextareaType::class, [
                 'help' => 'Short description of the reward.',
+                'label' => 'Description (optional)',
                 'required' => false,
             ])
             ->add('name', null, [
@@ -45,6 +46,7 @@ class RewardType extends AbstractType
             $builder->add('routine', EntityType::class, [
                 'class' => Routine::class,
                 'help' => 'Routine associated with the reward.',
+                'label' => 'Routine (optional)',
                 'query_builder' => function (EntityRepository $entityRepository) use ($user) {
                     return $entityRepository->createQueryBuilder('r')
                         ->where('r.user = :user')
