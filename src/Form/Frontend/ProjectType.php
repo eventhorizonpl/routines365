@@ -31,6 +31,7 @@ class ProjectType extends AbstractType
         if (null !== $project->getId()) {
             $builder->add('isCompleted', YesNoType::class, [
                 'help' => 'Determines whether you completed the project.',
+                'label' => 'Is completed (optional)',
             ]);
         }
     }

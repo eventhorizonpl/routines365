@@ -7,23 +7,22 @@
         </div>
     </div>
     <div class="row">
-        {% if goal.id %}
-            {% set width = 4 %}
-        {% else %}
-            {% set width = 6 %}
-        {% endif %}
-        <div class="col-md-{{ width }}">
+        <div class="col-md-12">
             {{ form_row(form.routine, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        <div class="col-md-{{ width }}">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             {{ form_row(form.project, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        {% if goal.id %}
-            <div class="col-md-{{ width }}">
+    </div>
+    {% if goal.id %}
+        <div class="row">
+            <div class="col-md-12">
                 {{ form_row(form.isCompleted, {'attr': {'class': 'custom-select'}}) }}
             </div>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-12">
             {{ form_row(form.description, {'attr': {'placeholder': 'Short description of the goal.'|trans, 'rows': 5}}) }}

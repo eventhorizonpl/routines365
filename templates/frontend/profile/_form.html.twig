@@ -1,31 +1,18 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {% if (true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED')) or (true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED')) %}
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.firstName) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(form.lastName) }}
-            </div>
-        </div>
-    {% endif %}
     <div class="row">
         <div class="col-md-12">
-            {{ form_row(form.phone, {'attr': {'placeholder': '+xx xxx xxx xxx'|trans}}) }}
+            {{ form_row(form.sendWeeklyMonthlyStatistics, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            {{ form_row(form.sendWeeklyMonthlyStatistics, {'attr': {'class': 'custom-select'}}) }}
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-12">
             {{ form_row(form.showMotivationalMessages, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        <div class="col-md-4">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             {{ form_row(form.theme, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
@@ -41,6 +28,23 @@
                 <i aria-hidden="true" class="bi bi-geo-alt"></i>
                 {{ 'Find time zone'|trans }}
             </a>
+        </div>
+    </div>
+    {% if (true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED')) or (true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED')) %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.firstName, {'attr': {'autocomplete': 'given-name', 'placeholder': 'First name'|trans}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.lastName, {'attr': {'autocomplete': 'family-name', 'placeholder': 'Last name'|trans}}) }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(form.phone, {'attr': {'autocomplete': 'tel', 'placeholder': '+xx xxx xxx xxx'|trans}}) }}
         </div>
     </div>
     <hr>

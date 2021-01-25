@@ -2,39 +2,44 @@
     {{ form_errors(form) }}
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             {{ form_row(form.hour) }}
         </div>
-        <div class="col-md-4">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             {{ form_row(form.minutesBefore, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        <div class="col-md-4">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             {{ form_row(form.type, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
     <div class="row">
-        {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
-            {% set width = 4 %}
-        {% else %}
-            {% set width = 6 %}
-        {% endif %}
-        <div class="col-md-{{ width }}">
+        <div class="col-md-12">
             {{ form_row(form.sendEmail, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
-            <div class="col-md-{{ width }}">
+    </div>
+    {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
+        <div class="row">
+            <div class="col-md-12">
                 {{ form_row(form.sendSms, {'attr': {'class': 'custom-select'}}) }}
             </div>
-        {% endif %}
-        <div class="col-md-{{ width }}">
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
             {{ form_row(form.sendToBrowser, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             {{ form_row(form.sendMotivationalMessage, {'attr': {'class': 'custom-select'}}) }}
         </div>
-        <div class="col-md-6">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             {{ form_row(form.isEnabled, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>

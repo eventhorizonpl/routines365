@@ -63,7 +63,7 @@ class GoalType extends AbstractType
         if (null !== $goal->getId()) {
             $builder->add('isCompleted', YesNoType::class, [
                 'help' => 'Determines whether you achieved the goal.',
-                'label' => 'Project (optional)',
+                'label' => 'Is completed (optional)',
             ]);
         }
     }

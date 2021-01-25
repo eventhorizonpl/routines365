@@ -75,9 +75,7 @@ class Profile
     private ?PhoneNumber $phone;
 
     /**
-     * @Assert\Length(
-     *   max = 32
-     * )
+     * @Assert\Length(max = 32)
      * @Assert\Type("string")
      * @ORM\Column(nullable=true, length=32, type="string", unique=true)
      */
@@ -108,9 +106,7 @@ class Profile
 
     /**
      * @Assert\Choice(callback="getThemeValidationChoices")
-     * @Assert\Length(
-     *   max = 8
-     * )
+     * @Assert\Length(max = 8)
      * @Assert\Type("string")
      * @Groups({"gdpr"})
      * @ORM\Column(length=8, nullable=true, type="string")
@@ -118,9 +114,7 @@ class Profile
     private ?string $theme;
 
     /**
-     * @Assert\Length(
-     *   max = 36
-     * )
+     * @Assert\Length(max = 36)
      * @Assert\Timezone
      * @Assert\Type("string")
      * @Groups({"gdpr"})
