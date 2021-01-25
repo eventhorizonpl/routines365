@@ -62,7 +62,7 @@ class UserKytManager
 
         $errors = $this->validate($userKyt);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$userKyt);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $userKyt));
         }
 
         $this->entityManager->persist($userKyt);

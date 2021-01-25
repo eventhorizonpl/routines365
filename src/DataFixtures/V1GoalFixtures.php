@@ -48,10 +48,25 @@ class V1GoalFixtures extends Fixture implements ContainerAwareInterface, Depende
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($goalId = 1; $goalId <= self::GOAL_LIMIT; ++$goalId) {
                         $goal = $this->goalFaker->createGoal();
-                        $goal->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $goal->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $goal->setRoutine($this->getReference(sprintf(
+                            '%s-%d-%d',
+                            V1RoutineFixtures::ROUTINE_REFERENCE,
+                            $userId,
+                            $routineId
+                        )));
+                        $goal->setUser($this->getReference(sprintf(
+                            '%s-%d',
+                            V1UserFixtures::REGULAR_USER_REFERENCE,
+                            $userId
+                        )));
                         $goals[] = $goal;
-                        $this->addReference(self::GOAL_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $goalId, $goal);
+                        $this->addReference(sprintf(
+                            '%s-%d-%d-%d',
+                            self::GOAL_REFERENCE,
+                            $userId,
+                            $routineId,
+                            $goalId
+                        ), $goal);
                     }
                 }
             }
@@ -63,11 +78,32 @@ class V1GoalFixtures extends Fixture implements ContainerAwareInterface, Depende
                     for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                         for ($goalId = 1; $goalId <= self::GOAL_LIMIT; ++$goalId) {
                             $goal = $this->goalFaker->createGoal();
-                            $goal->setProject($this->getReference(V2ProjectFixtures::PROJECT_REFERENCE.'-'.(string) $userId.'-'.(string) $projectId));
-                            $goal->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                            $goal->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                            $goal->setProject($this->getReference(sprintf(
+                                '%s-%d-%d',
+                                V2ProjectFixtures::PROJECT_REFERENCE,
+                                $userId,
+                                $projectId
+                            )));
+                            $goal->setRoutine($this->getReference(sprintf(
+                                '%s-%d-%d',
+                                V1RoutineFixtures::ROUTINE_REFERENCE,
+                                $userId,
+                                $routineId
+                            )));
+                            $goal->setUser($this->getReference(sprintf(
+                                '%s-%d',
+                                V1UserFixtures::REGULAR_USER_REFERENCE,
+                                $userId
+                            )));
                             $goals[] = $goal;
-                            $this->addReference(self::GOAL_REFERENCE.'-'.(string) $userId.'-'.(string) $projectId.'-'.(string) $routineId.'-'.(string) $goalId, $goal);
+                            $this->addReference(sprintf(
+                                '%s-%d-%d-%d-%d',
+                                self::GOAL_REFERENCE,
+                                $userId,
+                                $projectId,
+                                $routineId,
+                                $goalId
+                            ), $goal);
                         }
                     }
                 }

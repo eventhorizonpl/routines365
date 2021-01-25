@@ -279,7 +279,10 @@ class Reminder
     public function getRoutineStartDate(): ?DateTimeImmutable
     {
         $routineStartDate = DateTime::createFromImmutable($this->getNextDateLocalTime());
-        $routineStartDate->modify('+'.$this->getMinutesBefore().' minutes');
+        $routineStartDate->modify(sprintf(
+            '+%d minutes',
+            $this->getMinutesBefore()
+        ));
 
         return DateTimeImmutable::createFromMutable($routineStartDate);
     }

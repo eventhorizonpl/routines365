@@ -44,7 +44,7 @@ class SavedEmailRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('seu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

@@ -60,7 +60,7 @@ class KpiManager
 
         $errors = $this->validate($kpi);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$kpi);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $kpi));
         }
 
         $this->entityManager->persist($kpi);

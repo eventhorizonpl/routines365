@@ -89,7 +89,7 @@ class ProfileManager
 
         $errors = $this->validate($profile);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$profile);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $profile));
         }
 
         $this->entityManager->persist($profile);

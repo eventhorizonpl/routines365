@@ -224,7 +224,10 @@ class GoalController extends AbstractController
         $this->denyAccessUnlessGranted(GoalVoter::DELETE, $goal);
 
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $goal->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $goal->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $goalManager->softDelete($goal, (string) $this->getUser());

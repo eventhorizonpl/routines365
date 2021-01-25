@@ -135,7 +135,10 @@ class ReminderController extends AbstractController
         $this->denyAccessUnlessGranted(ReminderVoter::DELETE, $reminder);
 
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $reminder->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $reminder->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $reminderManager->softDelete($reminder, (string) $this->getUser());

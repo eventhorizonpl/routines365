@@ -23,7 +23,7 @@ class SmsService implements SmsServiceInterface
 
     public function sendPhoneVerificationCode(string $phone, array $context = []): string
     {
-        $message = 'Your phone verification code is '.$context['phone_verification_code'];
+        $message = sprintf('Your phone verification code is %s', $context['phone_verification_code']);
         $result = $this->send($message, $phone);
 
         return $result;

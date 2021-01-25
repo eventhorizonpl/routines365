@@ -124,7 +124,10 @@ class AchievementController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $achievement->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $achievement->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $achievementManager->softDelete($achievement, (string) $this->getUser());

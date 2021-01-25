@@ -88,7 +88,12 @@ class QuoteController extends AbstractController
             return $this->redirectToRoute('frontend_profile_edit');
         }
 
-        $subject = 'R365: '.$firstName.' '.$lastName.' '.$translator->trans('sends you a motivational message');
+        $subject = sprintf(
+            'R365: %s %s %s',
+            $firstName,
+            $lastName,
+            $translator->trans('sends you a motivational message')
+        );
 
         $form = $this->createForm(SendMotivationalEmailType::class);
         $form->handleRequest($request);

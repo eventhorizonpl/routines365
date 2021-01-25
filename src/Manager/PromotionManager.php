@@ -62,7 +62,7 @@ class PromotionManager
 
         $errors = $this->validate($promotion);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$promotion);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $promotion));
         }
 
         $this->entityManager->persist($promotion);

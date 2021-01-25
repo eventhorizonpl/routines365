@@ -66,7 +66,7 @@ class NoteManager
 
         $errors = $this->validate($note);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$note);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $note));
         }
 
         $this->entityManager->persist($note);

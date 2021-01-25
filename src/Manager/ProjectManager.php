@@ -79,7 +79,7 @@ class ProjectManager
 
         $errors = $this->validate($project);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$project);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $project));
         }
 
         $this->entityManager->persist($project);

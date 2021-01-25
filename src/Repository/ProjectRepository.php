@@ -36,7 +36,7 @@ class ProjectRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('pu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 
@@ -80,7 +80,7 @@ class ProjectRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('p.name', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
         }

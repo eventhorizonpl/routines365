@@ -47,7 +47,7 @@ class ReminderMessageRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('rmru.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

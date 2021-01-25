@@ -51,7 +51,7 @@ class ContactRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('cu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

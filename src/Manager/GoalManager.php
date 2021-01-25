@@ -72,7 +72,7 @@ class GoalManager
 
         $errors = $this->validate($goal);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$goal);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $goal));
         }
 
         $this->entityManager->persist($goal);

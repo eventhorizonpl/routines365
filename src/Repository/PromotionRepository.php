@@ -41,7 +41,7 @@ class PromotionRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('p.name', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

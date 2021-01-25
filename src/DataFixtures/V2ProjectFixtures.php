@@ -45,9 +45,18 @@ class V2ProjectFixtures extends Fixture implements ContainerAwareInterface, Depe
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($projectId = 1; $projectId <= self::PROJECT_LIMIT; ++$projectId) {
                     $project = $this->projectFaker->createProject();
-                    $project->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                    $project->setUser($this->getReference(sprintf(
+                        '%s-%d',
+                        V1UserFixtures::REGULAR_USER_REFERENCE,
+                        $userId
+                    )));
                     $projects[] = $project;
-                    $this->addReference(self::PROJECT_REFERENCE.'-'.(string) $userId.'-'.(string) $projectId, $project);
+                    $this->addReference(sprintf(
+                        '%s-%d-%d',
+                        self::PROJECT_REFERENCE,
+                        $userId,
+                        $projectId
+                    ), $project);
                 }
             }
         }

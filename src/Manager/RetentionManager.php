@@ -60,7 +60,7 @@ class RetentionManager
 
         $errors = $this->validate($retention);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$retention);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $retention));
         }
 
         $this->entityManager->persist($retention);

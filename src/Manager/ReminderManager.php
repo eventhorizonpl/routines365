@@ -73,7 +73,10 @@ class ReminderManager
 
         $dateTime = clone $dateTimeNow;
         $dateTime->setTime((int) $hour->format('H'), (int) $hour->format('i'), (int) $hour->format('s'));
-        $dateTime->modify('-'.$reminder->getMinutesBefore().' minutes');
+        $dateTime->modify(sprintf(
+            '-%d minutes',
+            $reminder->getMinutesBefore()
+        ));
 
         if (Reminder::TYPE_DAILY === $reminder->getType()) {
             while ($dateTime <= $dateTimeNow) {
@@ -131,7 +134,7 @@ class ReminderManager
 
         $errors = $this->validate($reminder);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$reminder);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $reminder));
         }
 
         $this->entityManager->persist($reminder);

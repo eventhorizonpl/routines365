@@ -62,7 +62,7 @@ class AchievementManager
 
         $errors = $this->validate($achievement);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$achievement);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $achievement));
         }
 
         $this->entityManager->persist($achievement);

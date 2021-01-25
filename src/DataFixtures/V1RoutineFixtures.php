@@ -45,9 +45,18 @@ class V1RoutineFixtures extends Fixture implements ContainerAwareInterface, Depe
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= self::ROUTINE_LIMIT; ++$routineId) {
                     $routine = $this->routineFaker->createRoutine();
-                    $routine->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                    $routine->setUser($this->getReference(sprintf(
+                        '%s-%d',
+                        V1UserFixtures::REGULAR_USER_REFERENCE,
+                        $userId
+                    )));
                     $routines[] = $routine;
-                    $this->addReference(self::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId, $routine);
+                    $this->addReference(sprintf(
+                        '%s-%d-%d',
+                        self::ROUTINE_REFERENCE,
+                        $userId,
+                        $routineId
+                    ), $routine);
                 }
             }
         }

@@ -72,7 +72,7 @@ class RewardManager
 
         $errors = $this->validate($reward);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$reward);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $reward));
         }
 
         $this->entityManager->persist($reward);

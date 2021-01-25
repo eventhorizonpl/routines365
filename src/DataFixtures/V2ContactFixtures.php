@@ -45,9 +45,18 @@ class V2ContactFixtures extends Fixture implements ContainerAwareInterface, Depe
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($contactId = 1; $contactId <= self::CONTACT_LIMIT; ++$contactId) {
                     $contact = $this->contactFaker->createContact();
-                    $contact->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                    $contact->setUser($this->getReference(sprintf(
+                        '%s-%d',
+                        V1UserFixtures::REGULAR_USER_REFERENCE,
+                        $userId
+                    )));
                     $contacts[] = $contact;
-                    $this->addReference(self::CONTACT_REFERENCE.'-'.(string) $userId.'-'.(string) $contactId, $contact);
+                    $this->addReference(sprintf(
+                        '%s-%d-%d',
+                        self::CONTACT_REFERENCE,
+                        $userId,
+                        $contactId
+                    ), $contact);
                 }
             }
         }

@@ -2,7 +2,7 @@
 
 if [ ! -e psalm.phar ]
 then
-    wget https://github.com/vimeo/psalm/releases/download/4.3.1/psalm.phar
+    wget https://github.com/vimeo/psalm/releases/download/4.4.1/psalm.phar
 fi
 
 if [ ! -d var/psalm_report ]

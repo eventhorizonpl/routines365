@@ -35,7 +35,7 @@ class GoalRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('gu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

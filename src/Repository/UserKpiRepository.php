@@ -44,7 +44,7 @@ class UserKpiRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('uku.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

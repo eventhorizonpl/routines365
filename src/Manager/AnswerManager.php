@@ -62,7 +62,7 @@ class AnswerManager
 
         $errors = $this->validate($answer);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$answer);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $answer));
         }
 
         $this->entityManager->persist($answer);

@@ -158,7 +158,10 @@ class ProjectController extends AbstractController
         $this->denyAccessUnlessGranted(ProjectVoter::DELETE, $project);
 
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $project->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $project->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $projectManager->softDelete($project, (string) $this->getUser());

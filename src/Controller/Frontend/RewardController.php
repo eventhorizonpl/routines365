@@ -161,7 +161,10 @@ class RewardController extends AbstractController
         $this->denyAccessUnlessGranted(RewardVoter::DELETE, $reward);
 
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $reward->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $reward->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $rewardManager->softDelete($reward, (string) $this->getUser());

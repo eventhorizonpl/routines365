@@ -69,7 +69,7 @@ class AccountOperationManager
 
         $errors = $this->validate($accountOperation);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$accountOperation);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $accountOperation));
         }
 
         $account = $accountOperation->getAccount();

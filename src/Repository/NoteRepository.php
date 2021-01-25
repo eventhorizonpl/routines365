@@ -36,7 +36,7 @@ class NoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('nu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 
@@ -80,7 +80,7 @@ class NoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('n.title', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
         }

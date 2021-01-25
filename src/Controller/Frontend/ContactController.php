@@ -43,7 +43,11 @@ class ContactController extends AbstractController
 
             $emailService->sendContactRequest(
                 'contact@routines365.com',
-                'Contact request from '.$contact->getUser()->getEmail().' '.$contact->getTitle(),
+                sprintf(
+                    'Contact request from %s %s',
+                    $contact->getUser()->getEmail(),
+                    $contact->getTitle()
+                ),
                 [
                     'from_email' => $contact->getUser()->getEmail(),
                     'content' => $contact->getContent(),

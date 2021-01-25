@@ -95,7 +95,10 @@ class QuestionController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $question->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $question->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $questionManager->softDelete($question, (string) $this->getUser());

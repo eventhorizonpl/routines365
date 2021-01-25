@@ -62,7 +62,7 @@ class AccountManager
 
         $errors = $this->validate($account);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$account);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $account));
         }
 
         $this->entityManager->persist($account);

@@ -32,7 +32,7 @@ class QuestionnaireRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('q.title', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

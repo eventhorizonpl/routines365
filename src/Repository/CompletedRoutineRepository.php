@@ -35,7 +35,7 @@ class CompletedRoutineRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('cru.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

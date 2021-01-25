@@ -73,7 +73,7 @@ class QuoteManager
 
         $errors = $this->validate($quote);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$quote);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $quote));
         }
 
         $this->entityManager->persist($quote);

@@ -40,7 +40,7 @@ class AchievementRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('a.name', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

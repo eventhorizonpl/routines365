@@ -195,7 +195,10 @@ class RoutineController extends AbstractController
         $this->denyAccessUnlessGranted(RoutineVoter::DELETE, $routine);
 
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $routine->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $routine->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $routineManager->softDelete($routine, (string) $this->getUser());

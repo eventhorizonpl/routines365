@@ -35,7 +35,7 @@ class UserQuestionnaireRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('uqu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 

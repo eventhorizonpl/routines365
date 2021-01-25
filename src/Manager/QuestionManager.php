@@ -71,7 +71,7 @@ class QuestionManager
 
         $errors = $this->validate($question);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$question);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $question));
         }
 
         $this->entityManager->persist($question);

@@ -47,10 +47,25 @@ class V1RewardFixtures extends Fixture implements ContainerAwareInterface, Depen
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($rewardId = 1; $rewardId <= self::REWARD_LIMIT; ++$rewardId) {
                         $reward = $this->rewardFaker->createReward();
-                        $reward->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $reward->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $reward->setRoutine($this->getReference(sprintf(
+                            '%s-%d-%d',
+                            V1RoutineFixtures::ROUTINE_REFERENCE,
+                            $userId,
+                            $routineId
+                        )));
+                        $reward->setUser($this->getReference(sprintf(
+                            '%s-%d',
+                            V1UserFixtures::REGULAR_USER_REFERENCE,
+                            $userId
+                        )));
                         $rewards[] = $reward;
-                        $this->addReference(self::REWARD_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $rewardId, $reward);
+                        $this->addReference(sprintf(
+                            '%s-%d-%d-%d',
+                            self::REWARD_REFERENCE,
+                            $userId,
+                            $routineId,
+                            $rewardId
+                        ), $reward);
                     }
                 }
             }

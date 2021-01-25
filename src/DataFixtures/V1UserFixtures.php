@@ -51,14 +51,15 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
             $referrerUser = null;
             for ($userId = 1; $userId <= self::REGULAR_USER_LIMIT; ++$userId) {
                 $user = $this->userFaker->createUser(
-                    'test'.(string) $userId.'@test.com',
+                    sprintf('test%d@example.org', $userId),
                     true,
-                    'test'.(string) $userId,
+                    sprintf('test%d', $userId),
                     [User::ROLE_USER],
                     User::TYPE_PROSPECT
                 );
-                $user->getProfile()->setFirstName('test'.(string) $userId)
-                    ->setLastName('test'.(string) $userId)
+                $user->getProfile()
+                    ->setFirstName(sprintf('test%d', $userId))
+                    ->setLastName(sprintf('test%d', $userId))
                     ->setSendWeeklyMonthlyStatistics(false)
                     ->setShowMotivationalMessages(true)
                     ->setTimezone('Europe/Warsaw');
@@ -66,7 +67,11 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
                     $user->setReferrer($referrerUser);
                 }
                 $users[] = $user;
-                $this->addReference(self::REGULAR_USER_REFERENCE.'_'.(string) $userId, $user);
+                $this->addReference(sprintf(
+                    '%s-%d',
+                    self::REGULAR_USER_REFERENCE,
+                    $userId
+                ), $user);
                 $referrerUser = $user;
             }
             $this->userManager->bulkSave($users);

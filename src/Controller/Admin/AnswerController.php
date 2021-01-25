@@ -95,7 +95,10 @@ class AnswerController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $answer->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $answer->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $answerManager->softDelete($answer, (string) $this->getUser());

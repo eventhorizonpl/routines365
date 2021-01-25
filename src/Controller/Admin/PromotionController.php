@@ -124,7 +124,10 @@ class PromotionController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $promotion->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $promotion->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $promotionManager->softDelete($promotion, (string) $this->getUser());

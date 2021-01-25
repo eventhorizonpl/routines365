@@ -66,7 +66,7 @@ class CompletedRoutineManager
 
         $errors = $this->validate($completedRoutine);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$completedRoutine);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $completedRoutine));
         }
 
         $this->entityManager->persist($completedRoutine);

@@ -66,7 +66,7 @@ class ContactManager
 
         $errors = $this->validate($contact);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$contact);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $contact));
         }
 
         $this->entityManager->persist($contact);

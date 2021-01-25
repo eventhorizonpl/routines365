@@ -97,10 +97,19 @@ class PostRemindMessagesService
 
     public function prepareReminderMessages(Reminder $reminder): Reminder
     {
-        $message = 'Your routine '.$reminder->getRoutine()->getName();
-        $message .= ' starts at '.$reminder->getRoutineStartDate()->format('H:i:s').'.';
+        $message = sprintf(
+            'Your routine %s',
+            $reminder->getRoutine()->getName()
+        );
+        $message .= sprintf(
+            ' starts at %s.',
+            $reminder->getRoutineStartDate()->format('H:i:s')
+        );
         if ($reminder->getRoutine()->getGoals()->count() > 0) {
-            $message .= ' You have '.$reminder->getRoutine()->getGoals()->count().' goals.';
+            $message .= sprintf(
+                ' You have %d goals.',
+                $reminder->getRoutine()->getGoals()->count()
+            );
         }
         $browserMessage = $message;
         $emailMessage = $message;
@@ -113,7 +122,11 @@ class PostRemindMessagesService
                 $messageLength = mb_strlen($message);
                 $quote = $this->quoteRepository->findOneByStringLength();
                 if (null !== $quote) {
-                    $emailMessage = $message.' '.(string) $quote;
+                    $emailMessage = sprintf(
+                        '%s %s',
+                        $message,
+                        (string) $quote
+                    );
                     $emailQuote = (string) $quote;
                 }
             }
@@ -130,7 +143,10 @@ class PostRemindMessagesService
         $link = $this->router->generate('frontend_completed_routine_new', [
             'uuid' => $reminder->getRoutine()->getUuid(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
-        $emailMessage .= ' Click this link when you finish '.$link;
+        $emailMessage .= sprintf(
+            ' Click this link when you finish %s',
+            $link
+        );
         $emailLink = $link;
 
         $account = $reminder->getUser()->getAccount();

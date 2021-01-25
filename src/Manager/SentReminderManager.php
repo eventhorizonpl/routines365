@@ -60,7 +60,7 @@ class SentReminderManager
 
         $errors = $this->validate($sentReminder);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$sentReminder);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $sentReminder));
         }
 
         $this->entityManager->persist($sentReminder);

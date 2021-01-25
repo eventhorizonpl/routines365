@@ -81,7 +81,7 @@ class RoutineManager
 
         $errors = $this->validate($routine);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$routine);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $routine));
         }
 
         $this->entityManager->persist($routine);

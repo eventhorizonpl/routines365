@@ -120,7 +120,10 @@ class CronJobController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $cronJob->getId(),
+            sprintf(
+                'delete%s',
+                (string) $cronJob->getId()
+            ),
             $request->request->get('_token')
         )) {
             $cronJobManager->delete($cronJob);

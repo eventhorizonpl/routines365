@@ -47,7 +47,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
                             $queryBuilder->expr()->like('u.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 
@@ -107,7 +107,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     public function findForRetention(DateTimeImmutable $endDate, DateTimeImmutable $lastLoginAt, DateTimeImmutable $startDate): int
     {
-        $query = $this->_em->createQuery('SELECT COUNT(u.id) FROM '.User::class.' u WHERE u.createdAt <= :endDate AND u.createdAt >= :startDate AND u.lastLoginAt >= :lastLoginAt')
+        $query = $this->_em->createQuery(sprintf(
+            'SELECT COUNT(u.id) FROM %s u WHERE u.createdAt <= :endDate AND u.createdAt >= :startDate AND u.lastLoginAt >= :lastLoginAt',
+            User::class
+        ))
             ->setParameter('endDate', $endDate)
             ->setParameter('lastLoginAt', $lastLoginAt)
             ->setParameter('startDate', $startDate);
@@ -117,7 +120,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     public function findForRetentionTotal(DateTimeImmutable $endDate, DateTimeImmutable $startDate): int
     {
-        $query = $this->_em->createQuery('SELECT COUNT(u.id) FROM '.User::class.' u WHERE u.createdAt <= :endDate AND u.createdAt >= :startDate')
+        $query = $this->_em->createQuery(sprintf(
+            'SELECT COUNT(u.id) FROM %s u WHERE u.createdAt <= :endDate AND u.createdAt >= :startDate',
+            User::class
+        ))
             ->setParameter('endDate', $endDate)
             ->setParameter('startDate', $startDate);
 

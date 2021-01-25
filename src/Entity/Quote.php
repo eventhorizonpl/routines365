@@ -71,7 +71,7 @@ class Quote
 
     public function __toString(): string
     {
-        return '"'.$this->getContent().'" - '.$this->getAuthor();
+        return sprintf('"%s" - %s', $this->getContent(), $this->getAuthor());
     }
 
     public function getAuthor(): string

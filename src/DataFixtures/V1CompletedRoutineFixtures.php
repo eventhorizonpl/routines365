@@ -47,10 +47,25 @@ class V1CompletedRoutineFixtures extends Fixture implements ContainerAwareInterf
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($completedRoutineId = 1; $completedRoutineId <= self::COMPLETED_ROUTINE_LIMIT; ++$completedRoutineId) {
                         $completedRoutine = $this->completedRoutineFaker->createCompletedRoutine();
-                        $completedRoutine->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $completedRoutine->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $completedRoutine->setRoutine($this->getReference(sprintf(
+                            '%s-%d-%d',
+                            V1RoutineFixtures::ROUTINE_REFERENCE,
+                            $userId,
+                            $routineId
+                        )));
+                        $completedRoutine->setUser($this->getReference(sprintf(
+                            '%s-%d',
+                            V1UserFixtures::REGULAR_USER_REFERENCE,
+                            $userId
+                        )));
                         $completedRoutines[] = $completedRoutine;
-                        $this->addReference(self::COMPLETED_ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $completedRoutineId, $completedRoutine);
+                        $this->addReference(sprintf(
+                            '%s-%d-%d-%d',
+                            self::COMPLETED_ROUTINE_REFERENCE,
+                            $userId,
+                            $routineId,
+                            $completedRoutineId
+                        ), $completedRoutine);
                     }
                 }
             }

@@ -47,10 +47,25 @@ class V1NoteFixtures extends Fixture implements ContainerAwareInterface, Depende
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($noteId = 1; $noteId <= self::NOTE_LIMIT; ++$noteId) {
                         $note = $this->noteFaker->createNote();
-                        $note->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $note->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $note->setRoutine($this->getReference(sprintf(
+                            '%s-%d-%d',
+                            V1RoutineFixtures::ROUTINE_REFERENCE,
+                            $userId,
+                            $routineId
+                        )));
+                        $note->setUser($this->getReference(sprintf(
+                            '%s-%d',
+                            V1UserFixtures::REGULAR_USER_REFERENCE,
+                            $userId
+                        )));
                         $notes[] = $note;
-                        $this->addReference(self::NOTE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $noteId, $note);
+                        $this->addReference(sprintf(
+                            '%s-%d-%d-%d',
+                            self::NOTE_REFERENCE,
+                            $userId,
+                            $routineId,
+                            $noteId
+                        ), $note);
                     }
                 }
             }

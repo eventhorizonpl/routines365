@@ -47,10 +47,25 @@ class V1ReminderFixtures extends Fixture implements ContainerAwareInterface, Dep
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($reminderId = 1; $reminderId <= self::REMINDER_LIMIT; ++$reminderId) {
                         $reminder = $this->reminderFaker->createReminder();
-                        $reminder->setRoutine($this->getReference(V1RoutineFixtures::ROUTINE_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId));
-                        $reminder->setUser($this->getReference(V1UserFixtures::REGULAR_USER_REFERENCE.'_'.(string) $userId));
+                        $reminder->setRoutine($this->getReference(sprintf(
+                            '%s-%d-%d',
+                            V1RoutineFixtures::ROUTINE_REFERENCE,
+                            $userId,
+                            $routineId
+                        )));
+                        $reminder->setUser($this->getReference(sprintf(
+                            '%s-%d',
+                            V1UserFixtures::REGULAR_USER_REFERENCE,
+                            $userId
+                        )));
                         $reminders[] = $reminder;
-                        $this->addReference(self::REMINDER_REFERENCE.'-'.(string) $userId.'-'.(string) $routineId.'-'.(string) $reminderId, $reminder);
+                        $this->addReference(sprintf(
+                            '%s-%d-%d-%d',
+                            self::REMINDER_REFERENCE,
+                            $userId,
+                            $routineId,
+                            $reminderId
+                        ), $reminder);
                     }
                 }
             }

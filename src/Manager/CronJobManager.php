@@ -53,7 +53,7 @@ class CronJobManager
     {
         $errors = $this->validate($cronJob);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$cronJob);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $cronJob));
         }
 
         $this->entityManager->persist($cronJob);

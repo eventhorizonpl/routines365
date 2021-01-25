@@ -66,7 +66,7 @@ class SavedEmailManager
 
         $errors = $this->validate($savedEmail);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$savedEmail);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $savedEmail));
         }
 
         $this->entityManager->persist($savedEmail);

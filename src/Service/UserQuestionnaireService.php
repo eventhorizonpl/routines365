@@ -63,7 +63,12 @@ class UserQuestionnaireService
                 if ($answer->getUuid() === $answerUuid) {
                     $content = null;
                     if (Answer::TYPE_OWN === $answer->getType()) {
-                        $content = $inputBag->get($question->getUuid().'_'.$answer->getUuid().'_'.Answer::TYPE_OWN);
+                        $content = $inputBag->get(sprintf(
+                            '%s_%s_%s',
+                            $question->getUuid(),
+                            $answer->getUuid(),
+                            Answer::TYPE_OWN
+                        ));
                     }
                     $userQuestionnaireAnswer = $this->userQuestionnaireAnswerService->findOrCreate(
                         $answer,

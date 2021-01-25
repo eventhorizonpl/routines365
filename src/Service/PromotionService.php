@@ -86,7 +86,7 @@ class PromotionService
             $this->accountOperationService->deposit(
                 $user->getAccount(),
                 $promotion->getBrowserNotifications(),
-                'Deposit for promotion '.$promotion->getCode().' '.$promotion->getName(),
+                sprintf('Deposit for promotion %s %s', $promotion->getCode(), $promotion->getName()),
                 $promotion->getEmailNotifications(),
                 $promotion->getSmsNotifications()
             );

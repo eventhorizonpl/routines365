@@ -32,7 +32,7 @@ class QuoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('q.content', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 
@@ -76,7 +76,7 @@ class QuoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('q.content', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
         }

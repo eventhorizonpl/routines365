@@ -123,7 +123,10 @@ class QuestionnaireController extends AbstractController
         Request $request
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $questionnaire->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $questionnaire->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $questionnaireManager->softDelete($questionnaire, (string) $this->getUser());

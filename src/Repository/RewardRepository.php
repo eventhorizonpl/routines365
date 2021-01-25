@@ -45,7 +45,7 @@ class RewardRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('ru.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 
@@ -89,7 +89,7 @@ class RewardRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('r.name', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
         }

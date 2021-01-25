@@ -60,7 +60,7 @@ class ReminderMessageManager
 
         $errors = $this->validate($reminderMessage);
         if (0 !== count($errors)) {
-            throw new ManagerException((string) $errors.' '.$reminderMessage);
+            throw new ManagerException(sprintf('%s %s', (string) $errors, $reminderMessage));
         }
 
         $this->entityManager->persist($reminderMessage);

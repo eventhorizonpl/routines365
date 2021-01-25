@@ -57,7 +57,12 @@ class InvitationController extends AbstractController
             return $this->redirectToRoute('frontend_profile_edit');
         }
 
-        $subject = $firstName.' '.$lastName.' '.$translator->trans('invites you to Routines365.com');
+        $subject = sprintf(
+            '%s %s %s',
+            $firstName,
+            $lastName,
+            $translator->trans('invites you to Routines365.com')
+        );
 
         $form = $this->createForm(InvitationType::class);
         $form->handleRequest($request);

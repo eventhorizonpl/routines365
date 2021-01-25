@@ -184,7 +184,10 @@ class UserController extends AbstractController
         UserManager $userManager
     ): Response {
         if (true === $this->isCsrfTokenValid(
-            'delete'.(string) $user->getUuid(),
+            sprintf(
+                'delete%s',
+                (string) $user->getUuid()
+            ),
             $request->request->get('_token')
         )) {
             $userManager->softDelete($user, (string) $this->getUser());

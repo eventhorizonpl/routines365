@@ -44,7 +44,7 @@ class AccountOperationRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('aoau.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
 
@@ -95,7 +95,7 @@ class AccountOperationRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('ao.description', ':q')
                         )
                     )
-                    ->setParameter('q', '%'.$query.'%');
+                    ->setParameter('q', sprintf('%%%s%%', $query));
                 }
             }
         }
