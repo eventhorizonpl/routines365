@@ -9,7 +9,6 @@ use App\Faker\UserFaker;
 use App\Manager\UserManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
@@ -20,7 +19,6 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
     public const REGULAR_USER_LIMIT = 50;
     public const REGULAR_USER_REFERENCE = 'regular-user-reference';
 
-    private PhoneNumberUtil $phoneNumberUtil;
     private UserFaker $userFaker;
     private UserManager $userManager;
 
@@ -28,7 +26,6 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
         UserFaker $userFaker,
         UserManager $userManager
     ) {
-        $this->phoneNumberUtil = PhoneNumberUtil::getInstance();
         $this->userFaker = $userFaker;
         $this->userManager = $userManager;
     }
@@ -42,8 +39,7 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
             [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER],
             User::TYPE_STAFF
         );
-        $phone = $this->phoneNumberUtil->parse('+48881573000');
-        $user->getProfile()->setPhone($phone)
+        $user->getProfile()
             ->setSendWeeklyMonthlyStatistics(false)
             ->setTimezone('Europe/Warsaw');
 
@@ -61,10 +57,8 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
                     [User::ROLE_USER],
                     User::TYPE_PROSPECT
                 );
-                $phone = $this->phoneNumberUtil->parse('+48881574'.sprintf('%03d', $userId));
                 $user->getProfile()->setFirstName('test'.(string) $userId)
                     ->setLastName('test'.(string) $userId)
-                    ->setPhone($phone)
                     ->setSendWeeklyMonthlyStatistics(false)
                     ->setShowMotivationalMessages(true)
                     ->setTimezone('Europe/Warsaw');

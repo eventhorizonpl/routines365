@@ -11,7 +11,6 @@ use App\Service\UserService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
@@ -21,7 +20,6 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
 
     public const ADMIN_USER_REFERENCE = 'admin-user';
 
-    private PhoneNumberUtil $phoneNumberUtil;
     private UserFactory $userFactory;
     private UserManager $userManager;
     private UserService $userService;
@@ -31,7 +29,6 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         UserManager $userManager,
         UserService $userService
     ) {
-        $this->phoneNumberUtil = PhoneNumberUtil::getInstance();
         $this->userFactory = $userFactory;
         $this->userManager = $userManager;
         $this->userService = $userService;
@@ -65,10 +62,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
             User::TYPE_PROSPECT
         );
         $user = $this->userService->encodePassword($user, 'michal');
-        $phone = $this->phoneNumberUtil->parse('+48881573056');
         $user->getProfile()->setFirstName('Michal')
             ->setLastName('Piotrowski')
-            ->setPhone($phone)
             ->setSendWeeklyMonthlyStatistics(false)
             ->setShowMotivationalMessages(true)
             ->setTimezone('Europe/Warsaw');
@@ -82,10 +77,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
             User::TYPE_PROSPECT
         );
         $user = $this->userService->encodePassword($user, 'ewelina');
-        $phone = $this->phoneNumberUtil->parse('+48530573056');
         $user->getProfile()->setFirstName('Ewelina')
             ->setLastName('Piotrowska')
-            ->setPhone($phone)
             ->setSendWeeklyMonthlyStatistics(false)
             ->setShowMotivationalMessages(true)
             ->setTimezone('Europe/Warsaw');

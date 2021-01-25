@@ -5,7 +5,13 @@
         <div class="card bg-dark text-white col-md-10 offset-md-1">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - <a href="{{ path('frontend_static_page_how_to_routines') }}">{{ 'Routines'|trans }}</a> - {{ 'Reminders'|trans }}
+                    <a href="{{ path('frontend_static_page_how_to') }}">
+                        {{ 'How to'|trans }}
+                    </a> -
+                    <a href="{{ path('frontend_static_page_how_to_routines') }}">
+                        {{ 'Routines'|trans }}
+                    </a> -
+                    {{ 'Reminders'|trans }}
                 </h5>
                 <hr>
                 {{ include('frontend/static_page/how_to/_reminders_start.html.twig') }}
@@ -20,12 +26,18 @@
                 <br>
                 {{ include('frontend/static_page/how_to/_reminders_edit.html.twig') }}
                 <br>
-                <div>
-                    Your next step should be completing a routine. Please read more in <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">{{ 'Completing routines'|trans }}</a> documentation.
+                <div class="lead">
+                    Your next step should be completing a routine. Please read more in
+                    <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">
+                        {{ 'Completing routines'|trans }}
+                    </a>
+                    documentation.
                 </div>
                 <br>
-                <div>
-                    <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">{{ 'Completing routines'|trans }}</a>
+                <div class="lead">
+                    <a href="{{ path('frontend_static_page_how_to_completing_routines') }}">
+                        {{ 'Completing routines'|trans }}
+                    </a>
                 </div>
             </div>
         </div>

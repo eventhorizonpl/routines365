@@ -5,12 +5,15 @@
         <div class="card bg-dark text-white col-md-10 offset-md-1">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - {{ 'Basic configuration'|trans }}
+                    <a href="{{ path('frontend_static_page_how_to') }}">
+                        {{ 'How to'|trans }}
+                    </a> -
+                    {{ 'Basic configuration'|trans }}
                 </h5>
                 <hr>
                 {{ include('frontend/static_page/how_to/_basic_configuration_start.html.twig') }}
                 <br>
-                <div>
+                <div class="lead">
                     In "Profile details" section you have link to 3 other sections:
                     <ul>
                         <li>
@@ -29,52 +32,63 @@
                 <br>
                 {{ include('frontend/static_page/how_to/_basic_configuration_edit.html.twig') }}
                 <br>
-                <div>
-                    <div>
-                        <h6><b>Other options</b></h6>
-                    </div>
+                <div class="lead">
+                    <b>
+                        Other options
+                    </b>
                 </div>
                 <br>
-                <div>
-                    <div>
-                        <h6><b>Phone</b></h6>
-                        You need to provide your mobile phone number if you want to use SMS reminders. Currently SMS reminders are available for the following countires:
-                        {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
-                            <span class="badge badge-success">{{ country }}</span>
-                        {% endfor %} .
-                        Please provide mobile phone number in international format like +xx xxx xxx xxx . System will send you a SMS message to provided number with verification code.
-                        You will have to enter this verification code in 'Phone verification' screen.
-                    </div>
+                <div class="lead">
+                    <b>
+                        Phone
+                    </b>
+                    <br>
+                    You need to provide your mobile phone number if you want to use SMS reminders.
+                    Currently SMS reminders are available for the following countires:
+                    {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
+                        <span class="badge badge-success">{{ country }}</span>
+                    {% endfor %} .
+                    Please provide mobile phone number in international format like +xx xxx xxx xxx .
+                    System will send you a SMS message to provided number with verification code.
+                    You will have to enter this verification code in 'Phone verification' screen.
                 </div>
                 {% if (true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED')) or (true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED')) %}
                     <br>
-                    <div>
-                        <div>
-                            <h6><b>First name</b></h6>
-                            System needes this information if you want to send an invitation or motivational message to friend.
-                        </div>
+                    <div class="lead">
+                        <b>
+                            First name
+                        </b>
+                        <br>
+                        System needes this information if you want to send an invitation or motivational
+                        message to friend.
                     </div>
                     <br>
-                    <div>
-                        <div>
-                            <h6><b>Last name</b></h6>
-                            System needes this information if you want to send an invitation or motivational message to friend.
-                        </div>
+                    <div class="lead">
+                        <b>
+                            Last name
+                        </b>
+                        <br>
+                        System needes this information if you want to send an invitation or motivational
+                        message to friend.
                     </div>
                 {% endif %}
                 <br>
-                <div>
-                    <div>
-                        <h6><b>Send weekly monthly statistics</b></h6>
-                        If this option is on you will receive a weekly/monthly/yearly emails with your statistics.
-                    </div>
+                <div class="lead">
+                    <b>
+                        Send weekly monthly statistics
+                    </b>
+                    <br>
+                    If this option is on you will receive a weekly/monthly/yearly emails with your
+                    statistics.
                 </div>
                 <br>
-                <div>
-                    <div>
-                        <h6><b>Show motivational messages</b></h6>
-                        If this option is on you will see a motivational messages while working with the system.
-                    </div>
+                <div class="lead">
+                    <b>
+                        Show motivational messages
+                    </b>
+                    <br>
+                    If this option is on you will see a motivational messages while working with
+                    the system.
                 </div>
             </div>
         </div>

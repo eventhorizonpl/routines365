@@ -5,7 +5,13 @@
         <div class="card bg-dark text-white col-md-10 offset-md-1">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a> - <a href="{{ path('frontend_static_page_how_to_routines') }}">{{ 'Routines'|trans }}</a> - {{ 'Completing routines'|trans }}
+                    <a href="{{ path('frontend_static_page_how_to') }}">
+                        {{ 'How to'|trans }}
+                    </a> -
+                    <a href="{{ path('frontend_static_page_how_to_routines') }}">
+                        {{ 'Routines'|trans }}
+                    </a> -
+                    {{ 'Completing routines'|trans }}
                 </h5>
                 <hr>
                 {{ include('frontend/static_page/how_to/_completing_routines_start.html.twig') }}
@@ -16,8 +22,12 @@
                 <br>
                 {{ include('frontend/static_page/how_to/_completing_routines_new.html.twig') }}
                 <br>
-                <div>
-                    Your next step could be creating a note. Please read more in <a href="{{ path('frontend_static_page_how_to_notes') }}">{{ 'Notes'|trans }}</a> documentation.
+                <div class="lead">
+                    Your next step could be creating a note. Please read more in
+                    <a href="{{ path('frontend_static_page_how_to_notes') }}">
+                        {{ 'Notes'|trans }}
+                    </a>
+                    documentation.
                 </div>
             </div>
         </div>
