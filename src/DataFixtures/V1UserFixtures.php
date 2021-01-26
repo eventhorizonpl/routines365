@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Faker\TestimonialFaker;
 use App\Faker\UserFaker;
 use App\Manager\UserManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -19,13 +20,16 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
     public const REGULAR_USER_LIMIT = 50;
     public const REGULAR_USER_REFERENCE = 'regular-user-reference';
 
+    private TestimonialFaker $testimonialFaker;
     private UserFaker $userFaker;
     private UserManager $userManager;
 
     public function __construct(
+        TestimonialFaker $testimonialFaker,
         UserFaker $userFaker,
         UserManager $userManager
     ) {
+        $this->testimonialFaker = $testimonialFaker;
         $this->userFaker = $userFaker;
         $this->userManager = $userManager;
     }
@@ -57,7 +61,11 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
                     [User::ROLE_USER],
                     User::TYPE_PROSPECT
                 );
-                $user->getProfile()
+                $testimonial = $this->testimonialFaker->createTestimonial();
+                $testimonial->setUser($user);
+                $user
+                    ->setTestimonial($testimonial)
+                    ->getProfile()
                     ->setFirstName(sprintf('test%d', $userId))
                     ->setLastName(sprintf('test%d', $userId))
                     ->setSendWeeklyMonthlyStatistics(false)

@@ -57,15 +57,16 @@ class ProjectController extends AbstractController
         ProjectManager $projectManager,
         Request $request
     ): Response {
+        $user = $this->getUser();
         $knowYourTools = trim((string) $request->query->get('know_your_tools'));
 
         $project = $projectFactory->createProject();
-        $project->setUser($this->getUser());
+        $project->setUser($user);
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $projectManager->save($project, (string) $this->getUser());
+            $projectManager->save($project, (string) $user);
 
             if ($knowYourTools) {
                 return $this->redirectToRoute('frontend_project_show', [

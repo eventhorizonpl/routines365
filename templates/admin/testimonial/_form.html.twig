@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.content) }}
+    {{ form_row(form.signature) }}
+    {{ form_row(form.status) }}
+    {{ form_row(form.isVisible) }}
+
+    <hr>
+    <button class="btn btn-primary" type="submit">
+        <i aria-hidden="true" class="bi bi-save"></i>
+        {{ button_label|default('Save'|trans) }}
+    </button>
+{{ form_end(form) }}

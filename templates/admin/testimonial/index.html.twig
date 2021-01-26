@@ -1,0 +1,107 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Testimonials'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Testimonials'|trans }} ({{ parameters.count }})
+            <form action="{{ path('admin_testimonial_index') }}" class="form-inline mt-2" method="get">
+                <div class="form-group">
+                    <input class="form-control" id="starts_at" name="starts_at" signature="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="ends_at" name="ends_at" signature="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group">
+                    <select class="custom-select" id="status" name="status">
+                        <option value="" selected>{{ 'Status'|trans }}</option>
+                        {% for status_value in testimonialStatus() %}
+                            <option value="{{ status_value }}" {% if parameters.status == status_value %}selected{% endif %}>{{ status_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" signature="text" value="{{ parameters.query }}">
+                </div>
+                <button class="btn btn-default" signature="submit">
+                    <i aria-hidden="true" class="bi bi-search"></i>
+                    {{ 'Search'|trans }}
+                </button>
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.status) %}disabled{% endif %} btn-default" href="{{ path('admin_testimonial_index') }}">
+                    <i aria-hidden="true" class="bi bi-x-square"></i>
+                </a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th {% if testimonials.isSorted('t.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'UUID'|trans, 't.uuid') }}</th>
+                            <th {% if testimonials.isSorted('tu.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'Email'|trans, 'tu.email') }}</th>
+                            <th {% if testimonials.isSorted('t.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'Content'|trans, 't.content') }}</th>
+                            <th {% if testimonials.isSorted('t.Signature') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'Signature'|trans, 't.signature') }}</th>
+                            <th {% if testimonials.isSorted('t.Status') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'Status'|trans, 't.status') }}</th>
+                            <th {% if testimonials.isSorted('t.IsVisible') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'Is visible'|trans, 't.isVisible') }}</th>
+                            <th {% if testimonials.isSorted('t.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(testimonials, 'Updated at'|trans, 't.updatedAt') }}</th>
+                            <th>{{ 'Actions'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for testimonial in testimonials %}
+                            <tr>
+                                <td><a href="{{ path('admin_testimonial_show', {'uuid': testimonial.uuid}) }}">{{ testimonial.uuid }}</a></td>
+                                <td>
+                                    {% if testimonial.user %}
+                                        <a href="{{ path('admin_user_show', {'uuid': testimonial.user.uuid}) }}">{{ testimonial.user.email }}</a>
+                                    {% endif %}
+                                </td>
+                                <td>{{ testimonial.content }}</td>
+                                <td>{{ testimonial.signature }}</td>
+                                <td>{{ testimonial.status }}</td>
+                                <td>
+                                    {% if testimonial.isVisible %}
+                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ testimonial.updatedAt ? testimonial.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ testimonial.id }}" signature="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ testimonial.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_testimonial_show', {'uuid': testimonial.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_testimonial_edit', {'uuid': testimonial.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">{{ 'No records found'|trans }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(testimonials) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Testimonials'|trans }}{% endblock %}

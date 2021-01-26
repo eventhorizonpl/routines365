@@ -137,6 +137,15 @@ class UserKytService
             );
             $userKyt->setGoalsSent(true);
             $userKyt->setDateOfLastMessage($date);
+        } elseif ((false === $userKyt->getTestimonialRequestSent()) &&
+            (count($user->getCompletedRoutinesAll()) >= 50)
+        ) {
+            $this->emailService->sendRequestForTestimonial(
+                $user->getEmail(),
+                'R365: Request for a testimonial',
+            );
+            $userKyt->setTestimonialRequestSent(true);
+            $userKyt->setDateOfLastMessage($date);
         }
 
         $this->userKytManager->save($userKyt, (string) $user);

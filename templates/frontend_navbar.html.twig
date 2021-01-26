@@ -7,27 +7,27 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            {% if know_your_tools is defined and know_your_tools %}
-                {% if know_your_tools == constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_START') %}
-                    {% set know_your_tools_basic_configuration = constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_SHOW') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_START') %}
-                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_LIST') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_START') %}
-                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::GOALS_LIST') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::NOTES_START') %}
-                    {% set know_your_tools_note = constant('App\\Resource\\KytResource::NOTES_LIST') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_START') %}
-                    {% set know_your_tools_project = constant('App\\Resource\\KytResource::PROJECTS_LIST') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_START') %}
-                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::REMINDERS_LIST') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::REWARDS_START') %}
-                    {% set know_your_tools_reward = constant('App\\Resource\\KytResource::REWARDS_LIST') %}
-                {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_START') %}
-                    {% set know_your_tools_routine = constant('App\\Resource\\KytResource::ROUTINES_LIST') %}
-                {% endif %}
+        {% if know_your_tools is defined and know_your_tools %}
+            {% if know_your_tools == constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_START') %}
+                {% set know_your_tools_basic_configuration = constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_SHOW') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_START') %}
+                {% set know_your_tools_routine = constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_LIST') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_START') %}
+                {% set know_your_tools_routine = constant('App\\Resource\\KytResource::GOALS_LIST') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::NOTES_START') %}
+                {% set know_your_tools_note = constant('App\\Resource\\KytResource::NOTES_LIST') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_START') %}
+                {% set know_your_tools_project = constant('App\\Resource\\KytResource::PROJECTS_LIST') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_START') %}
+                {% set know_your_tools_routine = constant('App\\Resource\\KytResource::REMINDERS_LIST') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::REWARDS_START') %}
+                {% set know_your_tools_reward = constant('App\\Resource\\KytResource::REWARDS_LIST') %}
+            {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_START') %}
+                {% set know_your_tools_routine = constant('App\\Resource\\KytResource::ROUTINES_LIST') %}
             {% endif %}
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link{% if route in ['frontend_routine_edit', 'frontend_routine_index', 'frontend_routine_new', 'frontend_routine_show'] %} active{% endif %}" href="{% if know_your_tools_routine is defined and know_your_tools_routine %}{{ path('frontend_routine_index', {'know_your_tools': know_your_tools_routine}) }}{% else %}{{ path('frontend_routine_index') }}{% endif %}" title="{{ 'Routines'|trans }}">
                         <i aria-hidden="true" class="bi bi-arrow-repeat"></i>
@@ -96,11 +96,15 @@
                         </a>
                     </div>
                 </li>
-            {% else %}
+            </ul>
+        {% else %}
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <ul class="navbar-nav float-right">
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('security_register') }}" title="{{ 'Register'|trans }}">
-                            <i aria-hidden="true" class="bi bi-plus-square-square"></i>
+                            <i aria-hidden="true" class="bi bi-plus-square"></i>
                             {{ 'Register'|trans }}
                         </a>
                     </li>
@@ -111,7 +115,7 @@
                         {{ 'Login'|trans }}
                     </a>
                 </li>
-            {% endif %}
-        </ul>
+            </ul>
+        {% endif %}
     </div>
 </nav>

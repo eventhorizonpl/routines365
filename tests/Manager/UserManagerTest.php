@@ -19,6 +19,7 @@ use App\Manager\ReminderManager;
 use App\Manager\RewardManager;
 use App\Manager\RoutineManager;
 use App\Manager\SavedEmailManager;
+use App\Manager\TestimonialManager;
 use App\Manager\UserKytManager;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
@@ -78,6 +79,10 @@ final class UserManagerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?TestimonialManager $testimonialManager;
+    /**
+     * @inject
+     */
     private ?UserFaker $userFaker;
     /**
      * @inject
@@ -111,6 +116,7 @@ final class UserManagerTest extends AbstractDoctrineTestCase
             $this->rewardManager,
             $this->routineManager,
             $this->savedEmailManager,
+            $this->testimonialManager,
             $this->userFaker,
             $this->userKytManager,
             $this->userManager,
@@ -137,6 +143,7 @@ final class UserManagerTest extends AbstractDoctrineTestCase
             $this->rewardManager,
             $this->routineManager,
             $this->savedEmailManager,
+            $this->testimonialManager,
             $this->userKytManager,
             $this->validator
         );

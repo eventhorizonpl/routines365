@@ -1541,6 +1541,54 @@
         <source>Edit a goal</source>
         <target>Edit a goal</target>
       </trans-unit>
+      <trans-unit id="y5snxeJ" resname="We already accepted your testimonial.">
+        <source>We already accepted your testimonial.</source>
+        <target>We already accepted your testimonial.</target>
+      </trans-unit>
+      <trans-unit id="ZYp.Y.T" resname="We saved your testimonial.">
+        <source>We saved your testimonial.</source>
+        <target>We saved your testimonial.</target>
+      </trans-unit>
+      <trans-unit id="0oJctry" resname="Testimonials">
+        <source>Testimonials</source>
+        <target>Testimonials</target>
+      </trans-unit>
+      <trans-unit id="1B9bSXf" resname="Facebook">
+        <source>Facebook</source>
+        <target>Facebook</target>
+      </trans-unit>
+      <trans-unit id="vNGOrV_" resname="Twitter">
+        <source>Twitter</source>
+        <target>Twitter</target>
+      </trans-unit>
+      <trans-unit id="0a32RJH" resname="Testimonial details">
+        <source>Testimonial details</source>
+        <target>Testimonial details</target>
+      </trans-unit>
+      <trans-unit id="8ac_IgS" resname="Signature">
+        <source>Signature</source>
+        <target>Signature</target>
+      </trans-unit>
+      <trans-unit id="dj9vCZ5" resname="Edit testimonial">
+        <source>Edit testimonial</source>
+        <target>Edit testimonial</target>
+      </trans-unit>
+      <trans-unit id="2CFH_uy" resname="Content of the testimonial.">
+        <source>Content of the testimonial.</source>
+        <target>Content of the testimonial.</target>
+      </trans-unit>
+      <trans-unit id="XlrTwod" resname="Signature of the testimonial.">
+        <source>Signature of the testimonial.</source>
+        <target>Signature of the testimonial.</target>
+      </trans-unit>
+      <trans-unit id="hxYE_d1" resname="Testimonial">
+        <source>Testimonial</source>
+        <target>Testimonial</target>
+      </trans-unit>
+      <trans-unit id="8i.EXx2" resname="Please share your opinion about our system.">
+        <source>Please share your opinion about our system.</source>
+        <target>Please share your opinion about our system.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

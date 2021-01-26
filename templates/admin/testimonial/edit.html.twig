@@ -1,0 +1,34 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_testimonial_index') }}">
+            {{ 'Testimonials'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Edit testimonial'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Edit testimonial'|trans }}
+            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_testimonial_index') }}">
+                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
+                {{ 'Back'|trans }}
+            </a>
+        </div>
+        <div class="card-body">
+            {{ include('admin/testimonial/_form.html.twig', {'button_label': 'Update'|trans}) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ 'Edit testimonial'|trans }}{% endblock %}

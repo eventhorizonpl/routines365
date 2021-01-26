@@ -127,6 +127,13 @@ class User implements UserInterface
     private Collection $savedEmails;
 
     /**
+     * @Assert\Valid(groups={"form"})
+     * @Groups({"gdpr"})
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Testimonial::class)
+     */
+    private ?Testimonial $testimonial = null;
+
+    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserKpi::class)
      */
     private Collection $userKpis;
@@ -766,6 +773,18 @@ class User implements UserInterface
         if (true === $this->savedEmails->contains($savedEmail)) {
             $this->savedEmails->removeElement($savedEmail);
         }
+
+        return $this;
+    }
+
+    public function getTestimonial(): ?Testimonial
+    {
+        return $this->testimonial;
+    }
+
+    public function setTestimonial(Testimonial $testimonial): self
+    {
+        $this->testimonial = $testimonial;
 
         return $this;
     }

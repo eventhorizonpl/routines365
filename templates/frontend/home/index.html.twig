@@ -16,7 +16,7 @@
             <p class="lead">
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <a class="btn btn-primary btn-lg mr-2" href="{{ path('security_register') }}" role="button" title="{{ 'Login'|trans }}">
-                        <i aria-hidden="true" class="bi bi-plus-square-square"></i>
+                        <i aria-hidden="true" class="bi bi-plus-square"></i>
                         {{ 'Register'|trans }}
                     </a>
                 {% endif %}
@@ -190,4 +190,21 @@
             </ul>
         </div>
     </div>
+    {% if testimonial %}
+        <div class="row">
+            <div class="col-12 mb-2">
+                <p class="lead">
+                    But do not take our word for it. Take a look at this.
+                </p>
+                <blockquote class="blockquote">
+                    <p class="mb-0">
+                        {{ testimonial.content }}
+                    </p>
+                    <footer class="blockquote-footer">
+                        {{ testimonial.signature }}
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

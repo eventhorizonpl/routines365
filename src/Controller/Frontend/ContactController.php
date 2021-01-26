@@ -33,13 +33,14 @@ class ContactController extends AbstractController
         Request $request,
         TranslatorInterface $translator
     ): Response {
+        $user = $this->getUser();
         $contact = $contactFactory->createContact();
-        $contact->setUser($this->getUser());
+        $contact->setUser($user);
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
-            $contactManager->save($contact, (string) $this->getUser());
+            $contactManager->save($contact, (string) $user);
 
             $emailService->sendContactRequest(
                 'contact@routines365.com',

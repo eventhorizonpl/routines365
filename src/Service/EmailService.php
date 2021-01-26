@@ -128,6 +128,114 @@ class EmailService
         return $result;
     }
 
+    public function sendMotivational(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/motivational.html.twig',
+            'email/motivational.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendNewLead(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/new_lead.html.twig',
+            'email/new_lead.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendReminderMessage(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/reminder_message.html.twig',
+            'email/reminder_message.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendRequestForTestimonial(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/request_for_testimonial.html.twig',
+            'email/request_for_testimonial.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendResetPassword(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/reset_password.html.twig',
+            'email/reset_password.txt.twig',
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
+    public function sendUserKpi(
+        string $email,
+        string $subject,
+        array $context = []
+    ): bool {
+        $templatedEmail = $this->prepare(
+            $email,
+            $subject,
+            'email/user_kpi.html.twig',
+            null,
+            $context
+        );
+
+        $result = $this->send($templatedEmail);
+
+        return $result;
+    }
+
     public function sendUserKytBasicConfiguration(
         string $email,
         string $subject,
@@ -264,96 +372,6 @@ class EmailService
             $subject,
             'email/user_kyt/routines.html.twig',
             'email/user_kyt/routines.txt.twig',
-            $context
-        );
-
-        $result = $this->send($templatedEmail);
-
-        return $result;
-    }
-
-    public function sendMotivational(
-        string $email,
-        string $subject,
-        array $context = []
-    ): bool {
-        $templatedEmail = $this->prepare(
-            $email,
-            $subject,
-            'email/motivational.html.twig',
-            'email/motivational.txt.twig',
-            $context
-        );
-
-        $result = $this->send($templatedEmail);
-
-        return $result;
-    }
-
-    public function sendNewLead(
-        string $email,
-        string $subject,
-        array $context = []
-    ): bool {
-        $templatedEmail = $this->prepare(
-            $email,
-            $subject,
-            'email/new_lead.html.twig',
-            'email/new_lead.txt.twig',
-            $context
-        );
-
-        $result = $this->send($templatedEmail);
-
-        return $result;
-    }
-
-    public function sendReminderMessage(
-        string $email,
-        string $subject,
-        array $context = []
-    ): bool {
-        $templatedEmail = $this->prepare(
-            $email,
-            $subject,
-            'email/reminder_message.html.twig',
-            'email/reminder_message.txt.twig',
-            $context
-        );
-
-        $result = $this->send($templatedEmail);
-
-        return $result;
-    }
-
-    public function sendResetPassword(
-        string $email,
-        string $subject,
-        array $context = []
-    ): bool {
-        $templatedEmail = $this->prepare(
-            $email,
-            $subject,
-            'email/reset_password.html.twig',
-            'email/reset_password.txt.twig',
-            $context
-        );
-
-        $result = $this->send($templatedEmail);
-
-        return $result;
-    }
-
-    public function sendUserKpi(
-        string $email,
-        string $subject,
-        array $context = []
-    ): bool {
-        $templatedEmail = $this->prepare(
-            $email,
-            $subject,
-            'email/user_kpi.html.twig',
-            null,
             $context
         );
 

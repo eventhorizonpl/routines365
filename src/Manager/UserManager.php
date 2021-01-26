@@ -26,6 +26,7 @@ class UserManager
     private RewardManager $rewardManager;
     private RoutineManager $routineManager;
     private SavedEmailManager $savedEmailManager;
+    private TestimonialManager $testimonialManager;
     private UserKytManager $userKytManager;
     private ValidatorInterface $validator;
 
@@ -43,6 +44,7 @@ class UserManager
         RewardManager $rewardManager,
         RoutineManager $routineManager,
         SavedEmailManager $savedEmailManager,
+        TestimonialManager $testimonialManager,
         UserKytManager $userKytManager,
         ValidatorInterface $validator
     ) {
@@ -59,6 +61,7 @@ class UserManager
         $this->rewardManager = $rewardManager;
         $this->routineManager = $routineManager;
         $this->savedEmailManager = $savedEmailManager;
+        $this->testimonialManager = $testimonialManager;
         $this->userKytManager = $userKytManager;
         $this->validator = $validator;
     }
@@ -109,6 +112,11 @@ class UserManager
 
         $this->entityManager->persist($user);
         $this->accountManager->save($user->getAccount(), $actor, false);
+
+        if (null !== $user->getTestimonial()) {
+            $this->testimonialManager->save($user->getTestimonial(), $actor, false);
+        }
+
         if (null !== $user->getUserKyt()) {
             $this->userKytManager->save($user->getUserKyt(), $actor, false);
         }

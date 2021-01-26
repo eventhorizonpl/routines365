@@ -144,6 +144,13 @@ class UserKyt
      */
     protected bool $routinesSent;
 
+    /**
+     * @Assert\NotNull(groups={"system"})
+     * @Assert\Type("bool", groups={"system"})
+     * @ORM\Column(type="boolean")
+     */
+    protected bool $testimonialRequestSent;
+
     public function __construct()
     {
         $this->basicConfigurationLearned = false;
@@ -162,6 +169,7 @@ class UserKyt
         $this->rewardsSent = false;
         $this->routinesLearned = false;
         $this->routinesSent = false;
+        $this->testimonialRequestSent = false;
     }
 
     public function __toString(): string
@@ -369,6 +377,18 @@ class UserKyt
     public function setRoutinesSent(bool $routinesSent): self
     {
         $this->routinesSent = $routinesSent;
+
+        return $this;
+    }
+
+    public function getTestimonialRequestSent(): ?bool
+    {
+        return $this->testimonialRequestSent;
+    }
+
+    public function setTestimonialRequestSent(bool $testimonialRequestSent): self
+    {
+        $this->testimonialRequestSent = $testimonialRequestSent;
 
         return $this;
     }
