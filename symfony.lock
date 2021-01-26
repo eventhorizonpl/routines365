@@ -202,6 +202,18 @@
     "nikic/php-parser": {
         "version": "v4.6.0"
     },
+    "nyholm/psr7": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "7c0a9352a57376f04f5444e74565102c3a23d0c7"
+        },
+        "files": [
+            "config/packages/nyholm_psr7.yaml"
+        ]
+    },
     "ocramius/proxy-manager": {
         "version": "2.8.0"
     },
@@ -685,6 +697,9 @@
     },
     "symfony/property-info": {
         "version": "v5.1.2"
+    },
+    "symfony/psr-http-message-bridge": {
+        "version": "v2.0.2"
     },
     "symfony/routing": {
         "version": "5.1",

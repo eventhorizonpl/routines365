@@ -38,6 +38,15 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.controller_arguments }
 
+    Sentry\Integration\IgnoreErrorsIntegration:
+        arguments:
+            $options:
+                ignore_exceptions:
+                    - App\Exception\ManagerException
+                    - Lexik\Bundle\MaintenanceBundle\Exception\ServiceUnavailableException
+                    - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                    - Symfony\Component\Security\Core\Exception\AccessDeniedException
+
     Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider: ~
 
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
