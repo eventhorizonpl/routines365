@@ -1589,6 +1589,10 @@
         <source>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</source>
         <target>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</target>
       </trans-unit>
+      <trans-unit id="AMmJ.rb" resname="Landing pages">
+        <source>Landing pages</source>
+        <target>__Landing pages</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

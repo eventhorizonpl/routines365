@@ -1,0 +1,21 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ 'Landing pages'|trans }}
+                </h5>
+                <hr>
+                <div class="lead">
+                    <a href="{{ path('frontend_landing_page_learn_faster') }}">Learn faster</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Landing pages'|trans }}
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="lead">
+    We are here to help you achieve your goals. It doesn't matter what you struggle with. We will help you systematize routines and divide big problems into smaller achievable goals.
+</div>
+<br>
+<div class="lead">
+    Registration link below has special promotion code. If you register with it you will receive an extra reminders.
+    {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
+        <br>
+        <a class="btn btn-primary btn-lg mt-3" href="{% if promotion %}{{ url('security_register', {'promotion_code': promotion.code}) }}{% else %}{{ url('security_register') }}{% endif %}" role="button" title="{{ 'Register'|trans }}">
+            <i aria-hidden="true" class="bi bi-plus-square"></i>
+            {{ 'Register'|trans }}
+        </a>
+    {% endif %}
+</div>

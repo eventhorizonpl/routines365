@@ -1,0 +1,20 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="card bg-dark text-white col-md-10 offset-md-1">
+            <div class="card-body">
+                <h1 class="card-title">
+                    {% block landing_page_title %}{% endblock %}
+                </h1>
+                <hr>
+                {% block landing_page_content %}{% endblock %}
+                {{ render(controller('App\\Controller\\Frontend\\LandingPageController::register')) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Landing pages'|trans }}
+{% endblock %}
