@@ -1577,10 +1577,6 @@
         <source>Content of the testimonial.</source>
         <target>Content of the testimonial.</target>
       </trans-unit>
-      <trans-unit id="XlrTwod" resname="Signature of the testimonial.">
-        <source>Signature of the testimonial.</source>
-        <target>Signature of the testimonial.</target>
-      </trans-unit>
       <trans-unit id="hxYE_d1" resname="Testimonial">
         <source>Testimonial</source>
         <target>Testimonial</target>
@@ -1588,6 +1584,10 @@
       <trans-unit id="8i.EXx2" resname="Please share your opinion about our system.">
         <source>Please share your opinion about our system.</source>
         <target>Please share your opinion about our system.</target>
+      </trans-unit>
+      <trans-unit id="bnPa2Rm" resname="Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.">
+        <source>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</source>
+        <target>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</target>
       </trans-unit>
     </body>
   </file>

@@ -19,10 +19,12 @@ class GoalRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('g')
-            ->select('g, gu, gua, gup')
+            ->select('g, gu, gua, gup, gut, guuk')
             ->leftJoin('g.user', 'gu')
             ->leftJoin('gu.account', 'gua')
             ->leftJoin('gu.profile', 'gup')
+            ->leftJoin('gu.testimonial', 'gut')
+            ->leftJoin('gu.userKyt', 'guuk')
             ->addOrderBy('g.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

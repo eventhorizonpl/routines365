@@ -20,10 +20,12 @@ class NoteRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('n')
-            ->select('n, nu, nua, nup')
+            ->select('n, nu, nua, nup, nut, nuuk')
             ->leftJoin('n.user', 'nu')
             ->leftJoin('nu.account', 'nua')
             ->leftJoin('nu.profile', 'nup')
+            ->leftJoin('nu.testimonial', 'nut')
+            ->leftJoin('nu.userKyt', 'nuuk')
             ->addOrderBy('n.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

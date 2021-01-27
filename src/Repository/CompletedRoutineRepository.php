@@ -19,10 +19,12 @@ class CompletedRoutineRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('cr')
-            ->select('cr, cru, crua, crup')
+            ->select('cr, cru, crua, crup, crut, cruuk')
             ->leftJoin('cr.user', 'cru')
             ->leftJoin('cru.account', 'crua')
             ->leftJoin('cru.profile', 'crup')
+            ->leftJoin('cru.testimonial', 'crut')
+            ->leftJoin('cru.userKyt', 'cruuk')
             ->addOrderBy('cr.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

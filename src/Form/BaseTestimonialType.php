@@ -19,7 +19,7 @@ class BaseTestimonialType extends AbstractType
                 'help' => 'Content of the testimonial.',
             ])
             ->add('signature', null, [
-                'help' => 'Signature of the testimonial.',
+                'help' => 'Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.',
             ])
         ;
     }

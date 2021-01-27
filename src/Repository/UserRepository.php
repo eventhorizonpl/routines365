@@ -23,9 +23,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('u')
-            ->select('u, ua, up')
+            ->select('u, ua, up, ut, uuk')
             ->leftJoin('u.account', 'ua')
             ->leftJoin('u.profile', 'up')
+            ->leftJoin('u.testimonial', 'ut')
+            ->leftJoin('u.userKyt', 'uuk')
             ->addOrderBy('u.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

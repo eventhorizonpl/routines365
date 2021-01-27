@@ -20,10 +20,12 @@ class RoutineRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('r')
-            ->select('r, ru, rua, rup')
+            ->select('r, ru, rua, rup, rut, ruuk')
             ->leftJoin('r.user', 'ru')
             ->leftJoin('ru.account', 'rua')
             ->leftJoin('ru.profile', 'rup')
+            ->leftJoin('ru.testimonial', 'rut')
+            ->leftJoin('ru.userKyt', 'ruuk')
             ->addOrderBy('r.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

@@ -20,10 +20,12 @@ class ProjectRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->select('p, pu, pua, pup')
+            ->select('p, pu, pua, pup, put, puuk')
             ->leftJoin('p.user', 'pu')
             ->leftJoin('pu.account', 'pua')
             ->leftJoin('pu.profile', 'pup')
+            ->leftJoin('pu.testimonial', 'put')
+            ->leftJoin('pu.userKyt', 'puuk')
             ->addOrderBy('p.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

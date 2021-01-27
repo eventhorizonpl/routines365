@@ -19,10 +19,12 @@ class ContactRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('c')
-            ->select('c, cu, cua, cup')
+            ->select('c, cu, cua, cup, cut, cuuk')
             ->leftJoin('c.user', 'cu')
             ->leftJoin('cu.account', 'cua')
             ->leftJoin('cu.profile', 'cup')
+            ->leftJoin('cu.testimonial', 'cut')
+            ->leftJoin('cu.userKyt', 'cuuk')
             ->addOrderBy('c.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

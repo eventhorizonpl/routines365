@@ -21,11 +21,13 @@ class ReminderMessageRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('rm')
-            ->select('rm, rmr, rmru, rmrua, rmrup')
+            ->select('rm, rmr, rmru, rmrua, rmrup, rmrut, rmruuk')
             ->leftJoin('rm.reminder', 'rmr')
             ->leftJoin('rmr.user', 'rmru')
             ->leftJoin('rmru.account', 'rmrua')
             ->leftJoin('rmru.profile', 'rmrup')
+            ->leftJoin('rmru.testimonial', 'rmrut')
+            ->leftJoin('rmru.userKyt', 'rmruuk')
             ->addOrderBy('rm.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

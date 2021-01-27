@@ -19,10 +19,12 @@ class SavedEmailRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('se')
-            ->select('se, seu, seua, seup')
+            ->select('se, seu, seua, seup, seut, seuuk')
             ->leftJoin('se.user', 'seu')
             ->leftJoin('seu.account', 'seua')
             ->leftJoin('seu.profile', 'seup')
+            ->leftJoin('seu.testimonial', 'seut')
+            ->leftJoin('seu.userKyt', 'seuuk')
             ->addOrderBy('se.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

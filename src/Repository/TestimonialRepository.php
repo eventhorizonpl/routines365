@@ -19,10 +19,11 @@ class TestimonialRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('t')
-            ->select('t, tu, tua, tup')
+            ->select('t, tu, tua, tup, tuuk')
             ->leftJoin('t.user', 'tu')
             ->leftJoin('tu.account', 'tua')
             ->leftJoin('tu.profile', 'tup')
+            ->leftJoin('tu.userKyt', 'tuuk')
             ->addOrderBy('t.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

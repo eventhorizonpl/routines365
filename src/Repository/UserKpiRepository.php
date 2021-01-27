@@ -20,10 +20,12 @@ class UserKpiRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('uk')
-            ->select('uk')
+            ->select('uk, uku, ukua, ukup, ukut, ukuuk')
             ->leftJoin('uk.user', 'uku')
             ->leftJoin('uku.account', 'ukua')
             ->leftJoin('uku.profile', 'ukup')
+            ->leftJoin('uku.testimonial', 'ukut')
+            ->leftJoin('uku.userKyt', 'ukuuk')
             ->addOrderBy('uk.createdAt', 'DESC');
 
         if (!(empty($parameters))) {

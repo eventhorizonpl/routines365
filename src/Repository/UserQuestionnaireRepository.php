@@ -19,10 +19,12 @@ class UserQuestionnaireRepository extends ServiceEntityRepository
     public function findByParametersForAdmin(array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('uq')
-            ->select('uq, uqq, uqu, uqup')
+            ->select('uq, uqq, uqu, uqup, uqut, uquuk')
             ->leftJoin('uq.questionnaire', 'uqq')
             ->leftJoin('uq.user', 'uqu')
             ->leftJoin('uqu.profile', 'uqup')
+            ->leftJoin('uqu.testimonial', 'uqut')
+            ->leftJoin('uqu.userKyt', 'uquuk')
             ->addOrderBy('uq.createdAt', 'DESC');
 
         if (!(empty($parameters))) {
