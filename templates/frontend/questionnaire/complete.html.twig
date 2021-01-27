@@ -3,14 +3,14 @@
 {% block content %}
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-8 col-6">
                             {{ questionnaire.title }}
                         </div>
                         <div class="col-md-4 col-6 text-right">
-                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm" href="{{ path('frontend_home') }}" title="{{ 'Close'|trans }}">
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm" href="{{ path('frontend_home') }}" title="{{ 'Close'|trans }}">
                                 <i aria-hidden="true" class="bi bi-x-square"></i>
                             </a>
                         </div>

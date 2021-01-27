@@ -1,4 +1,4 @@
-import '../css/admin.css';
+import '../css/admin.scss';
 
 import $ from 'jquery';
 import 'bootstrap';

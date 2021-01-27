@@ -44,7 +44,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th {% if reminder_messages.isSorted('rm.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'UUID'|trans, 'rm.uuid') }}</th>

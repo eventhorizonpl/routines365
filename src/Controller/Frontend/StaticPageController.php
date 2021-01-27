@@ -132,4 +132,12 @@ class StaticPageController extends AbstractController
     {
         return $this->render('frontend/static_page/terms_and_conditions.html.twig');
     }
+
+    /**
+     * @Route("/theme", name="theme")
+     */
+    public function theme(): Response
+    {
+        return $this->render('frontend/static_page/theme.html.twig');
+    }
 }

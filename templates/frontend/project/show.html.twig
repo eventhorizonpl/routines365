@@ -16,7 +16,7 @@
 
     <div class="row mb-5">
         <div class="col-md-10 offset-md-1">
-            <div class="card bg-dark text-white">
+            <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-8 col-6">
@@ -30,7 +30,7 @@
                             <a aria-label="{{ 'Information'|trans }}" class="btn btn-info btn-sm ml-2" href="{{ path('frontend_static_page_how_to_projects') }}" title="{{ 'Information'|trans }}">
                                 <i aria-hidden="true" class="bi bi-question-square"></i>
                             </a>
-                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_project_index') }}" title="{{ 'Close'|trans }}">
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm ml-2" href="{{ path('frontend_project_index') }}" title="{{ 'Close'|trans }}">
                                 <i aria-hidden="true" class="bi bi-x-square"></i>
                             </a>
                         </div>
@@ -85,7 +85,7 @@
                             {% if project.goalsNotCompleted|length %}
                                 <div class="tab-pane fade active show" id="not-completed">
                                     <div class="table-responsive">
-                                        <table class="table table-dark">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>
@@ -144,7 +144,7 @@
                             {% if project.goalsCompleted|length %}
                                 <div class="tab-pane fade{% if project.goalsNotCompleted|length == 0 %} active show{% endif %}" id="completed">
                                     <div class="table-responsive">
-                                        <table class="table table-dark">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>

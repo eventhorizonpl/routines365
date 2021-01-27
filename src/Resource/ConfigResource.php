@@ -13,5 +13,5 @@ class ConfigResource
     public const INVITATIONS_ENABLED = false;
     public const MOTIVATE_A_FRIEND_ENABLED = true;
     public const PROMOTIONS_ENABLED = false;
-    public const REGISTRATION_ENABLED = true;
+    public const REGISTRATION_ENABLED = false;
 }

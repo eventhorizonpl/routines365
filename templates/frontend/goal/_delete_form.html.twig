@@ -8,11 +8,11 @@
         <i aria-hidden="true" class="bi bi-question-square"></i>
     </a>
     {% if project %}
-        <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}" title="{{ 'Close'|trans }}">
+        <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm ml-2" href="{{ path('frontend_project_show', {'uuid': project.uuid}) }}" title="{{ 'Close'|trans }}">
             <i aria-hidden="true" class="bi bi-x-square"></i>
         </a>
     {% elseif routine %}
-        <a aria-label="{{ 'Close'|trans }}" class="btn btn-light btn-sm ml-2" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}" title="{{ 'Close'|trans }}">
+        <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm ml-2" href="{{ path('frontend_routine_show_goals', {'uuid': routine.uuid}) }}" title="{{ 'Close'|trans }}">
             <i aria-hidden="true" class="bi bi-x-square"></i>
         </a>
     {% endif %}

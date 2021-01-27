@@ -44,7 +44,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th {% if saved_emails.isSorted('se.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'UUID'|trans, 'se.uuid') }}</th>

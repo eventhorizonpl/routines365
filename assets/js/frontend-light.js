@@ -1,3 +1,3 @@
-import '../css/frontend-light.css';
+import '../css/frontend-light.scss';
 
 import './frontend';

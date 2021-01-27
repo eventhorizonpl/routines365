@@ -48,7 +48,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th {% if promotions.isSorted('p.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'UUID'|trans, 'p.uuid') }}</th>

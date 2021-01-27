@@ -18,7 +18,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th {% if cron_reports.isSorted('cr.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'ID'|trans, 'cr.id') }}</th>
