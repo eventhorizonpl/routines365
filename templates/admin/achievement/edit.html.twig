@@ -12,14 +12,14 @@
         </a>
     </li>
     <li class="breadcrumb-item active">
-        {{ 'Edit achievement'|trans }}
+        {{ 'Edit an achievement'|trans }}
     </li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Edit achievement'|trans }}
+            {{ 'Edit an achievement'|trans }}
 
             {% if is_granted('ROLE_SUPER_ADMIN') %}
                 {{ include('admin/achievement/_delete_form.html.twig') }}
@@ -32,5 +32,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'Edit achievement'|trans }}
+    {{ parent() }} - {{ 'Edit an achievement'|trans }}
 {% endblock %}

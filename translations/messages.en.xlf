@@ -201,6 +201,14 @@
         <source>Please set up time zone!</source>
         <target>Please set up time zone!</target>
       </trans-unit>
+      <trans-unit id="y5snxeJ" resname="We already accepted your testimonial.">
+        <source>We already accepted your testimonial.</source>
+        <target>We already accepted your testimonial.</target>
+      </trans-unit>
+      <trans-unit id="ZYp.Y.T" resname="We saved your testimonial.">
+        <source>We saved your testimonial.</source>
+        <target>We saved your testimonial.</target>
+      </trans-unit>
       <trans-unit id="njNAthI" resname="Old password is not correct!">
         <source>Old password is not correct!</source>
         <target>Old password is not correct!</target>
@@ -345,6 +353,10 @@
         <source>Saved emails</source>
         <target>Saved emails</target>
       </trans-unit>
+      <trans-unit id="0oJctry" resname="Testimonials">
+        <source>Testimonials</source>
+        <target>Testimonials</target>
+      </trans-unit>
       <trans-unit id="awzJBNC" resname="Users">
         <source>Users</source>
         <target>Users</target>
@@ -368,6 +380,10 @@
       <trans-unit id="jg.0gXp" resname="GDPR data export">
         <source>GDPR data export</source>
         <target>GDPR data export</target>
+      </trans-unit>
+      <trans-unit id="AMmJ.rb" resname="Landing pages">
+        <source>Landing pages</source>
+        <target>Landing pages</target>
       </trans-unit>
       <trans-unit id="6tB8hLq" resname="Changelog">
         <source>Changelog</source>
@@ -396,6 +412,14 @@
       <trans-unit id="NOb68Vq" resname="Terms and Conditions">
         <source>Terms and Conditions</source>
         <target>Terms and Conditions</target>
+      </trans-unit>
+      <trans-unit id="1B9bSXf" resname="Facebook">
+        <source>Facebook</source>
+        <target>Facebook</target>
+      </trans-unit>
+      <trans-unit id="vNGOrV_" resname="Twitter">
+        <source>Twitter</source>
+        <target>Twitter</target>
       </trans-unit>
       <trans-unit id="jfx3q0C" resname="Copyright">
         <source>Copyright</source>
@@ -472,10 +496,6 @@
       <trans-unit id="ndg1sAu" resname="KPI details">
         <source>KPI details</source>
         <target>KPI details</target>
-      </trans-unit>
-      <trans-unit id="dpAPG.0" resname="Back">
-        <source>Back</source>
-        <target>Back</target>
       </trans-unit>
       <trans-unit id="DjX26XQ" resname="Basic">
         <source>Basic</source>
@@ -621,6 +641,10 @@
         <source>Answer details</source>
         <target>Answer details</target>
       </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
       <trans-unit id="bQMa8Q2" resname="Position">
         <source>Position</source>
         <target>Position</target>
@@ -633,17 +657,13 @@
         <source>Question</source>
         <target>Question</target>
       </trans-unit>
-      <trans-unit id="RkxP.QG" resname="Edit">
-        <source>Edit</source>
-        <target>Edit</target>
-      </trans-unit>
       <trans-unit id="FQn1YfJ" resname="Save">
         <source>Save</source>
         <target>Save</target>
       </trans-unit>
-      <trans-unit id="ZYaPH0D" resname="Edit answer">
-        <source>Edit answer</source>
-        <target>Edit answer</target>
+      <trans-unit id="rNhvvX6" resname="Edit an answer">
+        <source>Edit an answer</source>
+        <target>Edit an answer</target>
       </trans-unit>
       <trans-unit id="wcEAnT8" resname="Update">
         <source>Update</source>
@@ -653,9 +673,9 @@
         <source>Delete</source>
         <target>Delete</target>
       </trans-unit>
-      <trans-unit id="eTesD5x" resname="Create answer">
-        <source>Create answer</source>
-        <target>Create answer</target>
+      <trans-unit id="Eh4xmC." resname="Create an answer">
+        <source>Create an answer</source>
+        <target>Create an answer</target>
       </trans-unit>
       <trans-unit id="P4.Epqs" resname="Cron job details">
         <source>Cron job details</source>
@@ -685,13 +705,13 @@
         <source>Create</source>
         <target>Create</target>
       </trans-unit>
-      <trans-unit id="wunbzpB" resname="Edit cron job">
-        <source>Edit cron job</source>
-        <target>Edit cron job</target>
+      <trans-unit id="O1vbJfY" resname="Edit a cron job">
+        <source>Edit a cron job</source>
+        <target>Edit a cron job</target>
       </trans-unit>
-      <trans-unit id="X5kCqIL" resname="Create cron job">
-        <source>Create cron job</source>
-        <target>Create cron job</target>
+      <trans-unit id="fghSBbD" resname="Create a cron job">
+        <source>Create a cron job</source>
+        <target>Create a cron job</target>
       </trans-unit>
       <trans-unit id="HNJ9YIw" resname="Reminder details">
         <source>Reminder details</source>
@@ -749,13 +769,13 @@
         <source>Requirement</source>
         <target>Requirement</target>
       </trans-unit>
-      <trans-unit id="DFhWSBm" resname="Edit achievement">
-        <source>Edit achievement</source>
-        <target>Edit achievement</target>
+      <trans-unit id="SPdSxj2" resname="Edit an achievement">
+        <source>Edit an achievement</source>
+        <target>Edit an achievement</target>
       </trans-unit>
-      <trans-unit id=".Neyh20" resname="Create achievement">
-        <source>Create achievement</source>
-        <target>Create achievement</target>
+      <trans-unit id="HqwvYBa" resname="Create an achievement">
+        <source>Create an achievement</source>
+        <target>Create an achievement</target>
       </trans-unit>
       <trans-unit id="Gsc544l" resname="Quote details">
         <source>Quote details</source>
@@ -777,13 +797,29 @@
         <source>String length</source>
         <target>String length</target>
       </trans-unit>
-      <trans-unit id="Lc.E2Cy" resname="Edit quote">
-        <source>Edit quote</source>
-        <target>Edit quote</target>
+      <trans-unit id="LJ6gR_f" resname="Edit a quote">
+        <source>Edit a quote</source>
+        <target>Edit a quote</target>
       </trans-unit>
-      <trans-unit id="7yOAEt2" resname="Create quote">
-        <source>Create quote</source>
-        <target>Create quote</target>
+      <trans-unit id="4FP1w7Y" resname="Create a quote">
+        <source>Create a quote</source>
+        <target>Create a quote</target>
+      </trans-unit>
+      <trans-unit id="0a32RJH" resname="Testimonial details">
+        <source>Testimonial details</source>
+        <target>Testimonial details</target>
+      </trans-unit>
+      <trans-unit id="8ac_IgS" resname="Signature">
+        <source>Signature</source>
+        <target>Signature</target>
+      </trans-unit>
+      <trans-unit id="kg5BPH1" resname="Status">
+        <source>Status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id=".GVLrGo" resname="Edit a testimonial">
+        <source>Edit a testimonial</source>
+        <target>Edit a testimonial</target>
       </trans-unit>
       <trans-unit id="inyLZ.6" resname="Accounts">
         <source>Accounts</source>
@@ -873,21 +909,21 @@
         <source>Questionnaire details</source>
         <target>Questionnaire details</target>
       </trans-unit>
-      <trans-unit id="Lh4izS." resname="Edit questionnaire">
-        <source>Edit questionnaire</source>
-        <target>Edit questionnaire</target>
+      <trans-unit id="EB93fOX" resname="Edit a questionnaire">
+        <source>Edit a questionnaire</source>
+        <target>Edit a questionnaire</target>
       </trans-unit>
-      <trans-unit id="Kfenm4_" resname="Create questionnaire">
-        <source>Create questionnaire</source>
-        <target>Create questionnaire</target>
+      <trans-unit id="QjQTbuZ" resname="Create a questionnaire">
+        <source>Create a questionnaire</source>
+        <target>Create a questionnaire</target>
       </trans-unit>
-      <trans-unit id="NpbHEI7" resname="Edit question">
-        <source>Edit question</source>
-        <target>Edit question</target>
+      <trans-unit id="xCseDJU" resname="Edit a question">
+        <source>Edit a question</source>
+        <target>Edit a question</target>
       </trans-unit>
-      <trans-unit id="yiK4MLN" resname="Create question">
-        <source>Create question</source>
-        <target>Create question</target>
+      <trans-unit id="2MDkUD." resname="Create a question">
+        <source>Create a question</source>
+        <target>Create a question</target>
       </trans-unit>
       <trans-unit id="R8iKEzZ" resname="Account operation details">
         <source>Account operation details</source>
@@ -913,13 +949,9 @@
         <source>Contact details</source>
         <target>Contact details</target>
       </trans-unit>
-      <trans-unit id="kg5BPH1" resname="Status">
-        <source>Status</source>
-        <target>Status</target>
-      </trans-unit>
-      <trans-unit id="gc0GWkX" resname="Edit contact">
-        <source>Edit contact</source>
-        <target>Edit contact</target>
+      <trans-unit id="tKRcg7b" resname="Edit a contact">
+        <source>Edit a contact</source>
+        <target>Edit a contact</target>
       </trans-unit>
       <trans-unit id=".iD2coz" resname="Promotion details">
         <source>Promotion details</source>
@@ -933,13 +965,13 @@
         <source>Expires at</source>
         <target>Expires at</target>
       </trans-unit>
-      <trans-unit id="DJyQUhD" resname="Edit promotion">
-        <source>Edit promotion</source>
-        <target>Edit promotion</target>
+      <trans-unit id="VSjcbZN" resname="Edit a promotion">
+        <source>Edit a promotion</source>
+        <target>Edit a promotion</target>
       </trans-unit>
-      <trans-unit id="1XFggZi" resname="Create promotion">
-        <source>Create promotion</source>
-        <target>Create promotion</target>
+      <trans-unit id="lBPmuzX" resname="Create a promotion">
+        <source>Create a promotion</source>
+        <target>Create a promotion</target>
       </trans-unit>
       <trans-unit id="3ntLEV1" resname="Saved email details">
         <source>Saved email details</source>
@@ -1177,17 +1209,17 @@
         <source>Last login at</source>
         <target>Last login at</target>
       </trans-unit>
-      <trans-unit id="dh82NDu" resname="Create lead">
-        <source>Create lead</source>
-        <target>Create lead</target>
+      <trans-unit id="HTLmJNa" resname="Create a lead">
+        <source>Create a lead</source>
+        <target>Create a lead</target>
       </trans-unit>
-      <trans-unit id="BbiNGPw" resname="Edit user">
-        <source>Edit user</source>
-        <target>Edit user</target>
+      <trans-unit id="FkFJr.q" resname="Edit an user">
+        <source>Edit an user</source>
+        <target>Edit an user</target>
       </trans-unit>
-      <trans-unit id="8G2hKMN" resname="Create user">
-        <source>Create user</source>
-        <target>Create user</target>
+      <trans-unit id="luYaxyI" resname="Create an user">
+        <source>Create an user</source>
+        <target>Create an user</target>
       </trans-unit>
       <trans-unit id="coXGDsA" resname="Retention details">
         <source>Retention details</source>
@@ -1321,13 +1353,13 @@
         <source>Verify</source>
         <target>Verify</target>
       </trans-unit>
-      <trans-unit id="wF6gHjw" resname="+xx xxx xxx xxx">
-        <source>+xx xxx xxx xxx</source>
-        <target>+xx xxx xxx xxx</target>
-      </trans-unit>
       <trans-unit id="cmqFrni" resname="Find time zone">
         <source>Find time zone</source>
         <target>Find time zone</target>
+      </trans-unit>
+      <trans-unit id="wF6gHjw" resname="+xx xxx xxx xxx">
+        <source>+xx xxx xxx xxx</source>
+        <target>+xx xxx xxx xxx</target>
       </trans-unit>
       <trans-unit id="FcSqEwN" resname="Edit profile">
         <source>Edit profile</source>
@@ -1364,6 +1396,22 @@
       <trans-unit id=".mDYURx" resname="Popularity">
         <source>Popularity</source>
         <target>Popularity</target>
+      </trans-unit>
+      <trans-unit id="2CFH_uy" resname="Content of the testimonial.">
+        <source>Content of the testimonial.</source>
+        <target>Content of the testimonial.</target>
+      </trans-unit>
+      <trans-unit id="bnPa2Rm" resname="Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.">
+        <source>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</source>
+        <target>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</target>
+      </trans-unit>
+      <trans-unit id="hxYE_d1" resname="Testimonial">
+        <source>Testimonial</source>
+        <target>Testimonial</target>
+      </trans-unit>
+      <trans-unit id="8i.EXx2" resname="Please share your opinion about our system.">
+        <source>Please share your opinion about our system.</source>
+        <target>Please share your opinion about our system.</target>
       </trans-unit>
       <trans-unit id="6oMuPig" resname="Motivational messages">
         <source>Motivational messages</source>
@@ -1540,58 +1588,6 @@
       <trans-unit id="L8jgrZx" resname="Edit a goal">
         <source>Edit a goal</source>
         <target>Edit a goal</target>
-      </trans-unit>
-      <trans-unit id="y5snxeJ" resname="We already accepted your testimonial.">
-        <source>We already accepted your testimonial.</source>
-        <target>We already accepted your testimonial.</target>
-      </trans-unit>
-      <trans-unit id="ZYp.Y.T" resname="We saved your testimonial.">
-        <source>We saved your testimonial.</source>
-        <target>We saved your testimonial.</target>
-      </trans-unit>
-      <trans-unit id="0oJctry" resname="Testimonials">
-        <source>Testimonials</source>
-        <target>Testimonials</target>
-      </trans-unit>
-      <trans-unit id="1B9bSXf" resname="Facebook">
-        <source>Facebook</source>
-        <target>Facebook</target>
-      </trans-unit>
-      <trans-unit id="vNGOrV_" resname="Twitter">
-        <source>Twitter</source>
-        <target>Twitter</target>
-      </trans-unit>
-      <trans-unit id="0a32RJH" resname="Testimonial details">
-        <source>Testimonial details</source>
-        <target>Testimonial details</target>
-      </trans-unit>
-      <trans-unit id="8ac_IgS" resname="Signature">
-        <source>Signature</source>
-        <target>Signature</target>
-      </trans-unit>
-      <trans-unit id="dj9vCZ5" resname="Edit testimonial">
-        <source>Edit testimonial</source>
-        <target>Edit testimonial</target>
-      </trans-unit>
-      <trans-unit id="2CFH_uy" resname="Content of the testimonial.">
-        <source>Content of the testimonial.</source>
-        <target>Content of the testimonial.</target>
-      </trans-unit>
-      <trans-unit id="hxYE_d1" resname="Testimonial">
-        <source>Testimonial</source>
-        <target>Testimonial</target>
-      </trans-unit>
-      <trans-unit id="8i.EXx2" resname="Please share your opinion about our system.">
-        <source>Please share your opinion about our system.</source>
-        <target>Please share your opinion about our system.</target>
-      </trans-unit>
-      <trans-unit id="bnPa2Rm" resname="Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.">
-        <source>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</source>
-        <target>Signature of the testimonial. You do not need to provide your full name. Your initials or nickname will be also good.</target>
-      </trans-unit>
-      <trans-unit id="AMmJ.rb" resname="Landing pages">
-        <source>Landing pages</source>
-        <target>__Landing pages</target>
       </trans-unit>
     </body>
   </file>

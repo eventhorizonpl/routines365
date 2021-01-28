@@ -12,14 +12,14 @@
         </a>
     </li>
     <li class="breadcrumb-item active">
-        {{ 'Create question'|trans }}
+        {{ 'Create a question'|trans }}
     </li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Create question'|trans }}
+            {{ 'Create a question'|trans }}
             <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_questionnaire_show', {'uuid': question.questionnaire.uuid}) }}">
                 <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
@@ -31,5 +31,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'Create question'|trans }}
+    {{ parent() }} - {{ 'Create a question'|trans }}
 {% endblock %}

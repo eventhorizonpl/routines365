@@ -12,14 +12,14 @@
         </a>
     </li>
     <li class="breadcrumb-item active">
-        {{ 'Edit promotion'|trans }}
+        {{ 'Edit a promotion'|trans }}
     </li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Edit promotion'|trans }}
+            {{ 'Edit a promotion'|trans }}
 
             {% if is_granted('ROLE_SUPER_ADMIN') %}
                 {{ include('admin/promotion/_delete_form.html.twig') }}
@@ -32,5 +32,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'Edit promotion'|trans }}
+    {{ parent() }} - {{ 'Edit a promotion'|trans }}
 {% endblock %}

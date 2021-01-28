@@ -12,14 +12,14 @@
         </a>
     </li>
     <li class="breadcrumb-item active">
-        {{ 'Edit contact'|trans }}
+        {{ 'Edit a contact'|trans }}
     </li>
 {% endblock %}
 
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Edit contact'|trans }}
+            {{ 'Edit a contact'|trans }}
             <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_contact_index') }}">
                 <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
@@ -31,5 +31,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'Edit contact'|trans }}
+    {{ parent() }} - {{ 'Edit a contact'|trans }}
 {% endblock %}
