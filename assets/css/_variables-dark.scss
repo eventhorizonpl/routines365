@@ -43,11 +43,11 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
-$custom-primary: #6a4c93 !default;
-$custom-success: #60a000 !default;
-$custom-info: #00aeda !default;
-$custom-warning: #ffca3a !default;
-$custom-danger: #d83441 !default;
+$custom-primary: #8b4f92 !default;
+$custom-success: #5dae00 !default;
+$custom-info: #00a2d5 !default;
+$custom-warning: #f7dc13 !default;
+$custom-danger: #d92f1e !default;
 
 $colors: () !default;
 $colors: map-merge(
@@ -75,7 +75,7 @@ $colors: map-merge(
 );
 
 $primary:       $custom-primary !default;
-$secondary:     $gray-400 !default;
+$secondary:     $gray-200 !default;
 $success:       $custom-success !default;
 $info:          $custom-info !default;
 $warning:       $custom-warning !default;
@@ -183,9 +183,9 @@ $body-color:                $gray-100 !default;
 //
 // Style anchor elements.
 
-$link-color:                              lighten(theme-color("primary"), 30%) !default;
+$link-color:                              lighten(theme-color("primary"), 24%) !default;
 $link-decoration:                         none !default;
-$link-hover-color:                        lighten($link-color, 5%) !default;
+$link-hover-color:                        darken($link-color, 15%) !default;
 $link-hover-decoration:                   underline !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
