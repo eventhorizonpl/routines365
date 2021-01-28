@@ -19,25 +19,25 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="type" name="type">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in userKpiType() %}
                             <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.type or parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_user_kpi_index') }}">
+                <a class="btn {% if not (parameters.type or parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_user_kpi_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -47,40 +47,69 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if user_kpis.isSorted('uk.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(user_kpis, 'UUID'|trans, 'uk.uuid') }}</th>
-                            <th {% if user_kpis.isSorted('ru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(user_kpis, 'Email'|trans, 'uku.email') }}</th>
-                            <th {% if user_kpis.isSorted('uk.Date') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(user_kpis, 'Date'|trans, 'uk.date') }}</th>
-                            <th {% if user_kpis.isSorted('uk.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(user_kpis, 'Deleted at'|trans, 'uk.deletedAt') }}</th>
-                            <th {% if user_kpis.isSorted('uk.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(user_kpis, 'Updated at'|trans, 'uk.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if user_kpis.isSorted('uk.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(user_kpis, 'UUID'|trans, 'uk.uuid') }}
+                            </th>
+                            <th{% if user_kpis.isSorted('ru.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(user_kpis, 'Email'|trans, 'uku.email') }}
+                            </th>
+                            <th{% if user_kpis.isSorted('uk.Date') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(user_kpis, 'Date'|trans, 'uk.date') }}
+                            </th>
+                            <th{% if user_kpis.isSorted('uk.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(user_kpis, 'Deleted at'|trans, 'uk.deletedAt') }}
+                            </th>
+                            <th{% if user_kpis.isSorted('uk.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(user_kpis, 'Updated at'|trans, 'uk.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for user_kpi in user_kpis %}
                             <tr>
-                                <td><a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.uuid}) }}">{{ user_kpi.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.uuid}) }}">
+                                        {{ user_kpi.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if user_kpi.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user_kpi.user.uuid}) }}">{{ user_kpi.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user_kpi.user.uuid}) }}">
+                                            {{ user_kpi.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
-                                <td>{{ user_kpi.date ? user_kpi.date|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ user_kpi.deletedAt ? user_kpi.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ user_kpi.updatedAt ? user_kpi.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ user_kpi.date ? user_kpi.date|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ user_kpi.deletedAt ? user_kpi.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ user_kpi.updatedAt ? user_kpi.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ user_kpi.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ user_kpi.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="5">{{ 'No records found'|trans }}</td>
+                                <td colspan="6">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -93,4 +122,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'User KPIs'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'User KPIs'|trans }}
+{% endblock %}

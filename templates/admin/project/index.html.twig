@@ -20,16 +20,16 @@
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
+                    <input class="form-control ml-2" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
+                    <input class="form-control ml-2" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_project_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_project_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -39,62 +39,105 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if projects.isSorted('p.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'UUID'|trans, 'p.uuid') }}</th>
-                            <th {% if projects.isSorted('pu.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'Email'|trans, 'pu.email') }}</th>
-                            <th {% if projects.isSorted('p.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'Name'|trans, 'p.name') }}</th>
-                            <th {% if projects.isSorted('p.Description') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'Description'|trans, 'p.description') }}</th>
-                            <th {% if projects.isSorted('p.IsCompleted') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'Is completed'|trans, 'p.isCompleted') }}</th>
-                            <th {% if projects.isSorted('p.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'Deleted at'|trans, 'p.deletedAt') }}</th>
-                            <th {% if projects.isSorted('p.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(projects, 'Updated at'|trans, 'p.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if projects.isSorted('p.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'UUID'|trans, 'p.uuid') }}
+                            </th>
+                            <th{% if projects.isSorted('pu.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'Email'|trans, 'pu.email') }}
+                            </th>
+                            <th{% if projects.isSorted('p.Name') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'Name'|trans, 'p.name') }}
+                            </th>
+                            <th{% if projects.isSorted('p.Description') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'Description'|trans, 'p.description') }}
+                            </th>
+                            <th{% if projects.isSorted('p.IsCompleted') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'Is completed'|trans, 'p.isCompleted') }}
+                            </th>
+                            <th{% if projects.isSorted('p.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'Deleted at'|trans, 'p.deletedAt') }}
+                            </th>
+                            <th{% if projects.isSorted('p.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(projects, 'Updated at'|trans, 'p.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for project in projects %}
                             <tr>
-                                <td><a href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">{{ project.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">
+                                        {{ project.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if project.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': project.user.uuid}) }}">{{ project.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': project.user.uuid}) }}">
+                                            {{ project.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if project.name %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if project.description %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if project.isCompleted %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
-                                <td>{{ project.deletedAt ? project.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ project.deletedAt ? project.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ project.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ project.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_project_show', {'uuid': project.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="8">{{ 'No records found'|trans }}</td>
+                                <td colspan="8">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -107,4 +150,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Projects'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Projects'|trans }}
+{% endblock %}

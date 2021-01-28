@@ -20,9 +20,8 @@
     <div class="card">
         <div class="card-header">
             {{ 'Create questionnaire'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_questionnaire_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_questionnaire_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
         </div>
         <div class="card-body">
@@ -31,4 +30,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Create questionnaire'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Create questionnaire'|trans }}
+{% endblock %}

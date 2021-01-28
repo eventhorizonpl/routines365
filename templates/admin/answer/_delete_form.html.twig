@@ -1,5 +1,10 @@
-<form method="post" action="{{ path('admin_answer_delete', {'uuid': answer.uuid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form class="float-right" method="post" action="{{ path('admin_answer_delete', {'uuid': answer.uuid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ answer.uuid) }}">
-    <button class="btn btn-warning"><i aria-hidden="true" class="bi bi-trash"></i> {{ 'Delete'|trans }}</button>
+    <button aria-label="{{ 'Delete'|trans }}" class="btn btn-sm btn-danger" title="{{ 'Delete'|trans }}">
+        <i aria-hidden="true" class="bi bi-trash"></i>
+    </button>
+    <a class="btn btn-secondary btn-sm ml-2" href="{{ path('admin_question_show', {'uuid': answer.question.uuid}) }}">
+        <i aria-hidden="true" class="bi bi-x-square"></i>
+    </a>
 </form>

@@ -21,27 +21,53 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if cron_reports.isSorted('cr.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'ID'|trans, 'cr.id') }}</th>
-                            <th>{{ 'Job'|trans }}</th>
-                            <th {% if cron_reports.isSorted('cr.RunAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Run at'|trans, 'cr.runAt') }}</th>
-                            <th {% if cron_reports.isSorted('cr.RunTime') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Run time'|trans, 'cr.runTime') }}</th>
-                            <th {% if cron_reports.isSorted('cr.ExitCode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Exit code'|trans, 'cr.exitCode') }}</th>
-                            <th {% if cron_reports.isSorted('cr.Output') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_reports, 'Output'|trans, 'cr.output') }}</th>
+                            <th{% if cron_reports.isSorted('cr.Id') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_reports, 'ID'|trans, 'cr.id') }}
+                            </th>
+                            <th>
+                                {{ 'Job'|trans }}
+                            </th>
+                            <th{% if cron_reports.isSorted('cr.RunAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_reports, 'Run at'|trans, 'cr.runAt') }}
+                            </th>
+                            <th{% if cron_reports.isSorted('cr.RunTime') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_reports, 'Run time'|trans, 'cr.runTime') }}
+                            </th>
+                            <th{% if cron_reports.isSorted('cr.ExitCode') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_reports, 'Exit code'|trans, 'cr.exitCode') }}
+                            </th>
+                            <th{% if cron_reports.isSorted('cr.Output') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_reports, 'Output'|trans, 'cr.output') }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for cron_report in cron_reports %}
                             <tr>
-                                <td>{{ cron_report.id }}</td>
-                                <td>{{ cron_report.job.name }}</td>
-                                <td>{{ cron_report.runAt ? cron_report.runAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ cron_report.runTime }}</td>
-                                <td>{{ cron_report.exitCode }}</td>
-                                <td>{{ cron_report.output }}</td>
+                                <td>
+                                    {{ cron_report.id }}
+                                </td>
+                                <td>
+                                    {{ cron_report.job.name }}
+                                </td>
+                                <td>
+                                    {{ cron_report.runAt ? cron_report.runAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ cron_report.runTime }}
+                                </td>
+                                <td>
+                                    {{ cron_report.exitCode }}
+                                </td>
+                                <td>
+                                    {{ cron_report.output }}
+                                </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="6">{{ 'No records found'|trans }}</td>
+                                <td colspan="6">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -54,4 +80,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Cron reports'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Cron reports'|trans }}
+{% endblock %}

@@ -19,25 +19,25 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="type" name="type">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in reminderMessageType() %}
                             <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-default" href="{{ path('admin_reminder_message_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_reminder_message_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -47,44 +47,75 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if reminder_messages.isSorted('rm.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'UUID'|trans, 'rm.uuid') }}</th>
-                            <th {% if reminder_messages.isSorted('rmru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Email'|trans, 'rmru.email') }}</th>
-                            <th {% if reminder_messages.isSorted('rm.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Content'|trans, 'rm.content') }}</th>
-                            <th {% if reminder_messages.isSorted('rm.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Type'|trans, 'rm.type') }}</th>
-                            <th {% if reminder_messages.isSorted('rm.PostDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Post date'|trans, 'rm.postDate') }}</th>
-                            <th {% if reminder_messages.isSorted('rm.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(reminder_messages, 'Updated at'|trans, 'rm.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if reminder_messages.isSorted('rm.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reminder_messages, 'UUID'|trans, 'rm.uuid') }}
+                            </th>
+                            <th{% if reminder_messages.isSorted('rmru.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reminder_messages, 'Email'|trans, 'rmru.email') }}
+                            </th>
+                            <th{% if reminder_messages.isSorted('rm.Content') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reminder_messages, 'Content'|trans, 'rm.content') }}
+                            </th>
+                            <th{% if reminder_messages.isSorted('rm.Type') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reminder_messages, 'Type'|trans, 'rm.type') }}
+                            </th>
+                            <th{% if reminder_messages.isSorted('rm.PostDate') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reminder_messages, 'Post date'|trans, 'rm.postDate') }}
+                            </th>
+                            <th{% if reminder_messages.isSorted('rm.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reminder_messages, 'Updated at'|trans, 'rm.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for reminder_message in reminder_messages %}
                             <tr>
-                                <td><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">
+                                        {{ reminder_message.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if reminder_message.reminder.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': reminder_message.reminder.user.uuid}) }}">{{ reminder_message.reminder.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder_message.reminder.user.uuid}) }}">
+                                            {{ reminder_message.reminder.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
-                                <td>{{ reminder_message.content }}</td>
-                                <td>{{ reminder_message.type }}</td>
+                                <td>
+                                    {{ reminder_message.content }}
+                                </td>
+                                <td>
+                                    {{ reminder_message.type }}
+                                </td>
                                 <td>
                                     {{ reminder_message.postDate ? reminder_message.postDate|date('Y-m-d H:i:s') : '' }}
                                 </td>
-                                <td>{{ reminder_message.updatedAt ? reminder_message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ reminder_message.updatedAt ? reminder_message.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ reminder_message.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ reminder_message.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="7">{{ 'No records found'|trans }}</td>
+                                <td colspan="7">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -97,4 +128,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Reminder messages'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Reminder messages'|trans }}
+{% endblock %}

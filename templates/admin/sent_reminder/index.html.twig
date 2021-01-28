@@ -19,14 +19,14 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_sent_reminder_index') }}">
+                <a class="btn {% if not (parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_sent_reminder_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -36,48 +36,77 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if sent_reminders.isSorted('sr.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(sent_reminders, 'UUID'|trans, 'sr.uuid') }}</th>
-                            <th {% if sent_reminders.isSorted('srru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(sent_reminders, 'Email'|trans, 'srru.email') }}</th>
-                            <th {% if sent_reminders.isSorted('sr.Reminder') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(sent_reminders, 'Reminder'|trans, 'srr.uuid') }}</th>
-                            <th {% if sent_reminders.isSorted('sr.Routine') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(sent_reminders, 'Routine'|trans, 'srro.uuid') }}</th>
-                            <th {% if sent_reminders.isSorted('sr.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(sent_reminders, 'Updated at'|trans, 'sr.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if sent_reminders.isSorted('sr.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(sent_reminders, 'UUID'|trans, 'sr.uuid') }}
+                            </th>
+                            <th{% if sent_reminders.isSorted('srru.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(sent_reminders, 'Email'|trans, 'srru.email') }}
+                            </th>
+                            <th{% if sent_reminders.isSorted('sr.Reminder') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(sent_reminders, 'Reminder'|trans, 'srr.uuid') }}
+                            </th>
+                            <th{% if sent_reminders.isSorted('sr.Routine') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(sent_reminders, 'Routine'|trans, 'srro.uuid') }}
+                            </th>
+                            <th{% if sent_reminders.isSorted('sr.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(sent_reminders, 'Updated at'|trans, 'sr.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for sent_reminder in sent_reminders %}
                             <tr>
-                                <td><a href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}">{{ sent_reminder.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}">
+                                        {{ sent_reminder.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if sent_reminder.reminder.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': sent_reminder.reminder.user.uuid}) }}">{{ sent_reminder.reminder.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': sent_reminder.reminder.user.uuid}) }}">
+                                            {{ sent_reminder.reminder.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if sent_reminder.reminder %}
-                                        <a href="{{ path('admin_reminder_show', {'uuid': sent_reminder.reminder.uuid}) }}">{{ sent_reminder.reminder.uuid }}</a>
+                                        <a href="{{ path('admin_reminder_show', {'uuid': sent_reminder.reminder.uuid}) }}">
+                                            {{ sent_reminder.reminder.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if sent_reminder.routine %}
-                                        <a href="{{ path('admin_routine_show', {'uuid': sent_reminder.routine.uuid}) }}">{{ sent_reminder.routine.uuid }}</a>
+                                        <a href="{{ path('admin_routine_show', {'uuid': sent_reminder.routine.uuid}) }}">
+                                            {{ sent_reminder.routine.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
-                                <td>{{ sent_reminder.updatedAt ? sent_reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ sent_reminder.updatedAt ? sent_reminder.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ sent_reminder.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ sent_reminder.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="7">{{ 'No records found'|trans }}</td>
+                                <td colspan="7">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -90,4 +119,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Sent reminders'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Sent reminders'|trans }}
+{% endblock %}

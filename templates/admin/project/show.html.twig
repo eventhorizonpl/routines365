@@ -20,19 +20,24 @@
     <div class="card">
         <div class="card-header">
             {{ 'Project details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_project_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_project_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,32 +47,50 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Name'|trans }}
+                                </th>
                                 <td>
                                     {% if project.name %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Description'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Description'|trans }}
+                                </th>
                                 <td>
                                     {% if project.description %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is completed'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is completed'|trans }}
+                                </th>
                                 <td>
                                     {% if project.isCompleted %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -78,22 +101,32 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Goals'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Goals'|trans }}
+                                </th>
                                 <td>
                                     {% if project.goalsAll|length %}
                                         <ul>
                                             {% for goal in project.goalsAll %}
-                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">
+                                                        {{ goal.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'User'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'User'|trans }}
+                                </th>
                                 <td>
                                     {% if project.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': project.user.uuid}) }}">{{ project.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': project.user.uuid}) }}">
+                                            {{ project.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -104,54 +137,90 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ project.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ project.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ project.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ project.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if project.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': project.createdBy}) }}">{{ project.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': project.createdBy}) }}">
+                                            {{ project.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if project.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': project.deletedBy}) }}">{{ project.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_project_undelete', {'uuid': project.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': project.deletedBy}) }}">
+                                            {{ project.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_project_undelete', {'uuid': project.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if project.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': project.updatedBy}) }}">{{ project.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': project.updatedBy}) }}">
+                                            {{ project.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ project.createdAt ? project.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if project.deletedAt %}
                                         {{ project.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_project_undelete', {'uuid': project.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_project_undelete', {'uuid': project.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ project.updatedAt ? project.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -161,4 +230,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Project details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Project details'|trans }}
+{% endblock %}

@@ -19,25 +19,25 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="type" name="type">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in routineType() %}
                             <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-default" href="{{ path('admin_routine_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_routine_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -47,64 +47,111 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if routines.isSorted('r.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'UUID'|trans, 'r.uuid') }}</th>
-                            <th {% if routines.isSorted('ru.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Email'|trans, 'ru.email') }}</th>
-                            <th {% if routines.isSorted('r.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Name'|trans, 'r.name') }}</th>
-                            <th {% if routines.isSorted('r.Description') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Description'|trans, 'r.description') }}</th>
-                            <th {% if routines.isSorted('r.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Type'|trans, 'r.type') }}</th>
-                            <th {% if routines.isSorted('r.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Is enabled'|trans, 'r.isEnabled') }}</th>
-                            <th {% if routines.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Deleted at'|trans, 'r.deletedAt') }}</th>
-                            <th {% if routines.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(routines, 'Updated at'|trans, 'r.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if routines.isSorted('r.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'UUID'|trans, 'r.uuid') }}
+                            </th>
+                            <th{% if routines.isSorted('ru.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Email'|trans, 'ru.email') }}
+                            </th>
+                            <th{% if routines.isSorted('r.Name') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Name'|trans, 'r.name') }}
+                            </th>
+                            <th{% if routines.isSorted('r.Description') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Description'|trans, 'r.description') }}
+                            </th>
+                            <th{% if routines.isSorted('r.Type') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Type'|trans, 'r.type') }}
+                            </th>
+                            <th{% if routines.isSorted('r.IsEnabled') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Is enabled'|trans, 'r.isEnabled') }}
+                            </th>
+                            <th{% if routines.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Deleted at'|trans, 'r.deletedAt') }}
+                            </th>
+                            <th{% if routines.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(routines, 'Updated at'|trans, 'r.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for routine in routines %}
                             <tr>
-                                <td><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">
+                                        {{ routine.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if routine.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">{{ routine.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': routine.user.uuid}) }}">
+                                            {{ routine.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if routine.name %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if routine.description %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
-                                <td>{{ routine.type }}</td>
+                                <td>
+                                    {{ routine.type }}
+                                </td>
                                 <td>
                                     {% if routine.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
-                                <td>{{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ routine.deletedAt ? routine.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ routine.updatedAt ? routine.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ routine.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ routine.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="9">{{ 'No records found'|trans }}</td>
+                                <td colspan="9">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -117,4 +164,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Routines'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Routines'|trans }}
+{% endblock %}

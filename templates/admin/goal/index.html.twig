@@ -19,17 +19,17 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_goal_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_goal_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -39,62 +39,105 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if goals.isSorted('g.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'UUID'|trans, 'g.uuid') }}</th>
-                            <th {% if goals.isSorted('gu.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'Email'|trans, 'gu.email') }}</th>
-                            <th {% if goals.isSorted('g.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'Name'|trans, 'g.name') }}</th>
-                            <th {% if goals.isSorted('g.Description') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'Description'|trans, 'g.description') }}</th>
-                            <th {% if goals.isSorted('g.IsCompleted') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'Is completed'|trans, 'g.isCompleted') }}</th>
-                            <th {% if goals.isSorted('g.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'Deleted at'|trans, 'g.deletedAt') }}</th>
-                            <th {% if goals.isSorted('g.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(goals, 'Updated at'|trans, 'g.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if goals.isSorted('g.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'UUID'|trans, 'g.uuid') }}
+                            </th>
+                            <th{% if goals.isSorted('gu.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'Email'|trans, 'gu.email') }}
+                            </th>
+                            <th{% if goals.isSorted('g.Name') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'Name'|trans, 'g.name') }}
+                            </th>
+                            <th{% if goals.isSorted('g.Description') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'Description'|trans, 'g.description') }}
+                            </th>
+                            <th{% if goals.isSorted('g.IsCompleted') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'Is completed'|trans, 'g.isCompleted') }}
+                            </th>
+                            <th{% if goals.isSorted('g.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'Deleted at'|trans, 'g.deletedAt') }}
+                            </th>
+                            <th{% if goals.isSorted('g.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(goals, 'Updated at'|trans, 'g.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for goal in goals %}
                             <tr>
-                                <td><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">
+                                        {{ goal.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if goal.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': goal.user.uuid}) }}">{{ goal.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': goal.user.uuid}) }}">
+                                            {{ goal.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if goal.name %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if goal.description %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if goal.isCompleted %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
-                                <td>{{ goal.deletedAt ? goal.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ goal.deletedAt ? goal.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ goal.updatedAt ? goal.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ goal.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ goal.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="8">{{ 'No records found'|trans }}</td>
+                                <td colspan="8">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -107,4 +150,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Goals'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Goals'|trans }}
+{% endblock %}

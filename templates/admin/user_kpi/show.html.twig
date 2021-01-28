@@ -20,19 +20,24 @@
     <div class="card">
         <div class="card-header">
             {{ 'KPI details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_kpi_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_user_kpi_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,68 +47,132 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Date'|trans }}</th>
-                                <td>{{ user_kpi.date ? user_kpi.date|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Date'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.date ? user_kpi.date|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Account operations'|trans }}</th>
-                                <td>{{ user_kpi.accountOperationCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Account operations'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.accountOperationCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Awarded rewards'|trans }}</th>
-                                <td>{{ user_kpi.awardedRewardCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Awarded rewards'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.awardedRewardCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Completed goals'|trans }}</th>
-                                <td>{{ user_kpi.completedGoalCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Completed goals'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.completedGoalCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Completed projects'|trans }}</th>
-                                <td>{{ user_kpi.completedProjectCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Completed projects'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.completedProjectCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Completed routines'|trans }}</th>
-                                <td>{{ user_kpi.completedRoutineCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Completed routines'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.completedRoutineCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Contacts'|trans }}</th>
-                                <td>{{ user_kpi.contactCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Contacts'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.contactCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Goals'|trans }}</th>
-                                <td>{{ user_kpi.goalCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Goals'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.goalCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Notes'|trans }}</th>
-                                <td>{{ user_kpi.noteCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Notes'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.noteCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Projects'|trans }}</th>
-                                <td>{{ user_kpi.projectCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Projects'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.projectCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Reminders'|trans }}</th>
-                                <td>{{ user_kpi.reminderCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Reminders'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.reminderCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Rewards'|trans }}</th>
-                                <td>{{ user_kpi.rewardCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Rewards'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.rewardCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Routines'|trans }}</th>
-                                <td>{{ user_kpi.routineCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Routines'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.routineCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Saved emails'|trans }}</th>
-                                <td>{{ user_kpi.savedEmailCounter }}</td>
+                                <th scope="row">
+                                    {{ 'Saved emails'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.savedEmailCounter }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ user_kpi.type }}</td>
+                                <th scope="row">
+                                    {{ 'Type'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.type }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'User questionnaires'|trans }}</th>
-                                <td>{{ user_kpi.userQuestionnaireCounter }}</td>
+                                <th scope="row">
+                                    {{ 'User questionnaires'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.userQuestionnaireCounter }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -112,26 +181,38 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Next User KPI'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Next User KPI'|trans }}
+                                </th>
                                 <td>
                                     {% if user_kpi.nextUserKpi %}
-                                        <a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.nextUserKpi.uuid}) }}">{{ user_kpi.nextUserKpi.uuid }}</a>
+                                        <a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.nextUserKpi.uuid}) }}">
+                                            {{ user_kpi.nextUserKpi.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Previous User KPI'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Previous User KPI'|trans }}
+                                </th>
                                 <td>
                                     {% if user_kpi.previousUserKpi %}
-                                        <a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.previousUserKpi.uuid}) }}">{{ user_kpi.previousUserKpi.uuid }}</a>
+                                        <a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.previousUserKpi.uuid}) }}">
+                                            {{ user_kpi.previousUserKpi.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'User'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'User'|trans }}
+                                </th>
                                 <td>
                                     {% if user_kpi.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user_kpi.user.uuid}) }}">{{ user_kpi.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user_kpi.user.uuid}) }}">
+                                            {{ user_kpi.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -142,29 +223,50 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ user_kpi.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ user_kpi.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ user_kpi.createdAt ? user_kpi.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.createdAt ? user_kpi.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if user_kpi.deletedAt %}
                                         {{ user_kpi.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_user_kpi_undelete', {'uuid': user_kpi.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_kpi_undelete', {'uuid': user_kpi.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ user_kpi.updatedAt ? user_kpi.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user_kpi.updatedAt ? user_kpi.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -174,4 +276,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'User KPI details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'User KPI details'|trans }}
+{% endblock %}

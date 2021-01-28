@@ -12,7 +12,7 @@
             Here’s the perfect solution if you want to systematize your life and start achieving your goals.
         </h2>
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-            <hr class="m-4">
+            <hr class="mb-4 mt-4">
             <p class="lead">
                 {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
                     <a class="btn btn-primary btn-lg mr-2" href="{{ path('security_register') }}" role="button" title="{{ 'Register'|trans }}">

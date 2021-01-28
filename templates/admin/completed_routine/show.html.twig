@@ -20,19 +20,24 @@
     <div class="card">
         <div class="card-header">
             {{ 'Completed routine details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_completed_routine_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right ml-2" href="{{ path('admin_completed_routine_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,22 +47,34 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Comment'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Comment'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.comment %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Minutes devoted'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Minutes devoted'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.minutesDevoted %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -68,18 +85,26 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Routine'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Routine'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.routine %}
-                                        <a href="{{ path('admin_routine_show', {'uuid': completed_routine.routine.uuid}) }}">{{ completed_routine.routine.uuid }}</a>
+                                        <a href="{{ path('admin_routine_show', {'uuid': completed_routine.routine.uuid}) }}">
+                                            {{ completed_routine.routine.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'User'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'User'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.user.uuid}) }}">{{ completed_routine.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.user.uuid}) }}">
+                                            {{ completed_routine.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -90,54 +115,90 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ completed_routine.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ completed_routine.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ completed_routine.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ completed_routine.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.createdBy}) }}">{{ completed_routine.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.createdBy}) }}">
+                                            {{ completed_routine.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.deletedBy}) }}">{{ completed_routine.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_completed_routine_undelete', {'uuid': completed_routine.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.deletedBy}) }}">
+                                            {{ completed_routine.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_completed_routine_undelete', {'uuid': completed_routine.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.updatedBy}) }}">{{ completed_routine.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': completed_routine.updatedBy}) }}">
+                                            {{ completed_routine.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ completed_routine.createdAt ? completed_routine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ completed_routine.createdAt ? completed_routine.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if completed_routine.deletedAt %}
                                         {{ completed_routine.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_completed_routine_undelete', {'uuid': completed_routine.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_completed_routine_undelete', {'uuid': completed_routine.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ completed_routine.updatedAt ? completed_routine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ completed_routine.updatedAt ? completed_routine.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -147,4 +208,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Completed routine details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Completed routine details'|trans }}
+{% endblock %}

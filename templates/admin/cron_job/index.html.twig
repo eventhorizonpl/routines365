@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-header">
             {{ 'Cron jobs'|trans }} ({{ parameters.count }})
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_cron_job_new') }}">
+            <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_cron_job_new') }}">
                 <i aria-hidden="true" class="bi bi-plus-square"></i>
                 {{ 'Create'|trans }}
             </a>
@@ -25,24 +25,46 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if cron_jobs.isSorted('cj.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'ID'|trans, 'cj.id') }}</th>
-                            <th {% if cron_jobs.isSorted('cj.Command') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Command'|trans, 'cj.command') }}</th>
-                            <th {% if cron_jobs.isSorted('cj.Schedule') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Schedule'|trans, 'cj.schedule') }}</th>
-                            <th {% if cron_jobs.isSorted('cj.Enabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(cron_jobs, 'Enabled'|trans, 'cj.enabled') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if cron_jobs.isSorted('cj.Id') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_jobs, 'ID'|trans, 'cj.id') }}
+                            </th>
+                            <th{% if cron_jobs.isSorted('cj.Command') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_jobs, 'Command'|trans, 'cj.command') }}
+                            </th>
+                            <th{% if cron_jobs.isSorted('cj.Schedule') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_jobs, 'Schedule'|trans, 'cj.schedule') }}
+                            </th>
+                            <th{% if cron_jobs.isSorted('cj.Enabled') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_jobs, 'Enabled'|trans, 'cj.enabled') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for cron_job in cron_jobs %}
                             <tr>
-                                <td><a href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}">{{ cron_job.id }}</a></td>
-                                <td>{{ cron_job.command }}</td>
-                                <td>{{ cron_job.schedule }}</td>
+                                <td>
+                                    <a href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}">
+                                        {{ cron_job.id }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ cron_job.command }}
+                                </td>
+                                <td>
+                                    {{ cron_job.schedule }}
+                                </td>
                                 <td>
                                     {% if cron_job.enabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                                 <td>
@@ -51,15 +73,23 @@
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ cron_job.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('admin_cron_job_edit', {'id': cron_job.id}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_cron_job_show', {'id': cron_job.id}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ path('admin_cron_job_edit', {'id': cron_job.id}) }}">
+                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                                {{ 'Edit'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="5">{{ 'No records found'|trans }}</td>
+                                <td colspan="5">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -72,4 +102,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Cron jobs'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Cron jobs'|trans }}
+{% endblock %}

@@ -19,14 +19,14 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_retention_index') }}">
+                <a class="btn {% if not (parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_retention_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -36,34 +36,59 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if retentions.isSorted('r.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(retentions, 'UUID'|trans, 'r.uuid') }}</th>
-                            <th {% if retentions.isSorted('r.Date') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(retentions, 'Date'|trans, 'r.date') }}</th>
-                            <th {% if retentions.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(retentions, 'Deleted at'|trans, 'r.deletedAt') }}</th>
-                            <th {% if retentions.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(retentions, 'Updated at'|trans, 'r.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if retentions.isSorted('r.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(retentions, 'UUID'|trans, 'r.uuid') }}
+                            </th>
+                            <th{% if retentions.isSorted('r.Date') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(retentions, 'Date'|trans, 'r.date') }}
+                            </th>
+                            <th{% if retentions.isSorted('r.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(retentions, 'Deleted at'|trans, 'r.deletedAt') }}
+                            </th>
+                            <th{% if retentions.isSorted('r.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(retentions, 'Updated at'|trans, 'r.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for retention in retentions %}
                             <tr>
-                                <td><a href="{{ path('admin_retention_show', {'uuid': retention.uuid}) }}">{{ retention.uuid }}</a></td>
-                                <td>{{ retention.date ? retention.date|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ retention.deletedAt ? retention.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ retention.updatedAt ? retention.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <a href="{{ path('admin_retention_show', {'uuid': retention.uuid}) }}">
+                                        {{ retention.uuid }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ retention.date ? retention.date|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ retention.deletedAt ? retention.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ retention.updatedAt ? retention.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ retention.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ retention.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_retention_show', {'uuid': retention.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_retention_show', {'uuid': retention.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="5">{{ 'No records found'|trans }}</td>
+                                <td colspan="5">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -76,4 +101,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Retentions'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Retentions'|trans }}
+{% endblock %}

@@ -13,119 +13,289 @@
             <div class="row">
                 <div class="col-md-6">
                     <table class="table table-borderless">
-                        <caption>{{ 'Statistics'|trans }}</caption>
+                        <caption>
+                            {{ 'Statistics'|trans }}
+                        </caption>
                         <tbody>
                             <tr>
-                                <td style="width: 40%;"><a href="{{ path('admin_user_index') }}">{{ 'Accounts'|trans }}</a></td>
-                                <td>{{ accounts_count }}</td>
+                                <td style="width: 40%;">
+                                    <a href="{{ path('admin_user_index') }}">
+                                        {{ 'Accounts'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ accounts_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_account_operation_index') }}">{{ 'Account operations'|trans }}</a></td>
-                                <td>{{ account_operations_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_account_operation_index') }}">
+                                        {{ 'Account operations'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ account_operations_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_achievement_index') }}">{{ 'Achievements'|trans }}</a></td>
-                                <td>{{ achievements_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_achievement_index') }}">
+                                        {{ 'Achievements'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ achievements_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_questionnaire_index') }}">{{ 'Answers'|trans }}</a></td>
-                                <td>{{ answers_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_questionnaire_index') }}">
+                                        {{ 'Answers'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ answers_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_completed_routine_index') }}">{{ 'Completed routines'|trans }}</a></td>
-                                <td>{{ completed_routines_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_completed_routine_index') }}">
+                                        {{ 'Completed routines'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ completed_routines_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_contact_index') }}">{{ 'Contacts'|trans }}</a></td>
-                                <td>{{ contacts_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_contact_index') }}">
+                                        {{ 'Contacts'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ contacts_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_goal_index') }}">{{ 'Goals'|trans }}</a></td>
-                                <td>{{ goals_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_goal_index') }}">
+                                        {{ 'Goals'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ goals_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_kpi_index') }}">{{ 'KPIs'|trans }}</a></td>
-                                <td>{{ kpis_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_kpi_index') }}">
+                                        {{ 'KPIs'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ kpis_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_note_index') }}">{{ 'Notes'|trans }}</a></td>
-                                <td>{{ notes_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_note_index') }}">
+                                        {{ 'Notes'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ notes_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_index') }}">{{ 'Profiles'|trans }}</a></td>
-                                <td>{{ profiles_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_index') }}">
+                                        {{ 'Profiles'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ profiles_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_project_index') }}">{{ 'Projects'|trans }}</a></td>
-                                <td>{{ projects_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_project_index') }}">
+                                        {{ 'Projects'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ projects_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_promotion_index') }}">{{ 'Promotions'|trans }}</a></td>
-                                <td>{{ promotions_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_promotion_index') }}">
+                                        {{ 'Promotions'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ promotions_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_questionnaire_index') }}">{{ 'Questionnaires'|trans }}</a></td>
-                                <td>{{ questionnaires_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_questionnaire_index') }}">
+                                        {{ 'Questionnaires'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ questionnaires_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_questionnaire_index') }}">{{ 'Questions'|trans }}</a></td>
-                                <td>{{ questions_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_questionnaire_index') }}">
+                                        {{ 'Questions'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ questions_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_quote_index') }}">{{ 'Quotes'|trans }}</a></td>
-                                <td>{{ quotes_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_quote_index') }}">
+                                        {{ 'Quotes'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ quotes_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_reminder_index') }}">{{ 'Reminders'|trans }}</a></td>
-                                <td>{{ reminders_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_reminder_index') }}">
+                                        {{ 'Reminders'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ reminders_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_reminder_message_index') }}">{{ 'Reminder messages'|trans }}</a></td>
-                                <td>{{ reminder_messages_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_reminder_message_index') }}">
+                                        {{ 'Reminder messages'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ reminder_messages_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_retention_index') }}">{{ 'Retentions'|trans }}</a></td>
-                                <td>{{ retentions_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_retention_index') }}">
+                                        {{ 'Retentions'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ retentions_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_reward_index') }}">{{ 'Rewards'|trans }}</a></td>
-                                <td>{{ rewards_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_reward_index') }}">
+                                        {{ 'Rewards'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ rewards_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_routine_index') }}">{{ 'Routines'|trans }}</a></td>
-                                <td>{{ routines_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_routine_index') }}">
+                                        {{ 'Routines'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ routines_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_saved_email_index') }}">{{ 'Saved emails'|trans }}</a></td>
-                                <td>{{ saved_emails_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_saved_email_index') }}">
+                                        {{ 'Saved emails'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ saved_emails_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_sent_reminder_index') }}">{{ 'Sent reminders'|trans }}</a></td>
-                                <td>{{ sent_reminders_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_sent_reminder_index') }}">
+                                        {{ 'Sent reminders'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ sent_reminders_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_testimonial_index') }}">{{ 'Testimonials'|trans }}</a></td>
-                                <td>{{ testimonials_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_testimonial_index') }}">
+                                        {{ 'Testimonials'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ testimonials_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_index') }}">{{ 'Users'|trans }}</a></td>
-                                <td>{{ users_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_index') }}">
+                                        {{ 'Users'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ users_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_kpi_index') }}">{{ 'User KPIs'|trans }}</a></td>
-                                <td>{{ user_kpis_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_kpi_index') }}">
+                                        {{ 'User KPIs'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ user_kpis_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_index') }}">{{ 'User KYTs'|trans }}</a></td>
-                                <td>{{ user_kyts_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_index') }}">
+                                        {{ 'User KYTs'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ user_kyts_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_questionnaire_index') }}">{{ 'Users questionnaires'|trans }}</a></td>
-                                <td>{{ user_questionnaires_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_questionnaire_index') }}">
+                                        {{ 'Users questionnaires'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ user_questionnaires_count }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><a href="{{ path('admin_user_questionnaire_index') }}">{{ 'Users questionnaire answers'|trans }}</a></td>
-                                <td>{{ user_questionnaire_answers_count }}</td>
+                                <td>
+                                    <a href="{{ path('admin_user_questionnaire_index') }}">
+                                        {{ 'Users questionnaire answers'|trans }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ user_questionnaire_answers_count }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -135,62 +305,94 @@
                         <caption>{{ 'Configuration'|trans }}</caption>
                         <tbody>
                             <tr>
-                                <td style="width: 40%;">{{ 'Account available email notifications limit'|trans }}</td>
+                                <td style="width: 40%;">
+                                    {{ 'Account available email notifications limit'|trans }}
+                                </td>
                                 <td>
                                     {{ constant('App\\Resource\\ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT') }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'Account available SMS notifications limit'|trans }}</td>
+                                <td>
+                                    {{ 'Account available SMS notifications limit'|trans }}
+                                </td>
                                 <td>
                                     {{ constant('App\\Resource\\ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT') }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'Countries allowed for SMS'|trans }}</td>
+                                <td>
+                                    {{ 'Countries allowed for SMS'|trans }}
+                                </td>
                                 <td>
                                     {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
-                                        <span class="badge badge-success">{{ country }}</span>
+                                        <span class="badge badge-success">
+                                            {{ country }}
+                                        </span>
                                     {% endfor %}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'Invitations enabled'|trans }}</td>
+                                <td>
+                                    {{ 'Invitations enabled'|trans }}
+                                </td>
                                 <td>
                                     {% if constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED') %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'Motivate a friend enabled'|trans }}</td>
+                                <td>
+                                    {{ 'Motivate a friend enabled'|trans }}
+                                </td>
                                 <td>
                                     {% if constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED') %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'Promotions enabled'|trans }}</td>
+                                <td>
+                                    {{ 'Promotions enabled'|trans }}
+                                </td>
                                 <td>
                                     {% if constant('App\\Resource\\ConfigResource::PROMOTIONS_ENABLED') %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'Registration enabled'|trans }}</td>
+                                <td>
+                                    {{ 'Registration enabled'|trans }}
+                                </td>
                                 <td>
                                     {% if constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -202,4 +404,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Workspace'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Workspace'|trans }}
+{% endblock %}

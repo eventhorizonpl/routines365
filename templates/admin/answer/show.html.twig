@@ -20,19 +20,28 @@
     <div class="card">
         <div class="card-header">
             {{ 'Answer details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_question_show', {'uuid': answer.question.uuid}) }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right ml-2" href="{{ path('admin_question_show', {'uuid': answer.question.uuid}) }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
+            </a>
+            <a class="btn btn-success btn-sm float-right" href="{{ path('admin_answer_edit', {'uuid': answer.uuid}) }}">
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                {{ 'Edit'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,24 +51,42 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Position'|trans }}</th>
-                                <td>{{ answer.position }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Position'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.position }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Content'|trans }}</th>
-                                <td>{{ answer.content }}</td>
+                                <th scope="row">
+                                    {{ 'Content'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.content }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ answer.type }}</td>
+                                <th scope="row">
+                                    {{ 'Type'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.type }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is enabled'|trans }}
+                                </th>
                                 <td>
                                     {% if answer.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -70,10 +97,14 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Question'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Question'|trans }}
+                                </th>
                                 <td>
                                     {% if answer.question %}
-                                        <a href="{{ path('admin_question_show', {'uuid': answer.question.uuid}) }}">{{ answer.question.uuid }}</a>
+                                        <a href="{{ path('admin_question_show', {'uuid': answer.question.uuid}) }}">
+                                            {{ answer.question.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -84,65 +115,99 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ answer.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ answer.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if answer.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': answer.createdBy}) }}">{{ answer.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': answer.createdBy}) }}">
+                                            {{ answer.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if answer.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': answer.deletedBy}) }}">{{ answer.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_answer_undelete', {'uuid': answer.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': answer.deletedBy}) }}">
+                                            {{ answer.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_answer_undelete', {'uuid': answer.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if answer.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': answer.updatedBy}) }}">{{ answer.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': answer.updatedBy}) }}">
+                                            {{ answer.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ answer.createdAt ? answer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.createdAt ? answer.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if answer.deletedAt %}
                                         {{ answer.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_answer_undelete', {'uuid': answer.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_answer_undelete', {'uuid': answer.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ answer.updatedAt ? answer.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ answer.updatedAt ? answer.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_answer_edit', {'uuid': answer.uuid}) }}">
-                <i aria-hidden="true" class="bi bi-pencil-square"></i>
-                {{ 'Edit'|trans }}
-            </a>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Answer details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Answer details'|trans }}
+{% endblock %}

@@ -20,19 +20,28 @@
     <div class="card">
         <div class="card-header">
             {{ 'Question details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_questionnaire_show', {'uuid': question.questionnaire.uuid}) }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right ml-2" href="{{ path('admin_questionnaire_show', {'uuid': question.questionnaire.uuid}) }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
+            </a>
+            <a class="btn btn-success btn-sm float-right" href="{{ path('admin_question_edit', {'uuid': question.uuid}) }}">
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                {{ 'Edit'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,24 +51,42 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Position'|trans }}</th>
-                                <td>{{ question.position }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Position'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.position }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Title'|trans }}</th>
-                                <td>{{ question.title }}</td>
+                                <th scope="row">
+                                    {{ 'Title'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.title }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ question.type }}</td>
+                                <th scope="row">
+                                    {{ 'Type'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.type }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is enabled'|trans }}
+                                </th>
                                 <td>
                                     {% if question.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -70,12 +97,18 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Answers'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Answers'|trans }}
+                                </th>
                                 <td>
                                     {% if question.answersAll|length %}
                                         <ul>
                                             {% for answer in question.answersAll %}
-                                                <li><a href="{{ path('admin_answer_show', {'uuid': answer.uuid}) }}">{{ answer.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_answer_show', {'uuid': answer.uuid}) }}">
+                                                        {{ answer.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
@@ -85,7 +118,9 @@
                                 <th scope="row">{{ 'Questionnaire'|trans }}</th>
                                 <td>
                                     {% if question.questionnaire %}
-                                        <a href="{{ path('admin_questionnaire_show', {'uuid': question.questionnaire.uuid}) }}">{{ question.questionnaire.uuid }}</a>
+                                        <a href="{{ path('admin_questionnaire_show', {'uuid': question.questionnaire.uuid}) }}">
+                                            {{ question.questionnaire.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -96,71 +131,119 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ question.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ question.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if question.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': question.createdBy}) }}">{{ question.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': question.createdBy}) }}">
+                                            {{ question.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if question.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': question.deletedBy}) }}">{{ question.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': question.deletedBy}) }}">
+                                            {{ question.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if question.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': question.updatedBy}) }}">{{ question.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': question.updatedBy}) }}">
+                                            {{ question.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ question.createdAt ? question.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.createdAt ? question.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if question.deletedAt %}
                                         {{ question.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_question_undelete', {'uuid': question.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ question.updatedAt ? question.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ question.updatedAt ? question.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <h5>{{ 'Answers'|trans }}</h5>
+            <h5>
+                {{ 'Answers'|trans }}
+            </h5>
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <th>{{ 'Position'|trans }}</th>
-                        <th>{{ 'Content'|trans }}</th>
-                        <th>{{ 'Type'|trans }}</th>
-                        <th>{{ 'Is enabled'|trans }}</th>
-                        <th>{{ 'Deleted at'|trans }}</th>
+                        <th>
+                            {{ 'Position'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Content'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Type'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Is enabled'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Deleted at'|trans }}
+                        </th>
                         <th>
                             {{ 'Actions'|trans }}
-                            <a class="btn btn-info btn-sm ml-3" href="{{ path('admin_answer_new', {'uuid': question.uuid}) }}">
+                            <a class="btn btn-primary btn-sm ml-3" href="{{ path('admin_answer_new', {'uuid': question.uuid}) }}">
                                 <i aria-hidden="true" class="bi bi-plus-square"></i>
                                 {{ 'Create'|trans }}
                             </a>
@@ -168,25 +251,43 @@
                     </tr>
                     {% for answer in question.answersAll %}
                         <tr>
-                            <th>{{ answer.position }}</th>
-                            <th>{{ answer.content }}</th>
-                            <th>{{ answer.type }}</th>
+                            <th>
+                                {{ answer.position }}
+                            </th>
+                            <th>
+                                {{ answer.content }}
+                            </th>
+                            <th>
+                                {{ answer.type }}
+                            </th>
                             <td>
                                 {% if answer.isEnabled %}
-                                    <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                    <span class="badge badge-success">
+                                        {{ 'Yes'|trans }}
+                                    </span>
                                 {% else %}
-                                    <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                    <span class="badge badge-danger">
+                                        {{ 'No'|trans }}
+                                    </span>
                                 {% endif %}
                             </td>
-                            <td>{{ answer.deletedAt ? answer.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                {{ answer.deletedAt ? answer.deletedAt|date('Y-m-d H:i:s') : '' }}
+                            </td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop{{ answer.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ answer.id }}">
-                                        <a class="dropdown-item" href="{{ path('admin_answer_show', {'uuid': answer.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
-                                        <a class="dropdown-item" href="{{ path('admin_answer_edit', {'uuid': answer.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
+                                        <a class="dropdown-item" href="{{ path('admin_answer_show', {'uuid': answer.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-eye"></i>
+                                            {{ 'Show'|trans }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ path('admin_answer_edit', {'uuid': answer.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                            {{ 'Edit'|trans }}
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -194,12 +295,10 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <a class="btn btn-success" href="{{ path('admin_question_edit', {'uuid': question.uuid}) }}">
-                <i aria-hidden="true" class="bi bi-pencil-square"></i>
-                {{ 'Edit'|trans }}
-            </a>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Question details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Question details'|trans }}
+{% endblock %}

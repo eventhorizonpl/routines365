@@ -19,25 +19,25 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="type" name="type">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in savedEmailType() %}
                             <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_saved_email_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_saved_email_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -47,42 +47,75 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if saved_emails.isSorted('se.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'UUID'|trans, 'se.uuid') }}</th>
-                            <th {% if saved_emails.isSorted('seu.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'Email'|trans, 'seu.email') }}</th>
-                            <th {% if saved_emails.isSorted('se.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'Saved email'|trans, 'se.email') }}</th>
-                            <th {% if saved_emails.isSorted('se.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'Type'|trans, 'se.type') }}</th>
-                            <th {% if saved_emails.isSorted('se.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'Deleted at'|trans, 'se.deletedAt') }}</th>
-                            <th {% if saved_emails.isSorted('se.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(saved_emails, 'Updated at'|trans, 'se.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if saved_emails.isSorted('se.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(saved_emails, 'UUID'|trans, 'se.uuid') }}
+                            </th>
+                            <th{% if saved_emails.isSorted('seu.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(saved_emails, 'Email'|trans, 'seu.email') }}
+                            </th>
+                            <th{% if saved_emails.isSorted('se.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(saved_emails, 'Saved email'|trans, 'se.email') }}
+                            </th>
+                            <th{% if saved_emails.isSorted('se.Type') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(saved_emails, 'Type'|trans, 'se.type') }}
+                            </th>
+                            <th{% if saved_emails.isSorted('se.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(saved_emails, 'Deleted at'|trans, 'se.deletedAt') }}
+                            </th>
+                            <th{% if saved_emails.isSorted('se.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(saved_emails, 'Updated at'|trans, 'se.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for saved_email in saved_emails %}
                             <tr>
-                                <td><a href="{{ path('admin_saved_email_show', {'uuid': saved_email.uuid}) }}">{{ saved_email.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_saved_email_show', {'uuid': saved_email.uuid}) }}">
+                                        {{ saved_email.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if saved_email.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': saved_email.user.uuid}) }}">{{ saved_email.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': saved_email.user.uuid}) }}">
+                                            {{ saved_email.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
-                                <td>{{ saved_email.email }}</td>
-                                <td>{{ saved_email.type }}</td>
-                                <td>{{ saved_email.deletedAt ? saved_email.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ saved_email.updatedAt ? saved_email.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ saved_email.email }}
+                                </td>
+                                <td>
+                                    {{ saved_email.type }}
+                                </td>
+                                <td>
+                                    {{ saved_email.deletedAt ? saved_email.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ saved_email.updatedAt ? saved_email.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ saved_email.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ saved_email.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_saved_email_show', {'uuid': saved_email.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_saved_email_show', {'uuid': saved_email.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="7">{{ 'No records found'|trans }}</td>
+                                <td colspan="7">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -95,4 +128,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Saved emails'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Saved emails'|trans }}
+{% endblock %}

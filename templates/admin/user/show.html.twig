@@ -20,28 +20,43 @@
     <div class="card">
         <div class="card-header">
             {{ 'User details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_user_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right ml-2" href="{{ path('admin_user_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
+            </a>
+            <a class="btn btn-success btn-sm float-right" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}">
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                {{ 'Edit'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-account-tab" data-toggle="tab" href="#additional-account" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional account details'|trans }}</a>
+                    <a class="nav-link" id="additional-account-tab" data-toggle="tab" href="#additional-account" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional account details'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-profile-tab" data-toggle="tab" href="#additional-profile" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional profile details'|trans }}</a>
+                    <a class="nav-link" id="additional-profile-tab" data-toggle="tab" href="#additional-profile" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional profile details'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-user-kyt-tab" data-toggle="tab" href="#additional-user-kyt" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional user KYT'|trans }}</a>
+                    <a class="nav-link" id="additional-user-kyt-tab" data-toggle="tab" href="#additional-user-kyt" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional user KYT'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-user-tab" data-toggle="tab" href="#additional-user" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional user details'|trans }}</a>
+                    <a class="nav-link" id="additional-user-tab" data-toggle="tab" href="#additional-user" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional user details'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -51,18 +66,26 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Email'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Email'|trans }}
+                                </th>
                                 <td>
                                     {{ user.email }}
                                     {% if user.isVerified %}
-                                        <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Verified'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'Not verified'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'First name'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'First name'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile %}
                                         {{ user.profile.firstName }}
@@ -70,7 +93,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Last name'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Last name'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile %}
                                         {{ user.profile.lastName }}
@@ -78,7 +103,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Country'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Country'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile %}
                                         {{ user.profile.country }}
@@ -86,40 +113,60 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Phone'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Phone'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile and user.profile.phone %}
                                         {{ user.profile.phone|phone_number_format }}
                                         {% if user.profile.isVerified %}
-                                            <span class="badge badge-success">{{ 'Verified'|trans }}</span>
+                                            <span class="badge badge-success">
+                                                {{ 'Verified'|trans }}
+                                            </span>
                                         {% else %}
-                                            <span class="badge badge-danger">{{ 'Not verified'|trans }}</span>
+                                            <span class="badge badge-danger">
+                                                {{ 'Not verified'|trans }}
+                                            </span>
                                         {% endif %}
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Send weekly monthly statistics'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Send weekly monthly statistics'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile.sendWeeklyMonthlyStatistics %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Show motivational messages'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Show motivational messages'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile.showMotivationalMessages %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Theme'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Theme'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile %}
                                         {{ user.profile.theme }}
@@ -127,7 +174,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Time zone'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Time zone'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile %}
                                         {{ user.profile.timeZone }}
@@ -135,70 +184,94 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Available browser notifications'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Available browser notifications'|trans }}
+                                </th>
                                 <td>
                                     {% if user.account %}
                                         {{ user.account.availableBrowserNotifications }}
                                     {% endif %}
 
-                                    <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_browser', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_account_operation_add_free_browser', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
                                         <i aria-hidden="true" class="bi bi-plus-square"></i>
                                         {{ 'Add free browser notifications'|trans }}
                                     </a>
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Available email notifications'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Available email notifications'|trans }}
+                                </th>
                                 <td>
                                     {% if user.account %}
                                         {{ user.account.availableEmailNotifications }}
                                     {% endif %}
 
-                                    <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_email', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_account_operation_add_free_email', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
                                         <i aria-hidden="true" class="bi bi-plus-square"></i>
                                         {{ 'Add free email notifications'|trans }}
                                     </a>
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Available sms notifications'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Available sms notifications'|trans }}
+                                </th>
                                 <td>
                                     {% if user.account %}
                                         {{ user.account.availableSmsNotifications }}
                                     {% endif %}
 
-                                    <a class="btn btn-info btn-sm float-right" href="{{ path('admin_account_operation_add_free_sms', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_account_operation_add_free_sms', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
                                         <i aria-hidden="true" class="bi bi-plus-square"></i>
                                         {{ 'Add free sms notifications'|trans }}
                                     </a>
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is enabled'|trans }}
+                                </th>
                                 <td>
                                     {% if user.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is verified'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is verified'|trans }}
+                                </th>
                                 <td>
                                     {% if user.isVerified %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Referrer code'|trans }}</th>
-                                <td>{{ user.referrerCode }}</td>
+                                <th scope="row">
+                                    {{ 'Referrer code'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.referrerCode }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Roles'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Roles'|trans }}
+                                </th>
                                 <td>
                                     {% for role in user.roles %}
                                         {{ role }}{% if not loop.last %},{% endif %}
@@ -206,8 +279,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ user.type }}</td>
+                                <th scope="row">
+                                    {{ 'Type'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.type }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -216,140 +293,210 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Achievements'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Achievements'|trans }}
+                                </th>
                                 <td>
                                     {% if user.achievements|length %}
                                         <ul>
                                             {% for achievement in user.achievements %}
-                                                <li><a href="{{ path('admin_achievement_show', {'uuid': achievement.uuid}) }}">{{ achievement.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_achievement_show', {'uuid': achievement.uuid}) }}">
+                                                        {{ achievement.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Completed routines'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Completed routines'|trans }}
+                                </th>
                                 <td>
                                     {% if user.completedRoutinesAll|length %}
                                         <ul>
                                             {% for completed_routine in user.completedRoutinesAll %}
-                                                <li><a href="{{ path('admin_completed_routine_show', {'uuid': completed_routine.uuid}) }}">{{ completed_routine.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_completed_routine_show', {'uuid': completed_routine.uuid}) }}">
+                                                        {{ completed_routine.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Goals'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Goals'|trans }}
+                                </th>
                                 <td>
                                     {% if user.goalsAll|length %}
                                         <ul>
                                             {% for goal in user.goalsAll %}
-                                                <li><a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">{{ goal.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_goal_show', {'uuid': goal.uuid}) }}">
+                                                        {{ goal.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Notes'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Notes'|trans }}
+                                </th>
                                 <td>
                                     {% if user.notesAll|length %}
                                         <ul>
                                             {% for note in user.notesAll %}
-                                                <li><a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">{{ note.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_note_show', {'uuid': note.uuid}) }}">
+                                                        {{ note.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Projects'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Projects'|trans }}
+                                </th>
                                 <td>
                                     {% if user.projectsAll|length %}
                                         <ul>
                                             {% for project in user.projectsAll %}
-                                                <li><a href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">{{ project.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_project_show', {'uuid': project.uuid}) }}">
+                                                        {{ project.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Promotions'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Promotions'|trans }}
+                                </th>
                                 <td>
                                     {% if user.promotions|length %}
                                         <ul>
                                             {% for promotion in user.promotions %}
-                                                <li><a href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}">{{ promotion.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}">
+                                                        {{ promotion.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Referrer'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Referrer'|trans }}
+                                </th>
                                 <td>
                                     {% if user.referrer %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.referrer.uuid}) }}">{{ user.referrer.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.referrer.uuid}) }}">
+                                            {{ user.referrer.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Recommendations'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Recommendations'|trans }}
+                                </th>
                                 <td>
                                     {% if user.recommendationsAll|length %}
                                         <ul>
                                             {% for recommendation in user.recommendationsAll %}
-                                                <li><a href="{{ path('admin_user_show', {'uuid': recommendation.uuid}) }}">{{ recommendation.email }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_user_show', {'uuid': recommendation.uuid}) }}">
+                                                        {{ recommendation.email }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Reminders'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Reminders'|trans }}
+                                </th>
                                 <td>
                                     {% if user.remindersAll|length %}
                                         <ul>
                                             {% for reminder in user.remindersAll %}
-                                                <li><a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">{{ reminder.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_reminder_show', {'uuid': reminder.uuid}) }}">
+                                                        {{ reminder.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Rewards'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Rewards'|trans }}
+                                </th>
                                 <td>
                                     {% if user.rewardsAll|length %}
                                         <ul>
                                             {% for reward in user.rewardsAll %}
-                                                <li><a href="{{ path('admin_reward_show', {'uuid': reward.uuid}) }}">{{ reward.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_reward_show', {'uuid': reward.uuid}) }}">
+                                                        {{ reward.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Routines'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Routines'|trans }}
+                                </th>
                                 <td>
                                     {% if user.routinesAll|length %}
                                         <ul>
                                             {% for routine in user.routinesAll %}
-                                                <li><a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">{{ routine.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_routine_show', {'uuid': routine.uuid}) }}">
+                                                        {{ routine.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'User KPIs'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'User KPIs'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKpisAll|length %}
                                         <ul>
                                             {% for userKpi in user.userKpisAll %}
-                                                <li><a href="{{ path('admin_user_kpi_show', {'uuid': userKpi.uuid}) }}">{{ userKpi.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_user_kpi_show', {'uuid': userKpi.uuid}) }}">
+                                                        {{ userKpi.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
@@ -362,48 +509,80 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ user.account.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.account.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ user.account.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.account.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.account.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.account.createdBy}) }}">{{ user.profile.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.account.createdBy}) }}">
+                                            {{ user.profile.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.account.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.account.deletedBy}) }}">{{ user.profile.deletedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.account.deletedBy}) }}">
+                                            {{ user.profile.deletedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.account.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.account.updatedBy}) }}">{{ user.profile.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.account.updatedBy}) }}">
+                                            {{ user.profile.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ user.account.createdAt ? user.account.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.account.createdAt ? user.account.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ user.account.deletedAt ? user.account.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.account.deletedAt ? user.account.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ user.account.updatedAt ? user.account.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.account.updatedAt ? user.account.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -412,48 +591,80 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ user.profile.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.profile.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ user.profile.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.profile.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.createdBy}) }}">{{ user.profile.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.createdBy}) }}">
+                                            {{ user.profile.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.deletedBy}) }}">{{ user.profile.deletedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.deletedBy}) }}">
+                                            {{ user.profile.deletedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.profile.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.updatedBy}) }}">{{ user.profile.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.profile.updatedBy}) }}">
+                                            {{ user.profile.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ user.profile.createdAt ? user.profile.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.profile.createdAt ? user.profile.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ user.profile.deletedAt ? user.profile.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.profile.deletedAt ? user.profile.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ user.profile.updatedAt ? user.profile.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.profile.updatedAt ? user.profile.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -462,212 +673,344 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ user.userKyt.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.userKyt.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ user.userKyt.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.userKyt.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Basic configuration learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Basic configuration learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.basicConfigurationLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Basic configuration sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Basic configuration sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.basicConfigurationSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Completing routines learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Completing routines learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.completingRoutinesLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Completing routines sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Completing routines sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.completingRoutinesSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Date of last message'|trans }}</th>
-                                <td>{{ user.userKyt.dateOfLastMessage ? user.userKyt.dateOfLastMessage|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Date of last message'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.userKyt.dateOfLastMessage ? user.userKyt.dateOfLastMessage|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Goals learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Goals learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.goalsLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Goals sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Goals sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.goalsSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Notes learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Notes learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.notesLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Notes sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Notes sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.notesSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Projects learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Projects learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.projectsLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Projects sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Projects sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.projectsSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Reminders learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Reminders learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.remindersLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Reminders sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Reminders sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.remindersSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Rewards learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Rewards learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.rewardsLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Rewards sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Rewards sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.rewardsSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Routines learned'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Routines learned'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.routinesLearned %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Routines sent'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Routines sent'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.routinesSent %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.createdBy}) }}">{{ user.userKyt.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.createdBy}) }}">
+                                            {{ user.userKyt.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.deletedBy}) }}">{{ user.userKyt.deletedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.deletedBy}) }}">
+                                            {{ user.userKyt.deletedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.userKyt.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.updatedBy}) }}">{{ user.userKyt.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.userKyt.updatedBy}) }}">
+                                            {{ user.userKyt.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ user.userKyt.createdAt ? user.userKyt.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.userKyt.createdAt ? user.userKyt.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
-                                <td>{{ user.userKyt.deletedAt ? user.userKyt.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.userKyt.deletedAt ? user.userKyt.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ user.userKyt.updatedAt ? user.userKyt.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.userKyt.updatedAt ? user.userKyt.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -676,73 +1019,115 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ user.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ user.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'API token'|trans }}</th>
-                                <td>{{ user.apiToken }}</td>
+                                <th scope="row">
+                                    {{ 'API token'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.apiToken }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.createdBy}) }}">{{ user.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.createdBy}) }}">
+                                            {{ user.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.deletedBy}) }}">{{ user.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.deletedBy}) }}">
+                                            {{ user.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if user.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': user.updatedBy}) }}">{{ user.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': user.updatedBy}) }}">
+                                            {{ user.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if user.deletedAt %}
                                         {{ user.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_user_undelete', {'uuid': user.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Last login at'|trans }}</th>
-                                <td>{{ user.lastLoginAt ? user.lastLoginAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Last login at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.lastLoginAt ? user.lastLoginAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_user_edit', {'uuid': user.uuid}) }}">
-                <i aria-hidden="true" class="bi bi-pencil-square"></i>
-                {{ 'Edit'|trans }}
-            </a>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'User details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'User details'|trans }}
+{% endblock %}

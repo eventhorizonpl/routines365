@@ -19,33 +19,33 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="status" name="status">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="status" name="status">
                         <option value="" selected>{{ 'Status'|trans }}</option>
                         {% for status_value in contactStatus() %}
                             <option value="{{ status_value }}" {% if parameters.status == status_value %}selected{% endif %}>{{ status_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="type" name="type">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in contactType() %}
                             <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type or parameters.status) %}disabled{% endif %} btn-default" href="{{ path('admin_contact_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type or parameters.status) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_contact_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -55,43 +55,79 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if contacts.isSorted('c.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(contacts, 'UUID'|trans, 'c.uuid') }}</th>
-                            <th {% if contacts.isSorted('cu.Email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(contacts, 'Email'|trans, 'cu.email') }}</th>
-                            <th {% if contacts.isSorted('c.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(contacts, 'Title'|trans, 'c.title') }}</th>
-                            <th {% if contacts.isSorted('c.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(contacts, 'Type'|trans, 'c.type') }}</th>
-                            <th {% if contacts.isSorted('c.Status') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(contacts, 'Status'|trans, 'c.status') }}</th>
-                            <th {% if contacts.isSorted('c.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(contacts, 'Updated at'|trans, 'c.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if contacts.isSorted('c.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(contacts, 'UUID'|trans, 'c.uuid') }}
+                            </th>
+                            <th{% if contacts.isSorted('cu.Email') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(contacts, 'Email'|trans, 'cu.email') }}
+                            </th>
+                            <th{% if contacts.isSorted('c.Title') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(contacts, 'Title'|trans, 'c.title') }}
+                            </th>
+                            <th{% if contacts.isSorted('c.Type') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(contacts, 'Type'|trans, 'c.type') }}
+                            </th>
+                            <th{% if contacts.isSorted('c.Status') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(contacts, 'Status'|trans, 'c.status') }}
+                            </th>
+                            <th{% if contacts.isSorted('c.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(contacts, 'Updated at'|trans, 'c.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for contact in contacts %}
                             <tr>
-                                <td><a href="{{ path('admin_contact_show', {'uuid': contact.uuid}) }}">{{ contact.uuid }}</a></td>
+                                <td>
+                                    <a href="{{ path('admin_contact_show', {'uuid': contact.uuid}) }}">
+                                        {{ contact.uuid }}
+                                    </a>
+                                </td>
                                 <td>
                                     {% if contact.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': contact.user.uuid}) }}">{{ contact.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': contact.user.uuid}) }}">
+                                            {{ contact.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
-                                <td>{{ contact.title }}</td>
-                                <td>{{ contact.type }}</td>
-                                <td>{{ contact.status }}</td>
-                                <td>{{ contact.updatedAt ? contact.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ contact.title }}
+                                </td>
+                                <td>
+                                    {{ contact.type }}
+                                </td>
+                                <td>
+                                    {{ contact.status }}
+                                </td>
+                                <td>
+                                    {{ contact.updatedAt ? contact.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ contact.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ contact.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_contact_show', {'uuid': contact.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('admin_contact_edit', {'uuid': contact.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_contact_show', {'uuid': contact.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ path('admin_contact_edit', {'uuid': contact.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                                {{ 'Edit'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="7">{{ 'No records found'|trans }}</td>
+                                <td colspan="7">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -104,4 +140,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Contacts'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Contacts'|trans }}
+{% endblock %}

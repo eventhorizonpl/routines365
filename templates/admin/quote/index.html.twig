@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-header">
             {{ 'Quotes'|trans }} ({{ parameters.count }})
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_quote_new') }}">
+            <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_quote_new') }}">
                 <i aria-hidden="true" class="bi bi-plus-square"></i>
                 {{ 'Create'|trans }}
             </a>
@@ -23,17 +23,17 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-default" href="{{ path('admin_quote_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_quote_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -43,47 +43,89 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if quotes.isSorted('q.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'UUID'|trans, 'q.uuid') }}</th>
-                            <th {% if quotes.isSorted('q.Author') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Author'|trans, 'q.author') }}</th>
-                            <th {% if quotes.isSorted('q.Content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Content'|trans, 'q.content') }}</th>
-                            <th {% if quotes.isSorted('q.IsVisible') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Is visible'|trans, 'q.isVisible') }}</th>
-                            <th {% if quotes.isSorted('q.StringLength') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'String length'|trans, 'q.stringLength') }}</th>
-                            <th {% if quotes.isSorted('q.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Deleted at'|trans, 'q.deletedAt') }}</th>
-                            <th {% if quotes.isSorted('q.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(quotes, 'Updated at'|trans, 'q.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if quotes.isSorted('q.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'UUID'|trans, 'q.uuid') }}
+                            </th>
+                            <th{% if quotes.isSorted('q.Author') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Author'|trans, 'q.author') }}
+                            </th>
+                            <th{% if quotes.isSorted('q.Content') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Content'|trans, 'q.content') }}
+                            </th>
+                            <th{% if quotes.isSorted('q.IsVisible') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Is visible'|trans, 'q.isVisible') }}
+                            </th>
+                            <th{% if quotes.isSorted('q.StringLength') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'String length'|trans, 'q.stringLength') }}
+                            </th>
+                            <th{% if quotes.isSorted('q.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Deleted at'|trans, 'q.deletedAt') }}
+                            </th>
+                            <th{% if quotes.isSorted('q.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(quotes, 'Updated at'|trans, 'q.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for quote in quotes %}
                             <tr>
-                                <td><a href="{{ path('admin_quote_show', {'uuid': quote.uuid}) }}">{{ quote.uuid }}</a></td>
-                                <td>{{ quote.author }}</td>
-                                <td>{{ quote.content }}</td>
+                                <td>
+                                    <a href="{{ path('admin_quote_show', {'uuid': quote.uuid}) }}">
+                                        {{ quote.uuid }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ quote.author }}
+                                </td>
+                                <td>
+                                    {{ quote.content }}
+                                </td>
                                 <td>
                                     {% if quote.isVisible %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
-                                <td>{{ quote.stringLength }}</td>
-                                <td>{{ quote.deletedAt ? quote.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ quote.updatedAt ? quote.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ quote.stringLength }}
+                                </td>
+                                <td>
+                                    {{ quote.deletedAt ? quote.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ quote.updatedAt ? quote.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ quote.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ quote.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_quote_show', {'uuid': quote.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('admin_quote_edit', {'uuid': quote.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_quote_show', {'uuid': quote.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ path('admin_quote_edit', {'uuid': quote.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                                {{ 'Edit'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="8">{{ 'No records found'|trans }}</td>
+                                <td colspan="8">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -96,4 +138,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Quotes'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Quotes'|trans }}
+{% endblock %}

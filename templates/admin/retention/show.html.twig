@@ -20,16 +20,19 @@
     <div class="card">
         <div class="card-header">
             {{ 'Retention details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_retention_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_retention_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -39,18 +42,32 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Date'|trans }}</th>
-                                <td>{{ retention.date ? retention.date|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Date'|trans }}
+                                </th>
+                                <td>
+                                    {{ retention.date ? retention.date|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Data'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Data'|trans }}
+                                </th>
                                 <td>
                                     {% for key, data in retention.data %}
                                         <ul>
-                                            <li>{{ 'Date'|trans }}: {{ key }}</li>
-                                            <li>{{ 'Count'|trans }}: {{ data.count }}</li>
-                                            <li>{{ 'New customers'|trans }}: {{ data.newCustomers }}</li>
-                                            <li>{{ 'Percent'|trans }}: {{ data.percent }}</li>
+                                            <li>
+                                                {{ 'Date'|trans }}: {{ key }}
+                                            </li>
+                                            <li>
+                                                {{ 'Count'|trans }}: {{ data.count }}
+                                            </li>
+                                            <li>
+                                                {{ 'New customers'|trans }}: {{ data.newCustomers }}
+                                            </li>
+                                            <li>
+                                                {{ 'Percent'|trans }}: {{ data.percent }}
+                                            </li>
                                         </ul>
                                     {% endfor %}
                                 </td>
@@ -62,29 +79,50 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ retention.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ retention.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ retention.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ retention.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ retention.createdAt ? retention.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ retention.createdAt ? retention.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if retention.deletedAt %}
                                         {{ retention.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_retention_undelete', {'uuid': retention.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_retention_undelete', {'uuid': retention.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ retention.updatedAt ? retention.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ retention.updatedAt ? retention.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -94,4 +132,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Retention details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Retention details'|trans }}
+{% endblock %}

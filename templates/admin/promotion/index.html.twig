@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-header">
             {{ 'Promotions'|trans }} ({{ parameters.count }})
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_promotion_new') }}">
+            <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_promotion_new') }}">
                 <i aria-hidden="true" class="bi bi-plus-square"></i>
                 {{ 'Create'|trans }}
             </a>
@@ -23,25 +23,25 @@
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
-                <div class="form-group">
-                    <select class="custom-select" id="type" name="type">
+                <div class="form-group ml-2">
+                    <select class="form-control" id="type" name="type">
                         <option value="" selected>{{ 'Type'|trans }}</option>
                         {% for type_value in promotionType() %}
                             <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ml-2">
                     <input class="form-control" id="q" name="q" placeholder="{{ 'Search'|trans }}" type="text" value="{{ parameters.query }}">
                 </div>
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-secondary ml-2" type="submit">
                     <i aria-hidden="true" class="bi bi-search"></i>
                     {{ 'Search'|trans }}
                 </button>
-                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-default" href="{{ path('admin_promotion_index') }}">
+                <a class="btn {% if not (parameters.query or parameters.starts_at or parameters.ends_at or parameters.type) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_promotion_index') }}">
                     <i aria-hidden="true" class="bi bi-x-square"></i>
                 </a>
             </form>
@@ -51,53 +51,107 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th {% if promotions.isSorted('p.Uuid') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'UUID'|trans, 'p.uuid') }}</th>
-                            <th {% if promotions.isSorted('p.Code') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Code'|trans, 'p.code') }}</th>
-                            <th {% if promotions.isSorted('p.Name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Name'|trans, 'p.name') }}</th>
-                            <th {% if promotions.isSorted('p.Type') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Type'|trans, 'p.type') }}</th>
-                            <th {% if promotions.isSorted('p.IsEnabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Is enabled'|trans, 'p.isEnabled') }}</th>
-                            <th {% if promotions.isSorted('p.BrowserNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Browser notifications'|trans, 'p.browserNotifications') }}</th>
-                            <th {% if promotions.isSorted('p.EmailNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Email notifications'|trans, 'p.emailNotifications') }}</th>
-                            <th {% if promotions.isSorted('p.SmsNotifications') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Sms notifications'|trans, 'p.smsNotifications') }}</th>
-                            <th {% if promotions.isSorted('p.DeletedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Deleted at'|trans, 'p.deletedAt') }}</th>
-                            <th {% if promotions.isSorted('p.UpdatedAt') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(promotions, 'Updated at'|trans, 'p.updatedAt') }}</th>
-                            <th>{{ 'Actions'|trans }}</th>
+                            <th{% if promotions.isSorted('p.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'UUID'|trans, 'p.uuid') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.Code') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Code'|trans, 'p.code') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.Name') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Name'|trans, 'p.name') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.Type') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Type'|trans, 'p.type') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.IsEnabled') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Is enabled'|trans, 'p.isEnabled') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.BrowserNotifications') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Browser notifications'|trans, 'p.browserNotifications') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.EmailNotifications') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Email notifications'|trans, 'p.emailNotifications') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.SmsNotifications') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Sms notifications'|trans, 'p.smsNotifications') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.DeletedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Deleted at'|trans, 'p.deletedAt') }}
+                            </th>
+                            <th{% if promotions.isSorted('p.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(promotions, 'Updated at'|trans, 'p.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for promotion in promotions %}
                             <tr>
-                                <td><a href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}">{{ promotion.uuid }}</a></td>
-                                <td>{{ promotion.code }}</td>
-                                <td>{{ promotion.name }}</td>
-                                <td>{{ promotion.type }}</td>
+                                <td>
+                                    <a href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}">
+                                        {{ promotion.uuid }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ promotion.code }}
+                                </td>
+                                <td>
+                                    {{ promotion.name }}
+                                </td>
+                                <td>
+                                    {{ promotion.type }}
+                                </td>
                                 <td>
                                     {% if promotion.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
-                                <td>{{ promotion.browserNotifications }}</td>
-                                <td>{{ promotion.emailNotifications }}</td>
-                                <td>{{ promotion.smsNotifications }}</td>
-                                <td>{{ promotion.deletedAt ? promotion.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ promotion.updatedAt ? promotion.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    {{ promotion.browserNotifications }}
+                                </td>
+                                <td>
+                                    {{ promotion.emailNotifications }}
+                                </td>
+                                <td>
+                                    {{ promotion.smsNotifications }}
+                                </td>
+                                <td>
+                                    {{ promotion.deletedAt ? promotion.deletedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    {{ promotion.updatedAt ? promotion.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button id="btnGroupDrop{{ promotion.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ promotion.id }}">
-                                            <a class="dropdown-item" href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}"><i aria-hidden="true" class="bi bi-eye"></i> {{ 'Show'|trans }}</a>
-                                            <a class="dropdown-item" href="{{ path('admin_promotion_edit', {'uuid': promotion.uuid}) }}"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</a>
+                                            <a class="dropdown-item" href="{{ path('admin_promotion_show', {'uuid': promotion.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ path('admin_promotion_edit', {'uuid': promotion.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                                {{ 'Edit'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="10">{{ 'No records found'|trans }}</td>
+                                <td colspan="11">
+                                    {{ 'No records found'|trans }}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -110,4 +164,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Promotions'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Promotions'|trans }}
+{% endblock %}

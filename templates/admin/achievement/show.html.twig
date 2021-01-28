@@ -20,19 +20,28 @@
     <div class="card">
         <div class="card-header">
             {{ 'Achievement details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_achievement_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right ml-2" href="{{ path('admin_achievement_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
+            </a>
+            <a class="btn btn-success btn-sm float-right" href="{{ path('admin_achievement_edit', {'uuid': achievement.uuid}) }}">
+                <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                {{ 'Edit'|trans }}
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,34 +51,60 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Name'|trans }}</th>
-                                <td>{{ achievement.name }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Name'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.name }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Description'|trans }}</th>
-                                <td>{{ achievement.description }}</td>
+                                <th scope="row">
+                                    {{ 'Description'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.description }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is enabled'|trans }}
+                                </th>
                                 <td>
                                     {% if achievement.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Level'|trans }}</th>
-                                <td>{{ achievement.level }}</td>
+                                <th scope="row">
+                                    {{ 'Level'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.level }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Requirement'|trans }}</th>
-                                <td>{{ achievement.requirement }}</td>
+                                <th scope="row">
+                                    {{ 'Requirement'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.requirement }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ achievement.type }}</td>
+                                <th scope="row">
+                                    {{ 'Type'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.type }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,12 +113,18 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Users'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Users'|trans }}
+                                </th>
                                 <td>
                                     {% if achievement.users|length %}
                                         <ul>
                                             {% for user in achievement.users %}
-                                                <li><a href="{{ path('admin_user_show', {'uuid': user.uuid}) }}">{{ user.email }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_user_show', {'uuid': user.uuid}) }}">
+                                                        {{ user.email }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
@@ -96,65 +137,99 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ achievement.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ achievement.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if achievement.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': achievement.createdBy}) }}">{{ achievement.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': achievement.createdBy}) }}">
+                                            {{ achievement.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if achievement.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': achievement.deletedBy}) }}">{{ achievement.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_achievement_undelete', {'uuid': achievement.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': achievement.deletedBy}) }}">
+                                            {{ achievement.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_achievement_undelete', {'uuid': achievement.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if achievement.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': achievement.updatedBy}) }}">{{ achievement.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': achievement.updatedBy}) }}">
+                                            {{ achievement.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ achievement.createdAt ? achievement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.createdAt ? achievement.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if achievement.deletedAt %}
                                         {{ achievement.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_achievement_undelete', {'uuid': achievement.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_achievement_undelete', {'uuid': achievement.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ achievement.updatedAt ? achievement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ achievement.updatedAt ? achievement.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a class="btn btn-success" href="{{ path('admin_achievement_edit', {'uuid': achievement.uuid}) }}">
-                <i aria-hidden="true" class="bi bi-pencil-square"></i>
-                {{ 'Edit'|trans }}
-            </a>
         </div>
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Achievement details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Achievement details'|trans }}
+{% endblock %}

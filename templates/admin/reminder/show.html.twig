@@ -20,19 +20,24 @@
     <div class="card">
         <div class="card-header">
             {{ 'Reminder details'|trans }}
-            <a class="btn btn-info btn-sm float-right" href="{{ path('admin_reminder_index') }}">
-                <i aria-hidden="true" class="bi bi-arrow-left-square"></i>
-                {{ 'Back'|trans }}
+            <a class="btn btn-secondary btn-sm float-right" href="{{ path('admin_reminder_index') }}">
+                <i aria-hidden="true" class="bi bi-x-square"></i>
             </a>
             <ul class="nav nav-tabs card-header-tabs mt-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">{{ 'Basic'|trans }}</a>
+                    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="home" aria-selected="true">
+                        {{ 'Basic'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">{{ 'Relations'|trans }}</a>
+                    <a class="nav-link" id="relations-tab" data-toggle="tab" href="#relations" role="tab" aria-controls="relations" aria-selected="true">
+                        {{ 'Relations'|trans }}
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">{{ 'Additional'|trans }}</a>
+                    <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab" aria-controls="contact" aria-selected="false">
+                        {{ 'Additional'|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -42,98 +47,156 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Hour'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Hour'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.hour %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Is enabled'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Is enabled'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.isEnabled %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Minutes before'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Minutes before'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.minutesBefore %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Next date'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Next date'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.nextDate %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Next date local time'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Next date local time'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.nextDateLocalTime %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Previous date'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Previous date'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.previousDate %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Send email'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Send email'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.sendEmail %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Send sms'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Send sms'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.sendSms %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Send motivational message'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Send motivational message'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.sendMotivationalMessage %}
-                                        <span class="badge badge-success">{{ 'Yes'|trans }}</span>
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
                                     {% else %}
-                                        <span class="badge badge-danger">{{ 'No'|trans }}</span>
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Type'|trans }}</th>
-                                <td>{{ reminder.type }}</td>
+                                <th scope="row">
+                                    {{ 'Type'|trans }}
+                                </th>
+                                <td>
+                                    {{ reminder.type }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -142,42 +205,62 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'Reminder messages'|trans }}</th>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'Reminder messages'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.reminderMessagesAll|length %}
                                         <ul>
                                             {% for reminder_message in reminder.reminderMessagesAll %}
-                                                <li><a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">{{ reminder_message.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_reminder_message_show', {'uuid': reminder_message.uuid}) }}">
+                                                        {{ reminder_message.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Routine'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Routine'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.routine %}
-                                        <a href="{{ path('admin_routine_show', {'uuid': reminder.routine.uuid}) }}">{{ reminder.routine.uuid }}</a>
+                                        <a href="{{ path('admin_routine_show', {'uuid': reminder.routine.uuid}) }}">
+                                            {{ reminder.routine.uuid }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Sent reminders'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Sent reminders'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.sentRemindersAll|length %}
                                         <ul>
                                             {% for sent_reminder in reminder.sentRemindersAll %}
-                                                <li><a href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}">{{ sent_reminder.uuid }}</a></li>
+                                                <li>
+                                                    <a href="{{ path('admin_sent_reminder_show', {'uuid': sent_reminder.uuid}) }}">
+                                                        {{ sent_reminder.uuid }}
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'User'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'User'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': reminder.user.uuid}) }}">{{ reminder.user.email }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.user.uuid}) }}">
+                                            {{ reminder.user.email }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -188,63 +271,104 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row" style="width: 20%;">{{ 'ID'|trans }}</th>
-                                <td>{{ reminder.id }}</td>
+                                <th scope="row" style="width: 20%;">
+                                    {{ 'ID'|trans }}
+                                </th>
+                                <td>
+                                    {{ reminder.id }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'UUID'|trans }}</th>
-                                <td>{{ reminder.uuid }}</td>
+                                <th scope="row">
+                                    {{ 'UUID'|trans }}
+                                </th>
+                                <td>
+                                    {{ reminder.uuid }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Created by'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.createdBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': reminder.createdBy}) }}">{{ reminder.createdBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.createdBy}) }}">
+                                            {{ reminder.createdBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted by'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.deletedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': reminder.deletedBy}) }}">{{ reminder.deletedBy }}</a>
-                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.deletedBy}) }}">
+                                            {{ reminder.deletedBy }}
+                                        </a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated by'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Updated by'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.updatedBy %}
-                                        <a href="{{ path('admin_user_show', {'uuid': reminder.updatedBy}) }}">{{ reminder.updatedBy }}</a>
+                                        <a href="{{ path('admin_user_show', {'uuid': reminder.updatedBy}) }}">
+                                            {{ reminder.updatedBy }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Created at'|trans }}</th>
-                                <td>{{ reminder.createdAt ? reminder.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Created at'|trans }}
+                                </th>
+                                <td>
+                                    {{ reminder.createdAt ? reminder.createdAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Deleted at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Deleted at'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.deletedAt %}
                                         {{ reminder.deletedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-trash-restore"></i> {{ 'Undelete'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_undelete', {'uuid': reminder.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-trash-restore"></i>
+                                            {{ 'Undelete'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Locked at'|trans }}</th>
+                                <th scope="row">
+                                    {{ 'Locked at'|trans }}
+                                </th>
                                 <td>
                                     {% if reminder.lockedAt %}
                                         {{ reminder.lockedAt|date('Y-m-d H:i:s') }}
-                                        <a class="btn btn-warning" href="{{ path('admin_reminder_unlock', {'uuid': reminder.uuid}) }}"><i aria-hidden="true" class="bi bi-unlock"></i> {{ 'Unlock'|trans }}</a>
+                                        <a class="btn btn-warning" href="{{ path('admin_reminder_unlock', {'uuid': reminder.uuid}) }}">
+                                            <i aria-hidden="true" class="bi bi-unlock"></i>
+                                            {{ 'Unlock'|trans }}
+                                        </a>
                                     {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">{{ 'Updated at'|trans }}</th>
-                                <td>{{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <th scope="row">
+                                    {{ 'Updated at'|trans }}
+                                </th>
+                                <td>
+                                    {{ reminder.updatedAt ? reminder.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -254,4 +378,6 @@
     </div>
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ 'Reminder details'|trans }}{% endblock %}
+{% block title %}
+    {{ parent() }} - {{ 'Reminder details'|trans }}
+{% endblock %}
