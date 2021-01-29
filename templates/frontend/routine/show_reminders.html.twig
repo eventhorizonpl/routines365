@@ -15,112 +15,110 @@
         </a>
     </p>
     {% if routine.reminders|length %}
-        <div>
-            <div class="table-responsive">
-                <table class="table table-borderless">
-                    <thead>
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>
+                            {{ 'Next reminder at'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Type'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Send email'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Send sms'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Send to browser'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Send motivational message'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Is enabled'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Actions'|trans }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reminder in routine.reminders %}
                         <tr>
-                            <th>
-                                {{ 'Next reminder at'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Type'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Send email'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Send sms'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Send to browser'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Send motivational message'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Is enabled'|trans }}
-                            </th>
-                            <th>
-                                {{ 'Actions'|trans }}
-                            </th>
+                            <td>
+                                {{ reminder.nextDate ? reminder.nextDate|date('Y-m-d H:i:s')|format_datetime : '' }}
+                            </td>
+                            <td>
+                                {{ reminder.type }}
+                            </td>
+                            <td>
+                                {% if reminder.sendEmail %}
+                                    <span class="badge badge-success">
+                                        {{ 'Yes'|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge badge-danger">
+                                        {{ 'No'|trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if reminder.sendSms %}
+                                    <span class="badge badge-success">
+                                        {{ 'Yes'|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge badge-danger">
+                                        {{ 'No'|trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if reminder.sendToBrowser %}
+                                    <span class="badge badge-success">
+                                        {{ 'Yes'|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge badge-danger">
+                                        {{ 'No'|trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if reminder.sendMotivationalMessage %}
+                                    <span class="badge badge-success">
+                                        {{ 'Yes'|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge badge-danger">
+                                        {{ 'No'|trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if reminder.isEnabled %}
+                                    <span class="badge badge-success">
+                                        {{ 'Yes'|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge badge-danger">
+                                        {{ 'No'|trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td style="width: 20%;">
+                                <a class="btn btn-success btn-sm" href="{% if know_your_tools_reminders_edit is defined and know_your_tools_reminders_edit %}{{ path('frontend_reminder_edit', {'uuid': reminder.uuid, 'know_your_tools': know_your_tools_reminders_edit}) }}{% else %}{{ path('frontend_reminder_edit', {'uuid': reminder.uuid}) }}{% endif %}" title="{{ 'Edit'|trans }}">
+                                    <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                    {{ 'Edit'|trans }}
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for reminder in routine.reminders %}
-                            <tr>
-                                <td>
-                                    {{ reminder.nextDate ? reminder.nextDate|date('Y-m-d H:i:s')|format_datetime : '' }}
-                                </td>
-                                <td>
-                                    {{ reminder.type }}
-                                </td>
-                                <td>
-                                    {% if reminder.sendEmail %}
-                                        <span class="badge badge-success">
-                                            {{ 'Yes'|trans }}
-                                        </span>
-                                    {% else %}
-                                        <span class="badge badge-danger">
-                                            {{ 'No'|trans }}
-                                        </span>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if reminder.sendSms %}
-                                        <span class="badge badge-success">
-                                            {{ 'Yes'|trans }}
-                                        </span>
-                                    {% else %}
-                                        <span class="badge badge-danger">
-                                            {{ 'No'|trans }}
-                                        </span>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if reminder.sendToBrowser %}
-                                        <span class="badge badge-success">
-                                            {{ 'Yes'|trans }}
-                                        </span>
-                                    {% else %}
-                                        <span class="badge badge-danger">
-                                            {{ 'No'|trans }}
-                                        </span>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if reminder.sendMotivationalMessage %}
-                                        <span class="badge badge-success">
-                                            {{ 'Yes'|trans }}
-                                        </span>
-                                    {% else %}
-                                        <span class="badge badge-danger">
-                                            {{ 'No'|trans }}
-                                        </span>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if reminder.isEnabled %}
-                                        <span class="badge badge-success">
-                                            {{ 'Yes'|trans }}
-                                        </span>
-                                    {% else %}
-                                        <span class="badge badge-danger">
-                                            {{ 'No'|trans }}
-                                        </span>
-                                    {% endif %}
-                                </td>
-                                <td style="width: 10%;">
-                                    <a class="btn btn-success btn-sm m-1" href="{% if know_your_tools_reminders_edit is defined and know_your_tools_reminders_edit %}{{ path('frontend_reminder_edit', {'uuid': reminder.uuid, 'know_your_tools': know_your_tools_reminders_edit}) }}{% else %}{{ path('frontend_reminder_edit', {'uuid': reminder.uuid}) }}{% endif %}" title="{{ 'Edit'|trans }}">
-                                        <i aria-hidden="true" class="bi bi-pencil-square"></i>
-                                        {{ 'Edit'|trans }}
-                                    </a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     {% endif %}
 {% endblock %}

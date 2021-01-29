@@ -62,10 +62,11 @@ class NoteController extends AbstractController
     }
 
     /**
-     * @Route("/new/{uuid?}", name="new", methods={"GET","POST"})
+     * @Route("/new/{context}/{uuid?}", name="new", methods={"GET","POST"})
      */
     public function new(
         AchievementService $achievementService,
+        string $context,
         NoteFactory $noteFactory,
         NoteManager $noteManager,
         Request $request,
@@ -96,14 +97,20 @@ class NoteController extends AbstractController
                 );
             }
 
-            if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_note_show', [
-                    'know_your_tools' => KytResource::NOTES_SHOW,
-                    'uuid' => $note->getUuid(),
-                ]);
-            } else {
-                return $this->redirectToRoute('frontend_note_show', [
-                    'uuid' => $note->getUuid(),
+            if (Note::CONTEXT_DEFAULT === $context) {
+                if ($knowYourTools) {
+                    return $this->redirectToRoute('frontend_note_show', [
+                        'know_your_tools' => KytResource::NOTES_SHOW,
+                        'uuid' => $note->getUuid(),
+                    ]);
+                } else {
+                    return $this->redirectToRoute('frontend_note_show', [
+                        'uuid' => $note->getUuid(),
+                    ]);
+                }
+            } elseif (Note::CONTEXT_ROUTINE === $context) {
+                return $this->redirectToRoute('frontend_routine_show_notes', [
+                    'uuid' => $note->getRoutine()->getUuid(),
                 ]);
             }
         }
@@ -130,9 +137,10 @@ class NoteController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
+     * @Route("/{uuid}/{context}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(
+        string $context,
         Note $note,
         NoteManager $noteManager,
         Request $request
@@ -146,14 +154,20 @@ class NoteController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $noteManager->save($note, (string) $this->getUser());
 
-            if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_note_show', [
-                    'know_your_tools' => KytResource::NOTES_FINISH,
-                    'uuid' => $note->getUuid(),
-                ]);
-            } else {
-                return $this->redirectToRoute('frontend_note_show', [
-                    'uuid' => $note->getUuid(),
+            if (Note::CONTEXT_DEFAULT === $context) {
+                if ($knowYourTools) {
+                    return $this->redirectToRoute('frontend_note_show', [
+                        'know_your_tools' => KytResource::NOTES_FINISH,
+                        'uuid' => $note->getUuid(),
+                    ]);
+                } else {
+                    return $this->redirectToRoute('frontend_note_show', [
+                        'uuid' => $note->getUuid(),
+                    ]);
+                }
+            } elseif (Note::CONTEXT_ROUTINE === $context) {
+                return $this->redirectToRoute('frontend_routine_show_notes', [
+                    'uuid' => $note->getRoutine()->getUuid(),
                 ]);
             }
         }

@@ -12,7 +12,7 @@
     {% endif %}
 {% endif %}
 
-<ul class="nav nav-tabs mt-2">
+<ul class="nav nav-tabs mb-3 mt-5">
     <li class="nav-item">
         <a class="nav-link{% if route in ['frontend_routine_show'] %} active{% endif %}" href="{{ path('frontend_routine_show', {'uuid': routine.uuid}) }}" id="completed_routines_link"{% if route in ['frontend_routine_show'] and routine.reminders|length and routine.completedRoutines|length == 0 %} data-placement="top" data-trigger="hover" data-toggle="popover" title="{{ 'Complete a routine'|trans }}" data-content="{{ 'Remember about marking routine as completed. This will allow you to track your progress.'|trans }}"{% endif %}>
             {{ 'Completed routines'|trans }}

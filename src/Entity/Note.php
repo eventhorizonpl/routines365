@@ -19,6 +19,9 @@ class Note
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
+    public const CONTEXT_DEFAULT = 'default';
+    public const CONTEXT_ROUTINE = 'routine';
+
     /**
      * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")

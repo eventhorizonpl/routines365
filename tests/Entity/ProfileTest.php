@@ -411,13 +411,13 @@ final class ProfileTest extends AbstractTestCase
 
     public function testGetThemeFormChoices(): void
     {
-        $this->assertCount(1, Profile::getThemeFormChoices());
+        $this->assertCount(2, Profile::getThemeFormChoices());
         $this->assertIsArray(Profile::getThemeFormChoices());
     }
 
     public function testGetThemeValidationChoices(): void
     {
-        $this->assertCount(1, Profile::getThemeValidationChoices());
+        $this->assertCount(2, Profile::getThemeValidationChoices());
         $this->assertIsArray(Profile::getThemeValidationChoices());
     }
 

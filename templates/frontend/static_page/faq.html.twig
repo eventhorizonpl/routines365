@@ -4,9 +4,9 @@
     <div class="row">
         <div class="card col-md-10 offset-md-1">
             <div class="card-body">
-                <h5 class="card-title">
+                <h1 class="card-title h3">
                     FAQ
-                </h5>
+                </h1>
                 <hr>
                 <p class="card-text">
                     <div class="accordion" id="accordionExample">
@@ -21,8 +21,20 @@
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    Q: Who is this app for?<br>
-                                    A: The application is aimed at people who want to develop and maintain their routines.
+                                    <dl class="row">
+                                        <dt class="col-sm-1">
+                                            Q:
+                                        </dt>
+                                        <dd class="col-sm-11">
+                                            Who is this app for?
+                                        </dd>
+                                        <dt class="col-sm-1">
+                                            A:
+                                        </dt>
+                                        <dd class="col-sm-11">
+                                            The application is aimed at people who want to develop and maintain their routines.
+                                        </dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
@@ -36,8 +48,20 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    Q: I've found a security issue. What should I do?<br>
-                                    A: Please <a href="{{ path('frontend_static_page_contact') }}">{{ 'Contact'|trans }}</a> with us.
+                                    <dl class="row">
+                                        <dt class="col-sm-1">
+                                            Q:
+                                        </dt>
+                                        <dd class="col-sm-11">
+                                            I've found a security issue. What should I do?
+                                        </dd>
+                                        <dt class="col-sm-1">
+                                            A:
+                                        </dt>
+                                        <dd class="col-sm-11">
+                                            Please <a href="{{ path('frontend_static_page_contact') }}">{{ 'Contact'|trans }}</a> with us.
+                                        </dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@
     {% if know_your_tools is defined and know_your_tools %}
         <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
             {% if know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_projects_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_projects_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::PROJECTS_SHOW') %}
                 Click on <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button>.
             {% endif %}
@@ -126,7 +126,7 @@
                                                         </td>
                                                         <td style="width: 25%;">
                                                             <a class="btn btn-primary btn-sm m-1" href="{{ path('frontend_goal_complete', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}" title="{{ 'Complete'|trans }}">
-                                                                <i aria-hidden="true" class="bi bi-check"></i>
+                                                                <i aria-hidden="true" class="bi bi-check-circle"></i>
                                                                 {{ 'Complete'|trans }}
                                                             </a>
                                                             <a class="btn btn-success btn-sm m-1" href="{{ path('frontend_goal_edit', {'uuid': goal.uuid, 'context': constant('App\\Entity\\Goal::CONTEXT_PROJECT')}) }}" title="{{ 'Edit'|trans }}">

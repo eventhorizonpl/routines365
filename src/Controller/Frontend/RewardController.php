@@ -59,9 +59,10 @@ class RewardController extends AbstractController
     }
 
     /**
-     * @Route("/new/{uuid?}", name="new", methods={"GET","POST"})
+     * @Route("/new/{context}/{uuid?}", name="new", methods={"GET","POST"})
      */
     public function new(
+        string $context,
         Request $request,
         RewardFactory $rewardFactory,
         RewardManager $rewardManager,
@@ -81,14 +82,20 @@ class RewardController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $rewardManager->save($reward, (string) $this->getUser());
 
-            if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'know_your_tools' => KytResource::REWARDS_SHOW,
-                    'uuid' => $reward->getUuid(),
-                ]);
-            } else {
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'uuid' => $reward->getUuid(),
+            if (Reward::CONTEXT_DEFAULT === $context) {
+                if ($knowYourTools) {
+                    return $this->redirectToRoute('frontend_reward_show', [
+                        'know_your_tools' => KytResource::REWARDS_SHOW,
+                        'uuid' => $reward->getUuid(),
+                    ]);
+                } else {
+                    return $this->redirectToRoute('frontend_reward_show', [
+                        'uuid' => $reward->getUuid(),
+                    ]);
+                }
+            } elseif (Reward::CONTEXT_ROUTINE === $context) {
+                return $this->redirectToRoute('frontend_routine_show_rewards', [
+                    'uuid' => $reward->getRoutine()->getUuid(),
                 ]);
             }
         }
@@ -115,9 +122,10 @@ class RewardController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
+     * @Route("/{uuid}/{context}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(
+        string $context,
         Reward $reward,
         RewardManager $rewardManager,
         Request $request
@@ -131,14 +139,20 @@ class RewardController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $rewardManager->save($reward, (string) $this->getUser());
 
-            if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'know_your_tools' => KytResource::REWARDS_FINISH,
-                    'uuid' => $reward->getUuid(),
-                ]);
-            } else {
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'uuid' => $reward->getUuid(),
+            if (Reward::CONTEXT_DEFAULT === $context) {
+                if ($knowYourTools) {
+                    return $this->redirectToRoute('frontend_reward_show', [
+                        'know_your_tools' => KytResource::REWARDS_FINISH,
+                        'uuid' => $reward->getUuid(),
+                    ]);
+                } else {
+                    return $this->redirectToRoute('frontend_reward_show', [
+                        'uuid' => $reward->getUuid(),
+                    ]);
+                }
+            } elseif (Reward::CONTEXT_ROUTINE === $context) {
+                return $this->redirectToRoute('frontend_routine_show_rewards', [
+                    'uuid' => $reward->getRoutine()->getUuid(),
                 ]);
             }
         }

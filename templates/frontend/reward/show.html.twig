@@ -4,7 +4,7 @@
     {% if know_your_tools is defined and know_your_tools %}
         <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
             {% if know_your_tools == constant('App\\Resource\\KytResource::REWARDS_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_rewards_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_rewards_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REWARDS_SHOW') %}
                 Click on <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button>.
             {% endif %}
@@ -23,7 +23,7 @@
                             {{ reward.name }}
                         </div>
                         <div class="col-md-4 col-6 text-right">
-                            <a class="btn btn-success btn-sm" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_edit', {'uuid': reward.uuid, 'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_EDIT')}) }}{% else %}{{ path('frontend_reward_edit', {'uuid': reward.uuid}) }}{% endif %}" title="{{ 'Edit'|trans }}">
+                            <a class="btn btn-success btn-sm" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_edit', {'uuid': reward.uuid, 'context': constant('App\\Entity\\Reward::CONTEXT_DEFAULT'), 'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_EDIT')}) }}{% else %}{{ path('frontend_reward_edit', {'uuid': reward.uuid, 'context': constant('App\\Entity\\Reward::CONTEXT_DEFAULT')}) }}{% endif %}" title="{{ 'Edit'|trans }}">
                                 <i aria-hidden="true" class="bi bi-pencil-square"></i>
                                 {{ 'Edit'|trans }}
                             </a>

@@ -22,7 +22,7 @@
                 <a aria-label="{{ 'Information'|trans }}" class="btn btn-info float-right ml-2" href="{{ path('frontend_static_page_how_to_notes') }}" title="{{ 'Information'|trans }}">
                     <i aria-hidden="true" class="bi bi-question-square"></i>
                 </a>
-                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_note_new', {'know_your_tools': constant('App\\Resource\\KytResource::NOTES_NEW')}) }}{% else %}{{ path('frontend_note_new') }}{% endif %}" title="{{ 'Create a note'|trans }}">
+                <a class="btn btn-primary float-right" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_note_new', {'context': constant('App\\Entity\\Note::CONTEXT_DEFAULT'), 'know_your_tools': constant('App\\Resource\\KytResource::NOTES_NEW')}) }}{% else %}{{ path('frontend_note_new', {'context': constant('App\\Entity\\Note::CONTEXT_DEFAULT')}) }}{% endif %}" title="{{ 'Create a note'|trans }}">
                     <i aria-hidden="true" class="bi bi-pen"></i>
                     {{ 'Create a note'|trans }}
                 </a>

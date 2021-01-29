@@ -4,7 +4,7 @@
     {% if know_your_tools is defined and know_your_tools %}
         <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
             {% if know_your_tools == constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_basic_configuration_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_basic_configuration_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::BASIC_CONFIGURATION_SHOW') %}
                 {{ include('frontend/static_page/how_to/_basic_configuration_show.html.twig') }}
             {% endif %}

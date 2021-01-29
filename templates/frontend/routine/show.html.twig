@@ -4,11 +4,11 @@
     {% if know_your_tools is defined and know_your_tools %}
         <div class="alert alert-info alert-dismissible fade show col-md-8 offset-md-2" role="alert">
             {% if know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_completing_routines_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_completing_routines_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::COMPLETING_ROUTINES_SHOW') %}
                 {{ include('frontend/static_page/how_to/_completing_routines_show.html.twig') }}
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_goals_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_goals_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_SHOW') %}
                 {{ include('frontend/static_page/how_to/_goals_show.html.twig') }}
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_SHOW2') %}
@@ -16,7 +16,7 @@
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::GOALS_SHOW3') %}
                 Click <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button> in "Goals" list.
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_reminders_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_reminders_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW') %}
                 {{ include('frontend/static_page/how_to/_reminders_show.html.twig') }}
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW2') %}
@@ -24,7 +24,7 @@
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::REMINDERS_SHOW3') %}
                 Click <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button> in "Reminders" list.
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_FINISH') %}
-                <a href="{{ path('frontend_user_kyt_routines_finish') }}">{{ 'Click here to finish'|trans }}</a>
+                <a class="alert-link" href="{{ path('frontend_user_kyt_routines_finish') }}">{{ 'Click here to finish'|trans }}</a>
             {% elseif know_your_tools == constant('App\\Resource\\KytResource::ROUTINES_SHOW') %}
                 Click <button class="btn btn-success btn-sm"><i aria-hidden="true" class="bi bi-pencil-square"></i> {{ 'Edit'|trans }}</button>.
             {% endif %}
@@ -124,9 +124,7 @@
                             </div>
                         </div>
                     {% endif %}
-                    <hr>
                     {% include('frontend/routine/_navbar.html.twig') %}
-                    <hr>
                     {% block routine_content %}
                     {% endblock %}
                 </div>

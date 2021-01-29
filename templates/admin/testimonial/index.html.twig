@@ -23,7 +23,7 @@
                     <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
                 </div>
                 <div class="form-group ml-2">
-                    <select class="form-control" id="status" name="status">
+                    <select class="custom-select" id="status" name="status">
                         <option value="" selected>{{ 'Status'|trans }}</option>
                         {% for status_value in testimonialStatus() %}
                             <option value="{{ status_value }}" {% if parameters.status == status_value %}selected{% endif %}>{{ status_value }}</option>

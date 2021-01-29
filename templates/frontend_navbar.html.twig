@@ -1,6 +1,13 @@
 {% set route = app.request.get('_route') %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+{% set navbarClasses = 'navbar-dark bg-dark' %}
+{% if app.user %}
+    {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
+        {% set navbarClasses = 'navbar-light bg-light' %}
+    {% endif %}
+{% endif %}
+
+<nav class="navbar navbar-expand-lg {{ navbarClasses }}" role="navigation">
     <a class="navbar-brand" href="{{ path('frontend_home') }}">{{ 'Routines365'|trans }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

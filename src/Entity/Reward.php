@@ -21,6 +21,8 @@ class Reward
     use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
 
+    public const CONTEXT_DEFAULT = 'default';
+    public const CONTEXT_ROUTINE = 'routine';
     public const TYPE_ALL = 'all';
     public const TYPE_COMPLETED_ROUTINE = 'completed_routine';
     public const TYPE_COMPLETED_GOAL = 'completed_goal';

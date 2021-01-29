@@ -10,7 +10,9 @@
                         <div class="alert alert-{{ label }} alert-dismissible fade show col-md-8 offset-md-2" role="alert">
                             {{ message }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">
+                                    &times;
+                                </span>
                             </button>
                         </div>
                     {% endfor %}
@@ -23,30 +25,75 @@
                 <div class="row">
                     <div class="col-md-10">
                         <ul class="list-inline list-unstyled">
-                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_changelog') }}">{{ 'Changelog'|trans }}</a></li>
-                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_contact') }}">{{ 'Contact'|trans }}</a></li>
-                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_faq') }}">{{ 'FAQ'|trans }}</a></li>
-                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_how_to') }}">{{ 'How to'|trans }}</a></li>
-                            <li class="list-inline-item"><a href="{{ path('frontend_user_kyt_start') }}">{{ 'Know your tools'|trans }}</a></li>
-                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_privacy_policy') }}">{{ 'Privacy Policy'|trans }}</a></li>
-                            <li class="list-inline-item"><a href="{{ path('frontend_static_page_terms_and_conditions') }}">{{ 'Terms and Conditions'|trans }}</a></li>
-                            <li class="list-inline-item invisible"><a href="{{ path('frontend_landing_page_index') }}">{{ 'Landing pages'|trans }}</a></li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_static_page_changelog') }}">
+                                    {{ 'Changelog'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_static_page_contact') }}">
+                                    {{ 'Contact'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_static_page_faq') }}">
+                                    {{ 'FAQ'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_static_page_how_to') }}">
+                                    {{ 'How to'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_user_kyt_start') }}">
+                                    {{ 'Know your tools'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_static_page_privacy_policy') }}">
+                                    {{ 'Privacy Policy'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ path('frontend_static_page_terms_and_conditions') }}">
+                                    {{ 'Terms and Conditions'|trans }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item invisible">
+                                <a href="{{ path('frontend_landing_page_index') }}">
+                                    {{ 'Landing pages'|trans }}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-md-2">
                         <ul class="list-inline list-unstyled">
-                            <li class="list-inline-item"><a aria-label="{{ 'Facebook'|trans }}" href="https://www.facebook.com/Routines365-105566111435427" target="_blank"><i aria-hidden="true" class="bi bi-facebook"></i></a></li>
-                            <li class="list-inline-item"><a aria-label="{{ 'Twitter'|trans }}" href="https://twitter.com/Routines365" target="_blank"><i aria-hidden="true" class="bi bi-twitter"></i></a></li>
+                            <li class="list-inline-item">
+                                <a aria-label="{{ 'Facebook'|trans }}" href="https://www.facebook.com/Routines365-105566111435427" target="_blank">
+                                    <i aria-hidden="true" class="bi bi-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a aria-label="{{ 'Twitter'|trans }}" href="https://twitter.com/Routines365" target="_blank">
+                                    <i aria-hidden="true" class="bi bi-twitter"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-md-12">
-                        <p class="text-center">{{ 'Copyright'|trans }} &copy; {{ "now"|date("Y") }} Event Horizon Labs</p>
+                        <p class="text-center">
+                            {{ 'Copyright'|trans }} &copy; {{ "now"|date("Y") }} Event Horizon Labs
+                        </p>
                     </div>
                 </div>
             </div>
         </footer>
         <div class="alert text-center cookiealert" role="alert">
-            <b>{{ 'Do you like cookies?'|trans }}</b> &#x1F36A;
+            <b>
+                {{ 'Do you like cookies?'|trans }}
+            </b>
+            &#x1F36A;
             {{ 'We use cookies to ensure you get the best experience on our website.'|trans }}
             <a href="{{ path('frontend_static_page_privacy_policy') }}">
                 {{ 'Learn more'|trans }}
@@ -134,6 +181,7 @@
     <meta property="og:title" content="{{ 'Routines365'|trans }} - {{ 'We help. You achieve.'|trans }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url(app.request.attributes.get("_route"), app.request.attributes.get("_route_params")) }}">
+    <meta http-equiv="X-Frame-Options" content="sameorigin">
 {% endblock %}
 
 {% block stylesheets %}

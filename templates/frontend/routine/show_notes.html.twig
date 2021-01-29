@@ -3,16 +3,42 @@
 {% block routine_content %}
     <p>
         {{ 'Notes'|trans }}: {{ routine.notes|length }}
-        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid}) }}" title="{{ 'Create a note'|trans }}">
+        <a class="btn btn-primary btn-sm float-right" href="{{ path('frontend_note_new', {'uuid': routine.uuid, 'context': constant('App\\Entity\\Note::CONTEXT_ROUTINE')}) }}" title="{{ 'Create a note'|trans }}">
             <i aria-hidden="true" class="bi bi-pen"></i>
             {{ 'Create a note'|trans }}
         </a>
     </p>
-    {% for note in routine.notes %}
-        <p>
-            <a href="{{ path('frontend_note_show', {'uuid': note.uuid}) }}">
-                {{ note.title }}
-            </a>
-        </p>
-    {% endfor %}
+    {% if routine.notes|length %}
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>
+                            {{ 'Title'|trans }}
+                        </th>
+                        <th>
+                            {{ 'Actions'|trans }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for note in routine.notes %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('frontend_note_show', {'uuid': note.uuid}) }}">
+                                    {{ note.title }}
+                                </a>
+                            </td>
+                            <td style="width: 20%;">
+                                <a class="btn btn-success btn-sm" href="{{ path('frontend_note_edit', {'uuid': note.uuid, 'context': constant('App\\Entity\\Note::CONTEXT_ROUTINE')}) }}" title="{{ 'Edit'|trans }}">
+                                    <i aria-hidden="true" class="bi bi-pencil-square"></i>
+                                    {{ 'Edit'|trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 {% endblock %}
