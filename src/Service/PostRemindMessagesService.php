@@ -6,6 +6,7 @@ namespace App\Service;
 
 use App\Entity\Reminder;
 use App\Entity\ReminderMessage;
+use App\Entity\Report;
 use App\Factory\ReminderMessageFactory;
 use App\Factory\SentReminderFactory;
 use App\Manager\ReminderManager;
@@ -27,6 +28,7 @@ class PostRemindMessagesService
     private ReminderMessageFactory $reminderMessageFactory;
     private ReminderMessageManager $reminderMessageManager;
     private ReminderRepository $reminderRepository;
+    private ReportService $reportService;
     private RouterInterface $router;
     private SentReminderFactory $sentReminderFactory;
     private SentReminderManager $sentReminderManager;
@@ -40,6 +42,7 @@ class PostRemindMessagesService
         ReminderMessageFactory $reminderMessageFactory,
         ReminderMessageManager $reminderMessageManager,
         ReminderRepository $reminderRepository,
+        ReportService $reportService,
         RouterInterface $router,
         SentReminderFactory $sentReminderFactory,
         SentReminderManager $sentReminderManager,
@@ -52,20 +55,21 @@ class PostRemindMessagesService
         $this->reminderMessageFactory = $reminderMessageFactory;
         $this->reminderMessageManager = $reminderMessageManager;
         $this->reminderRepository = $reminderRepository;
+        $this->reportService = $reportService;
         $this->router = $router;
         $this->sentReminderFactory = $sentReminderFactory;
         $this->sentReminderManager = $sentReminderManager;
         $this->smsService = $smsService;
     }
 
-    public function findNextReminder(): ?Reminder
+    public function findNextReminder(Report $report): ?Reminder
     {
         $nextDate = new DateTimeImmutable();
         $reminder = $this->reminderRepository->findOneByNextDate($nextDate);
 
         if (null !== $reminder) {
             $this->reminderManager->lock($reminder);
-            $reminder = $this->prepareReminderMessages($reminder);
+            $reminder = $this->prepareReminderMessages($reminder, $report);
             $this->reminderManager->unlock($reminder);
         }
 
@@ -86,17 +90,26 @@ class PostRemindMessagesService
 
     public function nurture(): self
     {
+        $report = $this->reportService->createPostRemindMessages();
         for ($i = 0; $i < 50; ++$i) {
-            $this->findNextReminder();
+            $this->findNextReminder($report);
         }
+
+        $report = $this->reportService->finish($report);
 
         $this->findOldLocked();
 
         return $this;
     }
 
-    public function prepareReminderMessages(Reminder $reminder): Reminder
-    {
+    public function prepareReminderMessages(
+        Reminder $reminder,
+        Report $report
+    ): Reminder {
+        $data = [
+            Report::DATA_KEY_REMINDER => $reminder->getUuid(),
+        ];
+
         $message = sprintf(
             'Your routine %s',
             $reminder->getRoutine()->getName()
@@ -158,11 +171,14 @@ class PostRemindMessagesService
             $createSentReminder = true;
         }
 
+        $data[Report::DATA_KEY_CREATE_SENT_REMINDER] = $createSentReminder;
+
         if (true === $createSentReminder) {
             $sentReminder = $this->sentReminderFactory->createSentReminder();
             $sentReminder->setReminder($reminder);
             $sentReminder->setRoutine($reminder->getRoutine());
             $this->sentReminderManager->save($sentReminder);
+            $data[Report::DATA_KEY_SENT_REMINDER] = $sentReminder->getUuid();
         } else {
             $sentReminder = null;
         }
@@ -200,6 +216,8 @@ class PostRemindMessagesService
                     ->setThirdPartySystemResponse($response);
                 $this->reminderMessageManager->save($reminderMessage);
 
+                $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
+
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
                     0,
@@ -235,6 +253,8 @@ class PostRemindMessagesService
                     ->setThirdPartySystemResponse($response);
                 $this->reminderMessageManager->save($reminderMessage);
 
+                $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
+
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
                     0,
@@ -257,6 +277,8 @@ class PostRemindMessagesService
                     ->setSentReminder($sentReminder);
                 $this->reminderMessageManager->save($reminderMessage);
 
+                $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
+
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
                     1,
@@ -269,6 +291,8 @@ class PostRemindMessagesService
         }
 
         $this->reminderManager->save($reminder);
+
+        $this->reportService->addData($data, $report);
 
         return $reminder;
     }

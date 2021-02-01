@@ -1,0 +1,122 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin_workspace') }}">
+            {{ 'Workspace'|trans }}
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        {{ 'Reports'|trans }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            {{ 'Reports'|trans }} ({{ parameters.count }})
+            <form action="{{ path('admin_report_index') }}" class="form-inline mt-2" method="get">
+                <div class="form-group">
+                    <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group ml-2">
+                    <input class="form-control" id="ends_at" name="ends_at" type="date" value="{{ parameters.ends_at ? parameters.ends_at|date('Y-m-d') : '' }}">
+                </div>
+                <div class="form-group ml-2">
+                    <select class="custom-select" id="status" name="status">
+                        <option value="" selected>{{ 'Status'|trans }}</option>
+                        {% for status_value in reportStatus() %}
+                            <option value="{{ status_value }}" {% if parameters.status == status_value %}selected{% endif %}>{{ status_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group ml-2">
+                    <select class="custom-select" id="type" name="type">
+                        <option value="" selected>{{ 'Type'|trans }}</option>
+                        {% for type_value in reportType() %}
+                            <option value="{{ type_value }}" {% if parameters.type == type_value %}selected{% endif %}>{{ type_value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn btn-secondary ml-2" type="submit">
+                    <i aria-hidden="true" class="bi bi-search"></i>
+                    {{ 'Search'|trans }}
+                </button>
+                <a class="btn {% if not (parameters.starts_at or parameters.ends_at or parameters.type or parameters.status) %}disabled{% endif %} btn-secondary ml-2" href="{{ path('admin_report_index') }}">
+                    <i aria-hidden="true" class="bi bi-x-square"></i>
+                </a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th{% if reports.isSorted('c.Uuid') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reports, 'UUID'|trans, 'c.uuid') }}
+                            </th>
+                            <th{% if reports.isSorted('c.Type') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reports, 'Type'|trans, 'c.type') }}
+                            </th>
+                            <th{% if reports.isSorted('c.Status') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reports, 'Status'|trans, 'c.status') }}
+                            </th>
+                            <th{% if reports.isSorted('c.UpdatedAt') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(reports, 'Updated at'|trans, 'c.updatedAt') }}
+                            </th>
+                            <th>
+                                {{ 'Actions'|trans }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in reports %}
+                            <tr>
+                                <td>
+                                    <a href="{{ path('admin_report_show', {'uuid': report.uuid}) }}">
+                                        {{ report.uuid }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ report.type }}
+                                </td>
+                                <td>
+                                    {{ report.status }}
+                                </td>
+                                <td>
+                                    {{ report.updatedAt ? report.updatedAt|date('Y-m-d H:i:s') : '' }}
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop{{ report.id }}" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop{{ report.id }}">
+                                            <a class="dropdown-item" href="{{ path('admin_report_show', {'uuid': report.uuid}) }}">
+                                                <i aria-hidden="true" class="bi bi-eye"></i>
+                                                {{ 'Show'|trans }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">
+                                    {{ 'No records found'|trans }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(reports) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Reports'|trans }}
+{% endblock %}
