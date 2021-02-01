@@ -397,10 +397,6 @@
         <source>FAQ</source>
         <target>FAQ</target>
       </trans-unit>
-      <trans-unit id="7grTtVV" resname="How to">
-        <source>How to</source>
-        <target>How to</target>
-      </trans-unit>
       <trans-unit id="xJMpS0l" resname="Know your tools">
         <source>Know your tools</source>
         <target>Know your tools</target>
@@ -468,10 +464,6 @@
       <trans-unit id="r6xVdSK" resname="Password reset email sent">
         <source>Password reset email sent</source>
         <target>Password reset email sent</target>
-      </trans-unit>
-      <trans-unit id="V1bj3D2" resname="Currently this system is only available to invitees.">
-        <source>Currently this system is only available to invitees.</source>
-        <target>Currently this system is only available to invitees.</target>
       </trans-unit>
       <trans-unit id="lpzL089" resname="Email">
         <source>Email</source>
@@ -1501,10 +1493,6 @@
         <source>Send an invitation</source>
         <target>Send an invitation</target>
       </trans-unit>
-      <trans-unit id="tzq8bzR" resname="Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free notifications too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.">
-        <source>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free notifications too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</source>
-        <target>Each time you send an invitation that gets accepted, you will be marked as referrer for the new customer. It means that when the new customer top ups account you will get some free notifications too. Invited person will receive a special promotion code in registration link. This code adds some bonus notifications to account.</target>
-      </trans-unit>
       <trans-unit id="U6IZR4H" resname="Email address of the person to whom you want to send an invitation.">
         <source>Email address of the person to whom you want to send an invitation.</source>
         <target>Email address of the person to whom you want to send an invitation.</target>
@@ -1520,10 +1508,6 @@
       <trans-unit id="958DW6a" resname="Content of the contact message.">
         <source>Content of the contact message.</source>
         <target>Content of the contact message.</target>
-      </trans-unit>
-      <trans-unit id="CGh3fxc" resname="For interesting feature ideas we offer rewards in the form of free notifications.">
-        <source>For interesting feature ideas we offer rewards in the form of free notifications.</source>
-        <target>For interesting feature ideas we offer rewards in the form of free notifications.</target>
       </trans-unit>
       <trans-unit id="zjvLpqo" resname="Use promotion code">
         <source>Use promotion code</source>
@@ -1596,6 +1580,26 @@
       <trans-unit id=".Q3gv.4" resname="Efficiency11">
         <source>Efficiency11</source>
         <target>Efficiency11</target>
+      </trans-unit>
+      <trans-unit id="5s2BRLP" resname="How-to">
+        <source>How-to</source>
+        <target>How-to</target>
+      </trans-unit>
+      <trans-unit id="CT59X9u" resname="contact">
+        <source>contact</source>
+        <target>contact</target>
+      </trans-unit>
+      <trans-unit id="d2ASiR8" resname="Currently, this system is only available to invitees.">
+        <source>Currently, this system is only available to invitees.</source>
+        <target>Currently, this system is only available to invitees.</target>
+      </trans-unit>
+      <trans-unit id="GHCpcCB" resname="Each time you send an invitation that gets accepted, you will be marked as the referrer for the new customer. It means that when the new customer top-ups account you will get some free notifications too. The invited person will receive a special promotion code in the registration link. This code adds some bonus notifications to the account.">
+        <source>Each time you send an invitation that gets accepted, you will be marked as the referrer for the new customer. It means that when the new customer top-ups account you will get some free notifications too. The invited person will receive a special promotion code in the registration link. This code adds some bonus notifications to the account.</source>
+        <target>Each time you send an invitation that gets accepted, you will be marked as the referrer for the new customer. It means that when the new customer top-ups account you will get some free notifications too. The invited person will receive a special promotion code in the registration link. This code adds some bonus notifications to the account.</target>
+      </trans-unit>
+      <trans-unit id="JR52qr7" resname="For interesting feature ideas, we offer rewards in the form of free notifications.">
+        <source>For interesting feature ideas, we offer rewards in the form of free notifications.</source>
+        <target>For interesting feature ideas, we offer rewards in the form of free notifications.</target>
       </trans-unit>
     </body>
   </file>

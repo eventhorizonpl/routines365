@@ -5,7 +5,7 @@
         <row>
             {{ include('email/_start.txt.twig') }}
             <br><br>
-            We want to congratulate you for completing your routine.<br><br>
+            We want to congratulate you on completing your routine.<br><br>
             {% if reminder %}
                 Your next routine {{ reminder.routine.name }} starts at {{ reminder.routineStartDate ? reminder.routineStartDate|date('Y-m-d H:i:s')|format_datetime : '' }}.<br><br>
             {% endif %}

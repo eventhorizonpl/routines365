@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h1 class="card-title h3">
                     <a href="{{ path('frontend_static_page_how_to') }}">
-                        {{ 'How to'|trans }}
+                        {{ 'How-to'|trans }}
                     </a> -
                     {{ 'Basic configuration'|trans }}
                 </h1>
@@ -14,7 +14,7 @@
                 {{ include('frontend/static_page/how_to/_basic_configuration_start.html.twig') }}
                 <br>
                 <div class="lead">
-                    In "Profile details" section you have link to 3 other sections:
+                    In the "Profile details" section you have links to 3 other sections:
                     <ul>
                         <li>
                             {{ 'Account'|trans }}
@@ -44,13 +44,13 @@
                     </b>
                     <br>
                     You need to provide your mobile phone number if you want to use SMS reminders.
-                    Currently SMS reminders are available for the following countires:
+                    Currently, SMS reminders are available for the following countries:
                     {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
                         <span class="badge badge-success">{{ country }}</span>
                     {% endfor %} .
                     Please provide mobile phone number in international format like +xx xxx xxx xxx .
-                    System will send you a SMS message to provided number with verification code.
-                    You will have to enter this verification code in 'Phone verification' screen.
+                    The system will send you an SMS message to provided number with the verification code.
+                    You will have to enter this verification code on the 'Phone verification' screen.
                 </div>
                 {% if (true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED')) or (true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED')) %}
                     <br>
@@ -59,8 +59,8 @@
                             First name
                         </b>
                         <br>
-                        System needes this information if you want to send an invitation or motivational
-                        message to friend.
+                        The system needs this information if you want to send an invitation or motivational
+                        message to a friend.
                     </div>
                     <br>
                     <div class="lead">
@@ -68,8 +68,8 @@
                             Last name
                         </b>
                         <br>
-                        System needes this information if you want to send an invitation or motivational
-                        message to friend.
+                        The system needs this information if you want to send an invitation or motivational
+                        message to a friend.
                     </div>
                 {% endif %}
                 <br>
@@ -78,7 +78,7 @@
                         Send weekly monthly statistics
                     </b>
                     <br>
-                    If this option is on you will receive a weekly/monthly/yearly emails with your
+                    If this option is on you will receive weekly/monthly/yearly emails with your
                     statistics.
                 </div>
                 <br>
@@ -87,7 +87,7 @@
                         Show motivational messages
                     </b>
                     <br>
-                    If this option is on you will see a motivational messages while working with
+                    If this option is on you will see motivational messages while working with
                     the system.
                 </div>
             </div>
@@ -96,5 +96,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Basic configuration'|trans }}
+    {{ parent() }} - {{ 'How-to'|trans }} - {{ 'Basic configuration'|trans }}
 {% endblock %}

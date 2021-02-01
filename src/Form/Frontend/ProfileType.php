@@ -22,16 +22,16 @@ class ProfileType extends BaseProfileType
 
         $builder
             ->add('phone', PhoneNumberType::class, [
-                'help' => 'System requires mobile phone number for proper work of SMS reminders.',
+                'help' => 'The system requires a mobile phone number for the proper work of SMS reminders.',
                 'label' => 'Phone (optional)',
                 'required' => false,
             ])
             ->add('sendWeeklyMonthlyStatistics', YesNoType::class, [
-                'help' => 'Determines whether you want to receive weekly/monthly/yearly statistics email.',
+                'help' => 'Determines whether you want to receive weekly/monthly/yearly statistics emails.',
                 'required' => true,
             ])
             ->add('showMotivationalMessages', YesNoType::class, [
-                'help' => 'Determines whether you want to see a motivational messages in the user interface.',
+                'help' => 'Determines whether you want to see motivational messages in the user interface.',
                 'required' => true,
             ])
             ->add('theme', ChoiceType::class, [
@@ -40,7 +40,7 @@ class ProfileType extends BaseProfileType
                 'required' => true,
             ])
             ->add('timeZone', TimezoneType::class, [
-                'help' => 'System requires time zone information for proper work of reminders.',
+                'help' => 'The system requires time zone information for proper work of reminders.',
                 'required' => true,
             ])
         ;
@@ -50,12 +50,12 @@ class ProfileType extends BaseProfileType
         ) {
             $builder
                 ->add('firstName', TextType::class, [
-                    'help' => 'System requires first name for sending invitations and motivational messages to friends.',
+                    'help' => 'The system requires the first name for sending invitations and motivational messages to friends.',
                     'label' => 'First name (optional)',
                     'required' => false,
                 ])
                 ->add('lastName', TextType::class, [
-                    'help' => 'System requires last name for sending invitations and motivational messages to friends.',
+                    'help' => 'The system requires the last name for sending invitations and motivational messages to friends.',
                     'label' => 'Last name (optional)',
                     'required' => false,
                 ])

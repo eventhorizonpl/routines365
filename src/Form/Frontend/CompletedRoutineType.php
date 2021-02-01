@@ -27,7 +27,7 @@ class CompletedRoutineType extends AbstractType
                 'input' => 'datetime_immutable',
             ])
             ->add('minutesDevoted', null, [
-                'help' => 'Number of minutes devoted for the routine.',
+                'help' => 'The number of minutes devoted to the routine.',
             ])
         ;
     }

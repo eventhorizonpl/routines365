@@ -23,10 +23,10 @@ class RoutineType extends AbstractType
                 'required' => false,
             ])
             ->add('isEnabled', YesNoType::class, [
-                'help' => 'System does not send reminders for routine that is not enabled.',
+                'help' => 'The system does not send reminders for a routine that is not enabled.',
             ])
             ->add('name', null, [
-                'help' => 'Name of the routine. System uses it in reminders.',
+                'help' => 'Name of the routine. The system uses it in reminders.',
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => Routine::getTypeFormChoices(),

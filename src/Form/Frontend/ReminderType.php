@@ -22,24 +22,24 @@ class ReminderType extends AbstractType
 
         $builder
             ->add('hour', TimeType::class, [
-                'help' => 'Time when the routine should start.',
+                'help' => 'The time when the routine should start.',
                 'input' => 'datetime_immutable',
             ])
             ->add('isEnabled', YesNoType::class, [
-                'help' => 'Determines whether the system should send reminder.',
+                'help' => 'Determines whether the system should send a reminder.',
             ])
             ->add('minutesBefore', ChoiceType::class, [
                 'choices' => Reminder::getMinutesBeforeFormChoices(),
-                'help' => 'How many minutes before routine start system should send a reminder.',
+                'help' => 'How many minutes before the routine starts system should send a reminder.',
             ])
             ->add('sendEmail', YesNoType::class, [
-                'help' => 'Determines whether the system should send reminder to the email address.',
+                'help' => 'Determines whether the system should send a reminder to the email address.',
             ])
             ->add('sendMotivationalMessage', YesNoType::class, [
-                'help' => 'Determines whether the system should send a motivational messages in reminder.',
+                'help' => 'Determines whether the system should send motivational messages in reminder.',
             ])
             ->add('sendToBrowser', YesNoType::class, [
-                'help' => 'Determines whether the system should send reminder to the web browser.',
+                'help' => 'Determines whether the system should send a reminder to the web browser.',
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => Reminder::getTypeFormChoices(),
@@ -49,7 +49,7 @@ class ReminderType extends AbstractType
 
         if (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS)) {
             $builder->add('sendSms', YesNoType::class, [
-                'help' => 'Determines whether the system should send reminder to phone number.',
+                'help' => 'Determines whether the system should send a reminder to the phone number.',
             ]);
         }
     }

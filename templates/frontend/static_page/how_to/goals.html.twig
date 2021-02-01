@@ -6,18 +6,18 @@
             <div class="card-body">
                 <h1 class="card-title h3">
                     <a href="{{ path('frontend_static_page_how_to') }}">
-                        {{ 'How to'|trans }}
+                        {{ 'How-to'|trans }}
                     </a> -
                     {{ 'Goals'|trans }}
                 </h1>
                 <hr>
                 <div class="lead">
-                    You can visit project "Goals" section by clicking
+                    You can visit the project "Goals" section by clicking
                     <a href="#">
                         <i aria-hidden="true" class="bi bi-tools"></i>
                         {{ 'Projects'|trans }}
                     </a>
-                    in navigation menu.
+                    in the navigation menu.
                 </div>
                 <br>
                 <div class="lead">
@@ -26,7 +26,7 @@
                         <i aria-hidden="true" class="bi bi-eye"></i>
                         {{ 'Show'|trans }}
                     </button>
-                    next to name of project that you want to select.
+                    next to the name of a project that you want to select.
                 </div>
                 <br>
                 {{ include('frontend/static_page/how_to/_goals_start.html.twig') }}
@@ -46,5 +46,5 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ 'How to'|trans }} - {{ 'Goals'|trans }}
+    {{ parent() }} - {{ 'How-to'|trans }} - {{ 'Goals'|trans }}
 {% endblock %}

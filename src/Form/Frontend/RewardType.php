@@ -31,7 +31,7 @@ class RewardType extends AbstractType
             ])
             ->add('requiredNumberOfCompletions', ChoiceType::class, [
                 'choices' => Reward::getRequiredNumberOfCompletionsFormChoices(),
-                'help' => 'Required number of completions before system will award this reward.',
+                'help' => 'Required number of completions before the system will award this reward.',
                 'required' => true,
             ])
             ->add('type', ChoiceType::class, [
