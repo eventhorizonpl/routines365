@@ -1,4 +1,4 @@
-Hi,
+{{ include('email/_start.txt.twig') }}
 
 We are pleased to inform you that your new Routines365 account is now active.
 
@@ -9,6 +9,8 @@ Password: {{ password }}
 We generated this password for you for temporary usage. Please change your password at the earliest possible moment.
 
 You can login to the system by clicking the following link {{ url('security_login') }}
+
+We encourage you to take a tutorial {{ url('frontend_user_kyt_start') }}
 
 Thanks,
 Routines365 Team

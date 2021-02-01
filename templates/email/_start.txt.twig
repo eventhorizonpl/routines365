@@ -1,0 +1,5 @@
+{% if recipient_first_name is defined and recipient_first_name and random([0, 1])%}
+{{ random(['Dear', 'Hello', 'Hi']) }} {{ recipient_first_name }},
+{% else %}
+{{ random(['Greetings', 'Hello', 'Hi', 'Hi there']) }},
+{% endif %}

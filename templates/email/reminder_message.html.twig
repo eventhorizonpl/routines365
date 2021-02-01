@@ -3,7 +3,8 @@
 {% block content %}
     <container>
         <row>
-            Hi,<br><br>
+            {{ include('email/_start.txt.twig') }}
+            <br><br>
             {{ email_original_message }}<br><br>
             {% if email_quote %}
                 {{ email_quote }}<br><br>

@@ -64,6 +64,9 @@ class UserKytService
             $this->emailService->sendUserKytBasicConfiguration(
                 $user->getEmail(),
                 'R365: Know your tools - basic configuration',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setBasicConfigurationSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -74,6 +77,9 @@ class UserKytService
             $this->emailService->sendUserKytRoutines(
                 $user->getEmail(),
                 'R365: Know your tools - routines',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setRoutinesSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -84,6 +90,9 @@ class UserKytService
             $this->emailService->sendUserKytReminders(
                 $user->getEmail(),
                 'R365: Know your tools - reminders',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setRemindersSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -94,6 +103,9 @@ class UserKytService
             $this->emailService->sendUserKytCompletingRoutines(
                 $user->getEmail(),
                 'R365: Know your tools - completing routines',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setCompletingRoutinesSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -104,6 +116,9 @@ class UserKytService
             $this->emailService->sendUserKytNotes(
                 $user->getEmail(),
                 'R365: Know your tools - notes',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setNotesSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -114,6 +129,9 @@ class UserKytService
             $this->emailService->sendUserKytRewards(
                 $user->getEmail(),
                 'R365: Know your tools - rewards',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setRewardsSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -124,6 +142,9 @@ class UserKytService
             $this->emailService->sendUserKytProjects(
                 $user->getEmail(),
                 'R365: Know your tools - projects',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setProjectsSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -134,6 +155,9 @@ class UserKytService
             $this->emailService->sendUserKytGoals(
                 $user->getEmail(),
                 'R365: Know your tools - goals',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setGoalsSent(true);
             $userKyt->setDateOfLastMessage($date);
@@ -143,6 +167,9 @@ class UserKytService
             $this->emailService->sendRequestForTestimonial(
                 $user->getEmail(),
                 'R365: Request for a testimonial',
+                [
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
+                ]
             );
             $userKyt->setTestimonialRequestSent(true);
             $userKyt->setDateOfLastMessage($date);

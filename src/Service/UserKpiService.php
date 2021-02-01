@@ -100,6 +100,7 @@ class UserKpiService
                         $user->getEmail(),
                         $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()]),
                         [
+                            'recipient_first_name' => $user->getProfile()->getFirstName(),
                             'user_kpi' => $userKpi,
                         ]
                     );

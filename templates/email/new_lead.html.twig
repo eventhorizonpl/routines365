@@ -3,13 +3,15 @@
 {% block content %}
     <container>
         <row>
-            Hi,<br><br>
+            {{ include('email/_start.txt.twig') }}
+            <br><br>
             We are pleased to inform you that your new Routines365 account is now active.<br><br>
             Please use following credentials to login.<br>
             Email: {{ email_address }}<br>
             Password: {{ password }}<br><br>
             We generated this password for you for temporary usage. Please change your password at the earliest possible moment.<br><br>
-            You can login to the system by clicking the following <a href="{{ url('security_login') }}">link</a><br><br>
+            You can login to the system by clicking the following <a href="{{ url('security_login') }}">link</a>.<br><br>
+            We encourage you to take a <a href="{{ url('frontend_user_kyt_start') }}">tutorial</a>.<br><br>
             Thanks,<br>
             Routines365 Team
         </row>

@@ -3,7 +3,8 @@
 {% block content %}
     <container>
         <row>
-            Hi,<br><br>
+            {{ include('email/_start.txt.twig') }}
+            <br><br>
             {{ from_email }} sent a request for contact.<br><br>
             Contact type: {{ type }}<br><br>
             {{ title }}<br><br>

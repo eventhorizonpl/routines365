@@ -1,6 +1,7 @@
 <container>
     <row>
-        Hi,<br><br>
+        {{ include('email/_start.txt.twig') }}
+        <br><br>
         On behalf of {{ first_name }} {{ last_name }} we would like to invite you to Routines365.<br><br>
         Please visit the following <a href="{% if promotion %}{{ url('security_register', {'referrer_code': referrer_code, 'promotion_code': promotion.code}) }}{% else %}{{ url('security_register', {'referrer_code': referrer_code}) }}{% endif %}">link to register</a>.<br><br>
         Thanks,<br>

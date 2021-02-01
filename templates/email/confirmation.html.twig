@@ -3,9 +3,13 @@
 {% block content %}
     <container>
         <row>
-            Hi,<br><br>
+            {{ include('email/_start.txt.twig') }}
+            <br><br>
+            Welcome to Routines365. We are very pleased that you joined. We promise we will do our best to help you achieving your dreams.<br><br>
             Please confirm your email address by clicking the following <a href="{{ signed_url|raw }}">link</a>.<br><br>
             This link will expire in {{ expires_at|date('g') }} hour(s).<br><br>
+            We encourage you to take a <a href="{{ url('frontend_user_kyt_start') }}">tutorial</a>.<br><br>
+
             Thanks,<br>
             Routines365 Team
         </row>

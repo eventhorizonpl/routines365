@@ -164,6 +164,7 @@ class ResetPasswordController extends AbstractController
             $user->getEmail(),
             'R365: Your password reset request',
             [
+                'recipient_first_name' => $user->getProfile()->getFirstName(),
                 'reset_token' => $resetToken,
                 'token_lifetime' => $this->resetPasswordHelper->getTokenLifetime(),
             ]

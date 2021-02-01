@@ -190,6 +190,7 @@ class PostRemindMessagesService
                         'email_link' => $emailLink,
                         'email_original_message' => $emailOriginalMessage,
                         'email_quote' => $emailQuote,
+                        'recipient_first_name' => $reminder->getUser()->getProfile()->getFirstName(),
                     ]
                 );
 

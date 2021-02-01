@@ -3,7 +3,8 @@
 {% block content %}
     <container>
         <row>
-            Hi,<br><br>
+            {{ include('email/_start.txt.twig') }}
+            <br><br>
             We noticed that you didn't created any projects.<br><br>
             You can read the <a href="{{ url('frontend_static_page_how_to_projects') }}">documentation</a>.<br><br>
             You can take a <a href="{{ url('frontend_user_kyt_projects') }}">tutorial</a>.<br><br>

@@ -121,6 +121,7 @@ class UserController extends AbstractController
                 [
                     'email_address' => $user->getEmail(),
                     'password' => $password,
+                    'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
             );
 

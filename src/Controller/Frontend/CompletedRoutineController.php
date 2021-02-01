@@ -91,6 +91,7 @@ class CompletedRoutineController extends AbstractController
                     $translator->trans('R365: Congratulations for completing your routine!'),
                     [
                         'quote' => $quote,
+                        'recipient_first_name' => $user->getProfile()->getFirstName(),
                         'reminder' => $reminder,
                     ]
                 );

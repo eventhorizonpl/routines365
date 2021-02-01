@@ -1,8 +1,12 @@
-Hi,
+{{ include('email/_start.txt.twig') }}
+
+Welcome to Routines365. We are very pleased that you joined. We promise we will do our best to help you achieving your dreams.
 
 Please confirm your email address by clicking the following link {{ signed_url|raw }}
 
 This link will expire in {{ expires_at|date('g') }} hour(s).
+
+We encourage you to take a tutorial {{ url('frontend_user_kyt_start') }}
 
 Thanks,
 Routines365 Team

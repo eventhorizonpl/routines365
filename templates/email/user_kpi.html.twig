@@ -3,7 +3,8 @@
 {% block content %}
     <container>
         <row>
-            Hi,<br><br>
+            {{ include('email/_start.txt.twig') }}
+            <br><br>
             Here are your {{ user_kpi.type }} statistics.<br><br>
             <container>
                 <row>
