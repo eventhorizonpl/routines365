@@ -3,7 +3,7 @@
 We want to congratulate you for completing your routine.
 
 {% if reminder %}
-    Your next routine {{ reminder.routine.name }} starts at {{ reminder.routineStartDate ? reminder.routineStartDate|date('Y-m-d H:i:s') : '' }}.
+    Your next routine {{ reminder.routine.name }} starts at {{ reminder.routineStartDate ? reminder.routineStartDate|date('Y-m-d H:i:s')|format_datetime : '' }}.
 {% endif %}
 
 {{ quote }}

@@ -103,7 +103,7 @@ class PostRemindMessagesService
         );
         $message .= sprintf(
             ' starts at %s.',
-            $reminder->getRoutineStartDate()->format('H:i:s')
+            $reminder->getRoutineStartDateLocalTime()->format('H:i:s')
         );
         if ($reminder->getRoutine()->getGoals()->count() > 0) {
             $message .= sprintf(
