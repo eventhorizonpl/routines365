@@ -1417,10 +1417,6 @@
         <source>Motivational messages</source>
         <target>Motivational messages</target>
       </trans-unit>
-      <trans-unit id="3kuhPif" resname="Efficiency11 will show you your efficiency taking into account 11 factors.">
-        <source>Efficiency11 will show you your efficiency taking into account 11 factors.</source>
-        <target>Efficiency11 will show you your efficiency taking into account 11 factors.</target>
-      </trans-unit>
       <trans-unit id="QfV3QfP" resname="Devoted time">
         <source>Devoted time</source>
         <target>Devoted time</target>
@@ -1588,6 +1584,18 @@
       <trans-unit id="L8jgrZx" resname="Edit a goal">
         <source>Edit a goal</source>
         <target>Edit a goal</target>
+      </trans-unit>
+      <trans-unit id="utV_94N" resname="Instagram">
+        <source>Instagram</source>
+        <target>Instagram</target>
+      </trans-unit>
+      <trans-unit id="eN.U15v" resname="Pinterest">
+        <source>Pinterest</source>
+        <target>Pinterest</target>
+      </trans-unit>
+      <trans-unit id=".Q3gv.4" resname="Efficiency11">
+        <source>Efficiency11</source>
+        <target>Efficiency11</target>
       </trans-unit>
     </body>
   </file>
