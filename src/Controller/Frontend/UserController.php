@@ -8,6 +8,8 @@ use App\Entity\User;
 use App\Form\Frontend\ChangePasswordFormType;
 use App\Manager\UserManager;
 use App\Service\UserService;
+use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
+use Scheb\TwoFactorBundle\Security\TwoFactor\QrCode\QrCodeGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +27,7 @@ class UserController extends AbstractController
     /**
      * @Route("/change-password", name="change_password", methods={"GET","POST"})
      */
-    public function edit(
+    public function changePassword(
         Request $request,
         TranslatorInterface $translator,
         UserManager $userManager,
@@ -49,7 +51,7 @@ class UserController extends AbstractController
             if (null !== $form->get('plainPassword')->getData()) {
                 $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             }
-            $userManager->save($user, (string) $this->getUser());
+            $userManager->save($user, (string) $user);
 
             return $this->redirectToRoute('frontend_profile_show');
         }
@@ -58,5 +60,47 @@ class UserController extends AbstractController
             'form' => $form->createView(),
             'user' => $user,
         ]);
+    }
+
+    /**
+     * @Route("/enable-2fa", name="enable_2fa", methods={"GET"})
+     */
+    public function enable2fa(
+        GoogleAuthenticatorInterface $googleAuthenticator,
+        UserManager $userManager
+    ): Response {
+        $user = $this->getUser();
+
+        if (null === $user->getGoogleAuthenticatorSecret()) {
+            $secret = $googleAuthenticator->generateSecret();
+            $user->setGoogleAuthenticatorSecret($secret);
+            $userManager->save($user, (string) $user);
+        }
+
+        return $this->render('frontend/user/enable_2fa.html.twig');
+    }
+
+    /**
+     * @Route("/disable-2fa", name="disable_2fa", methods={"GET"})
+     */
+    public function disable2fa(
+        UserManager $userManager
+    ): Response {
+        $user = $this->getUser();
+
+        $user->setGoogleAuthenticatorSecret(null);
+        $userManager->save($user, (string) $user);
+
+        return $this->redirectToRoute('frontend_profile_show');
+    }
+
+    /**
+     * @Route("/qr-code", name="qr_code")
+     */
+    public function displayGoogleAuthenticatorQrCode(QrCodeGenerator $qrCodeGenerator): Response
+    {
+        $qrCode = $qrCodeGenerator->getGoogleAuthenticatorQrCode($this->getUser());
+
+        return new Response($qrCode->writeString(), 200, ['Content-Type' => 'image/png']);
     }
 }

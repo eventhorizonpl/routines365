@@ -8,6 +8,12 @@
     "async-aws/sns": {
         "version": "1.0.0"
     },
+    "bacon/bacon-qr-code": {
+        "version": "2.0.3"
+    },
+    "beberlei/assert": {
+        "version": "v3.3.0"
+    },
     "clue/stream-filter": {
         "version": "v1.4.1"
     },
@@ -19,6 +25,9 @@
     },
     "cron/cron-bundle": {
         "version": "2.4.1"
+    },
+    "dasprid/enum": {
+        "version": "1.0.3"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -114,6 +123,9 @@
     "egulias/email-validator": {
         "version": "2.1.18"
     },
+    "endroid/qr-code": {
+        "version": "3.9.6"
+    },
     "fakerphp/faker": {
         "version": "v1.13.0"
     },
@@ -159,6 +171,9 @@
     "jean85/pretty-package-versions": {
         "version": "1.5.0"
     },
+    "khanamiryan/qrcode-detector-decoder": {
+        "version": "1.0.4"
+    },
     "knplabs/knp-components": {
         "version": "v2.4.1"
     },
@@ -185,6 +200,9 @@
     },
     "myclabs/deep-copy": {
         "version": "1.10.2"
+    },
+    "myclabs/php-enum": {
+        "version": "1.7.7"
     },
     "nelmio/api-doc-bundle": {
         "version": "3.0",
@@ -228,6 +246,9 @@
         "files": [
             "config/packages/misd_phone_number.yaml"
         ]
+    },
+    "paragonie/constant_time_encoding": {
+        "version": "v2.4.0"
     },
     "phar-io/manifest": {
         "version": "2.0.1"
@@ -336,6 +357,25 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "scheb/2fa-bundle": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "95d9da4bffdc29417c209141cae8292e40d6af19"
+        },
+        "files": [
+            "config/packages/scheb_2fa.yaml",
+            "config/routes/scheb_2fa.yaml"
+        ]
+    },
+    "scheb/2fa-google-authenticator": {
+        "version": "v5.4.2"
+    },
+    "scheb/2fa-qr-code": {
+        "version": "v5.4.2"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },
@@ -396,18 +436,6 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "sensiolabs/security-checker": {
-        "version": "4.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.0",
-            "ref": "160c9b600564faa1224e8f387d49ef13ceb8b793"
-        },
-        "files": [
-            "config/packages/security_checker.yaml"
-        ]
-    },
     "sentry/sdk": {
         "version": "2.1.0"
     },
@@ -425,6 +453,9 @@
         "files": [
             "config/packages/sentry.yaml"
         ]
+    },
+    "spomky-labs/otphp": {
+        "version": "v10.0.1"
     },
     "symfony/amazon-mailer": {
         "version": "4.4",
@@ -871,6 +902,9 @@
     },
     "symfonycasts/verify-email-bundle": {
         "version": "v1.0.0"
+    },
+    "thecodingmachine/safe": {
+        "version": "v1.3.3"
     },
     "theseer/tokenizer": {
         "version": "1.2.0"

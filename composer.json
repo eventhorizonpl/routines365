@@ -22,8 +22,10 @@
         "odolbeau/phone-number-bundle": "^3.1",
         "phpdocumentor/reflection-docblock": "^5.1",
         "prolix/maintenance-bundle": "^2.1",
+        "scheb/2fa-bundle": "^5.4",
+        "scheb/2fa-google-authenticator": "^5.4",
+        "scheb/2fa-qr-code": "^5.4",
         "sensio/framework-extra-bundle": "^5.6",
-        "sensiolabs/security-checker": "^6.0",
         "sentry/sentry-symfony": "^4.0",
         "symfony/amazon-mailer": "5.2.*",
         "symfony/apache-pack": "^1.0",
@@ -103,8 +105,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

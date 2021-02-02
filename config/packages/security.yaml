@@ -51,6 +51,13 @@ security:
                 # following line to always enable it.
                 #always_remember_me: true
 
+            two_factor:
+                auth_form_path: 2fa_login
+                check_path: 2fa_login_check
+                enable_csrf: true
+                csrf_parameter: _csrf_token
+                csrf_token_id: two_factor
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -61,4 +68,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: '^/admin', roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }

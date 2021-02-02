@@ -1,0 +1,37 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+            <div class="card">
+                <div class="card-header">
+                    {{ 'Enable 2FA'|trans }}
+                    <span class="float-right">
+                        <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm" href="{{ path('frontend_profile_show') }}" title="{{ 'Close'|trans }}">
+                            <i aria-hidden="true" class="bi bi-x-square"></i>
+                        </a>
+                    </span>
+                    {% include('frontend_settings_nav.html.twig') %}
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        {{ 'Please scan the following QR code with the Google Authenticator application.'|trans }}
+                        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=pl&gl=US">
+                            {{ 'Google Authenticator for Android'|trans }}
+                        </a>
+                        <a href="https://apps.apple.com/pl/app/google-authenticator/id388497605?l=pl">
+                            {{ 'Google Authenticator for iOS'|trans }}
+                        </a>
+                    </p>
+                    <div class="text-center">
+                        <img src="{{ path('frontend_user_qr_code') }}" class="img-fluid" alt="{{ 'QR code' }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Enable 2FA'|trans }}
+{% endblock %}

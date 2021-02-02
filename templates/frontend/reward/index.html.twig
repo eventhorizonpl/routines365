@@ -84,7 +84,7 @@
                         <p class="card-text">
                             {{ 'You do not have any rewards!'|trans }}
                         </p>
-                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_new', {'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_NEW')}) }}{% else %}{{ path('frontend_reward_new') }}{% endif %}" title="{{ 'Create a reward'|trans }}">
+                        <a class="btn btn-primary" href="{% if know_your_tools is defined and know_your_tools %}{{ path('frontend_reward_new', {'context': constant('App\\Entity\\Reward::CONTEXT_DEFAULT'), 'know_your_tools': constant('App\\Resource\\KytResource::REWARDS_NEW')}) }}{% else %}{{ path('frontend_reward_new', {'context': constant('App\\Entity\\Reward::CONTEXT_DEFAULT')}) }}{% endif %}" title="{{ 'Create a reward'|trans }}">
                             <i aria-hidden="true" class="bi bi-award"></i>
                             {{ 'Create a reward'|trans }}
                         </a>

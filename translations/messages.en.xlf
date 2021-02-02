@@ -1601,6 +1601,50 @@
         <source>For interesting feature ideas, we offer rewards in the form of free notifications.</source>
         <target>For interesting feature ideas, we offer rewards in the form of free notifications.</target>
       </trans-unit>
+      <trans-unit id="2syjy6P" resname="Reports">
+        <source>Reports</source>
+        <target>Reports</target>
+      </trans-unit>
+      <trans-unit id="toJMyKk" resname="Two-factor authentication">
+        <source>Two-factor authentication</source>
+        <target>Two-factor authentication</target>
+      </trans-unit>
+      <trans-unit id="Q2ngXMX" resname="Authentication code">
+        <source>Authentication code</source>
+        <target>Authentication code</target>
+      </trans-unit>
+      <trans-unit id="GXZu1sy" resname="Cancel">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="BqpZ0fx" resname="Report details">
+        <source>Report details</source>
+        <target>Report details</target>
+      </trans-unit>
+      <trans-unit id="HDGT86C" resname="Disable 2FA">
+        <source>Disable 2FA</source>
+        <target>Disable 2FA</target>
+      </trans-unit>
+      <trans-unit id="ZJtdxcI" resname="Enable 2FA">
+        <source>Enable 2FA</source>
+        <target>Enable 2FA</target>
+      </trans-unit>
+      <trans-unit id="9ctow9e" resname="Show QR code">
+        <source>Show QR code</source>
+        <target>Show QR code</target>
+      </trans-unit>
+      <trans-unit id="StKcVm9" resname="Please scan the following QR code with the Google Authenticator application.">
+        <source>Please scan the following QR code with the Google Authenticator application.</source>
+        <target>Please scan the following QR code with the Google Authenticator application.</target>
+      </trans-unit>
+      <trans-unit id="1mBTw4L" resname="Google Authenticator for Android">
+        <source>Google Authenticator for Android</source>
+        <target>Google Authenticator for Android</target>
+      </trans-unit>
+      <trans-unit id="QkdwsWa" resname="Google Authenticator for iOS">
+        <source>Google Authenticator for iOS</source>
+        <target>Google Authenticator for iOS</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

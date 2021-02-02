@@ -1,0 +1,51 @@
+{% extends 'frontend_layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    {{ 'Two-factor authentication'|trans }}
+                </div>
+                <div class="card-body">
+                    <form class="form" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post">
+                        {% if authenticationError %}
+                            <div class="alert alert-danger">
+                                {{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}
+                            </div>
+                        {% endif %}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="_auth_code" class="col-form-label">{{ 'Authentication code'|trans }}</label>
+                                    <input class="form-control" id="_auth_code" name="{{ authCodeParameterName }}" type="text" autocomplete="one-time-code" autofocus inputmode="numeric" pattern="[0-9]*">
+                                </div>
+                            </div>
+                        </div>
+                        {% if isCsrfProtectionEnabled %}
+                            <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
+                        {% endif %}
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit">
+                                    <i aria-hidden="true" class="bi bi-box-arrow-in-right"></i>
+                                    {{ 'Login'|trans }}
+                                </button>
+                                <a class="btn btn-secondary ml-3" href="{{ logoutPath }}">
+                                    <i aria-hidden="true" class="bi bi-box-arrow-right"></i>
+                                    {{ 'Cancel'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ 'Two-factor authentication'|trans }}
+{% endblock %}

@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
+use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User implements UserInterface
+class User implements UserInterface, TwoFactorInterface
 {
     use Traits\IdTrait;
     use Traits\UuidTrait;
@@ -150,8 +151,8 @@ class User implements UserInterface
     private Collection $userQuestionnaires;
 
     /**
-     * @Assert\Type("string", groups={"system"})
-     * @ORM\Column(type="guid", unique=true, nullable=true)
+     * @Assert\Uuid(groups={"system"})
+     * @ORM\Column(nullable=true, type="guid", unique=true)
      */
     private ?string $apiToken = null;
 
@@ -164,6 +165,13 @@ class User implements UserInterface
      * @ORM\Column(length=180, type="string", unique=true)
      */
     private string $email;
+
+    /**
+     * @Assert\Length(max = 52, groups={"system"})
+     * @Assert\Type("string", groups={"system"})
+     * @ORM\Column(length=52, nullable=true, type="string", unique=true)
+     */
+    private ?string $googleAuthenticatorSecret;
 
     /**
      * @Assert\Type("DateTimeImmutable", groups={"system"})
@@ -212,6 +220,7 @@ class User implements UserInterface
         $this->contacts = new ArrayCollection();
         $this->email = '';
         $this->goals = new ArrayCollection();
+        $this->googleAuthenticatorSecret = null;
         $this->isEnabled = false;
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
@@ -417,6 +426,28 @@ class User implements UserInterface
         if (true === $this->goals->contains($goal)) {
             $this->goals->removeElement($goal);
         }
+
+        return $this;
+    }
+
+    public function isGoogleAuthenticatorEnabled(): bool
+    {
+        return (null !== $this->googleAuthenticatorSecret) ? true : false;
+    }
+
+    public function getGoogleAuthenticatorUsername(): string
+    {
+        return $this->getEmail();
+    }
+
+    public function getGoogleAuthenticatorSecret(): ?string
+    {
+        return $this->googleAuthenticatorSecret;
+    }
+
+    public function setGoogleAuthenticatorSecret(?string $googleAuthenticatorSecret): self
+    {
+        $this->googleAuthenticatorSecret = $googleAuthenticatorSecret;
 
         return $this;
     }

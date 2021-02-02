@@ -147,6 +147,19 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/{uuid}/disable-2fa", name="disable_2fa", methods={"GET"})
+     */
+    public function disable2fa(User $user, UserManager $userManager): Response
+    {
+        $user->setGoogleAuthenticatorSecret(null);
+        $userManager->save($user, (string) $user);
+
+        return $this->redirectToRoute('admin_user_show', [
+            'uuid' => $user->getUuid(),
+        ]);
+    }
+
+    /**
      * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(

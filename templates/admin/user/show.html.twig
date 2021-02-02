@@ -84,6 +84,26 @@
                             </tr>
                             <tr>
                                 <th scope="row">
+                                    {{ 'Two-factor authentication'|trans }}
+                                </th>
+                                <td>
+                                    {% if user.googleAuthenticatorEnabled %}
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
+                                        <a class="btn btn-danger btn-sm float-right" href="{{ path('admin_user_disable_2fa', {'uuid': user}) }}" onclick="return confirm('Are you sure you want to execute this?');">
+                                            <i aria-hidden="true" class="bi bi-key"></i>
+                                            {{ 'Disable 2FA'|trans }}
+                                        </a>
+                                    {% else %}
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
                                     {{ 'First name'|trans }}
                                 </th>
                                 <td>
