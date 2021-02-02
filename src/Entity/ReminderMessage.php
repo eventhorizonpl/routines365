@@ -62,7 +62,7 @@ class ReminderMessage
      * @Groups({"show"})
      * @ORM\Column(type="boolean")
      */
-    protected bool $isReadFromBrowser;
+    private bool $isReadFromBrowser;
 
     /**
      * @Assert\Type("DateTimeImmutable", groups={"system"})

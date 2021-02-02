@@ -15,7 +15,7 @@ trait PositionTrait
      * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
-    private int $position;
+    protected int $position;
 
     public function getPosition(): int
     {

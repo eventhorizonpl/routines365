@@ -48,7 +48,7 @@ class UserQuestionnaire
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
-    protected bool $isRewarded;
+    private bool $isRewarded;
 
     public function __construct()
     {

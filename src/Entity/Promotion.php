@@ -72,7 +72,7 @@ class Promotion
      * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
-    protected $expiresAt;
+    private $expiresAt;
 
     /**
      * @Assert\Length(max = 128, groups={"form", "system"})
