@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use App\Vendor\Util\PeterkahlLocale;
+use Exception;
+use League\ISO3166\ISO3166;
 use Locale;
 use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 use Symfony\Component\Security\Core\Security;
@@ -37,9 +38,14 @@ class TwigTimeZoneListener
             (null !== $this->security->getUser()->getProfile()) &&
             (null !== $this->security->getUser()->getProfile()->getCountry())
         ) {
-            $locale = PeterkahlLocale::country2locale($this->security->getUser()->getProfile()->getCountry());
-            $locale = current(explode(',', $locale));
-            Locale::setDefault($locale);
+            $alpha3 = 'USA';
+            try {
+                $country = (new ISO3166())->alpha2($this->security->getUser()->getProfile()->getCountry());
+                $alpha3 = $country['alpha3'];
+            } catch (Exception $e) {
+            }
+
+            Locale::setDefault($alpha3);
         }
     }
 }
