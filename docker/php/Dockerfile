@@ -1,4 +1,4 @@
-FROM php:7.4.14-fpm-alpine3.13 AS php_build
+FROM php:8.0.1-fpm-alpine3.13 AS php_build
 
 RUN apk add --no-cache \
   acl \
@@ -16,6 +16,7 @@ RUN apk add --no-cache \
 RUN docker-php-ext-configure intl \
   && docker-php-ext-install intl \
   && docker-php-ext-install mysqli pdo pdo_mysql \
+  && docker-php-ext-install opcache \
   && docker-php-ext-enable pdo_mysql \
   && docker-php-ext-configure pcntl \
   && docker-php-ext-install pcntl \
