@@ -99,21 +99,4 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
         $cronJobManager = $this->cronJobManager->save($cronJob, true);
         $this->assertInstanceOf(CronJobManager::class, $cronJobManager);
     }
-
-    public function testValidate(): void
-    {
-        $this->purge();
-        $cronJob = new CronJob();
-        $cronJob
-            ->setCommand('test')
-            ->setDescription('test')
-            ->setEnabled(false)
-            ->setName('test')
-            ->setSchedule('0 * * * *');
-        $this->entityManager->persist($cronJob);
-        $this->entityManager->flush();
-
-        $errors = $this->cronJobManager->validate($cronJob);
-        $this->assertCount(0, $errors);
-    }
 }

@@ -105,6 +105,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
+        $user->getProfile()->setTimeZone('wrong timezone');
         $reminder = $user->getReminders()->first();
 
         $nextDate = $reminderManager = $this->reminderManager->findNextDate($reminder);
@@ -155,7 +156,9 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
+        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
         $reminder = $user->getReminders()->first();
+        $reminder->addSentReminder($sentReminder);
         $reminderId = $reminder->getId();
 
         $reminderManager = $this->reminderManager->softDelete($reminder, (string) $user);

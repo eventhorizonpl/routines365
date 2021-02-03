@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Manager;
 
 use App\Entity\UserKyt;
+use App\Exception\ManagerException;
 use App\Faker\UserFaker;
 use App\Manager\UserKytManager;
 use App\Repository\UserKytRepository;
@@ -93,6 +94,17 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
 
         $userKytManager = $this->userKytManager->save($userKyt, (string) $user, true);
         $this->assertInstanceOf(UserKytManager::class, $userKytManager);
+    }
+
+    public function testSaveException(): void
+    {
+        $this->expectException(ManagerException::class);
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $userKyt = $user->getUserKyt();
+        $userKyt->setUuid('wrong');
+
+        $userKytManager = $this->userKytManager->save($userKyt, (string) $user, true);
     }
 
     public function testSoftDelete(): void

@@ -39,6 +39,7 @@ class UserFaker
     private SavedEmailFaker $savedEmailFaker;
     private SentReminderFactory $sentReminderFactory;
     private SentReminderManager $sentReminderManager;
+    private TestimonialFaker $testimonialFaker;
     private UserFactory $userFactory;
     private UserManager $userManager;
     private UserQuestionnaireFaker $userQuestionnaireFaker;
@@ -65,6 +66,7 @@ class UserFaker
         SavedEmailFaker $savedEmailFaker,
         SentReminderFactory $sentReminderFactory,
         SentReminderManager $sentReminderManager,
+        TestimonialFaker $testimonialFaker,
         UserFactory $userFactory,
         UserManager $userManager,
         UserQuestionnaireFaker $userQuestionnaireFaker,
@@ -91,6 +93,7 @@ class UserFaker
         $this->savedEmailFaker = $savedEmailFaker;
         $this->sentReminderFactory = $sentReminderFactory;
         $this->sentReminderManager = $sentReminderManager;
+        $this->testimonialFaker = $testimonialFaker;
         $this->userFactory = $userFactory;
         $this->userManager = $userManager;
         $this->userQuestionnaireFaker = $userQuestionnaireFaker;
@@ -171,6 +174,10 @@ class UserFaker
             AccountOperation::TYPE_DEPOSIT
         );
         $user->getAccount()->addAccountOperation($accountOperation);
+
+        $testimonial = $this->testimonialFaker->createTestimonial();
+        $testimonial->setUser($user);
+        $user->setTestimonial($testimonial);
 
         $routine = $this->routineFaker->createRoutine();
         $user->addRoutine($routine);

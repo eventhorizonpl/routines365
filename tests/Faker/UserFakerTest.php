@@ -24,6 +24,7 @@ use App\Faker\ReminderMessageFaker;
 use App\Faker\RewardFaker;
 use App\Faker\RoutineFaker;
 use App\Faker\SavedEmailFaker;
+use App\Faker\TestimonialFaker;
 use App\Faker\UserFaker;
 use App\Faker\UserQuestionnaireFaker;
 use App\Manager\ReminderMessageManager;
@@ -117,6 +118,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?TestimonialFaker $testimonialFaker;
+    /**
+     * @inject
+     */
     private ?UserFactory $userFactory;
     /**
      * @inject
@@ -158,6 +163,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
             $this->savedEmailFaker,
             $this->sentReminderFactory,
             $this->sentReminderManager,
+            $this->testimonialFaker,
             $this->userFactory,
             $this->userFaker,
             $this->userManager,
@@ -191,6 +197,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
             $this->savedEmailFaker,
             $this->sentReminderFactory,
             $this->sentReminderManager,
+            $this->testimonialFaker,
             $this->userFactory,
             $this->userManager,
             $this->userQuestionnaireFaker,

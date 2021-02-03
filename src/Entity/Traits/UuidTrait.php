@@ -11,7 +11,7 @@ trait UuidTrait
 {
     /**
      * @Assert\NotBlank(groups={"system"})
-     * @Assert\Uuid(groups={"system"})
+     * @Assert\Uuid(groups={"Default", "system"})
      * @Groups({"gdpr", "list", "show"})
      * @ORM\Column(type="guid", unique=true)
      */

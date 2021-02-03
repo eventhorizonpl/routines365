@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Manager;
 
-use App\Exception\ManagerException;
 use Cron\CronBundle\Entity\CronJob;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CronJobManager
@@ -51,11 +49,6 @@ class CronJobManager
 
     public function save(CronJob $cronJob, bool $flush = true): self
     {
-        $errors = $this->validate($cronJob);
-        if (0 !== count($errors)) {
-            throw new ManagerException(sprintf('%s %s', (string) $errors, $cronJob));
-        }
-
         $this->entityManager->persist($cronJob);
 
         if (true === $flush) {
@@ -63,12 +56,5 @@ class CronJobManager
         }
 
         return $this;
-    }
-
-    public function validate(CronJob $cronJob): ConstraintViolationListInterface
-    {
-        $errors = $this->validator->validate($cronJob);
-
-        return $errors;
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Manager;
 
 use App\Entity\UserQuestionnaire;
+use App\Exception\ManagerException;
 use App\Faker\QuestionnaireFaker;
 use App\Faker\UserFaker;
 use App\Faker\UserQuestionnaireFaker;
@@ -107,6 +108,20 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
 
         $userQuestionnaireManager = $this->userQuestionnaireManager->save($userQuestionnaire, (string) $user, true);
         $this->assertInstanceOf(UserQuestionnaireManager::class, $userQuestionnaireManager);
+    }
+
+    public function testSaveException(): void
+    {
+        $this->expectException(ManagerException::class);
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
+        $questionnaire->setUuid('wrong');
+        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnaire();
+        $userQuestionnaire->setUser($user);
+        $userQuestionnaire->setQuestionnaire($questionnaire);
+
+        $userQuestionnaireManager = $this->userQuestionnaireManager->save($userQuestionnaire, (string) $user, true);
     }
 
     public function testSoftDelete(): void
