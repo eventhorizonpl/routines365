@@ -368,6 +368,15 @@ final class ReminderTest extends AbstractTestCase
         $this->assertInstanceOf(Reminder::class, $reminder->removeReminderMessage($reminderMessage1));
     }
 
+    public function testGetRoutineStartDate(): void
+    {
+        $nextDate = new DateTimeImmutable();
+        $reminder = new Reminder();
+        $reminder->setMinutesBefore(0);
+        $this->assertInstanceOf(Reminder::class, $reminder->setNextDate($nextDate));
+        $this->assertEquals($nextDate, $reminder->getRoutineStartDate());
+    }
+
     public function testGetRoutineStartDateLocalTime(): void
     {
         $nextDateLocalTime = new DateTimeImmutable();

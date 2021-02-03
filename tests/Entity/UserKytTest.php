@@ -475,4 +475,22 @@ final class UserKytTest extends AbstractTestCase
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRoutinesSent($routinesSent));
         $this->assertEquals($routinesSent, $userKyt->getRoutinesSent());
     }
+
+    public function testGetTestimonialRequestSent(): void
+    {
+        $testimonialRequestSent = true;
+        $userKyt = new UserKyt();
+        $this->assertEquals(null, $userKyt->getTestimonialRequestSent());
+        $userKyt->setTestimonialRequestSent($testimonialRequestSent);
+        $this->assertEquals($testimonialRequestSent, $userKyt->getTestimonialRequestSent());
+        $this->assertIsBool($userKyt->getTestimonialRequestSent());
+    }
+
+    public function testSetTestimonialRequestSent(): void
+    {
+        $testimonialRequestSent = true;
+        $userKyt = new UserKyt();
+        $this->assertInstanceOf(UserKyt::class, $userKyt->setTestimonialRequestSent($testimonialRequestSent));
+        $this->assertEquals($testimonialRequestSent, $userKyt->getTestimonialRequestSent());
+    }
 }

@@ -17,6 +17,7 @@ use App\Entity\Reminder;
 use App\Entity\Reward;
 use App\Entity\Routine;
 use App\Entity\SavedEmail;
+use App\Entity\Testimonial;
 use App\Entity\User;
 use App\Entity\UserKpi;
 use App\Entity\UserKyt;
@@ -494,6 +495,43 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->addGoal($goal2));
         $this->assertCount(2, $user->getGoals());
         $this->assertInstanceOf(User::class, $user->removeGoal($goal1));
+    }
+
+    public function testIsGoogleAuthenticatorEnabled(): void
+    {
+        $googleAuthenticatorSecret = 'test googleAuthenticatorSecret';
+        $user = new User();
+        $this->assertFalse($user->isGoogleAuthenticatorEnabled());
+        $user->setGoogleAuthenticatorSecret($googleAuthenticatorSecret);
+        $this->assertTrue($user->isGoogleAuthenticatorEnabled());
+        $this->assertIsBool($user->isGoogleAuthenticatorEnabled());
+    }
+
+    public function testGetGoogleAuthenticatorUsername(): void
+    {
+        $email = 'test email';
+        $user = new User();
+        $user->setEmail($email);
+        $this->assertEquals($email, $user->getGoogleAuthenticatorUsername());
+        $this->assertIsString($user->getGoogleAuthenticatorUsername());
+    }
+
+    public function testGetGoogleAuthenticatorSecret(): void
+    {
+        $googleAuthenticatorSecret = 'test googleAuthenticatorSecret';
+        $user = new User();
+        $this->assertEquals(null, $user->getGoogleAuthenticatorSecret());
+        $user->setGoogleAuthenticatorSecret($googleAuthenticatorSecret);
+        $this->assertEquals($googleAuthenticatorSecret, $user->getGoogleAuthenticatorSecret());
+        $this->assertIsString($user->getGoogleAuthenticatorSecret());
+    }
+
+    public function testSetGoogleAuthenticatorSecret(): void
+    {
+        $googleAuthenticatorSecret = 'test googleAuthenticatorSecret';
+        $user = new User();
+        $this->assertInstanceOf(User::class, $user->setGoogleAuthenticatorSecret($googleAuthenticatorSecret));
+        $this->assertEquals($googleAuthenticatorSecret, $user->getGoogleAuthenticatorSecret());
     }
 
     public function testGetLastLoginAt(): void
@@ -1023,6 +1061,22 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->addSavedEmail($savedEmail2));
         $this->assertCount(2, $user->getSavedEmails());
         $this->assertInstanceOf(User::class, $user->removeSavedEmail($savedEmail1));
+    }
+
+    public function testGetTestimonial(): void
+    {
+        $testimonial = new Testimonial();
+        $user = new User();
+        $user->setTestimonial($testimonial);
+        $this->assertEquals($testimonial, $user->getTestimonial());
+    }
+
+    public function testSetTestimonial(): void
+    {
+        $testimonial = new Testimonial();
+        $user = new User();
+        $this->assertInstanceOf(User::class, $user->setTestimonial($testimonial));
+        $this->assertEquals($testimonial, $user->getTestimonial());
     }
 
     public function testGetType(): void
