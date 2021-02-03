@@ -20,7 +20,7 @@ class RetentionRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('r')
             ->select('r')
-            ->addOrderBy('r.createdAt', 'DESC');
+            ->addOrderBy('r.date', 'DESC');
 
         if (!(empty($parameters))) {
             if (array_key_exists('ends_at', $parameters)) {

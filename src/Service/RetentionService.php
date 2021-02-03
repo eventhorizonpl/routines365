@@ -72,12 +72,15 @@ class RetentionService
         $startDate->setTime(0, 0, 0);
         $pointerTime = clone $startDate;
         if (null === $today) {
-            $today = new DateTimeImmutable();
+            $today = new DateTime();
         } else {
-            $today = DateTimeImmutableUtil::dateFromString($today);
+            $today = DateTime::createFromImmutable(DateTimeImmutableUtil::dateFromString($today));
         }
+        $today->setTime(0, 0, 0);
+        $today->modify('first day of this month');
+        $today->modify('-1 second');
+        $today = DateTimeImmutable::createFromMutable($today);
         $endDate = $this->getEndDate($startDate);
-
         $data = [];
 
         while ($endDate <= $today) {
@@ -96,6 +99,8 @@ class RetentionService
             $usersCountThisMonth = $this->userRepository->findForRetentionTotal($endDate, DateTimeImmutable::createFromMutable($pointerTime));
 
             $data[$endDate->format('Y-m')] = [
+                'activeCustomers' => $usersCountActive,
+                'allCustomers' => $usersCountAll,
                 'count' => $usersCountMonth,
                 'newCustomers' => $usersCountThisMonth,
                 'percent' => ($usersCountAll > 0) ? (($usersCountActive / $usersCountAll) * 100) : 0,
@@ -106,7 +111,7 @@ class RetentionService
 
         $this->findOrCreate(
             $data,
-            $endDate
+            $today
         );
 
         return $this;

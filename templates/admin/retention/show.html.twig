@@ -59,15 +59,31 @@
                                             <li>
                                                 {{ 'Date'|trans }}: {{ key }}
                                             </li>
-                                            <li>
-                                                {{ 'Count'|trans }}: {{ data.count }}
-                                            </li>
-                                            <li>
-                                                {{ 'New customers'|trans }}: {{ data.newCustomers }}
-                                            </li>
-                                            <li>
-                                                {{ 'Percent'|trans }}: {{ data.percent }}
-                                            </li>
+                                            {% if data.activeCustomers is defined %}
+                                                <li>
+                                                    {{ 'Active customers'|trans }}: {{ data.activeCustomers }}
+                                                </li>
+                                            {% endif %}
+                                            {% if data.allCustomers is defined %}
+                                                <li>
+                                                    {{ 'All customers'|trans }}: {{ data.allCustomers }}
+                                                </li>
+                                            {% endif %}
+                                            {% if data.count is defined %}
+                                                <li>
+                                                    {{ 'Count'|trans }}: {{ data.count }}
+                                                </li>
+                                            {% endif %}
+                                            {% if data.newCustomers is defined %}
+                                                <li>
+                                                    {{ 'New customers'|trans }}: {{ data.newCustomers }}
+                                                </li>
+                                            {% endif %}
+                                            {% if data.percent is defined %}
+                                                <li>
+                                                    {{ 'Percent'|trans }}: {{ data.percent }}
+                                                </li>
+                                            {% endif %}
                                         </ul>
                                     {% endfor %}
                                 </td>

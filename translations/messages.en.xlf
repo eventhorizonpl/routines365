@@ -1645,6 +1645,14 @@
         <source>Google Authenticator for iOS</source>
         <target>Google Authenticator for iOS</target>
       </trans-unit>
+      <trans-unit id="FnaIh66" resname="Active customers">
+        <source>Active customers</source>
+        <target>Active customers</target>
+      </trans-unit>
+      <trans-unit id="f0BINV8" resname="All customers">
+        <source>All customers</source>
+        <target>All customers</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
