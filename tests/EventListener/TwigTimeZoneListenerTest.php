@@ -74,4 +74,29 @@ final class TwigTimeZoneListenerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(TwigTimeZoneListener::class, $twigTimeZoneListener);
         $this->assertNull($twigTimeZoneListener->onKernelControllerArguments($controllerArgumentsEvent));
     }
+
+    public function testOnKernelControllerArgumentsCatch(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $user->getProfile()->setCountry('QAZ');
+        $user->getProfile()->setTimeZone('Europe/Warsaw');
+
+        $httpKernel = $this->getMockBuilder(HttpKernel::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $request = $this->getMockBuilder(Request::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $security = $this->createStub(Security::class);
+        $security->method('getUser')
+             ->willReturn($user);
+
+        $controllerArgumentsEvent = new ControllerArgumentsEvent($httpKernel, 'App\Entity\AccountOperation::getTypeFormChoices', [], $request, 1);
+
+        $twigTimeZoneListener = new TwigTimeZoneListener($this->environment, $security);
+
+        $this->assertInstanceOf(TwigTimeZoneListener::class, $twigTimeZoneListener);
+        $this->assertNull($twigTimeZoneListener->onKernelControllerArguments($controllerArgumentsEvent));
+    }
 }

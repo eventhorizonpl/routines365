@@ -38,11 +38,11 @@ class TwigTimeZoneListener
             (null !== $this->security->getUser()->getProfile()) &&
             (null !== $this->security->getUser()->getProfile()->getCountry())
         ) {
-            $alpha3 = 'USA';
             try {
                 $country = (new ISO3166())->alpha2($this->security->getUser()->getProfile()->getCountry());
                 $alpha3 = $country['alpha3'];
             } catch (Exception $e) {
+                $alpha3 = 'USA';
             }
 
             Locale::setDefault($alpha3);
