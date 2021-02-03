@@ -8,7 +8,12 @@
 {% endif %}
 
 <nav class="navbar navbar-expand-lg {{ navbarClasses }}" role="navigation">
-    <a class="navbar-brand" href="{{ path('frontend_home') }}">{{ 'Routines365'|trans }}</a>
+    <a class="navbar-brand" href="{{ path('frontend_home') }}">
+        <img alt="{{ 'Routines365'|trans }}" height="30" src="{{ asset('build/favicon-32x32.png') }}" width="30">
+        <span class="align-middle ml-2">
+            {{ 'Routines365'|trans }}
+        </span>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
