@@ -26,9 +26,9 @@ class RetentionController extends AbstractController
      * @Route("/", name="index", methods={"GET"})
      */
     public function index(
-        RetentionRepository $retentionRepository,
         PaginatorInterface $paginator,
-        Request $request
+        Request $request,
+        RetentionRepository $retentionRepository
     ): Response {
         $parameters = [
             'ends_at' => DateTimeImmutableUtil::endsAtFromString($request->query->get('ends_at')),
@@ -44,8 +44,8 @@ class RetentionController extends AbstractController
         $parameters['count'] = $retentions->getTotalItemCount();
 
         return $this->render('admin/retention/index.html.twig', [
-            'retentions' => $retentions,
             'parameters' => $parameters,
+            'retentions' => $retentions,
         ]);
     }
 

@@ -45,7 +45,7 @@ class Questionnaire
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
-    private string $title;
+    private ?string $title;
 
     public function __construct()
     {
@@ -66,7 +66,7 @@ class Questionnaire
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -109,7 +109,7 @@ class Questionnaire
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 

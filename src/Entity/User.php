@@ -164,7 +164,7 @@ class User implements UserInterface, TwoFactorInterface
      * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string", unique=true)
      */
-    private string $email;
+    private ?string $email;
 
     /**
      * @Assert\Length(max = 52, groups={"system"})
@@ -385,7 +385,7 @@ class User implements UserInterface, TwoFactorInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 

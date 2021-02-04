@@ -45,7 +45,7 @@ class Question
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
-    private string $title;
+    private ?string $title;
 
     /**
      * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
@@ -118,7 +118,7 @@ class Question
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 

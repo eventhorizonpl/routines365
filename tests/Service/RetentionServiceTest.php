@@ -98,7 +98,7 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
         $this->assertEquals($date, $retention->getDate());
 
         $retentions = $this->retentionRepository->findByParametersForAdmin()->getResult();
-        $this->assertCount(2, $retentions);
+        $this->assertCount(1, $retentions);
         $this->assertIsArray($retentions);
 
         $data2 = ['test2'];
@@ -111,7 +111,7 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
         $this->assertEquals($date, $retention->getDate());
 
         $retentions = $this->retentionRepository->findByParametersForAdmin()->getResult();
-        $this->assertCount(2, $retentions);
+        $this->assertCount(1, $retentions);
         $this->assertIsArray($retentions);
     }
 
@@ -121,7 +121,7 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
 
         $retentions = $this->retentionRepository->findByParametersForAdmin()->getResult();
-        $this->assertCount(1, $retentions);
+        $this->assertCount(0, $retentions);
         $this->assertIsArray($retentions);
 
         $retentionService = $this->retentionService->run();

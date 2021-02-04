@@ -3,6 +3,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ goal.uuid) }}">
     <button aria-label="{{ 'Delete'|trans }}" class="btn btn-sm btn-danger" title="{{ 'Delete'|trans }}">
         <i aria-hidden="true" class="bi bi-trash"></i>
+        <span class="d-none">{{ 'Delete'|trans }}</span>
     </button>
     <a aria-label="{{ 'Information'|trans }}" class="btn btn-info btn-sm ml-2" href="{{ path('frontend_static_page_how_to_goals') }}" title="{{ 'Information'|trans }}">
         <i aria-hidden="true" class="bi bi-question-square"></i>

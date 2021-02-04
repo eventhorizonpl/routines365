@@ -26,7 +26,7 @@ class Quote
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string")
      */
-    private string $author;
+    private ?string $author;
 
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
@@ -34,7 +34,7 @@ class Quote
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
-    private string $content;
+    private ?string $content;
 
     /**
      * @Assert\Length(max = 32, groups={"system"})
@@ -79,7 +79,7 @@ class Quote
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(?string $author): self
     {
         $this->author = $author;
 
@@ -91,7 +91,7 @@ class Quote
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 

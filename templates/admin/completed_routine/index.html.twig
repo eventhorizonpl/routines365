@@ -65,7 +65,7 @@
                     <tbody>
                         {% for completed_routine in completed_routines %}
                             <tr>
-                                <td
+                                <td>
                                     <a href="{{ path('admin_completed_routine_show', {'uuid': completed_routine.uuid}) }}">
                                         {{ completed_routine.uuid }}
                                     </a>

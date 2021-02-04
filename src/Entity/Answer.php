@@ -44,7 +44,7 @@ class Answer
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
-    private string $content;
+    private ?string $content;
 
     /**
      * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
@@ -74,7 +74,7 @@ class Answer
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 

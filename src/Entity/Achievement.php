@@ -47,7 +47,7 @@ class Achievement
      * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
-    private int $level;
+    private ?int $level;
 
     /**
      * @Assert\Length(max = 64, groups={"form", "system"})
@@ -55,7 +55,7 @@ class Achievement
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string")
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @Assert\GreaterThanOrEqual(1, groups={"form", "system"})
@@ -64,7 +64,7 @@ class Achievement
      * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
-    private int $requirement;
+    private ?int $requirement;
 
     /**
      * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
@@ -73,7 +73,7 @@ class Achievement
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=24, type="string")
      */
-    private string $type;
+    private ?string $type;
 
     public function __construct()
     {
@@ -95,7 +95,7 @@ class Achievement
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -107,7 +107,7 @@ class Achievement
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -119,7 +119,7 @@ class Achievement
         return $this->level;
     }
 
-    public function setLevel(int $level): self
+    public function setLevel(?int $level): self
     {
         $this->level = $level;
 
@@ -131,7 +131,7 @@ class Achievement
         return $this->requirement;
     }
 
-    public function setRequirement(int $requirement): self
+    public function setRequirement(?int $requirement): self
     {
         $this->requirement = $requirement;
 
@@ -158,7 +158,7 @@ class Achievement
         return array_keys(self::getTypeFormChoices());
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         if (!(in_array($type, self::getTypeValidationChoices()))) {
             throw new InvalidArgumentException('Invalid type');

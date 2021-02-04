@@ -6,7 +6,9 @@ namespace App\Tests\Form\Admin;
 
 use App\Form\Admin\CronJobType;
 use Cron\CronBundle\Entity\CronJob;
+use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Validator\Validation;
 
 final class CronJobTypeTest extends TypeTestCase
 {
@@ -30,6 +32,20 @@ final class CronJobTypeTest extends TypeTestCase
 
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
+    }
+
+    /**
+     * @return ValidatorExtension[]
+     *
+     * @psalm-return array{0: ValidatorExtension}
+     */
+    protected function getExtensions()
+    {
+        $validator = Validation::createValidator();
+
+        return [
+            new ValidatorExtension($validator),
+        ];
     }
 
     public function getValidTestData(): array

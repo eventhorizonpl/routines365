@@ -41,7 +41,7 @@ class Promotion
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string", unique=true)
      */
-    private string $code;
+    private ?string $code;
 
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
@@ -72,7 +72,7 @@ class Promotion
      * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
-    private $expiresAt;
+    private ?DateTimeImmutable $expiresAt;
 
     /**
      * @Assert\Length(max = 128, groups={"form", "system"})
@@ -80,7 +80,7 @@ class Promotion
      * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=128, type="string")
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
@@ -134,9 +134,9 @@ class Promotion
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(?string $code): self
     {
-        $this->code = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
+        $this->code = (null !== $code) ? strtoupper(preg_replace('/[^a-z0-9]/i', '', $code)) : $code;
 
         return $this;
     }
@@ -146,7 +146,7 @@ class Promotion
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -182,7 +182,7 @@ class Promotion
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

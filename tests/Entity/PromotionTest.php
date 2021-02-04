@@ -251,7 +251,6 @@ final class PromotionTest extends AbstractTestCase
     {
         $expiresAt = new DateTimeImmutable();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getExpiresAt());
         $promotion->setExpiresAt($expiresAt);
         $this->assertEquals($expiresAt, $promotion->getExpiresAt());
     }

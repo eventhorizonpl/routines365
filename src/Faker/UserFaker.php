@@ -19,6 +19,9 @@ use Symfony\Component\Uid\Uuid;
 
 class UserFaker
 {
+    public const ADMIN_EMAIL = 'admin@example.org';
+    public const ADMIN_PASSWORD = 'admin';
+
     private AccountOperationFaker $accountOperationFaker;
     private AchievementFaker $achievementFaker;
     private AnswerFaker $answerFaker;
@@ -159,6 +162,33 @@ class UserFaker
             $type
         );
         $this->userManager->save($user);
+
+        return $user;
+    }
+
+    public function createAdminUserPersisted(
+        ?string $email = null,
+        ?string $password = null
+    ): User {
+        if (null === $email) {
+            $email = self::ADMIN_EMAIL;
+        }
+
+        if (null === $password) {
+            $password = self::ADMIN_PASSWORD;
+        }
+
+        $user = $this->createUserPersisted(
+            $email,
+            true,
+            $password,
+            [
+                User::ROLE_ADMIN,
+                User::ROLE_SUPER_ADMIN,
+                User::ROLE_USER,
+            ],
+            User::TYPE_STAFF
+        );
 
         return $user;
     }

@@ -1033,10 +1033,6 @@
         <source>Additional profile details</source>
         <target>Additional profile details</target>
       </trans-unit>
-      <trans-unit id="QIJAWeB" resname="Additional user KYT">
-        <source>Additional user KYT</source>
-        <target>Additional user KYT</target>
-      </trans-unit>
       <trans-unit id="1QCRahR" resname="Additional user details">
         <source>Additional user details</source>
         <target>Additional user details</target>

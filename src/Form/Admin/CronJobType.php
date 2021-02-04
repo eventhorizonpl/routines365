@@ -10,16 +10,29 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CronJobType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('command')
-            ->add('description', TextareaType::class)
-            ->add('name')
-            ->add('schedule')
+            ->add('command', null, [
+                'required' => true,
+                'constraints' => [new NotBlank()],
+            ])
+            ->add('description', TextareaType::class, [
+                'required' => true,
+                'constraints' => [new NotBlank()],
+            ])
+            ->add('name', null, [
+                'required' => true,
+                'constraints' => [new NotBlank()],
+            ])
+            ->add('schedule', null, [
+                'required' => true,
+                'constraints' => [new NotBlank()],
+            ])
             ->add('enabled', YesNoType::class)
         ;
     }

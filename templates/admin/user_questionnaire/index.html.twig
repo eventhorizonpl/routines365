@@ -14,7 +14,7 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            {{ 'Questionnaires'|trans }} ({{ parameters.count }})
+            {{ 'Users questionnaires'|trans }} ({{ parameters.count }})
             <form action="{{ path('admin_user_questionnaire_index') }}" class="form-inline mt-2" method="get">
                 <div class="form-group">
                     <input class="form-control" id="starts_at" name="starts_at" type="date" value="{{ parameters.starts_at ? parameters.starts_at|date('Y-m-d') : '' }}">

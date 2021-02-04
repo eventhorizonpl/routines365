@@ -3,6 +3,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quote.uuid) }}">
     <button aria-label="{{ 'Delete'|trans }}" class="btn btn-sm btn-danger" title="{{ 'Delete'|trans }}">
         <i aria-hidden="true" class="bi bi-trash"></i>
+        <span class="d-none">{{ 'Delete'|trans }}</span>
     </button>
     <a class="btn btn-secondary btn-sm ml-2" href="{{ path('admin_quote_index') }}">
         <i aria-hidden="true" class="bi bi-x-square"></i>
