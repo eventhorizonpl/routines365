@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\AccountOperation;
+use App\Entity\Reward;
 use App\Entity\User;
 use App\Factory\SentReminderFactory;
 use App\Factory\UserFactory;
@@ -204,8 +205,9 @@ class UserFaker
         $reminder->setRoutine($routine);
         $user->addReminder($reminder);
 
-        $reward = $this->rewardFaker->createReward();
+        $reward = $this->rewardFaker->createReward(null, null, null, null, null, Reward::TYPE_COMPLETED_ROUTINE);
         $user->addReward($reward);
+        $routine->addReward($reward);
 
         $savedEmail = $this->savedEmailFaker->createSavedEmail();
         $user->addSavedEmail($savedEmail);

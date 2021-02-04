@@ -10,12 +10,14 @@ use App\Manager\UserKytManager;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserKytService
 {
     private EmailService $emailService;
     private PaginatorInterface $paginator;
     private PromotionService $promotionService;
+    private TranslatorInterface $translator;
     private UserKytManager $userKytManager;
     private UserRepository $userRepository;
 
@@ -23,12 +25,14 @@ class UserKytService
         EmailService $emailService,
         PaginatorInterface $paginator,
         PromotionService $promotionService,
+        TranslatorInterface $translator,
         UserKytManager $userKytManager,
         UserRepository $userRepository
     ) {
         $this->emailService = $emailService;
         $this->paginator = $paginator;
         $this->promotionService = $promotionService;
+        $this->translator = $translator;
         $this->userKytManager = $userKytManager;
         $this->userRepository = $userRepository;
     }
@@ -63,7 +67,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytBasicConfiguration(
                 $user->getEmail(),
-                'R365: Know your tools - basic configuration',
+                $this->translator->trans('R365: Know your tools - basic configuration'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -76,7 +80,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytRoutines(
                 $user->getEmail(),
-                'R365: Know your tools - routines',
+                $this->translator->trans('R365: Know your tools - routines'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -89,7 +93,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytReminders(
                 $user->getEmail(),
-                'R365: Know your tools - reminders',
+                $this->translator->trans('R365: Know your tools - reminders'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -102,7 +106,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytCompletingRoutines(
                 $user->getEmail(),
-                'R365: Know your tools - completing routines',
+                $this->translator->trans('R365: Know your tools - completing routines'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -115,7 +119,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytNotes(
                 $user->getEmail(),
-                'R365: Know your tools - notes',
+                $this->translator->trans('R365: Know your tools - notes'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -128,7 +132,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytRewards(
                 $user->getEmail(),
-                'R365: Know your tools - rewards',
+                $this->translator->trans('R365: Know your tools - rewards'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -141,7 +145,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytProjects(
                 $user->getEmail(),
-                'R365: Know your tools - projects',
+                $this->translator->trans('R365: Know your tools - projects'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -154,7 +158,7 @@ class UserKytService
         ) {
             $this->emailService->sendUserKytGoals(
                 $user->getEmail(),
-                'R365: Know your tools - goals',
+                $this->translator->trans('R365: Know your tools - goals'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]
@@ -166,7 +170,7 @@ class UserKytService
         ) {
             $this->emailService->sendRequestForTestimonial(
                 $user->getEmail(),
-                'R365: Request for a testimonial',
+                $this->translator->trans('R365: Request for a testimonial'),
                 [
                     'recipient_first_name' => $user->getProfile()->getFirstName(),
                 ]

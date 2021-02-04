@@ -130,6 +130,6 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
         }
 
         $rewardResult = $this->rewardRepository->findOneByUserAndTypesAndRoutine($user, $types, $routine);
-        $this->assertEquals(null, $rewardResult);
+        $this->assertInstanceOf(Reward::class, $rewardResult);
     }
 }

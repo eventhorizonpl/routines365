@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Achievement;
+use App\Faker\AchievementFaker;
 use App\Faker\UserFaker;
 use App\Manager\UserManager;
 use App\Repository\AchievementRepository;
@@ -24,6 +25,10 @@ final class AchievementServiceTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?AchievementFaker $achievementFaker;
+    /**
+     * @inject
+     */
     private ?UserManager $userManager;
     /**
      * @inject
@@ -35,6 +40,7 @@ final class AchievementServiceTest extends AbstractDoctrineTestCase
         unset(
             $this->achievementRepository,
             $this->achievementService,
+            $this->achievementFaker,
             $this->userManager,
             $this->userFaker
         );
@@ -49,16 +55,24 @@ final class AchievementServiceTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(AchievementService::class, $achievementService);
     }
 
-    public function testDeposit(): void
+    public function testManageAchievements(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
+
+        $this->achievementFaker->createAchievementPersisted(
+            true,
+            1,
+            'test achievement',
+            1,
+            Achievement::TYPE_COMPLETED_ROUTINE
+        );
 
         $achievement = $this->achievementService->manageAchievements(
             $user,
             Achievement::TYPE_COMPLETED_ROUTINE
         );
-        $this->assertNull($achievement);
+        $this->assertInstanceOf(Achievement::class, $achievement);
 
         $achievement = $this->achievementService->manageAchievements(
             $user,

@@ -67,7 +67,7 @@ class UserKpiService
             count($user->getUserQuestionnaires())
         );
         $userKpi->setUser($user);
-        if (null !== $userKpi) {
+        if (null !== $previousUserKpi) {
             $userKpi->setPreviousUserKpi($previousUserKpi);
         }
         $this->userKpiManager->save($userKpi);

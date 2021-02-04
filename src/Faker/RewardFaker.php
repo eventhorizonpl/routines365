@@ -36,6 +36,7 @@ class RewardFaker
         if (null === $isAwarded) {
             $isAwarded = false;
         }
+        $isAwarded = false;
 
         if (null === $name) {
             $name = (string) $this->faker->text(64);

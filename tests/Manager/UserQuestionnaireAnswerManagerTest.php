@@ -24,6 +24,10 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?UserFaker $userFaker;
+    /**
+     * @inject
+     */
     private ?UserQuestionnaireAnswerFactory $userQuestionnaireAnswerFactory;
     /**
      * @inject
@@ -36,10 +40,6 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
-    private ?UserFaker $userFaker;
-    /**
-     * @inject
-     */
     private ?UserQuestionnaireFaker $userQuestionnaireFaker;
     /**
      * @inject
@@ -49,10 +49,11 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     protected function tearDown(): void
     {
         unset(
+            $this->questionnaireFaker,
+            $this->userFaker,
             $this->userQuestionnaireAnswerFactory,
             $this->userQuestionnaireAnswerManager,
             $this->userQuestionnaireAnswerRepository,
-            $this->userFaker,
             $this->userQuestionnaireFaker,
             $this->validator
         );
