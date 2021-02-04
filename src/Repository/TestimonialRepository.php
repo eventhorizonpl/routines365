@@ -40,6 +40,14 @@ class TestimonialRepository extends ServiceEntityRepository
                 }
             }
 
+            if (array_key_exists('status', $parameters)) {
+                $status = $parameters['status'];
+                if ((null !== $status) && ('' !== $status)) {
+                    $queryBuilder->andWhere('t.status = :status')
+                        ->setParameter('status', $status);
+                }
+            }
+
             if (array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
