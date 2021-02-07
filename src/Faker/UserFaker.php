@@ -21,6 +21,8 @@ class UserFaker
 {
     public const ADMIN_EMAIL = 'admin@example.org';
     public const ADMIN_PASSWORD = 'admin';
+    public const CUSTOMER_EMAIL = 'customer@example.org';
+    public const CUSTOMER_PASSWORD = 'customer';
 
     private AccountOperationFaker $accountOperationFaker;
     private AchievementFaker $achievementFaker;
@@ -188,6 +190,29 @@ class UserFaker
                 User::ROLE_USER,
             ],
             User::TYPE_STAFF
+        );
+
+        return $user;
+    }
+
+    public function createCustomerUserPersisted(
+        ?string $email = null,
+        ?string $password = null
+    ): User {
+        if (null === $email) {
+            $email = self::CUSTOMER_EMAIL;
+        }
+
+        if (null === $password) {
+            $password = self::CUSTOMER_PASSWORD;
+        }
+
+        $user = $this->createUserPersisted(
+            $email,
+            true,
+            $password,
+            [User::ROLE_USER],
+            User::TYPE_CUSTOMER
         );
 
         return $user;
