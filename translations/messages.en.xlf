@@ -1685,6 +1685,10 @@
         <source>Edit a goal</source>
         <target>Edit a goal</target>
       </trans-unit>
+      <trans-unit id="UZulcve" resname="Enter your email address, and we will send you a link to reset your password.">
+        <source>Enter your email address, and we will send you a link to reset your password.</source>
+        <target>Enter your email address, and we will send you a link to reset your password.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

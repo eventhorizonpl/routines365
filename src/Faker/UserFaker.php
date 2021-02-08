@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\AccountOperation;
+use App\Entity\ReminderMessage;
 use App\Entity\Reward;
 use App\Entity\User;
 use App\Factory\SentReminderFactory;
@@ -218,9 +219,26 @@ class UserFaker
         return $user;
     }
 
-    public function createRichUserPersisted()
-    {
-        $user = $this->createUser();
+    public function createRichUserPersisted(
+        ?string $email = null,
+        ?string $password = null
+    ) {
+        if (null === $email) {
+            $email = self::CUSTOMER_EMAIL;
+        }
+
+        if (null === $password) {
+            $password = self::CUSTOMER_PASSWORD;
+        }
+
+        $user = $this->createUser(
+            $email,
+            true,
+            $password,
+            [User::ROLE_USER],
+            User::TYPE_CUSTOMER
+        );
+
         $user->getProfile()->setCountry('US');
         $accountOperation = $this->accountOperationFaker->createAccountOperation(
             null,
@@ -276,7 +294,21 @@ class UserFaker
         $this->sentReminderManager->save($sentReminder);
         $user->getRoutines()->first()->addSentReminder($sentReminder);
 
-        $reminderMessage = $this->reminderMessageFaker->createReminderMessage();
+        $reminderMessage = $this->reminderMessageFaker->createReminderMessage(
+            null,
+            ReminderMessage::TYPE_BROWSER
+        );
+        $reminderMessage
+            ->setAccountOperation($accountOperation)
+            ->setReminder($reminder)
+            ->setSentReminder($sentReminder);
+        $this->reminderMessageManager->save($reminderMessage);
+        $user->getReminders()->first()->addReminderMessage($reminderMessage);
+
+        $reminderMessage = $this->reminderMessageFaker->createReminderMessage(
+            null,
+            ReminderMessage::TYPE_EMAIL
+        );
         $reminderMessage
             ->setAccountOperation($accountOperation)
             ->setReminder($reminder)

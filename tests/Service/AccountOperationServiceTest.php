@@ -53,7 +53,7 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
     public function testDeposit(): void
     {
         $this->purge();
-        $userReferrer = $this->userFaker->createRichUserPersisted();
+        $userReferrer = $this->userFaker->createRichUserPersisted('test@example.org', 'test');
         $user = $this->userFaker->createRichUserPersisted();
         $user->setReferrer($userReferrer);
         $user->getAccount();

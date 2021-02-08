@@ -54,9 +54,24 @@ abstract class AbstractUiTestCase extends WebTestCase implements ServiceContaine
         return $user;
     }
 
+    public function createAndLoginRich(): User
+    {
+        $user = $this->createRich();
+        $this->client->loginUser($user);
+
+        return $user;
+    }
+
     public function createRegular(): User
     {
         $user = $this->userFaker->createCustomerUserPersisted();
+
+        return $user;
+    }
+
+    public function createRich(): User
+    {
+        $user = $this->userFaker->createRichUserPersisted();
 
         return $user;
     }

@@ -50,7 +50,7 @@ final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
 
         $reminderMessages = $this->reminderMessageRepository->findByParametersForAdmin()->getResult();
-        $this->assertCount(1, $reminderMessages);
+        $this->assertCount(2, $reminderMessages);
         $this->assertIsArray($reminderMessages);
 
         $parameters = [
@@ -64,7 +64,7 @@ final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
             'query' => $user->getEmail(),
         ];
         $reminderMessages = $this->reminderMessageRepository->findByParametersForAdmin($parameters)->getResult();
-        $this->assertCount(1, $reminderMessages);
+        $this->assertCount(2, $reminderMessages);
         $this->assertIsArray($reminderMessages);
 
         $parameters = [
@@ -78,7 +78,7 @@ final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
             'ends_at' => new DateTimeImmutable('NOW'),
         ];
         $reminderMessages = $this->reminderMessageRepository->findByParametersForAdmin($parameters)->getResult();
-        $this->assertCount(1, $reminderMessages);
+        $this->assertCount(2, $reminderMessages);
         $this->assertIsArray($reminderMessages);
 
         $parameters = [
