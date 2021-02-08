@@ -86,7 +86,7 @@ class Routine
      * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
@@ -292,7 +292,7 @@ class Routine
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

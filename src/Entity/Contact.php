@@ -51,7 +51,7 @@ class Contact
      * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
-    private string $content;
+    private ?string $content;
 
     /**
      * @Assert\Choice(callback="getStatusValidationChoices", groups={"system"})
@@ -69,7 +69,7 @@ class Contact
      * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
-    private string $title;
+    private ?string $title;
 
     /**
      * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
@@ -112,7 +112,7 @@ class Contact
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
@@ -157,7 +157,7 @@ class Contact
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 

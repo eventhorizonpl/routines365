@@ -64,7 +64,7 @@ class Reward
      * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @Assert\GreaterThanOrEqual(0, groups={"system"})
@@ -141,7 +141,7 @@ class Reward
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

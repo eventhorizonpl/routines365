@@ -40,7 +40,7 @@ class Testimonial
      * @Groups({"gdpr"})
      * @ORM\Column(length=255, nullable=true, type="string")
      */
-    private string $content;
+    private ?string $content;
 
     /**
      * @Assert\Length(max = 128, groups={"form", "system"})
@@ -49,7 +49,7 @@ class Testimonial
      * @Groups({"gdpr"})
      * @ORM\Column(length=128, nullable=true, type="string")
      */
-    private string $signature;
+    private ?string $signature;
 
     /**
      * @Assert\Choice(callback="getStatusValidationChoices", groups={"system"})

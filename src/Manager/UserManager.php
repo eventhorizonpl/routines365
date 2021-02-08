@@ -138,16 +138,16 @@ class UserManager
                 $this->completedRoutineManager->save($completedRoutine, $actor, false);
             }
 
+            foreach ($user->getProjects() as $project) {
+                $this->projectManager->save($project, $actor, false);
+            }
+
             foreach ($user->getGoals() as $goal) {
                 $this->goalManager->save($goal, $actor, false);
             }
 
             foreach ($user->getNotes() as $note) {
                 $this->noteManager->save($note, $actor, false);
-            }
-
-            foreach ($user->getProjects() as $project) {
-                $this->projectManager->save($project, $actor, false);
             }
 
             foreach ($user->getReminders() as $reminder) {

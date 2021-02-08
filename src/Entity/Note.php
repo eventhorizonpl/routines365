@@ -43,7 +43,7 @@ class Note
      * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
-    private string $content;
+    private ?string $content;
 
     /**
      * @Assert\Length(max = 255, groups={"form", "system"})
@@ -52,7 +52,7 @@ class Note
      * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
-    private string $title;
+    private ?string $title;
 
     public function __construct()
     {
@@ -71,7 +71,7 @@ class Note
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
@@ -95,7 +95,7 @@ class Note
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 

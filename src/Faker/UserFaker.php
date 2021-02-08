@@ -262,6 +262,7 @@ class UserFaker
 
         $goal = $this->goalFaker->createGoal();
         $goal->setRoutine($routine);
+        $routine->addGoal($goal);
         $user->addGoal($goal);
 
         $contact = $this->contactFaker->createContact();
@@ -272,6 +273,8 @@ class UserFaker
         $user->addNote($note);
 
         $project = $this->projectFaker->createProject();
+        $goal->setProject($project);
+        $project->addGoal($goal);
         $user->addProject($project);
 
         $reminder = $this->reminderFaker->createReminder();

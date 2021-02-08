@@ -581,10 +581,6 @@
         <source>Completed projects</source>
         <target>Completed projects</target>
       </trans-unit>
-      <trans-unit id=".Q3gv.4" resname="Efficiency11">
-        <source>Efficiency11</source>
-        <target>Efficiency11</target>
-      </trans-unit>
       <trans-unit id="uq3fcPt" resname="Type">
         <source>Type</source>
         <target>Type</target>
@@ -1688,6 +1684,10 @@
       <trans-unit id="UZulcve" resname="Enter your email address, and we will send you a link to reset your password.">
         <source>Enter your email address, and we will send you a link to reset your password.</source>
         <target>Enter your email address, and we will send you a link to reset your password.</target>
+      </trans-unit>
+      <trans-unit id="u7jysaO" resname="Efficiency 11">
+        <source>Efficiency 11</source>
+        <target>Efficiency 11</target>
       </trans-unit>
     </body>
   </file>
