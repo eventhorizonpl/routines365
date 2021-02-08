@@ -155,7 +155,7 @@ class Reminder
         $this->sendEmail = true;
         $this->sentReminders = new ArrayCollection();
         $this->sendSms = false;
-        $this->sendToBrowser = true;
+        $this->sendToBrowser = false;
         $this->type = self::TYPE_DAILY;
     }
 

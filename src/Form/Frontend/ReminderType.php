@@ -39,6 +39,7 @@ class ReminderType extends AbstractType
                 'help' => 'Determines whether the system should send motivational messages in reminder.',
             ])
             ->add('sendToBrowser', YesNoType::class, [
+                'disabled' => true,
                 'help' => 'Determines whether the system should send a reminder to the web browser.',
             ])
             ->add('type', ChoiceType::class, [
