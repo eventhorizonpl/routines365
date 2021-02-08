@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Page forbidden</h1>
+
+    <p>
+        You don't have permission to load this page. Try to login as a different user or
+        <a href="{{ path('frontend_home') }}">return to the homepage</a>.
+    </p>
+{% endblock %}
