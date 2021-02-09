@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Manager;
 
+use App\Factory\CronJobFactory;
 use App\Manager\CronJobManager;
 use App\Tests\AbstractDoctrineTestCase;
 use Cron\CronBundle\Entity\CronJob;
@@ -11,6 +12,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class CronJobManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?CronJobFactory $cronJobFactory;
     /**
      * @inject
      */
@@ -23,11 +28,26 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
     protected function tearDown(): void
     {
         unset(
+            $this->cronJobFactory,
             $this->cronJobManager,
             $this->validator
         );
 
         parent::tearDown();
+    }
+
+    public function createCronJob(): CronJob
+    {
+        $cronJob = $this->cronJobFactory->createCronJobWithRequired(
+            'test command',
+            'test description',
+            false,
+            'test name',
+            '0 * * * *'
+        );
+        $this->cronJobManager->save($cronJob);
+
+        return $cronJob;
     }
 
     public function testConstruct(): void
@@ -41,15 +61,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $name = 'test name';
-        $cronJob = new CronJob();
-        $cronJob
-            ->setCommand('test')
-            ->setDescription('test')
-            ->setEnabled(false)
-            ->setName($name)
-            ->setSchedule('0 * * * *');
-        $this->entityManager->persist($cronJob);
-        $this->entityManager->flush();
+        $cronJob = $this->createCronJob();
         $cronJobId = $cronJob->getId();
         $cronJobs = [];
         $cronJobs[] = $cronJob;
@@ -65,15 +77,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $cronJob = new CronJob();
-        $cronJob
-            ->setCommand('test')
-            ->setDescription('test')
-            ->setEnabled(false)
-            ->setName('test')
-            ->setSchedule('0 * * * *');
-        $this->entityManager->persist($cronJob);
-        $this->entityManager->flush();
+        $cronJob = $this->createCronJob();
         $cronJobId = $cronJob->getId();
 
         $cronJobManager = $this->cronJobManager->delete($cronJob);
@@ -86,15 +90,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $cronJob = new CronJob();
-        $cronJob
-            ->setCommand('test')
-            ->setDescription('test')
-            ->setEnabled(false)
-            ->setName('test')
-            ->setSchedule('0 * * * *');
-        $this->entityManager->persist($cronJob);
-        $this->entityManager->flush();
+        $cronJob = $this->createCronJob();
 
         $cronJobManager = $this->cronJobManager->save($cronJob, true);
         $this->assertInstanceOf(CronJobManager::class, $cronJobManager);

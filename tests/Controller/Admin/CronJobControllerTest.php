@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
+use App\Factory\CronJobFactory;
 use App\Manager\CronJobManager;
 use App\Tests\AbstractUiTestCase;
 use Cron\CronBundle\Entity\CronJob;
@@ -13,24 +14,31 @@ final class CronJobControllerTest extends AbstractUiTestCase
     /**
      * @inject
      */
+    private ?CronJobFactory $cronJobFactory;
+    /**
+     * @inject
+     */
     private ?CronJobManager $cronJobManager;
 
     protected function tearDown(): void
     {
-        unset($this->cronJobManager);
+        unset(
+            $this->cronJobFactory,
+            $this->cronJobManager
+        );
 
         parent::tearDown();
     }
 
     public function createCronJob(): CronJob
     {
-        $cronJob = new CronJob();
-        $cronJob
-            ->setCommand('test')
-            ->setDescription('test')
-            ->setEnabled(false)
-            ->setName('test')
-            ->setSchedule('0 * * * *');
+        $cronJob = $this->cronJobFactory->createCronJobWithRequired(
+            'test command',
+            'test description',
+            false,
+            'test name',
+            '0 * * * *'
+        );
         $this->cronJobManager->save($cronJob);
 
         return $cronJob;
