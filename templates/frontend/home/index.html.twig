@@ -14,16 +14,16 @@
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <hr class="mb-4 mt-4">
             <p class="lead">
-                {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
-                    <a class="btn btn-primary btn-lg mr-2" href="{{ path('security_register') }}" role="button" title="{{ 'Register'|trans }}">
-                        <i aria-hidden="true" class="bi bi-plus-square"></i>
-                        {{ 'Register'|trans }}
-                    </a>
-                {% endif %}
                 <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}" role="button" title="{{ 'Login'|trans }}">
                     <i aria-hidden="true" class="bi bi-box-arrow-in-right"></i>
                     {{ 'Login'|trans }}
                 </a>
+                {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
+                    <a class="btn btn-primary btn-lg ml-2" href="{{ path('security_register') }}" role="button" title="{{ 'Register'|trans }}">
+                        <i aria-hidden="true" class="bi bi-plus-square"></i>
+                        {{ 'Register'|trans }}
+                    </a>
+                {% endif %}
             </p>
         {% endif %}
     </div>
