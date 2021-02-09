@@ -32,7 +32,14 @@
     </testsuites>
 
     <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
         <listener class="Zalas\Injector\PHPUnit\TestListener\ServiceInjectorListener" />
     </listeners>
+
+    <!-- Run `composer require symfony/panther` before enabling this extension -->
+    <!--
+    <extensions>
+        <extension class="Symfony\Component\Panther\ServerExtension" />
+    </extensions>
+    -->
 </phpunit>
