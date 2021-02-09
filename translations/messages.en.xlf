@@ -1689,6 +1689,10 @@
         <source>Efficiency 11</source>
         <target>Efficiency 11</target>
       </trans-unit>
+      <trans-unit id="_3rM..j" resname="YouTube">
+        <source>YouTube</source>
+        <target>YouTube</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
