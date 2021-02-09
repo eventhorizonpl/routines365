@@ -279,6 +279,7 @@ class UserFaker
 
         $reminder = $this->reminderFaker->createReminder();
         $reminder->setRoutine($routine);
+        $reminder->setSendToBrowser(true);
         $user->addReminder($reminder);
 
         $reward = $this->rewardFaker->createReward(null, null, null, null, null, Reward::TYPE_COMPLETED_ROUTINE);

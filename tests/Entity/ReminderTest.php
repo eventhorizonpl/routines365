@@ -408,7 +408,7 @@ final class ReminderTest extends AbstractTestCase
     {
         $sendToBrowser = true;
         $reminder = new Reminder();
-        $this->assertEquals(true, $reminder->getSendToBrowser());
+        $this->assertEquals(false, $reminder->getSendToBrowser());
         $reminder->setSendToBrowser($sendToBrowser);
         $this->assertEquals($sendToBrowser, $reminder->getSendToBrowser());
         $this->assertIsBool($reminder->getSendToBrowser());
