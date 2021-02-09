@@ -49,6 +49,14 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createKpi(): Kpi
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $kpi = $this->kpiService->create();
+
+        return $kpi;
+    }
+
     public function testConstruct(): void
     {
         $kpiManager = new KpiManager($this->entityManager, $this->validator);
@@ -59,9 +67,8 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $kpi = $this->createKpi();
         $accountCounter = 987;
-        $kpi = $this->kpiService->create();
         $kpi->setAccountCounter($accountCounter);
         $kpiId = $kpi->getId();
         $kpis = [];
@@ -78,8 +85,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
+        $kpi = $this->createKpi();
         $kpiId = $kpi->getId();
 
         $kpiManager = $this->kpiManager->delete($kpi);
@@ -92,8 +98,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
+        $kpi = $this->createKpi();
 
         $kpiManager = $this->kpiManager->save($kpi, true);
         $this->assertInstanceOf(KpiManager::class, $kpiManager);
@@ -106,8 +111,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
+        $kpi = $this->createKpi();
         $kpi->setAccountCounter(-1);
 
         $kpiManager = $this->kpiManager->save($kpi, true);
@@ -116,8 +120,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
+        $kpi = $this->createKpi();
         $kpiId = $kpi->getId();
 
         $kpiManager = $this->kpiManager->softDelete($kpi);
@@ -131,8 +134,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
+        $kpi = $this->createKpi();
         $kpiId = $kpi->getId();
 
         $kpiManager = $this->kpiManager->softDelete($kpi);
@@ -153,8 +155,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
+        $kpi = $this->createKpi();
 
         $errors = $this->kpiManager->validate($kpi);
         $this->assertCount(0, $errors);

@@ -43,6 +43,14 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createSentReminder(): SentReminder
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+
+        return $sentReminder;
+    }
+
     public function testConstruct(): void
     {
         $sentReminderManager = new SentReminderManager($this->entityManager, $this->validator);
@@ -53,8 +61,8 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
+        $user = $sentReminder->getRoutine()->getUser();
         $sentReminderId = $sentReminder->getId();
         $sentReminders = [];
         $sentReminders[] = $sentReminder;
@@ -69,8 +77,7 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
         $sentReminderId = $sentReminder->getId();
 
         $sentReminderManager = $this->sentReminderManager->delete($sentReminder);
@@ -83,8 +90,7 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
 
         $sentReminderManager = $this->sentReminderManager->save($sentReminder, true);
         $this->assertInstanceOf(SentReminderManager::class, $sentReminderManager);
@@ -97,8 +103,7 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
         $sentReminder->getRoutine()->setName('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $sentReminderManager = $this->sentReminderManager->save($sentReminder, true);
@@ -107,8 +112,7 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
         $sentReminderId = $sentReminder->getId();
 
         $sentReminderManager = $this->sentReminderManager->softDelete($sentReminder);
@@ -122,8 +126,7 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
         $sentReminderId = $sentReminder->getId();
 
         $sentReminderManager = $this->sentReminderManager->softDelete($sentReminder);
@@ -144,8 +147,7 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
+        $sentReminder = $this->createSentReminder();
 
         $errors = $this->sentReminderManager->validate($sentReminder);
         $this->assertCount(0, $errors);

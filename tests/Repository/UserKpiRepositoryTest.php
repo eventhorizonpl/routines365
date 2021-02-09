@@ -69,16 +69,8 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct(): void
+    public function createUserKpi(): UserKpi
     {
-        $userKpiRepository = new UserKpiRepository($this->managerRegistry);
-
-        $this->assertInstanceOf(UserKpiRepository::class, $userKpiRepository);
-    }
-
-    public function testFindByParametersForAdmin(): void
-    {
-        $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
@@ -93,6 +85,22 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
             $this->userRepository
         );
         $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+
+        return $userKpi;
+    }
+
+    public function testConstruct(): void
+    {
+        $userKpiRepository = new UserKpiRepository($this->managerRegistry);
+
+        $this->assertInstanceOf(UserKpiRepository::class, $userKpiRepository);
+    }
+
+    public function testFindByParametersForAdmin(): void
+    {
+        $this->purge();
+        $userKpi = $this->createUserKpi();
+        $user = $userKpi->getUser();
 
         $userKpis = $this->userKpiRepository->findByParametersForAdmin()->getResult();
         $this->assertCount(1, $userKpis);
@@ -130,20 +138,8 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
     public function testFindOneByTypeAndUser(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
+        $user = $userKpi->getUser();
 
         $userKpi2 = $this->userKpiRepository->findOneByTypeAndUser($userKpi->getType(), $user);
         $this->assertInstanceOf(UserKpi::class, $userKpi2);

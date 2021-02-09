@@ -55,6 +55,16 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createRetention(): Retention
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $this->retentionService->run();
+        $retentions = $this->retentionRepository->findAll();
+        $retention = $retentions[0];
+
+        return $retention;
+    }
+
     public function testConstruct(): void
     {
         $retentionManager = new RetentionManager($this->entityManager, $this->validator);
@@ -65,11 +75,8 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $retention = $this->createRetention();
         $data = ['test'];
-        $this->retentionService->run();
-        $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
         $retention->setData($data);
         $retentionId = $retention->getId();
         $retentions = [];
@@ -86,10 +93,7 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $this->retentionService->run();
-        $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
+        $retention = $this->createRetention();
         $retentionId = $retention->getId();
 
         $retentionManager = $this->retentionManager->delete($retention);
@@ -102,10 +106,7 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $this->retentionService->run();
-        $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
+        $retention = $this->createRetention();
 
         $retentionManager = $this->retentionManager->save($retention);
         $this->assertInstanceOf(RetentionManager::class, $retentionManager);
@@ -123,10 +124,7 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $this->retentionService->run();
-        $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
+        $retention = $this->createRetention();
         $retentionId = $retention->getId();
 
         $retentionManager = $this->retentionManager->softDelete($retention);
@@ -140,10 +138,7 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $this->retentionService->run();
-        $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
+        $retention = $this->createRetention();
         $retentionId = $retention->getId();
 
         $retentionManager = $this->retentionManager->softDelete($retention);
@@ -164,10 +159,7 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $this->retentionService->run();
-        $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
+        $retention = $this->createRetention();
 
         $errors = $this->retentionManager->validate($retention);
         $this->assertCount(0, $errors);

@@ -43,6 +43,14 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createCompletedRoutine(): CompletedRoutine
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $completedRoutine = $user->getCompletedRoutines()->first();
+
+        return $completedRoutine;
+    }
+
     public function testConstruct(): void
     {
         $completedRoutineManager = new CompletedRoutineManager($this->entityManager, $this->validator);
@@ -53,9 +61,9 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $completedRoutine = $this->createCompletedRoutine();
+        $user = $completedRoutine->getUser();
         $minutesDevoted = 987;
-        $completedRoutine = $user->getCompletedRoutines()->first();
         $completedRoutine->setMinutesDevoted($minutesDevoted);
         $completedRoutineId = $completedRoutine->getId();
         $completedRoutines = [];
@@ -72,8 +80,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
+        $completedRoutine = $this->createCompletedRoutine();
         $completedRoutineId = $completedRoutine->getId();
 
         $completedRoutineManager = $this->completedRoutineManager->delete($completedRoutine);
@@ -86,8 +93,8 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
+        $completedRoutine = $this->createCompletedRoutine();
+        $user = $completedRoutine->getUser();
 
         $completedRoutineManager = $this->completedRoutineManager->save($completedRoutine, (string) $user, true);
         $this->assertInstanceOf(CompletedRoutineManager::class, $completedRoutineManager);
@@ -100,8 +107,8 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
+        $completedRoutine = $this->createCompletedRoutine();
+        $user = $completedRoutine->getUser();
         $completedRoutine->setMinutesDevoted(2048);
 
         $completedRoutineManager = $this->completedRoutineManager->save($completedRoutine, (string) $user, true);
@@ -110,8 +117,8 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
+        $completedRoutine = $this->createCompletedRoutine();
+        $user = $completedRoutine->getUser();
         $completedRoutineId = $completedRoutine->getId();
 
         $completedRoutineManager = $this->completedRoutineManager->softDelete($completedRoutine, (string) $user);
@@ -125,8 +132,8 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
+        $completedRoutine = $this->createCompletedRoutine();
+        $user = $completedRoutine->getUser();
         $completedRoutineId = $completedRoutine->getId();
 
         $completedRoutineManager = $this->completedRoutineManager->softDelete($completedRoutine, (string) $user);
@@ -147,8 +154,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
+        $completedRoutine = $this->createCompletedRoutine();
 
         $errors = $this->completedRoutineManager->validate($completedRoutine);
         $this->assertCount(0, $errors);

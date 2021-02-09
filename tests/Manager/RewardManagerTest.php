@@ -43,6 +43,14 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createReward(): Reward
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $reward = $user->getRewards()->first();
+
+        return $reward;
+    }
+
     public function testConstruct(): void
     {
         $rewardManager = new RewardManager($this->entityManager, $this->validator);
@@ -53,9 +61,9 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $reward = $this->createReward();
+        $user = $reward->getUser();
         $name = 'test name';
-        $reward = $user->getRewards()->first();
         $reward->setName($name);
         $rewardId = $reward->getId();
         $rewards = [];
@@ -72,8 +80,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
+        $reward = $this->createReward();
         $rewardId = $reward->getId();
 
         $rewardManager = $this->rewardManager->delete($reward);
@@ -86,8 +93,8 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
+        $reward = $this->createReward();
+        $user = $reward->getUser();
 
         $rewardManager = $this->rewardManager->save($reward, (string) $user, true);
         $this->assertInstanceOf(RewardManager::class, $rewardManager);
@@ -100,8 +107,8 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
+        $reward = $this->createReward();
+        $user = $reward->getUser();
         $reward->setName('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $rewardManager = $this->rewardManager->save($reward, (string) $user, true);
@@ -110,8 +117,8 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
+        $reward = $this->createReward();
+        $user = $reward->getUser();
         $rewardId = $reward->getId();
 
         $rewardManager = $this->rewardManager->softDelete($reward, (string) $user);
@@ -125,8 +132,8 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
+        $reward = $this->createReward();
+        $user = $reward->getUser();
         $rewardId = $reward->getId();
 
         $rewardManager = $this->rewardManager->softDelete($reward, (string) $user);
@@ -147,8 +154,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
+        $reward = $this->createReward();
 
         $errors = $this->rewardManager->validate($reward);
         $this->assertCount(0, $errors);

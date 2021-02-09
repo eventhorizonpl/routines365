@@ -43,6 +43,14 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createSavedEmail(): SavedEmail
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $savedEmail = $user->getSavedEmails()->first();
+
+        return $savedEmail;
+    }
+
     public function testConstruct(): void
     {
         $savedEmailManager = new SavedEmailManager($this->entityManager, $this->validator);
@@ -53,9 +61,9 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $savedEmail = $this->createSavedEmail();
+        $user = $savedEmail->getUser();
         $email = 'test@example.org';
-        $savedEmail = $user->getSavedEmails()->first();
         $savedEmail->setEmail($email);
         $savedEmailId = $savedEmail->getId();
         $savedEmails = [];
@@ -72,8 +80,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
+        $savedEmail = $this->createSavedEmail();
         $savedEmailId = $savedEmail->getId();
 
         $savedEmailManager = $this->savedEmailManager->delete($savedEmail);
@@ -86,8 +93,8 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
+        $savedEmail = $this->createSavedEmail();
+        $user = $savedEmail->getUser();
 
         $savedEmailManager = $this->savedEmailManager->save($savedEmail, (string) $user, true);
         $this->assertInstanceOf(SavedEmailManager::class, $savedEmailManager);
@@ -100,8 +107,8 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
+        $savedEmail = $this->createSavedEmail();
+        $user = $savedEmail->getUser();
         $savedEmail->setEmail('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $savedEmailManager = $this->savedEmailManager->save($savedEmail, (string) $user, true);
@@ -110,8 +117,8 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
+        $savedEmail = $this->createSavedEmail();
+        $user = $savedEmail->getUser();
         $savedEmailId = $savedEmail->getId();
 
         $savedEmailManager = $this->savedEmailManager->softDelete($savedEmail, (string) $user);
@@ -125,8 +132,8 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
+        $savedEmail = $this->createSavedEmail();
+        $user = $savedEmail->getUser();
         $savedEmailId = $savedEmail->getId();
 
         $savedEmailManager = $this->savedEmailManager->softDelete($savedEmail, (string) $user);
@@ -147,8 +154,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
+        $savedEmail = $this->createSavedEmail();
 
         $errors = $this->savedEmailManager->validate($savedEmail);
         $this->assertCount(0, $errors);

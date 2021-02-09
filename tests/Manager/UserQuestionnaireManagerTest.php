@@ -54,6 +54,26 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createUserQuestionnaire(): UserQuestionnaire
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
+        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnaire();
+        $userQuestionnaire->setUser($user);
+        $userQuestionnaire->setQuestionnaire($questionnaire);
+
+        return $userQuestionnaire;
+    }
+
+    public function createUserQuestionnairePersisted(): UserQuestionnaire
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
+        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
+
+        return $userQuestionnaire;
+    }
+
     public function testConstruct(): void
     {
         $userQuestionnaireManager = new UserQuestionnaireManager(
@@ -67,11 +87,8 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnaire();
-        $userQuestionnaire->setUser($user);
-        $userQuestionnaire->setQuestionnaire($questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnaire();
+        $user = $userQuestionnaire->getUser();
         $userQuestionnaireUuid = $userQuestionnaire->getUuid();
         $userQuestionnaires = [];
         $userQuestionnaires[] = $userQuestionnaire;
@@ -85,9 +102,7 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnairePersisted();
         $userQuestionnaireId = $userQuestionnaire->getId();
 
         $userQuestionnaireManager = $this->userQuestionnaireManager->delete($userQuestionnaire);
@@ -100,11 +115,8 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnaire();
-        $userQuestionnaire->setUser($user);
-        $userQuestionnaire->setQuestionnaire($questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnaire();
+        $user = $userQuestionnaire->getUser();
 
         $userQuestionnaireManager = $this->userQuestionnaireManager->save($userQuestionnaire, (string) $user, true);
         $this->assertInstanceOf(UserQuestionnaireManager::class, $userQuestionnaireManager);
@@ -114,12 +126,9 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $questionnaire->setUuid('wrong');
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnaire();
-        $userQuestionnaire->setUser($user);
-        $userQuestionnaire->setQuestionnaire($questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnaire();
+        $user = $userQuestionnaire->getUser();
+        $userQuestionnaire->getQuestionnaire()->setUuid('wrong');
 
         $userQuestionnaireManager = $this->userQuestionnaireManager->save($userQuestionnaire, (string) $user, true);
     }
@@ -127,9 +136,8 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnairePersisted();
+        $user = $userQuestionnaire->getUser();
         $userQuestionnaireId = $userQuestionnaire->getId();
 
         $userQuestionnaireManager = $this->userQuestionnaireManager->softDelete($userQuestionnaire, (string) $user);
@@ -143,9 +151,8 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnairePersisted();
+        $user = $userQuestionnaire->getUser();
         $userQuestionnaireId = $userQuestionnaire->getId();
 
         $userQuestionnaireManager = $this->userQuestionnaireManager->softDelete($userQuestionnaire, (string) $user);
@@ -166,9 +173,7 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
+        $userQuestionnaire = $this->createUserQuestionnairePersisted();
 
         $errors = $this->userQuestionnaireManager->validate($userQuestionnaire);
         $this->assertCount(0, $errors);

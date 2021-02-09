@@ -43,6 +43,14 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createTestimonial(): Testimonial
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $testimonial = $user->getTestimonial();
+
+        return $testimonial;
+    }
+
     public function testConstruct(): void
     {
         $testimonialManager = new TestimonialManager(
@@ -56,9 +64,9 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $testimonial = $this->createTestimonial();
+        $user = $testimonial->getUser();
         $content = 'test content';
-        $testimonial = $user->getTestimonial();
         $testimonial->setContent($content);
         $testimonialId = $testimonial->getId();
         $testimonials = [];
@@ -75,8 +83,7 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
+        $testimonial = $this->createTestimonial();
         $testimonialId = $testimonial->getId();
 
         $testimonialManager = $this->testimonialManager->delete($testimonial);
@@ -89,8 +96,8 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
+        $testimonial = $this->createTestimonial();
+        $user = $testimonial->getUser();
 
         $testimonialManager = $this->testimonialManager->save($testimonial, (string) $user, true);
         $this->assertInstanceOf(TestimonialManager::class, $testimonialManager);
@@ -103,8 +110,8 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
+        $testimonial = $this->createTestimonial();
+        $user = $testimonial->getUser();
         $testimonial->setUuid('wrong');
 
         $testimonialManager = $this->testimonialManager->save($testimonial, (string) $user, true);
@@ -113,8 +120,8 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
+        $testimonial = $this->createTestimonial();
+        $user = $testimonial->getUser();
         $testimonialId = $testimonial->getId();
 
         $testimonialManager = $this->testimonialManager->softDelete($testimonial, (string) $user);
@@ -128,8 +135,8 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
+        $testimonial = $this->createTestimonial();
+        $user = $testimonial->getUser();
         $testimonialId = $testimonial->getId();
 
         $testimonialManager = $this->testimonialManager->softDelete($testimonial, (string) $user);
@@ -150,8 +157,7 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
+        $testimonial = $this->createTestimonial();
 
         $errors = $this->testimonialManager->validate($testimonial);
         $this->assertCount(0, $errors);

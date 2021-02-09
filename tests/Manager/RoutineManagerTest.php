@@ -73,6 +73,24 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createRoutine(): Routine
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $completedRoutine = $user->getCompletedRoutines()->first();
+        $goal = $user->getGoals()->first();
+        $note = $user->getNotes()->first();
+        $reminder = $user->getReminders()->first();
+        $reward = $user->getRewards()->first();
+        $routine = $user->getRoutines()->first();
+        $routine->addCompletedRoutine($completedRoutine);
+        $routine->addGoal($goal);
+        $routine->addNote($note);
+        $routine->addReminder($reminder);
+        $routine->addReward($reward);
+
+        return $routine;
+    }
+
     public function testConstruct(): void
     {
         $routineManager = new RoutineManager(
@@ -91,9 +109,9 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $routine = $this->createRoutine();
+        $user = $routine->getUser();
         $name = 'test name';
-        $routine = $user->getRoutines()->first();
         $routine->setName($name);
         $routineId = $routine->getId();
         $routines = [];
@@ -110,8 +128,7 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $routine = $user->getRoutines()->first();
+        $routine = $this->createRoutine();
         $routineId = $routine->getId();
 
         $routineManager = $this->routineManager->delete($routine);
@@ -124,8 +141,8 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $routine = $user->getRoutines()->first();
+        $routine = $this->createRoutine();
+        $user = $routine->getUser();
 
         $routineManager = $this->routineManager->save($routine, (string) $user, true);
         $this->assertInstanceOf(RoutineManager::class, $routineManager);
@@ -138,8 +155,8 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $routine = $user->getRoutines()->first();
+        $routine = $this->createRoutine();
+        $user = $routine->getUser();
         $routine->setName('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $routineManager = $this->routineManager->save($routine, (string) $user, true);
@@ -148,18 +165,8 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
-        $goal = $user->getGoals()->first();
-        $note = $user->getNotes()->first();
-        $reminder = $user->getReminders()->first();
-        $reward = $user->getRewards()->first();
-        $routine = $user->getRoutines()->first();
-        $routine->addCompletedRoutine($completedRoutine);
-        $routine->addGoal($goal);
-        $routine->addNote($note);
-        $routine->addReminder($reminder);
-        $routine->addReward($reward);
+        $routine = $this->createRoutine();
+        $user = $routine->getUser();
         $routineId = $routine->getId();
 
         $routineManager = $this->routineManager->softDelete($routine, (string) $user);
@@ -173,8 +180,8 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $routine = $user->getRoutines()->first();
+        $routine = $this->createRoutine();
+        $user = $routine->getUser();
         $routineId = $routine->getId();
 
         $routineManager = $this->routineManager->softDelete($routine, (string) $user);
@@ -195,8 +202,7 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $routine = $user->getRoutines()->first();
+        $routine = $this->createRoutine();
 
         $errors = $this->routineManager->validate($routine);
         $this->assertCount(0, $errors);

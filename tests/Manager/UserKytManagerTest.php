@@ -43,6 +43,14 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createUserKyt(): UserKyt
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $userKyt = $user->getUserKyt();
+
+        return $userKyt;
+    }
+
     public function testConstruct(): void
     {
         $userKytManager = new UserKytManager(
@@ -56,8 +64,8 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
+        $user = $userKyt->getUser();
         $userKytId = $userKyt->getId();
         $userKyts = [];
         $userKyts[] = $userKyt;
@@ -72,8 +80,7 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
         $userKytId = $userKyt->getId();
 
         $userKytManager = $this->userKytManager->delete($userKyt);
@@ -86,8 +93,8 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
+        $user = $userKyt->getUser();
 
         $userKytManager = $this->userKytManager->save($userKyt, (string) $user, true);
         $this->assertInstanceOf(UserKytManager::class, $userKytManager);
@@ -100,8 +107,8 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
+        $user = $userKyt->getUser();
         $userKyt->setUuid('wrong');
 
         $userKytManager = $this->userKytManager->save($userKyt, (string) $user, true);
@@ -110,8 +117,8 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
+        $user = $userKyt->getUser();
         $userKytId = $userKyt->getId();
 
         $userKytManager = $this->userKytManager->softDelete($userKyt, (string) $user);
@@ -125,8 +132,8 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
+        $user = $userKyt->getUser();
         $userKytId = $userKyt->getId();
 
         $userKytManager = $this->userKytManager->softDelete($userKyt, (string) $user);
@@ -147,8 +154,7 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
+        $userKyt = $this->createUserKyt();
 
         $errors = $this->userKytManager->validate($userKyt);
         $this->assertCount(0, $errors);

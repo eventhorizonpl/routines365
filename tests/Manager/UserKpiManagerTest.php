@@ -70,18 +70,9 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
-    public function testConstruct(): void
+    public function createUserKpi(): UserKpi
     {
-        $userKpiManager = new UserKpiManager($this->entityManager, $this->validator);
-
-        $this->assertInstanceOf(UserKpiManager::class, $userKpiManager);
-    }
-
-    public function testBulkSave(): void
-    {
-        $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $accountOperationCounter = 987;
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -95,6 +86,22 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
             $this->userRepository
         );
         $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+
+        return $userKpi;
+    }
+
+    public function testConstruct(): void
+    {
+        $userKpiManager = new UserKpiManager($this->entityManager, $this->validator);
+
+        $this->assertInstanceOf(UserKpiManager::class, $userKpiManager);
+    }
+
+    public function testBulkSave(): void
+    {
+        $this->purge();
+        $userKpi = $this->createUserKpi();
+        $accountOperationCounter = 987;
         $userKpi->setAccountOperationCounter($accountOperationCounter);
         $userKpiId = $userKpi->getId();
         $userKpis = [];
@@ -111,20 +118,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
         $userKpiId = $userKpi->getId();
 
         $userKpiManager = $this->userKpiManager->delete($userKpi);
@@ -137,20 +131,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
 
         $userKpiManager = $this->userKpiManager->save($userKpi, true);
         $this->assertInstanceOf(UserKpiManager::class, $userKpiManager);
@@ -163,20 +144,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
         $userKpi->setAccountOperationCounter(-1);
 
         $userKpiManager = $this->userKpiManager->save($userKpi, true);
@@ -185,20 +153,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
         $userKpiId = $userKpi->getId();
 
         $userKpiManager = $this->userKpiManager->softDelete($userKpi);
@@ -212,20 +167,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
         $userKpiId = $userKpi->getId();
 
         $userKpiManager = $this->userKpiManager->softDelete($userKpi);
@@ -246,20 +188,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $emailService = $this->getMockBuilder(EmailService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $userKpiService = new UserKpiService(
-            $emailService,
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        $userKpi = $this->createUserKpi();
 
         $errors = $this->userKpiManager->validate($userKpi);
         $this->assertCount(0, $errors);

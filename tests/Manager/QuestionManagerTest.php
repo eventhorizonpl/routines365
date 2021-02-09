@@ -61,6 +61,15 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createQuestion(): Question
+    {
+        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
+        $question = $questionnaire->getQuestions()->first();
+        $question->setQuestionnaire($questionnaire);
+
+        return $question;
+    }
+
     public function testConstruct(): void
     {
         $questionManager = new QuestionManager(
@@ -76,8 +85,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $questionnaire->getQuestions()->first();
+        $question = $this->createQuestion();
         $questionUuid = $question->getUuid();
         $questions = [];
         $questions[] = $question;
@@ -91,8 +99,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $questionnaire->getQuestions()->first();
+        $question = $this->createQuestion();
         $questionId = $question->getId();
 
         $questionManager = $this->questionManager->delete($question);
@@ -106,9 +113,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $this->questionFaker->createQuestion();
-        $question->setQuestionnaire($questionnaire);
+        $question = $this->createQuestion();
 
         $questionManager = $this->questionManager->save($question, (string) $user, true);
         $this->assertInstanceOf(QuestionManager::class, $questionManager);
@@ -119,9 +124,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
         $this->expectException(ManagerException::class);
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $this->questionFaker->createQuestion();
-        $question->setQuestionnaire($questionnaire);
+        $question = $this->createQuestion();
         $question->setTitle('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $questionManager = $this->questionManager->save($question, (string) $user, true);
@@ -131,8 +134,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $questionnaire->getQuestions()->first();
+        $question = $this->createQuestion();
         $questionId = $question->getId();
 
         $questionManager = $this->questionManager->softDelete($question, (string) $user);
@@ -147,8 +149,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $questionnaire->getQuestions()->first();
+        $question = $this->createQuestion();
         $questionId = $question->getId();
 
         $questionManager = $this->questionManager->softDelete($question, (string) $user);
@@ -169,8 +170,7 @@ final class QuestionManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $questionnaire->getQuestions()->first();
+        $question = $this->createQuestion();
 
         $errors = $this->questionManager->validate($question);
         $this->assertCount(0, $errors);

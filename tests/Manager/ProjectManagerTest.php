@@ -50,6 +50,14 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createProject(): Project
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $project = $user->getProjects()->first();
+
+        return $project;
+    }
+
     public function testConstruct(): void
     {
         $projectManager = new ProjectManager($this->entityManager, $this->goalManager, $this->validator);
@@ -60,9 +68,9 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $project = $this->createProject();
+        $user = $project->getUser();
         $name = 'test name';
-        $project = $user->getProjects()->first();
         $project->setName($name);
         $projectId = $project->getId();
         $projects = [];
@@ -79,8 +87,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
+        $project = $this->createProject();
         $projectId = $project->getId();
 
         $projectManager = $this->projectManager->delete($project);
@@ -93,8 +100,8 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
+        $project = $this->createProject();
+        $user = $project->getUser();
 
         $projectManager = $this->projectManager->save($project, (string) $user, true);
         $this->assertInstanceOf(ProjectManager::class, $projectManager);
@@ -109,8 +116,8 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
+        $project = $this->createProject();
+        $user = $project->getUser();
         $project->setName('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $projectManager = $this->projectManager->save($project, (string) $user, true);
@@ -119,9 +126,9 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $project = $this->createProject();
+        $user = $project->getUser();
         $goal = $user->getGoals()->first();
-        $project = $user->getProjects()->first();
         $project->addGoal($goal);
         $projectId = $project->getId();
 
@@ -136,8 +143,8 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
+        $project = $this->createProject();
+        $user = $project->getUser();
         $projectId = $project->getId();
 
         $projectManager = $this->projectManager->softDelete($project, (string) $user);
@@ -158,8 +165,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
+        $project = $this->createProject();
 
         $errors = $this->projectManager->validate($project);
         $this->assertCount(0, $errors);

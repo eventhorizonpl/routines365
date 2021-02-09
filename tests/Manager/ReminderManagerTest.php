@@ -56,6 +56,14 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createReminder(): Reminder
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $user->getReminders()->first();
+
+        return $reminder;
+    }
+
     public function testConstruct(): void
     {
         $reminderManager = new ReminderManager(
@@ -71,9 +79,9 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $this->createReminder();
+        $user = $reminder->getUser();
         $minutesBefore = 5;
-        $reminder = $user->getReminders()->first();
         $reminder->setMinutesBefore($minutesBefore);
         $reminderId = $reminder->getId();
         $reminders = [];
@@ -90,8 +98,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
         $reminderId = $reminder->getId();
 
         $reminderManager = $this->reminderManager->delete($reminder);
@@ -104,9 +111,9 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testFindNextDate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $this->createReminder();
+        $user = $reminder->getUser();
         $user->getProfile()->setTimeZone('wrong timezone');
-        $reminder = $user->getReminders()->first();
 
         $nextDate = $reminderManager = $this->reminderManager->findNextDate($reminder);
 
@@ -116,8 +123,8 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
+        $user = $reminder->getUser();
 
         $reminderManager = $this->reminderManager->save($reminder, (string) $user, true);
         $this->assertInstanceOf(ReminderManager::class, $reminderManager);
@@ -130,8 +137,8 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
+        $user = $reminder->getUser();
         $reminder->setMinutesBefore(-1);
 
         $reminderManager = $this->reminderManager->save($reminder, (string) $user, true);
@@ -140,8 +147,8 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
+        $user = $reminder->getUser();
         $reminderId = $reminder->getId();
 
         $reminderManager = $this->reminderManager->softDelete($reminder, (string) $user);
@@ -155,9 +162,9 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $reminder = $this->createReminder();
+        $user = $reminder->getUser();
         $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
-        $reminder = $user->getReminders()->first();
         $reminder->addSentReminder($sentReminder);
         $reminderId = $reminder->getId();
 
@@ -179,8 +186,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testLock(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
 
         $reminderManager = $this->reminderManager->lock($reminder);
         $this->assertInstanceOf(ReminderManager::class, $reminderManager);
@@ -190,8 +196,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testUnlock(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
 
         $reminderManager = $this->reminderManager->lock($reminder);
         $this->assertInstanceOf(ReminderManager::class, $reminderManager);
@@ -205,8 +210,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
+        $reminder = $this->createReminder();
 
         $errors = $this->reminderManager->validate($reminder);
         $this->assertCount(0, $errors);

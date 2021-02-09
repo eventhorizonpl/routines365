@@ -44,6 +44,14 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createGoal(): Goal
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $goal = $user->getGoals()->first();
+
+        return $goal;
+    }
+
     public function testConstruct(): void
     {
         $goalManager = new GoalManager($this->entityManager, $this->validator);
@@ -54,9 +62,9 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $goal = $this->createGoal();
+        $user = $goal->getUser();
         $name = 'test name';
-        $goal = $user->getGoals()->first();
         $goal->setName($name);
         $goalId = $goal->getId();
         $goals = [];
@@ -73,8 +81,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
+        $goal = $this->createGoal();
         $goalId = $goal->getId();
 
         $goalManager = $this->goalManager->delete($goal);
@@ -87,8 +94,8 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
+        $goal = $this->createGoal();
+        $user = $goal->getUser();
 
         $goalManager = $this->goalManager->save($goal, (string) $user, true);
         $this->assertInstanceOf(GoalManager::class, $goalManager);
@@ -103,8 +110,8 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
+        $goal = $this->createGoal();
+        $user = $goal->getUser();
         $goal->setName('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $goalManager = $this->goalManager->save($goal, (string) $user, true);
@@ -113,8 +120,8 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
+        $goal = $this->createGoal();
+        $user = $goal->getUser();
         $goalId = $goal->getId();
 
         $goalManager = $this->goalManager->softDelete($goal, (string) $user);
@@ -128,8 +135,8 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
+        $goal = $this->createGoal();
+        $user = $goal->getUser();
         $goalId = $goal->getId();
 
         $goalManager = $this->goalManager->softDelete($goal, (string) $user);
@@ -150,8 +157,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
+        $goal = $this->createGoal();
 
         $errors = $this->goalManager->validate($goal);
         $this->assertCount(0, $errors);

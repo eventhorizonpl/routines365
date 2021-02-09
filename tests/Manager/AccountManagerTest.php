@@ -43,6 +43,14 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createAccount(): Account
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $account = $user->getAccount();
+
+        return $account;
+    }
+
     public function testConstruct(): void
     {
         $accountManager = new AccountManager($this->entityManager, $this->validator);
@@ -53,9 +61,9 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $account = $this->createAccount();
+        $user = $account->getUser();
         $availableEmailNotifications = 987;
-        $account = $user->getAccount();
         $account->setAvailableEmailNotifications($availableEmailNotifications);
         $accountId = $account->getId();
         $accounts = [];
@@ -72,8 +80,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
+        $account = $this->createAccount();
         $accountId = $account->getId();
 
         $accountManager = $this->accountManager->delete($account);
@@ -86,8 +93,8 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
+        $account = $this->createAccount();
+        $user = $account->getUser();
 
         $accountManager = $this->accountManager->save($account, (string) $user, true);
         $this->assertInstanceOf(AccountManager::class, $accountManager);
@@ -107,8 +114,8 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
+        $account = $this->createAccount();
+        $user = $account->getUser();
         $accountId = $account->getId();
 
         $accountManager = $this->accountManager->softDelete($account, (string) $user);
@@ -122,8 +129,8 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
+        $account = $this->createAccount();
+        $user = $account->getUser();
         $accountId = $account->getId();
 
         $accountManager = $this->accountManager->softDelete($account, (string) $user);
@@ -144,8 +151,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
+        $account = $this->createAccount();
 
         $errors = $this->accountManager->validate($account);
         $this->assertCount(0, $errors);

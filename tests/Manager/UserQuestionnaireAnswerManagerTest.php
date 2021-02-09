@@ -61,6 +61,19 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createUserQuestionnaireAnswer(): UserQuestionnaireAnswer
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
+        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
+        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
+        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
+        $userQuestionnaireAnswer->setAnswer($answer);
+        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+
+        return $userQuestionnaireAnswer;
+    }
+
     public function testConstruct(): void
     {
         $userQuestionnaireAnswerManager = new UserQuestionnaireAnswerManager(
@@ -74,13 +87,8 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
+        $user = $userQuestionnaireAnswer->getUserQuestionnaire()->getUser();
         $userQuestionnaireAnswerUuid = $userQuestionnaireAnswer->getUuid();
         $userQuestionnaireAnswers = [];
         $userQuestionnaireAnswers[] = $userQuestionnaireAnswer;
@@ -94,13 +102,8 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
+        $user = $userQuestionnaireAnswer->getUserQuestionnaire()->getUser();
         $userQuestionnaireAnswerManager = $this->userQuestionnaireAnswerManager->save($userQuestionnaireAnswer, (string) $user, true);
         $userQuestionnaireAnswerId = $userQuestionnaireAnswer->getId();
 
@@ -114,13 +117,8 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
+        $user = $userQuestionnaireAnswer->getUserQuestionnaire()->getUser();
 
         $userQuestionnaireAnswerManager = $this->userQuestionnaireAnswerManager->save($userQuestionnaireAnswer, (string) $user, true);
         $this->assertInstanceOf(UserQuestionnaireAnswerManager::class, $userQuestionnaireAnswerManager);
@@ -130,13 +128,8 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
+        $user = $userQuestionnaireAnswer->getUserQuestionnaire()->getUser();
         $userQuestionnaireAnswer->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $userQuestionnaireAnswerManager = $this->userQuestionnaireAnswerManager->save($userQuestionnaireAnswer, (string) $user, true);
@@ -145,13 +138,8 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
+        $user = $userQuestionnaireAnswer->getUserQuestionnaire()->getUser();
         $userQuestionnaireAnswerManager = $this->userQuestionnaireAnswerManager->save($userQuestionnaireAnswer, (string) $user, true);
         $userQuestionnaireAnswerId = $userQuestionnaireAnswer->getId();
 
@@ -166,13 +154,8 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
+        $user = $userQuestionnaireAnswer->getUserQuestionnaire()->getUser();
         $userQuestionnaireAnswerManager = $this->userQuestionnaireAnswerManager->save($userQuestionnaireAnswer, (string) $user, true);
         $userQuestionnaireAnswerId = $userQuestionnaireAnswer->getId();
 
@@ -194,13 +177,7 @@ final class UserQuestionnaireAnswerManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
-        $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnairePersisted($user, $questionnaire);
-        $userQuestionnaireAnswer = $this->userQuestionnaireAnswerFactory->createUserQuestionnaireAnswer();
-        $userQuestionnaireAnswer->setAnswer($answer);
-        $userQuestionnaireAnswer->setUserQuestionnaire($userQuestionnaire);
+        $userQuestionnaireAnswer = $this->createUserQuestionnaireAnswer();
 
         $errors = $this->userQuestionnaireAnswerManager->validate($userQuestionnaireAnswer);
         $this->assertCount(4, $errors);

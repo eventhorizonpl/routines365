@@ -43,6 +43,14 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createContact(): Contact
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $contact = $user->getContacts()->first();
+
+        return $contact;
+    }
+
     public function testConstruct(): void
     {
         $contactManager = new ContactManager($this->entityManager, $this->validator);
@@ -53,9 +61,9 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
+        $contact = $this->createContact();
+        $user = $contact->getUser();
         $title = 'test title';
-        $contact = $user->getContacts()->first();
         $contact->setTitle($title);
         $contactId = $contact->getId();
         $contacts = [];
@@ -72,8 +80,7 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
+        $contact = $this->createContact();
         $contactId = $contact->getId();
 
         $contactManager = $this->contactManager->delete($contact);
@@ -86,8 +93,8 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
+        $contact = $this->createContact();
+        $user = $contact->getUser();
 
         $contactManager = $this->contactManager->save($contact, (string) $user, true);
         $this->assertInstanceOf(ContactManager::class, $contactManager);
@@ -100,8 +107,8 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
+        $contact = $this->createContact();
+        $user = $contact->getUser();
         $contact->setTitle('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $contactManager = $this->contactManager->save($contact, (string) $user, true);
@@ -110,8 +117,8 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
+        $contact = $this->createContact();
+        $user = $contact->getUser();
         $contactId = $contact->getId();
 
         $contactManager = $this->contactManager->softDelete($contact, (string) $user);
@@ -125,8 +132,8 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
+        $contact = $this->createContact();
+        $user = $contact->getUser();
         $contactId = $contact->getId();
 
         $contactManager = $this->contactManager->softDelete($contact, (string) $user);
@@ -147,8 +154,7 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
+        $contact = $this->createContact();
 
         $errors = $this->contactManager->validate($contact);
         $this->assertCount(0, $errors);

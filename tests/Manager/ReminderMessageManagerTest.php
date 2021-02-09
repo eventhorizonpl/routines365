@@ -43,6 +43,14 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
         parent::tearDown();
     }
 
+    public function createReminderMessage(): ReminderMessage
+    {
+        $user = $this->userFaker->createRichUserPersisted();
+        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+
+        return $reminderMessage;
+    }
+
     public function testConstruct(): void
     {
         $reminderMessageManager = new ReminderMessageManager($this->entityManager, $this->validator);
@@ -53,8 +61,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
         $reminderMessageId = $reminderMessage->getId();
         $reminderMessages = [];
         $reminderMessages[] = $reminderMessage;
@@ -69,8 +76,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function testDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
         $reminderMessageId = $reminderMessage->getId();
 
         $reminderMessageManager = $this->reminderMessageManager->delete($reminderMessage);
@@ -83,8 +89,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function testSave(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
 
         $reminderMessageManager = $this->reminderMessageManager->save($reminderMessage, true);
         $this->assertInstanceOf(ReminderMessageManager::class, $reminderMessageManager);
@@ -97,8 +102,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
         $reminderMessage->setThirdPartySystemResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
         $reminderMessageManager = $this->reminderMessageManager->save($reminderMessage, true);
@@ -107,8 +111,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function testSoftDelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
         $reminderMessageId = $reminderMessage->getId();
 
         $reminderMessageManager = $this->reminderMessageManager->softDelete($reminderMessage);
@@ -122,8 +125,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function testUndelete(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
         $reminderMessageId = $reminderMessage->getId();
 
         $reminderMessageManager = $this->reminderMessageManager->softDelete($reminderMessage);
@@ -144,8 +146,7 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function testValidate(): void
     {
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
+        $reminderMessage = $this->createReminderMessage();
 
         $errors = $this->reminderMessageManager->validate($reminderMessage);
         $this->assertCount(0, $errors);
