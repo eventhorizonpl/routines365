@@ -1396,6 +1396,390 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Chris Gardner',
                 'content' => 'Wealth can also be that attitude of gratitude with which we remind ourselves every day to count our blessings.',
             ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'In the real world, the smartest people are people who make mistakes and learn. In school, the smartest people don’t make mistakes.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'It’s not what you say out of your mouth that determines your life, it’s what you whisper to yourself that has the most power!',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'It’s more important to grow your income than cut your expenses. It’s more important to grow your spirit that cut your dreams.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The most successful people in life are the ones who ask questions. They’re always learning. They’re always growing. They’re always pushing.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Don’t be addicted to money. Work to learn. don’t work for money. Work for knowledge.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'It’s easier to stand on the sidelines, criticize, and say why you shouldn’t do something. The sidelines are crowded. Get in the game.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The trouble with school is they give you the answer, then they give you the exam. That’s not life.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Complaining about your current position in life is worthless. Have a spine and do something about it instead.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The fear of being different prevents most people from seeking new ways to solve their problems.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Winners are not afraid of losing. But losers are. Failure is part of the process of success. People who avoid failure also avoid success.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Successful people ask questions. They seek new teachers. They’re always learning.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you want to be rich, you need to develop your vision. You must be standing on the edge of time gazing into the future.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you’re still doing what mommy and daddy said for you to do (go to school, get a job, and save money), you’re losing.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Often, the more money you make the more money you spend; that’s why more money doesn’t make you rich – assets make you rich.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The most life destroying word of all is the word tomorrow.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The size of your success is measured by the strength of your desire; the size of your dream; and how you handle disappointment along the way.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'I’d rather welcome change than cling to the past.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The most successful people are mavericks who aren’t afraid to ask why, especially when everyone thinks it’s obvious.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Hoping drains your energy. Action creates energy.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The more a person seeks security, the more that person gives up control over his life.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Everyone can tell you the risk. An entrepreneur can see the reward.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'A plan is a bridge to your dreams. Your job is to make the plan or bridge real, so that your dreams will become real. If all you do is stand on the side of the bank and dream of the other side, your dreams will forever be just dreams.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'You’ll often find that it’s not mom or dad, husband or wife, or the kids that’s stopping you. It’s you. Get out of your own way.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The only difference between a rich person and poor person is how they use their time.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Your choices decide your fate. Take the time to make the right ones. If you make a mistake, that’s fine; learn from it & don’t make it again.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Money is really just an idea.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Talk is cheap. Learn to listen with your eyes. Actions do speak louder than words. Watch what a person does more than what he says.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The moment you make passive income and portfolio income a part of your life, your life will change. Those words will become flesh.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'You will make some mistakes but, if you learn from those mistakes, those mistakes will become wisdom and wisdom is essential to becoming wealthy.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you realize that you’re the problem, then you can change yourself, learn something and grow wiser. Don’t blame other people for your problems.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Workers work hard enough to not be fired, and owners pay just enough so that workers won’t quit.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'As I said, I wish I could say it was easy. It wasn’t, but it wasn’t hard either. But without a strong reason or purpose, anything in life is hard.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The single most powerful asset we all have is our mind. If it is trained well, it can create enormous wealth in what seems to be an instant.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Find the game where you can win, and then commit your life to playing it; and play to win.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'One of the great things about being willing to try new things and make mistakes is that making mistakes keeps you humble. People who are humble learn more than people who are arrogant.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Intelligence solves problems and produces money. Money without financial intelligence is money soon gone.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Start small and dream big.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Emotions are what make us human. Make us real. The word ’emotion’ stands for energy in motion. Be truthful about your emotions, and use your mind and emotions in your favor, not against yourself.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'You’re only poor if you give up. The most important thing is that you did something. Most people only talk and dream of getting rich. You’ve done something.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you want to be financially-free, you need to become a different person than you are today and let go of whatever has held you back in the past.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The philosophy of the rich and the poor is this: the rich invest their money and spend what is left. The poor spend their money and invest what is left.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Sight is what you see with your eyes, vision is what you see with your mind.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'In school we learn that mistakes are bad, and we are punished for making them. Yet, if you look at the way humans are designed to learn, we learn by making mistakes. We learn to walk by falling down. If we never fell down, we would never walk.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Never say you cannot afford something. That is a poor man’s attitude. Ask HOW to afford it.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'F.O.C.U.S – Follow One Course Until Successful',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Your future is created by what you do today, not tomorrow.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The more I risk being rejected, the better my chances are of being accepted.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'One of the most stupid things to do is to pretend you are smart. When you pretend to be smart, you are at the height of stupidity.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Find out where you are at, where you are going and build a plan to get there.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Most people want everyone else in the world to change themselves. Let me tell you, it’s easier to change yourself than everyone else.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'People who dream small dreams continue to live as small people.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The richest people in the world build networks; everyone else is trained to look for work.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'There are those who make things happen, there are those who watch things happen and there are those who say ‘what happened?’',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Skills make you rich, not theories.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'When you come to the boundaries of what you know, it is time to make some mistakes.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'People without financial knowledge, who take advice from financial experts are like lemmings simply following their leader. They race for the cliff and leap into the ocean of financial uncertainty, hoping to swim to the other side.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The ability to sell is the number one skill in business. If you cannot sell, don’t bother thinking about becoming a business owner.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Too many people are too lazy to think. Instead of learning something new, they think the same thought day in day out.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Education is cheap; experience is expensive.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'There are no mistakes in life, just learning opportunities.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The love of money is not the root of all evil. The lack of money is the root of all evil.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'We all have tremendous potential, and we all are blessed with gifts. Yet, the one thing that holds all of us back is some degree of self-doubt. It is not so much the lack of technical information that holds us back, but more the lack of self-confidence.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'When you are forced to think, you expand your mental capacity. When you expand your mental capacity, your wealth increases.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Making mistakes isn’t enough to become great. You must also admit the mistake, and then learn how to turn that mistake into an advantage.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'In today’s rapidly changing world, the people who are not taking risk are the risk takers.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Tomorrows only exist in the minds of dreamers and losers.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Excuses cost a dime and that’s why the poor could afford a lot of it.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'People need to wake up and realize that life doesn’t wait for you. If you want something, get up and go after it.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you want to be rich, simply serve more people.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'When people are lame, they love to blame.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Inside each of us is a David and a Goliath.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'It is easy to stay the same but it is not easy to change. Most people choose to stay the same all their lives.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'It does not take money to make money.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Face your fears and doubts, and new worlds will open to you.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'A mistake is a signal that it is time to learn something new, something you didn’t know before.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'There are no bad business and investment opportunities, but there are bad entrepreneurs and investors.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'A winning strategy must include losing.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you want to go somewhere, it is best to find someone who has already been there.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Success is a poor teacher. We learn the most about ourselves when we fail, so don’t be afraid of failing. Failing is part of the process of success. You cannot have success without failure.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The wealthy buy luxuries last, while the poor and middle-class tend to buy luxuries first. Why? Emotional discipline.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'To be a successful business owner and investor, you have to be emotionally neutral to winning and losing. Winning and losing are just part of the game.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The problem with having a job is that it gets in the way of getting rich.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'When times are bad is when the real entrepreneurs emerge.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Sometimes you win, sometimes you learn.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'You get one life. Live it in a way that it inspires someone.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The biggest challenge you have is to challenge your own self doubt and your laziness. It is your self doubt and your laziness that defines and limit who you are.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'When I started my last business, I didn’t receive a paycheck for 13 months. The average person can’t handle that pressure.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Getting rich begins with the right mindset, the right words and the right plan.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Sometimes, what is right for you at the beginning of your life is not the right thing for you at the end of your life.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Business is like a wheel barrow. Nothing happens until you start pushing.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Starting a business is like jumping out of an airplane without a parachute. In mid air, the entrepreneur begins building a parachute and hopes it opens before hitting the ground.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Business and investing are team sports.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'If you want to be rich the rule of thumb is to teach others how to be rich.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'The hardest part of change is going through the unknown.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Financial struggle is often the direct result of people working all their lives for someone else.',
+            ],
+            [
+                'author' => 'Robert Kiyosaki',
+                'content' => 'Being an entrepreneur is simply going from one mistake to the next. You must have the fortitude to continue on.',
+            ],
         ];
 
         $quotes = [];
