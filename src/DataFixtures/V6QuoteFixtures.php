@@ -1228,6 +1228,174 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Jack Canfield',
                 'content' => 'You have the power to achieve greatness and create anything and everything you want in life, but you have to take action.',
             ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'I was homeless but I wasn’t hopeless. I knew a better day was coming.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Don’t ever let someone tell you, you can’t do something. Not even me.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'You got a dream you got to protect it.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'People can’t do something themselves, they want to tell you you can’t do it.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'The secret to success: find something you love to do so much, you can’t wait for the sun to rise to do it all over again.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'The world is your oyster. It’s up to you to find the pearls.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'It can be done but you have to make it happen.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'If you believe you can do it, you will.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Do something that makes you happy and makes you feel good about yourself.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'You want something, go get it. Period.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'There is no plan B for passion.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Baby steps count, as long as you are going forward. You add them all up, and one day you look back and you’ll be surprised.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Start where you are.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'It’s okay to fail; it’s not okay to quit.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Others may question your credentials, your papers, your degrees. Others may look for all kinds of ways to diminish your worth. But what is inside you no one can take from you or tarnish.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Claim ownership of your dreams.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'If you don’t take the necessary steps to make them happen, dreams are just mirages that mess with your head.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'I am strong because I’ve been weak. I am fearless because I’ve been afraid. I am wise because I’ve been foolish.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Walk the walk and go forward all the time.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'You can only depend on yourself. The cavalry ain’t coming.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'You have to be bold.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Every finish line is the beginning of a new race.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'The most inspiring leaders are not those who do their job but those who pursue a calling.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'I hold one thing dearer than all else: my commitment to my son.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Ready or not, tell yourself to jump.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Strong people stand up for themselves, the strongest people stand up for others.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'This part of my life, this little part is called happiness.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Do something that you love.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Your struggle is not an excuse, it’s your ammunition.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Always, always pursue happiness.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'One of the things young people always ask me about is what is the secret to success. The secret is there is no secret. It’s the basics. Blocking and tackling.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => '(The movie) is the story of my life, but it’s not about me. It’s about anybody who ever dreamed big and had someone tell them, ‘No, you can’t do it.’ You can.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Make your vision larger than yourself.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Then again, what seems like nothing in the eyes of the world, when properly valued and put to use, can be among the greatest riches.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'The balance in your life is more important than the balance in your checking account.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Without that sense of self, no amount of paper, no pedigree, and no credentials can make you legit. No matter what, you have to feel legit inside first.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'As busy as I am wherever I am, I try to get out and walk the streets, to remember how far I’ve come and appreciate every baby step of the way.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'It’s your responsibility to pursue what matters.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Still a dreamer, yet more of a realist than ever before, I knew this was my time to sail. On the horizon I saw the shining future, as before. The difference now was that I felt the wind at my back. I was ready.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Do something that makes you feel your work is significant and meaningful.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'No matter how much money is involved or no matter how easy it is for you to do, if you’re not happy, you are nothing more than a slave to your talent and money.',
+            ],
+            [
+                'author' => 'Chris Gardner',
+                'content' => 'Wealth can also be that attitude of gratitude with which we remind ourselves every day to count our blessings.',
+            ],
         ];
 
         $quotes = [];
