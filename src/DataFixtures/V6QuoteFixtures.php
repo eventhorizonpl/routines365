@@ -468,6 +468,186 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Shawn Achor',
                 'content' => 'Mindfulness is a key cornerstone of creating a positive mind.',
             ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'No one lives long enough to learn everything they need to learn starting from scratch. To be successful, we absolutely, positively have to find people who have already paid the price to learn the things that we need to learn to achieve our goals.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Successful people are always looking for opportunities to help others. Unsuccessful people are always asking, ‘What’s in it for me?’',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The person we believe ourselves to be will always act in a manner consistent with our self-image.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'All successful people are big dreamers. They imagine what their future could be, ideal in every respect, and then they work every day toward their distant vision, that goal or purpose.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'You have to put in many, many, many tiny efforts that nobody sees or appreciates before you achieve anything worthwhile.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Whatever we expect with confidence becomes our own self-fulfilling prophecy.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The key to success is to focus our conscious mind on things we desire not things we fear.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'If you raise your children to feel that they can accomplish any goal or task they decide upon, you will have succeeded as a parent and you will have given your children the greatest of all blessings.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Successful people are simply those with successful habits.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The ability to discipline yourself to delay gratification in the short term in order to enjoy greater rewards in the long term, is the indispensable prerequisite for success.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'You have within you right now, everything you need to deal with whatever the world can throw at you.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Teamwork is so important that it is virtually impossible for you to reach the heights of your capabilities or make the money that you want without becoming very good at it.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The greatest gift that you can give to others is the gift of unconditional love and acceptance.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'I’ve found that luck is quite predictable. If you want more luck, take more chances. Be more active. Show up more often.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Imagine no limitations; decide what’s right and desirable before you decide what’s possible.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Whatever you believe with feeling becomes your reality.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Everything you do is triggered by an emotion of either desire or fear.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Never say anything about yourself you do not want to come true.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Love only grows by sharing. You can only have more for yourself by giving it away to others.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'It doesn’t matter where you are coming from. All that matters is where you are going.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Your greatest asset is your earning ability. Your greatest resource is your time.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Those people who develop the ability to continuously acquire new and better forms of knowledge that they can apply to their work and to their lives will be the movers and shakers in our society for the indefinite future.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Move out of your comfort zone. You can only grow if you are willing to feel awkward and uncomfortable when you try something new.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The happiest people in the world are those who feel absolutely terrific about themselves, and this is the natural outgrowth of accepting total responsibility for every part of their life.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'If what you are doing is not moving you towards your goals, then it’s moving you away from your goals.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Winners make a habit of manufacturing their own positive expectations in advance of the event.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'You cannot control what happens to you, but you can control your attitude toward what happens to you, and in that, you will be mastering change rather than allowing it to master you.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Look for the good in every person and every situation. You’ll almost always find it.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Communication is a skill that you can learn. If you’re willing to work at it, you can rapidly improve the quality of every part of your life.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Goals allow you to control the direction of change in your favor.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'An attitude of positive expectation is the mark of the superior personality.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Develop an attitude of gratitude, and give thanks for everything that happens to you, knowing that every step forward is a step toward achieving something bigger and better than your current situation.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Decisiveness is a characteristic of high-performing men and women. Almost any decision is better than no decision at all.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Only by contending with challenges that seem to be beyond your strength to handle at the moment you can grow more surely toward the stars.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Invest three percent of your income in yourself (self-development) in order to guarantee your future.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'If you wish to achieve worthwhile things in your personal and career life, you must become a worthwhile person in your own self-development.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The more you seek security, the less of it you have. But the more you seek opportunity, the more likely it is that you will achieve the security that you desire.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Today the greatest single source of wealth is between your ears.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Never complain, never explain. Resist the temptation to defend yourself or make excuses.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Every minute you spend in planning saves 10 minutes in execution; this gives you a 1,000 percent Return on Energy!',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The true measure of the value of any business leader and manager is performance.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Just as your car runs more smoothly and requires less energy to go faster and farther when the wheels are in perfect alignment, you perform better when your thoughts, feelings, emotions, goals, and values are in balance.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'People with clear, written goals, accomplish far more in a shorter period of time than people without them could ever imagine.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'The more credit you give away, the more will come back to you. The more you help others, the more they will want to help you.',
+            ],
+            [
+                'author' => 'Brian Tracy',
+                'content' => 'Whatever you dwell on in the conscious grows in your experience.',
+            ],
         ];
 
         $quotes = [];
