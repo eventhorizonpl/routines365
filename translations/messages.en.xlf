@@ -1693,6 +1693,10 @@
         <source>YouTube</source>
         <target>YouTube</target>
       </trans-unit>
+      <trans-unit id="3YRCW3L" resname="LinkedIn">
+        <source>LinkedIn</source>
+        <target>LinkedIn</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

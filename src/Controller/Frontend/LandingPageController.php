@@ -24,6 +24,14 @@ class LandingPageController extends AbstractController
     }
 
     /**
+     * @Route("/improve-memory", name="improve_memory")
+     */
+    public function improveMemory(): Response
+    {
+        return $this->render('frontend/landing_page/improve_memory.html.twig');
+    }
+
+    /**
      * @Route("/learn-faster", name="learn_faster")
      */
     public function learnFaster(): Response
