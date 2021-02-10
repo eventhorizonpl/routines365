@@ -1780,6 +1780,354 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Robert Kiyosaki',
                 'content' => 'Being an entrepreneur is simply going from one mistake to the next. You must have the fortitude to continue on.',
             ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Pain is temporary. It may last for a minute, or an hour or a day, or even a year. But eventually, it will subside. And something else takes its place. If I quit, however, it will last forever.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Sometimes it ain’t about being the most talented. Sometimes it ain’t about being the smartest. Sometimes it’s not even about working the hardest. Sometimes it’s about consistency! Consistency!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'The most important thing is this: To be able at any moment, to sacrifice what you are, for what you will become!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’m intoxicated on success!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Everybody has a dream, but not everybody has a grind.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'A setback is a setup for a comeback.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'There is nothing wrong with dreaming big dreams, just know that all roads that lead to success have to pass through Hardwork Boulevard at some point.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Winners focus on winning. Losers focus on winners.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Only those who risk going too far, can possibly find out how far one can go.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’m not the smartest. But you will not out work me! I wake up every morning at 3 o’clock!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Most of you don’t want success as much as you want to sleep!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’ve got a dream that’s worth more than my sleep.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'God has a purpose for your pain, a reason for your struggles and a reward for your faithfulness. Don’t give up.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Success is not for the weak and uncommitted… Sometimes it’s gonna hurt!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'An eagle uses the storm to reach unimaginable heights.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Stop the blame game. Stop! Stop looking out the window and look in the mirror!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Avoid being your own enemy.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Like for real, you can start from the bottom, and by the grace of God, work your way all the way up to the top man.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You can’t cheat the grind, it knows hows much you’ve invested, it won’t give you nothing you haven’t worked for.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'The difference between those who succeed and fail: not taking advantage of opportunities.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Things change for the better when we take responsibility for our own thoughts, decisions and actions.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Don’t cry to quit! You already in pain, you already hurt! Get a reward from it!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Both desire and imagination are stored in the mind of the individual and when stretched, both have the potential to position a person for greatness.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Apply the ABC’s of success to your life. Ask, Believe and Claim It.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’ve been trying to tell y’all, its’s not your circumstances or situation, that determines if you gonna be successful or not. I’ve been telling you it’s your mindset! It’s the way you see it. It’s the way you think it right!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I started studying. I wasn’t watching the game no more. I wanted to study what was in Michael Jordan. I’m like “What’s in Michael Jordan? Michael Jordan got something in him?”',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You know school ain’t my first love, but we gotta get in here and do it so that young people can know that for real it’s past possible, there’s absolutely nothing that we can’t accomplish.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'The problem is, you get more excited talking about it than you do when you actually doing it!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Look in the mirror, that’s your competition.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'No alarm clock needed, my passion wakes me.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I dare you to take a little pain. I dare you!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Desire and imagination have the potential to position a person for greatness.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Everybody wants to be a beast, until it’s time to do what real beasts do.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'If you’re going to go to your next level, your values are going to have to change.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Listen to me: You’ll never be successful until I don’t have to give you a dime to do what you do.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Most of you won’t be successful because when you’re studying and you get tired, you quit!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I don’t care if you broke, you grew up broke… you grew up rich. You only get 24hrs!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’m exactly where I wanted to be because I realized, I gotta commit my very being to this thing.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Some of you need to give up your cell phone!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Because the time you spend on your cell phone, could be used for your success. The time you could be using to be successful, you’re using on the cell! And the cell phone is not bringing you nothing but a bill!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'It’s one thing to talk about your destiny. It’s one thing to dream about your destiny. It’s one thing to look at your destiny. But it’s another thing – it is another thing – to make the decisions. To wake up when you know you supposed to wake up!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'At some point in life you have to face your fears.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Sleep? “I don’t sleep.” You thought that was it? It goes deeper than going without sleep because you might miss the opportunity to succeed. No, no, no! It’s about No Days Off! No weekends! No Holidays! No Birthdays!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'It’s realizing that a great dream is not as good as a great memory. The dream can be had by anyone. The memory – must be made.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'This is what I’m saying, take advantage of opportunity, because if you do, doors are going to open up for you.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'When you’re great! You attract great! When you’re average! You attract average.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'It’s about optimal movement. Decisive movement. The most effective movement.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You ain’t average! But you know what? You’re playing small because it’s easier to be average.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'The competitive edge is not something that… it’s not the top tier management… it’s not something that they give you.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'It’s not who you are that holds you back, it’s who you think you’re not.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Fall in love with the process and the results will come.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You are the executive director and screenwriter of your life.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Be stronger than your excuses.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Practice doesn’t make perfect. Practice makes permanence!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Listen to me, even when you lose, it’s OK to lose, but you can never get comfortable with it. You can never be satisfied with losing. When you lose, it’s got to hurt.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Stop sabotaging yourself.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'If it takes a boring Biology class, then I’m taking Biology. If I gotta go through Calculus to make my family get to a level they’ve never been too, then Calculus watch your back! Cause your boy is coming.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'When you get to a place where you don’t go for what you can get, but you go for what you can give, you gonna see your life change tremendously.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Information changes situations.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'We all have the ability to produce greatness in our lives.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'It’s not about where you come from; it’s about heart! You come to a place where, you know, being smart ain’t enough. You gotta have heart.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Some of you have never learned to grow up!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I was homeless for two and half years. And the problem with most of you, you’ve never felt any pain before. Y’all spoiled.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’m here to tell you, number one, that most of you say you want to be successful, but you don’t want it bad, you just kinda want it.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You got an opportunity to make a dream become a reality – and when you do, you just got to take advantage of it.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I’m that guy that comes in your high school and tells you, you can make it happen! Greatness is upon you! You better act like it!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'My greatest asset is I was homeless. So, I can’t feel a whole lot of pain. I’ve already been alone. There’s not a whole of hurt I can feel, on a little paper, on a little test.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'At the end of pain is success.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Stop being average. You’re not even good. You were born to be great.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Success is never on discount! Greatness is never on sale! Greatness is never half off! It’s all or nothing! It’s all day, every day! Greatness is never on discount!',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Stop whining, start grinding.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'What you envision in your mind, how you see yourself, and how you envision the world around you is of great importance because those things become your focus.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I use pain to push me to greatness.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Don’t make a habit out of choosing what feels good over what’s actually good for you.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'The only way to get out of mediocrity is to keep shooting for excellence.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Don’t think about what can happen in a month. Don’t think about what can happen in a year. Just focus on the 24 hours in front of you and do what you can to get closer to where you want to be.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'If you can look up, you can get up.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I wanted to surround myself with the kind of people who could help me turn my life around; people whom I could rub up against like iron and be sharpened.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Your relationships will either make you or break you and there is no such thing as a neutral relationship. People either inspire you to greatness or pull you down in the gutter, it’s that simple. No one fails alone, and no one succeeds alone.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Done is better than perfect if perfect ain’t done.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I do not take constructive criticism from people who have never constructed anything.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Success, meaningful success, begins when we take ownership and actively take responsibility for our part in the shortcomings of our life.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You can’t sleep. Broke people sleep. You got to be willing to sacrifice sleep, if you sleep you may miss the opportunity to be successful.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'You can get through this. You are bigger than your pain, don’t give up, don’t give in.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'I learned that a real friendship is not about what you can get, but what you can give. Real friendship is about making sacrifices and investing in people to help them improve their lives.',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'Can you honestly say the environment(s) you are in will yield the kind of harvest you are expecting?',
+            ],
+            [
+                'author' => 'Eric Thomas',
+                'content' => 'It’s not easy, but it’s simple.',
+            ],
         ];
 
         $quotes = [];
