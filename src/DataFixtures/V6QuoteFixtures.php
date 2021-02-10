@@ -648,6 +648,158 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Brian Tracy',
                 'content' => 'Whatever you dwell on in the conscious grows in your experience.',
             ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Working hard for something we don’t care about is called stress; working hard for something we love is called passion.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'A team is not a group of people that work together. A team is a group of people that trust each other.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'I find, when you’re an optimist, life has a funny way of looking after you.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Life is beautiful not because of the things we see or do. Life is beautiful because of the people we meet.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'People don’t buy what you do; they buy why you do it. And what you do simply proves what you believe.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Vision is the ability to talk about the future with such clarity it is as if we are talking about the past.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'It is better to disappoint people with the truth than to appease them with a lie.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'When we help ourselves, we find moments of happiness. When we help others, we find lasting fulfillment.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Some see risk as a reason not to try. Some see it as an obstacle to overcome. The risk is the same; to try or not depends on your perspective.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Achievement happens when we pursue and attain what we want. Success comes when we are in clear pursuit of Why we want it.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'No matter when or where, always bring your ‘A’ game, because you never know when it will open doors for you.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'As the Zen Buddhist saying goes, how you do anything is how you do everything.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Always plan for the fact that no plan ever goes according to plan.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Knowledge is understanding based on what has been studied and learned. Wisdom is understanding based on what has been felt and experienced.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Confidence is believing in yourself. Arrogance is telling others youre better than they are. Confidence inspires. Arrogance destroys.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'When people are financially invested, they want a return. When people are emotionally invested, they want to contribute.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Dream big. Start small. But most of all, start.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'A leader’s job is not to do the work for others; it’s to help others figure out how to do it themselves, to get things done and to succeed beyond what they thought possible.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'What good is an idea if it remains an idea? Try. Experiment. Iterate. Fail. Try again. Change the world.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'There is a difference between listening and waiting for your turn to speak.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'You can easily judge the character of a man by how he treats those who can do nothing for him.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'More information is always better than less. When people know the reason things are happening, even if it’s bad news, they can adjust their expectations and react accordingly. Keeping people in the dark only serves to stir negative emotions.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Value is not determined by those who set the price. Value is determined by those who choose to pay it.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'If you want to feel happy, do something for yourself. If you want to feel fulfilled, do something for someone else.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'If no one ever broke the rules, then we’d never advance.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'If you want to achieve anything in this world, you have to get used to the idea that not everyone will like you.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'One of the greatest things you can do is give your time and energy – things you will never get back.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'There are only two ways to influence human behavior: you can manipulate it or you can inspire it.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Don’t show up to prove. Show up to improve.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Leadership requires two things: a vision of the world that does not yet exist and the ability to communicate it.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Children are better off having a parent who works into the night in a job they love than a parent who works shorter hours but comes home unhappy.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Regardless of WHAT we do in our lives, our WHY—our driving purpose, cause or belief—never changes.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Self confidence is the ability to exercise restraint in the face of disrespect and still show respect in response.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'The goal is not to be perfect by the end, the goal is to be better today.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'The only way to ‘find out if it will work out’ is to do it.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Panic causes tunnel vision. Calm acceptance of danger allows us to more easily assess the situation and see the options.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'Integrity is when our words and deeds are consistent with our intentions.',
+            ],
+            [
+                'author' => 'Simon Sinek',
+                'content' => 'The primary ingredient for progress is optimism. The unwavering belief that something can be better drives the human race forward.',
+            ],
         ];
 
         $quotes = [];
