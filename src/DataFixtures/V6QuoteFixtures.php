@@ -944,6 +944,154 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Darren Hardy',
                 'content' => 'Critics are bitter dreamers gone scared. Empathize and ignore.',
             ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'If you want to change the fruit, you have to change the roots. If you want to change the visible, you have to change the invisible first.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'If you are willing to do only what’s easy, life will be hard. But if you are willing to do what’s hard, life will be easy.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'When you are complaining, you become a living, breathing crap magnet.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'If you want to move to a new level in your life, you must break through your comfort zone and practice doing things that are not comfortable.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'If you want to make a permanent change, stop focusing on the size of your problems and start focusing on the size of you.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Rich people play the money game to win. Poor people play the money game to not lose.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'You need to recognize that your entire life is in your head. It’s the way you think. It’s the software system for your life computer, and if you want to change your life, it will have to start with the way you think. Choose your thoughts carefully.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Never try to pull someone up who doesn’t want it…they’ll just pull you down.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'You would worry a lot less about what people think of you if you realized how little they do.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'How you do anything is how you do everything.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'The biggest obstacle to wealth is fear. People are afraid to think big, but if you think small, you’ll only achieve small things.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'For the rich, it’s not about getting more stuff. It’s about having the freedom to make almost any decision you want.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Thoughts lead to feelings. Feelings lead to actions. Actions leads to results.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'If you want to fly with the eagles, don’t swim with the ducks!',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Money will only make you more of what you already are.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Money is a result. Wealth is a result. Health is a result. Your weight is a result. We live in a world of cause and effect.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'The first element of change is awareness. You can’t change something unless you know it exits.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Rich people believe: I create my life. Poor people believe: Life happens to me.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Rich people constantly learn and grow. Poor people think they already know.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Where attention goes, energy flows.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Practice being in the present. Do what you’re doing 100%.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Action is the bridge between the inner world and outer world.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Successful people have fear, successful people have doubts, and successful people have worries. They just don’t let these feelings stop them.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Nothing has meaning except the meaning you give it.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'What you focus on expands, focus on the positive.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Part of your mission in life then must be to share your gifts with as many people as possible. That means being willing to play big.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'The single biggest difference between financial success and financial failure is how well you manage your money. It’s simple: to master money, you must manage money.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Never have a ceiling on your income.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'The mark of true wealth is determined by how much one can give away.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => '20% of your activities produce 80% of your results.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Remember, your motto is, if they can do it, I can do it.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Rich people take advice from people who are richer than they are. Poor people take advice from their friends, who are just as broke as they are.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Rich people are willing to act in spite of fear. Poor people let fear stop them.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Rich people admire other rich and successful people. Poor people resent rich and successful people.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Every master was once a disaster.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Your income can only grow to the extent that you do.',
+            ],
+            [
+                'author' => 'T. Harv Eker',
+                'content' => 'Becoming rich isn’t as much about getting rich financially as about whom you become, in character and mind, to get rich.',
+            ],
         ];
 
         $quotes = [];
