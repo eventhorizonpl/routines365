@@ -800,6 +800,150 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Simon Sinek',
                 'content' => 'The primary ingredient for progress is optimism. The unwavering belief that something can be better drives the human race forward.',
             ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Everything you need to be great is already inside you. Stop waiting for someone or something to light your fire. YOU have the match.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Success means having the courage, the determination, and the will to become the person you believe you were meant to be.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'There is a one thing that 99 percent of “failures” and “successful” folks have in common — they all hate doing the same things. The difference is successful people do them anyway.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Your past doesn’t define you, it prepares you.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Hang out with those who have a common future, not a common past.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Don’t follow your dreams. Chase them down with aggressive pursuit.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'When it comes to breaking old habits and starting new ones, remember to be patient with yourself. You’ve got to expect it’s going to take time and effort before you see lasting results.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Once-dominant empires have failed for this very reason. People get to a certain level of success and get too comfortable.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Consistency is the key to achieving and maintaining momentum.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'There’s nothing wrong with ordinary. I just prefer to shoot for extraordinary.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Choices are at the root of every one of your results. Each choice starts a behavior that over time becomes a habit.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'It’s not enough to choose to be successful. You have to dig deeper than that to find your core motivation, to activate your superpower. Your why-power.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Everyone is affected by three kinds of influences: input (what you feed your mind), associations (the people with whom you spend time), and environment (your surroundings).',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'You alone are responsible for what you do, don’t do, or how you respond to what’s done to you.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Don’t wish it were easier; wish you were better.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'In essence, you make your choices, and then your choices make you.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'You will never change your life until you change something you do daily. The secret of your success is found in your daily routine.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Your biggest challenge isn’t that you’ve intentionally been making bad choices. Your biggest challenge is that you’ve been sleepwalking through your choices.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'When you define your goals, you give your brain something new to look for and focus on.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'If you are not making the progress that you would like to make and are capable of making, it is simply because your goals are not clearly defined.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'You get started by taking one small step, one action at a time.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'If you really want to maintain a good habit, make sure you pay attention to it at least once a day, and you’re far more likely to succeed.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'The first step toward change is awareness. If you want to get from where you are to where you want to be, you have to start by becoming aware of the choices that lead you away from your desired destination.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Motivation without action, leads to self-delusion.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Garden your head – pull out the weeds of excuses and plant the seeds of greatness.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Start your day with why, then get on with your what.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'It’s not what you learn or what you know; it’s what you do with what you know and learn.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Falling is part of getting better.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Fear is not real. It’s an illusion, a phenomenon that resides entirely within your own brain.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'The activities that you are most afraid of are the activities that can cause a breakthrough in your success.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Unsuccessful people carry their goals around in their head like marbles rattling around in a can, and we say a goal that is not in writing is merely a fantasy.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Risk means acting without certainty.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Don’t envy the achiever, BE the achiever.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'What controls your attention, controls your life.',
+            ],
+            [
+                'author' => 'Darren Hardy',
+                'content' => 'Critics are bitter dreamers gone scared. Empathize and ignore.',
+            ],
         ];
 
         $quotes = [];
