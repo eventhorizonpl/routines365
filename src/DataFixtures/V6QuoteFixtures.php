@@ -292,6 +292,182 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Tony Robbins',
                 'content' => 'The secret to living is giving.',
             ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness is an incredible competitive advantage.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness is not the belief that we don’t need to change; it is the realization that we can.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'You can eliminate depression without making someone happy. You can cure anxiety without teaching someone optimism. You can return someone to work without improving their job performance.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Without action, knowledge is often meaningless.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Only 25 percent of job successes are predicted by IQ, 75 percent of job successes are predicted by your optimism levels, your social support, and your ability to see stress as a challenge instead of as a threat.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'If all you strive for is diminishing the bad, you’ll only attain the average and you’ll miss out entirely on the opportunity to exceed the average.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness asks us to be realistic about the present while maximizing our potential for the future.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness is about learning how to cultivate the mindset and behaviors that have been empirically proven to fuel greater success and fulfillment.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness is not just a mood — it’s a work ethic.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The belief that we are just our genes is one of the most pernicious myths in modern culture — the insidious notion that people come into the world with a fixed set of abilities and that they, and their brains, cannot change.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'You do not have to be your genes, your childhood, your environment. We can choose how our brain looks at the world.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'For untold generations, we have been led to believe that happiness orbited around success. That if we work hard enough, we will be successful, and only if we are successful will we become happy. The opposite is true.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'When we are happy—when our mindset and mood are positive we are smarter, more motivated, and thus more successful. Happiness is the center, and success revolves around it.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The most accurate term for happiness…is the one Aristotle used: eudaimonia, which translates not directly to ‘happiness’ but to ‘human flourishing’.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness is not all about yellow smiley faces and rainbows. For me, happiness is the joy we feel striving after our potential.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness precedes important outcomes and indicators of thriving. The wealth of data found that happiness causes success and achievement, not the opposite.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Even the smallest shots of positivity can give someone a serious competitive edge.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'A quick burst of positive emotions doesn’t just broaden our cognitive capacity; it also provides a quick and powerful antidote to stress and anxiety, which in turn improves our focus and our ability to function at our best level.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Research shows that regular meditation can permanently rewire the brain to raise levels of happiness, lower stress, even improve immune function.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'So how do the scientists define happiness? Essentially, as the experience of positive emotions — pleasure combined with deeper feelings of meaning and purpose.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness implies a positive mood in the present and a positive outlook for the future.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Happiness gives us a real chemical edge on the competition. How? Positive emotions flood our brains with dopamine and serotonin, chemicals that not only make us feel good, but dial up the learning centers of our brains to higher levels.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Positive emotions help us organize new information, keep that information in the brain longer, and retrieve it faster later on.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Money can buy happiness, but only if used to DO things as opposed to simply HAVE things.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The fastest way to disengage an employee is to tell him his work is meaningful only because of the paycheck.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'By changing the fulcrum of our mindset and lengthening our lever of possibility, we change what is possible. It’s not the weight of the world that determines what we can accomplish. It is our fulcrum and lever.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Beliefs are so powerful because they dictate our efforts and actions.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'When our brains constantly scan for and focus on the positive, we profit from three of the most important tools available to us: happiness, gratitude, and optimism.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The mental construction of our daily activities, more than the activity itself, defines our reality.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'When we reconnect ourselves with the pleasure of the ‘means,’ as opposed to only focusing on the ‘ends,’ we adopt a mindset more conducive not only to enjoyment, but to better results.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The more you believe in your own ability to succeed, the more likely it is that you will.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'According to the Roman poet Ovid, the sculptor Pygmalion could look at a piece of marble and see the sculpture trapped inside of it.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The Pygmalion Effect is when our belief in another person’s potential brings that potential to life.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'We want to push the limits of possibility as far as they can go, not limit them in the way too many discouraging bosses, parents, teachers, or media stories tell us they should be limited.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'You can study gravity forever without ever knowing how to fly.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Simply believing we can fly won’t set us aloft. Yet if we don’t believe, we have no chance of ever making it off the ground.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'As science has shown, when we believe we can do more and achieve more (or when others believe it for us), that is often the precise reason we DO achieve more.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Constantly scanning the world for the negative comes with a great cost. It undercuts our creativity, raises our stress levels, and lowers our motivation and ability to accomplish goals.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'It’s hard to find happiness after success if the goalposts of success keep changing.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Successful people see adversity as a stepping stone rather than a stumbling block.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'You have to train your brain to be positive just like you work out your body.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'The greatest competitive advantage in our modern economy is a positive and engaged brain.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Your brain at positive is 31 percent more productive than your brain at negative, neutral, or stressed.',
+            ],
+            [
+                'author' => 'Shawn Achor',
+                'content' => 'Mindfulness is a key cornerstone of creating a positive mind.',
+            ],
         ];
 
         $quotes = [];
