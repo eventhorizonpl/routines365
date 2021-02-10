@@ -1092,6 +1092,142 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'T. Harv Eker',
                 'content' => 'Becoming rich isn’t as much about getting rich financially as about whom you become, in character and mind, to get rich.',
             ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Gratitude is the single most important ingredient to living a successful and fulfilled life.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Decide what you want, believe you can have it, believe you deserve it and believe it’s possible for you.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Everything you want is on the other side of fear.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'It’s a universal principle that you get more of what you think about, talk about, and feel strongly about.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Vague goals produce vague results.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'To change bad habits, we must study the habits of successful role models.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Practice random acts of kindness and senseless acts of beauty.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'I generally find that comparison is the fast track to unhappiness.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Clarify your purpose. What is the why behind everything you do?. When we know this in life or design it is very empowering and the path is clear.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'When you think you can’t revisit a previous triumph.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'I believe people should live full lives and not settle for anything less.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'You only have control over three things in your life. The thoughts you think, the images you visualise, and the action you take.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'To achieve major success in life, you must accept 100% responsibility for your life and results. Nothing less will do.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'If it ain’t fun, don’t do it.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'People who don’t have goals, work for people who do.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'When you have inspired thought, you have to trust it and you have to act on it.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'You either create or allow everything that happens to you.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Good or bad, habits always deliver results.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Believing in yourself is a choice. It’s an attitude you develop over time.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'One individual can begin a movement that turns the tide of history.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Taking the first step is the difference between actually pursuing your passion and just dreaming about it.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'There’s a four letter word you must use when you get rejected….next.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'I worked from 10pm until 1am every night for a year to write the first ‘Chicken Soup For The Soul’ book.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Most everything that you want is just outside your comfort zone.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'If you are going to be successful in creating the life of your dreams, you have first have to believe what you want is possible and you are capable of making it happen.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'You must take personal responsibility. You cannot change circumstances, the seasons, or the wind, but you can change yourself.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Everything you want is out there waiting for you to ask. Everything you want also wants you. But you have to take action to get it.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'If you are clear about your goals and take several steps in the right direction everyday, eventually you will succeed. So decide what it is you want, write it down, review it constantly, and each day do something that moves you toward those goals.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'I believe that people make their own luck by great preparation and good strategy.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'Know your priorities and identify the five powerful action steps that you intend to take to move your initiatives forward each day.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'There are essentially two things that will make you wise, the books you read and the people you meet.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'People who ask confidently get more than those who are hesitant and uncertain. When you’ve figured out what you want to ask for, do it with certainty, boldness and confidence.',
+            ],
+            [
+                'author' => 'Jack Canfield',
+                'content' => 'You have the power to achieve greatness and create anything and everything you want in life, but you have to take action.',
+            ],
         ];
 
         $quotes = [];
