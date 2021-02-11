@@ -153,6 +153,7 @@ class Reminder
         $this->previousDate = null;
         $this->reminderMessages = new ArrayCollection();
         $this->sendEmail = true;
+        $this->sendMotivationalMessage = true;
         $this->sentReminders = new ArrayCollection();
         $this->sendSms = false;
         $this->sendToBrowser = false;

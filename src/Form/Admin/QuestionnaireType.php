@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use App\Entity\Questionnaire;
-use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +18,11 @@ class QuestionnaireType extends AbstractType
         $builder
             ->add('title')
             ->add('description', TextareaType::class)
-            ->add('isEnabled', YesNoType::class)
+            ->add('isEnabled', CheckboxType::class, [
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ])
         ;
     }
 

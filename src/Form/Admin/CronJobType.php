@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Form\Admin;
 
-use App\Form\Type\YesNoType;
 use Cron\CronBundle\Entity\CronJob;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,7 +33,11 @@ class CronJobType extends AbstractType
                 'required' => true,
                 'constraints' => [new NotBlank()],
             ])
-            ->add('enabled', YesNoType::class)
+            ->add('enabled', CheckboxType::class, [
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ])
         ;
     }
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use App\Entity\User;
-use App\Form\Type\YesNoType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -16,8 +16,16 @@ class UserType extends BaseUserType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('isEnabled', YesNoType::class)
-            ->add('isVerified', YesNoType::class)
+            ->add('isEnabled', CheckboxType::class, [
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ])
+            ->add('isVerified', CheckboxType::class, [
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ])
             ->add('roles', ChoiceType::class, [
                 'choices' => User::getRolesFormChoices(),
                 'expanded' => false,

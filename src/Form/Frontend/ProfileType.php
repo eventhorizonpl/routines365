@@ -6,9 +6,9 @@ namespace App\Form\Frontend;
 
 use App\Entity\Profile;
 use App\Form\BaseProfileType;
-use App\Form\Type\YesNoType;
 use App\Resource\ConfigResource;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
@@ -26,12 +26,18 @@ class ProfileType extends BaseProfileType
                 'label' => 'Phone (optional)',
                 'required' => false,
             ])
-            ->add('sendWeeklyMonthlyStatistics', YesNoType::class, [
+            ->add('sendWeeklyMonthlyStatistics', CheckboxType::class, [
                 'help' => 'Determines whether you want to receive weekly/monthly/yearly statistics emails.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
                 'required' => true,
             ])
-            ->add('showMotivationalMessages', YesNoType::class, [
+            ->add('showMotivationalMessages', CheckboxType::class, [
                 'help' => 'Determines whether you want to see motivational messages in the user interface.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
                 'required' => true,
             ])
             ->add('theme', ChoiceType::class, [

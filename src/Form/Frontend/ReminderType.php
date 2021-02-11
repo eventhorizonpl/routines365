@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Form\Frontend;
 
 use App\Entity\Reminder;
-use App\Form\Type\YesNoType;
 use App\Resource\ConfigResource;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,22 +25,34 @@ class ReminderType extends AbstractType
                 'help' => 'The time when the routine should start.',
                 'input' => 'datetime_immutable',
             ])
-            ->add('isEnabled', YesNoType::class, [
+            ->add('isEnabled', CheckboxType::class, [
                 'help' => 'Determines whether the system should send a reminder.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ])
             ->add('minutesBefore', ChoiceType::class, [
                 'choices' => Reminder::getMinutesBeforeFormChoices(),
                 'help' => 'How many minutes before the routine starts system should send a reminder.',
             ])
-            ->add('sendEmail', YesNoType::class, [
+            ->add('sendEmail', CheckboxType::class, [
                 'help' => 'Determines whether the system should send a reminder to the email address.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ])
-            ->add('sendMotivationalMessage', YesNoType::class, [
+            ->add('sendMotivationalMessage', CheckboxType::class, [
                 'help' => 'Determines whether the system should send motivational messages in reminder.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ])
-            ->add('sendToBrowser', YesNoType::class, [
+            ->add('sendToBrowser', CheckboxType::class, [
                 'disabled' => true,
                 'help' => 'Determines whether the system should send a reminder to the web browser.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => Reminder::getTypeFormChoices(),
@@ -49,8 +61,11 @@ class ReminderType extends AbstractType
         ;
 
         if (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS)) {
-            $builder->add('sendSms', YesNoType::class, [
+            $builder->add('sendSms', CheckboxType::class, [
                 'help' => 'Determines whether the system should send a reminder to the phone number.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ]);
         }
     }

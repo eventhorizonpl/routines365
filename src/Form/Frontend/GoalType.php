@@ -7,10 +7,10 @@ namespace App\Form\Frontend;
 use App\Entity\Goal;
 use App\Entity\Project;
 use App\Entity\Routine;
-use App\Form\Type\YesNoType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -61,9 +61,12 @@ class GoalType extends AbstractType
         ;
 
         if (null !== $goal->getId()) {
-            $builder->add('isCompleted', YesNoType::class, [
+            $builder->add('isCompleted', CheckboxType::class, [
                 'help' => 'Determines whether you achieved the goal.',
                 'label' => 'Is completed (optional)',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ]);
         }
     }

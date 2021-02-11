@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use App\Entity\Achievement;
-use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +21,11 @@ class AchievementType extends AbstractType
             ->add('description', TextareaType::class, [
                 'required' => false,
             ])
-            ->add('isEnabled', YesNoType::class)
+            ->add('isEnabled', CheckboxType::class, [
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ])
             ->add('level')
             ->add('requirement')
             ->add('type', ChoiceType::class, [

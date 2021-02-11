@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Frontend;
 
 use App\Entity\Routine;
-use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,8 +22,11 @@ class RoutineType extends AbstractType
                 'label' => 'Description (optional)',
                 'required' => false,
             ])
-            ->add('isEnabled', YesNoType::class, [
+            ->add('isEnabled', CheckboxType::class, [
                 'help' => 'The system does not send reminders for a routine that is not enabled.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ])
             ->add('name', null, [
                 'help' => 'Name of the routine. The system uses it in reminders.',

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use App\Entity\Promotion;
-use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,7 +29,11 @@ class PromotionType extends AbstractType
                 'input' => 'datetime_immutable',
                 'required' => false,
             ])
-            ->add('isEnabled', YesNoType::class)
+            ->add('isEnabled', CheckboxType::class, [
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ])
             ->add('name')
             ->add('smsNotifications')
             ->add('type', ChoiceType::class, [

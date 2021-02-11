@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Frontend;
 
 use App\Entity\Project;
-use App\Form\Type\YesNoType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,9 +29,12 @@ class ProjectType extends AbstractType
         ;
 
         if (null !== $project->getId()) {
-            $builder->add('isCompleted', YesNoType::class, [
+            $builder->add('isCompleted', CheckboxType::class, [
                 'help' => 'Determines whether you completed the project.',
                 'label' => 'Is completed (optional)',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
             ]);
         }
     }
