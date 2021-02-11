@@ -2648,6 +2648,738 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Les Brown',
                 'content' => 'The only limits to the possibilities in your life tomorrow are the buts you use today.',
             ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Can’t wait for Instagram to get rid of likes. Hoping it leads to the elimination of public vanity metrics. Really believe it will lead to an explosion of creativity and truth.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'How can you give a fuck what people think when they don’t have the full picture? And more importantly, how can you judge someone when you don’t have the full picture?',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Your dreams don’t have to be “big” they have to be yours.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Fuck everything.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Those who spit hate out there mouth are wildly broken inside, I’m not mad at them, I feel sorry as fuck for them.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Give me kind as fuck and “B” skills over Complete asshole with “A+” skills. How you interact with the other boys and girls matters the most!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Slow down the macro (you got time in life)…speed up the micro (get more done daily).',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Be aggressively kind! If you are really happy inside – share that shit. Cause the angry are better at expressing it and it’s time we change that.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Losing and winning both matter! Don’t protect against them.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I suck at selling, I’m great I’m talking about the things I care about.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The ability to not care about anybody else’s opinions is the singular gateway to happiness.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Being yourself is so much easier. Who you trying to impress?',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you love what you do you’re consistent as fuck.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Stop judging yourself, so many beating themselves up, did you try as hard as you could? Did you have good intent? Good, you won.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Changing your mind is a strength.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Reputation is the ultimate currency.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Make happiness louder.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Your focus on hating yesterday is killing your opportunity to love tomorrow.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Hoping today is a day you get an insight on yourself and it leads to more happiness.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you’re not dreaming big for yourself, who’s doing it for you?',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you stay in your lane and speak about things you’ve lived and have done, it tends to work out.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Supply and demand is undefeated.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Gratitude is the cure.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'People are better at creating ceiling for themselves than any outside force.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'For me, happiness is doing what you want to do at all times.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you’re so happy, then start putting happiness out into the universe.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You don’t have to eliminate negative family, you have to limit it.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Happiness over flashiness – stop the confusion.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'There are people here that work more on upgrading their phones than upgrading their minds.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I genuinely like people, have compassion and understanding when things don’t go well with them! Love and adore their capacity and the overall warmth and good we have in the world. Perspective is a powerful thing. If you see this, thank you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'People aren’t willing to sacrifice for what they want.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Kindness is karma.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Moving is important because you can change the course.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Anger and retaliation is never the reaction to venom. Never.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Practice positive perspective: 3P’s.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I like the game of thinking, whether it’s winning or losing.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'People want to succeed so fast because they want to prove something to somebody else. That’s what makes them vulnerable.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'By the age of 7, 80% of my activities outside were business.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m such an animal of the market, that’s what makes me so adaptable.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m never comfortable because I know that yesterday is vulnerable tomorrow.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Don’t judge the end of the first quarter.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I don’t want your money, I want your admiration.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'A lot of you are looking for the next step, when the next step is what got you there in the first place.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you’re good enough, no one is stopping you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You can’t beat what you copy.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Kids… want to be happy? Get off your parents payroll, the quicker they stop paying for stuff, the sooner they have no “say”.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You find what you’re looking for.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Everyone is trying to prove something with final results or showing they bought something.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you tell everyone you’re going to do something and you change your mind 100 days in, that’s a strength not a weakness.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You either want to become the “magazine” or the person they put on the front of the “magazine.”',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Gratitude > cynicism is clearly the framework lacking for many.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Something that happened yesterday, has nothing to do with tomorrow.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Too many people “want things” but aren’t willing to take a step backwards and pay the price associated with their ambition. They lack the humility and patience for happiness and success.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Want to prove something? Prove that you are enjoying the process of figuring yourself out and chasing your current ambitions and curiosities.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You don’t want what your friends want, so why the fuck would you care?',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You can’t read about pushups. What makes you think reading inspirational quotes all day is gonna get you “there”.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you 100% enjoy the chaos and the unknown, you’re an entrepreneur.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The biggest asset in the world is your mindset.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Every parent is judging their kids based on yesterday, but your kids are living in today, which is a better indicator of tomorrow.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You fucked up. They’re 49% of the equation, you are 51.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you think about business like a computer, culture is the operating system. Everything else is an “app.” Finance is an app. Creative is an app. Strategy is an app. But culture is the operating system.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Instead of “burnout” let’s call it “I changed my mind.”',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you find something you like and you’re good at it, life is a lot better than when you only chase money or dwell that the system is against you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Makes me actually laugh how many people think kindness is a weakness… its the ultimate strength.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'It makes no sense why people think that at 18, 22, 30, that they have to have their life figured out when “figuring everything out” is a forever game.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Kindness is such a signature of the strong.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'No matter where you start, how you finish is on you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nobody owes you shit.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Looking backwards fucks with your neck.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Life is more like boxing. Just win today’s fight.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Shit changes …. get used to it.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Don’t waste energy. Focus on what you control. Not what you wish you controlled.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Wanna be happy? Have zero expectations of others.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The quotes are simple. The execution is hard.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I don’t want the money, I want the freedom.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you live for weekends and vacations, your shit is broken.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You’re not lost. You’re just early in the process.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'My lack of education allows me to keep things very simple. But simple is what plays out.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You’re not entitled to your dreams.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'More kindness, less judgment.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The Internet doesn’t care that you’re not interested in learning. It will continue to evolve without you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you’re a CEO or an executive, your job is to make decisions. Not sit in a conference room for an hour and 43 minutes to make a judgement call that could’ve been made in 17 minutes.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m educating… and my tuition is free.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nothing great should be easy.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you realize how unimportant you are to 99.999999999% of people, their judgment losses weight. They aren’t worried about you, they have their own shit.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Stop buying dumb shit to make people you don’t even like think you’re doing well.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The difference between a great CEO and one who isn’t is that one understands they’re a “parent”, while the other thinks they’re a “babysitter”.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Limit your time with people who see the downside of every situation.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'People want to succeed fast because they want to prove something to somebody else. That’s what makes them vulnerable.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'We have a whole culture that is disproportionately judging the youth that they fucking parented.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Speed is the ROI of not caring what people think.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Don’t create “fake environments” for your kids. They’ll fall hard later in life.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m not trying to be cool, I’m trying to be happy.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Stop giving a fuck what other people think.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you do what you love, you’re consistent as fuck.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You’re not lazy, you just don’t love what you do.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You move fast when you don’t pay attention to judgement.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I don’t give a fuck about what anybody thinks about me, because they don’t know who the fuck I am inside.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Happiness over money.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'When you’re grateful, you see full cups!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Allowing people’s opinion to dictate your behavior, has to stop.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Instead of reading chapters 1, 2 and 3 start writing 4, 5, and 6.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Want to be happy? Have zero expectations of others.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'People lose because they want things fast. When life is long.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'How you make your money is more important than how much you make.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nobody likes transition when it costs them money, the problem is the market doesn’t care about you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you’re complaining, you have to check your receipts.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The amount of people seeing this in their feed on Instagram that don’t believe in what they sell is devastating.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'There’s nothing passive about building wealth. There is no fucking system. There is no fucking shortcut. It’s a fucking marathon.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Drink $50 coffee if you are happy and don’t complain, but if you’re crying, check your bills!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Everybody’s so crippled by decisions, but you’ll never know how the other thing worked out.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I think people overthink decisions. There’s no time machine, there’s no future machine – you’ll never know what the alternative would have been. So just pick one and do it!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I just don’t think your degree is as safe as you think.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'There is no perfect decision, there’s just life.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nobody is paying their bills with followers.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Instant noodles are delicious when you’re trying to get to caviar.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Authenticity is only achievable when it’s actually authentic.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Having a global footprint allows your to adjust to different micro scenarios.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m never off.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The market is my mentor.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'It’s possible. The question is are you hungry enough and willing to fucking eat shit, or are you soft?',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'So much is working for me right now because on paper, so much did not work for me as a child.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I love the game, not the trophies that come from winning the game.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'We lack patience, which leads to shit behavior because you’re looking for a quick score.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m an Anthropologist.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Admiration is a lot more exciting than a couple extra 0s in your bank account.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => '“No” is an entrepreneurs best friend.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nobody wants to make the sacrifices, they only want the upside of entrepreneurship.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Kindness and compassion are THE strengths, don’t let anyone confuse you.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If I could wish anyone anything besides health, it would be emotional intelligence. It is the skill of life.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Giving more than you take is an incredible way to get.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Happiness is remarkably quiet, and negativity is extremely loud – don’t let that confuse you of how great things are.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Once you realize that nobody gives a fuck, shit gets real interesting.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I don’t require my employees to live the same framework I live in terms of work ethic – it’s not their business.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I am desperate to be the person that provides the most value for free.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Everybody wants it fast and easy but in their actions they’re slow.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The interesting thing though for that 80% that are looking for it, is 98% of them won’t do anything about it. That is what’s interesting to me.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I go on stage because I’m on operator, not a commentator.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I love “no.” I love your judgement. I love you telling me i’m not or I cant. I’m used to it.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Kindness is the ultimate strength in our society.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The problem is 98% of people are sitting on 50/50 their whole fuckin life, which means they’re 0/0.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You’ll never know what the alternative would have been. You pick one and you never ever ever even consider to look back.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Until you go through it, you won’t know.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'To look at two ideas and think that you can practically make a good decision is laughable. Literally flip a coin.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'My losses are mine, i’ll deal with them myself. I don’t hear others’ 2 cents because they’re losing plenty on their own.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you don’t give a fuck about what people think, you can do everything.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I don’t even respect my losses, I don’t even give them the time to teach me anything. I fuckin look them in the face and say fuck you then keep going.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Way too many of you dwell on your losses, it’s holding you back. It’s over, move the fuck on!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You can do everything wrong for the next 10 years of your life and still be young as fuck.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Entrepreneurship is cool now. And if you’re in this just to flex on instagram, you’re going to lose.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I was willing to do it because it was all i could do.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m too grounded in practicality to be a talker. I would be embarrassed to talk and not execute.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’m unbelievably fine with not achieving my goals. I’m not fine with not trying too.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I love losing, believe it or not, because that means i deserved it. I think changing your mind all of the time is the core strength of a human being.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Why do people dream and not do? They’re insecure.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'At the end of the day things, have to become practical.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You’re not gonna know. Choose, live. If it works out great and if it doesn’t adjust.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'There’s no right answer, there’s only your actual path.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If you do hire that person to do all of the defense shit, it lets you go on the offense and your growth accelerates even greater than your cost.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I’ve put my businesses ahead of myself everyday of my life in my career, which is why I built huge businesses.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Most people build businesses so that they can buy shit from the business and take, I feed the business.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Doing always beats thinking, the end.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Everyone still values their time or they’re so insecure about other people judging their decision that they don’t fucking make.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You don’t defeat hate with hate, you defeat hate with love at scale.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Save money ! $ it’s a good idea.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Be kind!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I lack entitlement. It’s my strength.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'The only decision that needs to be made, is the one that you will regret the least when you’re 90.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Never, ever be at the mercy of somebody else.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If your parents are paying for any part of your lifestyle and you’re over 22 and you shit on them behind their backs for not helping more…you need to rethink your perspective on life.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'I didn’t fail school, school failed me. School fails entrepreneurs everyday, because it’s not built for entrepreneurs, it’s built for workers.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Your grandparents went through war and the depression and now you’re crying because you don’t have 1,000 followers? Get the fuck out of here.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nobody gives a fuck about your feelings.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'It’s easy to dream about it… much harder to execute it. Work!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Once you are happy for people instead of envious, you can start the process of getting to a happy place.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'If your voice in your head is mean to you. Remember that someone manipulated that voice and instilled it in you. Kill that fake voice and find yours. I love you. Now love yourself.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Everyone else sucks too, they might just be better at faking it than you. You can’t love it just when it’s convenient.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You can’t be the best at something in the world… passively.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Nothing that’s happened in the past is holding you back from the future.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Humans find what they’re looking for on social media. If you’re looking for a fight and negativity, you’re gonna find it. If you’re looking for happiness and positivity, you’re gonna find it at scale.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'You aren’t guaranteed to win, but you are guaranteed an “at bat” and that makes this world we live in fucking amazing!',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Life is still high school! People are still so worried about other people’s opinions and are confused that they think the world revolves around them.',
+            ],
+            [
+                'author' => 'Gary Vaynerchuk',
+                'content' => 'Get over yourself and go enjoy your life.',
+            ],
         ];
 
         $quotes = [];
