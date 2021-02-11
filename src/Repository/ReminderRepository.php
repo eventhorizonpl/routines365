@@ -74,9 +74,8 @@ class ReminderRepository extends ServiceEntityRepository
     public function findOneByNextDate(DateTimeImmutable $nextDate): ?Reminder
     {
         $queryBuilder = $this->createQueryBuilder('r')
-            ->select('r, rr, rrg, ru, rup')
+            ->select('r, rr, ru, rup')
             ->leftJoin('r.routine', 'rr')
-            ->leftJoin('rr.goals', 'rrg')
             ->leftJoin('r.user', 'ru')
             ->leftJoin('ru.profile', 'rup')
             ->where('r.deletedAt IS NULL')

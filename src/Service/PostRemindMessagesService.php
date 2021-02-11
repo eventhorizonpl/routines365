@@ -118,11 +118,16 @@ class PostRemindMessagesService
             ' starts at %s.',
             $reminder->getRoutineStartDateLocalTime()->format('H:i:s')
         );
-        if ($reminder->getRoutine()->getGoals()->count() > 0) {
+        if ($reminder->getRoutine()->getGoalsNotCompletedCount() > 0) {
             $message .= sprintf(
-                ' You have %d goals.',
-                $reminder->getRoutine()->getGoals()->count()
+                ' You have %d ',
+                $reminder->getRoutine()->getGoalsNotCompletedCount()
             );
+            if ($reminder->getRoutine()->getGoalsNotCompletedCount() > 1) {
+                $message .= 'goals.';
+            } else {
+                $message .= 'goal.';
+            }
         }
         $browserMessage = $message;
         $emailMessage = $message;
