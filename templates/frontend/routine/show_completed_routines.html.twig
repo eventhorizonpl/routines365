@@ -14,7 +14,7 @@
     </p>
     <p>
         {% for completed_routine in routine.completedRoutines|slice(-7) %}
-            <span class="badge badge-success m-1 p-3">
+            <span class="badge badge-primary m-1 p-3">
                 <i aria-hidden="true" class="bi bi-star"></i><br><br>
                 {% if completed_routine.date %}
                     {{ completed_routine.date|date('Y-m-d')|format_datetime('short', 'none') }}
