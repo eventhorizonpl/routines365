@@ -154,7 +154,7 @@ class Routine
 
         $totalMinutes *= 60;
 
-        return sprintf('%dd %dh %dm', $totalMinutes / 86400, $totalMinutes / 3600 % 24, $totalMinutes / 60 % 60);
+        return sprintf('%dh %dm',$totalMinutes / 3600, $totalMinutes / 60 % 60);
     }
 
     public function getCompletedRoutinesPercent(): int

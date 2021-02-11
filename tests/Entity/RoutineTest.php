@@ -245,11 +245,11 @@ final class RoutineTest extends AbstractTestCase
     {
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals('0d 0h 0m', $routine->getCompletedRoutinesDevotedTime());
+        $this->assertEquals('0h 0m', $routine->getCompletedRoutinesDevotedTime());
         $minutesDevoted = 30;
         $completedRoutine->setMinutesDevoted($minutesDevoted);
         $this->assertInstanceOf(Routine::class, $routine->addCompletedRoutine($completedRoutine));
-        $this->assertEquals('0d 0h '.$minutesDevoted.'m', $routine->getCompletedRoutinesDevotedTime());
+        $this->assertEquals('0h '.$minutesDevoted.'m', $routine->getCompletedRoutinesDevotedTime());
     }
 
     public function testGetCompletedRoutinesPercent(): void
