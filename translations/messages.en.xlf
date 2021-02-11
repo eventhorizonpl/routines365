@@ -513,10 +513,6 @@
         <source>Password reset email sent</source>
         <target>Password reset email sent</target>
       </trans-unit>
-      <trans-unit id="d2ASiR8" resname="Currently, this system is only available to invitees.">
-        <source>Currently, this system is only available to invitees.</source>
-        <target>Currently, this system is only available to invitees.</target>
-      </trans-unit>
       <trans-unit id="lpzL089" resname="Email">
         <source>Email</source>
         <target>Email</target>

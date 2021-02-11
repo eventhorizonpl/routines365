@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\Security;
+namespace App\Tests\Controller\Api;
 
 use App\Tests\AbstractUiTestCase;
 use Symfony\Component\HttpFoundation\Response;
