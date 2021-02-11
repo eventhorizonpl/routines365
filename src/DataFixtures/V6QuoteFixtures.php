@@ -2128,6 +2128,526 @@ class V6QuoteFixtures extends Fixture implements FixtureGroupInterface
                 'author' => 'Eric Thomas',
                 'content' => 'It’s not easy, but it’s simple.',
             ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Don’t let the negativity given to you by the world disempower you. Instead give to yourself that which empowers you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Everything you do and every decision you make should be from a place of good. You should always be striving to make the world a better place.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you don’t program yourself, life will program you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'A lot of people do not muster the courage to live their dreams because they are afraid to die.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'To sit on an idea or fail to act on a goal is not really goal-setting, but wishful thinking.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Wanting something is not enough. You must hunger for it. Your motivation must be absolutely compelling in order to overcome the obstacles that will invariably come your way.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Ask yourself if you’re one of the good people who successful people want to be around.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Act the way you want to be and soon you’ll be the way you act.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'It is important to surround yourself with people who life you up, encourage you, share your vision and inspire you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Life has no limitations, except the ones you make.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Success is both very personal and relative, depending on where you would like to be in your own life.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'No one can continually insult you or hurt your feelings without your permission.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Each of us owes someone. We all benefit by reaching out and helping others.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I believe adults and parents who do not get involved in children’s lives effectively forfeit any right to attempt to influence their lives.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You can make decisions like that about your life. If you are carrying strong feeling about something that happened in your past, they may hinder your ability to live in the present. You have to get rid of them.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'YOU decide what your limits are, and YOU decide your level of success. You are responsible for the time that you spend on this planet.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I often speak to people who wonder why they continue to fail. In many situations, they are concentrating their efforts in the wrong places period.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you put yourself in a position where you have to stretch outside your comfort zone, then you are forced to expand your consciousness and to strive and achieve.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Shoot for the moon. Even if you miss, you’ll land among the stars.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'There are people who are wise enough and motivated enough to change their lives and live their dreams, and then there are those who need a kick in the pants to change their ways.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Fear does not have any special power unless you empower it by submitting to it. You can accept that you are afraid and then move on.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you have children who love and respect you, this too can be a sign of your success.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You can get the kind of results that you are looking for in life if you are willing to work smart to achieve them.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I have learned that to get out of life what I expect, I must commit myself to beginning each day by concentrating on positive thoughts and focusing on my goals.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You can complain about the direction of your life all you want, but until you sit in the driver’s seat and begin to drive yourself, you aren’t going to get where you want to go!',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'It’s important to me that money not be important to me.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you want something, you have to be willing to pay your dues.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Are the people around you holding you back or empowering you to move forward? If you life is going nowhere, take a look at the group of people you hang around with.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'We have the capacity to change, to lead meaningful and productive lives by awakening our consciousness.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Dealing with life means taking advantage of each new challenge as an opportunity to learn and accomplish something new.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I don’t dwell on the things that are too late to fix, but I do my best to get life’s lessons and put them into action.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Make a conscious effort to let go of fear and act from a sense of consciousness that will empower and protect you. You are strong. You are greater than the fear!',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'One of the most essential things you need to do for yourself is to choose a goal that is important to you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Perfection does not exist - you can always do better and you can always grow.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Get your ideas on paper and study them. Do not let them go to waste!',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You must take action now that will move you towards your goals. Develop a sense of urgency in your life.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You don’t get in life what you want; you get in life what you are.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'A person with the right attitude says to himself or herself, I may be here in this situation, but it doesn’t mean I have to stay here. When faced with a challenge, do you ask: why me? Or do you accept the opportunity for you to grow?',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Reading about the lives of other achievers and their impact on our world inspires me to continue to help others realize their greatness.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Very often, the biggest hurdle in reaching a goal is getting started. And the second biggest hurdle is getting started in the right direction.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Without a solid, realistic and detailed plan, the goal is nothing more than a pipe dream. And without the commitment to follow through on that plan and put forth the necessary effort, the dream is nothing more than a good intention.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You gotta be hungry!',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Forgive yourself for your faults and your mistakes and move on.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Honor your commitments with integrity.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'In day-to-day commerce, television is not so much interested in the business of communications as in the business of delivering audiences to advertisers. People are the merchandise, not the shows. The shows are merely the bait.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Someone’s sitting in the shade today because someone planted a tree a long time ago.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Making things happen in your life requires a faith, or an ability to believe that is unshakable, regardless of your circumstances.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Set a goal that’s meaningful and compelling enough, and your skills, your knowledge and your effectiveness will expand in order to reach that goal.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you allow your self-esteem to erode, your fear will eat at you; ultimately it could destroy you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Life is more meaningful when you are always looking to grow and working toward a goal.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Not having goals is like having no idea where you want to go when you step up to an airline counter to buy a ticket.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Think big when you set your goals. Dare to think big and then set a series of smaller goals to get you there.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Negatively charged people sit on their "buts." Monitor your language. Listen to the way you respond to questions and situations.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you don’t move on life, life moves on you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'No runner ever won a race buy looking over his should and demeaning the competition.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Building your feelings of self-worth is critical to overcoming your fears.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Take the energy you are wasting feeling sorry for yourself and use it to help someone else.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Accept responsibility for your life. Know that it is you who will get you where you want to go, no one else.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Make a commitment today to get up, get out, get busy and get things done. You can create the life you long to have.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'All of us need to grow continuously in our lives.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When we spend our time looking at what other people do or what they have, we deprive ourselves of the opportunity to see our own value.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Other people’s opinion of you does not have to become your reality.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You cannot expect to achieve new goals or move beyond your present circumstances unless you change.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'How you spend your time will determine where the rewards will come in your life.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You have to realize that there is something special within you, a basic goodness that you must choose to manifest in every way you can - toward your family, your profession and your planet. Each of us has something good to offer.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I take pride in knowing that of all the things I have accomplished, no success or honor is greater than that of being a father.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you view all the things that happen to you, both good and bad, as opportunities, then you operate out of a higher level of consciousness.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I don’t believe that man was born to work for a living; I believe he was born to make what he lives for HIS WORK.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'In the end, it is the person you become, not the things you achieve, that is most important.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you died tomorrow, are there three things that your eulogists could say you did to make the world a better place for your having lived in it?',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Sometimes we have to discard the tools that we have long depended on and look to new ones. This is especially true in businesses where changing technology demands workers have the ability to change with it.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I am often fascinated by the resiliency of some of the people I meet. Life keeps knocking them down, but in what seems to be outright defiance, they keep getting up, stronger and better than before.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Are you taking your life for granted? Are you allowing your days to be consumed with boredom and frustration? Time is your most precious gift, not to be dwindled away in idleness or negativity.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Nobody is going to care more about your goals than you. Nobody is going put more time in on them than you. You have to find your own source of hunger and motivation and let it drive you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Success isn’t what you have, but who you are. And who you are can be measured in your character and in the positive impact your life has on the lives of people around you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I haven’t always been successful, but I’ve always had hope. I’ve always known that if I kept plugging away and doing my best, I’d be successful.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'The difference between setting a goal and achieving it is in having a good plan and working it.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'It is fine to achieve your accomplishments and savor your victories, but there is not enough time in life to reason your laurels for long.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'By focusing my attention on the solution to the problem rather than the problem, I was able to quickly turn what seemed like a major crisis into an opportunity.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'It is no fun to fail, but you must pick yourself you and get back in the race. The only way you can grow is to challenge yourself beyond your present circumstances.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Your smile will give you a positive countenance that will make people feel comfortable around you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Just because fate doesn’t deal you the right cards, it doesn’t mean you should give up. It just means you have to play the cards you get to their maximum potential.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You are never too old to set another goal or to dream a new dream.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Once you have committed to something and achieved it, you experience self-fulfillment - the feeling of success and empowerment.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Positively charged people choose to react positively to life because they see no benefit in letting life get the upper hand. They don’t assign blame or look for a cause when a problem occurs. They look for the solution.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Always realize that you can get better. Your best work has not been done yet. Practice! Practice! Practice!',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you decide to move your life to the next level of accomplishment, you must fasten you mental and spiritual seat belts because it is going to be a while before you reach that comfortable level again.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You cannot be wimpy out there on the dream-seeking trail. Dare to break through barriers, to find your own path.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you set goals and go after them with all the determination you can muster, your gifts will take you places that will amaze you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Forgive those who have hurt you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'All of us need to grow continuously in our lives. If you are the same person now that you were a year ago or even a day ago, then you are not growing.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You may not always be able to control what life puts in your path, but I believe you can always control who you are.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Sometimes I believe it is best to take the child’s approach to life, which assumes no limitation at all. Children set out to do things without knowing that they are not supposed to be able to do them.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you are carrying strong feelings about something that happened in your past, they may hinder your ability to live in the present.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you take responsibility for yourself you will develop a hunger to accomplish your dreams.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you put yourself in a position where you have to stretch outside your comfort zone, then you are forced to expand your consciousness.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Anytime you suffer a setback or disappointment, put your head down and plow ahead.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'And when there isn’t anything around to make me laugh, I make something up.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Help others achieve their dreams and you will achieve yours.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Goals help you channel your energy into action.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'There are winners, there are losers and there are people who have not yet learned how to win.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I learned from my mother that there is a greatness in all of us, and that all of us are delivered to this world with a mission.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you feel a complaint coming on, step forward to take positive, productive actions instead. Use your time and energy to accomplish great things instead of worrying, placing blame or spreading criticism.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Some people would rather get even instead of get ahead.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Your ability to communicate is an important tool in your pursuit of your goals, whether it is with your family, your co-workers or your clients and customers.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I believe that life is a journey, often difficult and sometimes incredibly cruel, but we are well equipped for it if only we tap into our talents and gifts and allow them to blossom.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Life takes on meaning when you become motivated, set goals and charge after them in an unstoppable manner.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'We must look for ways to be an active force in our own lives. We must take charge of our own destinies, design a life of substance and truly begin to live our dreams.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you face your fear, most of the time you will discover that it was not really such a big threat after all. We all need some form of deeply rooted, powerful motivation - it empowers us to overcome obstacles so we can live our dreams.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'If you have no vision of yourself in the future, then you have nothing to live for.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Don’t waste time bathing in the negative experience. Spin your energy and focus your attention on moving on. Take the lesson from the hardship, and use it in the future.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Years ago there was belief that the world was flat. People were born into that belief and they took it on faith that if they went too far from the shoreline in a boat they would fall off the earth. Columbus sailed on.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Remember that what you are feeling does not reflect your reality! We cannot always control the thoughts that come into our minds, but we can control the thoughts that we dwell on.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'True honesty is hard. Throughout my career, I’ve faced moments where I’ve needed to take an honest look at myself and face some very uncomfortable realities.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Live out of your imagination instead of out of your memory.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'The most successful people in life get that way by putting passion and commitment into their work.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you make a mistake, you are presented with an opportunity to gain wisdom. And the only way to experience true wisdom is through your mistakes.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'The fact is, discipline is only punishment when imposed on you by someone else. When you discipline yourself, it’s not punishment but empowerment.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'I advise you to say your dream is possible and then overcome all inconveniences, ignore all the hassles and take a running leap through the hoop, even if it is in flames.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'It takes someone with a vision of the possibilities to attain new levels of experience. Someone with the courage to live his dreams.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Your goals are the road maps that guide you and show you what is possible for your life.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Too many of us are not living our dreams because we are living our fears.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Too many of us never realize our full potential because our fears block us.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'When you’re strong enough and confident enough to speak the truth, you gain respect and influence. Being honest and straightforward will also open doors for you.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Every day of your life, you have the opportunity to mold your destiny by virtue of the actions you choose to take.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Character may be manifested in the great moments, but it is made in the small ones.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You must see your goals clearly and specifically before you can set out for them. Hold them in your mind until they become second nature.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'Change is difficult but often essential to survival.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'You need to make a commitment, and once you make it, then life will give you some answers.',
+            ],
+            [
+                'author' => 'Les Brown',
+                'content' => 'The only limits to the possibilities in your life tomorrow are the buts you use today.',
+            ],
         ];
 
         $quotes = [];
