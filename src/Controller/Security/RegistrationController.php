@@ -77,16 +77,12 @@ class RegistrationController extends AbstractController
             $userManager->save($user);
 
             $account = $user->getAccount();
-            $browserNotifications = 10;
-            $emailNotifications = 10;
-            if ((true === $account->canDepositBrowserNotifications($browserNotifications)) &&
-                (true === $account->canDepositEmailNotifications($emailNotifications))
-            ) {
+            $notifications = 10;
+            if (true === $account->canDepositNotifications($notifications)) {
                 $accountOperation = $accountOperationService->deposit(
                     $account,
-                    $browserNotifications,
                     '+10 notifications promotion for new registration',
-                    $emailNotifications,
+                    $notifications,
                     0
                 );
             }

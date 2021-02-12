@@ -301,13 +301,13 @@
         <source>Logout</source>
         <target>Logout</target>
       </trans-unit>
-      <trans-unit id="u3I07BJ" resname="Register">
-        <source>Register</source>
-        <target>Register</target>
-      </trans-unit>
       <trans-unit id="nWMiwfT" resname="Login">
         <source>Login</source>
         <target>Login</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Register</target>
       </trans-unit>
       <trans-unit id="wcIksDz" resname="Admin">
         <source>Admin</source>
@@ -457,6 +457,10 @@
         <source>Facebook</source>
         <target>Facebook</target>
       </trans-unit>
+      <trans-unit id="3YRCW3L" resname="LinkedIn">
+        <source>LinkedIn</source>
+        <target>LinkedIn</target>
+      </trans-unit>
       <trans-unit id="utV_94N" resname="Instagram">
         <source>Instagram</source>
         <target>Instagram</target>
@@ -468,6 +472,10 @@
       <trans-unit id="vNGOrV_" resname="Twitter">
         <source>Twitter</source>
         <target>Twitter</target>
+      </trans-unit>
+      <trans-unit id="_3rM..j" resname="YouTube">
+        <source>YouTube</source>
+        <target>YouTube</target>
       </trans-unit>
       <trans-unit id="jfx3q0C" resname="Copyright">
         <source>Copyright</source>
@@ -500,6 +508,10 @@
       <trans-unit id="WfpDeb4" resname="Reset your password">
         <source>Reset your password</source>
         <target>Reset your password</target>
+      </trans-unit>
+      <trans-unit id="UZulcve" resname="Enter your email address, and we will send you a link to reset your password.">
+        <source>Enter your email address, and we will send you a link to reset your password.</source>
+        <target>Enter your email address, and we will send you a link to reset your password.</target>
       </trans-unit>
       <trans-unit id="y2XxXvP" resname="Send password reset email">
         <source>Send password reset email</source>
@@ -576,6 +588,10 @@
       <trans-unit id="DLrrGMo" resname="Completed projects">
         <source>Completed projects</source>
         <target>Completed projects</target>
+      </trans-unit>
+      <trans-unit id="u7jysaO" resname="Efficiency 11">
+        <source>Efficiency 11</source>
+        <target>Efficiency 11</target>
       </trans-unit>
       <trans-unit id="uq3fcPt" resname="Type">
         <source>Type</source>
@@ -913,9 +929,9 @@
         <source>Configuration</source>
         <target>Configuration</target>
       </trans-unit>
-      <trans-unit id="0aFhj5F" resname="Account available email notifications limit">
-        <source>Account available email notifications limit</source>
-        <target>Account available email notifications limit</target>
+      <trans-unit id="VskTjIX" resname="Account available notifications limit">
+        <source>Account available notifications limit</source>
+        <target>Account available notifications limit</target>
       </trans-unit>
       <trans-unit id="Jplw2wy" resname="Account available SMS notifications limit">
         <source>Account available SMS notifications limit</source>
@@ -932,6 +948,14 @@
       <trans-unit id="lJyhcbP" resname="Motivate a friend enabled">
         <source>Motivate a friend enabled</source>
         <target>Motivate a friend enabled</target>
+      </trans-unit>
+      <trans-unit id="oJbYtit" resname="Notification browser enabled">
+        <source>Notification browser enabled</source>
+        <target>Notification browser enabled</target>
+      </trans-unit>
+      <trans-unit id="qzqH9hA" resname="Notification SMS enabled">
+        <source>Notification SMS enabled</source>
+        <target>Notification SMS enabled</target>
       </trans-unit>
       <trans-unit id="L26NG5z" resname="Promotions enabled">
         <source>Promotions enabled</source>
@@ -981,13 +1005,9 @@
         <source>Account operation details</source>
         <target>Account operation details</target>
       </trans-unit>
-      <trans-unit id="d2G1cqu" resname="Browser notifications">
-        <source>Browser notifications</source>
-        <target>Browser notifications</target>
-      </trans-unit>
-      <trans-unit id="qrebqUw" resname="Email notifications">
-        <source>Email notifications</source>
-        <target>Email notifications</target>
+      <trans-unit id="eIARgzp" resname="Notifications">
+        <source>Notifications</source>
+        <target>Notifications</target>
       </trans-unit>
       <trans-unit id="88y_63u" resname="Sms notifications">
         <source>Sms notifications</source>
@@ -1153,21 +1173,13 @@
         <source>Time zone</source>
         <target>Time zone</target>
       </trans-unit>
-      <trans-unit id="A2S_u.3" resname="Available browser notifications">
-        <source>Available browser notifications</source>
-        <target>Available browser notifications</target>
+      <trans-unit id="VonBJZQ" resname="Available notifications">
+        <source>Available notifications</source>
+        <target>Available notifications</target>
       </trans-unit>
-      <trans-unit id="lORgZ6V" resname="Add free browser notifications">
-        <source>Add free browser notifications</source>
-        <target>Add free browser notifications</target>
-      </trans-unit>
-      <trans-unit id=".JnXBkf" resname="Available email notifications">
-        <source>Available email notifications</source>
-        <target>Available email notifications</target>
-      </trans-unit>
-      <trans-unit id="PDwjM.3" resname="Add free email notifications">
-        <source>Add free email notifications</source>
-        <target>Add free email notifications</target>
+      <trans-unit id="UXNhnf_" resname="Add free notifications">
+        <source>Add free notifications</source>
+        <target>Add free notifications</target>
       </trans-unit>
       <trans-unit id="tgk1c4L" resname="Available sms notifications">
         <source>Available sms notifications</source>
@@ -1676,30 +1688,6 @@
       <trans-unit id="L8jgrZx" resname="Edit a goal">
         <source>Edit a goal</source>
         <target>Edit a goal</target>
-      </trans-unit>
-      <trans-unit id="UZulcve" resname="Enter your email address, and we will send you a link to reset your password.">
-        <source>Enter your email address, and we will send you a link to reset your password.</source>
-        <target>Enter your email address, and we will send you a link to reset your password.</target>
-      </trans-unit>
-      <trans-unit id="u7jysaO" resname="Efficiency 11">
-        <source>Efficiency 11</source>
-        <target>Efficiency 11</target>
-      </trans-unit>
-      <trans-unit id="_3rM..j" resname="YouTube">
-        <source>YouTube</source>
-        <target>YouTube</target>
-      </trans-unit>
-      <trans-unit id="3YRCW3L" resname="LinkedIn">
-        <source>LinkedIn</source>
-        <target>LinkedIn</target>
-      </trans-unit>
-      <trans-unit id="oJbYtit" resname="Notification browser enabled">
-        <source>Notification browser enabled</source>
-        <target>Notification browser enabled</target>
-      </trans-unit>
-      <trans-unit id="qzqH9hA" resname="Notification SMS enabled">
-        <source>Notification SMS enabled</source>
-        <target>Notification SMS enabled</target>
       </trans-unit>
     </body>
   </file>

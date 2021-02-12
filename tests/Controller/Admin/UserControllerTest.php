@@ -180,10 +180,7 @@ final class UserControllerTest extends AbstractUiTestCase
             $crawler->filter('label:contains("Time zone")')->count() > 0
         );
         $this->assertTrue(
-            $crawler->filter('label:contains("Browser notifications")')->count() > 0
-        );
-        $this->assertTrue(
-            $crawler->filter('label:contains("Email notifications")')->count() > 0
+            $crawler->filter('label:contains("Notifications")')->count() > 0
         );
         $this->assertTrue(
             $crawler->filter('label:contains("Sms notifications")')->count() > 0

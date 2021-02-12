@@ -109,9 +109,8 @@ class UserController extends AbstractController
 
             $accountOperation = $accountOperationService->deposit(
                 $user->getAccount(),
-                $form->get('browserNotifications')->getData(),
                 'Free notifications',
-                $form->get('emailNotifications')->getData(),
+                $form->get('notifications')->getData(),
                 $form->get('smsNotifications')->getData()
             );
 

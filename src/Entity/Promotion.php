@@ -51,24 +51,6 @@ class Promotion
     private ?string $description;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
-     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("int", groups={"form", "system"})
-     * @ORM\Column(type="integer")
-     */
-    private int $browserNotifications;
-
-    /**
-     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
-     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("int", groups={"form", "system"})
-     * @ORM\Column(type="integer")
-     */
-    private int $emailNotifications;
-
-    /**
      * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
@@ -81,6 +63,15 @@ class Promotion
      * @ORM\Column(length=128, type="string")
      */
     private ?string $name;
+
+    /**
+     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
+     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
+     * @Assert\NotBlank(groups={"form", "system"})
+     * @Assert\Type("int", groups={"form", "system"})
+     * @ORM\Column(type="integer")
+     */
+    private int $notifications;
 
     /**
      * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
@@ -102,12 +93,11 @@ class Promotion
 
     public function __construct()
     {
-        $this->browserNotifications = 0;
         $this->code = '';
         $this->description = null;
         $this->isEnabled = true;
-        $this->emailNotifications = 0;
         $this->name = '';
+        $this->notifications = 0;
         $this->smsNotifications = 0;
         $this->users = new ArrayCollection();
     }
@@ -115,18 +105,6 @@ class Promotion
     public function __toString(): string
     {
         return $this->getCode();
-    }
-
-    public function getBrowserNotifications(): int
-    {
-        return $this->browserNotifications;
-    }
-
-    public function setBrowserNotifications(int $browserNotifications): self
-    {
-        $this->browserNotifications = abs($browserNotifications);
-
-        return $this;
     }
 
     public function getCode(): string
@@ -153,18 +131,6 @@ class Promotion
         return $this;
     }
 
-    public function getEmailNotifications(): ?int
-    {
-        return $this->emailNotifications;
-    }
-
-    public function setEmailNotifications(int $emailNotifications): self
-    {
-        $this->emailNotifications = $emailNotifications;
-
-        return $this;
-    }
-
     public function getExpiresAt(): ?DateTimeImmutable
     {
         return $this->expiresAt;
@@ -185,6 +151,18 @@ class Promotion
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getNotifications(): ?int
+    {
+        return $this->notifications;
+    }
+
+    public function setNotifications(int $notifications): self
+    {
+        $this->notifications = $notifications;
 
         return $this;
     }

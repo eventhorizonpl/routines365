@@ -15,13 +15,8 @@
                                 <th>
                                     {{ 'Description'|trans }}
                                 </th>
-                                {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
-                                    <th>
-                                        {{ 'Browser notifications'|trans }}
-                                    </th>
-                                {% endif %}
                                 <th>
-                                    {{ 'Email notifications'|trans }}
+                                    {{ 'Notifications'|trans }}
                                 </th>
                                 {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
                                     <th>
@@ -39,13 +34,8 @@
                                     <td>
                                         {{ account_operation.description }}
                                     </td>
-                                    {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
-                                        <td>
-                                            {{ account_operation.browserNotifications }}
-                                        </td>
-                                    {% endif %}
                                     <td>
-                                        {{ account_operation.emailNotifications }}
+                                        {{ account_operation.notifications }}
                                     </td>
                                     {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
                                         <td>

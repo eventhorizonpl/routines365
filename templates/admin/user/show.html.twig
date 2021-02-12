@@ -205,31 +205,16 @@
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    {{ 'Available browser notifications'|trans }}
+                                    {{ 'Available notifications'|trans }}
                                 </th>
                                 <td>
                                     {% if user.account %}
-                                        {{ user.account.availableBrowserNotifications }}
-                                    {% endif %}
-
-                                    <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_account_operation_add_free_browser', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
-                                        <i aria-hidden="true" class="bi bi-plus-square"></i>
-                                        {{ 'Add free browser notifications'|trans }}
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    {{ 'Available email notifications'|trans }}
-                                </th>
-                                <td>
-                                    {% if user.account %}
-                                        {{ user.account.availableEmailNotifications }}
+                                        {{ user.account.availableNotifications }}
                                     {% endif %}
 
                                     <a class="btn btn-primary btn-sm float-right" href="{{ path('admin_account_operation_add_free_email', {'uuid': user.account}) }}" onclick="return confirm('Are you sure you want to execute this?');">
                                         <i aria-hidden="true" class="bi bi-plus-square"></i>
-                                        {{ 'Add free email notifications'|trans }}
+                                        {{ 'Add free notifications'|trans }}
                                     </a>
                                 </td>
                             </tr>

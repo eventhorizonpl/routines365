@@ -18,12 +18,11 @@ class PromotionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('browserNotifications')
             ->add('code')
             ->add('description', TextareaType::class, [
                 'required' => false,
             ])
-            ->add('emailNotifications')
+            ->add('notifications')
             ->add('expiresAt', DateTimeType::class, [
                 'date_widget' => 'single_text',
                 'input' => 'datetime_immutable',

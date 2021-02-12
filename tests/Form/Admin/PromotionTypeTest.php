@@ -36,10 +36,9 @@ final class PromotionTypeTest extends TypeTestCase
         return [
             [
                 'data' => [
-                    'browserNotifications' => 10,
                     'code' => 'test code',
                     'description' => 'test description',
-                    'emailNotifications' => 10,
+                    'notifications' => 10,
                     'isEnabled' => true,
                     'name' => 'test name',
                     'smsNotifications' => 10,

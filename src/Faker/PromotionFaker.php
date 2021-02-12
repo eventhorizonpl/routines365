@@ -27,24 +27,15 @@ class PromotionFaker
     }
 
     public function createPromotion(
-        ?int $browserNotifications = null,
         ?string $code = null,
-        ?int $emailNotifications = null,
         ?bool $isEnabled = null,
         ?string $name = null,
+        ?int $notifications = null,
         ?int $smsNotifications = null,
         ?string $type = null
     ): Promotion {
-        if (null === $browserNotifications) {
-            $browserNotifications = (int) $this->faker->numberBetween(1, 10);
-        }
-
         if (null === $code) {
             $code = (string) $this->faker->word;
-        }
-
-        if (null === $emailNotifications) {
-            $emailNotifications = (int) $this->faker->numberBetween(1, 10);
         }
 
         if (null === $isEnabled) {
@@ -53,6 +44,10 @@ class PromotionFaker
 
         if (null === $name) {
             $name = (string) $this->faker->text(64);
+        }
+
+        if (null === $notifications) {
+            $notifications = (int) $this->faker->numberBetween(1, 10);
         }
 
         if (null === $smsNotifications) {
@@ -66,11 +61,10 @@ class PromotionFaker
         }
 
         $promotion = $this->promotionFactory->createPromotionWithRequired(
-            $browserNotifications,
             $code,
-            $emailNotifications,
             $isEnabled,
             $name,
+            $notifications,
             $smsNotifications,
             $type
         );
@@ -79,20 +73,18 @@ class PromotionFaker
     }
 
     public function createPromotionPersisted(
-        ?int $browserNotifications = null,
         ?string $code = null,
-        ?int $emailNotifications = null,
         ?bool $isEnabled = null,
         ?string $name = null,
+        ?int $notifications = null,
         ?int $smsNotifications = null,
         ?string $type = null
     ): Promotion {
         $promotion = $this->createPromotion(
-            $browserNotifications,
             $code,
-            $emailNotifications,
             $isEnabled,
             $name,
+            $notifications,
             $smsNotifications,
             $type
         );

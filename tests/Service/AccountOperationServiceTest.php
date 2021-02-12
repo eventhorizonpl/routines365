@@ -58,22 +58,19 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
         $user->setReferrer($userReferrer);
         $user->getAccount();
 
-        $browserNotifications = 10;
         $description = 'test deposit';
-        $emailNotifications = 11;
+        $notifications = 11;
         $smsNotifications = 12;
 
         $accountOperation = $this->accountOperationService->deposit(
             $user->getAccount(),
-            $browserNotifications,
             $description,
-            $emailNotifications,
+            $notifications,
             $smsNotifications
         );
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
-        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
         $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
+        $this->assertEquals($notifications, $accountOperation->getNotifications());
         $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
         $this->assertEquals(AccountOperation::TYPE_DEPOSIT, $accountOperation->getType());
     }
@@ -87,7 +84,6 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
 
         $accountOperation = $this->accountOperationService->deposit(
             $user->getAccount(),
-            100000,
             'test deposit',
             100000,
             100000,
@@ -101,23 +97,20 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
         $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
         $user->getAccount();
 
-        $browserNotifications = 10;
         $description = 'test withdraw';
-        $emailNotifications = 11;
+        $notifications = 11;
         $smsNotifications = 12;
 
         $accountOperation = $this->accountOperationService->withdraw(
             $user->getAccount(),
-            $browserNotifications,
             $description,
-            $emailNotifications,
+            $notifications,
             $smsNotifications,
             $reminderMessage
         );
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
-        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
         $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
+        $this->assertEquals($notifications, $accountOperation->getNotifications());
         $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
         $this->assertEquals(AccountOperation::TYPE_WITHDRAW, $accountOperation->getType());
     }
@@ -131,7 +124,6 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
 
         $accountOperation = $this->accountOperationService->withdraw(
             $user->getAccount(),
-            100000,
             'test withdraw',
             100000,
             100000,

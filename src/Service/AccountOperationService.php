@@ -26,19 +26,16 @@ class AccountOperationService
 
     public function deposit(
         Account $account,
-        int $browserNotifications,
         string $description,
-        int $emailNotifications,
+        int $notifications,
         int $smsNotifications,
         bool $topupReferrerAccount = true
     ): AccountOperation {
-        if ((true === $account->canDepositBrowserNotifications($browserNotifications)) &&
-            (true === $account->canDepositEmailNotifications($emailNotifications)) &&
+        if ((true === $account->canDepositNotifications($notifications)) &&
             (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
-                $browserNotifications,
                 $description,
-                $emailNotifications,
+                $notifications,
                 $smsNotifications,
                 AccountOperation::TYPE_DEPOSIT
             );
@@ -47,13 +44,9 @@ class AccountOperationService
 
             if ((null !== $account->getUser()->getReferrer()) && (true === $topupReferrerAccount)) {
                 $referrerAccount = $account->getUser()->getReferrer()->getAccount();
-                $referrerBrowserNotifications = (int) ($browserNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
-                if ((0 < $emailNotifications) && (0 === $referrerBrowserNotifications)) {
-                    $referrerBrowserNotifications = 1;
-                }
-                $referrerEmailNotifications = (int) ($emailNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
-                if ((0 < $emailNotifications) && (0 === $referrerEmailNotifications)) {
-                    $referrerEmailNotifications = 1;
+                $referrerNotifications = (int) ($notifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
+                if ((0 < $notifications) && (0 === $referrerNotifications)) {
+                    $referrerNotifications = 1;
                 }
                 $referrerSmsNotifications = (int) ($smsNotifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
                 if ((0 < $smsNotifications) && (0 === $referrerSmsNotifications)) {
@@ -61,9 +54,8 @@ class AccountOperationService
                 }
                 $referrerAccountOperation = $this->deposit(
                     $referrerAccount,
-                    $referrerBrowserNotifications,
                     'Referrer bonus',
-                    $referrerEmailNotifications,
+                    $referrerNotifications,
                     $referrerSmsNotifications,
                     false
                 );
@@ -77,18 +69,16 @@ class AccountOperationService
 
     public function withdraw(
         Account $account,
-        int $browserNotifications,
         string $description,
-        int $emailNotifications,
+        int $notifications,
         int $smsNotifications,
         ReminderMessage $reminderMessage = null
     ): AccountOperation {
-        if ((true === $account->canWithdrawEmailNotifications($emailNotifications)) &&
+        if ((true === $account->canWithdrawNotifications($notifications)) &&
             (true === $account->canWithdrawSmsNotifications($smsNotifications))) {
             $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
-                $browserNotifications,
                 $description,
-                $emailNotifications,
+                $notifications,
                 $smsNotifications,
                 AccountOperation::TYPE_WITHDRAW
             );

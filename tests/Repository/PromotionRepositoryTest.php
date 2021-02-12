@@ -92,7 +92,7 @@ final class PromotionRepositoryTest extends AbstractDoctrineTestCase
     public function testFindOneByCodeAndType(): void
     {
         $this->purge();
-        $promotion = $this->promotionFaker->createPromotionPersisted(null, null, null, true);
+        $promotion = $this->promotionFaker->createPromotionPersisted(null, true);
 
         $promotion2 = $this->promotionRepository->findOneByCodeAndType($promotion->getCode(), $promotion->getType());
         $this->assertInstanceOf(Promotion::class, $promotion2);

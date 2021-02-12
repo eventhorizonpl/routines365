@@ -74,12 +74,10 @@ class AccountOperationManager
 
         $account = $accountOperation->getAccount();
         if (AccountOperation::TYPE_DEPOSIT === $accountOperation->getType()) {
-            $account->depositBrowserNotifications($accountOperation->getBrowserNotifications());
-            $account->depositEmailNotifications($accountOperation->getEmailNotifications());
+            $account->depositNotifications($accountOperation->getNotifications());
             $account->depositSmsNotifications($accountOperation->getSmsNotifications());
         } elseif (AccountOperation::TYPE_WITHDRAW === $accountOperation->getType()) {
-            $account->withdrawBrowserNotifications($accountOperation->getBrowserNotifications());
-            $account->withdrawEmailNotifications($accountOperation->getEmailNotifications());
+            $account->withdrawNotifications($accountOperation->getNotifications());
             $account->withdrawSmsNotifications($accountOperation->getSmsNotifications());
         }
 

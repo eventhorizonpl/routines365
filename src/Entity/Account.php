@@ -44,16 +44,7 @@ class Account
      * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
-    private int $availableBrowserNotifications;
-
-    /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
-     * @Groups({"gdpr"})
-     * @ORM\Column(type="integer")
-     */
-    private int $availableEmailNotifications;
+    private int $availableNotifications;
 
     /**
      * @Assert\GreaterThanOrEqual(0)
@@ -66,9 +57,8 @@ class Account
 
     public function __construct()
     {
-        $this->availableBrowserNotifications = 0;
         $this->accountOperations = new ArrayCollection();
-        $this->availableEmailNotifications = 0;
+        $this->availableNotifications = 0;
         $this->availableSmsNotifications = 0;
     }
 
@@ -108,90 +98,46 @@ class Account
         return $this;
     }
 
-    public function canDepositBrowserNotifications(int $browserNotifications): bool
+    public function canDepositNotifications(int $notifications): bool
     {
-        if (ConfigResource::ACCOUNT_AVAILABLE_BROWSER_NOTIFICATIONS_LIMIT > ($this->getAvailableBrowserNotifications() + $browserNotifications)) {
+        if (ConfigResource::ACCOUNT_AVAILABLE_NOTIFICATIONS_LIMIT > ($this->getAvailableNotifications() + $notifications)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function depositBrowserNotifications(int $browserNotifications): self
+    public function depositNotifications(int $notifications): self
     {
-        $this->setAvailableBrowserNotifications($this->getAvailableBrowserNotifications() + $browserNotifications);
+        $this->setAvailableNotifications($this->getAvailableNotifications() + $notifications);
 
         return $this;
     }
 
-    public function getAvailableBrowserNotifications(): int
+    public function getAvailableNotifications(): int
     {
-        return $this->availableBrowserNotifications;
+        return $this->availableNotifications;
     }
 
-    public function setAvailableBrowserNotifications(int $availableBrowserNotifications): self
+    public function setAvailableNotifications(int $availableNotifications): self
     {
-        $this->availableBrowserNotifications = $availableBrowserNotifications;
+        $this->availableNotifications = $availableNotifications;
 
         return $this;
     }
 
-    public function canWithdrawBrowserNotifications(int $browserNotifications): bool
+    public function canWithdrawNotifications(int $notifications): bool
     {
-        if (0 <= ($this->getAvailableBrowserNotifications() - $browserNotifications)) {
+        if (0 <= ($this->getAvailableNotifications() - $notifications)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function withdrawBrowserNotifications(int $browserNotifications): self
+    public function withdrawNotifications(int $notifications): self
     {
-        $this->setAvailableBrowserNotifications($this->getAvailableBrowserNotifications() - $browserNotifications);
-
-        return $this;
-    }
-
-    public function canDepositEmailNotifications(int $emailNotifications): bool
-    {
-        if (ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT > ($this->getAvailableEmailNotifications() + $emailNotifications)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function depositEmailNotifications(int $emailNotifications): self
-    {
-        $this->setAvailableEmailNotifications($this->getAvailableEmailNotifications() + $emailNotifications);
-
-        return $this;
-    }
-
-    public function getAvailableEmailNotifications(): int
-    {
-        return $this->availableEmailNotifications;
-    }
-
-    public function setAvailableEmailNotifications(int $availableEmailNotifications): self
-    {
-        $this->availableEmailNotifications = $availableEmailNotifications;
-
-        return $this;
-    }
-
-    public function canWithdrawEmailNotifications(int $emailNotifications): bool
-    {
-        if (0 <= ($this->getAvailableEmailNotifications() - $emailNotifications)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function withdrawEmailNotifications(int $emailNotifications): self
-    {
-        $this->setAvailableEmailNotifications($this->getAvailableEmailNotifications() - $emailNotifications);
+        $this->setAvailableNotifications($this->getAvailableNotifications() - $notifications);
 
         return $this;
     }

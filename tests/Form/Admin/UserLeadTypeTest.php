@@ -55,7 +55,7 @@ final class UserLeadTypeTest extends TypeTestCase
                 'data' => [
                     'email' => 'test email',
                     'plainPassword' => 'test plainPassword',
-                    'emailNotifications' => 10,
+                    'notifications' => 10,
                     'smsNotifications' => 10,
                     'profile' => [
                         'sendWeeklyMonthlyStatistics' => true,

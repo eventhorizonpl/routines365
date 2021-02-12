@@ -46,10 +46,9 @@ class V4PromotionFixtures extends Fixture implements DependentFixtureInterface, 
     {
         $dataset = [
             [
-                'browser_notifications' => 10,
                 'code' => 'REWARD10',
-                'email_notifications' => 10,
                 'name' => '+10 notifications reward promotion',
+                'notifications' => 10,
                 'sms_notifications' => 0,
                 'type' => Promotion::TYPE_SYSTEM,
             ],
@@ -58,11 +57,10 @@ class V4PromotionFixtures extends Fixture implements DependentFixtureInterface, 
         $promotions = [];
         foreach ($dataset as $data) {
             $promotions[] = $this->promotionFactory->createPromotionWithRequired(
-                $data['browser_notifications'],
                 $data['code'],
-                $data['email_notifications'],
                 true,
                 $data['name'],
+                $data['notifications'],
                 $data['sms_notifications'],
                 $data['type']
             );

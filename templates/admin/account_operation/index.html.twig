@@ -53,14 +53,11 @@
                             <th{% if account_operations.isSorted('aoau.Email') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(account_operations, 'Email'|trans, 'aoau.email') }}
                             </th>
-                            <th{% if account_operations.isSorted('ao.BrowserNotifications') %} class="sorted"{% endif %}>
-                                {{ knp_pagination_sortable(account_operations, 'Browser notifications'|trans, 'ao.browserNotifications') }}
-                            </th>
                             <th{% if account_operations.isSorted('ao.description') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(account_operations, 'Description'|trans, 'ao.description') }}
                             </th>
                             <th{% if account_operations.isSorted('ao.EmailNotifications') %} class="sorted"{% endif %}>
-                                {{ knp_pagination_sortable(account_operations, 'Email notifications'|trans, 'ao.emailNotifications') }}
+                                {{ knp_pagination_sortable(account_operations, 'Notifications'|trans, 'ao.notifications') }}
                             </th>
                             <th{% if account_operations.isSorted('ao.SmsNotifications') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(account_operations, 'Sms notifications'|trans, 'ao.smsNotifications') }}
@@ -95,13 +92,10 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    {{ account_operation.browserNotifications }}
-                                </td>
-                                <td>
                                     {{ account_operation.description }}
                                 </td>
                                 <td>
-                                    {{ account_operation.emailNotifications }}
+                                    {{ account_operation.notifications }}
                                 </td>
                                 <td>
                                     {{ account_operation.smsNotifications }}
@@ -131,7 +125,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="10">
+                                <td colspan="9">
                                     {{ 'No records found'|trans }}
                                 </td>
                             </tr>

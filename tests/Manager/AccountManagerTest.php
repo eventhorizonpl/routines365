@@ -63,8 +63,8 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
         $this->purge();
         $account = $this->createAccount();
         $user = $account->getUser();
-        $availableEmailNotifications = 987;
-        $account->setAvailableEmailNotifications($availableEmailNotifications);
+        $availableNotifications = 987;
+        $account->setAvailableNotifications($availableNotifications);
         $accountId = $account->getId();
         $accounts = [];
         $accounts[] = $account;
@@ -74,7 +74,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
 
         $account2 = $this->accountRepository->findOneById($accountId);
         $this->assertInstanceOf(Account::class, $account2);
-        $this->assertEquals($availableEmailNotifications, $account2->getAvailableEmailNotifications());
+        $this->assertEquals($availableNotifications, $account2->getAvailableNotifications());
     }
 
     public function testDelete(): void
@@ -106,7 +106,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
         $account = $user->getAccount();
-        $account->setAvailableEmailNotifications(-1);
+        $account->setAvailableNotifications(-1);
 
         $accountManager = $this->accountManager->save($account, (string) $user, true);
     }
@@ -156,7 +156,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
         $errors = $this->accountManager->validate($account);
         $this->assertCount(0, $errors);
 
-        $account->setAvailableEmailNotifications(-1);
+        $account->setAvailableNotifications(-1);
         $errors = $this->accountManager->validate($account);
         $this->assertCount(1, $errors);
     }

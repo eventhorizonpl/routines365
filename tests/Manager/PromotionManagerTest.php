@@ -60,9 +60,9 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $emailNotifications = 7;
+        $notifications = 7;
         $promotion = $this->promotionFaker->createPromotionPersisted();
-        $promotion->setEmailNotifications($emailNotifications);
+        $promotion->setNotifications($notifications);
         $promotionId = $promotion->getId();
         $promotions = [];
         $promotions[] = $promotion;
@@ -72,7 +72,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
 
         $promotion2 = $this->promotionRepository->findOneById($promotionId);
         $this->assertInstanceOf(Promotion::class, $promotion2);
-        $this->assertEquals($emailNotifications, $promotion2->getEmailNotifications());
+        $this->assertEquals($notifications, $promotion2->getNotifications());
     }
 
     public function testDelete(): void
@@ -104,7 +104,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
         $promotion = $this->promotionFaker->createPromotionPersisted();
-        $promotion->setEmailNotifications(-1);
+        $promotion->setNotifications(-1);
 
         $promotionManager = $this->promotionManager->save($promotion, (string) $user, true);
     }
@@ -154,7 +154,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
         $errors = $this->promotionManager->validate($promotion);
         $this->assertCount(0, $errors);
 
-        $promotion->setEmailNotifications(-1);
+        $promotion->setNotifications(-1);
         $errors = $this->promotionManager->validate($promotion);
         $this->assertCount(1, $errors);
     }

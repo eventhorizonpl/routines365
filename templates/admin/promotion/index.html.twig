@@ -66,11 +66,8 @@
                             <th{% if promotions.isSorted('p.IsEnabled') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(promotions, 'Is enabled'|trans, 'p.isEnabled') }}
                             </th>
-                            <th{% if promotions.isSorted('p.BrowserNotifications') %} class="sorted"{% endif %}>
-                                {{ knp_pagination_sortable(promotions, 'Browser notifications'|trans, 'p.browserNotifications') }}
-                            </th>
                             <th{% if promotions.isSorted('p.EmailNotifications') %} class="sorted"{% endif %}>
-                                {{ knp_pagination_sortable(promotions, 'Email notifications'|trans, 'p.emailNotifications') }}
+                                {{ knp_pagination_sortable(promotions, 'Notifications'|trans, 'p.notifications') }}
                             </th>
                             <th{% if promotions.isSorted('p.SmsNotifications') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(promotions, 'Sms notifications'|trans, 'p.smsNotifications') }}
@@ -115,10 +112,7 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    {{ promotion.browserNotifications }}
-                                </td>
-                                <td>
-                                    {{ promotion.emailNotifications }}
+                                    {{ promotion.notifications }}
                                 </td>
                                 <td>
                                     {{ promotion.smsNotifications }}
@@ -149,7 +143,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="11">
+                                <td colspan="10">
                                     {{ 'No records found'|trans }}
                                 </td>
                             </tr>

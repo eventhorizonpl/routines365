@@ -206,116 +206,60 @@ final class AccountTest extends AbstractTestCase
         $this->assertInstanceOf(Account::class, $account->removeAccountOperation($accountOperation1));
     }
 
-    public function testCanDepositBrowserNotifications(): void
+    public function testCanDepositNotifications(): void
     {
-        $browserNotificationsLess = ConfigResource::ACCOUNT_AVAILABLE_BROWSER_NOTIFICATIONS_LIMIT - 10;
-        $browserNotificationsMore = ConfigResource::ACCOUNT_AVAILABLE_BROWSER_NOTIFICATIONS_LIMIT + 10;
+        $notificationsLess = ConfigResource::ACCOUNT_AVAILABLE_NOTIFICATIONS_LIMIT - 10;
+        $notificationsMore = ConfigResource::ACCOUNT_AVAILABLE_NOTIFICATIONS_LIMIT + 10;
         $account = new Account();
-        $this->assertTrue($account->canDepositBrowserNotifications($browserNotificationsLess));
-        $this->assertFalse($account->canDepositBrowserNotifications($browserNotificationsMore));
+        $this->assertTrue($account->canDepositNotifications($notificationsLess));
+        $this->assertFalse($account->canDepositNotifications($notificationsMore));
     }
 
-    public function testDepositBrowserNotifications(): void
+    public function testDepositNotifications(): void
     {
-        $browserNotifications = 10;
+        $notifications = 10;
         $account = new Account();
-        $this->assertEquals(0, $account->getAvailableBrowserNotifications());
-        $this->assertInstanceOf(Account::class, $account->depositBrowserNotifications($browserNotifications));
-        $this->assertEquals($browserNotifications, $account->getAvailableBrowserNotifications());
+        $this->assertEquals(0, $account->getAvailableNotifications());
+        $this->assertInstanceOf(Account::class, $account->depositNotifications($notifications));
+        $this->assertEquals($notifications, $account->getAvailableNotifications());
     }
 
-    public function testGetAvailableBrowserNotifications(): void
+    public function testGetAvailableNotifications(): void
     {
-        $availableBrowserNotifications = 10;
+        $availableNotifications = 10;
         $account = new Account();
-        $this->assertEquals(null, $account->getAvailableBrowserNotifications());
-        $this->assertIsInt($account->getAvailableBrowserNotifications());
-        $account->setAvailableBrowserNotifications($availableBrowserNotifications);
-        $this->assertEquals($availableBrowserNotifications, $account->getAvailableBrowserNotifications());
+        $this->assertEquals(null, $account->getAvailableNotifications());
+        $this->assertIsInt($account->getAvailableNotifications());
+        $account->setAvailableNotifications($availableNotifications);
+        $this->assertEquals($availableNotifications, $account->getAvailableNotifications());
     }
 
-    public function testSetAvailableBrowserNotifications(): void
+    public function testSetAvailableNotifications(): void
     {
-        $availableBrowserNotifications = 10;
+        $availableNotifications = 10;
         $account = new Account();
-        $this->assertInstanceOf(Account::class, $account->setAvailableBrowserNotifications($availableBrowserNotifications));
-        $this->assertEquals($availableBrowserNotifications, $account->getAvailableBrowserNotifications());
+        $this->assertInstanceOf(Account::class, $account->setAvailableNotifications($availableNotifications));
+        $this->assertEquals($availableNotifications, $account->getAvailableNotifications());
     }
 
-    public function testCanWithdrawBrowserNotifications(): void
+    public function testCanWithdrawNotifications(): void
     {
-        $availableBrowserNotifications = 10;
+        $availableNotifications = 10;
         $account = new Account();
-        $this->assertInstanceOf(Account::class, $account->setAvailableBrowserNotifications($availableBrowserNotifications));
-        $this->assertTrue($account->canWithdrawBrowserNotifications($availableBrowserNotifications));
-        $this->assertFalse($account->canWithdrawBrowserNotifications($availableBrowserNotifications + 1));
+        $this->assertInstanceOf(Account::class, $account->setAvailableNotifications($availableNotifications));
+        $this->assertTrue($account->canWithdrawNotifications($availableNotifications));
+        $this->assertFalse($account->canWithdrawNotifications($availableNotifications + 1));
     }
 
-    public function testWithdrawBrowserNotifications(): void
+    public function testWithdrawNotifications(): void
     {
-        $availableBrowserNotifications = 10;
+        $availableNotifications = 10;
         $account = new Account();
-        $this->assertEquals(0, $account->getAvailableBrowserNotifications());
-        $this->assertInstanceOf(Account::class, $account->setAvailableBrowserNotifications($availableBrowserNotifications));
-        $this->assertEquals($availableBrowserNotifications, $account->getAvailableBrowserNotifications());
-        $this->assertInstanceOf(Account::class, $account->withdrawBrowserNotifications($availableBrowserNotifications));
-        $this->assertEquals(0, $account->getAvailableBrowserNotifications());
-    }
-
-    public function testCanDepositEmailNotifications(): void
-    {
-        $emailNotificationsLess = ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT - 10;
-        $emailNotificationsMore = ConfigResource::ACCOUNT_AVAILABLE_EMAIL_NOTIFICATIONS_LIMIT + 10;
-        $account = new Account();
-        $this->assertTrue($account->canDepositEmailNotifications($emailNotificationsLess));
-        $this->assertFalse($account->canDepositEmailNotifications($emailNotificationsMore));
-    }
-
-    public function testDepositEmailNotifications(): void
-    {
-        $emailNotifications = 10;
-        $account = new Account();
-        $this->assertEquals(0, $account->getAvailableEmailNotifications());
-        $this->assertInstanceOf(Account::class, $account->depositEmailNotifications($emailNotifications));
-        $this->assertEquals($emailNotifications, $account->getAvailableEmailNotifications());
-    }
-
-    public function testGetAvailableEmailNotifications(): void
-    {
-        $availableEmailNotifications = 10;
-        $account = new Account();
-        $this->assertEquals(null, $account->getAvailableEmailNotifications());
-        $this->assertIsInt($account->getAvailableEmailNotifications());
-        $account->setAvailableEmailNotifications($availableEmailNotifications);
-        $this->assertEquals($availableEmailNotifications, $account->getAvailableEmailNotifications());
-    }
-
-    public function testSetAvailableEmailNotifications(): void
-    {
-        $availableEmailNotifications = 10;
-        $account = new Account();
-        $this->assertInstanceOf(Account::class, $account->setAvailableEmailNotifications($availableEmailNotifications));
-        $this->assertEquals($availableEmailNotifications, $account->getAvailableEmailNotifications());
-    }
-
-    public function testCanWithdrawEmailNotifications(): void
-    {
-        $availableEmailNotifications = 10;
-        $account = new Account();
-        $this->assertInstanceOf(Account::class, $account->setAvailableEmailNotifications($availableEmailNotifications));
-        $this->assertTrue($account->canWithdrawEmailNotifications($availableEmailNotifications));
-        $this->assertFalse($account->canWithdrawEmailNotifications($availableEmailNotifications + 1));
-    }
-
-    public function testWithdrawEmailNotifications(): void
-    {
-        $availableEmailNotifications = 10;
-        $account = new Account();
-        $this->assertEquals(0, $account->getAvailableEmailNotifications());
-        $this->assertInstanceOf(Account::class, $account->setAvailableEmailNotifications($availableEmailNotifications));
-        $this->assertEquals($availableEmailNotifications, $account->getAvailableEmailNotifications());
-        $this->assertInstanceOf(Account::class, $account->withdrawEmailNotifications($availableEmailNotifications));
-        $this->assertEquals(0, $account->getAvailableEmailNotifications());
+        $this->assertEquals(0, $account->getAvailableNotifications());
+        $this->assertInstanceOf(Account::class, $account->setAvailableNotifications($availableNotifications));
+        $this->assertEquals($availableNotifications, $account->getAvailableNotifications());
+        $this->assertInstanceOf(Account::class, $account->withdrawNotifications($availableNotifications));
+        $this->assertEquals(0, $account->getAvailableNotifications());
     }
 
     public function testCanDepositSmsNotifications(): void

@@ -47,13 +47,10 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
             $crawler->filter('th:contains("Email")')->count() > 0
         );
         $this->assertTrue(
-            $crawler->filter('th:contains("Browser notifications")')->count() > 0
-        );
-        $this->assertTrue(
             $crawler->filter('th:contains("Description")')->count() > 0
         );
         $this->assertTrue(
-            $crawler->filter('th:contains("Email notifications")')->count() > 0
+            $crawler->filter('th:contains("Notifications")')->count() > 0
         );
         $this->assertTrue(
             $crawler->filter('th:contains("Sms notifications")')->count() > 0
@@ -125,20 +122,6 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
         $this->assertTrue(
             $crawler->filter('td:contains("'.$accountOperation->getUuid().'")')->count() > 0
         );
-    }
-
-    public function testAddFreeBrowser(): void
-    {
-        $this->purge();
-        $admin = $this->createAndLoginAdmin();
-        $accountOperation = $this->createAccountOperation();
-
-        $crawler = $this->client->request(
-            'GET',
-            '/admin/account-operation/'.$accountOperation->getAccount()->getUuid().'/add-free-browser'
-        );
-
-        $this->assertResponseIsSuccessful();
     }
 
     public function testAddFreeEmail(): void

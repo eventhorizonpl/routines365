@@ -11,22 +11,12 @@
                 <div class="card-body">
                     <table class="table table-borderless">
                         <tbody>
-                            {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
-                                <tr>
-                                    <th scope="row">
-                                        {{ 'Available browser notifications'|trans }}
-                                    </th>
-                                    <td>
-                                        {{ account.availableBrowserNotifications }}
-                                    </td>
-                                </tr>
-                            {% endif %}
                             <tr>
                                 <th scope="row" style="width: 25%;">
-                                    {{ 'Available email notifications'|trans }}
+                                    {{ 'Available notifications'|trans }}
                                 </th>
                                 <td>
-                                    {{ account.availableEmailNotifications }}
+                                    {{ account.availableNotifications }}
                                 </td>
                             </tr>
                             {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}

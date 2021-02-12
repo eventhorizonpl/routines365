@@ -44,10 +44,9 @@ final class PromotionFactoryTest extends AbstractTestCase
 
     public function testCreatePromotionWithRequired(): void
     {
-        $browserNotifications = $this->faker->randomNumber;
         $code = $this->faker->sentence;
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
-        $emailNotifications = $this->faker->numberBetween(1, 10);
+        $notifications = $this->faker->numberBetween(1, 10);
         $isEnabled = $this->faker->boolean;
         $name = $this->faker->sentence;
         $smsNotifications = $this->faker->numberBetween(1, 10);
@@ -56,18 +55,16 @@ final class PromotionFactoryTest extends AbstractTestCase
         );
         $promotionFactory = new PromotionFactory();
         $promotion = $promotionFactory->createPromotionWithRequired(
-            $browserNotifications,
             $code,
-            $emailNotifications,
             $isEnabled,
             $name,
+            $notifications,
             $smsNotifications,
             $type
         );
         $this->assertInstanceOf(Promotion::class, $promotion);
-        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
         $this->assertEquals($newCode, $promotion->getCode());
-        $this->assertEquals($emailNotifications, $promotion->getEmailNotifications());
+        $this->assertEquals($notifications, $promotion->getNotifications());
         $this->assertEquals($isEnabled, $promotion->getIsEnabled());
         $this->assertEquals($name, $promotion->getName());
         $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());

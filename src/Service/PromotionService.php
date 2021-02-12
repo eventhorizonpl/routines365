@@ -85,9 +85,8 @@ class PromotionService
             $user->addPromotion($promotion);
             $this->accountOperationService->deposit(
                 $user->getAccount(),
-                $promotion->getBrowserNotifications(),
                 sprintf('Deposit for promotion %s %s', $promotion->getCode(), $promotion->getName()),
-                $promotion->getEmailNotifications(),
+                $promotion->getNotifications(),
                 $promotion->getSmsNotifications()
             );
             $saveUser = true;

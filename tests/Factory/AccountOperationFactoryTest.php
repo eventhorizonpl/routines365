@@ -44,25 +44,22 @@ final class AccountOperationFactoryTest extends AbstractTestCase
 
     public function testCreateAccountOperationWithRequired(): void
     {
-        $browserNotifications = $this->faker->randomNumber;
         $description = $this->faker->sentence;
-        $emailNotifications = $this->faker->randomNumber;
+        $notifications = $this->faker->randomNumber;
         $smsNotifications = $this->faker->randomNumber;
         $type = $this->faker->randomElement(
             AccountOperation::getTypeFormChoices()
         );
         $accountOperationFactory = new AccountOperationFactory();
         $accountOperation = $accountOperationFactory->createAccountOperationWithRequired(
-            $browserNotifications,
             $description,
-            $emailNotifications,
+            $notifications,
             $smsNotifications,
             $type
         );
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
-        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
         $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
+        $this->assertEquals($notifications, $accountOperation->getNotifications());
         $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
         $this->assertEquals($type, $accountOperation->getType());
     }

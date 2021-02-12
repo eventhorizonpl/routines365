@@ -38,15 +38,6 @@ class AccountOperation
     private ?ReminderMessage $reminderMessage;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(1024, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
-     * @ORM\Column(type="integer")
-     */
-    private int $browserNotifications;
-
-    /**
      * @Assert\Length(max = 255, groups={"system"})
      * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
@@ -60,7 +51,7 @@ class AccountOperation
      * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
-    private int $emailNotifications;
+    private int $notifications;
 
     /**
      * @Assert\GreaterThanOrEqual(0, groups={"system"})
@@ -82,9 +73,8 @@ class AccountOperation
 
     public function __construct()
     {
-        $this->browserNotifications = 0;
         $this->description = '';
-        $this->emailNotifications = 0;
+        $this->notifications = 0;
         $this->reminderMessage = null;
         $this->smsNotifications = 0;
     }
@@ -106,18 +96,6 @@ class AccountOperation
         return $this;
     }
 
-    public function getBrowserNotifications(): int
-    {
-        return $this->browserNotifications;
-    }
-
-    public function setBrowserNotifications(int $browserNotifications): self
-    {
-        $this->browserNotifications = abs($browserNotifications);
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -130,14 +108,14 @@ class AccountOperation
         return $this;
     }
 
-    public function getEmailNotifications(): int
+    public function getNotifications(): int
     {
-        return $this->emailNotifications;
+        return $this->notifications;
     }
 
-    public function setEmailNotifications(int $emailNotifications): self
+    public function setNotifications(int $notifications): self
     {
-        $this->emailNotifications = abs($emailNotifications);
+        $this->notifications = abs($notifications);
 
         return $this;
     }

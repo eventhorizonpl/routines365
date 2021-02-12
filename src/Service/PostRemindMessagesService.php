@@ -169,7 +169,7 @@ class PostRemindMessagesService
 
         $account = $reminder->getUser()->getAccount();
         $createSentReminder = false;
-        if (((true === $reminder->getSendEmail()) && (true === $account->canWithdrawEmailNotifications(1))) ||
+        if (((true === $reminder->getSendEmail()) && (true === $account->canWithdrawNotifications(1))) ||
             ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) ||
             (true === $reminder->getSendToBrowser())
         ) {
@@ -191,7 +191,7 @@ class PostRemindMessagesService
         if (null !== $sentReminder) {
             if ((true === $reminder->getUser()->getIsVerified()) &&
                 (true === $reminder->getSendEmail()) &&
-                (true === $account->canWithdrawEmailNotifications(1))
+                (true === $account->canWithdrawNotifications(1))
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $emailMessage,
@@ -206,7 +206,7 @@ class PostRemindMessagesService
                     $reminder->getUser()->getEmail(),
                     'R365: Routine reminder',
                     [
-                        'available_email_notifications' => $reminder->getUser()->getAccount()->getAvailableEmailNotifications(),
+                        'available_email_notifications' => $reminder->getUser()->getAccount()->getAvailableNotifications(),
                         'available_sms_notifications' => $reminder->getUser()->getAccount()->getAvailableSmsNotifications(),
                         'email_link' => $emailLink,
                         'email_original_message' => $emailOriginalMessage,
@@ -225,7 +225,6 @@ class PostRemindMessagesService
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
-                    0,
                     'Email notification',
                     1,
                     0,
@@ -262,7 +261,6 @@ class PostRemindMessagesService
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
-                    0,
                     'SMS notification',
                     0,
                     1,
@@ -270,7 +268,7 @@ class PostRemindMessagesService
                 );
             }
             if ((true === $reminder->getSendToBrowser()) &&
-                (true === $account->canWithdrawBrowserNotifications(1))
+                (true === $account->canWithdrawNotifications(1))
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $browserMessage,
@@ -286,9 +284,8 @@ class PostRemindMessagesService
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
-                    1,
                     'Browser notification',
-                    0,
+                    1,
                     0,
                     $reminderMessage
                 );

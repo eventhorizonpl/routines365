@@ -175,23 +175,6 @@ final class PromotionTest extends AbstractTestCase
         $this->assertEquals($isEnabled, $promotion->getIsEnabled());
     }
 
-    public function testGetBrowserNotifications(): void
-    {
-        $browserNotifications = 10;
-        $promotion = new Promotion();
-        $promotion->setBrowserNotifications($browserNotifications);
-        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
-        $this->assertIsInt($promotion->getBrowserNotifications());
-    }
-
-    public function testSetBrowserNotifications(): void
-    {
-        $browserNotifications = 10;
-        $promotion = new Promotion();
-        $this->assertInstanceOf(Promotion::class, $promotion->setBrowserNotifications($browserNotifications));
-        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
-    }
-
     public function testGetCode(): void
     {
         $code = 'test code';
@@ -230,21 +213,21 @@ final class PromotionTest extends AbstractTestCase
         $this->assertEquals($description, $promotion->getDescription());
     }
 
-    public function testGetEmailNotifications(): void
+    public function testGetNotifications(): void
     {
-        $emailNotifications = 10;
+        $notifications = 10;
         $promotion = new Promotion();
-        $promotion->setEmailNotifications($emailNotifications);
-        $this->assertEquals($emailNotifications, $promotion->getEmailNotifications());
-        $this->assertIsInt($promotion->getEmailNotifications());
+        $promotion->setNotifications($notifications);
+        $this->assertEquals($notifications, $promotion->getNotifications());
+        $this->assertIsInt($promotion->getNotifications());
     }
 
-    public function testSetEmailNotifications(): void
+    public function testSetNotifications(): void
     {
-        $emailNotifications = 10;
+        $notifications = 10;
         $promotion = new Promotion();
-        $this->assertInstanceOf(Promotion::class, $promotion->setEmailNotifications($emailNotifications));
-        $this->assertEquals($emailNotifications, $promotion->getEmailNotifications());
+        $this->assertInstanceOf(Promotion::class, $promotion->setNotifications($notifications));
+        $this->assertEquals($notifications, $promotion->getNotifications());
     }
 
     public function testGetExpiresAt(): void

@@ -50,24 +50,21 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(Promotion::class, $promotion);
         $code = 'test code';
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
-        $browserNotifications = 10;
-        $emailNotifications = 10;
+        $notifications = 10;
         $isEnabled = true;
         $name = 'test name';
         $smsNotifications = 10;
         $type = Promotion::TYPE_EXISTING_ACCOUNT;
         $promotion = $this->promotionFaker->createPromotion(
-            $browserNotifications,
             $code,
-            $emailNotifications,
             $isEnabled,
             $name,
+            $notifications,
             $smsNotifications,
             $type
         );
-        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
         $this->assertEquals($newCode, $promotion->getCode());
-        $this->assertEquals($emailNotifications, $promotion->getEmailNotifications());
+        $this->assertEquals($notifications, $promotion->getNotifications());
         $this->assertEquals($isEnabled, $promotion->getIsEnabled());
         $this->assertEquals($name, $promotion->getName());
         $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());
@@ -81,24 +78,21 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(Promotion::class, $promotion);
         $code = 'test code';
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
-        $browserNotifications = 10;
-        $emailNotifications = 10;
+        $notifications = 10;
         $isEnabled = true;
         $name = 'test name';
         $smsNotifications = 10;
         $type = Promotion::TYPE_EXISTING_ACCOUNT;
         $promotion = $this->promotionFaker->createPromotionPersisted(
-            $browserNotifications,
             $code,
-            $emailNotifications,
             $isEnabled,
             $name,
+            $notifications,
             $smsNotifications,
             $type
         );
-        $this->assertEquals($browserNotifications, $promotion->getBrowserNotifications());
         $this->assertEquals($newCode, $promotion->getCode());
-        $this->assertEquals($emailNotifications, $promotion->getEmailNotifications());
+        $this->assertEquals($notifications, $promotion->getNotifications());
         $this->assertEquals($isEnabled, $promotion->getIsEnabled());
         $this->assertEquals($name, $promotion->getName());
         $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());

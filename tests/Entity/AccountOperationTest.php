@@ -173,24 +173,6 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($account, $accountOperation->getAccount());
     }
 
-    public function testGetBrowserNotifications(): void
-    {
-        $browserNotifications = 10;
-        $accountOperation = new AccountOperation();
-        $this->assertEquals(0, $accountOperation->getBrowserNotifications());
-        $accountOperation->setBrowserNotifications($browserNotifications);
-        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
-        $this->assertIsInt($accountOperation->getBrowserNotifications());
-    }
-
-    public function testSetBrowserNotifications(): void
-    {
-        $browserNotifications = 10;
-        $accountOperation = new AccountOperation();
-        $this->assertInstanceOf(AccountOperation::class, $accountOperation->setBrowserNotifications($browserNotifications));
-        $this->assertEquals($browserNotifications, $accountOperation->getBrowserNotifications());
-    }
-
     public function testGetReminderMessage(): void
     {
         $reminderMessage = new ReminderMessage();
@@ -225,22 +207,22 @@ final class AccountOperationTest extends AbstractTestCase
         $this->assertEquals($description, $accountOperation->getDescription());
     }
 
-    public function testGetEmailNotifications(): void
+    public function testGetNotifications(): void
     {
-        $emailNotifications = 10;
+        $notifications = 10;
         $accountOperation = new AccountOperation();
-        $this->assertEquals(0, $accountOperation->getEmailNotifications());
-        $accountOperation->setEmailNotifications($emailNotifications);
-        $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
-        $this->assertIsInt($accountOperation->getEmailNotifications());
+        $this->assertEquals(0, $accountOperation->getNotifications());
+        $accountOperation->setNotifications($notifications);
+        $this->assertEquals($notifications, $accountOperation->getNotifications());
+        $this->assertIsInt($accountOperation->getNotifications());
     }
 
-    public function testSetEmailNotifications(): void
+    public function testSetNotifications(): void
     {
-        $emailNotifications = 10;
+        $notifications = 10;
         $accountOperation = new AccountOperation();
-        $this->assertInstanceOf(AccountOperation::class, $accountOperation->setEmailNotifications($emailNotifications));
-        $this->assertEquals($emailNotifications, $accountOperation->getEmailNotifications());
+        $this->assertInstanceOf(AccountOperation::class, $accountOperation->setNotifications($notifications));
+        $this->assertEquals($notifications, $accountOperation->getNotifications());
     }
 
     public function testGetSmsNotifications(): void

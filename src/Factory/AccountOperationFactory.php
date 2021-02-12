@@ -18,18 +18,16 @@ class AccountOperationFactory
     }
 
     public function createAccountOperationWithRequired(
-        int $browserNotifications,
         string $description,
-        int $emailNotifications,
+        int $notifications,
         int $smsNotifications,
         string $type
     ): AccountOperation {
         $accountOperation = $this->createAccountOperation();
 
         $accountOperation
-            ->setBrowserNotifications($browserNotifications)
             ->setDescription($description)
-            ->setEmailNotifications($emailNotifications)
+            ->setNotifications($notifications)
             ->setSmsNotifications($smsNotifications)
             ->setType($type);
 
