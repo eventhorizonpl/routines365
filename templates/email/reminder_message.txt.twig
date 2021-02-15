@@ -11,7 +11,9 @@
 {% endif %}
 
 Available email notifications: {{ available_email_notifications }}
-Available sms notifications: {{ available_sms_notifications }}
+{% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+    Available sms notifications: {{ available_sms_notifications }}
+{% endif %}
 
 Thanks,
 Routines365 Team
