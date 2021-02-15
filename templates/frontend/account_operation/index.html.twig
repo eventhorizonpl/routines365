@@ -15,15 +15,19 @@
                                 <th>
                                     {{ 'Description'|trans }}
                                 </th>
-                                <th>
-                                    {{ 'Browser notifications'|trans }}
-                                </th>
+                                {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+                                    <th>
+                                        {{ 'Browser notifications'|trans }}
+                                    </th>
+                                {% endif %}
                                 <th>
                                     {{ 'Email notifications'|trans }}
                                 </th>
-                                <th>
-                                    {{ 'Sms notifications'|trans }}
-                                </th>
+                                {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                                    <th>
+                                        {{ 'Sms notifications'|trans }}
+                                    </th>
+                                {% endif %}
                                 <th>
                                     {{ 'Type'|trans }}
                                 </th>
@@ -35,15 +39,19 @@
                                     <td>
                                         {{ account_operation.description }}
                                     </td>
-                                    <td>
-                                        {{ account_operation.browserNotifications }}
-                                    </td>
+                                    {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+                                        <td>
+                                            {{ account_operation.browserNotifications }}
+                                        </td>
+                                    {% endif %}
                                     <td>
                                         {{ account_operation.emailNotifications }}
                                     </td>
-                                    <td>
-                                        {{ account_operation.smsNotifications }}
-                                    </td>
+                                    {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                                        <td>
+                                            {{ account_operation.smsNotifications }}
+                                        </td>
+                                    {% endif %}
                                     <td>
                                         {{ account_operation.type }}
                                     </td>

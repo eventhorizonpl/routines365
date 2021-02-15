@@ -28,12 +28,16 @@
                         <th>
                             {{ 'Send email'|trans }}
                         </th>
-                        <th>
-                            {{ 'Send sms'|trans }}
-                        </th>
-                        <th>
-                            {{ 'Send to browser'|trans }}
-                        </th>
+                        {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                            <th>
+                                {{ 'Send sms'|trans }}
+                            </th>
+                        {% endif %}
+                        {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+                            <th>
+                                {{ 'Send to browser'|trans }}
+                            </th>
+                        {% endif %}
                         <th>
                             {{ 'Send motivational message'|trans }}
                         </th>
@@ -65,28 +69,32 @@
                                     </span>
                                 {% endif %}
                             </td>
-                            <td>
-                                {% if reminder.sendSms %}
-                                    <span class="badge badge-success">
-                                        {{ 'Yes'|trans }}
-                                    </span>
-                                {% else %}
-                                    <span class="badge badge-danger">
-                                        {{ 'No'|trans }}
-                                    </span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if reminder.sendToBrowser %}
-                                    <span class="badge badge-success">
-                                        {{ 'Yes'|trans }}
-                                    </span>
-                                {% else %}
-                                    <span class="badge badge-danger">
-                                        {{ 'No'|trans }}
-                                    </span>
-                                {% endif %}
-                            </td>
+                            {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                                <td>
+                                    {% if reminder.sendSms %}
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                            {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+                                <td>
+                                    {% if reminder.sendToBrowser %}
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
                             <td>
                                 {% if reminder.sendMotivationalMessage %}
                                     <span class="badge badge-success">

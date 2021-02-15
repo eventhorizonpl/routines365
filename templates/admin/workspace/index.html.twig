@@ -366,6 +366,38 @@
                             </tr>
                             <tr>
                                 <td>
+                                    {{ 'Notification browser enabled'|trans }}
+                                </td>
+                                <td>
+                                    {% if constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ 'Notification SMS enabled'|trans }}
+                                </td>
+                                <td>
+                                    {% if constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                                        <span class="badge badge-success">
+                                            {{ 'Yes'|trans }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge badge-danger">
+                                            {{ 'No'|trans }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     {{ 'Promotions enabled'|trans }}
                                 </td>
                                 <td>

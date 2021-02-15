@@ -6,6 +6,7 @@ namespace App\Form;
 
 use App\Entity\Profile;
 use App\Form\Type\YesNoType;
+use App\Resource\ConfigResource;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -18,9 +19,6 @@ abstract class BaseProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('phone', PhoneNumberType::class, [
-                'required' => false,
-            ])
             ->add('sendWeeklyMonthlyStatistics', YesNoType::class)
             ->add('showMotivationalMessages', YesNoType::class)
             ->add('theme', ChoiceType::class, [
@@ -31,6 +29,14 @@ abstract class BaseProfileType extends AbstractType
                 'required' => false,
             ])
         ;
+
+        if (true === ConfigResource::NOTIFICATION_SMS_ENABLED) {
+            $builder
+                ->add('phone', PhoneNumberType::class, [
+                    'required' => false,
+                ])
+            ;
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
