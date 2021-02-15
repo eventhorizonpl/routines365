@@ -26,14 +26,14 @@ class ProfileType extends BaseProfileType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
-                'required' => true,
+                'required' => false,
             ])
             ->add('showMotivationalMessages', CheckboxType::class, [
                 'help' => 'Determines whether you want to see motivational messages in the user interface.',
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
-                'required' => true,
+                'required' => false,
             ])
             ->add('theme', ChoiceType::class, [
                 'choices' => Profile::getThemeFormChoices(),

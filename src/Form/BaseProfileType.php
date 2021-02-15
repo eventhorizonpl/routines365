@@ -23,11 +23,13 @@ abstract class BaseProfileType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('showMotivationalMessages', CheckboxType::class, [
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('theme', ChoiceType::class, [
                 'choices' => Profile::getThemeFormChoices(),

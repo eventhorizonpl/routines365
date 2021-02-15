@@ -111,28 +111,30 @@
                                     </td>
                                 </tr>
                             {% endif %}
-                            <tr>
-                                <th scope="row">
-                                    {{ 'Phone'|trans }}
-                                </th>
-                                <td>
-                                    {% if profile.phone %}
-                                        {{ profile.phone|phone_number_format }}
-                                        {% if profile.isVerified %}
-                                            <span class="badge badge-success">
-                                                {{ 'Verified'|trans }}
-                                            </span>
-                                        {% else %}
-                                            <span class="badge badge-danger">
-                                                {{ 'Not verified'|trans }}
-                                            </span>
-                                            <a href="{{ path('frontend_profile_phone_verification_code') }}">
-                                                {{ 'I have the code'|trans }}
-                                            </a>
+                            {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                                <tr>
+                                    <th scope="row">
+                                        {{ 'Phone'|trans }}
+                                    </th>
+                                    <td>
+                                        {% if profile.phone %}
+                                            {{ profile.phone|phone_number_format }}
+                                            {% if profile.isVerified %}
+                                                <span class="badge badge-success">
+                                                    {{ 'Verified'|trans }}
+                                                </span>
+                                            {% else %}
+                                                <span class="badge badge-danger">
+                                                    {{ 'Not verified'|trans }}
+                                                </span>
+                                                <a href="{{ path('frontend_profile_phone_verification_code') }}">
+                                                    {{ 'I have the code'|trans }}
+                                                </a>
+                                            {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            {% endif %}
                             <tr>
                                 <th scope="row">
                                     {{ 'Send weekly monthly statistics'|trans }}
