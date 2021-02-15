@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\Entity\Account;
 use App\Entity\User;
 use Symfony\Component\Uid\Uuid;
 
@@ -23,13 +24,15 @@ class UserFactory
         $this->userKytFactory = $userKytFactory;
     }
 
-    public function createUser(): User
+    public function createUser(?Account $account = null): User
     {
         $user = new User();
         $user->setReferrerCode((string) Uuid::v4())
             ->setUuid((string) Uuid::v4());
-        $account = $this->accountFactory->createAccount();
-        $account->setUser($user);
+        if (null === $account) {
+            $account = $this->accountFactory->createAccount();
+        }
+        $account->addUser($user);
         $profile = $this->profileFactory->createProfile();
         $profile->setUser($user);
         $userKyt = $this->userKytFactory->createUserKyt();

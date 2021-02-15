@@ -7,12 +7,18 @@ namespace App\Tests\Service;
 use App\Entity\User;
 use App\Faker\UserFaker;
 use App\Manager\UserManager;
+use App\Repository\UserRepository;
 use App\Service\UserService;
 use App\Tests\AbstractDoctrineTestCase;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class UserServiceTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?PaginatorInterface $paginator;
     /**
      * @inject
      */
@@ -28,14 +34,20 @@ final class UserServiceTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?UserRepository $userRepository;
+    /**
+     * @inject
+     */
     private ?UserService $userService;
 
     protected function tearDown(): void
     {
         unset(
+            $this->paginator,
             $this->userFaker,
             $this->userManager,
             $this->userPasswordEncoder,
+            $this->userRepository,
             $this->userService
         );
 
@@ -44,7 +56,12 @@ final class UserServiceTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $userService = new UserService($this->userManager, $this->userPasswordEncoder);
+        $userService = new UserService(
+            $this->paginator,
+            $this->userManager,
+            $this->userPasswordEncoder,
+            $this->userRepository
+        );
 
         $this->assertInstanceOf(UserService::class, $userService);
     }

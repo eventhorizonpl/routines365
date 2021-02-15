@@ -42,8 +42,8 @@ class AccountOperationService
             $accountOperation->setAccount($account);
             $this->accountOperationManager->save($accountOperation);
 
-            if ((null !== $account->getUser()->getReferrer()) && (true === $topupReferrerAccount)) {
-                $referrerAccount = $account->getUser()->getReferrer()->getAccount();
+            if ((null !== $account->getUsers()->first()->getReferrer()) && (true === $topupReferrerAccount)) {
+                $referrerAccount = $account->getUsers()->first()->getReferrer()->getAccount();
                 $referrerNotifications = (int) ($notifications * Account::TOPUP_REFERRER_ACCOUNT_MULTIPLIER);
                 if ((0 < $notifications) && (0 === $referrerNotifications)) {
                     $referrerNotifications = 1;

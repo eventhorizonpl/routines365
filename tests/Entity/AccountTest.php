@@ -318,19 +318,19 @@ final class AccountTest extends AbstractTestCase
         $this->assertEquals(0, $account->getAvailableSmsNotifications());
     }
 
-    public function testGetUser(): void
+    public function testGetOldUser(): void
     {
-        $user = new User();
+        $oldUser = new User();
         $account = new Account();
-        $account->setUser($user);
-        $this->assertEquals($user, $account->getUser());
+        $account->setOldUser($oldUser);
+        $this->assertEquals($oldUser, $account->getOldUser());
     }
 
-    public function testSetUser(): void
+    public function testSetOldUser(): void
     {
-        $user = new User();
+        $oldUser = new User();
         $account = new Account();
-        $this->assertInstanceOf(Account::class, $account->setUser($user));
-        $this->assertEquals($user, $account->getUser());
+        $this->assertInstanceOf(Account::class, $account->setOldUser($oldUser));
+        $this->assertEquals($oldUser, $account->getOldUser());
     }
 }

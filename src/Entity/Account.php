@@ -32,10 +32,16 @@ class Account
 
     /**
      * @Assert\Valid()
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="account", targetEntity=User::class)
+     * @ORM\JoinColumn(name="user_id", nullable=true, onDelete="CASCADE")
+     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="oldAccount", targetEntity=User::class)
      */
-    private User $user;
+    private ?User $oldUser;
+
+    /**
+     * @Assert\Valid()
+     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", targetEntity=User::class)
+     */
+    private Collection $users;
 
     /**
      * @Assert\GreaterThanOrEqual(0)
@@ -60,6 +66,8 @@ class Account
         $this->accountOperations = new ArrayCollection();
         $this->availableNotifications = 0;
         $this->availableSmsNotifications = 0;
+        $this->oldUser = null;
+        $this->users = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -142,6 +150,18 @@ class Account
         return $this;
     }
 
+    public function getOldUser(): ?User
+    {
+        return $this->oldUser;
+    }
+
+    public function setOldUser(?User $oldUser): self
+    {
+        $this->oldUser = $oldUser;
+
+        return $this;
+    }
+
     public function canDepositSmsNotifications(int $smsNotifications): bool
     {
         if (ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT > ($this->getAvailableSmsNotifications() + $smsNotifications)) {
@@ -186,14 +206,25 @@ class Account
         return $this;
     }
 
-    public function getUser(): User
+    public function addUser(User $user): self
     {
-        return $this->user;
+        if (false === $this->users->contains($user)) {
+            $this->users->add($user);
+        }
+
+        return $this;
     }
 
-    public function setUser(User $user): self
+    public function getUsers(): Collection
     {
-        $this->user = $user;
+        return $this->users;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if (true === $this->users->contains($user)) {
+            $this->users->removeElement($user);
+        }
 
         return $this;
     }

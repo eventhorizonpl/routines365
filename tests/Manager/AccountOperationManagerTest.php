@@ -68,7 +68,7 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $accountOperation = $this->createAccountOperation();
-        $user = $accountOperation->getAccount()->getUser();
+        $user = $accountOperation->getAccount()->getUsers()->first();
         $smsNotifications = 987;
         $accountOperation->setSmsNotifications($smsNotifications);
         $accountOperationId = $accountOperation->getId();
@@ -100,7 +100,7 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $accountOperation = $this->createAccountOperation();
-        $user = $accountOperation->getAccount()->getUser();
+        $user = $accountOperation->getAccount()->getUsers()->first();
 
         $accountOperation->setType(AccountOperation::TYPE_DEPOSIT);
         $accountOperationManager = $this->accountOperationManager->save($accountOperation, (string) $user, true);
@@ -120,7 +120,7 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
         $this->expectException(ManagerException::class);
         $this->purge();
         $accountOperation = $this->createAccountOperation();
-        $user = $accountOperation->getAccount()->getUser();
+        $user = $accountOperation->getAccount()->getUsers()->first();
         $accountOperation->setSmsNotifications(2048);
 
         $accountOperationManager = $this->accountOperationManager->save($accountOperation, (string) $user, true);
@@ -130,7 +130,7 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $accountOperation = $this->createAccountOperation();
-        $user = $accountOperation->getAccount()->getUser();
+        $user = $accountOperation->getAccount()->getUsers()->first();
         $accountOperationId = $accountOperation->getId();
 
         $accountOperationManager = $this->accountOperationManager->softDelete($accountOperation, (string) $user);
@@ -145,7 +145,7 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $accountOperation = $this->createAccountOperation();
-        $user = $accountOperation->getAccount()->getUser();
+        $user = $accountOperation->getAccount()->getUsers()->first();
         $accountOperationId = $accountOperation->getId();
 
         $accountOperationManager = $this->accountOperationManager->softDelete($accountOperation, (string) $user);

@@ -62,7 +62,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $account = $this->createAccount();
-        $user = $account->getUser();
+        $user = $account->getUsers()->first();
         $availableNotifications = 987;
         $account->setAvailableNotifications($availableNotifications);
         $accountId = $account->getId();
@@ -94,7 +94,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $account = $this->createAccount();
-        $user = $account->getUser();
+        $user = $account->getUsers()->first();
 
         $accountManager = $this->accountManager->save($account, (string) $user, true);
         $this->assertInstanceOf(AccountManager::class, $accountManager);
@@ -104,8 +104,8 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     {
         $this->expectException(ManagerException::class);
         $this->purge();
-        $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
+        $account = $this->createAccount();
+        $user = $account->getUsers()->first();
         $account->setAvailableNotifications(-1);
 
         $accountManager = $this->accountManager->save($account, (string) $user, true);
@@ -115,7 +115,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $account = $this->createAccount();
-        $user = $account->getUser();
+        $user = $account->getUsers()->first();
         $accountId = $account->getId();
 
         $accountManager = $this->accountManager->softDelete($account, (string) $user);
@@ -130,7 +130,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $account = $this->createAccount();
-        $user = $account->getUser();
+        $user = $account->getUsers()->first();
         $accountId = $account->getId();
 
         $accountManager = $this->accountManager->softDelete($account, (string) $user);

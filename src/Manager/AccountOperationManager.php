@@ -56,7 +56,7 @@ class AccountOperationManager
     public function save(AccountOperation $accountOperation, string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
-            $actor = (string) $accountOperation->getAccount()->getUser();
+            $actor = (string) $accountOperation->getAccount()->getUsers()->first();
         }
 
         $date = new DateTimeImmutable();

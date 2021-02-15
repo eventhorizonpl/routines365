@@ -101,9 +101,9 @@
                                     {{ 'User'|trans }}
                                 </th>
                                 <td>
-                                    {% if account_operation.account and account_operation.account.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.account.user.uuid}) }}">
-                                            {{ account_operation.account.user.email }}
+                                    {% if account_operation.account and account_operation.account.users.first %}
+                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.account.users.first.uuid}) }}">
+                                            {{ account_operation.account.users.first.email }}
                                         </a>
                                     {% endif %}
                                 </td>

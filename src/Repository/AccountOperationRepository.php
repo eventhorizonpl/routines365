@@ -22,7 +22,7 @@ class AccountOperationRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('ao')
             ->select('ao, aoa, aoau, aoaup')
             ->leftJoin('ao.account', 'aoa')
-            ->leftJoin('aoa.user', 'aoau')
+            ->leftJoin('aoa.users', 'aoau')
             ->leftJoin('aoau.profile', 'aoaup')
             ->addOrderBy('ao.createdAt', 'DESC');
 
@@ -71,12 +71,11 @@ class AccountOperationRepository extends ServiceEntityRepository
     public function findByParametersForFrontend(User $user, array $parameters = []): Query
     {
         $queryBuilder = $this->createQueryBuilder('ao')
-            ->select('ao, aoa, aoau')
+            ->select('ao, aoa')
             ->leftJoin('ao.account', 'aoa')
-            ->leftJoin('aoa.user', 'aoau')
-            ->where('aoa.user = :user')
+            ->where('ao.account = :account')
             ->addOrderBy('ao.createdAt', 'DESC')
-            ->setParameter('user', $user);
+            ->setParameter('account', $user->getAccount());
 
         if (!(empty($parameters))) {
             if (array_key_exists('type', $parameters)) {

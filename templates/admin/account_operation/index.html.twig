@@ -50,9 +50,6 @@
                             <th{% if account_operations.isSorted('ao.Uuid') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(account_operations, 'UUID'|trans, 'ao.uuid') }}
                             </th>
-                            <th{% if account_operations.isSorted('aoau.Email') %} class="sorted"{% endif %}>
-                                {{ knp_pagination_sortable(account_operations, 'Email'|trans, 'aoau.email') }}
-                            </th>
                             <th{% if account_operations.isSorted('ao.description') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(account_operations, 'Description'|trans, 'ao.description') }}
                             </th>
@@ -83,13 +80,6 @@
                                     <a href="{{ path('admin_account_operation_show', {'uuid': account_operation.uuid}) }}">
                                         {{ account_operation.uuid }}
                                     </a>
-                                </td>
-                                <td>
-                                    {% if account_operation.account and account_operation.account.user %}
-                                        <a href="{{ path('admin_user_show', {'uuid': account_operation.account.user.uuid}) }}">
-                                            {{ account_operation.account.user.email }}
-                                        </a>
-                                    {% endif %}
                                 </td>
                                 <td>
                                     {{ account_operation.description }}
@@ -125,7 +115,7 @@
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="9">
+                                <td colspan="8">
                                     {{ 'No records found'|trans }}
                                 </td>
                             </tr>

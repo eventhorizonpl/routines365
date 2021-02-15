@@ -44,9 +44,6 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
             $crawler->filter('th:contains("UUID")')->count() > 0
         );
         $this->assertTrue(
-            $crawler->filter('th:contains("Email")')->count() > 0
-        );
-        $this->assertTrue(
             $crawler->filter('th:contains("Description")')->count() > 0
         );
         $this->assertTrue(
@@ -69,9 +66,6 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
         );
         $this->assertTrue(
             $crawler->filter('td:contains("'.$accountOperation->getUuid().'")')->count() > 0
-        );
-        $this->assertTrue(
-            $crawler->filter('td:contains("'.$accountOperation->getAccount()->getUser()->getEmail().'")')->count() > 0
         );
     }
 
