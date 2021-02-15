@@ -47,20 +47,25 @@ class ReminderType extends AbstractType
                     'class' => 'switch-custom',
                 ],
             ])
-            ->add('sendToBrowser', CheckboxType::class, [
-                'disabled' => true,
-                'help' => 'Determines whether the system should send a reminder to the web browser.',
-                'label_attr' => [
-                    'class' => 'switch-custom',
-                ],
-            ])
             ->add('type', ChoiceType::class, [
                 'choices' => Reminder::getTypeFormChoices(),
                 'help' => 'Type of the reminder.',
             ])
         ;
 
-        if (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS)) {
+        if (true === ConfigResource::NOTIFICATION_BROWSER_ENABLED) {
+            $builder->add('sendToBrowser', CheckboxType::class, [
+                'disabled' => true,
+                'help' => 'Determines whether the system should send a reminder to the web browser.',
+                'label_attr' => [
+                    'class' => 'switch-custom',
+                ],
+            ]);
+        }
+
+        if ((true === ConfigResource::NOTIFICATION_SMS_ENABLED) &&
+            (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS))
+        ) {
             $builder->add('sendSms', CheckboxType::class, [
                 'help' => 'Determines whether the system should send a reminder to the phone number.',
                 'label_attr' => [

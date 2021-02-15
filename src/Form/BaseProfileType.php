@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Form;
 
 use App\Entity\Profile;
+use App\Resource\ConfigResource;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -18,9 +19,6 @@ abstract class BaseProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('phone', PhoneNumberType::class, [
-                'required' => false,
-            ])
             ->add('sendWeeklyMonthlyStatistics', CheckboxType::class, [
                 'label_attr' => [
                     'class' => 'switch-custom',
@@ -39,6 +37,14 @@ abstract class BaseProfileType extends AbstractType
                 'required' => false,
             ])
         ;
+
+        if (true === ConfigResource::NOTIFICATION_SMS_ENABLED) {
+            $builder
+                ->add('phone', PhoneNumberType::class, [
+                    'required' => false,
+                ])
+            ;
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

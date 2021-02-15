@@ -98,9 +98,6 @@ final class UserControllerTest extends AbstractUiTestCase
             $crawler->filter('label:contains("Email")')->count() > 0
         );
         $this->assertTrue(
-            $crawler->filter('label:contains("Phone")')->count() > 0
-        );
-        $this->assertTrue(
             $crawler->filter('label:contains("Send weekly monthly statistics")')->count() > 0
         );
         $this->assertTrue(
@@ -169,9 +166,6 @@ final class UserControllerTest extends AbstractUiTestCase
         );
         $this->assertTrue(
             $crawler->filter('label:contains("Email")')->count() > 0
-        );
-        $this->assertTrue(
-            $crawler->filter('label:contains("Phone")')->count() > 0
         );
         $this->assertTrue(
             $crawler->filter('label:contains("Send weekly monthly statistics")')->count() > 0
@@ -268,9 +262,6 @@ final class UserControllerTest extends AbstractUiTestCase
         );
         $this->assertTrue(
             $crawler->filter('label:contains("Email")')->count() > 0
-        );
-        $this->assertTrue(
-            $crawler->filter('label:contains("Phone")')->count() > 0
         );
         $this->assertTrue(
             $crawler->filter('label:contains("Send weekly monthly statistics")')->count() > 0

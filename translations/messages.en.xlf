@@ -1693,6 +1693,14 @@
         <source>LinkedIn</source>
         <target>LinkedIn</target>
       </trans-unit>
+      <trans-unit id="oJbYtit" resname="Notification browser enabled">
+        <source>Notification browser enabled</source>
+        <target>Notification browser enabled</target>
+      </trans-unit>
+      <trans-unit id="qzqH9hA" resname="Notification SMS enabled">
+        <source>Notification SMS enabled</source>
+        <target>Notification SMS enabled</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

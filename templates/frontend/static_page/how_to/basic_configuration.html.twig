@@ -38,20 +38,22 @@
                     </b>
                 </div>
                 <br>
-                <div class="lead">
-                    <b>
-                        Phone
-                    </b>
-                    <br>
-                    You need to provide your mobile phone number if you want to use SMS reminders.
-                    Currently, SMS reminders are available for the following countries:
-                    {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
-                        <span class="badge badge-success">{{ country }}</span>
-                    {% endfor %} .
-                    Please provide mobile phone number in international format like +xx xxx xxx xxx .
-                    The system will send you an SMS message to provided number with the verification code.
-                    You will have to enter this verification code on the 'Phone verification' screen.
-                </div>
+                {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                    <div class="lead">
+                        <b>
+                            Phone
+                        </b>
+                        <br>
+                        You need to provide your mobile phone number if you want to use SMS reminders.
+                        Currently, SMS reminders are available for the following countries:
+                        {% for country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
+                            <span class="badge badge-success">{{ country }}</span>
+                        {% endfor %} .
+                        Please provide mobile phone number in international format like +xx xxx xxx xxx .
+                        The system will send you an SMS message to provided number with the verification code.
+                        You will have to enter this verification code on the 'Phone verification' screen.
+                    </div>
+                {% endif %}
                 {% if (true == constant('App\\Resource\\ConfigResource::INVITATIONS_ENABLED')) or (true == constant('App\\Resource\\ConfigResource::MOTIVATE_A_FRIEND_ENABLED')) %}
                     <br>
                     <div class="lead">

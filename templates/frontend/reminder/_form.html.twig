@@ -21,18 +21,20 @@
             {{ form_row(form.sendEmail, {'attr': {'class': 'custom-select'}}) }}
         </div>
     </div>
-    {% if app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS') %}
+    {% if (true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED')) and (app.user.profile.country in constant('App\\Resource\\ConfigResource::COUNTRIES_ALLOWED_FOR_SMS')) %}
         <div class="row">
             <div class="col-md-12">
                 {{ form_row(form.sendSms, {'attr': {'class': 'custom-select'}}) }}
             </div>
         </div>
     {% endif %}
-    <div class="row">
-        <div class="col-md-12">
-            {{ form_row(form.sendToBrowser, {'attr': {'class': 'custom-select'}}) }}
+    {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.sendToBrowser, {'attr': {'class': 'custom-select'}}) }}
+            </div>
         </div>
-    </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-12">
             {{ form_row(form.sendMotivationalMessage, {'attr': {'class': 'custom-select'}}) }}

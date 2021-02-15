@@ -12,6 +12,8 @@ class ConfigResource
     public const COUNTRIES_ALLOWED_FOR_SMS = ['PL', 'US'];
     public const INVITATIONS_ENABLED = true;
     public const MOTIVATE_A_FRIEND_ENABLED = true;
+    public const NOTIFICATION_BROWSER_ENABLED = false;
+    public const NOTIFICATION_SMS_ENABLED = false;
     public const PROMOTIONS_ENABLED = true;
     public const REGISTRATION_ENABLED = true;
 }

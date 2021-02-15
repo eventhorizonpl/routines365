@@ -11,30 +11,34 @@
                 <div class="card-body">
                     <table class="table table-borderless">
                         <tbody>
+                            {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_BROWSER_ENABLED') %}
+                                <tr>
+                                    <th scope="row">
+                                        {{ 'Available browser notifications'|trans }}
+                                    </th>
+                                    <td>
+                                        {{ account.availableBrowserNotifications }}
+                                    </td>
+                                </tr>
+                            {% endif %}
                             <tr>
                                 <th scope="row" style="width: 25%;">
-                                    {{ 'Available browser notifications'|trans }}
-                                </th>
-                                <td>
-                                    {{ account.availableBrowserNotifications }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
                                     {{ 'Available email notifications'|trans }}
                                 </th>
                                 <td>
                                     {{ account.availableEmailNotifications }}
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    {{ 'Available sms notifications'|trans }}
-                                </th>
-                                <td>
-                                    {{ account.availableSmsNotifications }}
-                                </td>
-                            </tr>
+                            {% if true == constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                                <tr>
+                                    <th scope="row">
+                                        {{ 'Available sms notifications'|trans }}
+                                    </th>
+                                    <td>
+                                        {{ account.availableSmsNotifications }}
+                                    </td>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>

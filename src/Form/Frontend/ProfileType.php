@@ -21,11 +21,6 @@ class ProfileType extends BaseProfileType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('phone', PhoneNumberType::class, [
-                'help' => 'The system requires a mobile phone number for the proper work of SMS reminders.',
-                'label' => 'Phone (optional)',
-                'required' => false,
-            ])
             ->add('sendWeeklyMonthlyStatistics', CheckboxType::class, [
                 'help' => 'Determines whether you want to receive weekly/monthly/yearly statistics emails.',
                 'label_attr' => [
@@ -50,6 +45,16 @@ class ProfileType extends BaseProfileType
                 'required' => true,
             ])
         ;
+
+        if (true === ConfigResource::NOTIFICATION_SMS_ENABLED) {
+            $builder
+                ->add('phone', PhoneNumberType::class, [
+                    'help' => 'The system requires a mobile phone number for the proper work of SMS reminders.',
+                    'label' => 'Phone (optional)',
+                    'required' => false,
+                ])
+            ;
+        }
 
         if ((true === ConfigResource::INVITATIONS_ENABLED) ||
             (true === ConfigResource::MOTIVATE_A_FRIEND_ENABLED)

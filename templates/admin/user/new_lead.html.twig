@@ -29,7 +29,9 @@
                 {{ form_errors(form) }}
 
                 {{ form_row(form.email) }}
-                {{ form_row(form.profile.phone) }}
+                {% if constant('App\\Resource\\ConfigResource::NOTIFICATION_SMS_ENABLED') %}
+                    {{ form_row(form.profile.phone) }}
+                {% endif %}
                 {{ form_row(form.profile.sendWeeklyMonthlyStatistics) }}
                 {{ form_row(form.profile.showMotivationalMessages) }}
                 {{ form_row(form.profile.theme) }}
