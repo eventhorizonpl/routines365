@@ -87,7 +87,8 @@ class PromotionService
                 $user->getAccount(),
                 sprintf('Deposit for promotion %s %s', $promotion->getCode(), $promotion->getName()),
                 $promotion->getNotifications(),
-                $promotion->getSmsNotifications()
+                $promotion->getSmsNotifications(),
+                false
             );
             $saveUser = true;
         }

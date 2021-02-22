@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Faker\UserFaker;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
+use App\Service\PromotionService;
 use App\Service\UserService;
 use App\Tests\AbstractDoctrineTestCase;
 use Knp\Component\Pager\PaginatorInterface;
@@ -19,6 +20,10 @@ final class UserServiceTest extends AbstractDoctrineTestCase
      * @inject
      */
     private ?PaginatorInterface $paginator;
+    /**
+     * @inject
+     */
+    private ?PromotionService $promotionService;
     /**
      * @inject
      */
@@ -44,6 +49,7 @@ final class UserServiceTest extends AbstractDoctrineTestCase
     {
         unset(
             $this->paginator,
+            $this->promotionService,
             $this->userFaker,
             $this->userManager,
             $this->userPasswordEncoder,
@@ -58,6 +64,7 @@ final class UserServiceTest extends AbstractDoctrineTestCase
     {
         $userService = new UserService(
             $this->paginator,
+            $this->promotionService,
             $this->userManager,
             $this->userPasswordEncoder,
             $this->userRepository
