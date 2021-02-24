@@ -89,6 +89,20 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($users);
     }
 
+    public function testFindForCreateMissingUserAccountRelation(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $users = $this->userRepository->findForCreateMissingUserAccountRelation()->getResult();
+        if ((true === $user->getIsEnabled()) && (true === $user->getIsVerified())) {
+            $this->assertCount(1, $users);
+        } else {
+            $this->assertCount(0, $users);
+        }
+        $this->assertIsArray($users);
+    }
+
     public function testFindForKpi(): void
     {
         $this->purge();
@@ -139,6 +153,17 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $users = $this->userRepository->findForRetentionTotal($endDate, $startDate);
         $this->assertEquals(1, $users);
         $this->assertIsInt($users);
+    }
+
+    public function testFindForRewardUserActivity(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+        $lastLoginAt = new DateTimeImmutable();
+
+        $users = $this->userRepository->findForRewardUserActivity($lastLoginAt)->getResult();
+        $this->assertCount(0, $users);
+        $this->assertIsArray($users);
     }
 
     public function testFindOneByEmail(): void
