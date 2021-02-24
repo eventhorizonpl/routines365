@@ -333,4 +333,38 @@ final class AccountTest extends AbstractTestCase
         $this->assertInstanceOf(Account::class, $account->setOldUser($oldUser));
         $this->assertEquals($oldUser, $account->getOldUser());
     }
+
+    public function testAddUser(): void
+    {
+        $account = new Account();
+        $this->assertCount(0, $account->getUsers());
+        $user1 = new User();
+        $this->assertInstanceOf(Account::class, $account->addUser($user1));
+        $this->assertCount(1, $account->getUsers());
+        $user2 = new User();
+        $this->assertInstanceOf(Account::class, $account->addUser($user2));
+        $this->assertCount(2, $account->getUsers());
+    }
+
+    public function testGetUsers(): void
+    {
+        $account = new Account();
+        $this->assertCount(0, $account->getUsers());
+        $user = new User();
+        $this->assertInstanceOf(Account::class, $account->addUser($user));
+        $this->assertCount(1, $account->getUsers());
+    }
+
+    public function testRemoveUser(): void
+    {
+        $account = new Account();
+        $this->assertCount(0, $account->getUsers());
+        $user1 = new User();
+        $this->assertInstanceOf(Account::class, $account->addUser($user1));
+        $this->assertCount(1, $account->getUsers());
+        $user2 = new User();
+        $this->assertInstanceOf(Account::class, $account->addUser($user2));
+        $this->assertCount(2, $account->getUsers());
+        $this->assertInstanceOf(Account::class, $account->removeUser($user1));
+    }
 }
