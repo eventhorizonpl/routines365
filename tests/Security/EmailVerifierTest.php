@@ -58,7 +58,7 @@ final class EmailVerifierTest extends AbstractDoctrineTestCase
     public function testSendEmailConfirmation(): void
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $user->setEmail('mkkp4x4@gmail.com');
+        $user->setEmail('test@example.org');
         $this->assertNull($this->emailVerifier->sendEmailConfirmation($user));
     }
 
@@ -66,7 +66,7 @@ final class EmailVerifierTest extends AbstractDoctrineTestCase
     {
         $this->expectException(InvalidSignatureException::class);
         $user = $this->userFaker->createRichUserPersisted();
-        $user->setEmail('mkkp4x4@gmail.com');
+        $user->setEmail('test@example.org');
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
             ->getMock();
