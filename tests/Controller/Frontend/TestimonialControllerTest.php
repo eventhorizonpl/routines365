@@ -4,14 +4,38 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Frontend;
 
+use App\Entity\Promotion;
+use App\Entity\Testimonial;
+use App\Faker\PromotionFaker;
+use App\Manager\UserManager;
 use App\Tests\AbstractUiTestCase;
 
 final class TestimonialControllerTest extends AbstractUiTestCase
 {
+    /**
+     * @inject
+     */
+    private ?PromotionFaker $promotionFaker;
+    /**
+     * @inject
+     */
+    private ?UserManager $userManager;
+
+    protected function tearDown(): void
+    {
+        unset(
+            $this->promotionFaker,
+            $this->userManager,
+        );
+
+        parent::tearDown();
+    }
+
     public function testNew(): void
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
 
         $crawler = $this->client->request('GET', '/testimonial/new');
 
@@ -43,8 +67,16 @@ final class TestimonialControllerTest extends AbstractUiTestCase
             $crawler->filter('div:contains("We saved your testimonial.")')->count() > 0
         );
 
+        $this->entityManager->refresh($user);
+        $user->getTestimonial()->setStatus(Testimonial::STATUS_ACCEPTED);
+        $this->userManager->save($user);
+
         $crawler = $this->client->request('GET', '/testimonial/new');
 
         $this->assertResponseIsSuccessful();
+
+        $this->assertTrue(
+            $crawler->filter('div:contains("We already accepted your testimonial.")')->count() > 0
+        );
     }
 }

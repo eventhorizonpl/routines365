@@ -25,6 +25,7 @@ class AchievementType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('level')
             ->add('requirement')

@@ -20,7 +20,6 @@ class UserKyt
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="userKyt", targetEntity=User::class)
      */

@@ -31,14 +31,12 @@ class Account
     private Collection $accountOperations;
 
     /**
-     * @Assert\Valid()
      * @ORM\JoinColumn(name="user_id", nullable=true, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="oldAccount", targetEntity=User::class)
      */
     private ?User $oldUser;
 
     /**
-     * @Assert\Valid()
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", targetEntity=User::class)
      */
     private Collection $users;

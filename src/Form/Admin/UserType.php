@@ -20,11 +20,13 @@ class UserType extends BaseUserType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('isVerified', CheckboxType::class, [
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => User::getRolesFormChoices(),

@@ -27,6 +27,7 @@ class RoutineType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('name', null, [
                 'help' => 'Name of the routine. The system uses it in reminders.',

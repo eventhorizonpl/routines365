@@ -25,6 +25,7 @@ class AnswerType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
         ;
     }

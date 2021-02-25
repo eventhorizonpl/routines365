@@ -111,7 +111,8 @@ class UserManager
         }
 
         $this->entityManager->persist($user);
-        $this->accountManager->save($user->getAccount(), $actor, false);
+        $account = $user->getAccount();
+        $this->accountManager->save($account, $actor, false);
 
         if (null !== $user->getTestimonial()) {
             $this->testimonialManager->save($user->getTestimonial(), $actor, false);
@@ -122,7 +123,7 @@ class UserManager
         }
 
         if (true === $saveDependencies) {
-            foreach ($user->getAccount()->getAccountOperations() as $accountOperation) {
+            foreach ($account->getAccountOperations() as $accountOperation) {
                 $this->accountOperationManager->save($accountOperation, $actor, false);
             }
 

@@ -30,7 +30,6 @@ class Profile
     public const THEME_LIGHT = 'light';
 
     /**
-     * @Assert\Valid
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="profile", targetEntity=User::class)
      */

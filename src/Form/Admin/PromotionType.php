@@ -32,6 +32,7 @@ class PromotionType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('name')
             ->add('smsNotifications')

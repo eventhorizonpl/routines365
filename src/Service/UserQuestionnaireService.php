@@ -11,7 +11,7 @@ use App\Entity\UserQuestionnaire;
 use App\Factory\UserQuestionnaireFactory;
 use App\Manager\UserQuestionnaireManager;
 use App\Repository\UserQuestionnaireRepository;
-use Symfony\Component\HttpFoundation\InputBag;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class UserQuestionnaireService
 {
@@ -53,17 +53,17 @@ class UserQuestionnaireService
     }
 
     public function updateUserQuestionnaire(
-        InputBag $inputBag,
+        ParameterBag $parameterBag,
         Questionnaire $questionnaire,
         UserQuestionnaire $userQuestionnaire
     ): UserQuestionnaire {
         foreach ($questionnaire->getQuestions() as $question) {
-            $answerUuid = $inputBag->get($question->getUuid());
+            $answerUuid = $parameterBag->get($question->getUuid());
             foreach ($question->getAnswers() as $answer) {
                 if ($answer->getUuid() === $answerUuid) {
                     $content = null;
                     if (Answer::TYPE_OWN === $answer->getType()) {
-                        $content = $inputBag->get(sprintf(
+                        $content = $parameterBag->get(sprintf(
                             '%s_%s_%s',
                             $question->getUuid(),
                             $answer->getUuid(),

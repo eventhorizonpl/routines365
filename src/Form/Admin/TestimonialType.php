@@ -21,6 +21,7 @@ class TestimonialType extends BaseTestimonialType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('status', ChoiceType::class, [
                 'choices' => Testimonial::getStatusFormChoices(),

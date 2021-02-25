@@ -30,6 +30,7 @@ class ReminderType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('minutesBefore', ChoiceType::class, [
                 'choices' => Reminder::getMinutesBeforeFormChoices(),
@@ -40,12 +41,14 @@ class ReminderType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('sendMotivationalMessage', CheckboxType::class, [
                 'help' => 'Determines whether the system should send motivational messages in reminder.',
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => Reminder::getTypeFormChoices(),
@@ -60,6 +63,7 @@ class ReminderType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ]);
         }
 
@@ -71,6 +75,7 @@ class ReminderType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ]);
         }
     }

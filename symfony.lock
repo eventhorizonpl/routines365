@@ -202,7 +202,7 @@
         "version": "1.10.2"
     },
     "myclabs/php-enum": {
-        "version": "1.7.7"
+        "version": "1.8.0"
     },
     "nelmio/api-doc-bundle": {
         "version": "3.0",

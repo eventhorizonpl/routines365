@@ -76,7 +76,6 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $notes;
 
     /**
-     * @Assert\Valid(groups={"form"})
      * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="oldUser", targetEntity=Account::class)
      */

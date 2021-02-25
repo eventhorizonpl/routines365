@@ -22,6 +22,7 @@ class QuoteType extends AbstractType
                 'label_attr' => [
                     'class' => 'switch-custom',
                 ],
+                'required' => false,
             ])
         ;
     }
