@@ -22,6 +22,7 @@
         <exclude>
             <directory>src/DataFixtures</directory>
             <directory>src/Vendor</directory>
+            <file>src/Kernel.php</file>
         </exclude>
     </coverage>
 

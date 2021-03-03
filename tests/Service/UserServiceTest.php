@@ -110,6 +110,14 @@ final class UserServiceTest extends AbstractDoctrineTestCase
         $this->assertEquals(User::TYPE_PROSPECT, $user->getType());
     }
 
+    public function testCreateMissingUserAccountRelation(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $this->assertInstanceOf(UserService::class, $this->userService->createMissingUserAccountRelation());
+    }
+
     public function testOnAuthenticationSuccess(): void
     {
         $this->purge();
@@ -122,5 +130,13 @@ final class UserServiceTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(User::class, $user);
         $this->assertFalse($user->getApiToken() === $oldApiToken);
         $this->assertFalse($user->getLastLoginAt() === $oldLastLoginAt);
+    }
+
+    public function testRewardUserActivity(): void
+    {
+        $this->purge();
+        $user = $this->userFaker->createRichUserPersisted();
+
+        $this->assertInstanceOf(UserService::class, $this->userService->rewardUserActivity());
     }
 }

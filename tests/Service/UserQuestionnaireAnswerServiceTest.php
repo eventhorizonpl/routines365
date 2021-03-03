@@ -71,7 +71,7 @@ final class UserQuestionnaireAnswerServiceTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(UserQuestionnaireAnswerService::class, $userQuestionnaireAnswerService);
     }
 
-    public function testCreate(): void
+    public function testFindOrCreate(): void
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();

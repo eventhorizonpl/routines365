@@ -95,6 +95,7 @@ class Promotion
     {
         $this->code = '';
         $this->description = null;
+        $this->expiresAt = null;
         $this->isEnabled = true;
         $this->name = '';
         $this->notifications = 0;
