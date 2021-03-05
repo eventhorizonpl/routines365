@@ -17,7 +17,9 @@ class QuestionnaireType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'required' => false,
+            ])
             ->add('isEnabled', CheckboxType::class, [
                 'label_attr' => [
                     'class' => 'switch-custom',
