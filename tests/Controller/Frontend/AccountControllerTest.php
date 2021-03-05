@@ -19,5 +19,9 @@ final class AccountControllerTest extends AbstractUiTestCase
         $this->assertTrue(
             $crawler->filter('div:contains("Account details")')->count() > 0
         );
+
+        $this->assertTrue(
+            $crawler->filter('h5:contains("Account operations")')->count() > 0
+        );
     }
 }

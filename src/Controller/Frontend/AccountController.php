@@ -6,8 +6,11 @@ namespace App\Controller\Frontend;
 
 use App\Entity\Account;
 use App\Entity\User;
+use App\Repository\AccountOperationRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,12 +23,26 @@ class AccountController extends AbstractController
     /**
      * @Route("/", name="show", methods={"GET"})
      */
-    public function show(): Response
-    {
+    public function show(
+        AccountOperationRepository $accountOperationRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $parameters = [
+            'query' => trim((string) $request->query->get('q')),
+        ];
+
         $account = $this->getUser()->getAccount();
+        $accountOperationsQuery = $accountOperationRepository->findByParametersForFrontend($this->getUser(), $parameters);
+        $accountOperations = $paginator->paginate(
+            $accountOperationsQuery,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 50)
+        );
 
         return $this->render('frontend/account/show.html.twig', [
             'account' => $account,
+            'account_operations' => $accountOperations,
         ]);
     }
 }
