@@ -11,9 +11,10 @@ use App\Manager\PromotionManager;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class V6PromotionFixtures extends Fixture implements FixtureGroupInterface
+class V6PromotionFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
     private PromotionFactory $promotionFactory;
     private PromotionManager $promotionManager;
@@ -27,6 +28,13 @@ class V6PromotionFixtures extends Fixture implements FixtureGroupInterface
         $this->promotionFactory = $promotionFactory;
         $this->promotionManager = $promotionManager;
         $this->userRepository = $userRepository;
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            V1UserAdminFixtures::class,
+        ];
     }
 
     public static function getGroups(): array
