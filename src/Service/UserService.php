@@ -63,26 +63,6 @@ class UserService
         return $user;
     }
 
-    public function createMissingUserAccountRelation(): UserService
-    {
-        $page = 1;
-        $limit = 5;
-
-        $usersQuery = $this->userRepository->findForCreateMissingUserAccountRelation();
-
-        do {
-            $users = $this->paginator->paginate($usersQuery, $page, $limit);
-
-            foreach ($users as $user) {
-                $user->setAccount($user->getOldAccount());
-                $this->userManager->save($user);
-            }
-            ++$page;
-        } while ($users->getCurrentPageNumber() <= $users->getPageCount());
-
-        return $this;
-    }
-
     public function onAuthenticationSuccess(User $user): User
     {
         $user

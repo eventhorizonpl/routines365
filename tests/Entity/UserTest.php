@@ -251,22 +251,6 @@ final class UserTest extends AbstractTestCase
         $this->assertEquals($account, $user->getAccount());
     }
 
-    public function testGetOldAccount(): void
-    {
-        $oldAccount = new Account();
-        $user = new User();
-        $user->setOldAccount($oldAccount);
-        $this->assertEquals($oldAccount, $user->getOldAccount());
-    }
-
-    public function testSetOldAccount(): void
-    {
-        $oldAccount = new Account();
-        $user = new User();
-        $this->assertInstanceOf(User::class, $user->setOldAccount($oldAccount));
-        $this->assertEquals($oldAccount, $user->getOldAccount());
-    }
-
     public function testAddAchievement(): void
     {
         $user = new User();

@@ -73,16 +73,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $queryBuilder->getQuery();
     }
 
-    public function findForCreateMissingUserAccountRelation(): Query
-    {
-        $queryBuilder = $this->createQueryBuilder('u')
-            ->select('u')
-            ->where('u.account IS NULL')
-            ->addOrderBy('u.id', 'ASC');
-
-        return $queryBuilder->getQuery();
-    }
-
     public function findForKpi(): Query
     {
         $queryBuilder = $this->createQueryBuilder('u')

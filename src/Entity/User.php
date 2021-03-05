@@ -76,12 +76,6 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $notes;
 
     /**
-     * @Groups({"gdpr"})
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="oldUser", targetEntity=Account::class)
-     */
-    private ?Account $oldAccount;
-
-    /**
      * @Assert\Valid(groups={"form"})
      * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
@@ -231,7 +225,6 @@ class User implements UserInterface, TwoFactorInterface
         $this->isEnabled = false;
         $this->isVerified = false;
         $this->notes = new ArrayCollection();
-        $this->oldAccount = null;
         $this->projects = new ArrayCollection();
         $this->promotions = new ArrayCollection();
         $this->recommendations = new ArrayCollection();
@@ -499,18 +492,6 @@ class User implements UserInterface, TwoFactorInterface
         if (true === $this->notes->contains($note)) {
             $this->notes->removeElement($note);
         }
-
-        return $this;
-    }
-
-    public function getOldAccount(): ?Account
-    {
-        return $this->oldAccount;
-    }
-
-    public function setOldAccount(?Account $oldAccount): self
-    {
-        $this->oldAccount = $oldAccount;
 
         return $this;
     }

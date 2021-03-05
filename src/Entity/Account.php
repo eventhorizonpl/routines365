@@ -31,12 +31,6 @@ class Account
     private Collection $accountOperations;
 
     /**
-     * @ORM\JoinColumn(name="user_id", nullable=true, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="oldAccount", targetEntity=User::class)
-     */
-    private ?User $oldUser;
-
-    /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", targetEntity=User::class)
      */
     private Collection $users;
@@ -64,7 +58,6 @@ class Account
         $this->accountOperations = new ArrayCollection();
         $this->availableNotifications = 0;
         $this->availableSmsNotifications = 0;
-        $this->oldUser = null;
         $this->users = new ArrayCollection();
     }
 
@@ -144,18 +137,6 @@ class Account
     public function withdrawNotifications(int $notifications): self
     {
         $this->setAvailableNotifications($this->getAvailableNotifications() - $notifications);
-
-        return $this;
-    }
-
-    public function getOldUser(): ?User
-    {
-        return $this->oldUser;
-    }
-
-    public function setOldUser(?User $oldUser): self
-    {
-        $this->oldUser = $oldUser;
 
         return $this;
     }
