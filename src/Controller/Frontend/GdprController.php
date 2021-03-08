@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-/**
- * @IsGranted(User::ROLE_USER)
- */
+#[IsGranted(User::ROLE_USER)]
 #[Route('/settings/gdpr', name: 'frontend_gdpr_')]
 class GdprController extends AbstractController
 {

@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_ADMIN)
- */
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin/completed-routine', name: 'admin_completed_routine_')]
 class CompletedRoutineController extends AbstractController
 {

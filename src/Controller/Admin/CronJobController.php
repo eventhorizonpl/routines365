@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_ADMIN)
- */
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin/cron-job', name: 'admin_cron_job_')]
 class CronJobController extends AbstractController
 {
@@ -102,9 +100,7 @@ class CronJobController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted(User::ROLE_SUPER_ADMIN)
-     */
+    #[IsGranted(User::ROLE_SUPER_ADMIN)]
     #[Route('/{id}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         CronJob $cronJob,

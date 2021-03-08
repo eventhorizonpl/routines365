@@ -21,9 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * @IsGranted(User::ROLE_USER)
- */
+#[IsGranted(User::ROLE_USER)]
 #[Route('/projects', name: 'frontend_project_')]
 class ProjectController extends AbstractController
 {

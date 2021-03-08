@@ -19,9 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_USER)
- */
+#[IsGranted(User::ROLE_USER)]
 #[Route('/api/v1/reminder-messages', defaults: ['topdomain' => 'com'], host: 'api.routines365.{topdomain}', name: 'api_v1_reminder_message_', requirements: ['topdomain' => 'com|local'])]
 class ReminderMessageController extends AbstractFOSRestController
 {
@@ -32,9 +30,9 @@ class ReminderMessageController extends AbstractFOSRestController
      *     @Model(type=ReminderMessageListDto::class, groups={"list"})
      * )
      * @OA\Tag(name="ReminderMessages")
-     * @Security(name="api_key")
      */
     #[Route('/browser-notifications-list', methods: ['GET'], name: 'browser_notifications_list', options: ['expose' => true])]
+    #[Security(name: 'api_key')]
     public function getBrowserNotificationsList(ReminderMessageRepository $reminderMessageRepository)
     {
         $reminders = $this->getUser()->getReminders()->filter(function (Reminder $reminder) {

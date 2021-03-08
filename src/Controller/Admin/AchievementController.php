@@ -18,9 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_ADMIN)
- */
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin/achievement', name: 'admin_achievement_')]
 class AchievementController extends AbstractController
 {
@@ -106,9 +104,7 @@ class AchievementController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted(User::ROLE_SUPER_ADMIN)
-     */
+    #[IsGranted(User::ROLE_SUPER_ADMIN)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Achievement $achievement,

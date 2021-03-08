@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_ADMIN)
- */
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin/reminder-message', name: 'admin_reminder_message_')]
 class ReminderMessageController extends AbstractController
 {

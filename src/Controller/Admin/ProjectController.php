@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_ADMIN)
- */
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin/project', name: 'admin_project_')]
 class ProjectController extends AbstractController
 {

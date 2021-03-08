@@ -32,10 +32,12 @@ use App\Repository\UserKytRepository;
 use App\Repository\UserQuestionnaireAnswerRepository;
 use App\Repository\UserQuestionnaireRepository;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin', name: 'admin_')]
 class WorkspaceController extends AbstractController
 {

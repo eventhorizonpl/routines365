@@ -15,9 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * @IsGranted(User::ROLE_USER)
- */
+#[IsGranted(User::ROLE_USER)]
 #[Route('/promotions', name: 'frontend_promotion_')]
 class PromotionController extends AbstractController
 {

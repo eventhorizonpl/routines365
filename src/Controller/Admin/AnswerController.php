@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @IsGranted(User::ROLE_ADMIN)
- */
+#[IsGranted(User::ROLE_ADMIN)]
 #[Route('/admin/answer', name: 'admin_answer_')]
 class AnswerController extends AbstractController
 {
@@ -79,9 +77,7 @@ class AnswerController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted(User::ROLE_SUPER_ADMIN)
-     */
+    #[IsGranted(User::ROLE_SUPER_ADMIN)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Answer $answer,
