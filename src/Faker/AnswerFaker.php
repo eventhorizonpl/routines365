@@ -12,16 +12,12 @@ use Faker\Generator;
 
 class AnswerFaker
 {
-    private AnswerFactory $answerFactory;
-    private AnswerManager $answerManager;
     private Generator $faker;
 
     public function __construct(
-        AnswerFactory $answerFactory,
-        AnswerManager $answerManager
+        private AnswerFactory $answerFactory,
+        private AnswerManager $answerManager
     ) {
-        $this->answerFactory = $answerFactory;
-        $this->answerManager = $answerManager;
         $this->faker = Factory::create();
     }
 

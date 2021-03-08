@@ -12,13 +12,11 @@ use Faker\Generator;
 class GoalFaker
 {
     private Generator $faker;
-    private GoalFactory $goalFactory;
 
     public function __construct(
-        GoalFactory $goalFactory
+        private GoalFactory $goalFactory
     ) {
         $this->faker = Factory::create();
-        $this->goalFactory = $goalFactory;
     }
 
     public function createGoal(

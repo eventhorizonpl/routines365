@@ -13,16 +13,12 @@ use Symfony\Component\Uid\Uuid;
 
 class AchievementFaker
 {
-    private AchievementFactory $achievementFactory;
-    private AchievementManager $achievementManager;
     private Generator $faker;
 
     public function __construct(
-        AchievementFactory $achievementFactory,
-        AchievementManager $achievementManager
+        private AchievementFactory $achievementFactory,
+        private AchievementManager $achievementManager
     ) {
-        $this->achievementFactory = $achievementFactory;
-        $this->achievementManager = $achievementManager;
         $this->faker = Factory::create();
     }
 

@@ -13,14 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RewardUserActivityCommand extends BaseLockableCommand
 {
     protected static $defaultName = 'app:reward-user-activity';
-    private UserService $userService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        UserService $userService
+        private UserService $userService
     ) {
-        $this->userService = $userService;
-
         parent::__construct($entityManager);
     }
 

@@ -11,15 +11,10 @@ use App\Repository\RewardRepository;
 
 class RewardService
 {
-    private RewardManager $rewardManager;
-    private RewardRepository $rewardRepository;
-
     public function __construct(
-        RewardManager $rewardManager,
-        RewardRepository $rewardRepository
+        private RewardManager $rewardManager,
+        private RewardRepository $rewardRepository
     ) {
-        $this->rewardManager = $rewardManager;
-        $this->rewardRepository = $rewardRepository;
     }
 
     public function findReward(Routine $routine, string $type): ?Reward

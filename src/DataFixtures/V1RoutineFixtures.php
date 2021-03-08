@@ -19,15 +19,10 @@ class V1RoutineFixtures extends Fixture implements ContainerAwareInterface, Depe
     public const ROUTINE_LIMIT = 5;
     public const ROUTINE_REFERENCE = 'routine_reference';
 
-    private RoutineFaker $routineFaker;
-    private RoutineManager $routineManager;
-
     public function __construct(
-        RoutineFaker $routineFaker,
-        RoutineManager $routineManager
+        private RoutineFaker $routineFaker,
+        private RoutineManager $routineManager
     ) {
-        $this->routineFaker = $routineFaker;
-        $this->routineManager = $routineManager;
     }
 
     public function getDependencies(): array

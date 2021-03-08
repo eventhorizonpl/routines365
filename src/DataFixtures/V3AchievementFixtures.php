@@ -16,18 +16,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class V3AchievementFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
-    private AchievementFactory $achievementFactory;
-    private AchievementManager $achievementManager;
-    private UserRepository $userRepository;
-
     public function __construct(
-        AchievementFactory $achievementFactory,
-        AchievementManager $achievementManager,
-        UserRepository $userRepository
+        private AchievementFactory $achievementFactory,
+        private AchievementManager $achievementManager,
+        private UserRepository $userRepository
     ) {
-        $this->achievementFactory = $achievementFactory;
-        $this->achievementManager = $achievementManager;
-        $this->userRepository = $userRepository;
     }
 
     public function getDependencies(): array

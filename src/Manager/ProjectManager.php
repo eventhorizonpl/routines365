@@ -13,18 +13,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProjectManager
 {
-    private EntityManagerInterface $entityManager;
-    private GoalManager $goalManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        EntityManagerInterface $entityManager,
-        GoalManager $goalManager,
-        ValidatorInterface $validator
+        private EntityManagerInterface $entityManager,
+        private GoalManager $goalManager,
+        private ValidatorInterface $validator
     ) {
-        $this->entityManager = $entityManager;
-        $this->goalManager = $goalManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $projects, string $actor = null, int $saveEvery = 200): self

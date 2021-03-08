@@ -13,13 +13,11 @@ use Faker\Generator;
 class ReminderFaker
 {
     private Generator $faker;
-    private ReminderFactory $reminderFactory;
 
     public function __construct(
-        ReminderFactory $reminderFactory
+        private ReminderFactory $reminderFactory
     ) {
         $this->faker = Factory::create();
-        $this->reminderFactory = $reminderFactory;
     }
 
     public function createReminder(

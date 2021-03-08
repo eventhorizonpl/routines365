@@ -11,12 +11,8 @@ use Symfony\Component\Mime\Address;
 
 class EmailService
 {
-    private MailerInterface $mailer;
-
-    public function __construct(
-        MailerInterface $mailer
-    ) {
-        $this->mailer = $mailer;
+    public function __construct(private MailerInterface $mailer)
+    {
     }
 
     public function prepare(

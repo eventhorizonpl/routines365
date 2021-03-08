@@ -21,30 +21,15 @@ use Doctrine\Persistence\ObjectManager;
 
 class V4QuestionnaireFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
-    private AnswerFactory $answerFactory;
-    private AnswerManager $answerManager;
-    private QuestionFactory $questionFactory;
-    private QuestionnaireFactory $questionnaireFactory;
-    private QuestionManager $questionManager;
-    private QuestionnaireManager $questionnaireManager;
-    private UserRepository $userRepository;
-
     public function __construct(
-        AnswerFactory $answerFactory,
-        AnswerManager $answerManager,
-        QuestionFactory $questionFactory,
-        QuestionnaireFactory $questionnaireFactory,
-        QuestionManager $questionManager,
-        QuestionnaireManager $questionnaireManager,
-        UserRepository $userRepository
+        private AnswerFactory $answerFactory,
+        private AnswerManager $answerManager,
+        private QuestionFactory $questionFactory,
+        private QuestionnaireFactory $questionnaireFactory,
+        private QuestionManager $questionManager,
+        private QuestionnaireManager $questionnaireManager,
+        private UserRepository $userRepository
     ) {
-        $this->answerFactory = $answerFactory;
-        $this->answerManager = $answerManager;
-        $this->questionFactory = $questionFactory;
-        $this->questionnaireFactory = $questionnaireFactory;
-        $this->questionManager = $questionManager;
-        $this->questionnaireManager = $questionnaireManager;
-        $this->userRepository = $userRepository;
     }
 
     public function getDependencies(): array

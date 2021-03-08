@@ -14,27 +14,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserKytService
 {
-    private EmailService $emailService;
-    private PaginatorInterface $paginator;
-    private PromotionService $promotionService;
-    private TranslatorInterface $translator;
-    private UserKytManager $userKytManager;
-    private UserRepository $userRepository;
-
     public function __construct(
-        EmailService $emailService,
-        PaginatorInterface $paginator,
-        PromotionService $promotionService,
-        TranslatorInterface $translator,
-        UserKytManager $userKytManager,
-        UserRepository $userRepository
+        private EmailService $emailService,
+        private PaginatorInterface $paginator,
+        private PromotionService $promotionService,
+        private TranslatorInterface $translator,
+        private UserKytManager $userKytManager,
+        private UserRepository $userRepository
     ) {
-        $this->emailService = $emailService;
-        $this->paginator = $paginator;
-        $this->promotionService = $promotionService;
-        $this->translator = $translator;
-        $this->userKytManager = $userKytManager;
-        $this->userRepository = $userRepository;
     }
 
     public function nurture(): UserKytService

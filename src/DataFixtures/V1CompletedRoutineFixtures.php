@@ -19,15 +19,10 @@ class V1CompletedRoutineFixtures extends Fixture implements ContainerAwareInterf
     public const COMPLETED_ROUTINE_LIMIT = 5;
     public const COMPLETED_ROUTINE_REFERENCE = 'completed_routine_reference';
 
-    private CompletedRoutineFaker $completedRoutineFaker;
-    private CompletedRoutineManager $completedRoutineManager;
-
     public function __construct(
-        CompletedRoutineFaker $completedRoutineFaker,
-        CompletedRoutineManager $completedRoutineManager
+        private CompletedRoutineFaker $completedRoutineFaker,
+        private CompletedRoutineManager $completedRoutineManager
     ) {
-        $this->completedRoutineFaker = $completedRoutineFaker;
-        $this->completedRoutineManager = $completedRoutineManager;
     }
 
     public function getDependencies(): array

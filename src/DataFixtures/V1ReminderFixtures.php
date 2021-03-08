@@ -19,15 +19,10 @@ class V1ReminderFixtures extends Fixture implements ContainerAwareInterface, Dep
     public const REMINDER_LIMIT = 5;
     public const REMINDER_REFERENCE = 'reminder_reference';
 
-    private ReminderFaker $reminderFaker;
-    private ReminderManager $reminderManager;
-
     public function __construct(
-        ReminderFaker $reminderFaker,
-        ReminderManager $reminderManager
+        private ReminderFaker $reminderFaker,
+        private ReminderManager $reminderManager
     ) {
-        $this->reminderFaker = $reminderFaker;
-        $this->reminderManager = $reminderManager;
     }
 
     public function getDependencies(): array

@@ -19,15 +19,10 @@ class V1NoteFixtures extends Fixture implements ContainerAwareInterface, Depende
     public const NOTE_LIMIT = 5;
     public const NOTE_REFERENCE = 'note_reference';
 
-    private NoteFaker $noteFaker;
-    private NoteManager $noteManager;
-
     public function __construct(
-        NoteFaker $noteFaker,
-        NoteManager $noteManager
+        private NoteFaker $noteFaker,
+        private NoteManager $noteManager
     ) {
-        $this->noteFaker = $noteFaker;
-        $this->noteManager = $noteManager;
     }
 
     public function getDependencies(): array

@@ -11,14 +11,12 @@ use Faker\Generator;
 
 class ContactFaker
 {
-    private ContactFactory $contactFactory;
     private Generator $faker;
 
     public function __construct(
-        ContactFactory $contactFactory
+        private ContactFactory $contactFactory
     ) {
         $this->faker = Factory::create();
-        $this->contactFactory = $contactFactory;
     }
 
     public function createContact(

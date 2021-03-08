@@ -13,15 +13,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class SavedEmailManager
 {
-    private EntityManagerInterface $entityManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        EntityManagerInterface $entityManager,
-        ValidatorInterface $validator
+        private EntityManagerInterface $entityManager,
+        private ValidatorInterface $validator
     ) {
-        $this->entityManager = $entityManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $savedEmails, string $actor = null, int $saveEvery = 200): self

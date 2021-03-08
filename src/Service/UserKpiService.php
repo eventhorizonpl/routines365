@@ -16,30 +16,15 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserKpiService
 {
-    private EmailService $emailService;
-    private PaginatorInterface $paginator;
-    private TranslatorInterface $translator;
-    private UserKpiFactory $userKpiFactory;
-    private UserKpiManager $userKpiManager;
-    private UserKpiRepository $userKpiRepository;
-    private UserRepository $userRepository;
-
     public function __construct(
-        EmailService $emailService,
-        PaginatorInterface $paginator,
-        TranslatorInterface $translator,
-        UserKpiFactory $userKpiFactory,
-        UserKpiManager $userKpiManager,
-        UserKpiRepository $userKpiRepository,
-        UserRepository $userRepository
+        private EmailService $emailService,
+        private PaginatorInterface $paginator,
+        private TranslatorInterface $translator,
+        private UserKpiFactory $userKpiFactory,
+        private UserKpiManager $userKpiManager,
+        private UserKpiRepository $userKpiRepository,
+        private UserRepository $userRepository
     ) {
-        $this->emailService = $emailService;
-        $this->paginator = $paginator;
-        $this->translator = $translator;
-        $this->userKpiFactory = $userKpiFactory;
-        $this->userKpiManager = $userKpiManager;
-        $this->userKpiRepository = $userKpiRepository;
-        $this->userRepository = $userRepository;
     }
 
     public function create(

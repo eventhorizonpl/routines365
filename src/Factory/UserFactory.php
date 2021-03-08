@@ -10,18 +10,11 @@ use Symfony\Component\Uid\Uuid;
 
 class UserFactory
 {
-    private AccountFactory $accountFactory;
-    private ProfileFactory $profileFactory;
-    private UserKytFactory $userKytFactory;
-
     public function __construct(
-        AccountFactory $accountFactory,
-        ProfileFactory $profileFactory,
-        UserKytFactory $userKytFactory
+        private AccountFactory $accountFactory,
+        private ProfileFactory $profileFactory,
+        private UserKytFactory $userKytFactory
     ) {
-        $this->accountFactory = $accountFactory;
-        $this->profileFactory = $profileFactory;
-        $this->userKytFactory = $userKytFactory;
     }
 
     public function createUser(?Account $account = null): User

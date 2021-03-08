@@ -12,13 +12,11 @@ use Faker\Generator;
 class ProjectFaker
 {
     private Generator $faker;
-    private ProjectFactory $projectFactory;
 
     public function __construct(
-        ProjectFactory $projectFactory
+        private ProjectFactory $projectFactory
     ) {
         $this->faker = Factory::create();
-        $this->projectFactory = $projectFactory;
     }
 
     public function createProject(

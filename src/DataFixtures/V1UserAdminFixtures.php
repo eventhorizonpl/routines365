@@ -20,18 +20,11 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
 
     public const ADMIN_USER_REFERENCE = 'admin-user';
 
-    private UserFactory $userFactory;
-    private UserManager $userManager;
-    private UserService $userService;
-
     public function __construct(
-        UserFactory $userFactory,
-        UserManager $userManager,
-        UserService $userService
+        private UserFactory $userFactory,
+        private UserManager $userManager,
+        private UserService $userService
     ) {
-        $this->userFactory = $userFactory;
-        $this->userManager = $userManager;
-        $this->userService = $userService;
     }
 
     public static function getGroups(): array

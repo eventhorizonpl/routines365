@@ -13,14 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class PostRemindMessagesCommand extends BaseLockableCommand
 {
     protected static $defaultName = 'app:post-remind-messages';
-    private PostRemindMessagesService $postRemindMessagesService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        PostRemindMessagesService $postRemindMessagesService
+        private PostRemindMessagesService $postRemindMessagesService
     ) {
-        $this->postRemindMessagesService = $postRemindMessagesService;
-
         parent::__construct($entityManager);
     }
 

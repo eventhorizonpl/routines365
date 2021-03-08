@@ -14,14 +14,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CreateRetentionCommand extends BaseLockableCommand
 {
     protected static $defaultName = 'app:create-retention';
-    private RetentionService $retentionService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        RetentionService $retentionService
+        private RetentionService $retentionService
     ) {
-        $this->retentionService = $retentionService;
-
         parent::__construct($entityManager);
     }
 

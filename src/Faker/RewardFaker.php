@@ -12,13 +12,11 @@ use Faker\Generator;
 class RewardFaker
 {
     private Generator $faker;
-    private RewardFactory $rewardFactory;
 
     public function __construct(
-        RewardFactory $rewardFactory
+        private RewardFactory $rewardFactory
     ) {
         $this->faker = Factory::create();
-        $this->rewardFactory = $rewardFactory;
     }
 
     public function createReward(

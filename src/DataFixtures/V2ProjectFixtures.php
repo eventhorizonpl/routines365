@@ -19,15 +19,10 @@ class V2ProjectFixtures extends Fixture implements ContainerAwareInterface, Depe
     public const PROJECT_LIMIT = 5;
     public const PROJECT_REFERENCE = 'project_reference';
 
-    private ProjectFaker $projectFaker;
-    private ProjectManager $projectManager;
-
     public function __construct(
-        ProjectFaker $projectFaker,
-        ProjectManager $projectManager
+        private ProjectFaker $projectFaker,
+        private ProjectManager $projectManager
     ) {
-        $this->projectFaker = $projectFaker;
-        $this->projectManager = $projectManager;
     }
 
     public function getDependencies(): array

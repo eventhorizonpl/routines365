@@ -6,12 +6,8 @@ namespace App\Service\Sms;
 
 class SmsService implements SmsServiceInterface
 {
-    private AmazonSnsService $amazonSnsService;
-
-    public function __construct(
-        AmazonSnsService $amazonSnsService
-    ) {
-        $this->amazonSnsService = $amazonSnsService;
+    public function __construct(private AmazonSnsService $amazonSnsService)
+    {
     }
 
     public function send(string $message, string $phone): string

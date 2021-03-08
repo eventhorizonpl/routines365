@@ -12,13 +12,11 @@ use Faker\Generator;
 class NoteFaker
 {
     private Generator $faker;
-    private NoteFactory $noteFactory;
 
     public function __construct(
-        NoteFactory $noteFactory
+        private NoteFactory $noteFactory
     ) {
         $this->faker = Factory::create();
-        $this->noteFactory = $noteFactory;
     }
 
     public function createNote(

@@ -14,16 +14,12 @@ use Symfony\Component\Uid\Uuid;
 class QuoteFaker
 {
     private Generator $faker;
-    private QuoteFactory $quoteFactory;
-    private QuoteManager $quoteManager;
 
     public function __construct(
-        QuoteFactory $quoteFactory,
-        QuoteManager $quoteManager
+        private QuoteFactory $quoteFactory,
+        private QuoteManager $quoteManager
     ) {
         $this->faker = Factory::create();
-        $this->quoteFactory = $quoteFactory;
-        $this->quoteManager = $quoteManager;
     }
 
     public function createQuote(

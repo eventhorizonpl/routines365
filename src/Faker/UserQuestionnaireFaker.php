@@ -16,16 +16,12 @@ use Symfony\Component\Uid\Uuid;
 class UserQuestionnaireFaker
 {
     private Generator $faker;
-    private UserQuestionnaireFactory $userQuestionnaireFactory;
-    private UserQuestionnaireManager $userQuestionnaireManager;
 
     public function __construct(
-        UserQuestionnaireFactory $userQuestionnaireFactory,
-        UserQuestionnaireManager $userQuestionnaireManager
+        private UserQuestionnaireFactory $userQuestionnaireFactory,
+        private UserQuestionnaireManager $userQuestionnaireManager
     ) {
         $this->faker = Factory::create();
-        $this->userQuestionnaireFactory = $userQuestionnaireFactory;
-        $this->userQuestionnaireManager = $userQuestionnaireManager;
     }
 
     public function createUserQuestionnaire(

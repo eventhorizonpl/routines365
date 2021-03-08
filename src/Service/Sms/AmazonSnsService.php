@@ -10,11 +10,10 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class AmazonSnsService implements SmsServiceInterface
 {
-    private ParameterBagInterface $parameterBag;
     private SnsClient $snsClient;
 
     public function __construct(
-        ParameterBagInterface $parameterBag
+        private ParameterBagInterface $parameterBag
     ) {
         $this->snsClient = new SnsClient([
             'region' => $parameterBag->get('sns_region'),

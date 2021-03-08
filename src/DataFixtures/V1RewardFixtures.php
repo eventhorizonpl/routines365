@@ -19,15 +19,10 @@ class V1RewardFixtures extends Fixture implements ContainerAwareInterface, Depen
     public const REWARD_LIMIT = 5;
     public const REWARD_REFERENCE = 'reward_reference';
 
-    private RewardFaker $rewardFaker;
-    private RewardManager $rewardManager;
-
     public function __construct(
-        RewardFaker $rewardFaker,
-        RewardManager $rewardManager
+        private RewardFaker $rewardFaker,
+        private RewardManager $rewardManager
     ) {
-        $this->rewardFaker = $rewardFaker;
-        $this->rewardManager = $rewardManager;
     }
 
     public function getDependencies(): array

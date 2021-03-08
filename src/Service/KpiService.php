@@ -37,93 +37,36 @@ use DateTimeImmutable;
 
 class KpiService
 {
-    private AccountRepository $accountRepository;
-    private AccountOperationRepository $accountOperationRepository;
-    private AchievementRepository $achievementRepository;
-    private AnswerRepository $answerRepository;
-    private CompletedRoutineRepository $completedRoutineRepository;
-    private ContactRepository $contactRepository;
-    private GoalRepository $goalRepository;
-    private KpiFactory $kpiFactory;
-    private KpiManager $kpiManager;
-    private NoteRepository $noteRepository;
-    private ProfileRepository $profileRepository;
-    private ProjectRepository $projectRepository;
-    private PromotionRepository $promotionRepository;
-    private QuestionRepository $questionRepository;
-    private QuestionnaireRepository $questionnaireRepository;
-    private QuoteRepository $quoteRepository;
-    private ReminderMessageRepository $reminderMessageRepository;
-    private ReminderRepository $reminderRepository;
-    private RetentionRepository $retentionRepository;
-    private RewardRepository $rewardRepository;
-    private RoutineRepository $routineRepository;
-    private SavedEmailRepository $savedEmailRepository;
-    private SentReminderRepository $sentReminderRepository;
-    private UserKpiRepository $userKpiRepository;
-    private UserKytRepository $userKytRepository;
-    private UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository;
-    private UserQuestionnaireRepository $userQuestionnaireRepository;
-    private UserRepository $userRepository;
-
     public function __construct(
-        AccountRepository $accountRepository,
-        AccountOperationRepository $accountOperationRepository,
-        AchievementRepository $achievementRepository,
-        AnswerRepository $answerRepository,
-        CompletedRoutineRepository $completedRoutineRepository,
-        ContactRepository $contactRepository,
-        GoalRepository $goalRepository,
-        KpiFactory $kpiFactory,
-        KpiManager $kpiManager,
-        NoteRepository $noteRepository,
-        ProfileRepository $profileRepository,
-        ProjectRepository $projectRepository,
-        PromotionRepository $promotionRepository,
-        QuestionRepository $questionRepository,
-        QuestionnaireRepository $questionnaireRepository,
-        QuoteRepository $quoteRepository,
-        ReminderMessageRepository $reminderMessageRepository,
-        ReminderRepository $reminderRepository,
-        RetentionRepository $retentionRepository,
-        RewardRepository $rewardRepository,
-        RoutineRepository $routineRepository,
-        SavedEmailRepository $savedEmailRepository,
-        SentReminderRepository $sentReminderRepository,
-        UserKpiRepository $userKpiRepository,
-        UserKytRepository $userKytRepository,
-        UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository,
-        UserQuestionnaireRepository $userQuestionnaireRepository,
-        UserRepository $userRepository
+        private AccountRepository $accountRepository,
+        private AccountOperationRepository $accountOperationRepository,
+        private AchievementRepository $achievementRepository,
+        private AnswerRepository $answerRepository,
+        private CompletedRoutineRepository $completedRoutineRepository,
+        private ContactRepository $contactRepository,
+        private GoalRepository $goalRepository,
+        private KpiFactory $kpiFactory,
+        private KpiManager $kpiManager,
+        private NoteRepository $noteRepository,
+        private ProfileRepository $profileRepository,
+        private ProjectRepository $projectRepository,
+        private PromotionRepository $promotionRepository,
+        private QuestionRepository $questionRepository,
+        private QuestionnaireRepository $questionnaireRepository,
+        private QuoteRepository $quoteRepository,
+        private ReminderMessageRepository $reminderMessageRepository,
+        private ReminderRepository $reminderRepository,
+        private RetentionRepository $retentionRepository,
+        private RewardRepository $rewardRepository,
+        private RoutineRepository $routineRepository,
+        private SavedEmailRepository $savedEmailRepository,
+        private SentReminderRepository $sentReminderRepository,
+        private UserKpiRepository $userKpiRepository,
+        private UserKytRepository $userKytRepository,
+        private UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository,
+        private UserQuestionnaireRepository $userQuestionnaireRepository,
+        private UserRepository $userRepository
     ) {
-        $this->accountRepository = $accountRepository;
-        $this->accountOperationRepository = $accountOperationRepository;
-        $this->achievementRepository = $achievementRepository;
-        $this->answerRepository = $answerRepository;
-        $this->completedRoutineRepository = $completedRoutineRepository;
-        $this->contactRepository = $contactRepository;
-        $this->goalRepository = $goalRepository;
-        $this->kpiFactory = $kpiFactory;
-        $this->kpiManager = $kpiManager;
-        $this->noteRepository = $noteRepository;
-        $this->profileRepository = $profileRepository;
-        $this->projectRepository = $projectRepository;
-        $this->promotionRepository = $promotionRepository;
-        $this->questionRepository = $questionRepository;
-        $this->questionnaireRepository = $questionnaireRepository;
-        $this->quoteRepository = $quoteRepository;
-        $this->reminderMessageRepository = $reminderMessageRepository;
-        $this->reminderRepository = $reminderRepository;
-        $this->retentionRepository = $retentionRepository;
-        $this->rewardRepository = $rewardRepository;
-        $this->routineRepository = $routineRepository;
-        $this->savedEmailRepository = $savedEmailRepository;
-        $this->sentReminderRepository = $sentReminderRepository;
-        $this->userKpiRepository = $userKpiRepository;
-        $this->userKytRepository = $userKytRepository;
-        $this->userQuestionnaireAnswerRepository = $userQuestionnaireAnswerRepository;
-        $this->userQuestionnaireRepository = $userQuestionnaireRepository;
-        $this->userRepository = $userRepository;
     }
 
     public function create(): Kpi

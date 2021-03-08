@@ -13,18 +13,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AccountOperationManager
 {
-    private AccountManager $accountManager;
-    private EntityManagerInterface $entityManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        AccountManager $accountManager,
-        EntityManagerInterface $entityManager,
-        ValidatorInterface $validator
+        private AccountManager $accountManager,
+        private EntityManagerInterface $entityManager,
+        private ValidatorInterface $validator
     ) {
-        $this->accountManager = $accountManager;
-        $this->entityManager = $entityManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $accountOperations, string $actor = null, int $saveEvery = 200): self

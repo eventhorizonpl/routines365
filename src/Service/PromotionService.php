@@ -12,18 +12,11 @@ use DateTimeImmutable;
 
 class PromotionService
 {
-    private AccountOperationService $accountOperationService;
-    private PromotionRepository $promotionRepository;
-    private UserManager $userManager;
-
     public function __construct(
-        AccountOperationService $accountOperationService,
-        PromotionRepository $promotionRepository,
-        UserManager $userManager
+        private AccountOperationService $accountOperationService,
+        private PromotionRepository $promotionRepository,
+        private UserManager $userManager
     ) {
-        $this->accountOperationService = $accountOperationService;
-        $this->promotionRepository = $promotionRepository;
-        $this->userManager = $userManager;
     }
 
     public function getEnabledAndValidPromotion(string $code, string $type): ?Promotion

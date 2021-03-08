@@ -13,18 +13,11 @@ use App\Repository\UserQuestionnaireAnswerRepository;
 
 class UserQuestionnaireAnswerService
 {
-    private UserQuestionnaireAnswerFactory $userQuestionnaireAnswerFactory;
-    private UserQuestionnaireAnswerManager $userQuestionnaireAnswerManager;
-    private UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository;
-
     public function __construct(
-        UserQuestionnaireAnswerFactory $userQuestionnaireAnswerFactory,
-        UserQuestionnaireAnswerManager $userQuestionnaireAnswerManager,
-        UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository
+        private UserQuestionnaireAnswerFactory $userQuestionnaireAnswerFactory,
+        private UserQuestionnaireAnswerManager $userQuestionnaireAnswerManager,
+        private UserQuestionnaireAnswerRepository $userQuestionnaireAnswerRepository
     ) {
-        $this->userQuestionnaireAnswerFactory = $userQuestionnaireAnswerFactory;
-        $this->userQuestionnaireAnswerManager = $userQuestionnaireAnswerManager;
-        $this->userQuestionnaireAnswerRepository = $userQuestionnaireAnswerRepository;
     }
 
     public function findOrCreate(

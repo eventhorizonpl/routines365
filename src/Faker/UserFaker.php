@@ -25,86 +25,36 @@ class UserFaker
     public const CUSTOMER_EMAIL = 'customer@example.org';
     public const CUSTOMER_PASSWORD = 'customer';
 
-    private AccountOperationFaker $accountOperationFaker;
-    private AchievementFaker $achievementFaker;
-    private AnswerFaker $answerFaker;
-    private CompletedRoutineFaker $completedRoutineFaker;
-    private ContactFaker $contactFaker;
     private Generator $faker;
-    private GoalFaker $goalFaker;
-    private NoteFaker $noteFaker;
-    private ProjectFaker $projectFaker;
-    private PromotionFaker $promotionFaker;
-    private QuestionFaker $questionFaker;
-    private QuestionnaireFaker $questionnaireFaker;
-    private QuoteFaker $quoteFaker;
-    private ReminderFaker $reminderFaker;
-    private ReminderMessageFaker $reminderMessageFaker;
-    private ReminderMessageManager $reminderMessageManager;
-    private RewardFaker $rewardFaker;
-    private RoutineFaker $routineFaker;
-    private SavedEmailFaker $savedEmailFaker;
-    private SentReminderFactory $sentReminderFactory;
-    private SentReminderManager $sentReminderManager;
-    private TestimonialFaker $testimonialFaker;
-    private UserFactory $userFactory;
-    private UserManager $userManager;
-    private UserQuestionnaireFaker $userQuestionnaireFaker;
-    private UserService $userService;
 
     public function __construct(
-        AccountOperationFaker $accountOperationFaker,
-        AchievementFaker $achievementFaker,
-        AnswerFaker $answerFaker,
-        CompletedRoutineFaker $completedRoutineFaker,
-        ContactFaker $contactFaker,
-        GoalFaker $goalFaker,
-        NoteFaker $noteFaker,
-        ProjectFaker $projectFaker,
-        PromotionFaker $promotionFaker,
-        QuestionFaker $questionFaker,
-        QuestionnaireFaker $questionnaireFaker,
-        QuoteFaker $quoteFaker,
-        ReminderFaker $reminderFaker,
-        ReminderMessageFaker $reminderMessageFaker,
-        ReminderMessageManager $reminderMessageManager,
-        RewardFaker $rewardFaker,
-        RoutineFaker $routineFaker,
-        SavedEmailFaker $savedEmailFaker,
-        SentReminderFactory $sentReminderFactory,
-        SentReminderManager $sentReminderManager,
-        TestimonialFaker $testimonialFaker,
-        UserFactory $userFactory,
-        UserManager $userManager,
-        UserQuestionnaireFaker $userQuestionnaireFaker,
-        UserService $userService
+        private AccountOperationFaker $accountOperationFaker,
+        private AchievementFaker $achievementFaker,
+        private AnswerFaker $answerFaker,
+        private CompletedRoutineFaker $completedRoutineFaker,
+        private ContactFaker $contactFaker,
+        private GoalFaker $goalFaker,
+        private NoteFaker $noteFaker,
+        private ProjectFaker $projectFaker,
+        private PromotionFaker $promotionFaker,
+        private QuestionFaker $questionFaker,
+        private QuestionnaireFaker $questionnaireFaker,
+        private QuoteFaker $quoteFaker,
+        private ReminderFaker $reminderFaker,
+        private ReminderMessageFaker $reminderMessageFaker,
+        private ReminderMessageManager $reminderMessageManager,
+        private RewardFaker $rewardFaker,
+        private RoutineFaker $routineFaker,
+        private SavedEmailFaker $savedEmailFaker,
+        private SentReminderFactory $sentReminderFactory,
+        private SentReminderManager $sentReminderManager,
+        private TestimonialFaker $testimonialFaker,
+        private UserFactory $userFactory,
+        private UserManager $userManager,
+        private UserQuestionnaireFaker $userQuestionnaireFaker,
+        private UserService $userService
     ) {
-        $this->accountOperationFaker = $accountOperationFaker;
-        $this->achievementFaker = $achievementFaker;
-        $this->answerFaker = $answerFaker;
-        $this->completedRoutineFaker = $completedRoutineFaker;
-        $this->contactFaker = $contactFaker;
         $this->faker = Factory::create();
-        $this->goalFaker = $goalFaker;
-        $this->noteFaker = $noteFaker;
-        $this->projectFaker = $projectFaker;
-        $this->promotionFaker = $promotionFaker;
-        $this->questionFaker = $questionFaker;
-        $this->questionnaireFaker = $questionnaireFaker;
-        $this->quoteFaker = $quoteFaker;
-        $this->reminderFaker = $reminderFaker;
-        $this->reminderMessageFaker = $reminderMessageFaker;
-        $this->reminderMessageManager = $reminderMessageManager;
-        $this->rewardFaker = $rewardFaker;
-        $this->routineFaker = $routineFaker;
-        $this->savedEmailFaker = $savedEmailFaker;
-        $this->sentReminderFactory = $sentReminderFactory;
-        $this->sentReminderManager = $sentReminderManager;
-        $this->testimonialFaker = $testimonialFaker;
-        $this->userFactory = $userFactory;
-        $this->userManager = $userManager;
-        $this->userQuestionnaireFaker = $userQuestionnaireFaker;
-        $this->userService = $userService;
     }
 
     public function createUser(

@@ -11,15 +11,10 @@ use App\Manager\SavedEmailManager;
 
 class SavedEmailService
 {
-    private SavedEmailFactory $savedEmailFactory;
-    private SavedEmailManager $savedEmailManager;
-
     public function __construct(
-        SavedEmailFactory $savedEmailFactory,
-        SavedEmailManager $savedEmailManager
+        private SavedEmailFactory $savedEmailFactory,
+        private SavedEmailManager $savedEmailManager
     ) {
-        $this->savedEmailFactory = $savedEmailFactory;
-        $this->savedEmailManager = $savedEmailManager;
     }
 
     public function create(

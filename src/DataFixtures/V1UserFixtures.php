@@ -20,18 +20,11 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
     public const REGULAR_USER_LIMIT = 50;
     public const REGULAR_USER_REFERENCE = 'regular-user-reference';
 
-    private TestimonialFaker $testimonialFaker;
-    private UserFaker $userFaker;
-    private UserManager $userManager;
-
     public function __construct(
-        TestimonialFaker $testimonialFaker,
-        UserFaker $userFaker,
-        UserManager $userManager
+        private TestimonialFaker $testimonialFaker,
+        private UserFaker $userFaker,
+        private UserManager $userManager
     ) {
-        $this->testimonialFaker = $testimonialFaker;
-        $this->userFaker = $userFaker;
-        $this->userManager = $userManager;
     }
 
     public function load(ObjectManager $manager): void

@@ -13,15 +13,10 @@ use App\Manager\AccountOperationManager;
 
 class AccountOperationService
 {
-    private AccountOperationFactory $accountOperationFactory;
-    private AccountOperationManager $accountOperationManager;
-
     public function __construct(
-        AccountOperationFactory $accountOperationFactory,
-        AccountOperationManager $accountOperationManager
+        private AccountOperationFactory $accountOperationFactory,
+        private AccountOperationManager $accountOperationManager
     ) {
-        $this->accountOperationFactory = $accountOperationFactory;
-        $this->accountOperationManager = $accountOperationManager;
     }
 
     public function deposit(

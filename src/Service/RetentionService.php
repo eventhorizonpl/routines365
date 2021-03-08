@@ -15,21 +15,12 @@ use DateTimeImmutable;
 
 class RetentionService
 {
-    private RetentionFactory $retentionFactory;
-    private RetentionManager $retentionManager;
-    private RetentionRepository $retentionRepository;
-    private UserRepository $userRepository;
-
     public function __construct(
-        RetentionFactory $retentionFactory,
-        RetentionManager $retentionManager,
-        RetentionRepository $retentionRepository,
-        UserRepository $userRepository
+        private RetentionFactory $retentionFactory,
+        private RetentionManager $retentionManager,
+        private RetentionRepository $retentionRepository,
+        private UserRepository $userRepository
     ) {
-        $this->retentionFactory = $retentionFactory;
-        $this->retentionManager = $retentionManager;
-        $this->retentionRepository = $retentionRepository;
-        $this->userRepository = $userRepository;
     }
 
     public function create(

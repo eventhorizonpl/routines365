@@ -19,15 +19,10 @@ class V1GoalFixtures extends Fixture implements ContainerAwareInterface, Depende
     public const GOAL_LIMIT = 5;
     public const GOAL_REFERENCE = 'goal_reference';
 
-    private GoalFaker $goalFaker;
-    private GoalManager $goalManager;
-
     public function __construct(
-        GoalFaker $goalFaker,
-        GoalManager $goalManager
+        private GoalFaker $goalFaker,
+        private GoalManager $goalManager
     ) {
-        $this->goalFaker = $goalFaker;
-        $this->goalManager = $goalManager;
     }
 
     public function getDependencies(): array

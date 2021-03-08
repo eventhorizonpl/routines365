@@ -13,16 +13,12 @@ use Faker\Generator;
 class TestimonialFaker
 {
     private Generator $faker;
-    private TestimonialFactory $testimonialFactory;
-    private TestimonialManager $testimonialManager;
 
     public function __construct(
-        TestimonialFactory $testimonialFactory,
-        TestimonialManager $testimonialManager
+        private TestimonialFactory $testimonialFactory,
+        private TestimonialManager $testimonialManager
     ) {
         $this->faker = Factory::create();
-        $this->testimonialFactory = $testimonialFactory;
-        $this->testimonialManager = $testimonialManager;
     }
 
     public function createTestimonial(

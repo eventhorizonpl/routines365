@@ -21,45 +21,20 @@ use Symfony\Component\Routing\RouterInterface;
 
 class PostRemindMessagesService
 {
-    private AccountOperationService $accountOperationService;
-    private EmailService $emailService;
-    private QuoteRepository $quoteRepository;
-    private ReminderManager $reminderManager;
-    private ReminderMessageFactory $reminderMessageFactory;
-    private ReminderMessageManager $reminderMessageManager;
-    private ReminderRepository $reminderRepository;
-    private ReportService $reportService;
-    private RouterInterface $router;
-    private SentReminderFactory $sentReminderFactory;
-    private SentReminderManager $sentReminderManager;
-    private SmsService $smsService;
-
     public function __construct(
-        AccountOperationService $accountOperationService,
-        EmailService $emailService,
-        QuoteRepository $quoteRepository,
-        ReminderManager $reminderManager,
-        ReminderMessageFactory $reminderMessageFactory,
-        ReminderMessageManager $reminderMessageManager,
-        ReminderRepository $reminderRepository,
-        ReportService $reportService,
-        RouterInterface $router,
-        SentReminderFactory $sentReminderFactory,
-        SentReminderManager $sentReminderManager,
-        SmsService $smsService
+        private AccountOperationService $accountOperationService,
+        private EmailService $emailService,
+        private QuoteRepository $quoteRepository,
+        private ReminderManager $reminderManager,
+        private ReminderMessageFactory $reminderMessageFactory,
+        private ReminderMessageManager $reminderMessageManager,
+        private ReminderRepository $reminderRepository,
+        private ReportService $reportService,
+        private RouterInterface $router,
+        private SentReminderFactory $sentReminderFactory,
+        private SentReminderManager $sentReminderManager,
+        private SmsService $smsService
     ) {
-        $this->accountOperationService = $accountOperationService;
-        $this->emailService = $emailService;
-        $this->quoteRepository = $quoteRepository;
-        $this->reminderManager = $reminderManager;
-        $this->reminderMessageFactory = $reminderMessageFactory;
-        $this->reminderMessageManager = $reminderMessageManager;
-        $this->reminderRepository = $reminderRepository;
-        $this->reportService = $reportService;
-        $this->router = $router;
-        $this->sentReminderFactory = $sentReminderFactory;
-        $this->sentReminderManager = $sentReminderManager;
-        $this->smsService = $smsService;
     }
 
     public function findNextReminder(Report $report): ?Reminder

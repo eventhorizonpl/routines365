@@ -11,14 +11,12 @@ use Faker\Generator;
 
 class CompletedRoutineFaker
 {
-    private CompletedRoutineFactory $completedRoutineFactory;
     private Generator $faker;
 
     public function __construct(
-        CompletedRoutineFactory $completedRoutineFactory
+        private CompletedRoutineFactory $completedRoutineFactory
     ) {
         $this->faker = Factory::create();
-        $this->completedRoutineFactory = $completedRoutineFactory;
     }
 
     public function createCompletedRoutine(

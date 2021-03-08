@@ -13,14 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class PostUserKytMessagesCommand extends BaseLockableCommand
 {
     protected static $defaultName = 'app:post-user-kyt-messages';
-    private UserKytService $userKytService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        UserKytService $userKytService
+        private UserKytService $userKytService
     ) {
-        $this->userKytService = $userKytService;
-
         parent::__construct($entityManager);
     }
 

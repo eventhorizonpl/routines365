@@ -12,13 +12,11 @@ use Faker\Generator;
 class SavedEmailFaker
 {
     private Generator $faker;
-    private SavedEmailFactory $savedEmailFactory;
 
     public function __construct(
-        SavedEmailFactory $savedEmailFactory
+        private SavedEmailFactory $savedEmailFactory
     ) {
         $this->faker = Factory::create();
-        $this->savedEmailFactory = $savedEmailFactory;
     }
 
     public function createSavedEmail(

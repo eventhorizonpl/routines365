@@ -11,15 +11,10 @@ use App\Repository\AchievementRepository;
 
 class AchievementService
 {
-    private AchievementRepository $achievementRepository;
-    private UserManager $userManager;
-
     public function __construct(
-        AchievementRepository $achievementRepository,
-        UserManager $userManager
+        private AchievementRepository $achievementRepository,
+        private UserManager $userManager
     ) {
-        $this->achievementRepository = $achievementRepository;
-        $this->userManager = $userManager;
     }
 
     public function manageAchievements(User $user, string $type): ?Achievement

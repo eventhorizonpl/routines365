@@ -10,15 +10,10 @@ use App\Manager\ReportManager;
 
 class ReportService
 {
-    private ReportFactory $reportFactory;
-    private ReportManager $reportManager;
-
     public function __construct(
-        ReportFactory $reportFactory,
-        ReportManager $reportManager
+        private ReportFactory $reportFactory,
+        private ReportManager $reportManager
     ) {
-        $this->reportFactory = $reportFactory;
-        $this->reportManager = $reportManager;
     }
 
     public function addData(

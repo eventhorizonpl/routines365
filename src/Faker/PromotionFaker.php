@@ -14,16 +14,12 @@ use Symfony\Component\Uid\Uuid;
 class PromotionFaker
 {
     private Generator $faker;
-    private PromotionFactory $promotionFactory;
-    private PromotionManager $promotionManager;
 
     public function __construct(
-        PromotionFactory $promotionFactory,
-        PromotionManager $promotionManager
+        private PromotionFactory $promotionFactory,
+        private PromotionManager $promotionManager
     ) {
         $this->faker = Factory::create();
-        $this->promotionFactory = $promotionFactory;
-        $this->promotionManager = $promotionManager;
     }
 
     public function createPromotion(

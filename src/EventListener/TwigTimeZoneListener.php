@@ -14,15 +14,10 @@ use Twig\Extension\CoreExtension;
 
 class TwigTimeZoneListener
 {
-    private Environment $environment;
-    private Security $security;
-
     public function __construct(
-        Environment $environment,
-        Security $security
+        private Environment $environment,
+        private Security $security
     ) {
-        $this->environment = $environment;
-        $this->security = $security;
     }
 
     public function onKernelControllerArguments(ControllerArgumentsEvent $event): void

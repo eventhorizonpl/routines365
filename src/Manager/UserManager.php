@@ -13,57 +13,24 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserManager
 {
-    private AccountManager $accountManager;
-    private AccountOperationManager $accountOperationManager;
-    private CompletedRoutineManager $completedRoutineManager;
-    private ContactManager $contactManager;
-    private EntityManagerInterface $entityManager;
-    private GoalManager $goalManager;
-    private NoteManager $noteManager;
-    private ProfileManager $profileManager;
-    private ProjectManager $projectManager;
-    private ReminderManager $reminderManager;
-    private RewardManager $rewardManager;
-    private RoutineManager $routineManager;
-    private SavedEmailManager $savedEmailManager;
-    private TestimonialManager $testimonialManager;
-    private UserKytManager $userKytManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        AccountManager $accountManager,
-        AccountOperationManager $accountOperationManager,
-        CompletedRoutineManager $completedRoutineManager,
-        ContactManager $contactManager,
-        EntityManagerInterface $entityManager,
-        GoalManager $goalManager,
-        NoteManager $noteManager,
-        ProfileManager $profileManager,
-        ProjectManager $projectManager,
-        ReminderManager $reminderManager,
-        RewardManager $rewardManager,
-        RoutineManager $routineManager,
-        SavedEmailManager $savedEmailManager,
-        TestimonialManager $testimonialManager,
-        UserKytManager $userKytManager,
-        ValidatorInterface $validator
+        private AccountManager $accountManager,
+        private AccountOperationManager $accountOperationManager,
+        private CompletedRoutineManager $completedRoutineManager,
+        private ContactManager $contactManager,
+        private EntityManagerInterface $entityManager,
+        private GoalManager $goalManager,
+        private NoteManager $noteManager,
+        private ProfileManager $profileManager,
+        private ProjectManager $projectManager,
+        private ReminderManager $reminderManager,
+        private RewardManager $rewardManager,
+        private RoutineManager $routineManager,
+        private SavedEmailManager $savedEmailManager,
+        private TestimonialManager $testimonialManager,
+        private UserKytManager $userKytManager,
+        private ValidatorInterface $validator
     ) {
-        $this->accountManager = $accountManager;
-        $this->accountOperationManager = $accountOperationManager;
-        $this->completedRoutineManager = $completedRoutineManager;
-        $this->contactManager = $contactManager;
-        $this->entityManager = $entityManager;
-        $this->goalManager = $goalManager;
-        $this->noteManager = $noteManager;
-        $this->profileManager = $profileManager;
-        $this->projectManager = $projectManager;
-        $this->reminderManager = $reminderManager;
-        $this->rewardManager = $rewardManager;
-        $this->routineManager = $routineManager;
-        $this->savedEmailManager = $savedEmailManager;
-        $this->testimonialManager = $testimonialManager;
-        $this->userKytManager = $userKytManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $users, string $actor = null, int $saveEvery = 200): self

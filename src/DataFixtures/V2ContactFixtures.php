@@ -19,15 +19,10 @@ class V2ContactFixtures extends Fixture implements ContainerAwareInterface, Depe
     public const CONTACT_LIMIT = 5;
     public const CONTACT_REFERENCE = 'contact_reference';
 
-    private ContactFaker $contactFaker;
-    private ContactManager $contactManager;
-
     public function __construct(
-        ContactFaker $contactFaker,
-        ContactManager $contactManager
+        private ContactFaker $contactFaker,
+        private ContactManager $contactManager
     ) {
-        $this->contactFaker = $contactFaker;
-        $this->contactManager = $contactManager;
     }
 
     public function getDependencies(): array

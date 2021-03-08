@@ -12,13 +12,11 @@ use Faker\Generator;
 class AccountOperationFaker
 {
     private Generator $faker;
-    private AccountOperationFactory $accountOperationFactory;
 
     public function __construct(
-        AccountOperationFactory $accountOperationFactory
+        private AccountOperationFactory $accountOperationFactory
     ) {
         $this->faker = Factory::create();
-        $this->accountOperationFactory = $accountOperationFactory;
     }
 
     public function createAccountOperation(

@@ -13,30 +13,15 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RoutineManager
 {
-    private CompletedRoutineManager $completedRoutineManager;
-    private EntityManagerInterface $entityManager;
-    private GoalManager $goalManager;
-    private NoteManager $noteManager;
-    private ReminderManager $reminderManager;
-    private RewardManager $rewardManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        CompletedRoutineManager $completedRoutineManager,
-        EntityManagerInterface $entityManager,
-        GoalManager $goalManager,
-        NoteManager $noteManager,
-        ReminderManager $reminderManager,
-        RewardManager $rewardManager,
-        ValidatorInterface $validator
+        private CompletedRoutineManager $completedRoutineManager,
+        private EntityManagerInterface $entityManager,
+        private GoalManager $goalManager,
+        private NoteManager $noteManager,
+        private ReminderManager $reminderManager,
+        private RewardManager $rewardManager,
+        private ValidatorInterface $validator
     ) {
-        $this->completedRoutineManager = $completedRoutineManager;
-        $this->entityManager = $entityManager;
-        $this->goalManager = $goalManager;
-        $this->noteManager = $noteManager;
-        $this->reminderManager = $reminderManager;
-        $this->rewardManager = $rewardManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $routines, string $actor = null, int $saveEvery = 200): self

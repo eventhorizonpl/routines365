@@ -15,24 +15,13 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class UserQuestionnaireService
 {
-    private PromotionService $promotionService;
-    private UserQuestionnaireAnswerService $userQuestionnaireAnswerService;
-    private UserQuestionnaireFactory $userQuestionnaireFactory;
-    private UserQuestionnaireManager $userQuestionnaireManager;
-    private UserQuestionnaireRepository $userQuestionnaireRepository;
-
     public function __construct(
-        PromotionService $promotionService,
-        UserQuestionnaireAnswerService $userQuestionnaireAnswerService,
-        UserQuestionnaireFactory $userQuestionnaireFactory,
-        UserQuestionnaireManager $userQuestionnaireManager,
-        UserQuestionnaireRepository $userQuestionnaireRepository
+        private PromotionService $promotionService,
+        private UserQuestionnaireAnswerService $userQuestionnaireAnswerService,
+        private UserQuestionnaireFactory $userQuestionnaireFactory,
+        private UserQuestionnaireManager $userQuestionnaireManager,
+        private UserQuestionnaireRepository $userQuestionnaireRepository
     ) {
-        $this->promotionService = $promotionService;
-        $this->userQuestionnaireAnswerService = $userQuestionnaireAnswerService;
-        $this->userQuestionnaireFactory = $userQuestionnaireFactory;
-        $this->userQuestionnaireManager = $userQuestionnaireManager;
-        $this->userQuestionnaireRepository = $userQuestionnaireRepository;
     }
 
     public function findOrCreate(Questionnaire $questionnaire, User $user): UserQuestionnaire

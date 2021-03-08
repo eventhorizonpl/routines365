@@ -13,18 +13,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class QuestionManager
 {
-    private AnswerManager $answerManager;
-    private EntityManagerInterface $entityManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        AnswerManager $answerManager,
-        EntityManagerInterface $entityManager,
-        ValidatorInterface $validator
+        private AnswerManager $answerManager,
+        private EntityManagerInterface $entityManager,
+        private ValidatorInterface $validator
     ) {
-        $this->answerManager = $answerManager;
-        $this->entityManager = $entityManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $questions, string $actor, int $saveEvery = 200): self

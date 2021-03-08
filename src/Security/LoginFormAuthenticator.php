@@ -29,24 +29,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public const LOGIN_ROUTE = 'security_login';
 
-    private CsrfTokenManagerInterface $csrfTokenManager;
-    private EntityManagerInterface $entityManager;
-    private UrlGeneratorInterface $urlGenerator;
-    private UserPasswordEncoderInterface $passwordEncoder;
-    private UserService $userService;
-
     public function __construct(
-        CsrfTokenManagerInterface $csrfTokenManager,
-        EntityManagerInterface $entityManager,
-        UrlGeneratorInterface $urlGenerator,
-        UserPasswordEncoderInterface $passwordEncoder,
-        UserService $userService
+        private CsrfTokenManagerInterface $csrfTokenManager,
+        private EntityManagerInterface $entityManager,
+        private UrlGeneratorInterface $urlGenerator,
+        private UserPasswordEncoderInterface $passwordEncoder,
+        private UserService $userService
     ) {
-        $this->csrfTokenManager = $csrfTokenManager;
-        $this->entityManager = $entityManager;
-        $this->urlGenerator = $urlGenerator;
-        $this->passwordEncoder = $passwordEncoder;
-        $this->userService = $userService;
     }
 
     public function supports(Request $request): bool

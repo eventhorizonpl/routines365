@@ -16,18 +16,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class V3PromotionFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
-    private PromotionFactory $promotionFactory;
-    private PromotionManager $promotionManager;
-    private UserRepository $userRepository;
-
     public function __construct(
-        PromotionFactory $promotionFactory,
-        PromotionManager $promotionManager,
-        UserRepository $userRepository
+        private PromotionFactory $promotionFactory,
+        private PromotionManager $promotionManager,
+        private UserRepository $userRepository
     ) {
-        $this->promotionFactory = $promotionFactory;
-        $this->promotionManager = $promotionManager;
-        $this->userRepository = $userRepository;
     }
 
     public function getDependencies(): array

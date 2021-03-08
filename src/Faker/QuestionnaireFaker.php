@@ -13,23 +13,15 @@ use Symfony\Component\Uid\Uuid;
 
 class QuestionnaireFaker
 {
-    private AnswerFaker $answerFaker;
     private Generator $faker;
-    private QuestionFaker $questionFaker;
-    private QuestionnaireFactory $questionnaireFactory;
-    private QuestionnaireManager $questionnaireManager;
 
     public function __construct(
-        AnswerFaker $answerFaker,
-        QuestionFaker $questionFaker,
-        QuestionnaireFactory $questionnaireFactory,
-        QuestionnaireManager $questionnaireManager
+        private AnswerFaker $answerFaker,
+        private QuestionFaker $questionFaker,
+        private QuestionnaireFactory $questionnaireFactory,
+        private QuestionnaireManager $questionnaireManager
     ) {
-        $this->answerFaker = $answerFaker;
         $this->faker = Factory::create();
-        $this->questionFaker = $questionFaker;
-        $this->questionnaireFactory = $questionnaireFactory;
-        $this->questionnaireManager = $questionnaireManager;
     }
 
     public function createQuestionnaire(

@@ -15,18 +15,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class V6QuoteFixtures extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {
-    private QuoteFactory $quoteFactory;
-    private QuoteManager $quoteManager;
-    private UserRepository $userRepository;
-
     public function __construct(
-        QuoteFactory $quoteFactory,
-        QuoteManager $quoteManager,
-        UserRepository $userRepository
+        private QuoteFactory $quoteFactory,
+        private QuoteManager $quoteManager,
+        private UserRepository $userRepository
     ) {
-        $this->quoteFactory = $quoteFactory;
-        $this->quoteManager = $quoteManager;
-        $this->userRepository = $userRepository;
     }
 
     public function getDependencies(): array

@@ -16,18 +16,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProfileManager
 {
-    private EntityManagerInterface $entityManager;
-    private ReminderManager $reminderManager;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        EntityManagerInterface $entityManager,
-        ReminderManager $reminderManager,
-        ValidatorInterface $validator
+        private EntityManagerInterface $entityManager,
+        private ReminderManager $reminderManager,
+        private ValidatorInterface $validator
     ) {
-        $this->entityManager = $entityManager;
-        $this->reminderManager = $reminderManager;
-        $this->validator = $validator;
     }
 
     public function bulkSave(array $profiles, string $actor, int $saveEvery = 200): self

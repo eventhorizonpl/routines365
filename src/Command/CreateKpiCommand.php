@@ -13,14 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CreateKpiCommand extends BaseLockableCommand
 {
     protected static $defaultName = 'app:create-kpi';
-    private KpiService $kpiService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        KpiService $kpiService
+        private KpiService $kpiService
     ) {
-        $this->kpiService = $kpiService;
-
         parent::__construct($entityManager);
     }
 

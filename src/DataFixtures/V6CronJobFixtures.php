@@ -12,15 +12,10 @@ use Doctrine\Persistence\ObjectManager;
 
 class V6CronJobFixtures extends Fixture implements FixtureGroupInterface
 {
-    private CronJobFactory $cronJobFactory;
-    private CronJobManager $cronJobManager;
-
     public function __construct(
-        CronJobFactory $cronJobFactory,
-        CronJobManager $cronJobManager
+        private CronJobFactory $cronJobFactory,
+        private CronJobManager $cronJobManager
     ) {
-        $this->cronJobFactory = $cronJobFactory;
-        $this->cronJobManager = $cronJobManager;
     }
 
     public static function getGroups(): array

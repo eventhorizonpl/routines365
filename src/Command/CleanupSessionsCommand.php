@@ -13,13 +13,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CleanupSessionsCommand extends BaseLockableCommand
 {
     protected static $defaultName = 'app:cleanup-sessions';
-    private EntityManagerInterface $entityManager;
 
     public function __construct(
-        EntityManagerInterface $entityManager
+        private EntityManagerInterface $entityManager
     ) {
-        $this->entityManager = $entityManager;
-
         parent::__construct($entityManager);
     }
 
