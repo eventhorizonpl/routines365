@@ -20,13 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/achievement", name="admin_achievement_")
  */
+#[Route('/admin/achievement', name: 'admin_achievement_')]
 class AchievementController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         AchievementRepository $achievementRepository,
         PaginatorInterface $paginator,
@@ -53,9 +51,7 @@ class AchievementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         AchievementFactory $achievementFactory,
         AchievementManager $achievementManager,
@@ -79,9 +75,7 @@ class AchievementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Achievement $achievement): Response
     {
         return $this->render('admin/achievement/show.html.twig', [
@@ -89,9 +83,7 @@ class AchievementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Achievement $achievement,
         AchievementManager $achievementManager,
@@ -116,8 +108,8 @@ class AchievementController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Achievement $achievement,
         AchievementManager $achievementManager,
@@ -136,9 +128,7 @@ class AchievementController extends AbstractController
         return $this->redirectToRoute('admin_achievement_index');
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Achievement $achievement,
         AchievementManager $achievementManager

@@ -27,13 +27,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/notes", name="frontend_note_")
  */
+#[Route('/notes', name: 'frontend_note_')]
 class NoteController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         NoteRepository $noteRepository,
         PaginatorInterface $paginator,
@@ -61,9 +59,7 @@ class NoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new/{context}/{uuid?}", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new/{context}/{uuid?}', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         AchievementService $achievementService,
         string $context,
@@ -122,9 +118,7 @@ class NoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Note $note, Request $request): Response
     {
         $this->denyAccessUnlessGranted(NoteVoter::VIEW, $note);
@@ -136,9 +130,7 @@ class NoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/{context}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/{context}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         string $context,
         Note $note,
@@ -179,9 +171,7 @@ class NoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
-     */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Note $note,
         NoteManager $noteManager,

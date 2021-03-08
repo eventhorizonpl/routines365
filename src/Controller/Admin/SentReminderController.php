@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/sent-reminder", name="admin_sent_reminder_")
  */
+#[Route('/admin/sent-reminder', name: 'admin_sent_reminder_')]
 class SentReminderController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         SentReminderRepository $sentReminderRepository,
@@ -49,9 +47,7 @@ class SentReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(SentReminder $sentReminder): Response
     {
         return $this->render('admin/sent_reminder/show.html.twig', [
@@ -59,9 +55,7 @@ class SentReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         SentReminder $sentReminder,
         SentReminderManager $sentReminderManager

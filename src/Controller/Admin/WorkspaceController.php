@@ -36,14 +36,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin", name="admin_")
- */
+#[Route('/admin', name: 'admin_')]
 class WorkspaceController extends AbstractController
 {
-    /**
-     * @Route("/", name="workspace")
-     */
+    #[Route('/', name: 'workspace')]
     public function index(
         AccountRepository $accountRepository,
         AccountOperationRepository $accountOperationRepository,

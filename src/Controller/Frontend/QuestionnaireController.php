@@ -18,13 +18,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/surveys", name="frontend_survey_")
  */
+#[Route('/surveys', name: 'frontend_survey_')]
 class QuestionnaireController extends AbstractController
 {
-    /**
-     * @Route("/{uuid}", name="complete", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}', methods: ['GET', 'POST'], name: 'complete')]
     public function complete(
         Questionnaire $questionnaire,
         QuestionnaireManager $questionnaireManager,

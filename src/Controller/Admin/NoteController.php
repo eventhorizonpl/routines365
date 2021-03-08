@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/note", name="admin_note_")
  */
+#[Route('/admin/note', name: 'admin_note_')]
 class NoteController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         NoteRepository $noteRepository,
         PaginatorInterface $paginator,
@@ -50,9 +48,7 @@ class NoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Note $note): Response
     {
         return $this->render('admin/note/show.html.twig', [
@@ -60,9 +56,7 @@ class NoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Note $note,
         NoteManager $noteManager

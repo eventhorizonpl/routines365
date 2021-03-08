@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/cron-job", name="admin_cron_job_")
  */
+#[Route('/admin/cron-job', name: 'admin_cron_job_')]
 class CronJobController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         Request $request
@@ -49,9 +47,7 @@ class CronJobController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         CronJobFactory $cronJobFactory,
         CronJobManager $cronJobManager,
@@ -75,9 +71,7 @@ class CronJobController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="show", methods={"GET"})
-     */
+    #[Route('/{id}', methods: ['GET'], name: 'show')]
     public function show(CronJob $cronJob): Response
     {
         return $this->render('admin/cron_job/show.html.twig', [
@@ -85,9 +79,7 @@ class CronJobController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{id}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         CronJob $cronJob,
         CronJobManager $cronJobManager,
@@ -112,8 +104,8 @@ class CronJobController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
+    #[Route('/{id}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         CronJob $cronJob,
         CronJobManager $cronJobManager,

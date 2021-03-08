@@ -25,13 +25,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/user", name="admin_user_")
  */
+#[Route('/admin/user', name: 'admin_user_')]
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         Request $request,
@@ -58,9 +56,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         Request $request,
         UserFactory $userFactory,
@@ -86,9 +82,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new-lead", name="new_lead", methods={"GET","POST"})
-     */
+    #[Route('/new-lead', methods: ['GET', 'POST'], name: 'new_lead')]
     public function newLead(
         AccountOperationService $accountOperationService,
         EmailService $emailService,
@@ -135,9 +129,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(User $user): Response
     {
         return $this->render('admin/user/show.html.twig', [
@@ -145,9 +137,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/disable-2fa", name="disable_2fa", methods={"GET"})
-     */
+    #[Route('/{uuid}/disable-2fa', methods: ['GET'], name: 'disable_2fa')]
     public function disable2fa(User $user, UserManager $userManager): Response
     {
         $user->setGoogleAuthenticatorSecret(null);
@@ -158,9 +148,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Request $request,
         User $user,
@@ -189,8 +177,8 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Request $request,
         User $user,
@@ -209,9 +197,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('admin_user_index');
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         User $user,
         UserManager $userManager

@@ -22,9 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
-/**
- * @Route("/", name="security_")
- */
+#[Route('/', name: 'security_')]
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
@@ -34,9 +32,7 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    /**
-     * @Route("/register", name="register")
-     */
+    #[Route('/register', methods: ['GET', 'POST'], name: 'register')]
     public function register(
         AccountOperationService $accountOperationService,
         GuardAuthenticatorHandler $guardHandler,
@@ -109,9 +105,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/verify/email", name="verify_email")
-     */
+    #[Route('/verify/email', methods: ['GET'], name: 'verify_email')]
     public function verifyUserEmail(Request $request): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');

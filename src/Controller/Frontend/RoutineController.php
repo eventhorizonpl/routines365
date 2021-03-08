@@ -20,13 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/routines", name="frontend_routine_")
  */
+#[Route('/routines', name: 'frontend_routine_')]
 class RoutineController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         Request $request,
         RoutineRepository $routineRepository
@@ -46,9 +44,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         Request $request,
         RoutineFactory $routineFactory,
@@ -82,9 +78,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Request $request, Routine $routine): Response
     {
         $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
@@ -96,9 +90,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/goals", name="show_goals", methods={"GET"})
-     */
+    #[Route('/{uuid}/goals', methods: ['GET'], name: 'show_goals')]
     public function showGoals(Request $request, Routine $routine): Response
     {
         $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
@@ -110,9 +102,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/notes", name="show_notes", methods={"GET"})
-     */
+    #[Route('/{uuid}/notes', methods: ['GET'], name: 'show_notes')]
     public function showNotes(Routine $routine): Response
     {
         $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
@@ -122,9 +112,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/reminders", name="show_reminders", methods={"GET"})
-     */
+    #[Route('/{uuid}/reminders', methods: ['GET'], name: 'show_reminders')]
     public function showReminders(Request $request, Routine $routine): Response
     {
         $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
@@ -136,9 +124,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/rewards", name="show_rewards", methods={"GET"})
-     */
+    #[Route('/{uuid}/rewards', methods: ['GET'], name: 'show_rewards')]
     public function showRewards(Routine $routine): Response
     {
         $this->denyAccessUnlessGranted(RoutineVoter::VIEW, $routine);
@@ -148,9 +134,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Request $request,
         Routine $routine,
@@ -184,9 +168,7 @@ class RoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
-     */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Request $request,
         Routine $routine,

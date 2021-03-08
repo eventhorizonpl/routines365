@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/question", name="admin_question_")
  */
+#[Route('/admin/question', name: 'admin_question_')]
 class QuestionController extends AbstractController
 {
-    /**
-     * @Route("/new/{uuid}", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new/{uuid}', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         QuestionFactory $questionFactory,
         QuestionManager $questionManager,
@@ -50,9 +48,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Question $question): Response
     {
         return $this->render('admin/question/show.html.twig', [
@@ -60,9 +56,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Question $question,
         QuestionManager $questionManager,
@@ -87,8 +81,8 @@ class QuestionController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Question $question,
         QuestionManager $questionManager,
@@ -109,9 +103,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Question $question,
         QuestionManager $questionManager

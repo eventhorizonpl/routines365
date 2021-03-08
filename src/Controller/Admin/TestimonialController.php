@@ -19,13 +19,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/testimonial", name="admin_testimonial_")
  */
+#[Route('/admin/testimonial', name: 'admin_testimonial_')]
 class TestimonialController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         Request $request,
@@ -52,9 +50,7 @@ class TestimonialController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Testimonial $testimonial): Response
     {
         return $this->render('admin/testimonial/show.html.twig', [
@@ -62,9 +58,7 @@ class TestimonialController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Request $request,
         Testimonial $testimonial,
@@ -87,9 +81,7 @@ class TestimonialController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Testimonial $testimonial,
         TestimonialManager $testimonialManager

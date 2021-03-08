@@ -20,13 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/questionnaire", name="admin_questionnaire_")
  */
+#[Route('/admin/questionnaire', name: 'admin_questionnaire_')]
 class QuestionnaireController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         QuestionnaireRepository $questionnaireRepository,
@@ -52,9 +50,7 @@ class QuestionnaireController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         QuestionnaireFactory $questionnaireFactory,
         QuestionnaireManager $questionnaireManager,
@@ -78,9 +74,7 @@ class QuestionnaireController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Questionnaire $questionnaire): Response
     {
         return $this->render('admin/questionnaire/show.html.twig', [
@@ -88,9 +82,7 @@ class QuestionnaireController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Questionnaire $questionnaire,
         QuestionnaireManager $questionnaireManager,
@@ -115,8 +107,8 @@ class QuestionnaireController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Questionnaire $questionnaire,
         QuestionnaireManager $questionnaireManager,
@@ -135,9 +127,7 @@ class QuestionnaireController extends AbstractController
         return $this->redirectToRoute('admin_questionnaire_index');
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Questionnaire $questionnaire,
         QuestionnaireManager $questionnaireManager

@@ -24,13 +24,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/motivate-friend", name="frontend_quote_")
  */
+#[Route('/motivate-friend', name: 'frontend_quote_')]
 class QuoteController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         QuoteRepository $quoteRepository,
         PaginatorInterface $paginator,
@@ -57,9 +55,7 @@ class QuoteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/send", name="send", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/send', methods: ['GET', 'POST'], name: 'send')]
     public function send(
         EmailService $emailService,
         Quote $quote,

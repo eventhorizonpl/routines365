@@ -21,13 +21,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/invitations", name="frontend_invitation_")
  */
+#[Route('/invitations', name: 'frontend_invitation_')]
 class InvitationController extends AbstractController
 {
-    /**
-     * @Route("/send", name="send", methods={"GET","POST"})
-     */
+    #[Route('/send', methods: ['GET', 'POST'], name: 'send')]
     public function send(
         EmailService $emailService,
         PromotionService $promotionService,

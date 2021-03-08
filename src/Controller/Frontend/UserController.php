@@ -20,13 +20,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/settings", name="frontend_user_")
  */
+#[Route('/settings', name: 'frontend_user_')]
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/change-password", name="change_password", methods={"GET","POST"})
-     */
+    #[Route('/change-password', methods: ['GET', 'POST'], name: 'change_password')]
     public function changePassword(
         Request $request,
         TranslatorInterface $translator,
@@ -62,9 +60,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/enable-2fa", name="enable_2fa", methods={"GET"})
-     */
+    #[Route('/enable-2fa', methods: ['GET'], name: 'enable_2fa')]
     public function enable2fa(
         GoogleAuthenticatorInterface $googleAuthenticator,
         UserManager $userManager
@@ -80,9 +76,7 @@ class UserController extends AbstractController
         return $this->render('frontend/user/enable_2fa.html.twig');
     }
 
-    /**
-     * @Route("/disable-2fa", name="disable_2fa", methods={"GET"})
-     */
+    #[Route('/disable-2fa', methods: ['GET'], name: 'disable_2fa')]
     public function disable2fa(
         UserManager $userManager
     ): Response {
@@ -94,9 +88,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('frontend_profile_show');
     }
 
-    /**
-     * @Route("/qr-code", name="qr_code")
-     */
+    #[Route('/qr-code', methods: ['GET'], name: 'qr_code')]
     public function displayGoogleAuthenticatorQrCode(QrCodeGenerator $qrCodeGenerator): Response
     {
         $qrCode = $qrCodeGenerator->getGoogleAuthenticatorQrCode($this->getUser());

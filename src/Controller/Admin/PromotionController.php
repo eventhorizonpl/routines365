@@ -20,13 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/promotion", name="admin_promotion_")
  */
+#[Route('/admin/promotion', name: 'admin_promotion_')]
 class PromotionController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         PromotionRepository $promotionRepository,
@@ -53,9 +51,7 @@ class PromotionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         PromotionFactory $promotionFactory,
         PromotionManager $promotionManager,
@@ -79,9 +75,7 @@ class PromotionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Promotion $promotion): Response
     {
         return $this->render('admin/promotion/show.html.twig', [
@@ -89,9 +83,7 @@ class PromotionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Promotion $promotion,
         PromotionManager $promotionManager,
@@ -116,8 +108,8 @@ class PromotionController extends AbstractController
 
     /**
      * @IsGranted(User::ROLE_SUPER_ADMIN)
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
      */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Promotion $promotion,
         PromotionManager $promotionManager,
@@ -136,9 +128,7 @@ class PromotionController extends AbstractController
         return $this->redirectToRoute('admin_promotion_index');
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Promotion $promotion,
         PromotionManager $promotionManager

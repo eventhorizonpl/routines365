@@ -22,13 +22,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/reminders", name="frontend_reminder_")
  */
+#[Route('/reminders', name: 'frontend_reminder_')]
 class ReminderController extends AbstractController
 {
-    /**
-     * @Route("/{uuid}/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         ReminderFactory $reminderFactory,
         ReminderManager $reminderManager,
@@ -77,9 +75,7 @@ class ReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Reminder $reminder,
         ReminderManager $reminderManager,
@@ -124,9 +120,7 @@ class ReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
-     */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Reminder $reminder,
         ReminderManager $reminderManager,

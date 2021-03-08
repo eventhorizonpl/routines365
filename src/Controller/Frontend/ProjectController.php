@@ -23,13 +23,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/projects", name="frontend_project_")
  */
+#[Route('/projects', name: 'frontend_project_')]
 class ProjectController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         ProjectRepository $projectRepository,
         Request $request
@@ -49,9 +47,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         ProjectFactory $projectFactory,
         ProjectManager $projectManager,
@@ -87,9 +83,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Project $project, Request $request): Response
     {
         $this->denyAccessUnlessGranted(ProjectVoter::VIEW, $project);
@@ -101,9 +95,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         AchievementService $achievementService,
         Project $project,
@@ -148,9 +140,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
-     */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Project $project,
         ProjectManager $projectManager,

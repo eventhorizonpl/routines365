@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/reminder", name="admin_reminder_")
  */
+#[Route('/admin/reminder', name: 'admin_reminder_')]
 class ReminderController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         ReminderRepository $reminderRepository,
@@ -51,9 +49,7 @@ class ReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Reminder $reminder): Response
     {
         return $this->render('admin/reminder/show.html.twig', [
@@ -61,9 +57,7 @@ class ReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Reminder $reminder,
         ReminderManager $reminderManager
@@ -75,9 +69,7 @@ class ReminderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/unlock", name="unlock", methods={"GET"})
-     */
+    #[Route('/{uuid}/unlock', methods: ['GET'], name: 'unlock')]
     public function unlock(
         Reminder $reminder,
         ReminderManager $reminderManager

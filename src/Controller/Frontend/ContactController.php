@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Contact;
 use App\Entity\User;
 use App\Factory\ContactFactory;
 use App\Form\Frontend\ContactType;
@@ -19,13 +18,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/contact", name="frontend_contact_")
  */
+#[Route('/contact', name: 'frontend_contact_')]
 class ContactController extends AbstractController
 {
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         ContactFactory $contactFactory,
         ContactManager $contactManager,

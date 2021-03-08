@@ -21,8 +21,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/api/v1/reminder-messages", name="api_v1_reminder_message_", host="api.routines365.{topdomain}", defaults={"topdomain"="com"}, requirements={"topdomain"="com|local"})
  */
+#[Route('/api/v1/reminder-messages', defaults: ['topdomain' => 'com'], host: 'api.routines365.{topdomain}', name: 'api_v1_reminder_message_', requirements: ['topdomain' => 'com|local'])]
 class ReminderMessageController extends AbstractFOSRestController
 {
     /**
@@ -32,9 +32,9 @@ class ReminderMessageController extends AbstractFOSRestController
      *     @Model(type=ReminderMessageListDto::class, groups={"list"})
      * )
      * @OA\Tag(name="ReminderMessages")
-     * @Route("/browser-notifications-list", name="browser_notifications_list", methods={"GET"}, options={"expose"=true})
      * @Security(name="api_key")
      */
+    #[Route('/browser-notifications-list', methods: ['GET'], name: 'browser_notifications_list', options: ['expose' => true])]
     public function getBrowserNotificationsList(ReminderMessageRepository $reminderMessageRepository)
     {
         $reminders = $this->getUser()->getReminders()->filter(function (Reminder $reminder) {

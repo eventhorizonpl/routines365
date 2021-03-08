@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\Frontend\ProfilePhoneVerificationCodeType;
 use App\Form\Frontend\ProfileType;
@@ -20,13 +19,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/settings/profile", name="frontend_profile_")
  */
+#[Route('/settings/profile', name: 'frontend_profile_')]
 class ProfileController extends AbstractController
 {
-    /**
-     * @Route("/", name="show", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'show')]
     public function show(Request $request): Response
     {
         $knowYourTools = trim((string) $request->query->get('know_your_tools'));
@@ -38,9 +35,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         ProfileManager $profileManager,
         Request $request,
@@ -94,9 +89,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/phone-verification-code", name="phone_verification_code", methods={"GET","POST"})
-     */
+    #[Route('/phone-verification-code', methods: ['GET', 'POST'], name: 'phone_verification_code')]
     public function phoneVerificationCode(
         ProfileManager $profileManager,
         Request $request,

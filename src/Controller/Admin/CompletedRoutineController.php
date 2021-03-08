@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/completed-routine", name="admin_completed_routine_")
  */
+#[Route('/admin/completed-routine', name: 'admin_completed_routine_')]
 class CompletedRoutineController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         CompletedRoutineRepository $completedRoutineRepository,
         PaginatorInterface $paginator,
@@ -50,9 +48,7 @@ class CompletedRoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(CompletedRoutine $completedRoutine): Response
     {
         return $this->render('admin/completed_routine/show.html.twig', [
@@ -60,9 +56,7 @@ class CompletedRoutineController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         CompletedRoutine $completedRoutine,
         CompletedRoutineManager $completedRoutineManager

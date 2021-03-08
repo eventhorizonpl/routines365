@@ -24,13 +24,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/rewards", name="frontend_reward_")
  */
+#[Route('/rewards', name: 'frontend_reward_')]
 class RewardController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         RewardRepository $rewardRepository,
         PaginatorInterface $paginator,
@@ -58,9 +56,7 @@ class RewardController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new/{context}/{uuid?}", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new/{context}/{uuid?}', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         string $context,
         Request $request,
@@ -107,9 +103,7 @@ class RewardController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Request $request, Reward $reward): Response
     {
         $this->denyAccessUnlessGranted(RewardVoter::VIEW, $reward);
@@ -121,9 +115,7 @@ class RewardController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/{context}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/{context}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         string $context,
         Reward $reward,
@@ -164,9 +156,7 @@ class RewardController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="delete", methods={"DELETE"})
-     */
+    #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Reward $reward,
         RewardManager $rewardManager,

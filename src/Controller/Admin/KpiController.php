@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/kpi", name="admin_kpi_")
  */
+#[Route('/admin/kpi', name: 'admin_kpi_')]
 class KpiController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         KpiRepository $kpiRepository,
         PaginatorInterface $paginator,
@@ -49,9 +47,7 @@ class KpiController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Kpi $kpi): Response
     {
         return $this->render('admin/kpi/show.html.twig', [
@@ -59,9 +55,7 @@ class KpiController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Kpi $kpi,
         KpiManager $kpiManager

@@ -19,13 +19,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/contact", name="admin_contact_")
  */
+#[Route('/admin/contact', name: 'admin_contact_')]
 class ContactController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         ContactRepository $contactRepository,
         PaginatorInterface $paginator,
@@ -53,9 +51,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(Contact $contact): Response
     {
         return $this->render('admin/contact/show.html.twig', [
@@ -63,9 +59,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         Contact $contact,
         ContactManager $contactManager,
@@ -88,9 +82,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         Contact $contact,
         ContactManager $contactManager

@@ -20,9 +20,7 @@ use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
-/**
- * @Route("/reset-password", name="security_")
- */
+#[Route('/reset-password', name: 'security_')]
 class ResetPasswordController extends AbstractController
 {
     use ResetPasswordControllerTrait;
@@ -34,11 +32,7 @@ class ResetPasswordController extends AbstractController
         $this->resetPasswordHelper = $resetPasswordHelper;
     }
 
-    /**
-     * Display & process form to request a password reset.
-     *
-     * @Route("", name="forgot_password_request")
-     */
+    #[Route('', methods: ['GET', 'POST'], name: 'forgot_password_request')]
     public function request(Request $request, EmailService $emailService): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
@@ -56,11 +50,7 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    /**
-     * Confirmation page after a user has requested a password reset.
-     *
-     * @Route("/check-email", name="check_email")
-     */
+    #[Route('/check-email', methods: ['GET'], name: 'check_email')]
     public function checkEmail(): Response
     {
         // We prevent users from directly accessing this page
@@ -73,11 +63,7 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    /**
-     * Validates and process the reset URL that the user clicked in their email.
-     *
-     * @Route("/reset/{token}", name="reset_password")
-     */
+    #[Route('/reset/{token}', methods: ['GET', 'POST'], name: 'reset_password')]
     public function reset(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,

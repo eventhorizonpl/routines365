@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Promotion;
 use App\Entity\User;
 use App\Form\Frontend\PromotionCodeType;
 use App\Resource\ConfigResource;
@@ -18,13 +17,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/promotions", name="frontend_promotion_")
  */
+#[Route('/promotions', name: 'frontend_promotion_')]
 class PromotionController extends AbstractController
 {
-    /**
-     * @Route("/", name="code", methods={"GET","POST"})
-     */
+    #[Route('/', methods: ['GET', 'POST'], name: 'code')]
     public function code(
         PromotionService $promotionService,
         Request $request,

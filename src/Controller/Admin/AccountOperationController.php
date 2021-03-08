@@ -20,13 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/account-operation", name="admin_account_operation_")
  */
+#[Route('/admin/account-operation', name: 'admin_account_operation_')]
 class AccountOperationController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         AccountOperationRepository $accountOperationRepository,
         PaginatorInterface $paginator,
@@ -53,9 +51,7 @@ class AccountOperationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(AccountOperation $accountOperation): Response
     {
         return $this->render('admin/account_operation/show.html.twig', [
@@ -63,9 +59,7 @@ class AccountOperationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/add-free-email", name="add_free_email", methods={"GET"})
-     */
+    #[Route('/{uuid}/add-free-email', methods: ['GET'], name: 'add_free_email')]
     public function addFreeEmail(
         Account $account,
         AccountOperationService $accountOperationService
@@ -92,9 +86,7 @@ class AccountOperationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/add-free-sms", name="add_free_sms", methods={"GET"})
-     */
+    #[Route('/{uuid}/add-free-sms', methods: ['GET'], name: 'add_free_sms')]
     public function addFreeSms(
         Account $account,
         AccountOperationService $accountOperationService
@@ -121,9 +113,7 @@ class AccountOperationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         AccountOperation $accountOperation,
         AccountOperationManager $accountOperationManager

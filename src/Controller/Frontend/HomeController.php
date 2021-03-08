@@ -11,9 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("/", name="frontend_home")
-     */
+    #[Route('/', name: 'frontend_home')]
     public function index(TestimonialRepository $testimonialRepository): Response
     {
         $testimonial = $testimonialRepository->findOneRand();

@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/user-questionnaire", name="admin_user_questionnaire_")
  */
+#[Route('/admin/user-questionnaire', name: 'admin_user_questionnaire_')]
 class UserQuestionnaireController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         UserQuestionnaireRepository $userQuestionnaireRepository,
@@ -50,9 +48,7 @@ class UserQuestionnaireController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(UserQuestionnaire $userQuestionnaire): Response
     {
         return $this->render('admin/user_questionnaire/show.html.twig', [
@@ -60,9 +56,7 @@ class UserQuestionnaireController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         UserQuestionnaire $userQuestionnaire,
         UserQuestionnaireManager $userQuestionnaireManager

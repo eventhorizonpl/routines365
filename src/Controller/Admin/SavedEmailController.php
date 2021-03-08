@@ -17,13 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/saved-email", name="admin_saved_email_")
  */
+#[Route('/admin/saved-email', name: 'admin_saved_email_')]
 class SavedEmailController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         Request $request,
@@ -50,9 +48,7 @@ class SavedEmailController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(SavedEmail $savedEmail): Response
     {
         return $this->render('admin/saved_email/show.html.twig', [

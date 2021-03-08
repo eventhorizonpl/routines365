@@ -15,13 +15,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/know-your-tools", name="frontend_user_kyt_")
  */
+#[Route('/know-your-tools', name: 'frontend_user_kyt_')]
 class UserKytController extends AbstractController
 {
-    /**
-     * @Route("/basic-configuration", name="basic_configuration")
-     */
+    #[Route('/basic-configuration', methods: ['GET'], name: 'basic_configuration')]
     public function basicConfiguration(): Response
     {
         return $this->render('frontend/user_kyt/basic_configuration.html.twig', [
@@ -29,9 +27,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/basic-configuration-finish", name="basic_configuration_finish")
-     */
+    #[Route('/basic-configuration-finish', methods: ['GET'], name: 'basic_configuration_finish')]
     public function basicConfigurationFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -53,9 +49,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/completing-routines", name="completing_routines")
-     */
+    #[Route('/completing-routines', methods: ['GET'], name: 'completing_routines')]
     public function completingRoutines(): Response
     {
         return $this->render('frontend/user_kyt/completing_routines.html.twig', [
@@ -63,9 +57,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/completing-routines-finish", name="completing_routines_finish")
-     */
+    #[Route('/completing-routines-finish', methods: ['GET'], name: 'completing_routines_finish')]
     public function completingRoutinesFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -87,9 +79,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/goals", name="goals")
-     */
+    #[Route('/goals', methods: ['GET'], name: 'goals')]
     public function goals(): Response
     {
         return $this->render('frontend/user_kyt/goals.html.twig', [
@@ -97,9 +87,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/goals-finish", name="goals_finish")
-     */
+    #[Route('/goals-finish', methods: ['GET'], name: 'goals_finish')]
     public function goalsFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -121,9 +109,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/notes", name="notes")
-     */
+    #[Route('/notes', methods: ['GET'], name: 'notes')]
     public function notes(): Response
     {
         return $this->render('frontend/user_kyt/notes.html.twig', [
@@ -131,9 +117,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/notes-finish", name="notes_finish")
-     */
+    #[Route('/notes-finish', methods: ['GET'], name: 'notes_finish')]
     public function notesFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -155,9 +139,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/projects", name="projects")
-     */
+    #[Route('/projects', methods: ['GET'], name: 'projects')]
     public function projects(): Response
     {
         return $this->render('frontend/user_kyt/projects.html.twig', [
@@ -165,9 +147,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/projects-finish", name="projects_finish")
-     */
+    #[Route('/projects-finish', methods: ['GET'], name: 'projects_finish')]
     public function projectsFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -189,9 +169,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/reminders", name="reminders")
-     */
+    #[Route('/reminders', methods: ['GET'], name: 'reminders')]
     public function reminders(): Response
     {
         return $this->render('frontend/user_kyt/reminders.html.twig', [
@@ -199,9 +177,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/reminders-finish", name="reminders_finish")
-     */
+    #[Route('/reminders-finish', methods: ['GET'], name: 'reminders_finish')]
     public function remindersFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -223,9 +199,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/rewards", name="rewards")
-     */
+    #[Route('/rewards', methods: ['GET'], name: 'rewards')]
     public function rewards(): Response
     {
         return $this->render('frontend/user_kyt/rewards.html.twig', [
@@ -233,9 +207,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/rewards-finish", name="rewards_finish")
-     */
+    #[Route('/rewards-finish', methods: ['GET'], name: 'rewards_finish')]
     public function rewardsFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -257,9 +229,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/routines", name="routines")
-     */
+    #[Route('/routines', methods: ['GET'], name: 'routines')]
     public function routines(): Response
     {
         return $this->render('frontend/user_kyt/routines.html.twig', [
@@ -267,9 +237,7 @@ class UserKytController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/routines-finish", name="routines_finish")
-     */
+    #[Route('/routines-finish', methods: ['GET'], name: 'routines_finish')]
     public function routinesFinish(
         TranslatorInterface $translator,
         UserKytService $userKytService
@@ -291,9 +259,7 @@ class UserKytController extends AbstractController
         return $this->redirectToRoute('frontend_user_kyt_start');
     }
 
-    /**
-     * @Route("/start", name="start")
-     */
+    #[Route('/start', methods: ['GET'], name: 'start')]
     public function start(): Response
     {
         $userKyt = $this->getUser()->getUserKyt();

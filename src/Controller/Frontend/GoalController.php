@@ -30,13 +30,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/goals", name="frontend_goal_")
  */
+#[Route('/goals', name: 'frontend_goal_')]
 class GoalController extends AbstractController
 {
-    /**
-     * @Route("/{uuid}/{context}/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/{context}/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         string $context,
         GoalFactory $goalFactory,
@@ -101,9 +99,7 @@ class GoalController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/{context}/complete", name="complete", methods={"GET"})
-     */
+    #[Route('/{uuid}/{context}/complete', methods: ['GET'], name: 'complete')]
     public function complete(
         AchievementService $achievementService,
         string $context,
@@ -166,9 +162,7 @@ class GoalController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/{uuid}/{context}/edit", name="edit", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/{context}/edit', methods: ['GET', 'POST'], name: 'edit')]
     public function edit(
         string $context,
         Goal $goal,
@@ -212,9 +206,7 @@ class GoalController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/{context}", name="delete", methods={"DELETE"})
-     */
+    #[Route('/{uuid}/{context}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         string $context,
         Goal $goal,

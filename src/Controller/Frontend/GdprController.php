@@ -13,21 +13,17 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/settings/gdpr", name="frontend_gdpr_")
  */
+#[Route('/settings/gdpr', name: 'frontend_gdpr_')]
 class GdprController extends AbstractController
 {
-    /**
-     * @Route("/", name="show", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'show')]
     public function show(): Response
     {
         return $this->render('frontend/gdpr/show.html.twig');
     }
 
-    /**
-     * @Route("/export", name="export", methods={"GET"})
-     */
+    #[Route('/export', methods: ['GET'], name: 'export')]
     public function export(SerializerInterface $serializer): Response
     {
         $user = $this->getUser();

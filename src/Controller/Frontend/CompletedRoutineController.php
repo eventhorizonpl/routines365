@@ -27,13 +27,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/completed-routines", name="frontend_completed_routine_")
  */
+#[Route('/completed-routines', name: 'frontend_completed_routine_')]
 class CompletedRoutineController extends AbstractController
 {
-    /**
-     * @Route("/{uuid}/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/{uuid}/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         AchievementService $achievementService,
         CompletedRoutineFactory $completedRoutineFactory,

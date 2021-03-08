@@ -18,13 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_ADMIN)
- * @Route("/admin/reminder-message", name="admin_reminder_message_")
  */
+#[Route('/admin/reminder-message', name: 'admin_reminder_message_')]
 class ReminderMessageController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'index')]
     public function index(
         PaginatorInterface $paginator,
         ReminderMessageRepository $reminderMessageRepository,
@@ -51,9 +49,7 @@ class ReminderMessageController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}", name="show", methods={"GET"})
-     */
+    #[Route('/{uuid}', methods: ['GET'], name: 'show')]
     public function show(ReminderMessage $reminderMessage): Response
     {
         return $this->render('admin/reminder_message/show.html.twig', [
@@ -61,9 +57,7 @@ class ReminderMessageController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{uuid}/undelete", name="undelete", methods={"GET"})
-     */
+    #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
     public function undelete(
         ReminderMessage $reminderMessage,
         ReminderMessageManager $reminderMessageManager

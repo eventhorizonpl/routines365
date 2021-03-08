@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Account;
 use App\Entity\User;
 use App\Repository\AccountOperationRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -16,13 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/settings/account", name="frontend_account_")
  */
+#[Route('/settings/account', name: 'frontend_account_')]
 class AccountController extends AbstractController
 {
-    /**
-     * @Route("/", name="show", methods={"GET"})
-     */
+    #[Route('/', methods: ['GET'], name: 'show')]
     public function show(
         AccountOperationRepository $accountOperationRepository,
         PaginatorInterface $paginator,

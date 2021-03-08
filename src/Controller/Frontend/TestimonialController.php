@@ -19,13 +19,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @IsGranted(User::ROLE_USER)
- * @Route("/testimonial", name="frontend_testimonial_")
  */
+#[Route('/testimonial', name: 'frontend_testimonial_')]
 class TestimonialController extends AbstractController
 {
-    /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     */
+    #[Route('/new', methods: ['GET', 'POST'], name: 'new')]
     public function new(
         TestimonialFactory $testimonialFactory,
         TestimonialManager $testimonialManager,
