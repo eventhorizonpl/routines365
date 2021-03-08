@@ -26,159 +26,159 @@ class UserKpi
     public const TYPE_WEEKLY = 'weekly';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="previousUserKpi", targetEntity=UserKpi::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private ?UserKpi $nextUserKpi = null;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="nextUserKpi", targetEntity=UserKpi::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private ?UserKpi $previousUserKpi = null;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userKpis", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $accountOperationCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $awardedRewardCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $completedGoalCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $completedProjectCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $completedRoutineCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $contactCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $efficiency11;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $date;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $goalCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $noteCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $projectCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $reminderCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $rewardCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $routineCounter;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $savedEmailCounter;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 8, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 8)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $type;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $userQuestionnaireCounter;
 
     public function __construct()

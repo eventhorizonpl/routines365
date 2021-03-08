@@ -25,30 +25,30 @@ class SavedEmail
     public const TYPE_MOTIVATIONAL = 'motivational';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="savedEmails", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\Email(groups={"system"})
-     * @Assert\Length(max = 180, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string")
      */
+    #[Assert\Email(groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 180)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $email;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 16, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 16)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $type;
 
     public function __construct()

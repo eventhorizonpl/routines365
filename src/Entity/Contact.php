@@ -31,54 +31,54 @@ class Contact
     public const TYPE_QUESTION = 'question';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="contacts", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\Length(max = 2048, groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=2048, nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 2048)]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $comment;
 
     /**
-     * @Assert\Length(max = 2048, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 2048)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $content;
 
     /**
-     * @Assert\Choice(callback="getStatusValidationChoices", groups={"system"})
-     * @Assert\Length(max = 8, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
+    #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 8)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $status;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $title;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
-     * @Assert\Length(max = 16, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
+    #[Assert\Length(groups: ['form', 'system'], max: 16)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private string $type;
 
     public function __construct()

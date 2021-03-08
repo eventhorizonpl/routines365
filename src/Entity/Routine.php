@@ -65,37 +65,37 @@ class Routine
     private Collection $sentReminders;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $description;
 
     /**
-     * @Assert\Length(max = 64, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 64)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $name;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
-     * @Assert\Length(max = 16, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
+    #[Assert\Length(groups: ['form', 'system'], max: 16)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private string $type;
 
     public function __construct()

@@ -23,35 +23,35 @@ class Note
     public const CONTEXT_ROUTINE = 'routine';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="notes", targetEntity=Routine::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private ?Routine $routine;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="notes", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\Length(max = 2048, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 2048)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $content;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $title;
 
     public function __construct()

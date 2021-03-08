@@ -38,11 +38,11 @@ class User implements UserInterface, TwoFactorInterface
     public const TYPE_STAFF = 'staff';
 
     /**
-     * @Assert\Valid(groups={"form"})
      * @Groups({"gdpr"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Account::class)
      */
+    #[Assert\Valid(groups: ['form'])]
     private ?Account $account;
 
     /**
@@ -76,10 +76,10 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $notes;
 
     /**
-     * @Assert\Valid(groups={"form"})
      * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
+    #[Assert\Valid(groups: ['form'])]
     private Profile $profile;
 
     /**
@@ -129,10 +129,10 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $savedEmails;
 
     /**
-     * @Assert\Valid(groups={"form"})
      * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Testimonial::class)
      */
+    #[Assert\Valid(groups: ['form'])]
     private ?Testimonial $testimonial = null;
 
     /**
@@ -152,66 +152,66 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $userQuestionnaires;
 
     /**
-     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(nullable=true, type="guid", unique=true)
      */
+    #[Assert\Uuid(groups: ['system'])]
     private ?string $apiToken = null;
 
     /**
-     * @Assert\Email(groups={"form", "system"})
-     * @Assert\Length(max = 180, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string", unique=true)
      */
+    #[Assert\Email(groups: ['form', 'system'])]
+    #[Assert\Length(groups: ['form', 'system'], max: 180)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $email;
 
     /**
-     * @Assert\Length(max = 52, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=52, nullable=true, type="string", unique=true)
      */
+    #[Assert\Length(groups: ['system'], max: 52)]
+    #[Assert\Type('string', groups: ['system'])]
     private ?string $googleAuthenticatorSecret;
 
     /**
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $lastLoginAt = null;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
+    #[Assert\Length(groups: ['system'], max: 255)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $password;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Uuid(groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="guid", unique=true)
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Uuid(groups: ['system'])]
     private string $referrerCode;
 
     /**
-     * @Assert\Choice(callback="getRolesFormChoices", multiple=true, groups={"system"})
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("array", groups={"system"})
      * @ORM\Column(type="json")
      */
+    #[Assert\Choice(callback: 'getRolesFormChoices', multiple: true, groups: ['system'])]
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('array', groups: ['system'])]
     private array $roles = [];
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 8, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 8)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $type;
 
     public function __construct()

@@ -19,17 +19,17 @@ class Retention
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("array", groups={"form", "system"})
      * @ORM\Column(type="json")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('array', groups: ['system'])]
     private array $data;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(type="datetimetz_immutable")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $date;
 
     public function __toString(): string

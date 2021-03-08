@@ -20,25 +20,25 @@ class UserQuestionnaireAnswer
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaireAnswers", targetEntity=Answer::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private ?Answer $answer;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaireAnswers", targetEntity=UserQuestionnaire::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private UserQuestionnaire $userQuestionnaire;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $content;
 
     public function __construct()

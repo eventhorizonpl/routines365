@@ -8,10 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class SendMotivationalEmailFormModel
 {
-    /**
-     * @Assert\Email()
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     */
+    #[Assert\Email]
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
     public string $email;
 }

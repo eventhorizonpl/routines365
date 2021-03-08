@@ -23,17 +23,17 @@ class UserQuestionnaire
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaires", targetEntity=Questionnaire::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private Questionnaire $questionnaire;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaires", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
@@ -43,11 +43,11 @@ class UserQuestionnaire
     private Collection $userQuestionnaireAnswers;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $isRewarded;
 
     public function __construct()

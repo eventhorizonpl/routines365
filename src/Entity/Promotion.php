@@ -36,59 +36,59 @@ class Promotion
     private Collection $users;
 
     /**
-     * @Assert\Length(max = 64, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string", unique=true)
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 64)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $code;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $description;
 
     /**
-     * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
+    #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
     private ?DateTimeImmutable $expiresAt;
 
     /**
-     * @Assert\Length(max = 128, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=128, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 128)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $name;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
-     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
+    #[Assert\LessThanOrEqual(10, groups: ['form', 'system'])]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('int', groups: ['form', 'system'])]
     private int $notifications;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
-     * @Assert\LessThanOrEqual(10, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("int", groups={"form", "system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
+    #[Assert\LessThanOrEqual(10, groups: ['form', 'system'])]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('int', groups: ['form', 'system'])]
     private int $smsNotifications;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
-     * @Assert\Length(max = 24, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=24, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
+    #[Assert\Length(groups: ['form', 'system'], max: 24)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private string $type;
 
     public function __construct()

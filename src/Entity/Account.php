@@ -36,21 +36,21 @@ class Account
     private Collection $users;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
      * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0)]
+    #[Assert\NotBlank]
+    #[Assert\Type('int')]
     private int $availableNotifications;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\NotBlank()
-     * @Assert\Type("int")
      * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0)]
+    #[Assert\NotBlank]
+    #[Assert\Type('int')]
     private int $availableSmsNotifications;
 
     public function __construct()

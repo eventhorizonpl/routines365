@@ -29,27 +29,27 @@ class Report
     public const TYPE_POST_REMIND_MESSAGES = 'post_remind_messages';
 
     /**
-     * @Assert\Type("array", groups={"system"})
      * @ORM\Column(type="json")
      */
+    #[Assert\Type('array', groups: ['system'])]
     private array $data;
 
     /**
-     * @Assert\Choice(callback="getStatusValidationChoices", groups={"system"})
-     * @Assert\Length(max = 12, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=12, type="string")
      */
+    #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 12)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $status;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 24, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=24, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 24)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $type;
 
     public function __construct()

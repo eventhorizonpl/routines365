@@ -9,23 +9,23 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait BlameableTrait
 {
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Uuid(groups: ['system'])]
     protected ?string $createdBy = null;
 
     /**
-     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid", nullable=true)
      */
+    #[Assert\Uuid(groups: ['system'])]
     protected ?string $deletedBy = null;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Uuid(groups={"system"})
      * @ORM\Column(type="guid")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Uuid(groups: ['system'])]
     protected ?string $updatedBy = null;
 
     public function getCreatedBy(): ?string

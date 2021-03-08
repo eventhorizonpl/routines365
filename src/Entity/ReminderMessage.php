@@ -28,70 +28,70 @@ class ReminderMessage
     public const TYPE_SMS = 'sms';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="reminderMessage", targetEntity=AccountOperation::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private ?AccountOperation $accountOperation = null;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminderMessages", targetEntity=Reminder::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private Reminder $reminder;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminderMessages", targetEntity=SentReminder::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private SentReminder $sentReminder;
 
     /**
-     * @Assert\Length(max = 512, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @Groups({"list", "show"})
      * @ORM\Column(length=512, type="string")
      */
+    #[Assert\Length(groups: ['system'], max: 512)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $content;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @Groups({"show"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $isReadFromBrowser;
 
     /**
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $postDate;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['system'], max: 255)]
+    #[Assert\Type('string', groups: ['system'])]
     private ?string $thirdPartySystemResponse;
 
     /**
-     * @Assert\Choice(callback="getThirdPartySystemTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 10, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=10, nullable=true, type="string")
      */
+    #[Assert\Choice(callback: 'getThirdPartySystemTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 10)]
+    #[Assert\Type('string', groups: ['system'])]
     private ?string $thirdPartySystemType;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 10, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=10, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 10)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $type;
 
     public function __construct()

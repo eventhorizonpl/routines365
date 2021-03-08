@@ -24,51 +24,51 @@ class AccountOperation
     public const TYPE_WITHDRAW = 'withdraw';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="accountOperations", targetEntity=Account::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private Account $account;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="accountOperation", targetEntity=ReminderMessage::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private ?ReminderMessage $reminderMessage;
 
     /**
-     * @Assert\Length(max = 255, groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(type="string")
      */
+    #[Assert\Length(groups: ['system'], max: 255)]
+    #[Assert\Type('string', groups: ['system'])]
     private string $description;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(1024, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\LessThanOrEqual(1024, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $notifications;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(1024, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\LessThanOrEqual(1024, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $smsNotifications;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"system"})
-     * @Assert\Length(max = 8, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 8)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $type;
 
     public function __construct()

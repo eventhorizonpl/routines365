@@ -26,128 +26,128 @@ class UserKyt
     private User $user;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $basicConfigurationLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $basicConfigurationSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $completingRoutinesLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $completingRoutinesSent;
 
     /**
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $dateOfLastMessage = null;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $goalsLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $goalsSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $notesLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $notesSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $projectsLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $projectsSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $remindersLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $remindersSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $rewardsLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $rewardsSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $routinesLearned;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $routinesSent;
 
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     private bool $testimonialRequestSent;
 
     public function __construct()

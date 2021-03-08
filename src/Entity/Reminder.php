@@ -47,102 +47,102 @@ class Reminder
     private Collection $sentReminders;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=Routine::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private Routine $routine;
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("DateTimeImmutable", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="time_immutable")
      */
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
     private DateTimeImmutable $hour;
 
     /**
-     * @Assert\Choice(callback="getMinutesBeforeValidationChoices", groups={"form", "system"})
-     * @Assert\GreaterThanOrEqual(0, groups={"form", "system"})
-     * @Assert\LessThanOrEqual(60, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("int", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\Choice(callback: 'getMinutesBeforeValidationChoices', groups: ['form', 'system'])]
+    #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
+    #[Assert\LessThanOrEqual(60, groups: ['form', 'system'])]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('int', groups: ['form', 'system'])]
     private int $minutesBefore;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $nextDate;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $nextDateLocalTime;
 
     /**
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("DateTimeImmutable", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     private ?DateTimeImmutable $previousDate;
 
     /**
-     * @Assert\NotNull(groups={"form", "system"})
-     * @Assert\Type("bool", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['form', 'system'])]
+    #[Assert\Type('bool', groups: ['form', 'system'])]
     private bool $sendEmail;
 
     /**
-     * @Assert\NotNull(groups={"form", "system"})
-     * @Assert\Type("bool", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['form', 'system'])]
+    #[Assert\Type('bool', groups: ['form', 'system'])]
     private bool $sendMotivationalMessage;
 
     /**
-     * @Assert\NotNull(groups={"form", "system"})
-     * @Assert\Type("bool", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['form', 'system'])]
+    #[Assert\Type('bool', groups: ['form', 'system'])]
     private bool $sendSms;
 
     /**
-     * @Assert\NotNull(groups={"form", "system"})
-     * @Assert\Type("bool", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['form', 'system'])]
+    #[Assert\Type('bool', groups: ['form', 'system'])]
     private bool $sendToBrowser;
 
     /**
-     * @Assert\Choice(callback="getTypeValidationChoices", groups={"form", "system"})
-     * @Assert\Length(max = 10, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=10, type="string")
      */
+    #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
+    #[Assert\Length(groups: ['form', 'system'], max: 10)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private string $type;
 
     public function __construct()

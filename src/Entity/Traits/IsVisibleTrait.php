@@ -9,10 +9,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IsVisibleTrait
 {
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     protected bool $isVisible;
 
     public function getIsVisible(): ?bool

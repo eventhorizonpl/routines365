@@ -27,37 +27,37 @@ class Testimonial
     public const STATUS_REJECTED = 'rejected';
 
     /**
-     * @Assert\Valid(groups={"system"})
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="testimonial", targetEntity=User::class)
      */
+    #[Assert\Valid(groups: ['system'])]
     private User $user;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=255, nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $content;
 
     /**
-     * @Assert\Length(max = 128, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @Groups({"gdpr"})
      * @ORM\Column(length=128, nullable=true, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 128)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $signature;
 
     /**
-     * @Assert\Choice(callback="getStatusValidationChoices", groups={"system"})
-     * @Assert\Length(max = 8, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=8, type="string")
      */
+    #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
+    #[Assert\Length(groups: ['system'], max: 8)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $status;
 
     public function __construct()

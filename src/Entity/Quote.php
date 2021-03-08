@@ -21,44 +21,44 @@ class Quote
     use Traits\TimestampableTrait;
 
     /**
-     * @Assert\Length(max = 64, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(length=64, type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 64)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $author;
 
     /**
-     * @Assert\Length(max = 255, groups={"form", "system"})
-     * @Assert\NotBlank(groups={"form", "system"})
-     * @Assert\Type("string", groups={"form", "system"})
      * @ORM\Column(type="string")
      */
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     private ?string $content;
 
     /**
-     * @Assert\Length(max = 32, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("string", groups={"system"})
      * @ORM\Column(length=32, type="string", unique=true)
      */
+    #[Assert\Length(groups: ['system'], max: 32)]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('string', groups: ['system'])]
     private string $contentMd5;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $popularity;
 
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(336, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\LessThanOrEqual(336, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     private int $stringLength;
 
     public function __construct()

@@ -36,34 +36,34 @@ class Profile
     private User $user;
 
     /**
-     * @Assert\Length(max = 2)
-     * @Assert\Type("string")
      * @ORM\Column(length=2, nullable=true, type="string")
      */
+    #[Assert\Length(max: 2)]
+    #[Assert\Type('string')]
     private ?string $country;
 
     /**
-     * @Assert\Length(max = 64)
-     * @Assert\Type("string")
      * @Groups({"gdpr"})
      * @ORM\Column(length=64, nullable=true, type="string")
      */
+    #[Assert\Length(max: 64)]
+    #[Assert\Type('string')]
     private ?string $firstName;
 
     /**
-     * @Assert\Length(max = 64)
-     * @Assert\Type("string")
      * @Groups({"gdpr"})
      * @ORM\Column(length=64, nullable=true, type="string")
      */
+    #[Assert\Length(max: 64)]
+    #[Assert\Type('string')]
     private ?string $lastName;
 
     /**
-     * @Assert\GreaterThanOrEqual(0)
-     * @Assert\LessThanOrEqual(5)
-     * @Assert\Type("int")
      * @ORM\Column(nullable=true, type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0)]
+    #[Assert\LessThanOrEqual(5)]
+    #[Assert\Type('int')]
     private ?int $numberOfPhoneVerificationTries;
 
     /**
@@ -74,51 +74,51 @@ class Profile
     private ?PhoneNumber $phone;
 
     /**
-     * @Assert\Length(max = 32)
-     * @Assert\Type("string")
      * @ORM\Column(nullable=true, length=32, type="string", unique=true)
      */
+    #[Assert\Length(max: 32)]
+    #[Assert\Type('string')]
     private ?string $phoneMd5;
 
     /**
-     * @Assert\GreaterThanOrEqual(100000)
-     * @Assert\LessThanOrEqual(999999)
-     * @Assert\Type("int")
      * @ORM\Column(nullable=true, type="integer")
      */
+    #[Assert\GreaterThanOrEqual(100000)]
+    #[Assert\LessThanOrEqual(999999)]
+    #[Assert\Type('int')]
     private ?int $phoneVerificationCode;
 
     /**
-     * @Assert\Type("bool")
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\Type('bool')]
     private ?bool $sendWeeklyMonthlyStatistics;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Type("bool")
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull]
+    #[Assert\Type('bool')]
     private bool $showMotivationalMessages;
 
     /**
-     * @Assert\Choice(callback="getThemeValidationChoices")
-     * @Assert\Length(max = 8)
-     * @Assert\Type("string")
      * @Groups({"gdpr"})
      * @ORM\Column(length=8, nullable=true, type="string")
      */
+    #[Assert\Choice(callback: 'getThemeValidationChoices')]
+    #[Assert\Length(max: 8)]
+    #[Assert\Type('string')]
     private ?string $theme;
 
     /**
-     * @Assert\Length(max = 36)
-     * @Assert\Timezone
-     * @Assert\Type("string")
      * @Groups({"gdpr"})
      * @ORM\Column(length=36, nullable=true, type="string")
      */
+    #[Assert\Length(max: 36)]
+    #[Assert\Timezone]
+    #[Assert\Type('string')]
     private ?string $timeZone;
 
     public function __construct()

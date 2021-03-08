@@ -10,11 +10,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IsVerifiedTrait
 {
     /**
-     * @Assert\NotNull(groups={"system"})
-     * @Assert\Type("bool", groups={"system"})
      * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
+    #[Assert\NotNull(groups: ['system'])]
+    #[Assert\Type('bool', groups: ['system'])]
     protected bool $isVerified;
 
     public function getIsVerified(): bool

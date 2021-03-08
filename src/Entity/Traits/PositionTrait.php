@@ -9,12 +9,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait PositionTrait
 {
     /**
-     * @Assert\GreaterThanOrEqual(0, groups={"system"})
-     * @Assert\LessThanOrEqual(1024, groups={"system"})
-     * @Assert\NotBlank(groups={"system"})
-     * @Assert\Type("int", groups={"system"})
      * @ORM\Column(type="integer")
      */
+    #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
+    #[Assert\LessThanOrEqual(1024, groups: ['system'])]
+    #[Assert\NotBlank(groups: ['system'])]
+    #[Assert\Type('int', groups: ['system'])]
     protected int $position;
 
     public function getPosition(): int
