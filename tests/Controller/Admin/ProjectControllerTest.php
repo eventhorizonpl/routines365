@@ -39,7 +39,9 @@ final class ProjectControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/project/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Projects');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Projects")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

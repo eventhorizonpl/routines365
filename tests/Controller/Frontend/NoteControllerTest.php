@@ -33,7 +33,9 @@ final class NoteControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/notes/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('p', 'You do not have any notes!');
+        $this->assertTrue(
+            $crawler->filter('p:contains("You do not have any notes!")')->count() > 0
+        );
 
         $this->purge();
         $user = $this->createAndLoginRich();

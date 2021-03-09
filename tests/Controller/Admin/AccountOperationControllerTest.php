@@ -39,7 +39,9 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/account-operation/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Account operations');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Account operations")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

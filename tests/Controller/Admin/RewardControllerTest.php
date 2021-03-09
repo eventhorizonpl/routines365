@@ -39,7 +39,9 @@ final class RewardControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/reward/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Rewards');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Rewards")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

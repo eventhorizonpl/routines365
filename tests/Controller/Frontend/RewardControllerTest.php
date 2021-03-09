@@ -33,7 +33,9 @@ final class RewardControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/rewards/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('p', 'You do not have any rewards!');
+        $this->assertTrue(
+            $crawler->filter('p:contains("You do not have any rewards!")')->count() > 0
+        );
 
         $this->purge();
         $user = $this->createAndLoginRich();

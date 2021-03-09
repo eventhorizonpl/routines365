@@ -15,7 +15,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/about');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h2', 'We help. You achieve.');
+        $this->assertTrue(
+            $crawler->filter('h2:contains("We help. You achieve.")')->count() > 0
+        );
     }
 
     public function testChangelog(): void
@@ -25,7 +27,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/changelog');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Changelog');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Changelog")')->count() > 0
+        );
     }
 
     public function testContact(): void
@@ -35,7 +39,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/contact');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Contact');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Contact")')->count() > 0
+        );
     }
 
     public function testFaq(): void
@@ -45,7 +51,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/faq');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'FAQ');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("FAQ")')->count() > 0
+        );
     }
 
     public function testHowTo(): void
@@ -55,7 +63,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'How-to');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("How-to")')->count() > 0
+        );
     }
 
     public function testHowToBasicConfiguration(): void
@@ -65,7 +75,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/basic-configuration');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Basic configuration');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Basic configuration")')->count() > 0
+        );
     }
 
     public function testHowToCompletingRoutines(): void
@@ -75,7 +87,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/completing-routines');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', ' Completing routines');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Completing routines")')->count() > 0
+        );
     }
 
     public function testHowToGoals(): void
@@ -85,7 +99,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/goals');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Goals');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Goals")')->count() > 0
+        );
     }
 
     public function testHowToNotes(): void
@@ -95,7 +111,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/notes');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Notes');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Notes")')->count() > 0
+        );
     }
 
     public function testHowToProjects(): void
@@ -105,7 +123,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/projects');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Projects');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Projects")')->count() > 0
+        );
     }
 
     public function testHowToReminders(): void
@@ -115,7 +135,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/reminders');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Reminders');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Reminders")')->count() > 0
+        );
     }
 
     public function testHowToRewards(): void
@@ -125,7 +147,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/rewards');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Rewards');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Rewards")')->count() > 0
+        );
     }
 
     public function testHowToRoutines(): void
@@ -135,7 +159,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/how-to/routines');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Routines');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Routines")')->count() > 0
+        );
     }
 
     public function testPrivacyPolicy(): void
@@ -145,7 +171,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/privacy-policy');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Privacy Policy');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Privacy Policy")')->count() > 0
+        );
     }
 
     public function testTermsAndConditions(): void
@@ -155,7 +183,9 @@ final class StaticPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/page/terms-and-conditions');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Terms and Conditions');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Terms and Conditions")')->count() > 0
+        );
     }
 
     public function testTheme(): void

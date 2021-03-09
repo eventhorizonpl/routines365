@@ -46,7 +46,9 @@ final class UserControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/user/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Users');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Users")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

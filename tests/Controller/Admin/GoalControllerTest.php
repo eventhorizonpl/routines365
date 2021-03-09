@@ -39,7 +39,9 @@ final class GoalControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/goal/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Goals');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Goals")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

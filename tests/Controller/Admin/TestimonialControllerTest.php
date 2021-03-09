@@ -41,7 +41,9 @@ final class TestimonialControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/testimonial/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Testimonials');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Testimonials")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

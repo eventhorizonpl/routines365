@@ -39,7 +39,9 @@ final class NoteControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/note/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Notes');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Notes")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

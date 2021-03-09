@@ -25,7 +25,9 @@ final class RoutineControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/routines/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('p', 'You do not have any routines!');
+        $this->assertTrue(
+            $crawler->filter('p:contains("You do not have any routines!")')->count() > 0
+        );
 
         $this->purge();
         $user = $this->createAndLoginRich();

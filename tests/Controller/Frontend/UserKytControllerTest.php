@@ -32,7 +32,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/basic-configuration');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Basic configuration');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Basic configuration")')->count() > 0
+        );
     }
 
     public function testBasicConfigurationFinish(): void
@@ -56,7 +58,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/completing-routines');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Completing routines');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Completing routines")')->count() > 0
+        );
     }
 
     public function testCompletingRoutinesFinish(): void
@@ -80,7 +84,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/goals');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Goals');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Goals")')->count() > 0
+        );
     }
 
     public function testGoalsFinish(): void
@@ -104,7 +110,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/notes');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Notes');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Notes")')->count() > 0
+        );
     }
 
     public function testNotesFinish(): void
@@ -128,7 +136,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/projects');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Projects');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Projects")')->count() > 0
+        );
     }
 
     public function testProjectsFinish(): void
@@ -152,7 +162,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/reminders');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Reminders');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Reminders")')->count() > 0
+        );
     }
 
     public function testRemindersFinish(): void
@@ -176,7 +188,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/rewards');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Rewards');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Rewards")')->count() > 0
+        );
     }
 
     public function testRewardsFinish(): void
@@ -200,7 +214,9 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/routines');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Routines');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Routines")')->count() > 0
+        );
     }
 
     public function testRoutinesFinish(): void
@@ -224,6 +240,8 @@ final class UserKytControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/know-your-tools/start');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Know your tools');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Know your tools")')->count() > 0
+        );
     }
 }

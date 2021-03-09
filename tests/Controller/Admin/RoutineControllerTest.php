@@ -39,7 +39,9 @@ final class RoutineControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/routine/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Routines');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Routines")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

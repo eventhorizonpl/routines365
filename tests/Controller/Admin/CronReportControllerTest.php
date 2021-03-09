@@ -16,7 +16,9 @@ final class CronReportControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/cron-report/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Cron reports');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Cron reports")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("ID")')->count() > 0
         );

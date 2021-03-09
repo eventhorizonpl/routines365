@@ -53,7 +53,9 @@ final class CronJobControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/cron-job/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Cron jobs');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Cron jobs")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("ID")')->count() > 0
         );

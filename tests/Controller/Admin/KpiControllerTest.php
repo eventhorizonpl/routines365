@@ -47,7 +47,9 @@ final class KpiControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/kpi/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'KPIs');
+        $this->assertTrue(
+            $crawler->filter('div:contains("KPIs")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

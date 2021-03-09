@@ -46,7 +46,9 @@ final class QuoteControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/quote/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Quotes');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Quotes")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

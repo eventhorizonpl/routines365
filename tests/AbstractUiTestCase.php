@@ -10,11 +10,11 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManagerInterface;
 use ReflectionObject;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Panther\PantherTestCase;
 use Zalas\Injector\PHPUnit\Symfony\TestCase\SymfonyTestContainer;
 use Zalas\Injector\PHPUnit\TestCase\ServiceContainerTestCase;
 
-abstract class AbstractUiTestCase extends WebTestCase implements ServiceContainerTestCase
+abstract class AbstractUiTestCase extends PantherTestCase implements ServiceContainerTestCase
 {
     use SymfonyTestContainer;
 

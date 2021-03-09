@@ -39,7 +39,9 @@ final class ReminderMessageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/reminder-message/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Reminder messages');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Reminder messages")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

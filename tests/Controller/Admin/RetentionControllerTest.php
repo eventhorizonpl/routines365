@@ -55,7 +55,9 @@ final class RetentionControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/retention/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Retentions');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Retentions")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

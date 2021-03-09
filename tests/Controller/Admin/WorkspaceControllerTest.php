@@ -16,7 +16,9 @@ final class WorkspaceControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Workspace');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Workspace")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('td:contains("Accounts")')->count() > 0
         );

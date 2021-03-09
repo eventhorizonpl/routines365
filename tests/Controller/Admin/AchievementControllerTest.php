@@ -46,7 +46,9 @@ final class AchievementControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/achievement/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Achievements');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Achievements")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

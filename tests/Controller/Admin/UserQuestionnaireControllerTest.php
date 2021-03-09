@@ -54,7 +54,9 @@ final class UserQuestionnaireControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/user-questionnaire/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Users questionnaires');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Users questionnaires")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

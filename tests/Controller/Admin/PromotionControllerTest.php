@@ -46,7 +46,9 @@ final class PromotionControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/promotion/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Promotions');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Promotions")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

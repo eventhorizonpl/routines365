@@ -39,7 +39,9 @@ final class SavedEmailControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/saved-email/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Saved emails');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Saved emails")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

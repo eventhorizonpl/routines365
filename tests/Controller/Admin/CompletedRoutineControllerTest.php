@@ -39,7 +39,9 @@ final class CompletedRoutineControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/completed-routine/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Completed routines');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Completed routines")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

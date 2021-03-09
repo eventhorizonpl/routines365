@@ -39,7 +39,9 @@ final class SentReminderControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/sent-reminder/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Sent reminders');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Sent reminders")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

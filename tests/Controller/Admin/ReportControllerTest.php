@@ -46,7 +46,9 @@ final class ReportControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/admin/report/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('div', 'Reports');
+        $this->assertTrue(
+            $crawler->filter('div:contains("Reports")')->count() > 0
+        );
         $this->assertTrue(
             $crawler->filter('th:contains("UUID")')->count() > 0
         );

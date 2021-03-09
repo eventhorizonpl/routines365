@@ -15,6 +15,8 @@ final class HomeControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h2', 'We help. You achieve.');
+        $this->assertTrue(
+            $crawler->filter('h2:contains("We help. You achieve.")')->count() > 0
+        );
     }
 }

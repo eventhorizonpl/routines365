@@ -15,7 +15,9 @@ final class LandingPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/landing-page/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Landing pages');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("Landing pages")')->count() > 0
+        );
     }
 
     public function testLearnFaster(): void
@@ -25,6 +27,8 @@ final class LandingPageControllerTest extends AbstractUiTestCase
         $crawler = $this->client->request('GET', '/landing-page/learn-faster');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', '7 quick and easy ways to learn faster');
+        $this->assertTrue(
+            $crawler->filter('h1:contains("7 quick and easy ways to learn faster")')->count() > 0
+        );
     }
 }
