@@ -42,42 +42,41 @@ class Reward
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $description;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private bool $isAwarded;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $name;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\LessThanOrEqual(90, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private int $numberOfCompletions;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     #[Assert\Choice(callback: 'getRequiredNumberOfCompletionsValidationChoices', groups: ['form', 'system'])]
@@ -85,16 +84,17 @@ class Reward
     #[Assert\LessThanOrEqual(90, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private int $requiredNumberOfCompletions;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=24, type="string")
      */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private string $type;
 
     public function __construct()

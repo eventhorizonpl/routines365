@@ -10,11 +10,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait UuidTrait
 {
     /**
-     * @Groups({"gdpr", "list", "show"})
      * @ORM\Column(type="guid", unique=true)
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Uuid(groups: ['Default', 'system'])]
+    #[Groups(['gdpr', 'list', 'show'])]
     protected ?string $uuid = null;
 
     public function getUuid(): ?string

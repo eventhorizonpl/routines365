@@ -10,15 +10,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 abstract class BaseResponseDto
 {
     /**
-     * @Groups({"list", "show"})
      * @OA\Property(type="string")
      */
+    #[Groups(['list', 'show'])]
     public int $code;
 
     /**
-     * @Groups({"list", "show"})
      * @OA\Property(type="string")
      */
+    #[Groups(['list', 'show'])]
     public string $status;
 
     public function __construct(int $code, ?string $status = null)

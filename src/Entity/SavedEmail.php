@@ -32,23 +32,23 @@ class SavedEmail
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string")
      */
     #[Assert\Email(groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 180)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private string $email;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 16)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private string $type;
 
     public function __construct()

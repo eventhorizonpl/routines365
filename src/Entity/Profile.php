@@ -43,19 +43,19 @@ class Profile
     private ?string $country;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=64, nullable=true, type="string")
      */
     #[Assert\Length(max: 64)]
     #[Assert\Type('string')]
+    #[Groups(['gdpr'])]
     private ?string $firstName;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=64, nullable=true, type="string")
      */
     #[Assert\Length(max: 64)]
     #[Assert\Type('string')]
+    #[Groups(['gdpr'])]
     private ?string $lastName;
 
     /**
@@ -68,9 +68,9 @@ class Profile
 
     /**
      * @AssertPhoneNumber(type="mobile")
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="phone_number", unique=true)
      */
+    #[Groups(['gdpr'])]
     private ?PhoneNumber $phone;
 
     /**
@@ -89,36 +89,36 @@ class Profile
     private ?int $phoneVerificationCode;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\Type('bool')]
+    #[Groups(['gdpr'])]
     private ?bool $sendWeeklyMonthlyStatistics;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull]
     #[Assert\Type('bool')]
+    #[Groups(['gdpr'])]
     private bool $showMotivationalMessages;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=8, nullable=true, type="string")
      */
     #[Assert\Choice(callback: 'getThemeValidationChoices')]
     #[Assert\Length(max: 8)]
     #[Assert\Type('string')]
+    #[Groups(['gdpr'])]
     private ?string $theme;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=36, nullable=true, type="string")
      */
     #[Assert\Length(max: 36)]
     #[Assert\Timezone]
     #[Assert\Type('string')]
+    #[Groups(['gdpr'])]
     private ?string $timeZone;
 
     public function __construct()

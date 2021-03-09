@@ -10,11 +10,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IsEnabledTrait
 {
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[Groups(['gdpr'])]
     protected bool $isEnabled;
 
     public function getIsEnabled(): ?bool

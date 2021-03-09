@@ -48,20 +48,20 @@ class ReminderMessage
     private SentReminder $sentReminder;
 
     /**
-     * @Groups({"list", "show"})
      * @ORM\Column(length=512, type="string")
      */
     #[Assert\Length(groups: ['system'], max: 512)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[Groups(['list', 'show'])]
     private string $content;
 
     /**
-     * @Groups({"show"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[Groups(['show'])]
     private bool $isReadFromBrowser;
 
     /**

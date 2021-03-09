@@ -37,21 +37,21 @@ class Note
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 2048)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $content;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $title;
 
     public function __construct()

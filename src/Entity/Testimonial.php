@@ -34,21 +34,21 @@ class Testimonial
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=255, nullable=true, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $content;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=128, nullable=true, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 128)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $signature;
 
     /**

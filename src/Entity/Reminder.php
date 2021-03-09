@@ -61,15 +61,14 @@ class Reminder
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="time_immutable")
      */
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private DateTimeImmutable $hour;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     #[Assert\Choice(callback: 'getMinutesBeforeValidationChoices', groups: ['form', 'system'])]
@@ -77,72 +76,73 @@ class Reminder
     #[Assert\LessThanOrEqual(60, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private int $minutesBefore;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $nextDate;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $nextDateLocalTime;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $previousDate;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private bool $sendEmail;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private bool $sendMotivationalMessage;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private bool $sendSms;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private bool $sendToBrowser;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=10, type="string")
      */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 10)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private string $type;
 
     public function __construct()

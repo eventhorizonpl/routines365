@@ -34,11 +34,11 @@ class UserQuestionnaireAnswer
     private UserQuestionnaire $userQuestionnaire;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $content;
 
     public function __construct()

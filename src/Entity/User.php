@@ -38,11 +38,11 @@ class User implements UserInterface, TwoFactorInterface
     public const TYPE_STAFF = 'staff';
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Account::class)
      */
     #[Assert\Valid(groups: ['form'])]
+    #[Groups(['gdpr'])]
     private ?Account $account;
 
     /**
@@ -51,41 +51,41 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $achievements;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=CompletedRoutine::class)
      * @ORM\OrderBy({"id" = "ASC"})
      */
+    #[Groups(['gdpr'])]
     private Collection $completedRoutines;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Contact::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $contacts;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $goals;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Note::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $notes;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
      */
     #[Assert\Valid(groups: ['form'])]
+    #[Groups(['gdpr'])]
     private Profile $profile;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Project::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $projects;
 
     /**
@@ -105,34 +105,34 @@ class User implements UserInterface, TwoFactorInterface
     private ?User $referrer = null;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reminder::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $reminders;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reward::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $rewards;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Routine::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $routines;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=SavedEmail::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $savedEmails;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Testimonial::class)
      */
     #[Assert\Valid(groups: ['form'])]
+    #[Groups(['gdpr'])]
     private ?Testimonial $testimonial = null;
 
     /**
@@ -146,9 +146,9 @@ class User implements UserInterface, TwoFactorInterface
     private ?UserKyt $userKyt = null;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserQuestionnaire::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $userQuestionnaires;
 
     /**
@@ -158,13 +158,13 @@ class User implements UserInterface, TwoFactorInterface
     private ?string $apiToken = null;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=180, type="string", unique=true)
      */
     #[Assert\Email(groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 180)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $email;
 
     /**
@@ -175,10 +175,10 @@ class User implements UserInterface, TwoFactorInterface
     private ?string $googleAuthenticatorSecret;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $lastLoginAt = null;
 
     /**
@@ -190,11 +190,11 @@ class User implements UserInterface, TwoFactorInterface
     private string $password;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="guid", unique=true)
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Uuid(groups: ['system'])]
+    #[Groups(['gdpr'])]
     private string $referrerCode;
 
     /**

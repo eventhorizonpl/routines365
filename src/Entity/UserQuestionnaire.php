@@ -37,17 +37,17 @@ class UserQuestionnaire
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="userQuestionnaire", orphanRemoval=true, targetEntity=UserQuestionnaireAnswer::class)
      */
+    #[Groups(['gdpr'])]
     private Collection $userQuestionnaireAnswers;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private bool $isRewarded;
 
     public function __construct()

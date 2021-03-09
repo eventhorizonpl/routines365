@@ -12,9 +12,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class ReminderMessageListDto extends BaseResponseDto
 {
     /**
-     * @Groups({"list", "show"})
      * @OA\Property(type="array", @OA\Items(ref=@Model(type=ReminderMessage::class, groups={"list"})))
      */
+    #[Groups(['list', 'show'])]
     public array $data;
 
     public function __construct(int $code, array $data, ?string $status = null)

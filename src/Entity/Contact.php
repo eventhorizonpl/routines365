@@ -45,12 +45,12 @@ class Contact
     private ?string $comment;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=2048, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 2048)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $content;
 
     /**
@@ -63,22 +63,22 @@ class Contact
     private string $status;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $title;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private string $type;
 
     public function __construct()

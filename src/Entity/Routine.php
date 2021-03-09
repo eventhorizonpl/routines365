@@ -72,30 +72,30 @@ class Routine
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $description;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=64, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $name;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(length=16, type="string")
      */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private string $type;
 
     public function __construct()

@@ -11,18 +11,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait IsCompletedTrait
 {
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
      */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     protected ?DateTimeImmutable $completedAt = null;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="boolean")
      */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[Groups(['gdpr'])]
     protected bool $isCompleted;
 
     public function getCompletedAt(): ?DateTimeImmutable

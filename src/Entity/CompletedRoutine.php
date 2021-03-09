@@ -35,29 +35,29 @@ class CompletedRoutine
     private User $user;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(nullable=true, type="string")
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?string $comment;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $date;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="integer")
      */
     #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
     #[Assert\LessThanOrEqual(1024, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private int $minutesDevoted;
 
     public function __construct()

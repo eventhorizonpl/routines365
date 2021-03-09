@@ -11,26 +11,26 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait TimestampableTrait
 {
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     protected ?DateTimeImmutable $createdAt = null;
 
     /**
      * @ORM\Column(nullable=true, type="datetimetz_immutable")
-     * @Groups({"gdpr"})
      */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     protected ?DateTimeImmutable $deletedAt = null;
 
     /**
-     * @Groups({"gdpr"})
      * @ORM\Column(type="datetimetz_immutable")
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     protected ?DateTimeImmutable $updatedAt = null;
 
     public function getCreatedAt(): ?DateTimeImmutable
