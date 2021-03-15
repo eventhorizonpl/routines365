@@ -15,6 +15,10 @@ use App\Service\PromotionService;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -48,15 +52,14 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountOperationService,
-            $this->promotionFaker,
-            $this->promotionManager,
-            $this->promotionRepository,
-            $this->promotionService,
-            $this->userFaker,
-            $this->userManager
-        );
+        $this->accountOperationService = null;
+        $this->promotionFaker = null;
+        $this->promotionManager = null;
+        $this->promotionRepository = null;
+        $this->promotionService = null;
+        $this->userFaker = null;
+        $this->userManager = null
+        ;
 
         parent::tearDown();
     }

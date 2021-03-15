@@ -12,6 +12,10 @@ use App\Repository\UserKytRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKytManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->userKytManager,
-            $this->userKytRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->userKytManager = null;
+        $this->userKytRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class UserKytManagerTest extends AbstractDoctrineTestCase
     public function createUserKyt(): UserKyt
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $userKyt = $user->getUserKyt();
 
-        return $userKyt;
+        return $user->getUserKyt();
     }
 
     public function testConstruct(): void

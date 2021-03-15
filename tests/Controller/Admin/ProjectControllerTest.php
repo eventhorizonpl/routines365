@@ -8,6 +8,10 @@ use App\Entity\Project;
 use App\Manager\ProjectManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProjectControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class ProjectControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->projectManager);
+        $this->projectManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class ProjectControllerTest extends AbstractUiTestCase
     public function createProject(): Project
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
 
-        return $project;
+        return $user->getProjects()->first();
     }
 
     public function testIndex(): void

@@ -12,6 +12,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -25,22 +29,22 @@ final class RewardTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $reward = new Reward();
         $reward->setUuid($uuid);
-        $this->assertEquals($uuid, $reward->__toString());
+        $this->assertSame($uuid, $reward->__toString());
     }
 
     public function testGetId(): void
     {
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getId());
+        $this->assertNull($reward->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getUuid());
+        $this->assertNull($reward->getUuid());
         $reward->setUuid($uuid);
-        $this->assertEquals($uuid, $reward->getUuid());
+        $this->assertSame($uuid, $reward->getUuid());
         $this->assertIsString($reward->getUuid());
     }
 
@@ -49,16 +53,16 @@ final class RewardTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setUuid($uuid));
-        $this->assertEquals($uuid, $reward->getUuid());
+        $this->assertSame($uuid, $reward->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getCreatedBy());
+        $this->assertNull($reward->getCreatedBy());
         $reward->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $reward->getCreatedBy());
+        $this->assertSame($createdBy, $reward->getCreatedBy());
         $this->assertIsString($reward->getCreatedBy());
     }
 
@@ -67,16 +71,16 @@ final class RewardTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $reward->getCreatedBy());
+        $this->assertSame($createdBy, $reward->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getDeletedBy());
+        $this->assertNull($reward->getDeletedBy());
         $reward->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $reward->getDeletedBy());
+        $this->assertSame($deletedBy, $reward->getDeletedBy());
         $this->assertIsString($reward->getDeletedBy());
     }
 
@@ -85,16 +89,16 @@ final class RewardTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $reward->getDeletedBy());
+        $this->assertSame($deletedBy, $reward->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getUpdatedBy());
+        $this->assertNull($reward->getUpdatedBy());
         $reward->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $reward->getUpdatedBy());
+        $this->assertSame($updatedBy, $reward->getUpdatedBy());
         $this->assertIsString($reward->getUpdatedBy());
     }
 
@@ -103,16 +107,16 @@ final class RewardTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $reward->getUpdatedBy());
+        $this->assertSame($updatedBy, $reward->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getCreatedAt());
+        $this->assertNull($reward->getCreatedAt());
         $reward->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $reward->getCreatedAt());
+        $this->assertSame($createdAt, $reward->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -120,16 +124,16 @@ final class RewardTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $reward->getCreatedAt());
+        $this->assertSame($createdAt, $reward->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getDeletedAt());
+        $this->assertNull($reward->getDeletedAt());
         $reward->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $reward->getDeletedAt());
+        $this->assertSame($deletedAt, $reward->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -137,16 +141,16 @@ final class RewardTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $reward->getDeletedAt());
+        $this->assertSame($deletedAt, $reward->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getUpdatedAt());
+        $this->assertNull($reward->getUpdatedAt());
         $reward->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $reward->getUpdatedAt());
+        $this->assertSame($updatedAt, $reward->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -154,16 +158,16 @@ final class RewardTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $reward->getUpdatedAt());
+        $this->assertSame($updatedAt, $reward->getUpdatedAt());
     }
 
     public function testGetIsAwarded(): void
     {
         $isAwarded = true;
         $reward = new Reward();
-        $this->assertEquals(false, $reward->getIsAwarded());
+        $this->assertFalse($reward->getIsAwarded());
         $reward->setIsAwarded($isAwarded);
-        $this->assertEquals($isAwarded, $reward->getIsAwarded());
+        $this->assertSame($isAwarded, $reward->getIsAwarded());
         $this->assertIsBool($reward->getIsAwarded());
     }
 
@@ -172,7 +176,7 @@ final class RewardTest extends AbstractTestCase
         $isAwarded = true;
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setIsAwarded($isAwarded));
-        $this->assertEquals($isAwarded, $reward->getIsAwarded());
+        $this->assertSame($isAwarded, $reward->getIsAwarded());
     }
 
     public function testGetRoutine(): void
@@ -180,7 +184,7 @@ final class RewardTest extends AbstractTestCase
         $routine = new Routine();
         $reward = new Reward();
         $reward->setRoutine($routine);
-        $this->assertEquals($routine, $reward->getRoutine());
+        $this->assertSame($routine, $reward->getRoutine());
     }
 
     public function testSetRoutine(): void
@@ -188,7 +192,7 @@ final class RewardTest extends AbstractTestCase
         $routine = new Routine();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setRoutine($routine));
-        $this->assertEquals($routine, $reward->getRoutine());
+        $this->assertSame($routine, $reward->getRoutine());
     }
 
     public function testGetUser(): void
@@ -196,7 +200,7 @@ final class RewardTest extends AbstractTestCase
         $user = new User();
         $reward = new Reward();
         $reward->setUser($user);
-        $this->assertEquals($user, $reward->getUser());
+        $this->assertSame($user, $reward->getUser());
     }
 
     public function testSetUser(): void
@@ -204,16 +208,16 @@ final class RewardTest extends AbstractTestCase
         $user = new User();
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setUser($user));
-        $this->assertEquals($user, $reward->getUser());
+        $this->assertSame($user, $reward->getUser());
     }
 
     public function testGetDescription(): void
     {
         $description = 'test description';
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getDescription());
+        $this->assertNull($reward->getDescription());
         $reward->setDescription($description);
-        $this->assertEquals($description, $reward->getDescription());
+        $this->assertSame($description, $reward->getDescription());
         $this->assertIsString($reward->getDescription());
     }
 
@@ -222,16 +226,16 @@ final class RewardTest extends AbstractTestCase
         $description = 'test description';
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setDescription($description));
-        $this->assertEquals($description, $reward->getDescription());
+        $this->assertSame($description, $reward->getDescription());
     }
 
     public function testGetName(): void
     {
         $name = 'test name';
         $reward = new Reward();
-        $this->assertEquals(null, $reward->getName());
+        $this->assertSame('', $reward->getName());
         $reward->setName($name);
-        $this->assertEquals($name, $reward->getName());
+        $this->assertSame($name, $reward->getName());
         $this->assertIsString($reward->getName());
     }
 
@@ -240,24 +244,24 @@ final class RewardTest extends AbstractTestCase
         $name = 'test name';
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setName($name));
-        $this->assertEquals($name, $reward->getName());
+        $this->assertSame($name, $reward->getName());
     }
 
     public function testIncrementNumberOfCompletions(): void
     {
         $reward = new Reward();
-        $this->assertEquals(0, $reward->getNumberOfCompletions());
+        $this->assertSame(0, $reward->getNumberOfCompletions());
         $this->assertInstanceOf(Reward::class, $reward->incrementNumberOfCompletions());
-        $this->assertEquals(1, $reward->getNumberOfCompletions());
+        $this->assertSame(1, $reward->getNumberOfCompletions());
     }
 
     public function testGetNumberOfCompletions(): void
     {
         $numberOfCompletions = 10;
         $reward = new Reward();
-        $this->assertEquals(0, $reward->getNumberOfCompletions());
+        $this->assertSame(0, $reward->getNumberOfCompletions());
         $reward->setNumberOfCompletions($numberOfCompletions);
-        $this->assertEquals($numberOfCompletions, $reward->getNumberOfCompletions());
+        $this->assertSame($numberOfCompletions, $reward->getNumberOfCompletions());
         $this->assertIsInt($reward->getNumberOfCompletions());
     }
 
@@ -268,7 +272,7 @@ final class RewardTest extends AbstractTestCase
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setRequiredNumberOfCompletions($requiredNumberOfCompletions));
         $this->assertInstanceOf(Reward::class, $reward->setNumberOfCompletions($numberOfCompletions));
-        $this->assertEquals(40, $reward->getNumberOfCompletionsPercent());
+        $this->assertSame(40, $reward->getNumberOfCompletionsPercent());
     }
 
     public function testSetNumberOfCompletions(): void
@@ -276,7 +280,7 @@ final class RewardTest extends AbstractTestCase
         $numberOfCompletions = 10;
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setNumberOfCompletions($numberOfCompletions));
-        $this->assertEquals($numberOfCompletions, $reward->getNumberOfCompletions());
+        $this->assertSame($numberOfCompletions, $reward->getNumberOfCompletions());
     }
 
     public function testGetRequiredNumberOfCompletions(): void
@@ -284,7 +288,7 @@ final class RewardTest extends AbstractTestCase
         $requiredNumberOfCompletions = 5;
         $reward = new Reward();
         $reward->setRequiredNumberOfCompletions($requiredNumberOfCompletions);
-        $this->assertEquals($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
+        $this->assertSame($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
         $this->assertIsInt($reward->getRequiredNumberOfCompletions());
     }
 
@@ -305,7 +309,7 @@ final class RewardTest extends AbstractTestCase
         $requiredNumberOfCompletions = 5;
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setRequiredNumberOfCompletions($requiredNumberOfCompletions));
-        $this->assertEquals($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
+        $this->assertSame($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
     }
 
     public function testGetType(): void
@@ -313,7 +317,7 @@ final class RewardTest extends AbstractTestCase
         $type = Reward::TYPE_ALL;
         $reward = new Reward();
         $reward->setType($type);
-        $this->assertEquals($type, $reward->getType());
+        $this->assertSame($type, $reward->getType());
         $this->assertIsString($reward->getType());
     }
 
@@ -334,7 +338,7 @@ final class RewardTest extends AbstractTestCase
         $type = Reward::TYPE_ALL;
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setType($type));
-        $this->assertEquals($type, $reward->getType());
+        $this->assertSame($type, $reward->getType());
     }
 
     public function testSetTypeException(): void

@@ -33,6 +33,10 @@ use App\Manager\UserManager;
 use App\Service\UserService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -142,34 +146,33 @@ final class UserFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountOperationFaker,
-            $this->achievementFaker,
-            $this->answerFaker,
-            $this->completedRoutineFaker,
-            $this->contactFaker,
-            $this->goalFaker,
-            $this->noteFaker,
-            $this->projectFaker,
-            $this->promotionFaker,
-            $this->questionFaker,
-            $this->questionnaireFaker,
-            $this->quoteFaker,
-            $this->reminderFaker,
-            $this->reminderMessageFaker,
-            $this->reminderMessageManager,
-            $this->rewardFaker,
-            $this->routineFaker,
-            $this->savedEmailFaker,
-            $this->sentReminderFactory,
-            $this->sentReminderManager,
-            $this->testimonialFaker,
-            $this->userFactory,
-            $this->userFaker,
-            $this->userManager,
-            $this->userQuestionnaireFaker,
-            $this->userService
-        );
+        $this->accountOperationFaker = null;
+        $this->achievementFaker = null;
+        $this->answerFaker = null;
+        $this->completedRoutineFaker = null;
+        $this->contactFaker = null;
+        $this->goalFaker = null;
+        $this->noteFaker = null;
+        $this->projectFaker = null;
+        $this->promotionFaker = null;
+        $this->questionFaker = null;
+        $this->questionnaireFaker = null;
+        $this->quoteFaker = null;
+        $this->reminderFaker = null;
+        $this->reminderMessageFaker = null;
+        $this->reminderMessageManager = null;
+        $this->rewardFaker = null;
+        $this->routineFaker = null;
+        $this->savedEmailFaker = null;
+        $this->sentReminderFactory = null;
+        $this->sentReminderManager = null;
+        $this->testimonialFaker = null;
+        $this->userFactory = null;
+        $this->userFaker = null;
+        $this->userManager = null;
+        $this->userQuestionnaireFaker = null;
+        $this->userService = null
+        ;
 
         parent::tearDown();
     }
@@ -224,10 +227,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
             $roles,
             $type
         );
-        $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($isEnabled, $user->getIsEnabled());
-        $this->assertEquals($roles, $user->getRoles());
-        $this->assertEquals($type, $user->getType());
+        $this->assertSame($email, $user->getEmail());
+        $this->assertSame($isEnabled, $user->getIsEnabled());
+        $this->assertSame($roles, $user->getRoles());
+        $this->assertSame($type, $user->getType());
     }
 
     public function testCreateUserPersisted(): void
@@ -247,10 +250,10 @@ final class UserFakerTest extends AbstractDoctrineTestCase
             $roles,
             $type
         );
-        $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($isEnabled, $user->getIsEnabled());
-        $this->assertEquals($roles, $user->getRoles());
-        $this->assertEquals($type, $user->getType());
+        $this->assertSame($email, $user->getEmail());
+        $this->assertSame($isEnabled, $user->getIsEnabled());
+        $this->assertSame($roles, $user->getRoles());
+        $this->assertSame($type, $user->getType());
     }
 
     public function testCreateRichUserPersisted(): void

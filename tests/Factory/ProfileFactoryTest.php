@@ -8,6 +8,10 @@ use App\Entity\Profile;
 use App\Factory\ProfileFactory;
 use App\Tests\AbstractTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProfileFactoryTest extends AbstractTestCase
 {
     public function testConstruct(): void

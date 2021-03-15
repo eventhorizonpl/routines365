@@ -11,6 +11,10 @@ use App\Repository\RewardRepository;
 use App\Service\RewardService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -32,12 +36,11 @@ final class RewardServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->rewardManager,
-            $this->rewardRepository,
-            $this->rewardService,
-            $this->userFaker
-        );
+        $this->rewardManager = null;
+        $this->rewardRepository = null;
+        $this->rewardService = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -65,7 +68,7 @@ final class RewardServiceTest extends AbstractDoctrineTestCase
         $reward = $this->rewardService->findReward($routine, $type);
         if (false === $isAwarded) {
             $this->assertInstanceOf(Reward::class, $reward);
-            $this->assertEquals($type, $reward->getType());
+            $this->assertSame($type, $reward->getType());
         } else {
             $this->assertNull($reward);
         }
@@ -89,7 +92,7 @@ final class RewardServiceTest extends AbstractDoctrineTestCase
 
         $reward = $this->rewardService->manageReward($routine, $type);
         $this->assertInstanceOf(Reward::class, $reward);
-        $this->assertEquals($type, $reward->getType());
-        $this->assertEquals(($numberOfCompletions + 1), $reward->getNumberOfCompletions());
+        $this->assertSame($type, $reward->getType());
+        $this->assertSame(($numberOfCompletions + 1), $reward->getNumberOfCompletions());
     }
 }

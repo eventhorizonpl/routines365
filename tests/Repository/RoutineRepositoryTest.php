@@ -10,6 +10,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RoutineRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class RoutineRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->routineRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->routineRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

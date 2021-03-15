@@ -22,12 +22,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface, TwoFactorInterface
 {
+    use Traits\BlameableTrait;
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\IsEnabledTrait;
     use Traits\IsVerifiedTrait;
-    use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const ROLE_ADMIN = 'ROLE_ADMIN';
     public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
@@ -289,9 +289,9 @@ class User implements UserInterface, TwoFactorInterface
     {
         if (true === $this->achievements->contains($achievement)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function removeAchievement(Achievement $achievement): self
@@ -327,9 +327,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getCompletedRoutines(): Collection
     {
-        return $this->completedRoutines->filter(function (CompletedRoutine $completedRoutine) {
-            return null === $completedRoutine->getDeletedAt();
-        });
+        return $this->completedRoutines->filter(fn (CompletedRoutine $completedRoutine) => null === $completedRoutine->getDeletedAt());
     }
 
     public function getCompletedRoutinesAll(): Collection
@@ -358,9 +356,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getContacts(): Collection
     {
-        return $this->contacts->filter(function (Contact $contact) {
-            return null === $contact->getDeletedAt();
-        });
+        return $this->contacts->filter(fn (Contact $contact) => null === $contact->getDeletedAt());
     }
 
     public function getContactsAll(): Collection
@@ -377,7 +373,7 @@ class User implements UserInterface, TwoFactorInterface
         return $this;
     }
 
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
     }
 
@@ -405,9 +401,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getGoals(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return null === $goal->getDeletedAt();
-        });
+        return $this->goals->filter(fn (Goal $goal) => null === $goal->getDeletedAt());
     }
 
     public function getGoalsAll(): Collection
@@ -417,9 +411,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getGoalsCompleted(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
-        });
+        return $this->goals->filter(fn (Goal $goal) => (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
     }
 
     public function removeGoal(Goal $goal): self
@@ -477,9 +469,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getNotes(): Collection
     {
-        return $this->notes->filter(function (Note $note) {
-            return null === $note->getDeletedAt();
-        });
+        return $this->notes->filter(fn (Note $note) => null === $note->getDeletedAt());
     }
 
     public function getNotesAll(): Collection
@@ -532,9 +522,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getProjects(): Collection
     {
-        return $this->projects->filter(function (Project $project) {
-            return null === $project->getDeletedAt();
-        });
+        return $this->projects->filter(fn (Project $project) => null === $project->getDeletedAt());
     }
 
     public function getProjectsAll(): Collection
@@ -544,9 +532,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getProjectsCompleted(): Collection
     {
-        return $this->projects->filter(function (Project $project) {
-            return (true === $project->getIsCompleted()) && (null === $project->getDeletedAt());
-        });
+        return $this->projects->filter(fn (Project $project) => (true === $project->getIsCompleted()) && (null === $project->getDeletedAt()));
     }
 
     public function removeProject(Project $project): self
@@ -576,9 +562,9 @@ class User implements UserInterface, TwoFactorInterface
     {
         if (true === $this->promotions->contains($promotion)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function removePromotion(Promotion $promotion): self
@@ -602,9 +588,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getRecommendations(): Collection
     {
-        return $this->recommendations->filter(function (self $recommendation) {
-            return null === $recommendation->getDeletedAt();
-        });
+        return $this->recommendations->filter(fn (self $recommendation) => null === $recommendation->getDeletedAt());
     }
 
     public function getRecommendationsAll(): Collection
@@ -621,12 +605,12 @@ class User implements UserInterface, TwoFactorInterface
         return $this;
     }
 
-    public function getReferrer(): ?User
+    public function getReferrer(): ?self
     {
         return $this->referrer;
     }
 
-    public function setReferrer(?User $referrer): self
+    public function setReferrer(?self $referrer): self
     {
         $this->referrer = $referrer;
 
@@ -657,9 +641,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getReminders(): Collection
     {
-        return $this->reminders->filter(function (Reminder $reminder) {
-            return null === $reminder->getDeletedAt();
-        });
+        return $this->reminders->filter(fn (Reminder $reminder) => null === $reminder->getDeletedAt());
     }
 
     public function getRemindersAll(): Collection
@@ -688,9 +670,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getRewards(): Collection
     {
-        return $this->rewards->filter(function (Reward $reward) {
-            return null === $reward->getDeletedAt();
-        });
+        return $this->rewards->filter(fn (Reward $reward) => null === $reward->getDeletedAt());
     }
 
     public function getRewardsAll(): Collection
@@ -700,9 +680,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getRewardsAwarded(): Collection
     {
-        return $this->rewards->filter(function (Reward $reward) {
-            return (true === $reward->getIsAwarded()) && (null === $reward->getDeletedAt());
-        });
+        return $this->rewards->filter(fn (Reward $reward) => (true === $reward->getIsAwarded()) && (null === $reward->getDeletedAt()));
     }
 
     public function removeReward(Reward $reward): self
@@ -755,9 +733,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getRoutines(): Collection
     {
-        return $this->routines->filter(function (Routine $routine) {
-            return null === $routine->getDeletedAt();
-        });
+        return $this->routines->filter(fn (Routine $routine) => null === $routine->getDeletedAt());
     }
 
     public function getRoutinesAll(): Collection
@@ -774,7 +750,7 @@ class User implements UserInterface, TwoFactorInterface
         return $this;
     }
 
-    public function getSalt()
+    public function getSalt(): void
     {
     }
 
@@ -790,9 +766,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getSavedEmails(): Collection
     {
-        return $this->savedEmails->filter(function (SavedEmail $savedEmail) {
-            return null === $savedEmail->getDeletedAt();
-        });
+        return $this->savedEmails->filter(fn (SavedEmail $savedEmail) => null === $savedEmail->getDeletedAt());
     }
 
     public function getSavedEmailsAll(): Collection
@@ -843,7 +817,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 
@@ -864,9 +838,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getUserKpis(): Collection
     {
-        return $this->userKpis->filter(function (UserKpi $userKpi) {
-            return null === $userKpi->getDeletedAt();
-        });
+        return $this->userKpis->filter(fn (UserKpi $userKpi) => null === $userKpi->getDeletedAt());
     }
 
     public function getUserKpisAll(): Collection
@@ -912,9 +884,7 @@ class User implements UserInterface, TwoFactorInterface
 
     public function getUserQuestionnaires(): Collection
     {
-        return $this->userQuestionnaires->filter(function (UserQuestionnaire $userQuestionnaire) {
-            return null === $userQuestionnaire->getDeletedAt();
-        });
+        return $this->userQuestionnaires->filter(fn (UserQuestionnaire $userQuestionnaire) => null === $userQuestionnaire->getDeletedAt());
     }
 
     public function getUserQuestionnairesAll(): Collection

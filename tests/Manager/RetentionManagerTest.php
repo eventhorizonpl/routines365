@@ -14,6 +14,10 @@ use App\Service\RetentionService;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RetentionManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -43,14 +47,13 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->retentionFactory,
-            $this->retentionManager,
-            $this->retentionRepository,
-            $this->retentionService,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->retentionFactory = null;
+        $this->retentionManager = null;
+        $this->retentionRepository = null;
+        $this->retentionService = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -60,9 +63,8 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $this->retentionService->run();
         $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
 
-        return $retention;
+        return $retentions[0];
     }
 
     public function testConstruct(): void
@@ -87,7 +89,7 @@ final class RetentionManagerTest extends AbstractDoctrineTestCase
 
         $retention2 = $this->retentionRepository->findOneById($retentionId);
         $this->assertInstanceOf(Retention::class, $retention2);
-        $this->assertEquals($data, $retention2->getData());
+        $this->assertSame($data, $retention2->getData());
     }
 
     public function testDelete(): void

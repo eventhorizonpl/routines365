@@ -27,12 +27,10 @@ class RetentionService
         array $data,
         DateTimeImmutable $date
     ): Retention {
-        $retention = $this->retentionFactory->createRetentionWithRequired(
+        return $this->retentionFactory->createRetentionWithRequired(
             $data,
             $date
         );
-
-        return $retention;
     }
 
     public function findOrCreate(
@@ -57,7 +55,7 @@ class RetentionService
         return $retention;
     }
 
-    public function run(?string $today = null): RetentionService
+    public function run(?string $today = null): self
     {
         $startDate = new DateTime('2020-10-01');
         $startDate->setTime(0, 0, 0);

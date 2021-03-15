@@ -8,6 +8,10 @@ use App\Form\Frontend\ProfilePhoneVerificationCodeType;
 use App\Form\Model\ProfilePhoneVerificationCodeFormModel;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProfilePhoneVerificationCodeTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class ProfilePhoneVerificationCodeTypeTest extends TypeTestCase
     {
         $formData = new ProfilePhoneVerificationCodeFormModel();
         $view = $this->factory->create(ProfilePhoneVerificationCodeType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

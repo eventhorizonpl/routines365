@@ -24,7 +24,7 @@ class UserKytService
     ) {
     }
 
-    public function nurture(): UserKytService
+    public function nurture(): self
     {
         $page = 1;
         $limit = 5;
@@ -48,9 +48,9 @@ class UserKytService
         $userKyt = $user->getUserKyt();
         $date = new DateTimeImmutable();
 
-        if ((false === $userKyt->getBasicConfigurationLearned()) &&
-            (false === $userKyt->getBasicConfigurationSent()) &&
-            (null === $user->getProfile()->getTimeZone())
+        if ((false === $userKyt->getBasicConfigurationLearned())
+            && (false === $userKyt->getBasicConfigurationSent())
+            && (null === $user->getProfile()->getTimeZone())
         ) {
             $this->emailService->sendUserKytBasicConfiguration(
                 $user->getEmail(),
@@ -61,9 +61,9 @@ class UserKytService
             );
             $userKyt->setBasicConfigurationSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getRoutinesLearned()) &&
-            (false === $userKyt->getRoutinesSent()) &&
-            (0 === count($user->getRoutinesAll()))
+        } elseif ((false === $userKyt->getRoutinesLearned())
+            && (false === $userKyt->getRoutinesSent())
+            && (0 === \count($user->getRoutinesAll()))
         ) {
             $this->emailService->sendUserKytRoutines(
                 $user->getEmail(),
@@ -74,9 +74,9 @@ class UserKytService
             );
             $userKyt->setRoutinesSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getRemindersLearned()) &&
-            (false === $userKyt->getRemindersSent()) &&
-            (0 === count($user->getRemindersAll()))
+        } elseif ((false === $userKyt->getRemindersLearned())
+            && (false === $userKyt->getRemindersSent())
+            && (0 === \count($user->getRemindersAll()))
         ) {
             $this->emailService->sendUserKytReminders(
                 $user->getEmail(),
@@ -87,9 +87,9 @@ class UserKytService
             );
             $userKyt->setRemindersSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getCompletingRoutinesLearned()) &&
-            (false === $userKyt->getCompletingRoutinesSent()) &&
-            (0 === count($user->getCompletedRoutinesAll()))
+        } elseif ((false === $userKyt->getCompletingRoutinesLearned())
+            && (false === $userKyt->getCompletingRoutinesSent())
+            && (0 === \count($user->getCompletedRoutinesAll()))
         ) {
             $this->emailService->sendUserKytCompletingRoutines(
                 $user->getEmail(),
@@ -100,9 +100,9 @@ class UserKytService
             );
             $userKyt->setCompletingRoutinesSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getNotesLearned()) &&
-            (false === $userKyt->getNotesSent()) &&
-            (0 === count($user->getNotesAll()))
+        } elseif ((false === $userKyt->getNotesLearned())
+            && (false === $userKyt->getNotesSent())
+            && (0 === \count($user->getNotesAll()))
         ) {
             $this->emailService->sendUserKytNotes(
                 $user->getEmail(),
@@ -113,9 +113,9 @@ class UserKytService
             );
             $userKyt->setNotesSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getRewardsLearned()) &&
-            (false === $userKyt->getRewardsSent()) &&
-            (0 === count($user->getRewardsAll()))
+        } elseif ((false === $userKyt->getRewardsLearned())
+            && (false === $userKyt->getRewardsSent())
+            && (0 === \count($user->getRewardsAll()))
         ) {
             $this->emailService->sendUserKytRewards(
                 $user->getEmail(),
@@ -126,9 +126,9 @@ class UserKytService
             );
             $userKyt->setRewardsSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getProjectsLearned()) &&
-            (false === $userKyt->getProjectsSent()) &&
-            (0 === count($user->getProjectsAll()))
+        } elseif ((false === $userKyt->getProjectsLearned())
+            && (false === $userKyt->getProjectsSent())
+            && (0 === \count($user->getProjectsAll()))
         ) {
             $this->emailService->sendUserKytProjects(
                 $user->getEmail(),
@@ -139,9 +139,9 @@ class UserKytService
             );
             $userKyt->setProjectsSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getGoalsLearned()) &&
-            (false === $userKyt->getGoalsSent()) &&
-            (0 === count($user->getGoalsAll()))
+        } elseif ((false === $userKyt->getGoalsLearned())
+            && (false === $userKyt->getGoalsSent())
+            && (0 === \count($user->getGoalsAll()))
         ) {
             $this->emailService->sendUserKytGoals(
                 $user->getEmail(),
@@ -152,8 +152,8 @@ class UserKytService
             );
             $userKyt->setGoalsSent(true);
             $userKyt->setDateOfLastMessage($date);
-        } elseif ((false === $userKyt->getTestimonialRequestSent()) &&
-            (count($user->getCompletedRoutinesAll()) >= 50)
+        } elseif ((false === $userKyt->getTestimonialRequestSent())
+            && (\count($user->getCompletedRoutinesAll()) >= 50)
         ) {
             $this->emailService->sendRequestForTestimonial(
                 $user->getEmail(),

@@ -14,6 +14,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProjectManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -39,13 +43,12 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->goalManager,
-            $this->projectManager,
-            $this->projectRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->goalManager = null;
+        $this->projectManager = null;
+        $this->projectRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -53,9 +56,8 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
     public function createProject(): Project
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $project = $user->getProjects()->first();
 
-        return $project;
+        return $user->getProjects()->first();
     }
 
     public function testConstruct(): void
@@ -81,7 +83,7 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
 
         $project2 = $this->projectRepository->findOneById($projectId);
         $this->assertInstanceOf(Project::class, $project2);
-        $this->assertEquals($name, $project2->getName());
+        $this->assertSame($name, $project2->getName());
     }
 
     public function testDelete(): void

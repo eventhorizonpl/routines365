@@ -18,8 +18,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ReminderMessage
 {
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES = 'amazon_ses';
     public const THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS = 'amazon_sns';
@@ -212,7 +212,7 @@ class ReminderMessage
 
     public function setThirdPartySystemType(?string $thirdPartySystemType): self
     {
-        if (!(in_array($thirdPartySystemType, self::getThirdPartySystemTypeValidationChoices()))) {
+        if (!(\in_array($thirdPartySystemType, self::getThirdPartySystemTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid third party system type');
         }
 
@@ -242,7 +242,7 @@ class ReminderMessage
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

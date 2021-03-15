@@ -56,7 +56,7 @@ class PromotionFaker
             );
         }
 
-        $promotion = $this->promotionFactory->createPromotionWithRequired(
+        return $this->promotionFactory->createPromotionWithRequired(
             $code,
             $isEnabled,
             $name,
@@ -64,8 +64,6 @@ class PromotionFaker
             $smsNotifications,
             $type
         );
-
-        return $promotion;
     }
 
     public function createPromotionPersisted(

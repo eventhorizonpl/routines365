@@ -20,38 +20,43 @@ class ReportRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('r')
             ->select('r')
-            ->addOrderBy('r.createdAt', 'DESC');
+            ->addOrderBy('r.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('status', $parameters)) {
+            if (\array_key_exists('status', $parameters)) {
                 $status = $parameters['status'];
                 if ((null !== $status) && ('' !== $status)) {
                     $queryBuilder->andWhere('r.status = :status')
-                        ->setParameter('status', $status);
+                        ->setParameter('status', $status)
+                    ;
                 }
             }
 
-            if (array_key_exists('type', $parameters)) {
+            if (\array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
                     $queryBuilder->andWhere('r.type = :type')
-                        ->setParameter('type', $type);
+                        ->setParameter('type', $type)
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('r.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('r.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }

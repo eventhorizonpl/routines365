@@ -12,6 +12,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SentReminderTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -25,22 +29,22 @@ final class SentReminderTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $sentReminder = new SentReminder();
         $sentReminder->setUuid($uuid);
-        $this->assertEquals($uuid, $sentReminder->__toString());
+        $this->assertSame($uuid, $sentReminder->__toString());
     }
 
     public function testGetId(): void
     {
         $sentReminder = new SentReminder();
-        $this->assertEquals(null, $sentReminder->getId());
+        $this->assertNull($sentReminder->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $sentReminder = new SentReminder();
-        $this->assertEquals(null, $sentReminder->getUuid());
+        $this->assertNull($sentReminder->getUuid());
         $sentReminder->setUuid($uuid);
-        $this->assertEquals($uuid, $sentReminder->getUuid());
+        $this->assertSame($uuid, $sentReminder->getUuid());
         $this->assertIsString($sentReminder->getUuid());
     }
 
@@ -49,16 +53,16 @@ final class SentReminderTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder->setUuid($uuid));
-        $this->assertEquals($uuid, $sentReminder->getUuid());
+        $this->assertSame($uuid, $sentReminder->getUuid());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
-        $this->assertEquals(null, $sentReminder->getCreatedAt());
+        $this->assertNull($sentReminder->getCreatedAt());
         $sentReminder->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $sentReminder->getCreatedAt());
+        $this->assertSame($createdAt, $sentReminder->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -66,16 +70,16 @@ final class SentReminderTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $sentReminder->getCreatedAt());
+        $this->assertSame($createdAt, $sentReminder->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
-        $this->assertEquals(null, $sentReminder->getDeletedAt());
+        $this->assertNull($sentReminder->getDeletedAt());
         $sentReminder->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $sentReminder->getDeletedAt());
+        $this->assertSame($deletedAt, $sentReminder->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -83,16 +87,16 @@ final class SentReminderTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $sentReminder->getDeletedAt());
+        $this->assertSame($deletedAt, $sentReminder->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
-        $this->assertEquals(null, $sentReminder->getUpdatedAt());
+        $this->assertNull($sentReminder->getUpdatedAt());
         $sentReminder->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $sentReminder->getUpdatedAt());
+        $this->assertSame($updatedAt, $sentReminder->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -100,7 +104,7 @@ final class SentReminderTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $sentReminder->getUpdatedAt());
+        $this->assertSame($updatedAt, $sentReminder->getUpdatedAt());
     }
 
     public function testGetReminder(): void
@@ -108,7 +112,7 @@ final class SentReminderTest extends AbstractTestCase
         $reminder = new Reminder();
         $sentReminder = new SentReminder();
         $sentReminder->setReminder($reminder);
-        $this->assertEquals($reminder, $sentReminder->getReminder());
+        $this->assertSame($reminder, $sentReminder->getReminder());
     }
 
     public function testSetReminder(): void
@@ -116,7 +120,7 @@ final class SentReminderTest extends AbstractTestCase
         $reminder = new Reminder();
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder->setReminder($reminder));
-        $this->assertEquals($reminder, $sentReminder->getReminder());
+        $this->assertSame($reminder, $sentReminder->getReminder());
     }
 
     public function testAddReminderMessage(): void
@@ -173,7 +177,7 @@ final class SentReminderTest extends AbstractTestCase
         $routine = new Routine();
         $sentReminder = new SentReminder();
         $sentReminder->setRoutine($routine);
-        $this->assertEquals($routine, $sentReminder->getRoutine());
+        $this->assertSame($routine, $sentReminder->getRoutine());
     }
 
     public function testSetRoutine(): void
@@ -181,6 +185,6 @@ final class SentReminderTest extends AbstractTestCase
         $routine = new Routine();
         $sentReminder = new SentReminder();
         $this->assertInstanceOf(SentReminder::class, $sentReminder->setRoutine($routine));
-        $this->assertEquals($routine, $sentReminder->getRoutine());
+        $this->assertSame($routine, $sentReminder->getRoutine());
     }
 }

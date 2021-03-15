@@ -8,6 +8,10 @@ use App\Entity\Contact;
 use App\Form\Frontend\ContactType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ContactTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class ContactTypeTest extends TypeTestCase
     {
         $formData = new Contact();
         $view = $this->factory->create(ContactType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

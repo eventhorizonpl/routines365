@@ -9,6 +9,10 @@ use App\Factory\ContactFactory;
 use App\Faker\ContactFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ContactFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class ContactFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->contactFactory,
-            $this->contactFaker
-        );
+        $this->contactFactory = null;
+        $this->contactFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -52,9 +55,9 @@ final class ContactFakerTest extends AbstractDoctrineTestCase
             $title,
             $type
         );
-        $this->assertEquals($content, $contact->getContent());
-        $this->assertEquals($status, $contact->getStatus());
-        $this->assertEquals($title, $contact->getTitle());
-        $this->assertEquals($type, $contact->getType());
+        $this->assertSame($content, $contact->getContent());
+        $this->assertSame($status, $contact->getStatus());
+        $this->assertSame($title, $contact->getTitle());
+        $this->assertSame($type, $contact->getType());
     }
 }

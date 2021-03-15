@@ -144,9 +144,9 @@ class PostRemindMessagesService
 
         $account = $reminder->getUser()->getAccount();
         $createSentReminder = false;
-        if (((true === $reminder->getSendEmail()) && (true === $account->canWithdrawNotifications(1))) ||
-            ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1))) ||
-            (true === $reminder->getSendToBrowser())
+        if (((true === $reminder->getSendEmail()) && (true === $account->canWithdrawNotifications(1)))
+            || ((true === $reminder->getSendSms()) && (true === $account->canWithdrawSmsNotifications(1)))
+            || (true === $reminder->getSendToBrowser())
         ) {
             $createSentReminder = true;
         }
@@ -164,9 +164,9 @@ class PostRemindMessagesService
         }
 
         if (null !== $sentReminder) {
-            if ((true === $reminder->getUser()->getIsVerified()) &&
-                (true === $reminder->getSendEmail()) &&
-                (true === $account->canWithdrawNotifications(1))
+            if ((true === $reminder->getUser()->getIsVerified())
+                && (true === $reminder->getSendEmail())
+                && (true === $account->canWithdrawNotifications(1))
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $emailMessage,
@@ -174,7 +174,8 @@ class PostRemindMessagesService
                 );
                 $reminderMessage
                     ->setReminder($reminder)
-                    ->setSentReminder($sentReminder);
+                    ->setSentReminder($sentReminder)
+                ;
                 $this->reminderMessageManager->save($reminderMessage);
 
                 $response = (string) $this->emailService->sendReminderMessage(
@@ -193,7 +194,8 @@ class PostRemindMessagesService
                 $reminderMessage
                     ->setPostDate(new DateTimeImmutable())
                     ->setThirdPartySystemType(ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES)
-                    ->setThirdPartySystemResponse($response);
+                    ->setThirdPartySystemResponse($response)
+                ;
                 $this->reminderMessageManager->save($reminderMessage);
 
                 $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
@@ -206,9 +208,9 @@ class PostRemindMessagesService
                     $reminderMessage
                 );
             }
-            if ((true === $reminder->getUser()->getProfile()->getIsVerified()) &&
-                (true === $reminder->getSendSms()) &&
-                (true === $account->canWithdrawSmsNotifications(1))
+            if ((true === $reminder->getUser()->getProfile()->getIsVerified())
+                && (true === $reminder->getSendSms())
+                && (true === $account->canWithdrawSmsNotifications(1))
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $smsMessage,
@@ -216,7 +218,8 @@ class PostRemindMessagesService
                 );
                 $reminderMessage
                     ->setReminder($reminder)
-                    ->setSentReminder($sentReminder);
+                    ->setSentReminder($sentReminder)
+                ;
                 $this->reminderMessageManager->save($reminderMessage);
 
                 $response = $this->smsService->sendReminderMessage(
@@ -229,7 +232,8 @@ class PostRemindMessagesService
                 $reminderMessage
                     ->setPostDate(new DateTimeImmutable())
                     ->setThirdPartySystemType(ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS)
-                    ->setThirdPartySystemResponse($response);
+                    ->setThirdPartySystemResponse($response)
+                ;
                 $this->reminderMessageManager->save($reminderMessage);
 
                 $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
@@ -242,8 +246,8 @@ class PostRemindMessagesService
                     $reminderMessage
                 );
             }
-            if ((true === $reminder->getSendToBrowser()) &&
-                (true === $account->canWithdrawNotifications(1))
+            if ((true === $reminder->getSendToBrowser())
+                && (true === $account->canWithdrawNotifications(1))
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $browserMessage,
@@ -252,7 +256,8 @@ class PostRemindMessagesService
                 $reminderMessage
                     ->setPostDate(new DateTimeImmutable())
                     ->setReminder($reminder)
-                    ->setSentReminder($sentReminder);
+                    ->setSentReminder($sentReminder)
+                ;
                 $this->reminderMessageManager->save($reminderMessage);
 
                 $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();

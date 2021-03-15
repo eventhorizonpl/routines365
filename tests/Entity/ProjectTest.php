@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Entity;
 
 use App\Entity\Goal;
@@ -9,6 +11,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProjectTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -22,22 +28,22 @@ final class ProjectTest extends AbstractTestCase
         $name = 'test name';
         $project = new Project();
         $project->setName($name);
-        $this->assertEquals($name, $project->__toString());
+        $this->assertSame($name, $project->__toString());
     }
 
     public function testGetId(): void
     {
         $project = new Project();
-        $this->assertEquals(null, $project->getId());
+        $this->assertNull($project->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $project = new Project();
-        $this->assertEquals(null, $project->getUuid());
+        $this->assertNull($project->getUuid());
         $project->setUuid($uuid);
-        $this->assertEquals($uuid, $project->getUuid());
+        $this->assertSame($uuid, $project->getUuid());
         $this->assertIsString($project->getUuid());
     }
 
@@ -46,16 +52,16 @@ final class ProjectTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setUuid($uuid));
-        $this->assertEquals($uuid, $project->getUuid());
+        $this->assertSame($uuid, $project->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $project = new Project();
-        $this->assertEquals(null, $project->getCreatedBy());
+        $this->assertNull($project->getCreatedBy());
         $project->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $project->getCreatedBy());
+        $this->assertSame($createdBy, $project->getCreatedBy());
         $this->assertIsString($project->getCreatedBy());
     }
 
@@ -64,16 +70,16 @@ final class ProjectTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $project->getCreatedBy());
+        $this->assertSame($createdBy, $project->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $project = new Project();
-        $this->assertEquals(null, $project->getDeletedBy());
+        $this->assertNull($project->getDeletedBy());
         $project->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $project->getDeletedBy());
+        $this->assertSame($deletedBy, $project->getDeletedBy());
         $this->assertIsString($project->getDeletedBy());
     }
 
@@ -82,16 +88,16 @@ final class ProjectTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $project->getDeletedBy());
+        $this->assertSame($deletedBy, $project->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $project = new Project();
-        $this->assertEquals(null, $project->getUpdatedBy());
+        $this->assertNull($project->getUpdatedBy());
         $project->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $project->getUpdatedBy());
+        $this->assertSame($updatedBy, $project->getUpdatedBy());
         $this->assertIsString($project->getUpdatedBy());
     }
 
@@ -100,16 +106,16 @@ final class ProjectTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $project->getUpdatedBy());
+        $this->assertSame($updatedBy, $project->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $project = new Project();
-        $this->assertEquals(null, $project->getCreatedAt());
+        $this->assertNull($project->getCreatedAt());
         $project->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $project->getCreatedAt());
+        $this->assertSame($createdAt, $project->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -117,16 +123,16 @@ final class ProjectTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $project->getCreatedAt());
+        $this->assertSame($createdAt, $project->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $project = new Project();
-        $this->assertEquals(null, $project->getDeletedAt());
+        $this->assertNull($project->getDeletedAt());
         $project->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $project->getDeletedAt());
+        $this->assertSame($deletedAt, $project->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -134,16 +140,16 @@ final class ProjectTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $project->getDeletedAt());
+        $this->assertSame($deletedAt, $project->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $project = new Project();
-        $this->assertEquals(null, $project->getUpdatedAt());
+        $this->assertNull($project->getUpdatedAt());
         $project->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $project->getUpdatedAt());
+        $this->assertSame($updatedAt, $project->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -151,16 +157,16 @@ final class ProjectTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $project->getUpdatedAt());
+        $this->assertSame($updatedAt, $project->getUpdatedAt());
     }
 
     public function testGetCompletedAt(): void
     {
         $completedAt = new DateTimeImmutable();
         $project = new Project();
-        $this->assertEquals(null, $project->getCompletedAt());
+        $this->assertNull($project->getCompletedAt());
         $project->setCompletedAt($completedAt);
-        $this->assertEquals($completedAt, $project->getCompletedAt());
+        $this->assertSame($completedAt, $project->getCompletedAt());
     }
 
     public function testSetCompletedAt(): void
@@ -168,16 +174,16 @@ final class ProjectTest extends AbstractTestCase
         $completedAt = new DateTimeImmutable();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setCompletedAt($completedAt));
-        $this->assertEquals($completedAt, $project->getCompletedAt());
+        $this->assertSame($completedAt, $project->getCompletedAt());
     }
 
     public function testGetIsCompleted(): void
     {
         $isCompleted = true;
         $project = new Project();
-        $this->assertEquals(null, $project->getIsCompleted());
+        $this->assertFalse($project->getIsCompleted());
         $project->setIsCompleted($isCompleted);
-        $this->assertEquals($isCompleted, $project->getIsCompleted());
+        $this->assertSame($isCompleted, $project->getIsCompleted());
         $this->assertIsBool($project->getIsCompleted());
     }
 
@@ -186,7 +192,7 @@ final class ProjectTest extends AbstractTestCase
         $isCompleted = true;
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setIsCompleted($isCompleted));
-        $this->assertEquals($isCompleted, $project->getIsCompleted());
+        $this->assertSame($isCompleted, $project->getIsCompleted());
     }
 
     public function testAddGoal(): void
@@ -240,23 +246,23 @@ final class ProjectTest extends AbstractTestCase
         $project = new Project();
         $goal = new Goal();
         $this->assertInstanceOf(Project::class, $project->addGoal($goal));
-        $this->assertEquals(0, $project->getGoalsCompletedCount());
+        $this->assertSame(0, $project->getGoalsCompletedCount());
         $goal->setIsCompleted(true);
-        $this->assertEquals(1, $project->getGoalsCompletedCount());
+        $this->assertSame(1, $project->getGoalsCompletedCount());
     }
 
     public function testGetGoalsCompletedPercent(): void
     {
         $project = new Project();
         $goal = new Goal();
-        $this->assertEquals(0, $project->getGoalsCompletedPercent());
+        $this->assertSame(0, $project->getGoalsCompletedPercent());
         $this->assertInstanceOf(Project::class, $project->addGoal($goal));
-        $this->assertEquals(0, $project->getGoalsCompletedPercent());
+        $this->assertSame(0, $project->getGoalsCompletedPercent());
         $goal->setIsCompleted(true);
-        $this->assertEquals(100, $project->getGoalsCompletedPercent());
+        $this->assertSame(100, $project->getGoalsCompletedPercent());
         $goal2 = new Goal();
         $this->assertInstanceOf(Project::class, $project->addGoal($goal2));
-        $this->assertEquals(50, $project->getGoalsCompletedPercent());
+        $this->assertSame(50, $project->getGoalsCompletedPercent());
     }
 
     public function testGetGoalsNotCompleted(): void
@@ -274,23 +280,23 @@ final class ProjectTest extends AbstractTestCase
         $project = new Project();
         $goal = new Goal();
         $this->assertInstanceOf(Project::class, $project->addGoal($goal));
-        $this->assertEquals(1, $project->getGoalsNotCompletedCount());
+        $this->assertSame(1, $project->getGoalsNotCompletedCount());
         $goal->setIsCompleted(true);
-        $this->assertEquals(0, $project->getGoalsNotCompletedCount());
+        $this->assertSame(0, $project->getGoalsNotCompletedCount());
     }
 
     public function testGetGoalsNotCompletedPercent(): void
     {
         $project = new Project();
         $goal = new Goal();
-        $this->assertEquals(0, $project->getGoalsNotCompletedPercent());
+        $this->assertSame(0, $project->getGoalsNotCompletedPercent());
         $this->assertInstanceOf(Project::class, $project->addGoal($goal));
-        $this->assertEquals(100, $project->getGoalsNotCompletedPercent());
+        $this->assertSame(100, $project->getGoalsNotCompletedPercent());
         $goal->setIsCompleted(true);
-        $this->assertEquals(0, $project->getGoalsNotCompletedPercent());
+        $this->assertSame(0, $project->getGoalsNotCompletedPercent());
         $goal2 = new Goal();
         $this->assertInstanceOf(Project::class, $project->addGoal($goal2));
-        $this->assertEquals(50, $project->getGoalsNotCompletedPercent());
+        $this->assertSame(50, $project->getGoalsNotCompletedPercent());
     }
 
     public function testRemoveGoal(): void
@@ -311,7 +317,7 @@ final class ProjectTest extends AbstractTestCase
         $user = new User();
         $project = new Project();
         $project->setUser($user);
-        $this->assertEquals($user, $project->getUser());
+        $this->assertSame($user, $project->getUser());
     }
 
     public function testSetUser(): void
@@ -319,16 +325,16 @@ final class ProjectTest extends AbstractTestCase
         $user = new User();
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setUser($user));
-        $this->assertEquals($user, $project->getUser());
+        $this->assertSame($user, $project->getUser());
     }
 
     public function testGetDescription(): void
     {
         $description = 'test description';
         $project = new Project();
-        $this->assertEquals(null, $project->getDescription());
+        $this->assertNull($project->getDescription());
         $project->setDescription($description);
-        $this->assertEquals($description, $project->getDescription());
+        $this->assertSame($description, $project->getDescription());
         $this->assertIsString($project->getDescription());
     }
 
@@ -337,16 +343,16 @@ final class ProjectTest extends AbstractTestCase
         $description = 'test description';
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setDescription($description));
-        $this->assertEquals($description, $project->getDescription());
+        $this->assertSame($description, $project->getDescription());
     }
 
     public function testGetName(): void
     {
         $name = 'test name';
         $project = new Project();
-        $this->assertEquals(null, $project->getName());
+        $this->assertSame('', $project->getName());
         $project->setName($name);
-        $this->assertEquals($name, $project->getName());
+        $this->assertSame($name, $project->getName());
         $this->assertIsString($project->getName());
     }
 
@@ -355,6 +361,6 @@ final class ProjectTest extends AbstractTestCase
         $name = 'test name';
         $project = new Project();
         $this->assertInstanceOf(Project::class, $project->setName($name));
-        $this->assertEquals($name, $project->getName());
+        $this->assertSame($name, $project->getName());
     }
 }

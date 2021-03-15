@@ -27,9 +27,9 @@ class PromotionService
         );
 
         $date = new DateTimeImmutable();
-        if ((null !== $promotion) &&
-            (null !== $promotion->getExpiresAt()) &&
-            ($promotion->getExpiresAt() < $date)
+        if ((null !== $promotion)
+            && (null !== $promotion->getExpiresAt())
+            && ($promotion->getExpiresAt() < $date)
         ) {
             return null;
         }
@@ -71,9 +71,9 @@ class PromotionService
     {
         $saveUser = false;
 
-        if ((Promotion::TYPE_SYSTEM === $promotion->getType()) ||
-            ((in_array($promotion->getType(), [Promotion::TYPE_EXISTING_ACCOUNT, Promotion::TYPE_NEW_ACCOUNT])) &&
-            (false === $user->hasPromotion($promotion)))
+        if ((Promotion::TYPE_SYSTEM === $promotion->getType())
+            || ((\in_array($promotion->getType(), [Promotion::TYPE_EXISTING_ACCOUNT, Promotion::TYPE_NEW_ACCOUNT], true))
+            && (false === $user->hasPromotion($promotion)))
         ) {
             $user->addPromotion($promotion);
             $this->accountOperationService->deposit(

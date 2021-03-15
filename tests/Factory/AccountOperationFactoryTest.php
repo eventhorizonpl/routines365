@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountOperationFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class AccountOperationFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -58,9 +62,9 @@ final class AccountOperationFactoryTest extends AbstractTestCase
             $type
         );
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
-        $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($notifications, $accountOperation->getNotifications());
-        $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
-        $this->assertEquals($type, $accountOperation->getType());
+        $this->assertSame($description, $accountOperation->getDescription());
+        $this->assertSame($notifications, $accountOperation->getNotifications());
+        $this->assertSame($smsNotifications, $accountOperation->getSmsNotifications());
+        $this->assertSame($type, $accountOperation->getType());
     }
 }

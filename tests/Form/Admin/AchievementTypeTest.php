@@ -8,6 +8,10 @@ use App\Entity\Achievement;
 use App\Form\Admin\AchievementType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class AchievementTypeTest extends TypeTestCase
     {
         $formData = new Achievement();
         $view = $this->factory->create(AchievementType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

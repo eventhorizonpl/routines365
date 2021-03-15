@@ -26,10 +26,11 @@ class ProjectRepository extends ServiceEntityRepository
             ->leftJoin('pu.profile', 'pup')
             ->leftJoin('pu.testimonial', 'put')
             ->leftJoin('pu.userKyt', 'puuk')
-            ->addOrderBy('p.createdAt', 'DESC');
+            ->addOrderBy('p.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -38,23 +39,26 @@ class ProjectRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('pu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('p.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('p.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -70,10 +74,11 @@ class ProjectRepository extends ServiceEntityRepository
             ->where('p.deletedAt IS NULL')
             ->andWhere('p.user = :user')
             ->addOrderBy('p.name', 'ASC')
-            ->setParameter('user', $user);
+            ->setParameter('user', $user)
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -82,7 +87,8 @@ class ProjectRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('p.name', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
         }

@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class AchievementFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -60,10 +64,10 @@ final class AchievementFactoryTest extends AbstractTestCase
             $type
         );
         $this->assertInstanceOf(Achievement::class, $achievement);
-        $this->assertEquals($isEnabled, $achievement->getIsEnabled());
-        $this->assertEquals($level, $achievement->getLevel());
-        $this->assertEquals($name, $achievement->getName());
-        $this->assertEquals($requirement, $achievement->getRequirement());
-        $this->assertEquals($type, $achievement->getType());
+        $this->assertSame($isEnabled, $achievement->getIsEnabled());
+        $this->assertSame($level, $achievement->getLevel());
+        $this->assertSame($name, $achievement->getName());
+        $this->assertSame($requirement, $achievement->getRequirement());
+        $this->assertSame($type, $achievement->getType());
     }
 }

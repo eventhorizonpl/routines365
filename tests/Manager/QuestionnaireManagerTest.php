@@ -14,6 +14,10 @@ use App\Repository\QuestionnaireRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuestionnaireManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -43,14 +47,13 @@ final class QuestionnaireManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->questionManager,
-            $this->questionnaireFaker,
-            $this->questionnaireManager,
-            $this->questionnaireRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->questionManager = null;
+        $this->questionnaireFaker = null;
+        $this->questionnaireManager = null;
+        $this->questionnaireRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }

@@ -7,6 +7,10 @@ namespace App\Tests\Controller\Security;
 use App\Faker\UserFaker;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SecurityControllerTest extends AbstractUiTestCase
 {
     public function testLogin(): void

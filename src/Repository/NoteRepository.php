@@ -26,10 +26,11 @@ class NoteRepository extends ServiceEntityRepository
             ->leftJoin('nu.profile', 'nup')
             ->leftJoin('nu.testimonial', 'nut')
             ->leftJoin('nu.userKyt', 'nuuk')
-            ->addOrderBy('n.createdAt', 'DESC');
+            ->addOrderBy('n.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -38,23 +39,26 @@ class NoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('nu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('n.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('n.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -70,10 +74,11 @@ class NoteRepository extends ServiceEntityRepository
             ->where('n.deletedAt IS NULL')
             ->andWhere('n.user = :user')
             ->addOrderBy('n.createdAt', 'DESC')
-            ->setParameter('user', $user);
+            ->setParameter('user', $user)
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -82,7 +87,8 @@ class NoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('n.title', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
         }

@@ -11,6 +11,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class NoteTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -24,22 +28,22 @@ final class NoteTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $note = new Note();
         $note->setUuid($uuid);
-        $this->assertEquals($uuid, $note->__toString());
+        $this->assertSame($uuid, $note->__toString());
     }
 
     public function testGetId(): void
     {
         $note = new Note();
-        $this->assertEquals(null, $note->getId());
+        $this->assertNull($note->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $note = new Note();
-        $this->assertEquals(null, $note->getUuid());
+        $this->assertNull($note->getUuid());
         $note->setUuid($uuid);
-        $this->assertEquals($uuid, $note->getUuid());
+        $this->assertSame($uuid, $note->getUuid());
         $this->assertIsString($note->getUuid());
     }
 
@@ -48,16 +52,16 @@ final class NoteTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setUuid($uuid));
-        $this->assertEquals($uuid, $note->getUuid());
+        $this->assertSame($uuid, $note->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $note = new Note();
-        $this->assertEquals(null, $note->getCreatedBy());
+        $this->assertNull($note->getCreatedBy());
         $note->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $note->getCreatedBy());
+        $this->assertSame($createdBy, $note->getCreatedBy());
         $this->assertIsString($note->getCreatedBy());
     }
 
@@ -66,16 +70,16 @@ final class NoteTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $note->getCreatedBy());
+        $this->assertSame($createdBy, $note->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $note = new Note();
-        $this->assertEquals(null, $note->getDeletedBy());
+        $this->assertNull($note->getDeletedBy());
         $note->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $note->getDeletedBy());
+        $this->assertSame($deletedBy, $note->getDeletedBy());
         $this->assertIsString($note->getDeletedBy());
     }
 
@@ -84,16 +88,16 @@ final class NoteTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $note->getDeletedBy());
+        $this->assertSame($deletedBy, $note->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $note = new Note();
-        $this->assertEquals(null, $note->getUpdatedBy());
+        $this->assertNull($note->getUpdatedBy());
         $note->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $note->getUpdatedBy());
+        $this->assertSame($updatedBy, $note->getUpdatedBy());
         $this->assertIsString($note->getUpdatedBy());
     }
 
@@ -102,16 +106,16 @@ final class NoteTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $note->getUpdatedBy());
+        $this->assertSame($updatedBy, $note->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $note = new Note();
-        $this->assertEquals(null, $note->getCreatedAt());
+        $this->assertNull($note->getCreatedAt());
         $note->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $note->getCreatedAt());
+        $this->assertSame($createdAt, $note->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -119,16 +123,16 @@ final class NoteTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $note->getCreatedAt());
+        $this->assertSame($createdAt, $note->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $note = new Note();
-        $this->assertEquals(null, $note->getDeletedAt());
+        $this->assertNull($note->getDeletedAt());
         $note->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $note->getDeletedAt());
+        $this->assertSame($deletedAt, $note->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -136,16 +140,16 @@ final class NoteTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $note->getDeletedAt());
+        $this->assertSame($deletedAt, $note->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $note = new Note();
-        $this->assertEquals(null, $note->getUpdatedAt());
+        $this->assertNull($note->getUpdatedAt());
         $note->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $note->getUpdatedAt());
+        $this->assertSame($updatedAt, $note->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -153,7 +157,7 @@ final class NoteTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $note->getUpdatedAt());
+        $this->assertSame($updatedAt, $note->getUpdatedAt());
     }
 
     public function testGetRoutine(): void
@@ -161,7 +165,7 @@ final class NoteTest extends AbstractTestCase
         $routine = new Routine();
         $note = new Note();
         $note->setRoutine($routine);
-        $this->assertEquals($routine, $note->getRoutine());
+        $this->assertSame($routine, $note->getRoutine());
     }
 
     public function testSetRoutine(): void
@@ -169,7 +173,7 @@ final class NoteTest extends AbstractTestCase
         $routine = new Routine();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setRoutine($routine));
-        $this->assertEquals($routine, $note->getRoutine());
+        $this->assertSame($routine, $note->getRoutine());
     }
 
     public function testGetUser(): void
@@ -177,7 +181,7 @@ final class NoteTest extends AbstractTestCase
         $user = new User();
         $note = new Note();
         $note->setUser($user);
-        $this->assertEquals($user, $note->getUser());
+        $this->assertSame($user, $note->getUser());
     }
 
     public function testSetUser(): void
@@ -185,16 +189,16 @@ final class NoteTest extends AbstractTestCase
         $user = new User();
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setUser($user));
-        $this->assertEquals($user, $note->getUser());
+        $this->assertSame($user, $note->getUser());
     }
 
     public function testGetContent(): void
     {
         $content = 'test content';
         $note = new Note();
-        $this->assertEquals(null, $note->getContent());
+        $this->assertSame('', $note->getContent());
         $note->setContent($content);
-        $this->assertEquals($content, $note->getContent());
+        $this->assertSame($content, $note->getContent());
         $this->assertIsString($note->getContent());
     }
 
@@ -203,16 +207,16 @@ final class NoteTest extends AbstractTestCase
         $content = 'test content';
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setContent($content));
-        $this->assertEquals($content, $note->getContent());
+        $this->assertSame($content, $note->getContent());
     }
 
     public function testGetTitle(): void
     {
         $title = 'test title';
         $note = new Note();
-        $this->assertEquals(null, $note->getTitle());
+        $this->assertSame('', $note->getTitle());
         $note->setTitle($title);
-        $this->assertEquals($title, $note->getTitle());
+        $this->assertSame($title, $note->getTitle());
         $this->assertIsString($note->getTitle());
     }
 
@@ -221,6 +225,6 @@ final class NoteTest extends AbstractTestCase
         $title = 'test title';
         $note = new Note();
         $this->assertInstanceOf(Note::class, $note->setTitle($title));
-        $this->assertEquals($title, $note->getTitle());
+        $this->assertSame($title, $note->getTitle());
     }
 }

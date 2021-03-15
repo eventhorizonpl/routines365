@@ -9,6 +9,10 @@ use App\Factory\ReminderMessageFactory;
 use App\Faker\ReminderMessageFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reminderMessageFactory,
-            $this->reminderMessageFaker
-        );
+        $this->reminderMessageFactory = null;
+        $this->reminderMessageFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -48,7 +51,7 @@ final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
             $content,
             $type
         );
-        $this->assertEquals($content, $reminderMessage->getContent());
-        $this->assertEquals($type, $reminderMessage->getType());
+        $this->assertSame($content, $reminderMessage->getContent());
+        $this->assertSame($type, $reminderMessage->getType());
     }
 }

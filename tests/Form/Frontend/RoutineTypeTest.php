@@ -8,6 +8,10 @@ use App\Entity\Routine;
 use App\Form\Frontend\RoutineType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RoutineTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class RoutineTypeTest extends TypeTestCase
     {
         $formData = new Routine();
         $view = $this->factory->create(RoutineType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

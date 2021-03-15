@@ -10,6 +10,10 @@ use App\Faker\ReminderFaker;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -23,10 +27,9 @@ final class ReminderFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reminderFactory,
-            $this->reminderFaker
-        );
+        $this->reminderFactory = null;
+        $this->reminderFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -59,18 +62,18 @@ final class ReminderFakerTest extends AbstractDoctrineTestCase
             $sendSms,
             $type
         );
-        $this->assertEquals($hour, $reminder->getHour());
-        $this->assertEquals($isEnabled, $reminder->getIsEnabled());
-        $this->assertEquals($minutesBefore, $reminder->getMinutesBefore());
-        $this->assertEquals($sendEmail, $reminder->getSendEmail());
-        $this->assertEquals($sendMotivationalMessage, $reminder->getSendMotivationalMessage());
-        $this->assertEquals($sendSms, $reminder->getSendSms());
-        $this->assertEquals($type, $reminder->getType());
+        $this->assertSame($hour, $reminder->getHour());
+        $this->assertSame($isEnabled, $reminder->getIsEnabled());
+        $this->assertSame($minutesBefore, $reminder->getMinutesBefore());
+        $this->assertSame($sendEmail, $reminder->getSendEmail());
+        $this->assertSame($sendMotivationalMessage, $reminder->getSendMotivationalMessage());
+        $this->assertSame($sendSms, $reminder->getSendSms());
+        $this->assertSame($type, $reminder->getType());
 
         $reminder = $this->reminderFaker->createReminder(
             null,
             false
         );
-        $this->assertEquals(false, $reminder->getSendSms());
+        $this->assertFalse($reminder->getSendSms());
     }
 }

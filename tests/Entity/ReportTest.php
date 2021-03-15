@@ -10,6 +10,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReportTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -23,22 +27,22 @@ final class ReportTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $report = new Report();
         $report->setUuid($uuid);
-        $this->assertEquals($uuid, $report->__toString());
+        $this->assertSame($uuid, $report->__toString());
     }
 
     public function testGetId(): void
     {
         $report = new Report();
-        $this->assertEquals(null, $report->getId());
+        $this->assertNull($report->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $report = new Report();
-        $this->assertEquals(null, $report->getUuid());
+        $this->assertNull($report->getUuid());
         $report->setUuid($uuid);
-        $this->assertEquals($uuid, $report->getUuid());
+        $this->assertSame($uuid, $report->getUuid());
         $this->assertIsString($report->getUuid());
     }
 
@@ -47,16 +51,16 @@ final class ReportTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setUuid($uuid));
-        $this->assertEquals($uuid, $report->getUuid());
+        $this->assertSame($uuid, $report->getUuid());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $report = new Report();
-        $this->assertEquals(null, $report->getCreatedAt());
+        $this->assertNull($report->getCreatedAt());
         $report->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $report->getCreatedAt());
+        $this->assertSame($createdAt, $report->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -64,16 +68,16 @@ final class ReportTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $report->getCreatedAt());
+        $this->assertSame($createdAt, $report->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $report = new Report();
-        $this->assertEquals(null, $report->getDeletedAt());
+        $this->assertNull($report->getDeletedAt());
         $report->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $report->getDeletedAt());
+        $this->assertSame($deletedAt, $report->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -81,16 +85,16 @@ final class ReportTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $report->getDeletedAt());
+        $this->assertSame($deletedAt, $report->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $report = new Report();
-        $this->assertEquals(null, $report->getUpdatedAt());
+        $this->assertNull($report->getUpdatedAt());
         $report->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $report->getUpdatedAt());
+        $this->assertSame($updatedAt, $report->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -98,7 +102,7 @@ final class ReportTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $report->getUpdatedAt());
+        $this->assertSame($updatedAt, $report->getUpdatedAt());
     }
 
     public function testAddData(): void
@@ -106,7 +110,7 @@ final class ReportTest extends AbstractTestCase
         $data = [['test data']];
         $report = new Report();
         $report->setData($data);
-        $this->assertEquals($data, $report->getData());
+        $this->assertSame($data, $report->getData());
         $this->assertCount(1, $report->getData());
         $this->assertIsArray($report->getData());
         $report->addData(['test data']);
@@ -118,7 +122,7 @@ final class ReportTest extends AbstractTestCase
         $data = [['test data']];
         $report = new Report();
         $report->setData($data);
-        $this->assertEquals($data, $report->getData());
+        $this->assertSame($data, $report->getData());
         $this->assertIsArray($report->getData());
     }
 
@@ -127,7 +131,7 @@ final class ReportTest extends AbstractTestCase
         $data = [['test data']];
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setData($data));
-        $this->assertEquals($data, $report->getData());
+        $this->assertSame($data, $report->getData());
     }
 
     public function testGetStatus(): void
@@ -135,7 +139,7 @@ final class ReportTest extends AbstractTestCase
         $status = Report::STATUS_INITIAL;
         $report = new Report();
         $report->setStatus($status);
-        $this->assertEquals($status, $report->getStatus());
+        $this->assertSame($status, $report->getStatus());
         $this->assertIsString($report->getStatus());
     }
 
@@ -156,7 +160,7 @@ final class ReportTest extends AbstractTestCase
         $status = Report::STATUS_INITIAL;
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setStatus($status));
-        $this->assertEquals($status, $report->getStatus());
+        $this->assertSame($status, $report->getStatus());
     }
 
     public function testSetStatusException(): void
@@ -172,7 +176,7 @@ final class ReportTest extends AbstractTestCase
         $type = Report::TYPE_POST_REMIND_MESSAGES;
         $report = new Report();
         $report->setType($type);
-        $this->assertEquals($type, $report->getType());
+        $this->assertSame($type, $report->getType());
         $this->assertIsString($report->getType());
     }
 
@@ -193,7 +197,7 @@ final class ReportTest extends AbstractTestCase
         $type = Report::TYPE_POST_REMIND_MESSAGES;
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setType($type));
-        $this->assertEquals($type, $report->getType());
+        $this->assertSame($type, $report->getType());
     }
 
     public function testSetTypeException(): void

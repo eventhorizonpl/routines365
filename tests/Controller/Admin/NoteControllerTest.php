@@ -8,6 +8,10 @@ use App\Entity\Note;
 use App\Manager\NoteManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class NoteControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class NoteControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->noteManager);
+        $this->noteManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class NoteControllerTest extends AbstractUiTestCase
     public function createNote(): Note
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $note = $user->getNotes()->first();
 
-        return $note;
+        return $user->getNotes()->first();
     }
 
     public function testIndex(): void

@@ -26,7 +26,8 @@ class CronReportController extends AbstractController
             ->getRepository(CronReport::class)
             ->createQueryBuilder('cr')
             ->orderBy('cr.id', 'DESC')
-            ->getQuery();
+            ->getQuery()
+        ;
         $cronReports = $paginator->paginate(
             $cronReportsQuery,
             $request->query->getInt('page', 1),

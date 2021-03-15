@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -24,22 +28,22 @@ final class TestimonialTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $testimonial = new Testimonial();
         $testimonial->setUuid($uuid);
-        $this->assertEquals($uuid, $testimonial->__toString());
+        $this->assertSame($uuid, $testimonial->__toString());
     }
 
     public function testGetId(): void
     {
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getId());
+        $this->assertNull($testimonial->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getUuid());
+        $this->assertNull($testimonial->getUuid());
         $testimonial->setUuid($uuid);
-        $this->assertEquals($uuid, $testimonial->getUuid());
+        $this->assertSame($uuid, $testimonial->getUuid());
         $this->assertIsString($testimonial->getUuid());
     }
 
@@ -48,16 +52,16 @@ final class TestimonialTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setUuid($uuid));
-        $this->assertEquals($uuid, $testimonial->getUuid());
+        $this->assertSame($uuid, $testimonial->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getCreatedBy());
+        $this->assertNull($testimonial->getCreatedBy());
         $testimonial->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $testimonial->getCreatedBy());
+        $this->assertSame($createdBy, $testimonial->getCreatedBy());
         $this->assertIsString($testimonial->getCreatedBy());
     }
 
@@ -66,16 +70,16 @@ final class TestimonialTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $testimonial->getCreatedBy());
+        $this->assertSame($createdBy, $testimonial->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getDeletedBy());
+        $this->assertNull($testimonial->getDeletedBy());
         $testimonial->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $testimonial->getDeletedBy());
+        $this->assertSame($deletedBy, $testimonial->getDeletedBy());
         $this->assertIsString($testimonial->getDeletedBy());
     }
 
@@ -84,16 +88,16 @@ final class TestimonialTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $testimonial->getDeletedBy());
+        $this->assertSame($deletedBy, $testimonial->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getUpdatedBy());
+        $this->assertNull($testimonial->getUpdatedBy());
         $testimonial->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $testimonial->getUpdatedBy());
+        $this->assertSame($updatedBy, $testimonial->getUpdatedBy());
         $this->assertIsString($testimonial->getUpdatedBy());
     }
 
@@ -102,16 +106,16 @@ final class TestimonialTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $testimonial->getUpdatedBy());
+        $this->assertSame($updatedBy, $testimonial->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getCreatedAt());
+        $this->assertNull($testimonial->getCreatedAt());
         $testimonial->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $testimonial->getCreatedAt());
+        $this->assertSame($createdAt, $testimonial->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -119,16 +123,16 @@ final class TestimonialTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $testimonial->getCreatedAt());
+        $this->assertSame($createdAt, $testimonial->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getDeletedAt());
+        $this->assertNull($testimonial->getDeletedAt());
         $testimonial->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $testimonial->getDeletedAt());
+        $this->assertSame($deletedAt, $testimonial->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -136,16 +140,16 @@ final class TestimonialTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $testimonial->getDeletedAt());
+        $this->assertSame($deletedAt, $testimonial->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getUpdatedAt());
+        $this->assertNull($testimonial->getUpdatedAt());
         $testimonial->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $testimonial->getUpdatedAt());
+        $this->assertSame($updatedAt, $testimonial->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -153,7 +157,7 @@ final class TestimonialTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $testimonial->getUpdatedAt());
+        $this->assertSame($updatedAt, $testimonial->getUpdatedAt());
     }
 
     public function testGetUser(): void
@@ -161,7 +165,7 @@ final class TestimonialTest extends AbstractTestCase
         $user = new User();
         $testimonial = new Testimonial();
         $testimonial->setUser($user);
-        $this->assertEquals($user, $testimonial->getUser());
+        $this->assertSame($user, $testimonial->getUser());
     }
 
     public function testSetUser(): void
@@ -169,7 +173,7 @@ final class TestimonialTest extends AbstractTestCase
         $user = new User();
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setUser($user));
-        $this->assertEquals($user, $testimonial->getUser());
+        $this->assertSame($user, $testimonial->getUser());
     }
 
     public function testGetContent(): void
@@ -177,7 +181,7 @@ final class TestimonialTest extends AbstractTestCase
         $content = 'test content';
         $testimonial = new Testimonial();
         $testimonial->setContent($content);
-        $this->assertEquals($content, $testimonial->getContent());
+        $this->assertSame($content, $testimonial->getContent());
         $this->assertIsString($testimonial->getContent());
     }
 
@@ -186,16 +190,16 @@ final class TestimonialTest extends AbstractTestCase
         $content = 'test content';
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setContent($content));
-        $this->assertEquals($content, $testimonial->getContent());
+        $this->assertSame($content, $testimonial->getContent());
     }
 
     public function testGetSignature(): void
     {
         $signature = 'test signature';
         $testimonial = new Testimonial();
-        $this->assertEquals(null, $testimonial->getSignature());
+        $this->assertSame('', $testimonial->getSignature());
         $testimonial->setSignature($signature);
-        $this->assertEquals($signature, $testimonial->getSignature());
+        $this->assertSame($signature, $testimonial->getSignature());
         $this->assertIsString($testimonial->getSignature());
     }
 
@@ -204,7 +208,7 @@ final class TestimonialTest extends AbstractTestCase
         $signature = 'test signature';
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setSignature($signature));
-        $this->assertEquals($signature, $testimonial->getSignature());
+        $this->assertSame($signature, $testimonial->getSignature());
     }
 
     public function testGetStatus(): void
@@ -212,7 +216,7 @@ final class TestimonialTest extends AbstractTestCase
         $status = Testimonial::STATUS_NEW;
         $testimonial = new Testimonial();
         $testimonial->setStatus($status);
-        $this->assertEquals($status, $testimonial->getStatus());
+        $this->assertSame($status, $testimonial->getStatus());
         $this->assertIsString($testimonial->getStatus());
     }
 
@@ -233,7 +237,7 @@ final class TestimonialTest extends AbstractTestCase
         $status = Testimonial::STATUS_NEW;
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setStatus($status));
-        $this->assertEquals($status, $testimonial->getStatus());
+        $this->assertSame($status, $testimonial->getStatus());
     }
 
     public function testSetStatusException(): void

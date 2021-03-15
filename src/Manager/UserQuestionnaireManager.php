@@ -56,7 +56,7 @@ class UserQuestionnaireManager
         $userQuestionnaire->setUpdatedBy($actor);
 
         $errors = $this->validate($userQuestionnaire);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $userQuestionnaire));
         }
 
@@ -94,8 +94,6 @@ class UserQuestionnaireManager
 
     public function validate(UserQuestionnaire $userQuestionnaire): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($userQuestionnaire, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($userQuestionnaire, null, ['system']);
     }
 }

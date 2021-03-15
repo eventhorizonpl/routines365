@@ -25,7 +25,8 @@ class QuestionnaireFactory
 
         $questionnaire
             ->setIsEnabled($isEnabled)
-            ->setTitle($title);
+            ->setTitle($title)
+        ;
 
         return $questionnaire;
     }

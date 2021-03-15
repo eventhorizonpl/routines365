@@ -10,6 +10,10 @@ use App\Faker\PromotionFaker;
 use App\Manager\UserManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialControllerTest extends AbstractUiTestCase
 {
     /**
@@ -23,10 +27,9 @@ final class TestimonialControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-            $this->userManager,
-        );
+        $this->promotionFaker = null;
+        $this->userManager = null
+        ;
 
         parent::tearDown();
     }

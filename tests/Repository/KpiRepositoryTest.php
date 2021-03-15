@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class KpiRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -32,12 +36,11 @@ final class KpiRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->kpiRepository,
-            $this->kpiService,
-            $this->managerRegistry,
-            $this->userFaker
-        );
+        $this->kpiRepository = null;
+        $this->kpiService = null;
+        $this->managerRegistry = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -56,14 +59,14 @@ final class KpiRepositoryTest extends AbstractDoctrineTestCase
         $this->kpiService->create();
 
         $kpis = $this->kpiRepository->findByParametersForAdmin()->getResult();
-        $this->assertTrue(count($kpis) >= 1);
+        $this->assertTrue(\count($kpis) >= 1);
         $this->assertIsArray($kpis);
 
         $parameters = [
             'ends_at' => new DateTimeImmutable('NOW'),
         ];
         $kpis = $this->kpiRepository->findByParametersForAdmin($parameters)->getResult();
-        $this->assertTrue(count($kpis) >= 1);
+        $this->assertTrue(\count($kpis) >= 1);
         $this->assertIsArray($kpis);
 
         $parameters = [

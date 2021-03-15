@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RetentionRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -32,12 +36,11 @@ final class RetentionRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->retentionRepository,
-            $this->retentionService,
-            $this->managerRegistry,
-            $this->userFaker
-        );
+        $this->retentionRepository = null;
+        $this->retentionService = null;
+        $this->managerRegistry = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -56,14 +59,14 @@ final class RetentionRepositoryTest extends AbstractDoctrineTestCase
         $this->retentionService->run();
 
         $retentions = $this->retentionRepository->findByParametersForAdmin()->getResult();
-        $this->assertTrue(count($retentions) >= 1);
+        $this->assertTrue(\count($retentions) >= 1);
         $this->assertIsArray($retentions);
 
         $parameters = [
             'ends_at' => new DateTimeImmutable('NOW'),
         ];
         $retentions = $this->retentionRepository->findByParametersForAdmin($parameters)->getResult();
-        $this->assertTrue(count($retentions) >= 1);
+        $this->assertTrue(\count($retentions) >= 1);
         $this->assertIsArray($retentions);
 
         $parameters = [

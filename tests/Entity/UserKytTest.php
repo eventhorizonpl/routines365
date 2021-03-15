@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKytTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -23,22 +27,22 @@ final class UserKytTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $userKyt = new UserKyt();
         $userKyt->setUuid($uuid);
-        $this->assertEquals($uuid, $userKyt->__toString());
+        $this->assertSame($uuid, $userKyt->__toString());
     }
 
     public function testGetId(): void
     {
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getId());
+        $this->assertNull($userKyt->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getUuid());
+        $this->assertNull($userKyt->getUuid());
         $userKyt->setUuid($uuid);
-        $this->assertEquals($uuid, $userKyt->getUuid());
+        $this->assertSame($uuid, $userKyt->getUuid());
         $this->assertIsString($userKyt->getUuid());
     }
 
@@ -47,16 +51,16 @@ final class UserKytTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setUuid($uuid));
-        $this->assertEquals($uuid, $userKyt->getUuid());
+        $this->assertSame($uuid, $userKyt->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getCreatedBy());
+        $this->assertNull($userKyt->getCreatedBy());
         $userKyt->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $userKyt->getCreatedBy());
+        $this->assertSame($createdBy, $userKyt->getCreatedBy());
         $this->assertIsString($userKyt->getCreatedBy());
     }
 
@@ -65,16 +69,16 @@ final class UserKytTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $userKyt->getCreatedBy());
+        $this->assertSame($createdBy, $userKyt->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getDeletedBy());
+        $this->assertNull($userKyt->getDeletedBy());
         $userKyt->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $userKyt->getDeletedBy());
+        $this->assertSame($deletedBy, $userKyt->getDeletedBy());
         $this->assertIsString($userKyt->getDeletedBy());
     }
 
@@ -83,16 +87,16 @@ final class UserKytTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $userKyt->getDeletedBy());
+        $this->assertSame($deletedBy, $userKyt->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getUpdatedBy());
+        $this->assertNull($userKyt->getUpdatedBy());
         $userKyt->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $userKyt->getUpdatedBy());
+        $this->assertSame($updatedBy, $userKyt->getUpdatedBy());
         $this->assertIsString($userKyt->getUpdatedBy());
     }
 
@@ -101,16 +105,16 @@ final class UserKytTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $userKyt->getUpdatedBy());
+        $this->assertSame($updatedBy, $userKyt->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getCreatedAt());
+        $this->assertNull($userKyt->getCreatedAt());
         $userKyt->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $userKyt->getCreatedAt());
+        $this->assertSame($createdAt, $userKyt->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -118,16 +122,16 @@ final class UserKytTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $userKyt->getCreatedAt());
+        $this->assertSame($createdAt, $userKyt->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getDeletedAt());
+        $this->assertNull($userKyt->getDeletedAt());
         $userKyt->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $userKyt->getDeletedAt());
+        $this->assertSame($deletedAt, $userKyt->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -135,16 +139,16 @@ final class UserKytTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $userKyt->getDeletedAt());
+        $this->assertSame($deletedAt, $userKyt->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getUpdatedAt());
+        $this->assertNull($userKyt->getUpdatedAt());
         $userKyt->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $userKyt->getUpdatedAt());
+        $this->assertSame($updatedAt, $userKyt->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -152,7 +156,7 @@ final class UserKytTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $userKyt->getUpdatedAt());
+        $this->assertSame($updatedAt, $userKyt->getUpdatedAt());
     }
 
     public function testGetUser(): void
@@ -160,7 +164,7 @@ final class UserKytTest extends AbstractTestCase
         $user = new User();
         $userKyt = new UserKyt();
         $userKyt->setUser($user);
-        $this->assertEquals($user, $userKyt->getUser());
+        $this->assertSame($user, $userKyt->getUser());
     }
 
     public function testSetUser(): void
@@ -168,16 +172,16 @@ final class UserKytTest extends AbstractTestCase
         $user = new User();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setUser($user));
-        $this->assertEquals($user, $userKyt->getUser());
+        $this->assertSame($user, $userKyt->getUser());
     }
 
     public function testGetBasicConfigurationLearned(): void
     {
         $basicConfigurationLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getBasicConfigurationLearned());
+        $this->assertFalse($userKyt->getBasicConfigurationLearned());
         $userKyt->setBasicConfigurationLearned($basicConfigurationLearned);
-        $this->assertEquals($basicConfigurationLearned, $userKyt->getBasicConfigurationLearned());
+        $this->assertSame($basicConfigurationLearned, $userKyt->getBasicConfigurationLearned());
         $this->assertIsBool($userKyt->getBasicConfigurationLearned());
     }
 
@@ -186,16 +190,16 @@ final class UserKytTest extends AbstractTestCase
         $basicConfigurationLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setBasicConfigurationLearned($basicConfigurationLearned));
-        $this->assertEquals($basicConfigurationLearned, $userKyt->getBasicConfigurationLearned());
+        $this->assertSame($basicConfigurationLearned, $userKyt->getBasicConfigurationLearned());
     }
 
     public function testGetBasicConfigurationSent(): void
     {
         $basicConfigurationSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getBasicConfigurationSent());
+        $this->assertFalse($userKyt->getBasicConfigurationSent());
         $userKyt->setBasicConfigurationSent($basicConfigurationSent);
-        $this->assertEquals($basicConfigurationSent, $userKyt->getBasicConfigurationSent());
+        $this->assertSame($basicConfigurationSent, $userKyt->getBasicConfigurationSent());
         $this->assertIsBool($userKyt->getBasicConfigurationSent());
     }
 
@@ -204,16 +208,16 @@ final class UserKytTest extends AbstractTestCase
         $basicConfigurationSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setBasicConfigurationSent($basicConfigurationSent));
-        $this->assertEquals($basicConfigurationSent, $userKyt->getBasicConfigurationSent());
+        $this->assertSame($basicConfigurationSent, $userKyt->getBasicConfigurationSent());
     }
 
     public function testGetCompletingRoutinesLearned(): void
     {
         $completingRoutinesLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getCompletingRoutinesLearned());
+        $this->assertFalse($userKyt->getCompletingRoutinesLearned());
         $userKyt->setCompletingRoutinesLearned($completingRoutinesLearned);
-        $this->assertEquals($completingRoutinesLearned, $userKyt->getCompletingRoutinesLearned());
+        $this->assertSame($completingRoutinesLearned, $userKyt->getCompletingRoutinesLearned());
         $this->assertIsBool($userKyt->getCompletingRoutinesLearned());
     }
 
@@ -222,16 +226,16 @@ final class UserKytTest extends AbstractTestCase
         $completingRoutinesLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setCompletingRoutinesLearned($completingRoutinesLearned));
-        $this->assertEquals($completingRoutinesLearned, $userKyt->getCompletingRoutinesLearned());
+        $this->assertSame($completingRoutinesLearned, $userKyt->getCompletingRoutinesLearned());
     }
 
     public function testGetCompletingRoutinesSent(): void
     {
         $completingRoutinesSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getCompletingRoutinesSent());
+        $this->assertFalse($userKyt->getCompletingRoutinesSent());
         $userKyt->setCompletingRoutinesSent($completingRoutinesSent);
-        $this->assertEquals($completingRoutinesSent, $userKyt->getCompletingRoutinesSent());
+        $this->assertSame($completingRoutinesSent, $userKyt->getCompletingRoutinesSent());
         $this->assertIsBool($userKyt->getCompletingRoutinesSent());
     }
 
@@ -240,16 +244,16 @@ final class UserKytTest extends AbstractTestCase
         $completingRoutinesSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setCompletingRoutinesSent($completingRoutinesSent));
-        $this->assertEquals($completingRoutinesSent, $userKyt->getCompletingRoutinesSent());
+        $this->assertSame($completingRoutinesSent, $userKyt->getCompletingRoutinesSent());
     }
 
     public function testGetDateOfLastMessage(): void
     {
         $dateOfLastMessage = new DateTimeImmutable();
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getDateOfLastMessage());
+        $this->assertNull($userKyt->getDateOfLastMessage());
         $userKyt->setDateOfLastMessage($dateOfLastMessage);
-        $this->assertEquals($dateOfLastMessage, $userKyt->getDateOfLastMessage());
+        $this->assertSame($dateOfLastMessage, $userKyt->getDateOfLastMessage());
     }
 
     public function testSetDateOfLastMessage(): void
@@ -257,16 +261,16 @@ final class UserKytTest extends AbstractTestCase
         $dateOfLastMessage = new DateTimeImmutable();
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setDateOfLastMessage($dateOfLastMessage));
-        $this->assertEquals($dateOfLastMessage, $userKyt->getDateOfLastMessage());
+        $this->assertSame($dateOfLastMessage, $userKyt->getDateOfLastMessage());
     }
 
     public function testGetGoalsLearned(): void
     {
         $goalsLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getGoalsLearned());
+        $this->assertFalse($userKyt->getGoalsLearned());
         $userKyt->setGoalsLearned($goalsLearned);
-        $this->assertEquals($goalsLearned, $userKyt->getGoalsLearned());
+        $this->assertSame($goalsLearned, $userKyt->getGoalsLearned());
         $this->assertIsBool($userKyt->getGoalsLearned());
     }
 
@@ -275,16 +279,16 @@ final class UserKytTest extends AbstractTestCase
         $goalsLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setGoalsLearned($goalsLearned));
-        $this->assertEquals($goalsLearned, $userKyt->getGoalsLearned());
+        $this->assertSame($goalsLearned, $userKyt->getGoalsLearned());
     }
 
     public function testGetGoalsSent(): void
     {
         $goalsSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getGoalsSent());
+        $this->assertFalse($userKyt->getGoalsSent());
         $userKyt->setGoalsSent($goalsSent);
-        $this->assertEquals($goalsSent, $userKyt->getGoalsSent());
+        $this->assertSame($goalsSent, $userKyt->getGoalsSent());
         $this->assertIsBool($userKyt->getGoalsSent());
     }
 
@@ -293,16 +297,16 @@ final class UserKytTest extends AbstractTestCase
         $goalsSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setGoalsSent($goalsSent));
-        $this->assertEquals($goalsSent, $userKyt->getGoalsSent());
+        $this->assertSame($goalsSent, $userKyt->getGoalsSent());
     }
 
     public function testGetNotesLearned(): void
     {
         $notesLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getNotesLearned());
+        $this->assertFalse($userKyt->getNotesLearned());
         $userKyt->setNotesLearned($notesLearned);
-        $this->assertEquals($notesLearned, $userKyt->getNotesLearned());
+        $this->assertSame($notesLearned, $userKyt->getNotesLearned());
         $this->assertIsBool($userKyt->getNotesLearned());
     }
 
@@ -311,16 +315,16 @@ final class UserKytTest extends AbstractTestCase
         $notesLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setNotesLearned($notesLearned));
-        $this->assertEquals($notesLearned, $userKyt->getNotesLearned());
+        $this->assertSame($notesLearned, $userKyt->getNotesLearned());
     }
 
     public function testGetNotesSent(): void
     {
         $notesSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getNotesSent());
+        $this->assertFalse($userKyt->getNotesSent());
         $userKyt->setNotesSent($notesSent);
-        $this->assertEquals($notesSent, $userKyt->getNotesSent());
+        $this->assertSame($notesSent, $userKyt->getNotesSent());
         $this->assertIsBool($userKyt->getNotesSent());
     }
 
@@ -329,16 +333,16 @@ final class UserKytTest extends AbstractTestCase
         $notesSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setNotesSent($notesSent));
-        $this->assertEquals($notesSent, $userKyt->getNotesSent());
+        $this->assertSame($notesSent, $userKyt->getNotesSent());
     }
 
     public function testGetProjectsLearned(): void
     {
         $projectsLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getProjectsLearned());
+        $this->assertFalse($userKyt->getProjectsLearned());
         $userKyt->setProjectsLearned($projectsLearned);
-        $this->assertEquals($projectsLearned, $userKyt->getProjectsLearned());
+        $this->assertSame($projectsLearned, $userKyt->getProjectsLearned());
         $this->assertIsBool($userKyt->getProjectsLearned());
     }
 
@@ -347,16 +351,16 @@ final class UserKytTest extends AbstractTestCase
         $projectsLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setProjectsLearned($projectsLearned));
-        $this->assertEquals($projectsLearned, $userKyt->getProjectsLearned());
+        $this->assertSame($projectsLearned, $userKyt->getProjectsLearned());
     }
 
     public function testGetProjectsSent(): void
     {
         $projectsSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getProjectsSent());
+        $this->assertFalse($userKyt->getProjectsSent());
         $userKyt->setProjectsSent($projectsSent);
-        $this->assertEquals($projectsSent, $userKyt->getProjectsSent());
+        $this->assertSame($projectsSent, $userKyt->getProjectsSent());
         $this->assertIsBool($userKyt->getProjectsSent());
     }
 
@@ -365,16 +369,16 @@ final class UserKytTest extends AbstractTestCase
         $projectsSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setProjectsSent($projectsSent));
-        $this->assertEquals($projectsSent, $userKyt->getProjectsSent());
+        $this->assertSame($projectsSent, $userKyt->getProjectsSent());
     }
 
     public function testGetRemindersLearned(): void
     {
         $remindersLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getRemindersLearned());
+        $this->assertFalse($userKyt->getRemindersLearned());
         $userKyt->setRemindersLearned($remindersLearned);
-        $this->assertEquals($remindersLearned, $userKyt->getRemindersLearned());
+        $this->assertSame($remindersLearned, $userKyt->getRemindersLearned());
         $this->assertIsBool($userKyt->getRemindersLearned());
     }
 
@@ -383,16 +387,16 @@ final class UserKytTest extends AbstractTestCase
         $remindersLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRemindersLearned($remindersLearned));
-        $this->assertEquals($remindersLearned, $userKyt->getRemindersLearned());
+        $this->assertSame($remindersLearned, $userKyt->getRemindersLearned());
     }
 
     public function testGetRemindersSent(): void
     {
         $remindersSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getRemindersSent());
+        $this->assertFalse($userKyt->getRemindersSent());
         $userKyt->setRemindersSent($remindersSent);
-        $this->assertEquals($remindersSent, $userKyt->getRemindersSent());
+        $this->assertSame($remindersSent, $userKyt->getRemindersSent());
         $this->assertIsBool($userKyt->getRemindersSent());
     }
 
@@ -401,16 +405,16 @@ final class UserKytTest extends AbstractTestCase
         $remindersSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRemindersSent($remindersSent));
-        $this->assertEquals($remindersSent, $userKyt->getRemindersSent());
+        $this->assertSame($remindersSent, $userKyt->getRemindersSent());
     }
 
     public function testGetRewardsLearned(): void
     {
         $routinesLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getRewardsLearned());
+        $this->assertFalse($userKyt->getRewardsLearned());
         $userKyt->setRewardsLearned($routinesLearned);
-        $this->assertEquals($routinesLearned, $userKyt->getRewardsLearned());
+        $this->assertSame($routinesLearned, $userKyt->getRewardsLearned());
         $this->assertIsBool($userKyt->getRewardsLearned());
     }
 
@@ -419,16 +423,16 @@ final class UserKytTest extends AbstractTestCase
         $routinesLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRewardsLearned($routinesLearned));
-        $this->assertEquals($routinesLearned, $userKyt->getRewardsLearned());
+        $this->assertSame($routinesLearned, $userKyt->getRewardsLearned());
     }
 
     public function testGetRewardsSent(): void
     {
         $routinesSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getRewardsSent());
+        $this->assertFalse($userKyt->getRewardsSent());
         $userKyt->setRewardsSent($routinesSent);
-        $this->assertEquals($routinesSent, $userKyt->getRewardsSent());
+        $this->assertSame($routinesSent, $userKyt->getRewardsSent());
         $this->assertIsBool($userKyt->getRewardsSent());
     }
 
@@ -437,16 +441,16 @@ final class UserKytTest extends AbstractTestCase
         $routinesSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRewardsSent($routinesSent));
-        $this->assertEquals($routinesSent, $userKyt->getRewardsSent());
+        $this->assertSame($routinesSent, $userKyt->getRewardsSent());
     }
 
     public function testGetRoutinesLearned(): void
     {
         $routinesLearned = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getRoutinesLearned());
+        $this->assertFalse($userKyt->getRoutinesLearned());
         $userKyt->setRoutinesLearned($routinesLearned);
-        $this->assertEquals($routinesLearned, $userKyt->getRoutinesLearned());
+        $this->assertSame($routinesLearned, $userKyt->getRoutinesLearned());
         $this->assertIsBool($userKyt->getRoutinesLearned());
     }
 
@@ -455,16 +459,16 @@ final class UserKytTest extends AbstractTestCase
         $routinesLearned = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRoutinesLearned($routinesLearned));
-        $this->assertEquals($routinesLearned, $userKyt->getRoutinesLearned());
+        $this->assertSame($routinesLearned, $userKyt->getRoutinesLearned());
     }
 
     public function testGetRoutinesSent(): void
     {
         $routinesSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getRoutinesSent());
+        $this->assertFalse($userKyt->getRoutinesSent());
         $userKyt->setRoutinesSent($routinesSent);
-        $this->assertEquals($routinesSent, $userKyt->getRoutinesSent());
+        $this->assertSame($routinesSent, $userKyt->getRoutinesSent());
         $this->assertIsBool($userKyt->getRoutinesSent());
     }
 
@@ -473,16 +477,16 @@ final class UserKytTest extends AbstractTestCase
         $routinesSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setRoutinesSent($routinesSent));
-        $this->assertEquals($routinesSent, $userKyt->getRoutinesSent());
+        $this->assertSame($routinesSent, $userKyt->getRoutinesSent());
     }
 
     public function testGetTestimonialRequestSent(): void
     {
         $testimonialRequestSent = true;
         $userKyt = new UserKyt();
-        $this->assertEquals(null, $userKyt->getTestimonialRequestSent());
+        $this->assertFalse($userKyt->getTestimonialRequestSent());
         $userKyt->setTestimonialRequestSent($testimonialRequestSent);
-        $this->assertEquals($testimonialRequestSent, $userKyt->getTestimonialRequestSent());
+        $this->assertSame($testimonialRequestSent, $userKyt->getTestimonialRequestSent());
         $this->assertIsBool($userKyt->getTestimonialRequestSent());
     }
 
@@ -491,6 +495,6 @@ final class UserKytTest extends AbstractTestCase
         $testimonialRequestSent = true;
         $userKyt = new UserKyt();
         $this->assertInstanceOf(UserKyt::class, $userKyt->setTestimonialRequestSent($testimonialRequestSent));
-        $this->assertEquals($testimonialRequestSent, $userKyt->getTestimonialRequestSent());
+        $this->assertSame($testimonialRequestSent, $userKyt->getTestimonialRequestSent());
     }
 }

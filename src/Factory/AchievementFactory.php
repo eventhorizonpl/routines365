@@ -31,7 +31,8 @@ class AchievementFactory
             ->setLevel($level)
             ->setName($name)
             ->setRequirement($requirement)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $achievement;
     }

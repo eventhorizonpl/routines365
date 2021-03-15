@@ -12,6 +12,10 @@ use App\Repository\AchievementRepository;
 use App\Service\AchievementService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -37,13 +41,12 @@ final class AchievementServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->achievementRepository,
-            $this->achievementService,
-            $this->achievementFaker,
-            $this->userManager,
-            $this->userFaker
-        );
+        $this->achievementRepository = null;
+        $this->achievementService = null;
+        $this->achievementFaker = null;
+        $this->userManager = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

@@ -9,6 +9,10 @@ use App\Factory\NoteFactory;
 use App\Faker\NoteFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class NoteFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class NoteFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->noteFactory,
-            $this->noteFaker
-        );
+        $this->noteFactory = null;
+        $this->noteFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -48,7 +51,7 @@ final class NoteFakerTest extends AbstractDoctrineTestCase
             $content,
             $title
         );
-        $this->assertEquals($content, $note->getContent());
-        $this->assertEquals($title, $note->getTitle());
+        $this->assertSame($content, $note->getContent());
+        $this->assertSame($title, $note->getTitle());
     }
 }

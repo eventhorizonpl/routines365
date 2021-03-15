@@ -9,6 +9,10 @@ use App\Manager\ReportManager;
 use App\Service\ReportService;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReportControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,19 +26,16 @@ final class ReportControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reportManager,
-            $this->reportService
-        );
+        $this->reportManager = null;
+        $this->reportService = null
+        ;
 
         parent::tearDown();
     }
 
     public function createReport(): Report
     {
-        $report = $this->reportService->createPostRemindMessages();
-
-        return $report;
+        return $this->reportService->createPostRemindMessages();
     }
 
     public function testIndex(): void

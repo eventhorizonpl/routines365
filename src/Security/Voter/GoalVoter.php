@@ -17,7 +17,7 @@ class GoalVoter extends Voter
 
     public function supports($attribute, $subject): bool
     {
-        return in_array($attribute, [self::DELETE, self::EDIT])
+        return \in_array($attribute, [self::DELETE, self::EDIT], true)
             && $subject instanceof Goal;
     }
 

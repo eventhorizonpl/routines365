@@ -17,8 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class UserKpi
 {
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_ANNUALLY = 'annually';
     public const TYPE_DAILY = 'daily';
@@ -313,12 +313,12 @@ class UserKpi
         return $this;
     }
 
-    public function getNextUserKpi(): ?UserKpi
+    public function getNextUserKpi(): ?self
     {
         return $this->nextUserKpi;
     }
 
-    public function setNextUserKpi(?UserKpi $nextUserKpi): self
+    public function setNextUserKpi(?self $nextUserKpi): self
     {
         $this->nextUserKpi = $nextUserKpi;
 
@@ -337,12 +337,12 @@ class UserKpi
         return $this;
     }
 
-    public function getPreviousUserKpi(): ?UserKpi
+    public function getPreviousUserKpi(): ?self
     {
         return $this->previousUserKpi;
     }
 
-    public function setPreviousUserKpi(?UserKpi $previousUserKpi): self
+    public function setPreviousUserKpi(?self $previousUserKpi): self
     {
         $this->previousUserKpi = $previousUserKpi;
 
@@ -431,7 +431,7 @@ class UserKpi
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

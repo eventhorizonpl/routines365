@@ -9,6 +9,10 @@ use App\Faker\PromotionFaker;
 use App\Manager\PromotionManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,19 +26,16 @@ final class PromotionControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-            $this->promotionManager
-        );
+        $this->promotionFaker = null;
+        $this->promotionManager = null
+        ;
 
         parent::tearDown();
     }
 
     public function createPromotion(): Promotion
     {
-        $promotion = $this->promotionFaker->createPromotionPersisted();
-
-        return $promotion;
+        return $this->promotionFaker->createPromotionPersisted();
     }
 
     public function testIndex(): void

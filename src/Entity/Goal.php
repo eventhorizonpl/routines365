@@ -14,11 +14,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Goal
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsCompletedTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsCompletedTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const CONTEXT_PROJECT = 'project';
     public const CONTEXT_ROUTINE = 'routine';

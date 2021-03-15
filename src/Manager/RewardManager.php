@@ -66,7 +66,7 @@ class RewardManager
         }
 
         $errors = $this->validate($reward);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $reward));
         }
 
@@ -104,8 +104,6 @@ class RewardManager
 
     public function validate(Reward $reward): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($reward, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($reward, null, ['system']);
     }
 }

@@ -54,7 +54,7 @@ class ReportManager
         $report->setUpdatedAt($date);
 
         $errors = $this->validate($report);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $report));
         }
 
@@ -90,8 +90,6 @@ class ReportManager
 
     public function validate(Report $report): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($report, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($report, null, ['system']);
     }
 }

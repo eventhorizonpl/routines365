@@ -10,6 +10,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class AchievementRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->achievementFaker,
-            $this->achievementRepository,
-            $this->managerRegistry
-        );
+        $this->achievementFaker = null;
+        $this->achievementRepository = null;
+        $this->managerRegistry = null
+        ;
 
         parent::tearDown();
     }

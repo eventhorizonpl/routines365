@@ -38,12 +38,13 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
         );
         $user->getProfile()
             ->setSendWeeklyMonthlyStatistics(false)
-            ->setTimezone('Europe/Warsaw');
+            ->setTimezone('Europe/Warsaw')
+        ;
 
         $this->userManager->save($user);
 
         $kernel = $this->container->get('kernel');
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             $users = [];
             $referrerUser = null;
             for ($userId = 1; $userId <= self::REGULAR_USER_LIMIT; ++$userId) {
@@ -63,7 +64,8 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
                     ->setLastName(sprintf('test%d', $userId))
                     ->setSendWeeklyMonthlyStatistics(false)
                     ->setShowMotivationalMessages(true)
-                    ->setTimezone('Europe/Warsaw');
+                    ->setTimezone('Europe/Warsaw')
+                ;
                 if (null !== $referrerUser) {
                     $user->setReferrer($referrerUser);
                 }

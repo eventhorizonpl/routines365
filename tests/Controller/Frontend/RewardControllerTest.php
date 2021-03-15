@@ -9,20 +9,20 @@ use App\Entity\Routine;
 use App\Entity\User;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardControllerTest extends AbstractUiTestCase
 {
     public function createReward(User $user): Reward
     {
-        $reward = $user->getRewards()->first();
-
-        return $reward;
+        return $user->getRewards()->first();
     }
 
     public function createRoutine(User $user): Routine
     {
-        $routine = $user->getRoutines()->first();
-
-        return $routine;
+        return $user->getRoutines()->first();
     }
 
     public function testIndex(): void

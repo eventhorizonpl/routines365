@@ -124,7 +124,7 @@ class ReminderManager
         $reminder->setNextDateLocalTime($nextDateLocalTime);
 
         $errors = $this->validate($reminder);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $reminder));
         }
 
@@ -180,8 +180,6 @@ class ReminderManager
 
     public function validate(Reminder $reminder): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($reminder, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($reminder, null, ['system']);
     }
 }

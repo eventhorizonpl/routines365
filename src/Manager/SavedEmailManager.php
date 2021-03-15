@@ -60,7 +60,7 @@ class SavedEmailManager
         $savedEmail->setUpdatedBy($actor);
 
         $errors = $this->validate($savedEmail);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $savedEmail));
         }
 
@@ -98,8 +98,6 @@ class SavedEmailManager
 
     public function validate(SavedEmail $savedEmail): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($savedEmail, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($savedEmail, null, ['system']);
     }
 }

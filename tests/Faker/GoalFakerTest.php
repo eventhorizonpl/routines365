@@ -9,6 +9,10 @@ use App\Factory\GoalFactory;
 use App\Faker\GoalFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class GoalFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class GoalFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->goalFactory,
-            $this->goalFaker
-        );
+        $this->goalFactory = null;
+        $this->goalFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -50,8 +53,8 @@ final class GoalFakerTest extends AbstractDoctrineTestCase
             $isCompleted,
             $name
         );
-        $this->assertEquals($description, $goal->getDescription());
-        $this->assertEquals($isCompleted, $goal->getIsCompleted());
-        $this->assertEquals($name, $goal->getName());
+        $this->assertSame($description, $goal->getDescription());
+        $this->assertSame($isCompleted, $goal->getIsCompleted());
+        $this->assertSame($name, $goal->getName());
     }
 }

@@ -16,11 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class UserQuestionnaire
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsCompletedTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsCompletedTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -121,9 +121,7 @@ class UserQuestionnaire
 
     public function getUserQuestionnaireAnswers(): Collection
     {
-        return $this->userQuestionnaireAnswers->filter(function (UserQuestionnaireAnswer $userQuestionnaireAnswer) {
-            return null === $userQuestionnaireAnswer->getDeletedAt();
-        });
+        return $this->userQuestionnaireAnswers->filter(fn (UserQuestionnaireAnswer $userQuestionnaireAnswer) => null === $userQuestionnaireAnswer->getDeletedAt());
     }
 
     public function getUserQuestionnaireAnswersAll(): Collection

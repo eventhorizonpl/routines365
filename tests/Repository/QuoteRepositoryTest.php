@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class QuoteRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->quoteFaker,
-            $this->quoteRepository
-        );
+        $this->managerRegistry = null;
+        $this->quoteFaker = null;
+        $this->quoteRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -126,6 +129,6 @@ final class QuoteRepositoryTest extends AbstractDoctrineTestCase
         $this->assertInstanceOf(Quote::class, $quote);
 
         $quote = $this->quoteRepository->findOneByStringLength(10);
-        $this->assertEquals(null, $quote);
+        $this->assertNull($quote);
     }
 }

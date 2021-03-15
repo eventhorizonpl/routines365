@@ -9,6 +9,10 @@ use App\Manager\UserManager;
 use App\Repository\UserRepository;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,19 +26,16 @@ final class UserControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->userManager,
-            $this->userRepository
-        );
+        $this->userManager = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
 
     public function createUser(): User
     {
-        $user = $this->userFaker->createUserPersisted();
-
-        return $user;
+        return $this->userFaker->createUserPersisted();
     }
 
     public function testIndex(): void

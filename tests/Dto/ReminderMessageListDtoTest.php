@@ -7,6 +7,10 @@ namespace App\Tests\Dto;
 use App\Dto\ReminderMessageListDto;
 use App\Tests\AbstractTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageListDtoTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -16,11 +20,11 @@ final class ReminderMessageListDtoTest extends AbstractTestCase
         $status = 'success';
         $reminderMessageListDto = new ReminderMessageListDto($code, $data);
         $this->assertInstanceOf(ReminderMessageListDto::class, $reminderMessageListDto);
-        $this->assertEquals($code, $reminderMessageListDto->code);
-        $this->assertEquals($data, $reminderMessageListDto->data);
-        $this->assertEquals($status, $reminderMessageListDto->status);
+        $this->assertSame($code, $reminderMessageListDto->code);
+        $this->assertSame($data, $reminderMessageListDto->data);
+        $this->assertSame($status, $reminderMessageListDto->status);
         $status = 'error';
         $reminderMessageListDto = new ReminderMessageListDto($code, $data, $status);
-        $this->assertEquals($status, $reminderMessageListDto->status);
+        $this->assertSame($status, $reminderMessageListDto->status);
     }
 }

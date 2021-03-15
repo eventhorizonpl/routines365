@@ -6,6 +6,10 @@ namespace App\Tests\Controller\Admin;
 
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CronReportControllerTest extends AbstractUiTestCase
 {
     public function testIndex(): void

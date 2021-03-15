@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class SavedEmailFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -54,7 +58,7 @@ final class SavedEmailFactoryTest extends AbstractTestCase
             $type
         );
         $this->assertInstanceOf(SavedEmail::class, $savedEmail);
-        $this->assertEquals($email, $savedEmail->getEmail());
-        $this->assertEquals($type, $savedEmail->getType());
+        $this->assertSame($email, $savedEmail->getEmail());
+        $this->assertSame($type, $savedEmail->getType());
     }
 }

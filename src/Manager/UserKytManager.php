@@ -56,7 +56,7 @@ class UserKytManager
         $userKyt->setUpdatedBy($actor);
 
         $errors = $this->validate($userKyt);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $userKyt));
         }
 
@@ -94,8 +94,6 @@ class UserKytManager
 
     public function validate(UserKyt $userKyt): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($userKyt);
-
-        return $errors;
+        return $this->validator->validate($userKyt);
     }
 }

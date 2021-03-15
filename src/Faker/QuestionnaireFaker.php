@@ -36,12 +36,10 @@ class QuestionnaireFaker
             $title = (string) $this->faker->word;
         }
 
-        $questionnaire = $this->questionnaireFactory->createQuestionnaireWithRequired(
+        return $this->questionnaireFactory->createQuestionnaireWithRequired(
             $isEnabled,
             $title
         );
-
-        return $questionnaire;
     }
 
     public function createRichQuestionnairePersisted(): Questionnaire

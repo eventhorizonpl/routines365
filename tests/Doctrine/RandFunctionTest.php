@@ -9,6 +9,10 @@ use App\Tests\AbstractTestCase;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RandFunctionTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -22,7 +26,8 @@ final class RandFunctionTest extends AbstractTestCase
         $randFunction = new RandFunction('RAND');
         $sqlWalker = $this->getMockBuilder(SqlWalker::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $this->assertIsString($randFunction->getSql($sqlWalker));
     }
@@ -32,7 +37,8 @@ final class RandFunctionTest extends AbstractTestCase
         $randFunction = new RandFunction('RAND');
         $parser = $this->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $this->assertNull($randFunction->parse($parser));
     }

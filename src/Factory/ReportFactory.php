@@ -27,7 +27,8 @@ class ReportFactory
         $report
             ->setData($data)
             ->setStatus($status)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $report;
     }

@@ -10,6 +10,10 @@ use App\Manager\ReportManager;
 use App\Service\ReportService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReportServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reportFactory,
-            $this->reportManager,
-            $this->reportService
-        );
+        $this->reportFactory = null;
+        $this->reportManager = null;
+        $this->reportService = null
+        ;
 
         parent::tearDown();
     }
@@ -56,9 +59,9 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
             $type
         );
         $this->assertInstanceOf(Report::class, $report);
-        $this->assertEquals($data, $report->getData());
-        $this->assertEquals($status, $report->getStatus());
-        $this->assertEquals($type, $report->getType());
+        $this->assertSame($data, $report->getData());
+        $this->assertSame($status, $report->getStatus());
+        $this->assertSame($type, $report->getType());
     }
 
     public function testAddData(): void
@@ -75,9 +78,9 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         );
         $this->assertInstanceOf(Report::class, $report);
         $this->assertCount(1, $report->getData());
-        $this->assertEquals($data, $report->getData());
-        $this->assertEquals($status, $report->getStatus());
-        $this->assertEquals($type, $report->getType());
+        $this->assertSame($data, $report->getData());
+        $this->assertSame($status, $report->getStatus());
+        $this->assertSame($type, $report->getType());
 
         $report = $this->reportService->addData(
             ['test 2'],
@@ -86,7 +89,7 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
 
         $this->assertInstanceOf(Report::class, $report);
         $this->assertCount(2, $report->getData());
-        $this->assertEquals(Report::STATUS_IN_PROGRESS, $report->getStatus());
+        $this->assertSame(Report::STATUS_IN_PROGRESS, $report->getStatus());
     }
 
     public function testCreatePostRemindMessages(): void
@@ -95,9 +98,9 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
 
         $report = $this->reportService->createPostRemindMessages();
         $this->assertInstanceOf(Report::class, $report);
-        $this->assertEquals([], $report->getData());
-        $this->assertEquals(Report::STATUS_INITIAL, $report->getStatus());
-        $this->assertEquals(Report::TYPE_POST_REMIND_MESSAGES, $report->getType());
+        $this->assertSame([], $report->getData());
+        $this->assertSame(Report::STATUS_INITIAL, $report->getStatus());
+        $this->assertSame(Report::TYPE_POST_REMIND_MESSAGES, $report->getType());
     }
 
     public function testFinish(): void
@@ -114,13 +117,13 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         );
         $this->assertInstanceOf(Report::class, $report);
         $this->assertCount(1, $report->getData());
-        $this->assertEquals($data, $report->getData());
-        $this->assertEquals($status, $report->getStatus());
-        $this->assertEquals($type, $report->getType());
+        $this->assertSame($data, $report->getData());
+        $this->assertSame($status, $report->getStatus());
+        $this->assertSame($type, $report->getType());
 
         $report = $this->reportService->finish($report);
 
         $this->assertInstanceOf(Report::class, $report);
-        $this->assertEquals(Report::STATUS_FINISHED, $report->getStatus());
+        $this->assertSame(Report::STATUS_FINISHED, $report->getStatus());
     }
 }

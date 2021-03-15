@@ -6,6 +6,10 @@ namespace App\Tests\Controller\Frontend;
 
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class StaticPageControllerTest extends AbstractUiTestCase
 {
     public function testAbout(): void

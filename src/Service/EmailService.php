@@ -65,9 +65,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendConfirmation(
@@ -83,9 +81,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendContactRequest(
@@ -101,9 +97,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendInvitation(
@@ -119,9 +113,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendMotivational(
@@ -137,9 +129,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendNewLead(
@@ -155,9 +145,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendReminderMessage(
@@ -173,9 +161,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendRequestForTestimonial(
@@ -191,9 +177,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendResetPassword(
@@ -209,9 +193,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKpi(
@@ -227,9 +209,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytBasicConfiguration(
@@ -245,9 +225,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytCompletingRoutines(
@@ -263,9 +241,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytGoals(
@@ -281,9 +257,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytNotes(
@@ -299,9 +273,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytProjects(
@@ -317,9 +289,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytReminders(
@@ -335,9 +305,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytRewards(
@@ -353,9 +321,7 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 
     public function sendUserKytRoutines(
@@ -371,8 +337,6 @@ class EmailService
             $context
         );
 
-        $result = $this->send($templatedEmail);
-
-        return $result;
+        return $this->send($templatedEmail);
     }
 }

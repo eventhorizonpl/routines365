@@ -11,6 +11,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -24,22 +28,22 @@ final class CompletedRoutineTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $completedRoutine->setUuid($uuid);
-        $this->assertEquals($uuid, $completedRoutine->__toString());
+        $this->assertSame($uuid, $completedRoutine->__toString());
     }
 
     public function testGetId(): void
     {
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getId());
+        $this->assertNull($completedRoutine->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getUuid());
+        $this->assertNull($completedRoutine->getUuid());
         $completedRoutine->setUuid($uuid);
-        $this->assertEquals($uuid, $completedRoutine->getUuid());
+        $this->assertSame($uuid, $completedRoutine->getUuid());
         $this->assertIsString($completedRoutine->getUuid());
     }
 
@@ -48,16 +52,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setUuid($uuid));
-        $this->assertEquals($uuid, $completedRoutine->getUuid());
+        $this->assertSame($uuid, $completedRoutine->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getCreatedBy());
+        $this->assertNull($completedRoutine->getCreatedBy());
         $completedRoutine->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $completedRoutine->getCreatedBy());
+        $this->assertSame($createdBy, $completedRoutine->getCreatedBy());
         $this->assertIsString($completedRoutine->getCreatedBy());
     }
 
@@ -66,16 +70,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $completedRoutine->getCreatedBy());
+        $this->assertSame($createdBy, $completedRoutine->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getDeletedBy());
+        $this->assertNull($completedRoutine->getDeletedBy());
         $completedRoutine->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $completedRoutine->getDeletedBy());
+        $this->assertSame($deletedBy, $completedRoutine->getDeletedBy());
         $this->assertIsString($completedRoutine->getDeletedBy());
     }
 
@@ -84,16 +88,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $completedRoutine->getDeletedBy());
+        $this->assertSame($deletedBy, $completedRoutine->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getUpdatedBy());
+        $this->assertNull($completedRoutine->getUpdatedBy());
         $completedRoutine->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $completedRoutine->getUpdatedBy());
+        $this->assertSame($updatedBy, $completedRoutine->getUpdatedBy());
         $this->assertIsString($completedRoutine->getUpdatedBy());
     }
 
@@ -102,16 +106,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $completedRoutine->getUpdatedBy());
+        $this->assertSame($updatedBy, $completedRoutine->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getCreatedAt());
+        $this->assertNull($completedRoutine->getCreatedAt());
         $completedRoutine->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $completedRoutine->getCreatedAt());
+        $this->assertSame($createdAt, $completedRoutine->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -119,16 +123,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $completedRoutine->getCreatedAt());
+        $this->assertSame($createdAt, $completedRoutine->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getDeletedAt());
+        $this->assertNull($completedRoutine->getDeletedAt());
         $completedRoutine->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $completedRoutine->getDeletedAt());
+        $this->assertSame($deletedAt, $completedRoutine->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -136,16 +140,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $completedRoutine->getDeletedAt());
+        $this->assertSame($deletedAt, $completedRoutine->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getUpdatedAt());
+        $this->assertNull($completedRoutine->getUpdatedAt());
         $completedRoutine->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $completedRoutine->getUpdatedAt());
+        $this->assertSame($updatedAt, $completedRoutine->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -153,7 +157,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $completedRoutine->getUpdatedAt());
+        $this->assertSame($updatedAt, $completedRoutine->getUpdatedAt());
     }
 
     public function testGetRoutine(): void
@@ -161,7 +165,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
         $completedRoutine->setRoutine($routine);
-        $this->assertEquals($routine, $completedRoutine->getRoutine());
+        $this->assertSame($routine, $completedRoutine->getRoutine());
     }
 
     public function testSetRoutine(): void
@@ -169,7 +173,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setRoutine($routine));
-        $this->assertEquals($routine, $completedRoutine->getRoutine());
+        $this->assertSame($routine, $completedRoutine->getRoutine());
     }
 
     public function testGetUser(): void
@@ -177,7 +181,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $user = new User();
         $completedRoutine = new CompletedRoutine();
         $completedRoutine->setUser($user);
-        $this->assertEquals($user, $completedRoutine->getUser());
+        $this->assertSame($user, $completedRoutine->getUser());
     }
 
     public function testSetUser(): void
@@ -185,16 +189,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $user = new User();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setUser($user));
-        $this->assertEquals($user, $completedRoutine->getUser());
+        $this->assertSame($user, $completedRoutine->getUser());
     }
 
     public function testGetComment(): void
     {
         $comment = 'test comment';
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getComment());
+        $this->assertNull($completedRoutine->getComment());
         $completedRoutine->setComment($comment);
-        $this->assertEquals($comment, $completedRoutine->getComment());
+        $this->assertSame($comment, $completedRoutine->getComment());
         $this->assertIsString($completedRoutine->getComment());
     }
 
@@ -203,16 +207,16 @@ final class CompletedRoutineTest extends AbstractTestCase
         $comment = 'test comment';
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setComment($comment));
-        $this->assertEquals($comment, $completedRoutine->getComment());
+        $this->assertSame($comment, $completedRoutine->getComment());
     }
 
     public function testGetDate(): void
     {
         $date = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(null, $completedRoutine->getDate());
+        $this->assertNull($completedRoutine->getDate());
         $completedRoutine->setDate($date);
-        $this->assertEquals($date, $completedRoutine->getDate());
+        $this->assertSame($date, $completedRoutine->getDate());
     }
 
     public function testSetDate(): void
@@ -220,7 +224,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $date = new DateTimeImmutable();
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setDate($date));
-        $this->assertEquals($date, $completedRoutine->getDate());
+        $this->assertSame($date, $completedRoutine->getDate());
     }
 
     public function testGetMinutesDevoted(): void
@@ -228,7 +232,7 @@ final class CompletedRoutineTest extends AbstractTestCase
         $minutesDevoted = 10;
         $completedRoutine = new CompletedRoutine();
         $completedRoutine->setMinutesDevoted($minutesDevoted);
-        $this->assertEquals($minutesDevoted, $completedRoutine->getMinutesDevoted());
+        $this->assertSame($minutesDevoted, $completedRoutine->getMinutesDevoted());
         $this->assertIsInt($completedRoutine->getMinutesDevoted());
     }
 
@@ -237,6 +241,6 @@ final class CompletedRoutineTest extends AbstractTestCase
         $minutesDevoted = 10;
         $completedRoutine = new CompletedRoutine();
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine->setMinutesDevoted($minutesDevoted));
-        $this->assertEquals($minutesDevoted, $completedRoutine->getMinutesDevoted());
+        $this->assertSame($minutesDevoted, $completedRoutine->getMinutesDevoted());
     }
 }

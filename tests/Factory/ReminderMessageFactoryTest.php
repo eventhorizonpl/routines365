@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class ReminderMessageFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -54,7 +58,7 @@ final class ReminderMessageFactoryTest extends AbstractTestCase
             $type
         );
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage);
-        $this->assertEquals($content, $reminderMessage->getContent());
-        $this->assertEquals($type, $reminderMessage->getType());
+        $this->assertSame($content, $reminderMessage->getContent());
+        $this->assertSame($type, $reminderMessage->getType());
     }
 }

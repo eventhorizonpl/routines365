@@ -10,6 +10,10 @@ use App\Form\Frontend\ReminderType;
 use App\Tests\AbstractTypeDoctrineTestCase;
 use DateTimeImmutable;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
 {
     /**
@@ -19,7 +23,7 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->userFaker);
+        $this->userFaker = null;
 
         parent::tearDown();
     }
@@ -46,7 +50,8 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
 
         $formData = $user->getReminders()->first();
         $view = $this->factory->create(ReminderType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

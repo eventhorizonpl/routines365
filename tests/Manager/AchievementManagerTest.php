@@ -13,6 +13,10 @@ use App\Repository\AchievementRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -38,13 +42,12 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->achievementFaker,
-            $this->achievementManager,
-            $this->achievementRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->achievementFaker = null;
+        $this->achievementManager = null;
+        $this->achievementRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -72,7 +75,7 @@ final class AchievementManagerTest extends AbstractDoctrineTestCase
 
         $achievement2 = $this->achievementRepository->findOneById($achievementId);
         $this->assertInstanceOf(Achievement::class, $achievement2);
-        $this->assertEquals($level, $achievement2->getLevel());
+        $this->assertSame($level, $achievement2->getLevel());
     }
 
     public function testDelete(): void

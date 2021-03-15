@@ -9,6 +9,10 @@ use App\Faker\QuoteFaker;
 use App\Manager\QuoteManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,19 +26,16 @@ final class QuoteControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->quoteFaker,
-            $this->quoteManager
-        );
+        $this->quoteFaker = null;
+        $this->quoteManager = null
+        ;
 
         parent::tearDown();
     }
 
     public function createQuote(): Quote
     {
-        $quote = $this->quoteFaker->createQuotePersisted();
-
-        return $quote;
+        return $this->quoteFaker->createQuotePersisted();
     }
 
     public function testIndex(): void

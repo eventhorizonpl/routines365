@@ -16,7 +16,7 @@ class QuoteVoter extends Voter
 
     protected function supports($attribute, $subject): bool
     {
-        return in_array($attribute, [self::SEND])
+        return \in_array($attribute, [self::SEND], true)
             && $subject instanceof Quote;
     }
 

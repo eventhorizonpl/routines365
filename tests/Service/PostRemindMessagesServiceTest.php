@@ -27,6 +27,10 @@ use DateTimeImmutable;
 use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PostRemindMessagesServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -100,24 +104,23 @@ final class PostRemindMessagesServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountOperationService,
-            $this->emailService,
-            $this->goalFaker,
-            $this->goalManager,
-            $this->postRemindMessagesService,
-            $this->quoteFaker,
-            $this->quoteRepository,
-            $this->reminderManager,
-            $this->reminderMessageFactory,
-            $this->reminderMessageManager,
-            $this->reminderRepository,
-            $this->reportService,
-            $this->router,
-            $this->sentReminderFactory,
-            $this->sentReminderManager,
-            $this->smsService
-        );
+        $this->accountOperationService = null;
+        $this->emailService = null;
+        $this->goalFaker = null;
+        $this->goalManager = null;
+        $this->postRemindMessagesService = null;
+        $this->quoteFaker = null;
+        $this->quoteRepository = null;
+        $this->reminderManager = null;
+        $this->reminderMessageFactory = null;
+        $this->reminderMessageManager = null;
+        $this->reminderRepository = null;
+        $this->reportService = null;
+        $this->router = null;
+        $this->sentReminderFactory = null;
+        $this->sentReminderManager = null;
+        $this->smsService = null
+        ;
 
         parent::tearDown();
     }
@@ -125,9 +128,8 @@ final class PostRemindMessagesServiceTest extends AbstractDoctrineTestCase
     public function createReminder(): Reminder
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
 
-        return $reminder;
+        return $user->getReminders()->first();
     }
 
     public function testConstruct(): void
@@ -209,7 +211,8 @@ final class PostRemindMessagesServiceTest extends AbstractDoctrineTestCase
             ->setIsVerified(true)
             ->getAccount()
             ->setAvailableNotifications(10)
-            ->setAvailableSmsNotifications(10);
+            ->setAvailableSmsNotifications(10)
+        ;
         $phoneNumberUtil = PhoneNumberUtil::getInstance();
         $phone = $phoneNumberUtil->parse('+48881573056');
 
@@ -240,7 +243,8 @@ final class PostRemindMessagesServiceTest extends AbstractDoctrineTestCase
         $user
             ->getProfile()
             ->setPhone($phone)
-            ->setIsVerified(true);
+            ->setIsVerified(true)
+        ;
 
         $reminder = $this->postRemindMessagesService->prepareReminderMessages($reminder, $report);
         $this->assertInstanceOf(Reminder::class, $reminder);

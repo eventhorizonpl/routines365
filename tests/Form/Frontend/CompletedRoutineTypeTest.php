@@ -9,6 +9,10 @@ use App\Form\Frontend\CompletedRoutineType;
 use DateTimeImmutable;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineTypeTest extends TypeTestCase
 {
     /**
@@ -27,7 +31,8 @@ final class CompletedRoutineTypeTest extends TypeTestCase
     {
         $formData = new CompletedRoutine();
         $view = $this->factory->create(CompletedRoutineType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

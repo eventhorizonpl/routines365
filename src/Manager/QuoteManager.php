@@ -67,7 +67,7 @@ class QuoteManager
         $quote->setUpdatedBy($actor);
 
         $errors = $this->validate($quote);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $quote));
         }
 
@@ -105,8 +105,6 @@ class QuoteManager
 
     public function validate(Quote $quote): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($quote, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($quote, null, ['system']);
     }
 }

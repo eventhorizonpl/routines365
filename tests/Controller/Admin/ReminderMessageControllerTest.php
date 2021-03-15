@@ -8,6 +8,10 @@ use App\Entity\ReminderMessage;
 use App\Manager\ReminderMessageManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class ReminderMessageControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->reminderMessageManager);
+        $this->reminderMessageManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class ReminderMessageControllerTest extends AbstractUiTestCase
     public function createReminderMessage(): ReminderMessage
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
 
-        return $reminderMessage;
+        return $user->getReminders()->first()->getReminderMessages()->first();
     }
 
     public function testIndex(): void

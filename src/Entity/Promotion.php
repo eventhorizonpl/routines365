@@ -20,11 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Promotion
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsEnabledTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_EXISTING_ACCOUNT = 'existing_account';
     public const TYPE_NEW_ACCOUNT = 'new_account';
@@ -201,7 +201,7 @@ class Promotion
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

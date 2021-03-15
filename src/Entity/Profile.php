@@ -20,11 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Profile
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsVerifiedTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsVerifiedTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const THEME_DARK = 'dark';
     public const THEME_LIGHT = 'light';
@@ -205,12 +205,11 @@ class Profile
     {
         if (null !== $this->getPhone()) {
             $phoneNumberUtil = PhoneNumberUtil::getInstance();
-            $phone = $phoneNumberUtil->format($this->getPhone(), PhoneNumberFormat::INTERNATIONAL);
 
-            return $phone;
-        } else {
-            return null;
+            return $phoneNumberUtil->format($this->getPhone(), PhoneNumberFormat::INTERNATIONAL);
         }
+
+        return null;
     }
 
     public function setPhone(?PhoneNumber $phone): self
@@ -340,7 +339,7 @@ class Profile
 
     public function setTheme(?string $theme): self
     {
-        if (!(in_array($theme, self::getThemeValidationChoices()))) {
+        if (!(\in_array($theme, self::getThemeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid theme');
         }
 

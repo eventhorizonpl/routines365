@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ContactTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -24,22 +28,22 @@ final class ContactTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $contact = new Contact();
         $contact->setUuid($uuid);
-        $this->assertEquals($uuid, $contact->__toString());
+        $this->assertSame($uuid, $contact->__toString());
     }
 
     public function testGetId(): void
     {
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getId());
+        $this->assertNull($contact->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getUuid());
+        $this->assertNull($contact->getUuid());
         $contact->setUuid($uuid);
-        $this->assertEquals($uuid, $contact->getUuid());
+        $this->assertSame($uuid, $contact->getUuid());
         $this->assertIsString($contact->getUuid());
     }
 
@@ -48,16 +52,16 @@ final class ContactTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setUuid($uuid));
-        $this->assertEquals($uuid, $contact->getUuid());
+        $this->assertSame($uuid, $contact->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getCreatedBy());
+        $this->assertNull($contact->getCreatedBy());
         $contact->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $contact->getCreatedBy());
+        $this->assertSame($createdBy, $contact->getCreatedBy());
         $this->assertIsString($contact->getCreatedBy());
     }
 
@@ -66,16 +70,16 @@ final class ContactTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $contact->getCreatedBy());
+        $this->assertSame($createdBy, $contact->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getDeletedBy());
+        $this->assertNull($contact->getDeletedBy());
         $contact->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $contact->getDeletedBy());
+        $this->assertSame($deletedBy, $contact->getDeletedBy());
         $this->assertIsString($contact->getDeletedBy());
     }
 
@@ -84,16 +88,16 @@ final class ContactTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $contact->getDeletedBy());
+        $this->assertSame($deletedBy, $contact->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getUpdatedBy());
+        $this->assertNull($contact->getUpdatedBy());
         $contact->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $contact->getUpdatedBy());
+        $this->assertSame($updatedBy, $contact->getUpdatedBy());
         $this->assertIsString($contact->getUpdatedBy());
     }
 
@@ -102,16 +106,16 @@ final class ContactTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $contact->getUpdatedBy());
+        $this->assertSame($updatedBy, $contact->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getCreatedAt());
+        $this->assertNull($contact->getCreatedAt());
         $contact->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $contact->getCreatedAt());
+        $this->assertSame($createdAt, $contact->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -119,16 +123,16 @@ final class ContactTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $contact->getCreatedAt());
+        $this->assertSame($createdAt, $contact->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getDeletedAt());
+        $this->assertNull($contact->getDeletedAt());
         $contact->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $contact->getDeletedAt());
+        $this->assertSame($deletedAt, $contact->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -136,16 +140,16 @@ final class ContactTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $contact->getDeletedAt());
+        $this->assertSame($deletedAt, $contact->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getUpdatedAt());
+        $this->assertNull($contact->getUpdatedAt());
         $contact->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $contact->getUpdatedAt());
+        $this->assertSame($updatedAt, $contact->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -153,7 +157,7 @@ final class ContactTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $contact->getUpdatedAt());
+        $this->assertSame($updatedAt, $contact->getUpdatedAt());
     }
 
     public function testGetUser(): void
@@ -161,7 +165,7 @@ final class ContactTest extends AbstractTestCase
         $user = new User();
         $contact = new Contact();
         $contact->setUser($user);
-        $this->assertEquals($user, $contact->getUser());
+        $this->assertSame($user, $contact->getUser());
     }
 
     public function testSetUser(): void
@@ -169,16 +173,16 @@ final class ContactTest extends AbstractTestCase
         $user = new User();
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setUser($user));
-        $this->assertEquals($user, $contact->getUser());
+        $this->assertSame($user, $contact->getUser());
     }
 
     public function testGetComment(): void
     {
         $comment = 'test comment';
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getComment());
+        $this->assertSame('', $contact->getComment());
         $contact->setComment($comment);
-        $this->assertEquals($comment, $contact->getComment());
+        $this->assertSame($comment, $contact->getComment());
         $this->assertIsString($contact->getComment());
     }
 
@@ -187,16 +191,16 @@ final class ContactTest extends AbstractTestCase
         $comment = 'test comment';
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setComment($comment));
-        $this->assertEquals($comment, $contact->getComment());
+        $this->assertSame($comment, $contact->getComment());
     }
 
     public function testGetContent(): void
     {
         $content = 'test content';
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getContent());
+        $this->assertSame('', $contact->getContent());
         $contact->setContent($content);
-        $this->assertEquals($content, $contact->getContent());
+        $this->assertSame($content, $contact->getContent());
         $this->assertIsString($contact->getContent());
     }
 
@@ -205,7 +209,7 @@ final class ContactTest extends AbstractTestCase
         $content = 'test content';
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setContent($content));
-        $this->assertEquals($content, $contact->getContent());
+        $this->assertSame($content, $contact->getContent());
     }
 
     public function testGetStatus(): void
@@ -213,7 +217,7 @@ final class ContactTest extends AbstractTestCase
         $status = Contact::STATUS_CLOSED;
         $contact = new Contact();
         $contact->setStatus($status);
-        $this->assertEquals($status, $contact->getStatus());
+        $this->assertSame($status, $contact->getStatus());
         $this->assertIsString($contact->getStatus());
     }
 
@@ -234,7 +238,7 @@ final class ContactTest extends AbstractTestCase
         $status = Contact::STATUS_CLOSED;
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setStatus($status));
-        $this->assertEquals($status, $contact->getStatus());
+        $this->assertSame($status, $contact->getStatus());
     }
 
     public function testSetStatusException(): void
@@ -249,9 +253,9 @@ final class ContactTest extends AbstractTestCase
     {
         $title = 'test title';
         $contact = new Contact();
-        $this->assertEquals(null, $contact->getTitle());
+        $this->assertSame('', $contact->getTitle());
         $contact->setTitle($title);
-        $this->assertEquals($title, $contact->getTitle());
+        $this->assertSame($title, $contact->getTitle());
         $this->assertIsString($contact->getTitle());
     }
 
@@ -260,7 +264,7 @@ final class ContactTest extends AbstractTestCase
         $title = 'test title';
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setTitle($title));
-        $this->assertEquals($title, $contact->getTitle());
+        $this->assertSame($title, $contact->getTitle());
     }
 
     public function testGetType(): void
@@ -268,7 +272,7 @@ final class ContactTest extends AbstractTestCase
         $type = Contact::TYPE_FEATURE_IDEA;
         $contact = new Contact();
         $contact->setType($type);
-        $this->assertEquals($type, $contact->getType());
+        $this->assertSame($type, $contact->getType());
         $this->assertIsString($contact->getType());
     }
 
@@ -289,7 +293,7 @@ final class ContactTest extends AbstractTestCase
         $type = Contact::TYPE_FEATURE_IDEA;
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setType($type));
-        $this->assertEquals($type, $contact->getType());
+        $this->assertSame($type, $contact->getType());
     }
 
     public function testSetTypeException(): void

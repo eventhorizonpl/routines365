@@ -12,6 +12,10 @@ use App\Repository\RewardRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->rewardManager,
-            $this->rewardRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->rewardManager = null;
+        $this->rewardRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
     public function createReward(): Reward
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
 
-        return $reward;
+        return $user->getRewards()->first();
     }
 
     public function testConstruct(): void
@@ -74,7 +76,7 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
 
         $reward2 = $this->rewardRepository->findOneById($rewardId);
         $this->assertInstanceOf(Reward::class, $reward2);
-        $this->assertEquals($name, $reward2->getName());
+        $this->assertSame($name, $reward2->getName());
     }
 
     public function testDelete(): void

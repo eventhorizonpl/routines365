@@ -67,8 +67,8 @@ class ReminderType extends AbstractType
             ]);
         }
 
-        if ((true === ConfigResource::NOTIFICATION_SMS_ENABLED) &&
-            (in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS))
+        if ((true === ConfigResource::NOTIFICATION_SMS_ENABLED)
+            && (\in_array($profile->getCountry(), ConfigResource::COUNTRIES_ALLOWED_FOR_SMS, true))
         ) {
             $builder->add('sendSms', CheckboxType::class, [
                 'help' => 'Determines whether the system should send a reminder to the phone number.',

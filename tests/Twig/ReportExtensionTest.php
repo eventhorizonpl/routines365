@@ -7,6 +7,10 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\ReportExtension;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReportExtensionTest extends AbstractTestCase
 {
     public function testConstruct(): void

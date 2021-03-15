@@ -58,11 +58,11 @@ class ReminderController extends AbstractController
                     'know_your_tools' => KytResource::REMINDERS_SHOW3,
                     'uuid' => $routine->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_routine_show_reminders', [
-                    'uuid' => $routine->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_routine_show_reminders', [
+                'uuid' => $routine->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/reminder/new.html.twig', [
@@ -103,11 +103,11 @@ class ReminderController extends AbstractController
                     'know_your_tools' => KytResource::REMINDERS_FINISH,
                     'uuid' => $reminder->getRoutine()->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_routine_show_reminders', [
-                    'uuid' => $reminder->getRoutine()->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_routine_show_reminders', [
+                'uuid' => $reminder->getRoutine()->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/reminder/edit.html.twig', [

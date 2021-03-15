@@ -14,6 +14,10 @@ use App\Repository\AnswerRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AnswerManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -43,15 +47,14 @@ final class AnswerManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->answerManager,
-            $this->answerFaker,
-            $this->answerManager,
-            $this->questionnaireFaker,
-            $this->answerRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->answerManager = null;
+        $this->answerFaker = null;
+        $this->answerManager = null;
+        $this->questionnaireFaker = null;
+        $this->answerRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -69,9 +72,8 @@ final class AnswerManagerTest extends AbstractDoctrineTestCase
     public function createAnswerPersisted(): Answer
     {
         $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
 
-        return $answer;
+        return $questionnaire->getQuestions()->first()->getAnswers()->first();
     }
 
     public function testConstruct(): void

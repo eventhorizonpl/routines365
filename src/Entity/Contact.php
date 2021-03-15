@@ -16,10 +16,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Contact
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const STATUS_CLOSED = 'closed';
     public const STATUS_ON_HOLD = 'on_hold';
@@ -143,7 +143,7 @@ class Contact
 
     public function setStatus(string $status): self
     {
-        if (!(in_array($status, self::getStatusValidationChoices()))) {
+        if (!(\in_array($status, self::getStatusValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid status');
         }
 
@@ -184,7 +184,7 @@ class Contact
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

@@ -8,6 +8,10 @@ use App\Entity\Testimonial;
 use App\Manager\TestimonialManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,9 +21,8 @@ final class TestimonialControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->testimonialManager
-        );
+        $this->testimonialManager = null
+        ;
 
         parent::tearDown();
     }
@@ -27,9 +30,8 @@ final class TestimonialControllerTest extends AbstractUiTestCase
     public function createTestimonial(): Testimonial
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
 
-        return $testimonial;
+        return $user->getTestimonial();
     }
 
     public function testIndex(): void

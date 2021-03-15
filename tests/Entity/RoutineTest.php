@@ -17,6 +17,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RoutineTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -30,22 +34,22 @@ final class RoutineTest extends AbstractTestCase
         $name = 'test name';
         $routine = new Routine();
         $routine->setName($name);
-        $this->assertEquals($name, $routine->__toString());
+        $this->assertSame($name, $routine->__toString());
     }
 
     public function testGetId(): void
     {
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getId());
+        $this->assertNull($routine->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getUuid());
+        $this->assertNull($routine->getUuid());
         $routine->setUuid($uuid);
-        $this->assertEquals($uuid, $routine->getUuid());
+        $this->assertSame($uuid, $routine->getUuid());
         $this->assertIsString($routine->getUuid());
     }
 
@@ -54,16 +58,16 @@ final class RoutineTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setUuid($uuid));
-        $this->assertEquals($uuid, $routine->getUuid());
+        $this->assertSame($uuid, $routine->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getCreatedBy());
+        $this->assertNull($routine->getCreatedBy());
         $routine->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $routine->getCreatedBy());
+        $this->assertSame($createdBy, $routine->getCreatedBy());
         $this->assertIsString($routine->getCreatedBy());
     }
 
@@ -72,16 +76,16 @@ final class RoutineTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $routine->getCreatedBy());
+        $this->assertSame($createdBy, $routine->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getDeletedBy());
+        $this->assertNull($routine->getDeletedBy());
         $routine->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $routine->getDeletedBy());
+        $this->assertSame($deletedBy, $routine->getDeletedBy());
         $this->assertIsString($routine->getDeletedBy());
     }
 
@@ -90,16 +94,16 @@ final class RoutineTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $routine->getDeletedBy());
+        $this->assertSame($deletedBy, $routine->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getUpdatedBy());
+        $this->assertNull($routine->getUpdatedBy());
         $routine->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $routine->getUpdatedBy());
+        $this->assertSame($updatedBy, $routine->getUpdatedBy());
         $this->assertIsString($routine->getUpdatedBy());
     }
 
@@ -108,16 +112,16 @@ final class RoutineTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $routine->getUpdatedBy());
+        $this->assertSame($updatedBy, $routine->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getCreatedAt());
+        $this->assertNull($routine->getCreatedAt());
         $routine->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $routine->getCreatedAt());
+        $this->assertSame($createdAt, $routine->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -125,16 +129,16 @@ final class RoutineTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $routine->getCreatedAt());
+        $this->assertSame($createdAt, $routine->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getDeletedAt());
+        $this->assertNull($routine->getDeletedAt());
         $routine->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $routine->getDeletedAt());
+        $this->assertSame($deletedAt, $routine->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -142,16 +146,16 @@ final class RoutineTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $routine->getDeletedAt());
+        $this->assertSame($deletedAt, $routine->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getUpdatedAt());
+        $this->assertNull($routine->getUpdatedAt());
         $routine->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $routine->getUpdatedAt());
+        $this->assertSame($updatedAt, $routine->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -159,16 +163,16 @@ final class RoutineTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $routine->getUpdatedAt());
+        $this->assertSame($updatedAt, $routine->getUpdatedAt());
     }
 
     public function testGetIsEnabled(): void
     {
         $isEnabled = true;
         $routine = new Routine();
-        $this->assertEquals(true, $routine->getIsEnabled());
+        $this->assertTrue($routine->getIsEnabled());
         $routine->setIsEnabled($isEnabled);
-        $this->assertEquals($isEnabled, $routine->getIsEnabled());
+        $this->assertSame($isEnabled, $routine->getIsEnabled());
         $this->assertIsBool($routine->getIsEnabled());
     }
 
@@ -177,7 +181,7 @@ final class RoutineTest extends AbstractTestCase
         $isEnabled = true;
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setIsEnabled($isEnabled));
-        $this->assertEquals($isEnabled, $routine->getIsEnabled());
+        $this->assertSame($isEnabled, $routine->getIsEnabled());
     }
 
     public function testGetUser(): void
@@ -185,7 +189,7 @@ final class RoutineTest extends AbstractTestCase
         $user = new User();
         $routine = new Routine();
         $routine->setUser($user);
-        $this->assertEquals($user, $routine->getUser());
+        $this->assertSame($user, $routine->getUser());
     }
 
     public function testSetUser(): void
@@ -193,7 +197,7 @@ final class RoutineTest extends AbstractTestCase
         $user = new User();
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setUser($user));
-        $this->assertEquals($user, $routine->getUser());
+        $this->assertSame($user, $routine->getUser());
     }
 
     public function testAddCompletedRoutine(): void
@@ -236,29 +240,29 @@ final class RoutineTest extends AbstractTestCase
     {
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(0, $routine->getCompletedRoutinesCount());
+        $this->assertSame(0, $routine->getCompletedRoutinesCount());
         $this->assertInstanceOf(Routine::class, $routine->addCompletedRoutine($completedRoutine));
-        $this->assertEquals(1, $routine->getCompletedRoutinesCount());
+        $this->assertSame(1, $routine->getCompletedRoutinesCount());
     }
 
     public function testGetCompletedRoutinesDevotedTime(): void
     {
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals('0h 0m', $routine->getCompletedRoutinesDevotedTime());
+        $this->assertSame('0h 0m', $routine->getCompletedRoutinesDevotedTime());
         $minutesDevoted = 30;
         $completedRoutine->setMinutesDevoted($minutesDevoted);
         $this->assertInstanceOf(Routine::class, $routine->addCompletedRoutine($completedRoutine));
-        $this->assertEquals('0h '.$minutesDevoted.'m', $routine->getCompletedRoutinesDevotedTime());
+        $this->assertSame('0h '.$minutesDevoted.'m', $routine->getCompletedRoutinesDevotedTime());
     }
 
     public function testGetCompletedRoutinesPercent(): void
     {
         $routine = new Routine();
         $completedRoutine = new CompletedRoutine();
-        $this->assertEquals(0, $routine->getCompletedRoutinesPercent());
+        $this->assertSame(0, $routine->getCompletedRoutinesPercent());
         $this->assertInstanceOf(Routine::class, $routine->addCompletedRoutine($completedRoutine));
-        $this->assertEquals(0, $routine->getCompletedRoutinesPercent());
+        $this->assertSame(0, $routine->getCompletedRoutinesPercent());
     }
 
     public function testRemoveCompletedRoutine(): void
@@ -278,9 +282,9 @@ final class RoutineTest extends AbstractTestCase
     {
         $description = 'test description';
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getDescription());
+        $this->assertNull($routine->getDescription());
         $routine->setDescription($description);
-        $this->assertEquals($description, $routine->getDescription());
+        $this->assertSame($description, $routine->getDescription());
         $this->assertIsString($routine->getDescription());
     }
 
@@ -289,16 +293,16 @@ final class RoutineTest extends AbstractTestCase
         $description = 'test description';
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setDescription($description));
-        $this->assertEquals($description, $routine->getDescription());
+        $this->assertSame($description, $routine->getDescription());
     }
 
     public function testGetName(): void
     {
         $name = 'test name';
         $routine = new Routine();
-        $this->assertEquals(null, $routine->getName());
+        $this->assertSame('', $routine->getName());
         $routine->setName($name);
-        $this->assertEquals($name, $routine->getName());
+        $this->assertSame($name, $routine->getName());
         $this->assertIsString($routine->getName());
     }
 
@@ -307,7 +311,7 @@ final class RoutineTest extends AbstractTestCase
         $name = 'test name';
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setName($name));
-        $this->assertEquals($name, $routine->getName());
+        $this->assertSame($name, $routine->getName());
     }
 
     public function testAddGoal(): void
@@ -361,23 +365,23 @@ final class RoutineTest extends AbstractTestCase
         $routine = new Routine();
         $goal = new Goal();
         $this->assertInstanceOf(Routine::class, $routine->addGoal($goal));
-        $this->assertEquals(0, $routine->getGoalsCompletedCount());
+        $this->assertSame(0, $routine->getGoalsCompletedCount());
         $goal->setIsCompleted(true);
-        $this->assertEquals(1, $routine->getGoalsCompletedCount());
+        $this->assertSame(1, $routine->getGoalsCompletedCount());
     }
 
     public function testGetGoalsCompletedPercent(): void
     {
         $routine = new Routine();
         $goal = new Goal();
-        $this->assertEquals(0, $routine->getGoalsCompletedPercent());
+        $this->assertSame(0, $routine->getGoalsCompletedPercent());
         $this->assertInstanceOf(Routine::class, $routine->addGoal($goal));
-        $this->assertEquals(0, $routine->getGoalsCompletedPercent());
+        $this->assertSame(0, $routine->getGoalsCompletedPercent());
         $goal->setIsCompleted(true);
-        $this->assertEquals(100, $routine->getGoalsCompletedPercent());
+        $this->assertSame(100, $routine->getGoalsCompletedPercent());
         $goal2 = new Goal();
         $this->assertInstanceOf(Routine::class, $routine->addGoal($goal2));
-        $this->assertEquals(50, $routine->getGoalsCompletedPercent());
+        $this->assertSame(50, $routine->getGoalsCompletedPercent());
     }
 
     public function testGetGoalsNotCompleted(): void
@@ -395,23 +399,23 @@ final class RoutineTest extends AbstractTestCase
         $routine = new Routine();
         $goal = new Goal();
         $this->assertInstanceOf(Routine::class, $routine->addGoal($goal));
-        $this->assertEquals(1, $routine->getGoalsNotCompletedCount());
+        $this->assertSame(1, $routine->getGoalsNotCompletedCount());
         $goal->setIsCompleted(true);
-        $this->assertEquals(0, $routine->getGoalsNotCompletedCount());
+        $this->assertSame(0, $routine->getGoalsNotCompletedCount());
     }
 
     public function testGetGoalsNotCompletedPercent(): void
     {
         $routine = new Routine();
         $goal = new Goal();
-        $this->assertEquals(0, $routine->getGoalsNotCompletedPercent());
+        $this->assertSame(0, $routine->getGoalsNotCompletedPercent());
         $this->assertInstanceOf(Routine::class, $routine->addGoal($goal));
-        $this->assertEquals(100, $routine->getGoalsNotCompletedPercent());
+        $this->assertSame(100, $routine->getGoalsNotCompletedPercent());
         $goal->setIsCompleted(true);
-        $this->assertEquals(0, $routine->getGoalsNotCompletedPercent());
+        $this->assertSame(0, $routine->getGoalsNotCompletedPercent());
         $goal2 = new Goal();
         $this->assertInstanceOf(Routine::class, $routine->addGoal($goal2));
-        $this->assertEquals(50, $routine->getGoalsNotCompletedPercent());
+        $this->assertSame(50, $routine->getGoalsNotCompletedPercent());
     }
 
     public function testRemoveGoal(): void
@@ -614,18 +618,18 @@ final class RoutineTest extends AbstractTestCase
     {
         $routine = new Routine();
         $sentReminder = new SentReminder();
-        $this->assertEquals(0, $routine->getSentRemindersCount());
+        $this->assertSame(0, $routine->getSentRemindersCount());
         $this->assertInstanceOf(Routine::class, $routine->addSentReminder($sentReminder));
-        $this->assertEquals(1, $routine->getSentRemindersCount());
+        $this->assertSame(1, $routine->getSentRemindersCount());
     }
 
     public function testGetSentRemindersPercent(): void
     {
         $routine = new Routine();
         $sentReminder = new SentReminder();
-        $this->assertEquals(0, $routine->getSentRemindersPercent());
+        $this->assertSame(0, $routine->getSentRemindersPercent());
         $this->assertInstanceOf(Routine::class, $routine->addSentReminder($sentReminder));
-        $this->assertEquals(100, $routine->getSentRemindersPercent());
+        $this->assertSame(100, $routine->getSentRemindersPercent());
     }
 
     public function testRemoveSentReminder(): void
@@ -646,7 +650,7 @@ final class RoutineTest extends AbstractTestCase
         $type = Routine::TYPE_HOBBY;
         $routine = new Routine();
         $routine->setType($type);
-        $this->assertEquals($type, $routine->getType());
+        $this->assertSame($type, $routine->getType());
         $this->assertIsString($routine->getType());
     }
 
@@ -667,7 +671,7 @@ final class RoutineTest extends AbstractTestCase
         $type = Routine::TYPE_HOBBY;
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setType($type));
-        $this->assertEquals($type, $routine->getType());
+        $this->assertSame($type, $routine->getType());
     }
 
     public function testSetTypeException(): void

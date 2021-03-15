@@ -8,6 +8,10 @@ use App\Entity\Answer;
 use App\Form\Admin\AnswerType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AnswerTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class AnswerTypeTest extends TypeTestCase
     {
         $formData = new Answer();
         $view = $this->factory->create(AnswerType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

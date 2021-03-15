@@ -14,10 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class UserQuestionnaireAnswer
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")

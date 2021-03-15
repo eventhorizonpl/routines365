@@ -19,7 +19,7 @@ abstract class AbstractCommandTestCase extends AbstractKernelTestCase
 
     protected function tearDown(): void
     {
-        unset($this->application);
+        $this->application = null;
 
         parent::tearDown();
     }

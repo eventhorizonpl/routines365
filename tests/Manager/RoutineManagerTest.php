@@ -17,6 +17,10 @@ use App\Repository\RoutineRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RoutineManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -58,17 +62,16 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->completedRoutineManager,
-            $this->goalManager,
-            $this->noteManager,
-            $this->reminderManager,
-            $this->rewardManager,
-            $this->routineManager,
-            $this->routineRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->completedRoutineManager = null;
+        $this->goalManager = null;
+        $this->noteManager = null;
+        $this->reminderManager = null;
+        $this->rewardManager = null;
+        $this->routineManager = null;
+        $this->routineRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -122,7 +125,7 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
 
         $routine2 = $this->routineRepository->findOneById($routineId);
         $this->assertInstanceOf(Routine::class, $routine2);
-        $this->assertEquals($name, $routine2->getName());
+        $this->assertSame($name, $routine2->getName());
     }
 
     public function testDelete(): void

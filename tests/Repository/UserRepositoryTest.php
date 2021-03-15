@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->userFaker,
-            $this->userRepository
-        );
+        $this->managerRegistry = null;
+        $this->userFaker = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -125,7 +128,7 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $endDate = new DateTimeImmutable();
 
         $users = $this->userRepository->findForRetention($endDate, $endDate, $startDate);
-        $this->assertEquals(0, $users);
+        $this->assertSame(0, $users);
         $this->assertIsInt($users);
     }
 
@@ -137,7 +140,7 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $endDate = new DateTimeImmutable();
 
         $users = $this->userRepository->findForRetentionTotal($endDate, $startDate);
-        $this->assertEquals(1, $users);
+        $this->assertSame(1, $users);
         $this->assertIsInt($users);
     }
 
@@ -160,9 +163,9 @@ final class UserRepositoryTest extends AbstractDoctrineTestCase
         $userResult = $this->userRepository->findOneByEmail($user->getEmail());
         if (true === $user->getIsEnabled()) {
             $this->assertInstanceOf(User::class, $userResult);
-            $this->assertEquals($user, $userResult);
+            $this->assertSame($user, $userResult);
         } else {
-            $this->assertEquals(null, $userResult);
+            $this->assertNull($userResult);
         }
     }
 

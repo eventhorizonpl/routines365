@@ -11,6 +11,10 @@ use App\Faker\QuestionnaireFaker;
 use App\Manager\AnswerManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AnswerControllerTest extends AbstractUiTestCase
 {
     /**
@@ -24,10 +28,9 @@ final class AnswerControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->questionnaireFaker,
-            $this->answerManager
-        );
+        $this->questionnaireFaker = null;
+        $this->answerManager = null
+        ;
 
         parent::tearDown();
     }
@@ -35,24 +38,20 @@ final class AnswerControllerTest extends AbstractUiTestCase
     public function createAnswer(): Answer
     {
         $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $answer = $questionnaire->getQuestions()->first()->getAnswers()->first();
 
-        return $answer;
+        return $questionnaire->getQuestions()->first()->getAnswers()->first();
     }
 
     public function createQuestion(): Question
     {
         $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-        $question = $questionnaire->getQuestions()->first();
 
-        return $question;
+        return $questionnaire->getQuestions()->first();
     }
 
     public function createQuestionnaire(): Questionnaire
     {
-        $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
-
-        return $questionnaire;
+        return $this->questionnaireFaker->createRichQuestionnairePersisted();
     }
 
     public function testNew(): void

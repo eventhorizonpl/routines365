@@ -10,6 +10,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SentReminderRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class SentReminderRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->sentReminderRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->sentReminderRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

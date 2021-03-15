@@ -15,6 +15,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTime;
 use DateTimeImmutable;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RetentionServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -44,14 +48,13 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->retentionFactory,
-            $this->retentionManager,
-            $this->retentionRepository,
-            $this->retentionService,
-            $this->userFaker,
-            $this->userRepository
-        );
+        $this->retentionFactory = null;
+        $this->retentionManager = null;
+        $this->retentionRepository = null;
+        $this->retentionService = null;
+        $this->userFaker = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -79,8 +82,8 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
             $date
         );
         $this->assertInstanceOf(Retention::class, $retention);
-        $this->assertEquals($data, $retention->getData());
-        $this->assertEquals($date, $retention->getDate());
+        $this->assertSame($data, $retention->getData());
+        $this->assertSame($date, $retention->getDate());
     }
 
     public function testFindOrCreate(): void
@@ -94,8 +97,8 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
             $date
         );
         $this->assertInstanceOf(Retention::class, $retention);
-        $this->assertEquals($data, $retention->getData());
-        $this->assertEquals($date, $retention->getDate());
+        $this->assertSame($data, $retention->getData());
+        $this->assertSame($date, $retention->getDate());
 
         $retentions = $this->retentionRepository->findByParametersForAdmin()->getResult();
         $this->assertCount(1, $retentions);
@@ -107,8 +110,8 @@ final class RetentionServiceTest extends AbstractDoctrineTestCase
             $date
         );
         $this->assertInstanceOf(Retention::class, $retention);
-        $this->assertEquals($data2, $retention->getData());
-        $this->assertEquals($date, $retention->getDate());
+        $this->assertSame($data2, $retention->getData());
+        $this->assertSame($date, $retention->getDate());
 
         $retentions = $this->retentionRepository->findByParametersForAdmin()->getResult();
         $this->assertCount(1, $retentions);

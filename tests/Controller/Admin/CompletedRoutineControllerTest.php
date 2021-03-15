@@ -8,6 +8,10 @@ use App\Entity\CompletedRoutine;
 use App\Manager\CompletedRoutineManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class CompletedRoutineControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->completedRoutineManager);
+        $this->completedRoutineManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class CompletedRoutineControllerTest extends AbstractUiTestCase
     public function createCompletedRoutine(): CompletedRoutine
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
 
-        return $completedRoutine;
+        return $user->getCompletedRoutines()->first();
     }
 
     public function testIndex(): void

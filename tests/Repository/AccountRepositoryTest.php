@@ -8,6 +8,10 @@ use App\Repository\AccountRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -21,10 +25,9 @@ final class AccountRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountRepository,
-            $this->managerRegistry
-        );
+        $this->accountRepository = null;
+        $this->managerRegistry = null
+        ;
 
         parent::tearDown();
     }

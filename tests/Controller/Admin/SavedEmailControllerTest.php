@@ -8,6 +8,10 @@ use App\Entity\SavedEmail;
 use App\Manager\SavedEmailManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class SavedEmailControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->savedEmailManager);
+        $this->savedEmailManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class SavedEmailControllerTest extends AbstractUiTestCase
     public function createSavedEmail(): SavedEmail
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
 
-        return $savedEmail;
+        return $user->getSavedEmails()->first();
     }
 
     public function testIndex(): void

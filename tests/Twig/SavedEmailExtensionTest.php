@@ -7,6 +7,10 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\SavedEmailExtension;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailExtensionTest extends AbstractTestCase
 {
     public function testConstruct(): void

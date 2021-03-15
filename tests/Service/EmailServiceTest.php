@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class EmailServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -24,10 +28,9 @@ final class EmailServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->emailService,
-            $this->userKpiFactory
-        );
+        $this->emailService = null;
+        $this->userKpiFactory = null
+        ;
 
         parent::tearDown();
     }

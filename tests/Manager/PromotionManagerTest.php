@@ -13,6 +13,10 @@ use App\Repository\PromotionRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -38,13 +42,12 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-            $this->promotionManager,
-            $this->promotionRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->promotionFaker = null;
+        $this->promotionManager = null;
+        $this->promotionRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -72,7 +75,7 @@ final class PromotionManagerTest extends AbstractDoctrineTestCase
 
         $promotion2 = $this->promotionRepository->findOneById($promotionId);
         $this->assertInstanceOf(Promotion::class, $promotion2);
-        $this->assertEquals($notifications, $promotion2->getNotifications());
+        $this->assertSame($notifications, $promotion2->getNotifications());
     }
 
     public function testDelete(): void

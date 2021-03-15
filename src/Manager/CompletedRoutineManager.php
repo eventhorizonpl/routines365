@@ -60,7 +60,7 @@ class CompletedRoutineManager
         $completedRoutine->setUpdatedBy($actor);
 
         $errors = $this->validate($completedRoutine);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $completedRoutine));
         }
 
@@ -98,8 +98,6 @@ class CompletedRoutineManager
 
     public function validate(CompletedRoutine $completedRoutine): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($completedRoutine, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($completedRoutine, null, ['system']);
     }
 }

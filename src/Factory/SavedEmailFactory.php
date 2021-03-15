@@ -25,7 +25,8 @@ class SavedEmailFactory
 
         $savedEmail
             ->setEmail($email)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $savedEmail;
     }

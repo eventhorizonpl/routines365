@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserQuestionnaireFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class UserQuestionnaireFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -50,6 +54,6 @@ final class UserQuestionnaireFactoryTest extends AbstractTestCase
             $isRewarded
         );
         $this->assertInstanceOf(UserQuestionnaire::class, $userQuestionnaire);
-        $this->assertEquals($isRewarded, $userQuestionnaire->getIsRewarded());
+        $this->assertSame($isRewarded, $userQuestionnaire->getIsRewarded());
     }
 }

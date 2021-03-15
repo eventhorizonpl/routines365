@@ -8,13 +8,15 @@ use App\Entity\Project;
 use App\Entity\User;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProjectControllerTest extends AbstractUiTestCase
 {
     public function createProject(User $user): Project
     {
-        $project = $user->getProjects()->first();
-
-        return $project;
+        return $user->getProjects()->first();
     }
 
     public function testIndex(): void

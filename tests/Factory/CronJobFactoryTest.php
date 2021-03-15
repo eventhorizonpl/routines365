@@ -10,6 +10,10 @@ use Cron\CronBundle\Entity\CronJob;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CronJobFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class CronJobFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -58,10 +62,10 @@ final class CronJobFactoryTest extends AbstractTestCase
             $schedule
         );
         $this->assertInstanceOf(CronJob::class, $cronJob);
-        $this->assertEquals($command, $cronJob->getCommand());
-        $this->assertEquals($description, $cronJob->getDescription());
-        $this->assertEquals($enabled, $cronJob->getEnabled());
-        $this->assertEquals($name, $cronJob->getName());
-        $this->assertEquals($schedule, $cronJob->getSchedule());
+        $this->assertSame($command, $cronJob->getCommand());
+        $this->assertSame($description, $cronJob->getDescription());
+        $this->assertSame($enabled, $cronJob->getEnabled());
+        $this->assertSame($name, $cronJob->getName());
+        $this->assertSame($schedule, $cronJob->getSchedule());
     }
 }

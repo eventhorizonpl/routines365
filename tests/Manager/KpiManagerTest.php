@@ -13,6 +13,10 @@ use App\Service\KpiService;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class KpiManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -38,13 +42,12 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->kpiManager,
-            $this->kpiRepository,
-            $this->kpiService,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->kpiManager = null;
+        $this->kpiRepository = null;
+        $this->kpiService = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -52,9 +55,8 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
     public function createKpi(): Kpi
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
 
-        return $kpi;
+        return $this->kpiService->create();
     }
 
     public function testConstruct(): void
@@ -79,7 +81,7 @@ final class KpiManagerTest extends AbstractDoctrineTestCase
 
         $kpi2 = $this->kpiRepository->findOneById($kpiId);
         $this->assertInstanceOf(Kpi::class, $kpi2);
-        $this->assertEquals($accountCounter, $kpi2->getAccountCounter());
+        $this->assertSame($accountCounter, $kpi2->getAccountCounter());
     }
 
     public function testDelete(): void

@@ -9,6 +9,10 @@ use App\Factory\CompletedRoutineFactory;
 use App\Faker\CompletedRoutineFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class CompletedRoutineFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->completedRoutineFactory,
-            $this->completedRoutineFaker
-        );
+        $this->completedRoutineFactory = null;
+        $this->completedRoutineFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -48,7 +51,7 @@ final class CompletedRoutineFakerTest extends AbstractDoctrineTestCase
             $comment,
             $minutesDevoted
         );
-        $this->assertEquals($comment, $completedRoutine->getComment());
-        $this->assertEquals($minutesDevoted, $completedRoutine->getMinutesDevoted());
+        $this->assertSame($comment, $completedRoutine->getComment());
+        $this->assertSame($minutesDevoted, $completedRoutine->getMinutesDevoted());
     }
 }

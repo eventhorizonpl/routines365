@@ -12,6 +12,10 @@ use App\Service\ReportService;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReportManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class ReportManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reportManager,
-            $this->reportRepository,
-            $this->reportService,
-            $this->validator
-        );
+        $this->reportManager = null;
+        $this->reportRepository = null;
+        $this->reportService = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -65,7 +68,7 @@ final class ReportManagerTest extends AbstractDoctrineTestCase
 
         $report2 = $this->reportRepository->findOneById($reportId);
         $this->assertInstanceOf(Report::class, $report2);
-        $this->assertEquals($status, $report2->getStatus());
+        $this->assertSame($status, $report2->getStatus());
     }
 
     public function testDelete(): void

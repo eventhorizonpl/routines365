@@ -9,6 +9,10 @@ use App\Faker\AchievementFaker;
 use App\Manager\AchievementManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,19 +26,16 @@ final class AchievementControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->achievementFaker,
-            $this->achievementManager
-        );
+        $this->achievementFaker = null;
+        $this->achievementManager = null
+        ;
 
         parent::tearDown();
     }
 
     public function createAchievement(): Achievement
     {
-        $achievement = $this->achievementFaker->createAchievementPersisted();
-
-        return $achievement;
+        return $this->achievementFaker->createAchievementPersisted();
     }
 
     public function testIndex(): void

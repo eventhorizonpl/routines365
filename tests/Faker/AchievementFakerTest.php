@@ -10,6 +10,10 @@ use App\Faker\AchievementFaker;
 use App\Manager\AchievementManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->achievementFactory,
-            $this->achievementFaker,
-            $this->achievementManager
-        );
+        $this->achievementFactory = null;
+        $this->achievementFaker = null;
+        $this->achievementManager = null
+        ;
 
         parent::tearDown();
     }
@@ -60,11 +63,11 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
             $requirement,
             $type
         );
-        $this->assertEquals($isEnabled, $achievement->getIsEnabled());
-        $this->assertEquals($level, $achievement->getLevel());
-        $this->assertEquals($name, $achievement->getName());
-        $this->assertEquals($requirement, $achievement->getRequirement());
-        $this->assertEquals($type, $achievement->getType());
+        $this->assertSame($isEnabled, $achievement->getIsEnabled());
+        $this->assertSame($level, $achievement->getLevel());
+        $this->assertSame($name, $achievement->getName());
+        $this->assertSame($requirement, $achievement->getRequirement());
+        $this->assertSame($type, $achievement->getType());
     }
 
     public function testCreateAchievementPersisted(): void
@@ -84,10 +87,10 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
             $requirement,
             $type
         );
-        $this->assertEquals($isEnabled, $achievement->getIsEnabled());
-        $this->assertEquals($level, $achievement->getLevel());
-        $this->assertEquals($name, $achievement->getName());
-        $this->assertEquals($requirement, $achievement->getRequirement());
-        $this->assertEquals($type, $achievement->getType());
+        $this->assertSame($isEnabled, $achievement->getIsEnabled());
+        $this->assertSame($level, $achievement->getLevel());
+        $this->assertSame($name, $achievement->getName());
+        $this->assertSame($requirement, $achievement->getRequirement());
+        $this->assertSame($type, $achievement->getType());
     }
 }

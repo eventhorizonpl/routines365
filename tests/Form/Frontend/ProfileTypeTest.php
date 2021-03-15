@@ -8,6 +8,10 @@ use App\Entity\Profile;
 use App\Form\Frontend\ProfileType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProfileTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class ProfileTypeTest extends TypeTestCase
     {
         $formData = new Profile();
         $view = $this->factory->create(ProfileType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

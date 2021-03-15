@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKpiFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -24,7 +28,7 @@ final class UserKpiFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -83,21 +87,21 @@ final class UserKpiFactoryTest extends AbstractTestCase
             $userQuestionnaireCounter
         );
         $this->assertInstanceOf(UserKpi::class, $userKpi);
-        $this->assertEquals($accountOperationCounter, $userKpi->getAccountOperationCounter());
-        $this->assertEquals($awardedRewardCounter, $userKpi->getAwardedRewardCounter());
-        $this->assertEquals($completedGoalCounter, $userKpi->getCompletedGoalCounter());
-        $this->assertEquals($completedProjectCounter, $userKpi->getCompletedProjectCounter());
-        $this->assertEquals($completedRoutineCounter, $userKpi->getCompletedRoutineCounter());
-        $this->assertEquals($contactCounter, $userKpi->getContactCounter());
-        $this->assertEquals($date, $userKpi->getDate());
-        $this->assertEquals($goalCounter, $userKpi->getGoalCounter());
-        $this->assertEquals($noteCounter, $userKpi->getNoteCounter());
-        $this->assertEquals($projectCounter, $userKpi->getProjectCounter());
-        $this->assertEquals($reminderCounter, $userKpi->getReminderCounter());
-        $this->assertEquals($rewardCounter, $userKpi->getRewardCounter());
-        $this->assertEquals($routineCounter, $userKpi->getRoutineCounter());
-        $this->assertEquals($savedEmailCounter, $userKpi->getSavedEmailCounter());
-        $this->assertEquals($type, $userKpi->getType());
-        $this->assertEquals($userQuestionnaireCounter, $userKpi->getUserQuestionnaireCounter());
+        $this->assertSame($accountOperationCounter, $userKpi->getAccountOperationCounter());
+        $this->assertSame($awardedRewardCounter, $userKpi->getAwardedRewardCounter());
+        $this->assertSame($completedGoalCounter, $userKpi->getCompletedGoalCounter());
+        $this->assertSame($completedProjectCounter, $userKpi->getCompletedProjectCounter());
+        $this->assertSame($completedRoutineCounter, $userKpi->getCompletedRoutineCounter());
+        $this->assertSame($contactCounter, $userKpi->getContactCounter());
+        $this->assertSame($date, $userKpi->getDate());
+        $this->assertSame($goalCounter, $userKpi->getGoalCounter());
+        $this->assertSame($noteCounter, $userKpi->getNoteCounter());
+        $this->assertSame($projectCounter, $userKpi->getProjectCounter());
+        $this->assertSame($reminderCounter, $userKpi->getReminderCounter());
+        $this->assertSame($rewardCounter, $userKpi->getRewardCounter());
+        $this->assertSame($routineCounter, $userKpi->getRoutineCounter());
+        $this->assertSame($savedEmailCounter, $userKpi->getSavedEmailCounter());
+        $this->assertSame($type, $userKpi->getType());
+        $this->assertSame($userQuestionnaireCounter, $userKpi->getUserQuestionnaireCounter());
     }
 }

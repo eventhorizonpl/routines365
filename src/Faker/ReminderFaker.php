@@ -62,7 +62,7 @@ class ReminderFaker
             );
         }
 
-        $reminder = $this->reminderFactory->createReminderWithRequired(
+        return $this->reminderFactory->createReminderWithRequired(
             $hour,
             $isEnabled,
             $minutesBefore,
@@ -71,7 +71,5 @@ class ReminderFaker
             $sendSms,
             $type
         );
-
-        return $reminder;
     }
 }

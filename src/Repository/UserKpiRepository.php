@@ -26,18 +26,20 @@ class UserKpiRepository extends ServiceEntityRepository
             ->leftJoin('uku.profile', 'ukup')
             ->leftJoin('uku.testimonial', 'ukut')
             ->leftJoin('uku.userKyt', 'ukuuk')
-            ->addOrderBy('uk.createdAt', 'DESC');
+            ->addOrderBy('uk.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('type', $parameters)) {
+            if (\array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
                     $queryBuilder->andWhere('uk.type = :type')
-                        ->setParameter('type', $type);
+                        ->setParameter('type', $type)
+                    ;
                 }
             }
 
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -46,23 +48,26 @@ class UserKpiRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('uku.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('uk.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('uk.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -78,7 +83,8 @@ class UserKpiRepository extends ServiceEntityRepository
             ->orderBy('uk.date', 'DESC')
             ->setMaxResults(1)
             ->setParameter('type', $type)
-            ->setParameter('user', $user);
+            ->setParameter('user', $user)
+        ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }

@@ -37,7 +37,7 @@ class V1NoteFixtures extends Fixture implements ContainerAwareInterface, Depende
     {
         $kernel = $this->container->get('kernel');
         $notes = [];
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($noteId = 1; $noteId <= self::NOTE_LIMIT; ++$noteId) {

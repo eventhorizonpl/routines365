@@ -65,7 +65,7 @@ class RoutineManager
         $routine->setUpdatedBy($actor);
 
         $errors = $this->validate($routine);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $routine));
         }
 
@@ -123,8 +123,6 @@ class RoutineManager
 
     public function validate(Routine $routine): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($routine, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($routine, null, ['system']);
     }
 }

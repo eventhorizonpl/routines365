@@ -12,6 +12,10 @@ use DateTimeImmutable;
 use ReflectionMethod;
 use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteVoterTest extends AbstractDoctrineTestCase
 {
     /**
@@ -29,11 +33,10 @@ final class QuoteVoterTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->quoteFaker,
-            $this->quoteVoter,
-            $this->userFaker
-        );
+        $this->quoteFaker = null;
+        $this->quoteVoter = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

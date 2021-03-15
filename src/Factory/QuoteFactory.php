@@ -27,7 +27,8 @@ class QuoteFactory
         $quote
             ->setAuthor($author)
             ->setContent($content)
-            ->setIsVisible($isVisible);
+            ->setIsVisible($isVisible)
+        ;
 
         return $quote;
     }

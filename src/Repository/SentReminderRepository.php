@@ -27,22 +27,25 @@ class SentReminderRepository extends ServiceEntityRepository
             ->leftJoin('srru.profile', 'srrup')
             ->leftJoin('srru.testimonial', 'srrut')
             ->leftJoin('srru.userKyt', 'srruuk')
-            ->addOrderBy('sr.createdAt', 'DESC');
+            ->addOrderBy('sr.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('sr.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('sr.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }

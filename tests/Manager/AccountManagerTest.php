@@ -12,6 +12,10 @@ use App\Repository\AccountRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountManager,
-            $this->accountRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->accountManager = null;
+        $this->accountRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
     public function createAccount(): Account
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $account = $user->getAccount();
 
-        return $account;
+        return $user->getAccount();
     }
 
     public function testConstruct(): void
@@ -74,7 +76,7 @@ final class AccountManagerTest extends AbstractDoctrineTestCase
 
         $account2 = $this->accountRepository->findOneById($accountId);
         $this->assertInstanceOf(Account::class, $account2);
-        $this->assertEquals($availableNotifications, $account2->getAvailableNotifications());
+        $this->assertSame($availableNotifications, $account2->getAvailableNotifications());
     }
 
     public function testDelete(): void

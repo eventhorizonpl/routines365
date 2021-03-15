@@ -71,7 +71,7 @@ class UserKpiManager
         $userKpi->setEfficiency11($efficiency11);
 
         $errors = $this->validate($userKpi);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $userKpi));
         }
 
@@ -107,8 +107,6 @@ class UserKpiManager
 
     public function validate(UserKpi $userKpi): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($userKpi, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($userKpi, null, ['system']);
     }
 }

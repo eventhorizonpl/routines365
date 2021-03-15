@@ -18,6 +18,10 @@ use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -55,16 +59,15 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->paginator,
-            $this->translator,
-            $this->userFaker,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
+        $this->managerRegistry = null;
+        $this->paginator = null;
+        $this->translator = null;
+        $this->userFaker = null;
+        $this->userKpiFactory = null;
+        $this->userKpiManager = null;
+        $this->userKpiRepository = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -74,7 +77,8 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $userKpiService = new UserKpiService(
             $emailService,
             $this->paginator,
@@ -84,9 +88,8 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
             $this->userKpiRepository,
             $this->userRepository
         );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
 
-        return $userKpi;
+        return $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
     }
 
     public function testConstruct(): void

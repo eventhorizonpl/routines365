@@ -12,6 +12,10 @@ use App\Faker\UserQuestionnaireFaker;
 use App\Manager\UserQuestionnaireManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserQuestionnaireFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -37,13 +41,12 @@ final class UserQuestionnaireFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->questionnaireFaker,
-            $this->userFaker,
-            $this->userQuestionnaireFactory,
-            $this->userQuestionnaireFaker,
-            $this->userQuestionnaireManager
-        );
+        $this->questionnaireFaker = null;
+        $this->userFaker = null;
+        $this->userQuestionnaireFactory = null;
+        $this->userQuestionnaireFaker = null;
+        $this->userQuestionnaireManager = null
+        ;
 
         parent::tearDown();
     }
@@ -67,7 +70,7 @@ final class UserQuestionnaireFakerTest extends AbstractDoctrineTestCase
         $userQuestionnaire = $this->userQuestionnaireFaker->createUserQuestionnaire(
             $isRewarded
         );
-        $this->assertEquals($isRewarded, $userQuestionnaire->getIsRewarded());
+        $this->assertSame($isRewarded, $userQuestionnaire->getIsRewarded());
     }
 
     public function testCreateUserQuestionnairePersisted(): void
@@ -86,6 +89,6 @@ final class UserQuestionnaireFakerTest extends AbstractDoctrineTestCase
             $questionnaire,
             $isRewarded
         );
-        $this->assertEquals($isRewarded, $userQuestionnaire->getIsRewarded());
+        $this->assertSame($isRewarded, $userQuestionnaire->getIsRewarded());
     }
 }

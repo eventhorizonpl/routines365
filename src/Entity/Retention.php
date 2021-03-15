@@ -15,8 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Retention
 {
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\Column(type="json")

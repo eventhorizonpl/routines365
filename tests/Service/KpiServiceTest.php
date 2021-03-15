@@ -37,6 +37,10 @@ use App\Repository\UserRepository;
 use App\Service\KpiService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class KpiServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -162,38 +166,37 @@ final class KpiServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountRepository,
-            $this->accountOperationRepository,
-            $this->achievementRepository,
-            $this->answerRepository,
-            $this->completedRoutineRepository,
-            $this->contactRepository,
-            $this->goalRepository,
-            $this->kpiFactory,
-            $this->kpiManager,
-            $this->noteRepository,
-            $this->profileRepository,
-            $this->projectRepository,
-            $this->promotionRepository,
-            $this->questionRepository,
-            $this->questionnaireRepository,
-            $this->quoteRepository,
-            $this->reminderMessageRepository,
-            $this->reminderRepository,
-            $this->retentionRepository,
-            $this->rewardRepository,
-            $this->routineRepository,
-            $this->savedEmailRepository,
-            $this->sentReminderRepository,
-            $this->userKpiRepository,
-            $this->userKytRepository,
-            $this->userQuestionnaireAnswerRepository,
-            $this->userQuestionnaireRepository,
-            $this->userRepository,
-            $this->kpiService,
-            $this->userFaker
-        );
+        $this->accountRepository = null;
+        $this->accountOperationRepository = null;
+        $this->achievementRepository = null;
+        $this->answerRepository = null;
+        $this->completedRoutineRepository = null;
+        $this->contactRepository = null;
+        $this->goalRepository = null;
+        $this->kpiFactory = null;
+        $this->kpiManager = null;
+        $this->noteRepository = null;
+        $this->profileRepository = null;
+        $this->projectRepository = null;
+        $this->promotionRepository = null;
+        $this->questionRepository = null;
+        $this->questionnaireRepository = null;
+        $this->quoteRepository = null;
+        $this->reminderMessageRepository = null;
+        $this->reminderRepository = null;
+        $this->retentionRepository = null;
+        $this->rewardRepository = null;
+        $this->routineRepository = null;
+        $this->savedEmailRepository = null;
+        $this->sentReminderRepository = null;
+        $this->userKpiRepository = null;
+        $this->userKytRepository = null;
+        $this->userQuestionnaireAnswerRepository = null;
+        $this->userQuestionnaireRepository = null;
+        $this->userRepository = null;
+        $this->kpiService = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

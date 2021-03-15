@@ -64,16 +64,12 @@ abstract class AbstractUiTestCase extends PantherTestCase implements ServiceCont
 
     public function createRegular(): User
     {
-        $user = $this->userFaker->createCustomerUserPersisted();
-
-        return $user;
+        return $this->userFaker->createCustomerUserPersisted();
     }
 
     public function createRich(): User
     {
-        $user = $this->userFaker->createRichUserPersisted();
-
-        return $user;
+        return $this->userFaker->createRichUserPersisted();
     }
 
     public function purge(): void
@@ -87,16 +83,16 @@ abstract class AbstractUiTestCase extends PantherTestCase implements ServiceCont
         $this->purge();
         $this->entityManager->close();
         $this->entityManager = null;
-        unset(
-            $this->client,
-            $this->entityManager,
-            $this->userFaker
-        );
+
+        $this->client = null;
+        $this->entityManager = null;
+        $this->userFaker = null
+        ;
 
         $refl = new ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {
-            if ((!($prop->isStatic())) &&
-                (0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_'))
+            if ((!($prop->isStatic()))
+                && (0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_'))
             ) {
                 $prop->setAccessible(true);
                 $prop->setValue($this, null);

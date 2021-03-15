@@ -29,7 +29,8 @@ class RewardFactory
             ->setIsAwarded($isAwarded)
             ->setName($name)
             ->setRequiredNumberOfCompletions($requiredNumberOfCompletions)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $reward;
     }

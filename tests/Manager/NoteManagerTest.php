@@ -12,6 +12,10 @@ use App\Repository\NoteRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class NoteManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->noteManager,
-            $this->noteRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->noteManager = null;
+        $this->noteRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
     public function createNote(): Note
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $note = $user->getNotes()->first();
 
-        return $note;
+        return $user->getNotes()->first();
     }
 
     public function testConstruct(): void
@@ -74,7 +76,7 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
 
         $note2 = $this->noteRepository->findOneById($noteId);
         $this->assertInstanceOf(Note::class, $note2);
-        $this->assertEquals($title, $note2->getTitle());
+        $this->assertSame($title, $note2->getTitle());
     }
 
     public function testDelete(): void

@@ -31,11 +31,9 @@ class NoteFaker
             $title = (string) $this->faker->text(255);
         }
 
-        $note = $this->noteFactory->createNoteWithRequired(
+        return $this->noteFactory->createNoteWithRequired(
             $content,
             $title
         );
-
-        return $note;
     }
 }

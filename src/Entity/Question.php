@@ -16,12 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Question
 {
+    use Traits\BlameableTrait;
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\IsEnabledTrait;
     use Traits\PositionTrait;
-    use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_MULTIPLE_ANSWER = 'multiple_answer';
     public const TYPE_SINGLE_ANSWER = 'single_answer';
@@ -82,9 +82,7 @@ class Question
 
     public function getAnswers(): Collection
     {
-        return $this->answers->filter(function (Answer $answer) {
-            return null === $answer->getDeletedAt();
-        });
+        return $this->answers->filter(fn (Answer $answer) => null === $answer->getDeletedAt());
     }
 
     public function getAnswersAll(): Collection
@@ -145,7 +143,7 @@ class Question
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

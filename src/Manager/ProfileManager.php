@@ -61,7 +61,8 @@ class ProfileManager
 
         if (null !== $profile->getPhone()) {
             $descriptionForNumber = PhoneNumberOfflineGeocoder::getInstance()
-                ->getDescriptionForNumber($profile->getPhone(), 'en');
+                ->getDescriptionForNumber($profile->getPhone(), 'en')
+            ;
             try {
                 $country = (new ISO3166())->name($descriptionForNumber);
                 $profile->setCountry($country['alpha2']);
@@ -81,7 +82,7 @@ class ProfileManager
         }
 
         $errors = $this->validate($profile);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $profile));
         }
 
@@ -123,8 +124,6 @@ class ProfileManager
 
     public function validate(Profile $profile): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($profile);
-
-        return $errors;
+        return $this->validator->validate($profile);
     }
 }

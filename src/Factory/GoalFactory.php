@@ -25,7 +25,8 @@ class GoalFactory
 
         $goal
             ->setIsCompleted($isCompleted)
-            ->setName($name);
+            ->setName($name)
+        ;
 
         return $goal;
     }

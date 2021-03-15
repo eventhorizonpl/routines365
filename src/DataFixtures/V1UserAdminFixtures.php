@@ -42,7 +42,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         );
         $user = $this->userService->encodePassword($user, 'michal');
         $user->getProfile()->setSendWeeklyMonthlyStatistics(false)
-            ->setTimezone('Europe/Warsaw');
+            ->setTimezone('Europe/Warsaw')
+        ;
 
         $this->userManager->save($user);
 
@@ -59,7 +60,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
             ->setLastName('Piotrowski')
             ->setSendWeeklyMonthlyStatistics(false)
             ->setShowMotivationalMessages(true)
-            ->setTimezone('Europe/Warsaw');
+            ->setTimezone('Europe/Warsaw')
+        ;
 
         $this->userManager->save($user);
 
@@ -74,7 +76,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
             ->setLastName('Piotrowska')
             ->setSendWeeklyMonthlyStatistics(false)
             ->setShowMotivationalMessages(true)
-            ->setTimezone('Europe/Warsaw');
+            ->setTimezone('Europe/Warsaw')
+        ;
 
         $this->userManager->save($user);
     }

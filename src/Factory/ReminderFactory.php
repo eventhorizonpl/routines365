@@ -36,7 +36,8 @@ class ReminderFactory
             ->setSendEmail($sendEmail)
             ->setSendMotivationalMessage($sendMotivationalMessage)
             ->setSendSms($sendSms)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $reminder;
     }

@@ -8,6 +8,10 @@ use App\Entity\Routine;
 use App\Manager\RoutineManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RoutineControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class RoutineControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->routineManager);
+        $this->routineManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class RoutineControllerTest extends AbstractUiTestCase
     public function createRoutine(): Routine
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $routine = $user->getRoutines()->first();
 
-        return $routine;
+        return $user->getRoutines()->first();
     }
 
     public function testIndex(): void

@@ -43,13 +43,11 @@ class AccountOperationFaker
             );
         }
 
-        $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
+        return $this->accountOperationFactory->createAccountOperationWithRequired(
             $description,
             $notifications,
             $smsNotifications,
             $type
         );
-
-        return $accountOperation;
     }
 }

@@ -18,7 +18,7 @@ class RewardVoter extends Voter
 
     protected function supports($attribute, $subject): bool
     {
-        return in_array($attribute, [self::DELETE, self::EDIT, self::VIEW])
+        return \in_array($attribute, [self::DELETE, self::EDIT, self::VIEW], true)
             && $subject instanceof Reward;
     }
 

@@ -37,7 +37,7 @@ class V1ReminderFixtures extends Fixture implements ContainerAwareInterface, Dep
     {
         $kernel = $this->container->get('kernel');
         $reminders = [];
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($reminderId = 1; $reminderId <= self::REMINDER_LIMIT; ++$reminderId) {

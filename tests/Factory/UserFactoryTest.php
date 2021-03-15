@@ -13,6 +13,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -26,7 +30,7 @@ final class UserFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -61,7 +65,7 @@ final class UserFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user);
         $this->assertTrue($user->getIsEnabled());
         $this->assertTrue($user->getIsVerified());
-        $this->assertEquals(User::TYPE_LEAD, $user->getType());
+        $this->assertSame(User::TYPE_LEAD, $user->getType());
     }
 
     public function testCreateUserWithRequired(): void
@@ -85,9 +89,9 @@ final class UserFactoryTest extends AbstractTestCase
             $type
         );
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($isEnabled, $user->getIsEnabled());
-        $this->assertEquals($roles, $user->getRoles());
-        $this->assertEquals($type, $user->getType());
+        $this->assertSame($email, $user->getEmail());
+        $this->assertSame($isEnabled, $user->getIsEnabled());
+        $this->assertSame($roles, $user->getRoles());
+        $this->assertSame($type, $user->getType());
     }
 }

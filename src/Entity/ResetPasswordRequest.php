@@ -15,8 +15,8 @@ use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestTrait;
  */
 class ResetPasswordRequest implements ResetPasswordRequestInterface
 {
-    use Traits\IdTrait;
     use ResetPasswordRequestTrait;
+    use Traits\IdTrait;
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")

@@ -9,6 +9,10 @@ use App\Service\Sms\SmsService;
 use App\Tests\AbstractDoctrineTestCase;
 use AsyncAws\Core\Exception\Http\NetworkException;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SmsServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class SmsServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->amazonSnsService,
-            $this->smsService
-        );
+        $this->amazonSnsService = null;
+        $this->smsService = null
+        ;
 
         parent::tearDown();
     }

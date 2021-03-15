@@ -16,10 +16,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Reward
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const CONTEXT_DEFAULT = 'default';
     public const CONTEXT_ROUTINE = 'routine';
@@ -233,7 +233,7 @@ class Reward
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class QuoteFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -54,8 +58,8 @@ final class QuoteFactoryTest extends AbstractTestCase
             $isVisible
         );
         $this->assertInstanceOf(Quote::class, $quote);
-        $this->assertEquals($author, $quote->getAuthor());
-        $this->assertEquals($content, $quote->getContent());
-        $this->assertEquals($isVisible, $quote->getIsVisible());
+        $this->assertSame($author, $quote->getAuthor());
+        $this->assertSame($content, $quote->getContent());
+        $this->assertSame($isVisible, $quote->getIsVisible());
     }
 }

@@ -9,6 +9,10 @@ use App\Factory\ProjectFactory;
 use App\Faker\ProjectFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProjectFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class ProjectFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->projectFactory,
-            $this->projectFaker
-        );
+        $this->projectFactory = null;
+        $this->projectFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -50,8 +53,8 @@ final class ProjectFakerTest extends AbstractDoctrineTestCase
             $isCompleted,
             $name
         );
-        $this->assertEquals($description, $project->getDescription());
-        $this->assertEquals($isCompleted, $project->getIsCompleted());
-        $this->assertEquals($name, $project->getName());
+        $this->assertSame($description, $project->getDescription());
+        $this->assertSame($isCompleted, $project->getIsCompleted());
+        $this->assertSame($name, $project->getName());
     }
 }

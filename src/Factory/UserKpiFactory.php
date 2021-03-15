@@ -54,7 +54,8 @@ class UserKpiFactory
             ->setRoutineCounter($routineCounter)
             ->setSavedEmailCounter($savedEmailCounter)
             ->setType($type)
-            ->setUserQuestionnaireCounter($userQuestionnaireCounter);
+            ->setUserQuestionnaireCounter($userQuestionnaireCounter)
+        ;
 
         return $userUserKpi;
     }

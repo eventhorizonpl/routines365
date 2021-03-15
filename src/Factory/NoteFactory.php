@@ -25,7 +25,8 @@ class NoteFactory
 
         $note
             ->setContent($content)
-            ->setTitle($title);
+            ->setTitle($title)
+        ;
 
         return $note;
     }

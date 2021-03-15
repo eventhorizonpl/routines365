@@ -10,6 +10,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class SavedEmailRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->savedEmailRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->savedEmailRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

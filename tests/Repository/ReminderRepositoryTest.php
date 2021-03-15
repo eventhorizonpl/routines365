@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->reminderRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->reminderRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -98,9 +101,9 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
         $reminderResult = $this->reminderRepository->findOneByNextDate($reminder->getNextDate());
         if ((true === $reminder->getIsEnabled()) && (true === $reminder->getRoutine()->getIsEnabled())) {
             $this->assertInstanceOf(Reminder::class, $reminderResult);
-            $this->assertEquals($reminder, $reminderResult);
+            $this->assertSame($reminder, $reminderResult);
         } else {
-            $this->assertEquals(null, $reminderResult);
+            $this->assertNull($reminderResult);
         }
     }
 
@@ -113,9 +116,9 @@ final class ReminderRepositoryTest extends AbstractDoctrineTestCase
         $reminderResult = $this->reminderRepository->findOneByUser($user);
         if ((true === $reminder->getIsEnabled()) && (true === $reminder->getRoutine()->getIsEnabled())) {
             $this->assertInstanceOf(Reminder::class, $reminderResult);
-            $this->assertEquals($reminder, $reminderResult);
+            $this->assertSame($reminder, $reminderResult);
         } else {
-            $this->assertEquals(null, $reminderResult);
+            $this->assertNull($reminderResult);
         }
     }
 

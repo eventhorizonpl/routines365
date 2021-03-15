@@ -49,10 +49,10 @@ class ProfileController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $profileManager->save($profile, (string) $this->getUser());
 
-            if ((false === $profile->getIsVerified()) &&
-                (null !== $profile->getPhone()) &&
-                (null !== $profile->getPhoneVerificationCode()) &&
-                (5 > $profile->getNumberOfPhoneVerificationTries())
+            if ((false === $profile->getIsVerified())
+                && (null !== $profile->getPhone())
+                && (null !== $profile->getPhoneVerificationCode())
+                && (5 > $profile->getNumberOfPhoneVerificationTries())
             ) {
                 $this->addFlash(
                     'success',
@@ -64,7 +64,8 @@ class ProfileController extends AbstractController
                 ]);
 
                 return $this->redirectToRoute('frontend_profile_phone_verification_code');
-            } elseif (5 <= $profile->getNumberOfPhoneVerificationTries()) {
+            }
+            if (5 <= $profile->getNumberOfPhoneVerificationTries()) {
                 $this->addFlash(
                     'danger',
                     $translator->trans('You exceeded your phone number verification attempts!')
@@ -75,9 +76,9 @@ class ProfileController extends AbstractController
                 return $this->redirectToRoute('frontend_profile_show', [
                     'know_your_tools' => KytResource::BASIC_CONFIGURATION_FINISH,
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_profile_show');
             }
+
+            return $this->redirectToRoute('frontend_profile_show');
         }
 
         return $this->render('frontend/profile/edit.html.twig', [
@@ -121,9 +122,9 @@ class ProfileController extends AbstractController
 
             $profileManager->save($profile, (string) $this->getUser());
 
-            if ((false === $profile->getIsVerified()) &&
-                (null !== $profile->getPhoneVerificationCode()) &&
-                (5 > $profile->getNumberOfPhoneVerificationTries())
+            if ((false === $profile->getIsVerified())
+                && (null !== $profile->getPhoneVerificationCode())
+                && (5 > $profile->getNumberOfPhoneVerificationTries())
             ) {
                 $this->addFlash(
                     'success',

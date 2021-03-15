@@ -60,7 +60,7 @@ class NoteManager
         $note->setUpdatedBy($actor);
 
         $errors = $this->validate($note);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $note));
         }
 
@@ -98,8 +98,6 @@ class NoteManager
 
     public function validate(Note $note): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($note, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($note, null, ['system']);
     }
 }

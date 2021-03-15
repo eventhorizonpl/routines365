@@ -56,7 +56,7 @@ class TestimonialManager
         $testimonial->setUpdatedBy($actor);
 
         $errors = $this->validate($testimonial);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $testimonial));
         }
 
@@ -94,8 +94,6 @@ class TestimonialManager
 
     public function validate(Testimonial $testimonial): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($testimonial, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($testimonial, null, ['system']);
     }
 }

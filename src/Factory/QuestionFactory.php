@@ -29,7 +29,8 @@ class QuestionFactory
             ->setIsEnabled($isEnabled)
             ->setPosition($position)
             ->setTitle($title)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $question;
     }

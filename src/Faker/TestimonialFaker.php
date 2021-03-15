@@ -38,12 +38,10 @@ class TestimonialFaker
             $signature = (string) $this->faker->name;
         }
 
-        $testimonial = $this->testimonialFactory->createTestimonialWithRequired(
+        return $this->testimonialFactory->createTestimonialWithRequired(
             $content,
             $isVisible,
             $signature
         );
-
-        return $testimonial;
     }
 }

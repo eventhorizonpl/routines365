@@ -9,6 +9,10 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Validator\Validation;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ResetPasswordRequestFormTypeTest extends TypeTestCase
 {
     /**

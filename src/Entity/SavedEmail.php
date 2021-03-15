@@ -16,10 +16,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class SavedEmail
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_INVITATION = 'invitation';
     public const TYPE_MOTIVATIONAL = 'motivational';
@@ -94,7 +94,7 @@ class SavedEmail
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

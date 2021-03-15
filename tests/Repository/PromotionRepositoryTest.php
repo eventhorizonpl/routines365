@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class PromotionRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->promotionFaker,
-            $this->promotionRepository
-        );
+        $this->managerRegistry = null;
+        $this->promotionFaker = null;
+        $this->promotionRepository = null
+        ;
 
         parent::tearDown();
     }

@@ -14,10 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Note
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const CONTEXT_DEFAULT = 'default';
     public const CONTEXT_ROUTINE = 'routine';

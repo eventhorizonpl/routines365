@@ -54,7 +54,7 @@ class KpiManager
         $kpi->setUpdatedAt($date);
 
         $errors = $this->validate($kpi);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $kpi));
         }
 
@@ -90,8 +90,6 @@ class KpiManager
 
     public function validate(Kpi $kpi): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($kpi, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($kpi, null, ['system']);
     }
 }

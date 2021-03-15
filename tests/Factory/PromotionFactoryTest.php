@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class PromotionFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -63,11 +67,11 @@ final class PromotionFactoryTest extends AbstractTestCase
             $type
         );
         $this->assertInstanceOf(Promotion::class, $promotion);
-        $this->assertEquals($newCode, $promotion->getCode());
-        $this->assertEquals($notifications, $promotion->getNotifications());
-        $this->assertEquals($isEnabled, $promotion->getIsEnabled());
-        $this->assertEquals($name, $promotion->getName());
-        $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());
-        $this->assertEquals($type, $promotion->getType());
+        $this->assertSame($newCode, $promotion->getCode());
+        $this->assertSame($notifications, $promotion->getNotifications());
+        $this->assertSame($isEnabled, $promotion->getIsEnabled());
+        $this->assertSame($name, $promotion->getName());
+        $this->assertSame($smsNotifications, $promotion->getSmsNotifications());
+        $this->assertSame($type, $promotion->getType());
     }
 }

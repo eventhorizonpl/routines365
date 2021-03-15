@@ -21,7 +21,8 @@ class UserFactory
     {
         $user = new User();
         $user->setReferrerCode((string) Uuid::v4())
-            ->setUuid((string) Uuid::v4());
+            ->setUuid((string) Uuid::v4())
+        ;
         if (null === $account) {
             $account = $this->accountFactory->createAccount();
         }
@@ -32,7 +33,8 @@ class UserFactory
         $userKyt->setUser($user);
         $user->setAccount($account)
             ->setProfile($profile)
-            ->setUserKyt($userKyt);
+            ->setUserKyt($userKyt)
+        ;
 
         return $user;
     }
@@ -44,7 +46,8 @@ class UserFactory
         $user
             ->setIsEnabled(true)
             ->setIsVerified(true)
-            ->setType(User::TYPE_LEAD);
+            ->setType(User::TYPE_LEAD)
+        ;
 
         return $user;
     }
@@ -61,7 +64,8 @@ class UserFactory
             ->setEmail($email)
             ->setIsEnabled($isEnabled)
             ->setRoles($roles)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $user;
     }

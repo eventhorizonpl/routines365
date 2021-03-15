@@ -51,15 +51,13 @@ class AchievementFaker
             );
         }
 
-        $achievement = $this->achievementFactory->createAchievementWithRequired(
+        return $this->achievementFactory->createAchievementWithRequired(
             $isEnabled,
             $level,
             $name,
             $requirement,
             $type
         );
-
-        return $achievement;
     }
 
     public function createAchievementPersisted(

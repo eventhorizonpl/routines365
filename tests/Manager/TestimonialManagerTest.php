@@ -12,6 +12,10 @@ use App\Repository\TestimonialRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->testimonialManager,
-            $this->testimonialRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->testimonialManager = null;
+        $this->testimonialRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     public function createTestimonial(): Testimonial
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $testimonial = $user->getTestimonial();
 
-        return $testimonial;
+        return $user->getTestimonial();
     }
 
     public function testConstruct(): void
@@ -77,7 +79,7 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
 
         $testimonial2 = $this->testimonialRepository->findOneById($testimonialId);
         $this->assertInstanceOf(Testimonial::class, $testimonial2);
-        $this->assertEquals($content, $testimonial2->getContent());
+        $this->assertSame($content, $testimonial2->getContent());
     }
 
     public function testDelete(): void

@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AchievementTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -24,22 +28,22 @@ final class AchievementTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $achievement = new Achievement();
         $achievement->setUuid($uuid);
-        $this->assertEquals($uuid, $achievement->__toString());
+        $this->assertSame($uuid, $achievement->__toString());
     }
 
     public function testGetId(): void
     {
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getId());
+        $this->assertNull($achievement->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getUuid());
+        $this->assertNull($achievement->getUuid());
         $achievement->setUuid($uuid);
-        $this->assertEquals($uuid, $achievement->getUuid());
+        $this->assertSame($uuid, $achievement->getUuid());
         $this->assertIsString($achievement->getUuid());
     }
 
@@ -48,16 +52,16 @@ final class AchievementTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setUuid($uuid));
-        $this->assertEquals($uuid, $achievement->getUuid());
+        $this->assertSame($uuid, $achievement->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getCreatedBy());
+        $this->assertNull($achievement->getCreatedBy());
         $achievement->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $achievement->getCreatedBy());
+        $this->assertSame($createdBy, $achievement->getCreatedBy());
         $this->assertIsString($achievement->getCreatedBy());
     }
 
@@ -66,16 +70,16 @@ final class AchievementTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $achievement->getCreatedBy());
+        $this->assertSame($createdBy, $achievement->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getDeletedBy());
+        $this->assertNull($achievement->getDeletedBy());
         $achievement->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $achievement->getDeletedBy());
+        $this->assertSame($deletedBy, $achievement->getDeletedBy());
         $this->assertIsString($achievement->getDeletedBy());
     }
 
@@ -84,16 +88,16 @@ final class AchievementTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $achievement->getDeletedBy());
+        $this->assertSame($deletedBy, $achievement->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getUpdatedBy());
+        $this->assertNull($achievement->getUpdatedBy());
         $achievement->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $achievement->getUpdatedBy());
+        $this->assertSame($updatedBy, $achievement->getUpdatedBy());
         $this->assertIsString($achievement->getUpdatedBy());
     }
 
@@ -102,16 +106,16 @@ final class AchievementTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $achievement->getUpdatedBy());
+        $this->assertSame($updatedBy, $achievement->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getCreatedAt());
+        $this->assertNull($achievement->getCreatedAt());
         $achievement->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $achievement->getCreatedAt());
+        $this->assertSame($createdAt, $achievement->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -119,16 +123,16 @@ final class AchievementTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $achievement->getCreatedAt());
+        $this->assertSame($createdAt, $achievement->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getDeletedAt());
+        $this->assertNull($achievement->getDeletedAt());
         $achievement->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $achievement->getDeletedAt());
+        $this->assertSame($deletedAt, $achievement->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -136,16 +140,16 @@ final class AchievementTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $achievement->getDeletedAt());
+        $this->assertSame($deletedAt, $achievement->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getUpdatedAt());
+        $this->assertNull($achievement->getUpdatedAt());
         $achievement->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $achievement->getUpdatedAt());
+        $this->assertSame($updatedAt, $achievement->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -153,7 +157,7 @@ final class AchievementTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $achievement->getUpdatedAt());
+        $this->assertSame($updatedAt, $achievement->getUpdatedAt());
     }
 
     public function testGetIsEnabled(): void
@@ -162,7 +166,7 @@ final class AchievementTest extends AbstractTestCase
         $achievement = new Achievement();
         $this->assertTrue($achievement->getIsEnabled());
         $achievement->setIsEnabled($isEnabled);
-        $this->assertEquals($isEnabled, $achievement->getIsEnabled());
+        $this->assertSame($isEnabled, $achievement->getIsEnabled());
         $this->assertIsBool($achievement->getIsEnabled());
     }
 
@@ -171,16 +175,16 @@ final class AchievementTest extends AbstractTestCase
         $isEnabled = true;
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setIsEnabled($isEnabled));
-        $this->assertEquals($isEnabled, $achievement->getIsEnabled());
+        $this->assertSame($isEnabled, $achievement->getIsEnabled());
     }
 
     public function testGetDescription(): void
     {
         $description = 'test description';
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getDescription());
+        $this->assertNull($achievement->getDescription());
         $achievement->setDescription($description);
-        $this->assertEquals($description, $achievement->getDescription());
+        $this->assertSame($description, $achievement->getDescription());
         $this->assertIsString($achievement->getDescription());
     }
 
@@ -189,7 +193,7 @@ final class AchievementTest extends AbstractTestCase
         $description = 'test description';
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setDescription($description));
-        $this->assertEquals($description, $achievement->getDescription());
+        $this->assertSame($description, $achievement->getDescription());
     }
 
     public function testGetLevel(): void
@@ -197,7 +201,7 @@ final class AchievementTest extends AbstractTestCase
         $level = 10;
         $achievement = new Achievement();
         $achievement->setLevel($level);
-        $this->assertEquals($level, $achievement->getLevel());
+        $this->assertSame($level, $achievement->getLevel());
         $this->assertIsInt($achievement->getLevel());
     }
 
@@ -206,16 +210,16 @@ final class AchievementTest extends AbstractTestCase
         $level = 10;
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setLevel($level));
-        $this->assertEquals($level, $achievement->getLevel());
+        $this->assertSame($level, $achievement->getLevel());
     }
 
     public function testGetName(): void
     {
         $name = 'test name';
         $achievement = new Achievement();
-        $this->assertEquals(null, $achievement->getName());
+        $this->assertSame('', $achievement->getName());
         $achievement->setName($name);
-        $this->assertEquals($name, $achievement->getName());
+        $this->assertSame($name, $achievement->getName());
         $this->assertIsString($achievement->getName());
     }
 
@@ -224,7 +228,7 @@ final class AchievementTest extends AbstractTestCase
         $name = 'test name';
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setName($name));
-        $this->assertEquals($name, $achievement->getName());
+        $this->assertSame($name, $achievement->getName());
     }
 
     public function testGetRequirement(): void
@@ -232,7 +236,7 @@ final class AchievementTest extends AbstractTestCase
         $requirement = 10;
         $achievement = new Achievement();
         $achievement->setRequirement($requirement);
-        $this->assertEquals($requirement, $achievement->getRequirement());
+        $this->assertSame($requirement, $achievement->getRequirement());
         $this->assertIsInt($achievement->getRequirement());
     }
 
@@ -241,7 +245,7 @@ final class AchievementTest extends AbstractTestCase
         $requirement = 10;
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setRequirement($requirement));
-        $this->assertEquals($requirement, $achievement->getRequirement());
+        $this->assertSame($requirement, $achievement->getRequirement());
     }
 
     public function testGetType(): void
@@ -249,7 +253,7 @@ final class AchievementTest extends AbstractTestCase
         $type = Achievement::TYPE_COMPLETED_ROUTINE;
         $achievement = new Achievement();
         $achievement->setType($type);
-        $this->assertEquals($type, $achievement->getType());
+        $this->assertSame($type, $achievement->getType());
         $this->assertIsString($achievement->getType());
     }
 
@@ -270,7 +274,7 @@ final class AchievementTest extends AbstractTestCase
         $type = Achievement::TYPE_COMPLETED_ROUTINE;
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setType($type));
-        $this->assertEquals($type, $achievement->getType());
+        $this->assertSame($type, $achievement->getType());
     }
 
     public function testSetTypeException(): void

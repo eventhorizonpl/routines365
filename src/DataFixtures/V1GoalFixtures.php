@@ -38,7 +38,7 @@ class V1GoalFixtures extends Fixture implements ContainerAwareInterface, Depende
     {
         $kernel = $this->container->get('kernel');
         $goals = [];
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {
                     for ($goalId = 1; $goalId <= self::GOAL_LIMIT; ++$goalId) {
@@ -67,7 +67,7 @@ class V1GoalFixtures extends Fixture implements ContainerAwareInterface, Depende
             }
         }
 
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($projectId = 1; $projectId <= V2ProjectFixtures::PROJECT_LIMIT; ++$projectId) {
                     for ($routineId = 1; $routineId <= V1RoutineFixtures::ROUTINE_LIMIT; ++$routineId) {

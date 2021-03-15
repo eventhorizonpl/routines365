@@ -29,7 +29,8 @@ class AnswerFactory
             ->setContent($content)
             ->setIsEnabled($isEnabled)
             ->setPosition($position)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $answer;
     }

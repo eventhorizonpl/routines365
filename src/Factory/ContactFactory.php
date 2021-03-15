@@ -29,7 +29,8 @@ class ContactFactory
             ->setContent($content)
             ->setStatus($status)
             ->setTitle($title)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $contact;
     }

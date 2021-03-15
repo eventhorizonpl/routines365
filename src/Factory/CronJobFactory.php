@@ -10,9 +10,7 @@ class CronJobFactory
 {
     public function createCronJob(): CronJob
     {
-        $cronJob = new CronJob();
-
-        return $cronJob;
+        return new CronJob();
     }
 
     public function createCronJobWithRequired(
@@ -29,7 +27,8 @@ class CronJobFactory
             ->setDescription($description)
             ->setEnabled($enabled)
             ->setName($name)
-            ->setSchedule($schedule);
+            ->setSchedule($schedule)
+        ;
 
         return $cronJob;
     }

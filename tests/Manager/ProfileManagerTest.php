@@ -14,6 +14,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use libphonenumber\PhoneNumberUtil;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProfileManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -39,13 +43,12 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->profileManager,
-            $this->profileRepository,
-            $this->reminderManager,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->profileManager = null;
+        $this->profileRepository = null;
+        $this->reminderManager = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -53,9 +56,8 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
     public function createProfile(): Profile
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $profile = $user->getProfile();
 
-        return $profile;
+        return $user->getProfile();
     }
 
     public function testConstruct(): void
@@ -85,7 +87,7 @@ final class ProfileManagerTest extends AbstractDoctrineTestCase
 
         $profile2 = $this->profileRepository->findOneById($profileId);
         $this->assertInstanceOf(Profile::class, $profile2);
-        $this->assertEquals($country, $profile2->getCountry());
+        $this->assertSame($country, $profile2->getCountry());
     }
 
     public function testDelete(): void

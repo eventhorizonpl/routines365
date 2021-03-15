@@ -9,6 +9,10 @@ use App\Manager\CronJobManager;
 use App\Tests\AbstractUiTestCase;
 use Cron\CronBundle\Entity\CronJob;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CronJobControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class CronJobControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->cronJobFactory,
-            $this->cronJobManager
-        );
+        $this->cronJobFactory = null;
+        $this->cronJobManager = null
+        ;
 
         parent::tearDown();
     }

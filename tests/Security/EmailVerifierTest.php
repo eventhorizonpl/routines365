@@ -13,6 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\InvalidSignatureException;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class EmailVerifierTest extends AbstractDoctrineTestCase
 {
     /**
@@ -34,12 +38,11 @@ final class EmailVerifierTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->emailVerifier,
-            $this->userFaker,
-            $this->userManager,
-            $this->verifyEmailHelper
-        );
+        $this->emailVerifier = null;
+        $this->userFaker = null;
+        $this->userManager = null;
+        $this->verifyEmailHelper = null
+        ;
 
         parent::tearDown();
     }
@@ -48,7 +51,8 @@ final class EmailVerifierTest extends AbstractDoctrineTestCase
     {
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $emailVerifier = new EmailVerifier($emailService, $this->userManager, $this->verifyEmailHelper);
 
@@ -69,9 +73,11 @@ final class EmailVerifierTest extends AbstractDoctrineTestCase
         $user->setEmail('test@example.org');
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $request->method('getUri')
-             ->willReturn('test');
+            ->willReturn('test')
+        ;
 
         $this->emailVerifier->handleEmailConfirmation($request, $user);
     }

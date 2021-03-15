@@ -12,6 +12,10 @@ use App\Repository\ReminderMessageRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reminderMessageManager,
-            $this->reminderMessageRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->reminderMessageManager = null;
+        $this->reminderMessageRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class ReminderMessageManagerTest extends AbstractDoctrineTestCase
     public function createReminderMessage(): ReminderMessage
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $reminderMessage = $user->getReminders()->first()->getReminderMessages()->first();
 
-        return $reminderMessage;
+        return $user->getReminders()->first()->getReminderMessages()->first();
     }
 
     public function testConstruct(): void

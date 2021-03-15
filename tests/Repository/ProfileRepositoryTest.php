@@ -8,6 +8,10 @@ use App\Repository\ProfileRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProfileRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -21,10 +25,9 @@ final class ProfileRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->profileRepository
-        );
+        $this->managerRegistry = null;
+        $this->profileRepository = null
+        ;
 
         parent::tearDown();
     }

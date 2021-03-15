@@ -8,6 +8,10 @@ use App\Form\Frontend\SendMotivationalEmailType;
 use App\Form\Model\SendMotivationalEmailFormModel;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SendMotivationalEmailTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class SendMotivationalEmailTypeTest extends TypeTestCase
     {
         $formData = new SendMotivationalEmailFormModel();
         $view = $this->factory->create(SendMotivationalEmailType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

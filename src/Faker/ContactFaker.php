@@ -45,13 +45,11 @@ class ContactFaker
             );
         }
 
-        $contact = $this->contactFactory->createContactWithRequired(
+        return $this->contactFactory->createContactWithRequired(
             $content,
             $status,
             $title,
             $type
         );
-
-        return $contact;
     }
 }

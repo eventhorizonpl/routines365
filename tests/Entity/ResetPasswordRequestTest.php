@@ -9,6 +9,10 @@ use App\Entity\User;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ResetPasswordRequestTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -28,7 +32,7 @@ final class ResetPasswordRequestTest extends AbstractTestCase
         $selector = 'test selector';
         $hashedToken = 'test hashed token';
         $resetPasswordRequest = new ResetPasswordRequest($user, $expiresAt, $selector, $hashedToken);
-        $this->assertEquals(null, $resetPasswordRequest->getId());
+        $this->assertNull($resetPasswordRequest->getId());
     }
 
     public function testGetUser(): void
@@ -38,6 +42,6 @@ final class ResetPasswordRequestTest extends AbstractTestCase
         $selector = 'test selector';
         $hashedToken = 'test hashed token';
         $resetPasswordRequest = new ResetPasswordRequest($user, $expiresAt, $selector, $hashedToken);
-        $this->assertEquals($user, $resetPasswordRequest->getUser());
+        $this->assertSame($user, $resetPasswordRequest->getUser());
     }
 }

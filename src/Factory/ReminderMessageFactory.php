@@ -25,7 +25,8 @@ class ReminderMessageFactory
 
         $reminderMessage
             ->setContent($content)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $reminderMessage;
     }

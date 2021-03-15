@@ -7,6 +7,10 @@ namespace App\Tests\Controller\Frontend;
 use App\Faker\UserFaker;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserControllerTest extends AbstractUiTestCase
 {
     public function testChangePassword(): void

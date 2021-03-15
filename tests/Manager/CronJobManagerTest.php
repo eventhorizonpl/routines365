@@ -10,6 +10,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use Cron\CronBundle\Entity\CronJob;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CronJobManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->cronJobFactory,
-            $this->cronJobManager,
-            $this->validator
-        );
+        $this->cronJobFactory = null;
+        $this->cronJobManager = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -71,7 +74,7 @@ final class CronJobManagerTest extends AbstractDoctrineTestCase
 
         $cronJob2 = $this->entityManager->getRepository(CronJob::class)->findOneById($cronJobId);
         $this->assertInstanceOf(CronJob::class, $cronJob2);
-        $this->assertEquals($name, $cronJob2->getName());
+        $this->assertSame($name, $cronJob2->getName());
     }
 
     public function testDelete(): void

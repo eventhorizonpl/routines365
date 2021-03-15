@@ -47,7 +47,7 @@ class CreateUserKpiCommand extends BaseLockableCommand
         }
 
         $type = $input->getOption('type');
-        if (!(in_array($type, UserKpi::getTypeValidationChoices()))) {
+        if (!(\in_array($type, UserKpi::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

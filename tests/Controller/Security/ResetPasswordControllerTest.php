@@ -7,6 +7,10 @@ namespace App\Tests\Controller\Security;
 use App\Tests\AbstractUiTestCase;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ResetPasswordControllerTest extends AbstractUiTestCase
 {
     /**
@@ -16,7 +20,7 @@ final class ResetPasswordControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->resetPasswordHelper);
+        $this->resetPasswordHelper = null;
 
         parent::tearDown();
     }
@@ -128,6 +132,6 @@ final class ResetPasswordControllerTest extends AbstractUiTestCase
         $this->purge();
 
         $crawler = $this->client->request('GET', '/reset-password/reset/');
-        $this->assertEquals(404, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(404, $this->client->getResponse()->getStatusCode());
     }
 }

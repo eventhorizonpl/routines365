@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->rewardRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->rewardRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -124,14 +127,14 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
 
         $rewardResult = $this->rewardRepository->findOneByUserAndTypesAndRoutine($user, $types);
         if (true === $reward->getIsAwarded()) {
-            $this->assertEquals(null, $rewardResult);
+            $this->assertNull($rewardResult);
         } else {
             $this->assertInstanceOf(Reward::class, $rewardResult);
         }
 
         $rewardResult = $this->rewardRepository->findOneByUserAndTypesAndRoutine($user, $types, $routine);
         if (true === $reward->getIsAwarded()) {
-            $this->assertEquals(null, $rewardResult);
+            $this->assertNull($rewardResult);
         } else {
             $this->assertInstanceOf(Reward::class, $rewardResult);
         }

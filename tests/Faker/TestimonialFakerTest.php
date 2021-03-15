@@ -10,6 +10,10 @@ use App\Faker\TestimonialFaker;
 use App\Manager\TestimonialManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class TestimonialFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->testimonialFactory,
-            $this->testimonialFaker,
-            $this->testimonialManager
-        );
+        $this->testimonialFactory = null;
+        $this->testimonialFaker = null;
+        $this->testimonialManager = null
+        ;
 
         parent::tearDown();
     }
@@ -56,8 +59,8 @@ final class TestimonialFakerTest extends AbstractDoctrineTestCase
             $isVisible,
             $signature
         );
-        $this->assertEquals($content, $testimonial->getContent());
-        $this->assertEquals($isVisible, $testimonial->getIsVisible());
-        $this->assertEquals($signature, $testimonial->getSignature());
+        $this->assertSame($content, $testimonial->getContent());
+        $this->assertSame($isVisible, $testimonial->getIsVisible());
+        $this->assertSame($signature, $testimonial->getSignature());
     }
 }

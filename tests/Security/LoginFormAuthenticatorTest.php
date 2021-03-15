@@ -13,6 +13,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
 {
     /**
@@ -38,13 +42,12 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->csrfTokenManager,
-            $this->loginFormAuthenticator,
-            $this->urlGenerator,
-            $this->userPasswordEncoder,
-            $this->userService
-        );
+        $this->csrfTokenManager = null;
+        $this->loginFormAuthenticator = null;
+        $this->urlGenerator = null;
+        $this->userPasswordEncoder = null;
+        $this->userService = null
+        ;
 
         parent::tearDown();
     }
@@ -66,9 +69,11 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
     {
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $request->method('isMethod')
-             ->willReturn('POST');
+            ->willReturn('POST')
+        ;
 
         $request->attributes = new ParameterBag();
         $this->assertFalse($this->loginFormAuthenticator->supports($request));
@@ -81,7 +86,8 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
     {
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $request->request = new ParameterBag([
             'email' => 'test email',
@@ -98,7 +104,8 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
     {
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $password = 'test password';
         $request->request = new ParameterBag([
@@ -110,6 +117,6 @@ final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
         $credentials = $this->loginFormAuthenticator->getCredentials($request);
 
         $this->assertIsArray($credentials);
-        $this->assertEquals($password, $this->loginFormAuthenticator->getPassword($credentials));
+        $this->assertSame($password, $this->loginFormAuthenticator->getPassword($credentials));
     }
 }

@@ -20,12 +20,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Reminder
 {
+    use Traits\BlameableTrait;
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\IsEnabledTrait;
     use Traits\LockableTrait;
-    use Traits\BlameableTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_DAILY = 'daily';
     public const TYPE_FRIDAY = 'friday';
@@ -253,9 +253,7 @@ class Reminder
 
     public function getReminderMessages(): Collection
     {
-        return $this->reminderMessages->filter(function (ReminderMessage $reminderMessage) {
-            return null === $reminderMessage->getDeletedAt();
-        });
+        return $this->reminderMessages->filter(fn (ReminderMessage $reminderMessage) => null === $reminderMessage->getDeletedAt());
     }
 
     public function getReminderMessagesAll(): Collection
@@ -366,9 +364,7 @@ class Reminder
 
     public function getSentReminders(): Collection
     {
-        return $this->sentReminders->filter(function (SentReminder $sentReminder) {
-            return null === $sentReminder->getDeletedAt();
-        });
+        return $this->sentReminders->filter(fn (SentReminder $sentReminder) => null === $sentReminder->getDeletedAt());
     }
 
     public function getSentRemindersAll(): Collection
@@ -411,7 +407,7 @@ class Reminder
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

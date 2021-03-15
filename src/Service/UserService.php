@@ -56,13 +56,14 @@ class UserService
     {
         $user
             ->setApiToken((string) Uuid::v4())
-            ->setLastLoginAt(new DateTimeImmutable());
+            ->setLastLoginAt(new DateTimeImmutable())
+        ;
         $this->userManager->save($user);
 
         return $user;
     }
 
-    public function rewardUserActivity(): UserService
+    public function rewardUserActivity(): self
     {
         $page = 1;
         $limit = 5;

@@ -56,7 +56,7 @@ class PromotionManager
         $promotion->setUpdatedBy($actor);
 
         $errors = $this->validate($promotion);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $promotion));
         }
 
@@ -94,8 +94,6 @@ class PromotionManager
 
     public function validate(Promotion $promotion): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($promotion, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($promotion, null, ['system']);
     }
 }

@@ -8,6 +8,10 @@ use App\Form\Frontend\PromotionCodeType;
 use App\Form\Model\PromotionCodeFormModel;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionCodeTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class PromotionCodeTypeTest extends TypeTestCase
     {
         $formData = new PromotionCodeFormModel();
         $view = $this->factory->create(PromotionCodeType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

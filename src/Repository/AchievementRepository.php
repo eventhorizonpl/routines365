@@ -20,18 +20,20 @@ class AchievementRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('a')
             ->select('a')
-            ->addOrderBy('a.createdAt', 'DESC');
+            ->addOrderBy('a.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('type', $parameters)) {
+            if (\array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
                     $queryBuilder->andWhere('a.type = :type')
-                        ->setParameter('type', $type);
+                        ->setParameter('type', $type)
+                    ;
                 }
             }
 
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -40,23 +42,26 @@ class AchievementRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('a.name', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('a.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('a.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -75,7 +80,8 @@ class AchievementRepository extends ServiceEntityRepository
             ->orderBy('a.level', 'ASC')
             ->setParameter('isEnabled', true)
             ->setParameter('requirement', $requirement)
-            ->setParameter('type', $type);
+            ->setParameter('type', $type)
+        ;
 
         return $queryBuilder->getQuery()->getResult();
     }
@@ -85,7 +91,8 @@ class AchievementRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('a')
             ->select('a')
             ->addOrderBy('a.type', 'ASC')
-            ->addOrderBy('a.level', 'ASC');
+            ->addOrderBy('a.level', 'ASC')
+        ;
 
         return $queryBuilder->getQuery()->getResult();
     }

@@ -14,11 +14,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Quote
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsVisibleTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsVisibleTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\Column(length=64, type="string")

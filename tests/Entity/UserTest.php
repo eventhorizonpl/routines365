@@ -27,6 +27,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -40,7 +44,7 @@ final class UserTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $user = new User();
         $user->setUuid($uuid);
-        $this->assertEquals($uuid, $user->__toString());
+        $this->assertSame($uuid, $user->__toString());
     }
 
     public function testSerialize(): void
@@ -65,24 +69,24 @@ final class UserTest extends AbstractTestCase
         ];
         $user = new User();
         $user->__unserialize($data);
-        $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($id, $user->getId());
-        $this->assertEquals($password, $user->getPassword());
+        $this->assertSame($email, $user->getEmail());
+        $this->assertSame($id, $user->getId());
+        $this->assertSame($password, $user->getPassword());
     }
 
     public function testGetId(): void
     {
         $user = new User();
-        $this->assertEquals(null, $user->getId());
+        $this->assertNull($user->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $user = new User();
-        $this->assertEquals(null, $user->getUuid());
+        $this->assertNull($user->getUuid());
         $user->setUuid($uuid);
-        $this->assertEquals($uuid, $user->getUuid());
+        $this->assertSame($uuid, $user->getUuid());
         $this->assertIsString($user->getUuid());
     }
 
@@ -91,16 +95,16 @@ final class UserTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setUuid($uuid));
-        $this->assertEquals($uuid, $user->getUuid());
+        $this->assertSame($uuid, $user->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $user = new User();
-        $this->assertEquals(null, $user->getCreatedBy());
+        $this->assertNull($user->getCreatedBy());
         $user->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $user->getCreatedBy());
+        $this->assertSame($createdBy, $user->getCreatedBy());
         $this->assertIsString($user->getCreatedBy());
     }
 
@@ -109,16 +113,16 @@ final class UserTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $user->getCreatedBy());
+        $this->assertSame($createdBy, $user->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $user = new User();
-        $this->assertEquals(null, $user->getDeletedBy());
+        $this->assertNull($user->getDeletedBy());
         $user->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $user->getDeletedBy());
+        $this->assertSame($deletedBy, $user->getDeletedBy());
         $this->assertIsString($user->getDeletedBy());
     }
 
@@ -127,16 +131,16 @@ final class UserTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $user->getDeletedBy());
+        $this->assertSame($deletedBy, $user->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $user = new User();
-        $this->assertEquals(null, $user->getUpdatedBy());
+        $this->assertNull($user->getUpdatedBy());
         $user->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $user->getUpdatedBy());
+        $this->assertSame($updatedBy, $user->getUpdatedBy());
         $this->assertIsString($user->getUpdatedBy());
     }
 
@@ -145,16 +149,16 @@ final class UserTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $user->getUpdatedBy());
+        $this->assertSame($updatedBy, $user->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $user = new User();
-        $this->assertEquals(null, $user->getCreatedAt());
+        $this->assertNull($user->getCreatedAt());
         $user->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $user->getCreatedAt());
+        $this->assertSame($createdAt, $user->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -162,16 +166,16 @@ final class UserTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $user->getCreatedAt());
+        $this->assertSame($createdAt, $user->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $user = new User();
-        $this->assertEquals(null, $user->getDeletedAt());
+        $this->assertNull($user->getDeletedAt());
         $user->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $user->getDeletedAt());
+        $this->assertSame($deletedAt, $user->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -179,16 +183,16 @@ final class UserTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $user->getDeletedAt());
+        $this->assertSame($deletedAt, $user->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $user = new User();
-        $this->assertEquals(null, $user->getUpdatedAt());
+        $this->assertNull($user->getUpdatedAt());
         $user->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $user->getUpdatedAt());
+        $this->assertSame($updatedAt, $user->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -196,16 +200,16 @@ final class UserTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $user->getUpdatedAt());
+        $this->assertSame($updatedAt, $user->getUpdatedAt());
     }
 
     public function testGetIsEnabled(): void
     {
         $isEnabled = true;
         $user = new User();
-        $this->assertEquals(false, $user->getIsEnabled());
+        $this->assertFalse($user->getIsEnabled());
         $user->setIsEnabled($isEnabled);
-        $this->assertEquals($isEnabled, $user->getIsEnabled());
+        $this->assertSame($isEnabled, $user->getIsEnabled());
         $this->assertIsBool($user->getIsEnabled());
     }
 
@@ -214,16 +218,16 @@ final class UserTest extends AbstractTestCase
         $isEnabled = true;
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setIsEnabled($isEnabled));
-        $this->assertEquals($isEnabled, $user->getIsEnabled());
+        $this->assertSame($isEnabled, $user->getIsEnabled());
     }
 
     public function testGetIsVerified(): void
     {
         $isVerified = true;
         $user = new User();
-        $this->assertEquals(false, $user->getIsVerified());
+        $this->assertFalse($user->getIsVerified());
         $user->setIsVerified($isVerified);
-        $this->assertEquals($isVerified, $user->getIsVerified());
+        $this->assertSame($isVerified, $user->getIsVerified());
         $this->assertIsBool($user->getIsVerified());
     }
 
@@ -232,7 +236,7 @@ final class UserTest extends AbstractTestCase
         $isVerified = true;
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setIsVerified($isVerified));
-        $this->assertEquals($isVerified, $user->getIsVerified());
+        $this->assertSame($isVerified, $user->getIsVerified());
     }
 
     public function testGetAccount(): void
@@ -240,7 +244,7 @@ final class UserTest extends AbstractTestCase
         $account = new Account();
         $user = new User();
         $user->setAccount($account);
-        $this->assertEquals($account, $user->getAccount());
+        $this->assertSame($account, $user->getAccount());
     }
 
     public function testSetAccount(): void
@@ -248,7 +252,7 @@ final class UserTest extends AbstractTestCase
         $account = new Account();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setAccount($account));
-        $this->assertEquals($account, $user->getAccount());
+        $this->assertSame($account, $user->getAccount());
     }
 
     public function testAddAchievement(): void
@@ -299,9 +303,9 @@ final class UserTest extends AbstractTestCase
     {
         $apiToken = 'test apiToken';
         $user = new User();
-        $this->assertEquals(null, $user->getApiToken());
+        $this->assertNull($user->getApiToken());
         $user->setApiToken($apiToken);
-        $this->assertEquals($apiToken, $user->getApiToken());
+        $this->assertSame($apiToken, $user->getApiToken());
         $this->assertIsString($user->getApiToken());
     }
 
@@ -310,7 +314,7 @@ final class UserTest extends AbstractTestCase
         $apiToken = 'test apiToken';
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setApiToken($apiToken));
-        $this->assertEquals($apiToken, $user->getApiToken());
+        $this->assertSame($apiToken, $user->getApiToken());
     }
 
     public function testAddCompletedRoutine(): void
@@ -414,16 +418,16 @@ final class UserTest extends AbstractTestCase
     public function testEraseCredentials(): void
     {
         $user = new User();
-        $this->assertEquals(null, $user->eraseCredentials());
+        $this->assertNull($user->eraseCredentials());
     }
 
     public function testGetEmail(): void
     {
         $email = 'test email';
         $user = new User();
-        $this->assertEquals(null, $user->getEmail());
+        $this->assertSame('', $user->getEmail());
         $user->setEmail($email);
-        $this->assertEquals($email, $user->getEmail());
+        $this->assertSame($email, $user->getEmail());
         $this->assertIsString($user->getEmail());
     }
 
@@ -432,7 +436,7 @@ final class UserTest extends AbstractTestCase
         $email = 'test email';
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setEmail($email));
-        $this->assertEquals($email, $user->getEmail());
+        $this->assertSame($email, $user->getEmail());
     }
 
     public function testAddGoal(): void
@@ -512,7 +516,7 @@ final class UserTest extends AbstractTestCase
         $email = 'test email';
         $user = new User();
         $user->setEmail($email);
-        $this->assertEquals($email, $user->getGoogleAuthenticatorUsername());
+        $this->assertSame($email, $user->getGoogleAuthenticatorUsername());
         $this->assertIsString($user->getGoogleAuthenticatorUsername());
     }
 
@@ -520,9 +524,9 @@ final class UserTest extends AbstractTestCase
     {
         $googleAuthenticatorSecret = 'test googleAuthenticatorSecret';
         $user = new User();
-        $this->assertEquals(null, $user->getGoogleAuthenticatorSecret());
+        $this->assertNull($user->getGoogleAuthenticatorSecret());
         $user->setGoogleAuthenticatorSecret($googleAuthenticatorSecret);
-        $this->assertEquals($googleAuthenticatorSecret, $user->getGoogleAuthenticatorSecret());
+        $this->assertSame($googleAuthenticatorSecret, $user->getGoogleAuthenticatorSecret());
         $this->assertIsString($user->getGoogleAuthenticatorSecret());
     }
 
@@ -531,16 +535,16 @@ final class UserTest extends AbstractTestCase
         $googleAuthenticatorSecret = 'test googleAuthenticatorSecret';
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setGoogleAuthenticatorSecret($googleAuthenticatorSecret));
-        $this->assertEquals($googleAuthenticatorSecret, $user->getGoogleAuthenticatorSecret());
+        $this->assertSame($googleAuthenticatorSecret, $user->getGoogleAuthenticatorSecret());
     }
 
     public function testGetLastLoginAt(): void
     {
         $lastLoginAt = new DateTimeImmutable();
         $user = new User();
-        $this->assertEquals(null, $user->getLastLoginAt());
+        $this->assertNull($user->getLastLoginAt());
         $user->setLastLoginAt($lastLoginAt);
-        $this->assertEquals($lastLoginAt, $user->getLastLoginAt());
+        $this->assertSame($lastLoginAt, $user->getLastLoginAt());
     }
 
     public function testSetLastLoginAt(): void
@@ -548,7 +552,7 @@ final class UserTest extends AbstractTestCase
         $lastLoginAt = new DateTimeImmutable();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setLastLoginAt($lastLoginAt));
-        $this->assertEquals($lastLoginAt, $user->getLastLoginAt());
+        $this->assertSame($lastLoginAt, $user->getLastLoginAt());
     }
 
     public function testAddNote(): void
@@ -605,7 +609,7 @@ final class UserTest extends AbstractTestCase
         $password = 'test password';
         $user = new User();
         $user->setPassword($password);
-        $this->assertEquals($password, $user->getPassword());
+        $this->assertSame($password, $user->getPassword());
         $this->assertIsString($user->getPassword());
     }
 
@@ -614,7 +618,7 @@ final class UserTest extends AbstractTestCase
         $password = 'test password';
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setPassword($password));
-        $this->assertEquals($password, $user->getPassword());
+        $this->assertSame($password, $user->getPassword());
     }
 
     public function testGetProfile(): void
@@ -622,7 +626,7 @@ final class UserTest extends AbstractTestCase
         $profile = new Profile();
         $user = new User();
         $user->setProfile($profile);
-        $this->assertEquals($profile, $user->getProfile());
+        $this->assertSame($profile, $user->getProfile());
     }
 
     public function testSetProfile(): void
@@ -630,7 +634,7 @@ final class UserTest extends AbstractTestCase
         $profile = new Profile();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setProfile($profile));
-        $this->assertEquals($profile, $user->getProfile());
+        $this->assertSame($profile, $user->getProfile());
     }
 
     public function testAddProject(): void
@@ -793,7 +797,7 @@ final class UserTest extends AbstractTestCase
         $referrer = new User();
         $user = new User();
         $user->setReferrer($referrer);
-        $this->assertEquals($referrer, $user->getReferrer());
+        $this->assertSame($referrer, $user->getReferrer());
     }
 
     public function testSetReferrer(): void
@@ -801,7 +805,7 @@ final class UserTest extends AbstractTestCase
         $referrer = new User();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setReferrer($referrer));
-        $this->assertEquals($referrer, $user->getReferrer());
+        $this->assertSame($referrer, $user->getReferrer());
     }
 
     public function testGetReferrerCode(): void
@@ -809,7 +813,7 @@ final class UserTest extends AbstractTestCase
         $referrerCode = 'test referrer code';
         $user = new User();
         $user->setReferrerCode($referrerCode);
-        $this->assertEquals($referrerCode, $user->getReferrerCode());
+        $this->assertSame($referrerCode, $user->getReferrerCode());
         $this->assertIsString($user->getReferrerCode());
     }
 
@@ -818,7 +822,7 @@ final class UserTest extends AbstractTestCase
         $referrerCode = 'test referrer code';
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setReferrerCode($referrerCode));
-        $this->assertEquals($referrerCode, $user->getReferrerCode());
+        $this->assertSame($referrerCode, $user->getReferrerCode());
     }
 
     public function testAddReminder(): void
@@ -935,7 +939,7 @@ final class UserTest extends AbstractTestCase
         $roles = [User::ROLE_USER];
         $user = new User();
         $user->setRoles($roles);
-        $this->assertEquals($roles, $user->getRoles());
+        $this->assertSame($roles, $user->getRoles());
         $this->assertIsArray($user->getRoles());
     }
 
@@ -956,7 +960,7 @@ final class UserTest extends AbstractTestCase
         $roles = [User::ROLE_USER];
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setRoles($roles));
-        $this->assertEquals($roles, $user->getRoles());
+        $this->assertSame($roles, $user->getRoles());
     }
 
     public function testAddRoutine(): void
@@ -1011,7 +1015,7 @@ final class UserTest extends AbstractTestCase
     public function testGetSalt(): void
     {
         $user = new User();
-        $this->assertEquals(null, $user->getSalt());
+        $this->assertNull($user->getSalt());
     }
 
     public function testAddSavedEmail(): void
@@ -1068,7 +1072,7 @@ final class UserTest extends AbstractTestCase
         $testimonial = new Testimonial();
         $user = new User();
         $user->setTestimonial($testimonial);
-        $this->assertEquals($testimonial, $user->getTestimonial());
+        $this->assertSame($testimonial, $user->getTestimonial());
     }
 
     public function testSetTestimonial(): void
@@ -1076,7 +1080,7 @@ final class UserTest extends AbstractTestCase
         $testimonial = new Testimonial();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setTestimonial($testimonial));
-        $this->assertEquals($testimonial, $user->getTestimonial());
+        $this->assertSame($testimonial, $user->getTestimonial());
     }
 
     public function testGetType(): void
@@ -1084,7 +1088,7 @@ final class UserTest extends AbstractTestCase
         $type = User::TYPE_CUSTOMER;
         $user = new User();
         $user->setType($type);
-        $this->assertEquals($type, $user->getType());
+        $this->assertSame($type, $user->getType());
         $this->assertIsString($user->getType());
     }
 
@@ -1105,7 +1109,7 @@ final class UserTest extends AbstractTestCase
         $type = User::TYPE_CUSTOMER;
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setType($type));
-        $this->assertEquals($type, $user->getType());
+        $this->assertSame($type, $user->getType());
     }
 
     public function testSetTypeException(): void
@@ -1170,7 +1174,7 @@ final class UserTest extends AbstractTestCase
         $userKyt = new UserKyt();
         $user = new User();
         $user->setUserKyt($userKyt);
-        $this->assertEquals($userKyt, $user->getUserKyt());
+        $this->assertSame($userKyt, $user->getUserKyt());
     }
 
     public function testSetUserKyt(): void
@@ -1178,16 +1182,16 @@ final class UserTest extends AbstractTestCase
         $userKyt = new UserKyt();
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setUserKyt($userKyt));
-        $this->assertEquals($userKyt, $user->getUserKyt());
+        $this->assertSame($userKyt, $user->getUserKyt());
     }
 
     public function testGetUsername(): void
     {
         $email = 'test email';
         $user = new User();
-        $this->assertEquals(null, $user->getUsername());
+        $this->assertSame('', $user->getUsername());
         $user->setEmail($email);
-        $this->assertEquals($email, $user->getUsername());
+        $this->assertSame($email, $user->getUsername());
         $this->assertIsString($user->getUsername());
     }
 

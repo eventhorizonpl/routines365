@@ -45,13 +45,11 @@ class AnswerFaker
             );
         }
 
-        $answer = $this->answerFactory->createAnswerWithRequired(
+        return $this->answerFactory->createAnswerWithRequired(
             $content,
             $isEnabled,
             $position,
             $type
         );
-
-        return $answer;
     }
 }

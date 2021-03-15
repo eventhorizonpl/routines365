@@ -9,6 +9,10 @@ use App\Factory\RewardFactory;
 use App\Faker\RewardFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class RewardFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->rewardFactory,
-            $this->rewardFaker
-        );
+        $this->rewardFactory = null;
+        $this->rewardFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -56,11 +59,11 @@ final class RewardFakerTest extends AbstractDoctrineTestCase
             $requiredNumberOfCompletions,
             $type
         );
-        $this->assertEquals($description, $reward->getDescription());
-        $this->assertEquals($isAwarded, $reward->getIsAwarded());
-        $this->assertEquals($name, $reward->getName());
-        $this->assertEquals($numberOfCompletions, $reward->getNumberOfCompletions());
-        $this->assertEquals($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
-        $this->assertEquals($type, $reward->getType());
+        $this->assertSame($description, $reward->getDescription());
+        $this->assertSame($isAwarded, $reward->getIsAwarded());
+        $this->assertSame($name, $reward->getName());
+        $this->assertSame($numberOfCompletions, $reward->getNumberOfCompletions());
+        $this->assertSame($requiredNumberOfCompletions, $reward->getRequiredNumberOfCompletions());
+        $this->assertSame($type, $reward->getType());
     }
 }

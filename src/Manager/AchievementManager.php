@@ -56,7 +56,7 @@ class AchievementManager
         $achievement->setUpdatedBy($actor);
 
         $errors = $this->validate($achievement);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $achievement));
         }
 
@@ -94,8 +94,6 @@ class AchievementManager
 
     public function validate(Achievement $achievement): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($achievement, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($achievement, null, ['system']);
     }
 }

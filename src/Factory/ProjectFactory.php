@@ -25,7 +25,8 @@ class ProjectFactory
 
         $project
             ->setIsCompleted($isCompleted)
-            ->setName($name);
+            ->setName($name)
+        ;
 
         return $project;
     }

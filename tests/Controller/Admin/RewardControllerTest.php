@@ -8,6 +8,10 @@ use App\Entity\Reward;
 use App\Manager\RewardManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RewardControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class RewardControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->rewardManager);
+        $this->rewardManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class RewardControllerTest extends AbstractUiTestCase
     public function createReward(): Reward
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $reward = $user->getRewards()->first();
 
-        return $reward;
+        return $user->getRewards()->first();
     }
 
     public function testIndex(): void

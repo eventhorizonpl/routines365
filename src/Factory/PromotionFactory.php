@@ -33,7 +33,8 @@ class PromotionFactory
             ->setName($name)
             ->setNotifications($notifications)
             ->setSmsNotifications($smsNotifications)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $promotion;
     }

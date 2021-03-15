@@ -10,34 +10,30 @@ use App\Entity\Routine;
 use App\Entity\User;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class GoalControllerTest extends AbstractUiTestCase
 {
     public function createRoutineGoal(User $user): Goal
     {
-        $goal = $user->getRoutines()->first()->getGoals()->first();
-
-        return $goal;
+        return $user->getRoutines()->first()->getGoals()->first();
     }
 
     public function createProjectGoal(User $user): Goal
     {
-        $goal = $user->getProjects()->first()->getGoals()->first();
-
-        return $goal;
+        return $user->getProjects()->first()->getGoals()->first();
     }
 
     public function createProject(User $user): Project
     {
-        $project = $user->getProjects()->first();
-
-        return $project;
+        return $user->getProjects()->first();
     }
 
     public function createRoutine(User $user): Routine
     {
-        $routine = $user->getRoutines()->first();
-
-        return $routine;
+        return $user->getRoutines()->first();
     }
 
     public function testNewRoutine(): void

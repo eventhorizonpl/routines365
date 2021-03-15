@@ -14,6 +14,10 @@ use App\Repository\UserQuestionnaireAnswerRepository;
 use App\Service\UserQuestionnaireAnswerService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserQuestionnaireAnswerServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -47,15 +51,14 @@ final class UserQuestionnaireAnswerServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->questionnaireFaker,
-            $this->userFaker,
-            $this->userQuestionnaireAnswerFactory,
-            $this->userQuestionnaireAnswerManager,
-            $this->userQuestionnaireAnswerRepository,
-            $this->userQuestionnaireAnswerService,
-            $this->userQuestionnaireFaker
-        );
+        $this->questionnaireFaker = null;
+        $this->userFaker = null;
+        $this->userQuestionnaireAnswerFactory = null;
+        $this->userQuestionnaireAnswerManager = null;
+        $this->userQuestionnaireAnswerRepository = null;
+        $this->userQuestionnaireAnswerService = null;
+        $this->userQuestionnaireFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -86,8 +89,8 @@ final class UserQuestionnaireAnswerServiceTest extends AbstractDoctrineTestCase
             $content
         );
         $this->assertInstanceOf(UserQuestionnaireAnswer::class, $userQuestionnaireAnswer);
-        $this->assertEquals($answer, $userQuestionnaireAnswer->getAnswer());
-        $this->assertEquals($userQuestionnaire, $userQuestionnaireAnswer->getUserQuestionnaire());
-        $this->assertEquals($content, $userQuestionnaireAnswer->getContent());
+        $this->assertSame($answer, $userQuestionnaireAnswer->getAnswer());
+        $this->assertSame($userQuestionnaire, $userQuestionnaireAnswer->getUserQuestionnaire());
+        $this->assertSame($content, $userQuestionnaireAnswer->getContent());
     }
 }

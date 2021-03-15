@@ -16,11 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Project
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsCompletedTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsCompletedTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="project", orphanRemoval=true, targetEntity=Goal::class)
@@ -89,9 +89,7 @@ class Project
 
     public function getGoals(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return null === $goal->getDeletedAt();
-        });
+        return $this->goals->filter(fn (Goal $goal) => null === $goal->getDeletedAt());
     }
 
     public function getGoalsAll(): Collection
@@ -101,9 +99,7 @@ class Project
 
     public function getGoalsCompleted(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
-        });
+        return $this->goals->filter(fn (Goal $goal) => (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
     }
 
     public function getGoalsCompletedCount(): int
@@ -127,16 +123,14 @@ class Project
 
         if ($total > 0) {
             return (int) (($goalsCompleted / $total) * 100);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     public function getGoalsNotCompleted(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return (false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
-        });
+        return $this->goals->filter(fn (Goal $goal) => (false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
     }
 
     public function getGoalsNotCompletedCount(): int
@@ -160,9 +154,9 @@ class Project
 
         if ($total > 0) {
             return (int) (($goalsNotCompleted / $total) * 100);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     public function removeGoal(Goal $goal): self

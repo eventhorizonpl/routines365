@@ -8,6 +8,10 @@ use App\Entity\AccountOperation;
 use App\Manager\AccountOperationManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountOperationControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->accountOperationManager);
+        $this->accountOperationManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class AccountOperationControllerTest extends AbstractUiTestCase
     public function createAccountOperation(): AccountOperation
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $accountOperation = $user->getAccount()->getAccountOperations()->first();
 
-        return $accountOperation;
+        return $user->getAccount()->getAccountOperations()->first();
     }
 
     public function testIndex(): void

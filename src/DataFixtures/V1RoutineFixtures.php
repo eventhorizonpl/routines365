@@ -36,7 +36,7 @@ class V1RoutineFixtures extends Fixture implements ContainerAwareInterface, Depe
     {
         $kernel = $this->container->get('kernel');
         $routines = [];
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($routineId = 1; $routineId <= self::ROUTINE_LIMIT; ++$routineId) {
                     $routine = $this->routineFaker->createRoutine();

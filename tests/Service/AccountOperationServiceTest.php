@@ -12,6 +12,10 @@ use App\Manager\AccountOperationManager;
 use App\Service\AccountOperationService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountOperationServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountOperationFactory,
-            $this->accountOperationManager,
-            $this->accountOperationService,
-            $this->userFaker
-        );
+        $this->accountOperationFactory = null;
+        $this->accountOperationManager = null;
+        $this->accountOperationService = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -69,10 +72,10 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
             $smsNotifications
         );
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
-        $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($notifications, $accountOperation->getNotifications());
-        $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
-        $this->assertEquals(AccountOperation::TYPE_DEPOSIT, $accountOperation->getType());
+        $this->assertSame($description, $accountOperation->getDescription());
+        $this->assertSame($notifications, $accountOperation->getNotifications());
+        $this->assertSame($smsNotifications, $accountOperation->getSmsNotifications());
+        $this->assertSame(AccountOperation::TYPE_DEPOSIT, $accountOperation->getType());
     }
 
     public function testDepositException(): void
@@ -109,10 +112,10 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
             $reminderMessage
         );
         $this->assertInstanceOf(AccountOperation::class, $accountOperation);
-        $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($notifications, $accountOperation->getNotifications());
-        $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
-        $this->assertEquals(AccountOperation::TYPE_WITHDRAW, $accountOperation->getType());
+        $this->assertSame($description, $accountOperation->getDescription());
+        $this->assertSame($notifications, $accountOperation->getNotifications());
+        $this->assertSame($smsNotifications, $accountOperation->getSmsNotifications());
+        $this->assertSame(AccountOperation::TYPE_WITHDRAW, $accountOperation->getType());
     }
 
     public function testWithdrawException(): void

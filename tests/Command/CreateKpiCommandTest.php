@@ -7,6 +7,10 @@ namespace App\Tests\Command;
 use App\Tests\AbstractCommandTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CreateKpiCommandTest extends AbstractCommandTestCase
 {
     public function testExecute(): void
@@ -16,6 +20,6 @@ final class CreateKpiCommandTest extends AbstractCommandTestCase
         $commandTester->execute([]);
 
         $output = $commandTester->getDisplay();
-        $this->assertEquals('', $output);
+        $this->assertSame('', $output);
     }
 }

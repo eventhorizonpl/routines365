@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReportRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -32,12 +36,11 @@ final class ReportRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reportRepository,
-            $this->reportService,
-            $this->managerRegistry,
-            $this->userFaker
-        );
+        $this->reportRepository = null;
+        $this->reportService = null;
+        $this->managerRegistry = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -56,7 +59,7 @@ final class ReportRepositoryTest extends AbstractDoctrineTestCase
         $this->reportService->createPostRemindMessages();
 
         $reports = $this->reportRepository->findByParametersForAdmin()->getResult();
-        $this->assertTrue(count($reports) >= 1);
+        $this->assertTrue(\count($reports) >= 1);
         $this->assertIsArray($reports);
 
         $parameters = [
@@ -77,7 +80,7 @@ final class ReportRepositoryTest extends AbstractDoctrineTestCase
             'ends_at' => new DateTimeImmutable('NOW'),
         ];
         $reports = $this->reportRepository->findByParametersForAdmin($parameters)->getResult();
-        $this->assertTrue(count($reports) >= 1);
+        $this->assertTrue(\count($reports) >= 1);
         $this->assertIsArray($reports);
 
         $parameters = [

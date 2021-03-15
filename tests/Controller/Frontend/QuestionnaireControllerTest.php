@@ -10,6 +10,10 @@ use App\Faker\QuestionnaireFaker;
 use App\Manager\UserManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuestionnaireControllerTest extends AbstractUiTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class QuestionnaireControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-            $this->questionnaireFaker,
-            $this->userManager,
-        );
+        $this->promotionFaker = null;
+        $this->questionnaireFaker = null;
+        $this->userManager = null
+        ;
 
         parent::tearDown();
     }

@@ -12,6 +12,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -25,22 +29,22 @@ final class AccountTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $account = new Account();
         $account->setUuid($uuid);
-        $this->assertEquals($uuid, $account->__toString());
+        $this->assertSame($uuid, $account->__toString());
     }
 
     public function testGetId(): void
     {
         $account = new Account();
-        $this->assertEquals(null, $account->getId());
+        $this->assertNull($account->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $account = new Account();
-        $this->assertEquals(null, $account->getUuid());
+        $this->assertNull($account->getUuid());
         $account->setUuid($uuid);
-        $this->assertEquals($uuid, $account->getUuid());
+        $this->assertSame($uuid, $account->getUuid());
         $this->assertIsString($account->getUuid());
     }
 
@@ -49,16 +53,16 @@ final class AccountTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setUuid($uuid));
-        $this->assertEquals($uuid, $account->getUuid());
+        $this->assertSame($uuid, $account->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $account = new Account();
-        $this->assertEquals(null, $account->getCreatedBy());
+        $this->assertNull($account->getCreatedBy());
         $account->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $account->getCreatedBy());
+        $this->assertSame($createdBy, $account->getCreatedBy());
         $this->assertIsString($account->getCreatedBy());
     }
 
@@ -67,16 +71,16 @@ final class AccountTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $account->getCreatedBy());
+        $this->assertSame($createdBy, $account->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $account = new Account();
-        $this->assertEquals(null, $account->getDeletedBy());
+        $this->assertNull($account->getDeletedBy());
         $account->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $account->getDeletedBy());
+        $this->assertSame($deletedBy, $account->getDeletedBy());
         $this->assertIsString($account->getDeletedBy());
     }
 
@@ -85,16 +89,16 @@ final class AccountTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $account->getDeletedBy());
+        $this->assertSame($deletedBy, $account->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $account = new Account();
-        $this->assertEquals(null, $account->getUpdatedBy());
+        $this->assertNull($account->getUpdatedBy());
         $account->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $account->getUpdatedBy());
+        $this->assertSame($updatedBy, $account->getUpdatedBy());
         $this->assertIsString($account->getUpdatedBy());
     }
 
@@ -103,16 +107,16 @@ final class AccountTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $account->getUpdatedBy());
+        $this->assertSame($updatedBy, $account->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $account = new Account();
-        $this->assertEquals(null, $account->getCreatedAt());
+        $this->assertNull($account->getCreatedAt());
         $account->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $account->getCreatedAt());
+        $this->assertSame($createdAt, $account->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -120,16 +124,16 @@ final class AccountTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $account->getCreatedAt());
+        $this->assertSame($createdAt, $account->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $account = new Account();
-        $this->assertEquals(null, $account->getDeletedAt());
+        $this->assertNull($account->getDeletedAt());
         $account->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $account->getDeletedAt());
+        $this->assertSame($deletedAt, $account->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -137,16 +141,16 @@ final class AccountTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $account->getDeletedAt());
+        $this->assertSame($deletedAt, $account->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $account = new Account();
-        $this->assertEquals(null, $account->getUpdatedAt());
+        $this->assertNull($account->getUpdatedAt());
         $account->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $account->getUpdatedAt());
+        $this->assertSame($updatedAt, $account->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -154,7 +158,7 @@ final class AccountTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $account->getUpdatedAt());
+        $this->assertSame($updatedAt, $account->getUpdatedAt());
     }
 
     public function testAddAccountOperation(): void
@@ -219,19 +223,19 @@ final class AccountTest extends AbstractTestCase
     {
         $notifications = 10;
         $account = new Account();
-        $this->assertEquals(0, $account->getAvailableNotifications());
+        $this->assertSame(0, $account->getAvailableNotifications());
         $this->assertInstanceOf(Account::class, $account->depositNotifications($notifications));
-        $this->assertEquals($notifications, $account->getAvailableNotifications());
+        $this->assertSame($notifications, $account->getAvailableNotifications());
     }
 
     public function testGetAvailableNotifications(): void
     {
         $availableNotifications = 10;
         $account = new Account();
-        $this->assertEquals(null, $account->getAvailableNotifications());
+        $this->assertSame(0, $account->getAvailableNotifications());
         $this->assertIsInt($account->getAvailableNotifications());
         $account->setAvailableNotifications($availableNotifications);
-        $this->assertEquals($availableNotifications, $account->getAvailableNotifications());
+        $this->assertSame($availableNotifications, $account->getAvailableNotifications());
     }
 
     public function testSetAvailableNotifications(): void
@@ -239,7 +243,7 @@ final class AccountTest extends AbstractTestCase
         $availableNotifications = 10;
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setAvailableNotifications($availableNotifications));
-        $this->assertEquals($availableNotifications, $account->getAvailableNotifications());
+        $this->assertSame($availableNotifications, $account->getAvailableNotifications());
     }
 
     public function testCanWithdrawNotifications(): void
@@ -255,11 +259,11 @@ final class AccountTest extends AbstractTestCase
     {
         $availableNotifications = 10;
         $account = new Account();
-        $this->assertEquals(0, $account->getAvailableNotifications());
+        $this->assertSame(0, $account->getAvailableNotifications());
         $this->assertInstanceOf(Account::class, $account->setAvailableNotifications($availableNotifications));
-        $this->assertEquals($availableNotifications, $account->getAvailableNotifications());
+        $this->assertSame($availableNotifications, $account->getAvailableNotifications());
         $this->assertInstanceOf(Account::class, $account->withdrawNotifications($availableNotifications));
-        $this->assertEquals(0, $account->getAvailableNotifications());
+        $this->assertSame(0, $account->getAvailableNotifications());
     }
 
     public function testCanDepositSmsNotifications(): void
@@ -275,19 +279,19 @@ final class AccountTest extends AbstractTestCase
     {
         $smsNotifications = 10;
         $account = new Account();
-        $this->assertEquals(0, $account->getAvailableSmsNotifications());
+        $this->assertSame(0, $account->getAvailableSmsNotifications());
         $this->assertInstanceOf(Account::class, $account->depositSmsNotifications($smsNotifications));
-        $this->assertEquals($smsNotifications, $account->getAvailableSmsNotifications());
+        $this->assertSame($smsNotifications, $account->getAvailableSmsNotifications());
     }
 
     public function testGetAvailableSmsNotifications(): void
     {
         $availableSmsNotifications = 10;
         $account = new Account();
-        $this->assertEquals(null, $account->getAvailableSmsNotifications());
+        $this->assertSame(0, $account->getAvailableSmsNotifications());
         $this->assertIsInt($account->getAvailableSmsNotifications());
         $account->setAvailableSmsNotifications($availableSmsNotifications);
-        $this->assertEquals($availableSmsNotifications, $account->getAvailableSmsNotifications());
+        $this->assertSame($availableSmsNotifications, $account->getAvailableSmsNotifications());
     }
 
     public function testSetAvailableSmsNotifications(): void
@@ -295,7 +299,7 @@ final class AccountTest extends AbstractTestCase
         $availableSmsNotifications = 10;
         $account = new Account();
         $this->assertInstanceOf(Account::class, $account->setAvailableSmsNotifications($availableSmsNotifications));
-        $this->assertEquals($availableSmsNotifications, $account->getAvailableSmsNotifications());
+        $this->assertSame($availableSmsNotifications, $account->getAvailableSmsNotifications());
     }
 
     public function testCanWithdrawSmsNotifications(): void
@@ -311,11 +315,11 @@ final class AccountTest extends AbstractTestCase
     {
         $availableSmsNotifications = 10;
         $account = new Account();
-        $this->assertEquals(0, $account->getAvailableSmsNotifications());
+        $this->assertSame(0, $account->getAvailableSmsNotifications());
         $this->assertInstanceOf(Account::class, $account->setAvailableSmsNotifications($availableSmsNotifications));
-        $this->assertEquals($availableSmsNotifications, $account->getAvailableSmsNotifications());
+        $this->assertSame($availableSmsNotifications, $account->getAvailableSmsNotifications());
         $this->assertInstanceOf(Account::class, $account->withdrawSmsNotifications($availableSmsNotifications));
-        $this->assertEquals(0, $account->getAvailableSmsNotifications());
+        $this->assertSame(0, $account->getAvailableSmsNotifications());
     }
 
     public function testAddUser(): void

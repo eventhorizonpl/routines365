@@ -28,18 +28,20 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->leftJoin('u.profile', 'up')
             ->leftJoin('u.testimonial', 'ut')
             ->leftJoin('u.userKyt', 'uuk')
-            ->addOrderBy('u.createdAt', 'DESC');
+            ->addOrderBy('u.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('type', $parameters)) {
+            if (\array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
                     $queryBuilder->andWhere('u.type = :type')
-                        ->setParameter('type', $type);
+                        ->setParameter('type', $type)
+                    ;
                 }
             }
 
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -49,23 +51,26 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
                             $queryBuilder->expr()->like('u.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('u.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('u.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -86,7 +91,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->addOrderBy('u.createdAt', 'DESC')
             ->setParameter('isEnabled', true)
             ->setParameter('isVerified', true)
-            ->setParameter('sendWeeklyMonthlyStatistics', true);
+            ->setParameter('sendWeeklyMonthlyStatistics', true)
+        ;
 
         return $queryBuilder->getQuery();
     }
@@ -102,7 +108,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->andWhere('u.isVerified = :isVerified')
             ->addOrderBy('u.id', 'ASC')
             ->setParameter('isEnabled', true)
-            ->setParameter('isVerified', true);
+            ->setParameter('isVerified', true)
+        ;
 
         return $queryBuilder->getQuery();
     }
@@ -115,7 +122,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ))
             ->setParameter('endDate', $endDate)
             ->setParameter('lastLoginAt', $lastLoginAt)
-            ->setParameter('startDate', $startDate);
+            ->setParameter('startDate', $startDate)
+        ;
 
         return (int) $query->getSingleScalarResult();
     }
@@ -127,7 +135,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             User::class
         ))
             ->setParameter('endDate', $endDate)
-            ->setParameter('startDate', $startDate);
+            ->setParameter('startDate', $startDate)
+        ;
 
         return (int) $query->getSingleScalarResult();
     }
@@ -147,7 +156,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setParameter('isEnabled', true)
             ->setParameter('isVerified', true)
             ->setParameter('lastLoginAt', $lastLoginAt)
-            ->setParameter('type', User::TYPE_PROSPECT);
+            ->setParameter('type', User::TYPE_PROSPECT)
+        ;
 
         return $queryBuilder->getQuery();
     }
@@ -159,7 +169,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->andWhere('u.deletedAt IS NULL')
             ->andWhere('u.isEnabled = :isEnabled')
             ->setParameter('email', $email)
-            ->setParameter('isEnabled', true);
+            ->setParameter('isEnabled', true)
+        ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }

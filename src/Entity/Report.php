@@ -16,8 +16,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Report
 {
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const DATA_KEY_CREATE_SENT_REMINDER = 'create_sent_reminder';
     public const DATA_KEY_REMINDER = 'reminder';
@@ -103,7 +103,7 @@ class Report
 
     public function setStatus(string $status): self
     {
-        if (!(in_array($status, self::getStatusValidationChoices()))) {
+        if (!(\in_array($status, self::getStatusValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid status');
         }
 
@@ -131,7 +131,7 @@ class Report
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

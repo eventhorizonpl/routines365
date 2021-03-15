@@ -13,6 +13,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class GoalManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -34,12 +38,11 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->goalManager,
-            $this->goalRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->goalManager = null;
+        $this->goalRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -47,9 +50,8 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
     public function createGoal(): Goal
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
 
-        return $goal;
+        return $user->getGoals()->first();
     }
 
     public function testConstruct(): void
@@ -75,7 +77,7 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
 
         $goal2 = $this->goalRepository->findOneById($goalId);
         $this->assertInstanceOf(Goal::class, $goal2);
-        $this->assertEquals($name, $goal2->getName());
+        $this->assertSame($name, $goal2->getName());
     }
 
     public function testDelete(): void

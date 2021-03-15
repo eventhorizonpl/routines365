@@ -29,7 +29,8 @@ class CronJobController extends AbstractController
             ->getRepository(CronJob::class)
             ->createQueryBuilder('cj')
             ->orderBy('cj.id', 'DESC')
-            ->getQuery();
+            ->getQuery()
+        ;
         $cronJobs = $paginator->paginate(
             $cronJobsQuery,
             $request->query->getInt('page', 1),

@@ -82,12 +82,13 @@ class RewardController extends AbstractController
                         'know_your_tools' => KytResource::REWARDS_SHOW,
                         'uuid' => $reward->getUuid(),
                     ]);
-                } else {
-                    return $this->redirectToRoute('frontend_reward_show', [
-                        'uuid' => $reward->getUuid(),
-                    ]);
                 }
-            } elseif (Reward::CONTEXT_ROUTINE === $context) {
+
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'uuid' => $reward->getUuid(),
+                ]);
+            }
+            if (Reward::CONTEXT_ROUTINE === $context) {
                 return $this->redirectToRoute('frontend_routine_show_rewards', [
                     'uuid' => $reward->getRoutine()->getUuid(),
                 ]);
@@ -135,12 +136,13 @@ class RewardController extends AbstractController
                         'know_your_tools' => KytResource::REWARDS_FINISH,
                         'uuid' => $reward->getUuid(),
                     ]);
-                } else {
-                    return $this->redirectToRoute('frontend_reward_show', [
-                        'uuid' => $reward->getUuid(),
-                    ]);
                 }
-            } elseif (Reward::CONTEXT_ROUTINE === $context) {
+
+                return $this->redirectToRoute('frontend_reward_show', [
+                    'uuid' => $reward->getUuid(),
+                ]);
+            }
+            if (Reward::CONTEXT_ROUTINE === $context) {
                 return $this->redirectToRoute('frontend_routine_show_rewards', [
                     'uuid' => $reward->getRoutine()->getUuid(),
                 ]);

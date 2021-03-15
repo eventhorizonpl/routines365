@@ -85,6 +85,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     *
+     * @param mixed $credentials
      */
     public function getPassword($credentials): ?string
     {
@@ -103,13 +105,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        if ((User::TYPE_STAFF === $token->getUser()->getType()) || (in_array(User::ROLE_ADMIN, $token->getRoleNames()))) {
+        if ((User::TYPE_STAFF === $token->getUser()->getType()) || (\in_array(User::ROLE_ADMIN, $token->getRoleNames(), true))) {
             return new RedirectResponse($this->urlGenerator->generate('admin_workspace'));
-        } elseif (in_array(User::ROLE_USER, $token->getRoleNames())) {
-            return new RedirectResponse($this->urlGenerator->generate('frontend_routine_index'));
-        } else {
-            return new RedirectResponse($this->urlGenerator->generate('frontend_home'));
         }
+        if (\in_array(User::ROLE_USER, $token->getRoleNames(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('frontend_routine_index'));
+        }
+
+        return new RedirectResponse($this->urlGenerator->generate('frontend_home'));
     }
 
     protected function getLoginUrl(): string

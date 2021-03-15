@@ -73,7 +73,7 @@ class UserManager
         $user->setUpdatedBy($actor);
 
         $errors = $this->validate($user);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException((string) $errors);
         }
 
@@ -208,8 +208,6 @@ class UserManager
 
     public function validate(User $user): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($user, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($user, null, ['system']);
     }
 }

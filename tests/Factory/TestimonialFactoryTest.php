@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class TestimonialFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -54,8 +58,8 @@ final class TestimonialFactoryTest extends AbstractTestCase
             $signature
         );
         $this->assertInstanceOf(Testimonial::class, $testimonial);
-        $this->assertEquals($content, $testimonial->getContent());
-        $this->assertEquals($isVisible, $testimonial->getIsVisible());
-        $this->assertEquals($signature, $testimonial->getSignature());
+        $this->assertSame($content, $testimonial->getContent());
+        $this->assertSame($isVisible, $testimonial->getIsVisible());
+        $this->assertSame($signature, $testimonial->getSignature());
     }
 }

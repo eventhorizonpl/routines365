@@ -7,6 +7,10 @@ namespace App\Tests\Controller\Frontend;
 use App\Faker\PromotionFaker;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionControllerTest extends AbstractUiTestCase
 {
     /**
@@ -16,9 +20,8 @@ final class PromotionControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-        );
+        $this->promotionFaker = null
+        ;
 
         parent::tearDown();
     }

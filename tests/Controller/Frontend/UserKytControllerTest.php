@@ -8,6 +8,10 @@ use App\Entity\Promotion;
 use App\Faker\PromotionFaker;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKytControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,9 +21,8 @@ final class UserKytControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-        );
+        $this->promotionFaker = null
+        ;
 
         parent::tearDown();
     }

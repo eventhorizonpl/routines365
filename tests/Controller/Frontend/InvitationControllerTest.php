@@ -6,6 +6,10 @@ namespace App\Tests\Controller\Frontend;
 
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class InvitationControllerTest extends AbstractUiTestCase
 {
     public function testSend(): void

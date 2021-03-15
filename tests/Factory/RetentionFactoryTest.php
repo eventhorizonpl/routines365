@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RetentionFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -24,7 +28,7 @@ final class RetentionFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -53,7 +57,7 @@ final class RetentionFactoryTest extends AbstractTestCase
             $date
         );
         $this->assertInstanceOf(Retention::class, $retention);
-        $this->assertEquals($data, $retention->getData());
-        $this->assertEquals($date, $retention->getDate());
+        $this->assertSame($data, $retention->getData());
+        $this->assertSame($date, $retention->getDate());
     }
 }

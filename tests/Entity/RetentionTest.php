@@ -9,6 +9,10 @@ use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RetentionTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -22,22 +26,22 @@ final class RetentionTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $retention = new Retention();
         $retention->setUuid($uuid);
-        $this->assertEquals($uuid, $retention->__toString());
+        $this->assertSame($uuid, $retention->__toString());
     }
 
     public function testGetId(): void
     {
         $retention = new Retention();
-        $this->assertEquals(null, $retention->getId());
+        $this->assertNull($retention->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $retention = new Retention();
-        $this->assertEquals(null, $retention->getUuid());
+        $this->assertNull($retention->getUuid());
         $retention->setUuid($uuid);
-        $this->assertEquals($uuid, $retention->getUuid());
+        $this->assertSame($uuid, $retention->getUuid());
         $this->assertIsString($retention->getUuid());
     }
 
@@ -46,16 +50,16 @@ final class RetentionTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $retention = new Retention();
         $this->assertInstanceOf(Retention::class, $retention->setUuid($uuid));
-        $this->assertEquals($uuid, $retention->getUuid());
+        $this->assertSame($uuid, $retention->getUuid());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $retention = new Retention();
-        $this->assertEquals(null, $retention->getCreatedAt());
+        $this->assertNull($retention->getCreatedAt());
         $retention->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $retention->getCreatedAt());
+        $this->assertSame($createdAt, $retention->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -63,16 +67,16 @@ final class RetentionTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $retention = new Retention();
         $this->assertInstanceOf(Retention::class, $retention->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $retention->getCreatedAt());
+        $this->assertSame($createdAt, $retention->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $retention = new Retention();
-        $this->assertEquals(null, $retention->getDeletedAt());
+        $this->assertNull($retention->getDeletedAt());
         $retention->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $retention->getDeletedAt());
+        $this->assertSame($deletedAt, $retention->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -80,16 +84,16 @@ final class RetentionTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $retention = new Retention();
         $this->assertInstanceOf(Retention::class, $retention->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $retention->getDeletedAt());
+        $this->assertSame($deletedAt, $retention->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $retention = new Retention();
-        $this->assertEquals(null, $retention->getUpdatedAt());
+        $this->assertNull($retention->getUpdatedAt());
         $retention->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $retention->getUpdatedAt());
+        $this->assertSame($updatedAt, $retention->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -97,7 +101,7 @@ final class RetentionTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $retention = new Retention();
         $this->assertInstanceOf(Retention::class, $retention->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $retention->getUpdatedAt());
+        $this->assertSame($updatedAt, $retention->getUpdatedAt());
     }
 
     public function testGetData(): void
@@ -105,7 +109,7 @@ final class RetentionTest extends AbstractTestCase
         $data = ['test data'];
         $retention = new Retention();
         $retention->setData($data);
-        $this->assertEquals($data, $retention->getData());
+        $this->assertSame($data, $retention->getData());
         $this->assertIsArray($retention->getData());
     }
 
@@ -114,7 +118,7 @@ final class RetentionTest extends AbstractTestCase
         $data = ['test data'];
         $retention = new Retention();
         $this->assertInstanceOf(Retention::class, $retention->setData($data));
-        $this->assertEquals($data, $retention->getData());
+        $this->assertSame($data, $retention->getData());
     }
 
     public function testGetDate(): void
@@ -122,7 +126,7 @@ final class RetentionTest extends AbstractTestCase
         $date = new DateTimeImmutable();
         $retention = new Retention();
         $retention->setDate($date);
-        $this->assertEquals($date, $retention->getDate());
+        $this->assertSame($date, $retention->getDate());
     }
 
     public function testSetDate(): void
@@ -130,6 +134,6 @@ final class RetentionTest extends AbstractTestCase
         $date = new DateTimeImmutable();
         $retention = new Retention();
         $this->assertInstanceOf(Retention::class, $retention->setDate($date));
-        $this->assertEquals($date, $retention->getDate());
+        $this->assertSame($date, $retention->getDate());
     }
 }

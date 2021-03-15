@@ -9,6 +9,10 @@ use App\Faker\UserFaker;
 use App\Form\Frontend\ProjectType;
 use App\Tests\AbstractTypeDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
 {
     /**
@@ -18,7 +22,7 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset($this->userFaker);
+        $this->userFaker = null;
 
         parent::tearDown();
     }
@@ -54,7 +58,8 @@ final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
     {
         $formData = new Project();
         $view = $this->factory->create(ProjectType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->reminderMessageRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->reminderMessageRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

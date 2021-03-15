@@ -95,9 +95,7 @@ class UserFaker
 
         $user->setApiToken((string) Uuid::v4());
 
-        $user = $this->userService->encodePassword($user, $password);
-
-        return $user;
+        return $this->userService->encodePassword($user, $password);
     }
 
     public function createUserPersisted(
@@ -131,7 +129,7 @@ class UserFaker
             $password = self::ADMIN_PASSWORD;
         }
 
-        $user = $this->createUserPersisted(
+        return $this->createUserPersisted(
             $email,
             true,
             $password,
@@ -142,8 +140,6 @@ class UserFaker
             ],
             User::TYPE_STAFF
         );
-
-        return $user;
     }
 
     public function createCustomerUserPersisted(
@@ -158,15 +154,13 @@ class UserFaker
             $password = self::CUSTOMER_PASSWORD;
         }
 
-        $user = $this->createUserPersisted(
+        return $this->createUserPersisted(
             $email,
             true,
             $password,
             [User::ROLE_USER],
             User::TYPE_CUSTOMER
         );
-
-        return $user;
     }
 
     public function createRichUserPersisted(
@@ -243,7 +237,8 @@ class UserFaker
         $sentReminder = $this->sentReminderFactory->createSentReminder();
         $sentReminder
             ->setReminder($reminder)
-            ->setRoutine($routine);
+            ->setRoutine($routine)
+        ;
         $this->sentReminderManager->save($sentReminder);
         $user->getRoutines()->first()->addSentReminder($sentReminder);
 
@@ -254,7 +249,8 @@ class UserFaker
         $reminderMessage
             ->setAccountOperation($accountOperation)
             ->setReminder($reminder)
-            ->setSentReminder($sentReminder);
+            ->setSentReminder($sentReminder)
+        ;
         $this->reminderMessageManager->save($reminderMessage);
         $user->getReminders()->first()->addReminderMessage($reminderMessage);
 
@@ -265,7 +261,8 @@ class UserFaker
         $reminderMessage
             ->setAccountOperation($accountOperation)
             ->setReminder($reminder)
-            ->setSentReminder($sentReminder);
+            ->setSentReminder($sentReminder)
+        ;
         $this->reminderMessageManager->save($reminderMessage);
         $user->getReminders()->first()->addReminderMessage($reminderMessage);
 

@@ -10,6 +10,10 @@ use App\Repository\RetentionRepository;
 use App\Service\RetentionService;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RetentionControllerTest extends AbstractUiTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class RetentionControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->retentionManager,
-            $this->retentionRepository,
-            $this->retentionService
-        );
+        $this->retentionManager = null;
+        $this->retentionRepository = null;
+        $this->retentionService = null
+        ;
 
         parent::tearDown();
     }
@@ -41,9 +44,8 @@ final class RetentionControllerTest extends AbstractUiTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $this->retentionService->run();
         $retentions = $this->retentionRepository->findAll();
-        $retention = $retentions[0];
 
-        return $retention;
+        return $retentions[0];
     }
 
     public function testIndex(): void

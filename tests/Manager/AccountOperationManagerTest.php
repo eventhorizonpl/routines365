@@ -13,6 +13,10 @@ use App\Repository\AccountOperationRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountOperationManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -38,13 +42,12 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountManager,
-            $this->accountOperationManager,
-            $this->accountOperationRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->accountManager = null;
+        $this->accountOperationManager = null;
+        $this->accountOperationRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -52,9 +55,8 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
     public function createAccountOperation(): AccountOperation
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $accountOperation = $user->getAccount()->getAccountOperations()->first();
 
-        return $accountOperation;
+        return $user->getAccount()->getAccountOperations()->first();
     }
 
     public function testConstruct(): void
@@ -80,7 +82,7 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
 
         $accountOperation2 = $this->accountOperationRepository->findOneById($accountOperationId);
         $this->assertInstanceOf(AccountOperation::class, $accountOperation2);
-        $this->assertEquals($smsNotifications, $accountOperation2->getSmsNotifications());
+        $this->assertSame($smsNotifications, $accountOperation2->getSmsNotifications());
     }
 
     public function testDelete(): void

@@ -7,6 +7,10 @@ namespace App\Tests\Controller\Frontend;
 use App\Faker\QuoteFaker;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteControllerTest extends AbstractUiTestCase
 {
     /**
@@ -16,9 +20,8 @@ final class QuoteControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->quoteFaker,
-        );
+        $this->quoteFaker = null
+        ;
 
         parent::tearDown();
     }

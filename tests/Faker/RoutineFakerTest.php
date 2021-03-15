@@ -9,6 +9,10 @@ use App\Factory\RoutineFactory;
 use App\Faker\RoutineFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RoutineFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class RoutineFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->routineFactory,
-            $this->routineFaker
-        );
+        $this->routineFactory = null;
+        $this->routineFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -52,9 +55,9 @@ final class RoutineFakerTest extends AbstractDoctrineTestCase
             $name,
             $type
         );
-        $this->assertEquals($description, $routine->getDescription());
-        $this->assertEquals($isEnabled, $routine->getIsEnabled());
-        $this->assertEquals($name, $routine->getName());
-        $this->assertEquals($type, $routine->getType());
+        $this->assertSame($description, $routine->getDescription());
+        $this->assertSame($isEnabled, $routine->getIsEnabled());
+        $this->assertSame($name, $routine->getName());
+        $this->assertSame($type, $routine->getType());
     }
 }

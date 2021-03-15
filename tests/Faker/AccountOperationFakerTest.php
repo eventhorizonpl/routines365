@@ -9,6 +9,10 @@ use App\Factory\AccountOperationFactory;
 use App\Faker\AccountOperationFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountOperationFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountOperationFactory,
-            $this->accountOperationFaker
-        );
+        $this->accountOperationFactory = null;
+        $this->accountOperationFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -52,9 +55,9 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
             $smsNotifications,
             $type
         );
-        $this->assertEquals($description, $accountOperation->getDescription());
-        $this->assertEquals($notifications, $accountOperation->getNotifications());
-        $this->assertEquals($smsNotifications, $accountOperation->getSmsNotifications());
-        $this->assertEquals($type, $accountOperation->getType());
+        $this->assertSame($description, $accountOperation->getDescription());
+        $this->assertSame($notifications, $accountOperation->getNotifications());
+        $this->assertSame($smsNotifications, $accountOperation->getSmsNotifications());
+        $this->assertSame($type, $accountOperation->getType());
     }
 }

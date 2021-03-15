@@ -7,6 +7,10 @@ namespace App\Tests\Command;
 use App\Tests\AbstractCommandTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CleanupSessionsCommandTest extends AbstractCommandTestCase
 {
     public function testExecute(): void

@@ -8,6 +8,10 @@ use App\Form\Frontend\InvitationType;
 use App\Form\Model\InvitationEmailFormModel;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class InvitationTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class InvitationTypeTest extends TypeTestCase
     {
         $formData = new InvitationEmailFormModel();
         $view = $this->factory->create(InvitationType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

@@ -45,13 +45,11 @@ class QuestionFaker
             );
         }
 
-        $question = $this->questionFactory->createQuestionWithRequired(
+        return $this->questionFactory->createQuestionWithRequired(
             $isEnabled,
             $position,
             $title,
             $type
         );
-
-        return $question;
     }
 }

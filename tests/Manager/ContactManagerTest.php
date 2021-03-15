@@ -12,6 +12,10 @@ use App\Repository\ContactRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ContactManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->contactManager,
-            $this->contactRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->contactManager = null;
+        $this->contactRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     public function createContact(): Contact
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
 
-        return $contact;
+        return $user->getContacts()->first();
     }
 
     public function testConstruct(): void
@@ -74,7 +76,7 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
 
         $contact2 = $this->contactRepository->findOneById($contactId);
         $this->assertInstanceOf(Contact::class, $contact2);
-        $this->assertEquals($title, $contact2->getTitle());
+        $this->assertSame($title, $contact2->getTitle());
     }
 
     public function testDelete(): void

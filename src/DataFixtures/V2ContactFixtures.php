@@ -36,7 +36,7 @@ class V2ContactFixtures extends Fixture implements ContainerAwareInterface, Depe
     {
         $kernel = $this->container->get('kernel');
         $contacts = [];
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($contactId = 1; $contactId <= self::CONTACT_LIMIT; ++$contactId) {
                     $contact = $this->contactFaker->createContact();

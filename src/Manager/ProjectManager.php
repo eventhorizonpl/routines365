@@ -60,18 +60,18 @@ class ProjectManager
         $project->setUpdatedAt($date);
         $project->setUpdatedBy($actor);
 
-        if ((false === $project->getIsCompleted()) &&
-            (null !== $project->getCompletedAt())
+        if ((false === $project->getIsCompleted())
+            && (null !== $project->getCompletedAt())
         ) {
             $project->setCompletedAt(null);
-        } elseif ((true === $project->getIsCompleted()) &&
-            (null === $project->getCompletedAt())
+        } elseif ((true === $project->getIsCompleted())
+            && (null === $project->getCompletedAt())
         ) {
             $project->setCompletedAt($date);
         }
 
         $errors = $this->validate($project);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $project));
         }
 
@@ -113,8 +113,6 @@ class ProjectManager
 
     public function validate(Project $project): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($project, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($project, null, ['system']);
     }
 }

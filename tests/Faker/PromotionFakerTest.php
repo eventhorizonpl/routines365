@@ -10,6 +10,10 @@ use App\Faker\PromotionFaker;
 use App\Manager\PromotionManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFactory,
-            $this->promotionFaker,
-            $this->promotionManager
-        );
+        $this->promotionFactory = null;
+        $this->promotionFaker = null;
+        $this->promotionManager = null
+        ;
 
         parent::tearDown();
     }
@@ -63,12 +66,12 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
             $smsNotifications,
             $type
         );
-        $this->assertEquals($newCode, $promotion->getCode());
-        $this->assertEquals($notifications, $promotion->getNotifications());
-        $this->assertEquals($isEnabled, $promotion->getIsEnabled());
-        $this->assertEquals($name, $promotion->getName());
-        $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());
-        $this->assertEquals($type, $promotion->getType());
+        $this->assertSame($newCode, $promotion->getCode());
+        $this->assertSame($notifications, $promotion->getNotifications());
+        $this->assertSame($isEnabled, $promotion->getIsEnabled());
+        $this->assertSame($name, $promotion->getName());
+        $this->assertSame($smsNotifications, $promotion->getSmsNotifications());
+        $this->assertSame($type, $promotion->getType());
     }
 
     public function testCreatePromotionPersisted(): void
@@ -91,11 +94,11 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
             $smsNotifications,
             $type
         );
-        $this->assertEquals($newCode, $promotion->getCode());
-        $this->assertEquals($notifications, $promotion->getNotifications());
-        $this->assertEquals($isEnabled, $promotion->getIsEnabled());
-        $this->assertEquals($name, $promotion->getName());
-        $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());
-        $this->assertEquals($type, $promotion->getType());
+        $this->assertSame($newCode, $promotion->getCode());
+        $this->assertSame($notifications, $promotion->getNotifications());
+        $this->assertSame($isEnabled, $promotion->getIsEnabled());
+        $this->assertSame($name, $promotion->getName());
+        $this->assertSame($smsNotifications, $promotion->getSmsNotifications());
+        $this->assertSame($type, $promotion->getType());
     }
 }

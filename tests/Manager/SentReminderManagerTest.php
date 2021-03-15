@@ -12,6 +12,10 @@ use App\Repository\SentReminderRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SentReminderManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->sentReminderManager,
-            $this->sentReminderRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->sentReminderManager = null;
+        $this->sentReminderRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class SentReminderManagerTest extends AbstractDoctrineTestCase
     public function createSentReminder(): SentReminder
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
 
-        return $sentReminder;
+        return $user->getRoutines()->first()->getSentReminders()->first();
     }
 
     public function testConstruct(): void

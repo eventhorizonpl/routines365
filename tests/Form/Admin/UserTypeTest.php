@@ -11,6 +11,10 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Validator\Validation;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserTypeTest extends TypeTestCase
 {
     /**
@@ -29,7 +33,8 @@ final class UserTypeTest extends TypeTestCase
     {
         $formData = new User();
         $view = $this->factory->create(UserType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

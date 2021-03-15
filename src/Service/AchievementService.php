@@ -23,13 +23,13 @@ class AchievementService
         $saveUser = false;
 
         if (Achievement::TYPE_COMPLETED_ROUTINE === $type) {
-            $requirement = count($user->getCompletedRoutines());
+            $requirement = \count($user->getCompletedRoutines());
         } elseif (Achievement::TYPE_COMPLETED_GOAL === $type) {
-            $requirement = count($user->getGoalsCompleted());
+            $requirement = \count($user->getGoalsCompleted());
         } elseif (Achievement::TYPE_COMPLETED_PROJECT === $type) {
-            $requirement = count($user->getProjectsCompleted());
+            $requirement = \count($user->getProjectsCompleted());
         } elseif (Achievement::TYPE_CREATED_NOTE === $type) {
-            $requirement = count($user->getNotes());
+            $requirement = \count($user->getNotes());
         } else {
             $requirement = 10000;
         }

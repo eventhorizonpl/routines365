@@ -8,6 +8,10 @@ use App\Entity\Testimonial;
 use App\Form\Admin\TestimonialType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class TestimonialTypeTest extends TypeTestCase
     {
         $formData = new Testimonial();
         $view = $this->factory->create(TestimonialType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

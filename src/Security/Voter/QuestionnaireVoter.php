@@ -16,7 +16,7 @@ class QuestionnaireVoter extends Voter
 
     protected function supports($attribute, $subject): bool
     {
-        return in_array($attribute, [self::COMPLETE])
+        return \in_array($attribute, [self::COMPLETE], true)
             && $subject instanceof Questionnaire;
     }
 
@@ -37,8 +37,8 @@ class QuestionnaireVoter extends Voter
 
     private function canComplete(Questionnaire $questionnaire, User $user): bool
     {
-        if ((null !== $questionnaire->getDeletedAt()) ||
-            (false === $questionnaire->getIsEnabled())
+        if ((null !== $questionnaire->getDeletedAt())
+            || (false === $questionnaire->getIsEnabled())
         ) {
             return false;
         }

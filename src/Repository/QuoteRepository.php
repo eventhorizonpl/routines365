@@ -20,10 +20,11 @@ class QuoteRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('q')
             ->select('q')
-            ->addOrderBy('q.createdAt', 'DESC');
+            ->addOrderBy('q.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -32,23 +33,26 @@ class QuoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('q.content', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('q.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('q.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -64,10 +68,11 @@ class QuoteRepository extends ServiceEntityRepository
             ->andWhere('q.isVisible = :isVisible')
             ->addOrderBy('q.popularity', 'DESC')
             ->addOrderBy('q.id', 'DESC')
-            ->setParameter('isVisible', true);
+            ->setParameter('isVisible', true)
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -76,7 +81,8 @@ class QuoteRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('q.content', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
         }
@@ -89,11 +95,13 @@ class QuoteRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('q')
             ->where('q.deletedAt IS NULL')
             ->orderBy('RAND()')
-            ->setMaxResults(1);
+            ->setMaxResults(1)
+        ;
 
         if (null !== $stringLength) {
             $queryBuilder->andWhere('q.stringLength <= :stringLength')
-                ->setParameter('stringLength', $stringLength);
+                ->setParameter('stringLength', $stringLength)
+            ;
         }
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

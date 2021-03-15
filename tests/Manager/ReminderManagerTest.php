@@ -15,6 +15,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -44,14 +48,13 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->reminderManager,
-            $this->reminderMessageManager,
-            $this->reminderRepository,
-            $this->sentReminderManager,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->reminderManager = null;
+        $this->reminderMessageManager = null;
+        $this->reminderRepository = null;
+        $this->sentReminderManager = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -59,9 +62,8 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     public function createReminder(): Reminder
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $reminder = $user->getReminders()->first();
 
-        return $reminder;
+        return $user->getReminders()->first();
     }
 
     public function testConstruct(): void
@@ -92,7 +94,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
 
         $reminder2 = $this->reminderRepository->findOneById($reminderId);
         $this->assertInstanceOf(Reminder::class, $reminder2);
-        $this->assertEquals($minutesBefore, $reminder2->getMinutesBefore());
+        $this->assertSame($minutesBefore, $reminder2->getMinutesBefore());
     }
 
     public function testDelete(): void

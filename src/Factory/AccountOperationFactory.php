@@ -29,7 +29,8 @@ class AccountOperationFactory
             ->setDescription($description)
             ->setNotifications($notifications)
             ->setSmsNotifications($smsNotifications)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $accountOperation;
     }

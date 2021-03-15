@@ -9,6 +9,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use AsyncAws\Core\Exception\Http\NetworkException;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AmazonSnsServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -18,9 +22,8 @@ final class AmazonSnsServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->amazonSnsService
-        );
+        $this->amazonSnsService = null
+        ;
 
         parent::tearDown();
     }

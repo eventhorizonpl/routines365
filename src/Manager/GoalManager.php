@@ -59,14 +59,14 @@ class GoalManager
         $goal->setUpdatedAt($date);
         $goal->setUpdatedBy($actor);
 
-        if ((false === $goal->getIsCompleted()) &&
-            (null !== $goal->getCompletedAt())
+        if ((false === $goal->getIsCompleted())
+            && (null !== $goal->getCompletedAt())
         ) {
             $goal->setCompletedAt(null);
         }
 
         $errors = $this->validate($goal);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $goal));
         }
 
@@ -104,8 +104,6 @@ class GoalManager
 
     public function validate(Goal $goal): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($goal, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($goal, null, ['system']);
     }
 }

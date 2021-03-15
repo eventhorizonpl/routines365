@@ -31,11 +31,9 @@ class UserQuestionnaireFaker
             $isRewarded = (bool) $this->faker->boolean;
         }
 
-        $userQuestionnaire = $this->userQuestionnaireFactory->createUserQuestionnaireWithRequired(
+        return $this->userQuestionnaireFactory->createUserQuestionnaireWithRequired(
             $isRewarded
         );
-
-        return $userQuestionnaire;
     }
 
     public function createUserQuestionnairePersisted(
@@ -48,7 +46,8 @@ class UserQuestionnaireFaker
         );
         $userQuestionnaire
             ->setQuestionnaire($questionnaire)
-            ->setUser($user);
+            ->setUser($user)
+        ;
         $this->userQuestionnaireManager->save($userQuestionnaire, (string) Uuid::v4());
 
         return $userQuestionnaire;

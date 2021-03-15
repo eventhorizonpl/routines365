@@ -36,7 +36,7 @@ class V2ProjectFixtures extends Fixture implements ContainerAwareInterface, Depe
     {
         $kernel = $this->container->get('kernel');
         $projects = [];
-        if (in_array($kernel->getEnvironment(), ['dev', 'test'])) {
+        if (\in_array($kernel->getEnvironment(), ['dev', 'test'], true)) {
             for ($userId = 1; $userId <= V1UserFixtures::REGULAR_USER_LIMIT; ++$userId) {
                 for ($projectId = 1; $projectId <= self::PROJECT_LIMIT; ++$projectId) {
                     $project = $this->projectFaker->createProject();

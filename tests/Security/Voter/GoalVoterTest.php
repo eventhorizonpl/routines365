@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use ReflectionMethod;
 use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class GoalVoterTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class GoalVoterTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->goalFaker,
-            $this->goalVoter,
-            $this->userFaker
-        );
+        $this->goalFaker = null;
+        $this->goalVoter = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

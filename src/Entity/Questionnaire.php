@@ -15,11 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Questionnaire
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsEnabledTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="questionnaire", orphanRemoval=true, targetEntity=Question::class)
@@ -85,9 +85,7 @@ class Questionnaire
 
     public function getQuestions(): Collection
     {
-        return $this->questions->filter(function (Question $question) {
-            return null === $question->getDeletedAt();
-        });
+        return $this->questions->filter(fn (Question $question) => null === $question->getDeletedAt());
     }
 
     public function getQuestionsAll(): Collection
@@ -128,9 +126,7 @@ class Questionnaire
 
     public function getUserQuestionnaires(): Collection
     {
-        return $this->userQuestionnaires->filter(function (UserQuestionnaire $userQuestionnaire) {
-            return null === $userQuestionnaire->getDeletedAt();
-        });
+        return $this->userQuestionnaires->filter(fn (UserQuestionnaire $userQuestionnaire) => null === $userQuestionnaire->getDeletedAt());
     }
 
     public function getUserQuestionnairesAll(): Collection

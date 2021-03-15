@@ -9,20 +9,20 @@ use App\Entity\Routine;
 use App\Entity\User;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class NoteControllerTest extends AbstractUiTestCase
 {
     public function createNote(User $user): Note
     {
-        $note = $user->getNotes()->first();
-
-        return $note;
+        return $user->getNotes()->first();
     }
 
     public function createRoutine(User $user): Routine
     {
-        $routine = $user->getRoutines()->first();
-
-        return $routine;
+        return $user->getRoutines()->first();
     }
 
     public function testIndex(): void

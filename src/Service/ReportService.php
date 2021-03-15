@@ -22,7 +22,8 @@ class ReportService
     ): Report {
         $report
             ->addData($data)
-            ->setStatus(Report::STATUS_IN_PROGRESS);
+            ->setStatus(Report::STATUS_IN_PROGRESS)
+        ;
         $this->reportManager->save($report);
 
         return $report;
@@ -46,13 +47,11 @@ class ReportService
 
     public function createPostRemindMessages(): Report
     {
-        $report = $this->create(
+        return $this->create(
             [],
             Report::STATUS_INITIAL,
             Report::TYPE_POST_REMIND_MESSAGES
         );
-
-        return $report;
     }
 
     public function finish(

@@ -11,6 +11,10 @@ use App\Manager\SavedEmailManager;
 use App\Service\SavedEmailService;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -32,12 +36,11 @@ final class SavedEmailServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->savedEmailFactory,
-            $this->savedEmailManager,
-            $this->savedEmailService,
-            $this->userFaker
-        );
+        $this->savedEmailFactory = null;
+        $this->savedEmailManager = null;
+        $this->savedEmailService = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -62,7 +65,7 @@ final class SavedEmailServiceTest extends AbstractDoctrineTestCase
             $user
         );
         $this->assertInstanceOf(SavedEmail::class, $savedEmail);
-        $this->assertEquals($email, $savedEmail->getEmail());
-        $this->assertEquals($type, $savedEmail->getType());
+        $this->assertSame($email, $savedEmail->getEmail());
+        $this->assertSame($type, $savedEmail->getType());
     }
 }

@@ -17,6 +17,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKpiServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -58,17 +62,16 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->paginator,
-            $this->translator,
-            $this->userFaker,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userKpiService,
-            $this->userManager,
-            $this->userRepository
-        );
+        $this->paginator = null;
+        $this->translator = null;
+        $this->userFaker = null;
+        $this->userKpiFactory = null;
+        $this->userKpiManager = null;
+        $this->userKpiRepository = null;
+        $this->userKpiService = null;
+        $this->userManager = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -77,7 +80,8 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
     {
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $userKpiService = new UserKpiService(
             $emailService,
@@ -103,7 +107,7 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
             $user
         );
         $this->assertInstanceOf(UserKpi::class, $userKpi);
-        $this->assertEquals($type, $userKpi->getType());
+        $this->assertSame($type, $userKpi->getType());
 
         $newUserKpi = $this->userKpiService->create(
             $type,
@@ -111,7 +115,7 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
             $userKpi
         );
         $this->assertInstanceOf(UserKpi::class, $newUserKpi);
-        $this->assertEquals($userKpi, $newUserKpi->getPreviousUserKpi());
+        $this->assertSame($userKpi, $newUserKpi->getPreviousUserKpi());
     }
 
     public function testRun(): void
@@ -120,7 +124,8 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $user
             ->setIsEnabled(true)
-            ->setIsVerified(true);
+            ->setIsVerified(true)
+        ;
         $this->userManager->save($user);
 
         $userKpis = $this->userKpiRepository->findByParametersForAdmin()->getResult();

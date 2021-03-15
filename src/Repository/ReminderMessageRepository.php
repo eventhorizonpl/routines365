@@ -28,18 +28,20 @@ class ReminderMessageRepository extends ServiceEntityRepository
             ->leftJoin('rmru.profile', 'rmrup')
             ->leftJoin('rmru.testimonial', 'rmrut')
             ->leftJoin('rmru.userKyt', 'rmruuk')
-            ->addOrderBy('rm.createdAt', 'DESC');
+            ->addOrderBy('rm.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('type', $parameters)) {
+            if (\array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
                     $queryBuilder->andWhere('rm.type = :type')
-                        ->setParameter('type', $type);
+                        ->setParameter('type', $type)
+                    ;
                 }
             }
 
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -49,23 +51,26 @@ class ReminderMessageRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('rmru.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('rm.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('rm.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -78,7 +83,7 @@ class ReminderMessageRepository extends ServiceEntityRepository
         DateTimeImmutable $postDate,
         string $type
     ): array {
-        if (0 === count($reminders)) {
+        if (0 === \count($reminders)) {
             return [];
         }
 
@@ -92,7 +97,8 @@ class ReminderMessageRepository extends ServiceEntityRepository
             ->setParameter('postDate', $postDate)
             ->setParameter('reminders', $reminders)
             ->setParameter('type', $type)
-            ->setParameter('isReadFromBrowser', false);
+            ->setParameter('isReadFromBrowser', false)
+        ;
 
         return $queryBuilder->getQuery()->getResult();
     }

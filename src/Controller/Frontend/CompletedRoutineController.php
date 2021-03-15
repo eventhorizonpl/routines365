@@ -109,11 +109,11 @@ class CompletedRoutineController extends AbstractController
                     'know_your_tools' => KytResource::COMPLETING_ROUTINES_FINISH,
                     'uuid' => $routine->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_routine_show', [
-                    'uuid' => $routine->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_routine_show', [
+                'uuid' => $routine->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/completed_routine/new.html.twig', [

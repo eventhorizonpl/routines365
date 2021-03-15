@@ -27,18 +27,20 @@ class RewardRepository extends ServiceEntityRepository
             ->leftJoin('ru.profile', 'rup')
             ->leftJoin('ru.testimonial', 'rut')
             ->leftJoin('ru.userKyt', 'ruuk')
-            ->addOrderBy('r.createdAt', 'DESC');
+            ->addOrderBy('r.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('type', $parameters)) {
+            if (\array_key_exists('type', $parameters)) {
                 $type = $parameters['type'];
                 if ((null !== $type) && ('' !== $type)) {
                     $queryBuilder->andWhere('r.type = :type')
-                        ->setParameter('type', $type);
+                        ->setParameter('type', $type)
+                    ;
                 }
             }
 
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -47,23 +49,26 @@ class RewardRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('ru.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('r.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('r.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -79,10 +84,11 @@ class RewardRepository extends ServiceEntityRepository
             ->where('r.deletedAt IS NULL')
             ->andWhere('r.user = :user')
             ->addOrderBy('r.createdAt', 'DESC')
-            ->setParameter('user', $user);
+            ->setParameter('user', $user)
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -91,7 +97,8 @@ class RewardRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('r.name', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
         }
@@ -111,11 +118,13 @@ class RewardRepository extends ServiceEntityRepository
             ->setMaxResults(1)
             ->setParameter('isAwarded', false)
             ->setParameter('types', $types)
-            ->setParameter('user', $user);
+            ->setParameter('user', $user)
+        ;
 
         if (null !== $routine) {
             $queryBuilder->andWhere('r.routine = :routine')
-                ->setParameter('routine', $routine);
+                ->setParameter('routine', $routine)
+            ;
         }
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

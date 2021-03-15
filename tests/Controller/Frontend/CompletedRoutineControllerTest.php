@@ -8,13 +8,15 @@ use App\Entity\Routine;
 use App\Entity\User;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineControllerTest extends AbstractUiTestCase
 {
     public function createRoutine(User $user): Routine
     {
-        $routine = $user->getRoutines()->first();
-
-        return $routine;
+        return $user->getRoutines()->first();
     }
 
     public function testEdit(): void

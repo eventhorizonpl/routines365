@@ -24,10 +24,11 @@ class TestimonialRepository extends ServiceEntityRepository
             ->leftJoin('tu.account', 'tua')
             ->leftJoin('tu.profile', 'tup')
             ->leftJoin('tu.userKyt', 'tuuk')
-            ->addOrderBy('t.createdAt', 'DESC');
+            ->addOrderBy('t.createdAt', 'DESC')
+        ;
 
         if (!(empty($parameters))) {
-            if (array_key_exists('query', $parameters)) {
+            if (\array_key_exists('query', $parameters)) {
                 $query = $parameters['query'];
                 if ((null !== $query) && ('' !== $query)) {
                     $queryBuilder->andWhere(
@@ -36,31 +37,35 @@ class TestimonialRepository extends ServiceEntityRepository
                             $queryBuilder->expr()->like('tu.uuid', ':q')
                         )
                     )
-                    ->setParameter('q', sprintf('%%%s%%', $query));
+                        ->setParameter('q', sprintf('%%%s%%', $query))
+                    ;
                 }
             }
 
-            if (array_key_exists('status', $parameters)) {
+            if (\array_key_exists('status', $parameters)) {
                 $status = $parameters['status'];
                 if ((null !== $status) && ('' !== $status)) {
                     $queryBuilder->andWhere('t.status = :status')
-                        ->setParameter('status', $status);
+                        ->setParameter('status', $status)
+                    ;
                 }
             }
 
-            if (array_key_exists('ends_at', $parameters)) {
+            if (\array_key_exists('ends_at', $parameters)) {
                 $endsAt = $parameters['ends_at'];
                 if (null !== $endsAt) {
                     $queryBuilder->andWhere('t.createdAt <= :endsAt')
-                        ->setParameter('endsAt', $endsAt);
+                        ->setParameter('endsAt', $endsAt)
+                    ;
                 }
             }
 
-            if (array_key_exists('starts_at', $parameters)) {
+            if (\array_key_exists('starts_at', $parameters)) {
                 $startsAt = $parameters['starts_at'];
                 if (null !== $startsAt) {
                     $queryBuilder->andWhere('t.createdAt >= :startsAt')
-                        ->setParameter('startsAt', $startsAt);
+                        ->setParameter('startsAt', $startsAt)
+                    ;
                 }
             }
         }
@@ -77,7 +82,8 @@ class TestimonialRepository extends ServiceEntityRepository
             ->orderBy('RAND()')
             ->setMaxResults(1)
             ->setParameter('isVisible', true)
-            ->setParameter('status', Testimonial::STATUS_ACCEPTED);
+            ->setParameter('status', Testimonial::STATUS_ACCEPTED)
+        ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }

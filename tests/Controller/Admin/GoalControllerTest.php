@@ -8,6 +8,10 @@ use App\Entity\Goal;
 use App\Manager\GoalManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class GoalControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class GoalControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->goalManager);
+        $this->goalManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class GoalControllerTest extends AbstractUiTestCase
     public function createGoal(): Goal
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $goal = $user->getGoals()->first();
 
-        return $goal;
+        return $user->getGoals()->first();
     }
 
     public function testIndex(): void

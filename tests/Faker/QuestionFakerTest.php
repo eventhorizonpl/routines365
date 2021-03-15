@@ -10,6 +10,10 @@ use App\Faker\QuestionFaker;
 use App\Manager\QuestionManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuestionFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class QuestionFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->questionFactory,
-            $this->questionFaker,
-            $this->questionManager
-        );
+        $this->questionFactory = null;
+        $this->questionFaker = null;
+        $this->questionManager = null
+        ;
 
         parent::tearDown();
     }
@@ -58,9 +61,9 @@ final class QuestionFakerTest extends AbstractDoctrineTestCase
             $title,
             $type
         );
-        $this->assertEquals($isEnabled, $question->getIsEnabled());
-        $this->assertEquals($position, $question->getPosition());
-        $this->assertEquals($title, $question->getTitle());
-        $this->assertEquals($type, $question->getType());
+        $this->assertSame($isEnabled, $question->getIsEnabled());
+        $this->assertSame($position, $question->getPosition());
+        $this->assertSame($title, $question->getTitle());
+        $this->assertSame($type, $question->getType());
     }
 }

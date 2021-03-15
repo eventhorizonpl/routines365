@@ -9,6 +9,10 @@ use App\Tests\AbstractUiTestCase;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class RegistrationControllerTest extends AbstractUiTestCase
 {
     /**
@@ -26,11 +30,10 @@ final class RegistrationControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-            $this->resetPasswordHelper,
-            $this->verifyEmailHelper
-        );
+        $this->promotionFaker = null;
+        $this->resetPasswordHelper = null;
+        $this->verifyEmailHelper = null
+        ;
 
         parent::tearDown();
     }

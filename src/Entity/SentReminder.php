@@ -16,8 +16,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class SentReminder
 {
     use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -72,9 +72,7 @@ class SentReminder
 
     public function getReminderMessages(): Collection
     {
-        return $this->reminderMessages->filter(function (ReminderMessage $reminderMessage) {
-            return null === $reminderMessage->getDeletedAt();
-        });
+        return $this->reminderMessages->filter(fn (ReminderMessage $reminderMessage) => null === $reminderMessage->getDeletedAt());
     }
 
     public function getReminderMessagesAll(): Collection

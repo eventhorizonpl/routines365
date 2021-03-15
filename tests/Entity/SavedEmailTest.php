@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -24,22 +28,22 @@ final class SavedEmailTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $savedEmail->setUuid($uuid);
-        $this->assertEquals($uuid, $savedEmail->__toString());
+        $this->assertSame($uuid, $savedEmail->__toString());
     }
 
     public function testGetId(): void
     {
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getId());
+        $this->assertNull($savedEmail->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getUuid());
+        $this->assertNull($savedEmail->getUuid());
         $savedEmail->setUuid($uuid);
-        $this->assertEquals($uuid, $savedEmail->getUuid());
+        $this->assertSame($uuid, $savedEmail->getUuid());
         $this->assertIsString($savedEmail->getUuid());
     }
 
@@ -48,16 +52,16 @@ final class SavedEmailTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setUuid($uuid));
-        $this->assertEquals($uuid, $savedEmail->getUuid());
+        $this->assertSame($uuid, $savedEmail->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getCreatedBy());
+        $this->assertNull($savedEmail->getCreatedBy());
         $savedEmail->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $savedEmail->getCreatedBy());
+        $this->assertSame($createdBy, $savedEmail->getCreatedBy());
         $this->assertIsString($savedEmail->getCreatedBy());
     }
 
@@ -66,16 +70,16 @@ final class SavedEmailTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $savedEmail->getCreatedBy());
+        $this->assertSame($createdBy, $savedEmail->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getDeletedBy());
+        $this->assertNull($savedEmail->getDeletedBy());
         $savedEmail->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $savedEmail->getDeletedBy());
+        $this->assertSame($deletedBy, $savedEmail->getDeletedBy());
         $this->assertIsString($savedEmail->getDeletedBy());
     }
 
@@ -84,16 +88,16 @@ final class SavedEmailTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $savedEmail->getDeletedBy());
+        $this->assertSame($deletedBy, $savedEmail->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getUpdatedBy());
+        $this->assertNull($savedEmail->getUpdatedBy());
         $savedEmail->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $savedEmail->getUpdatedBy());
+        $this->assertSame($updatedBy, $savedEmail->getUpdatedBy());
         $this->assertIsString($savedEmail->getUpdatedBy());
     }
 
@@ -102,16 +106,16 @@ final class SavedEmailTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $savedEmail->getUpdatedBy());
+        $this->assertSame($updatedBy, $savedEmail->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getCreatedAt());
+        $this->assertNull($savedEmail->getCreatedAt());
         $savedEmail->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $savedEmail->getCreatedAt());
+        $this->assertSame($createdAt, $savedEmail->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -119,16 +123,16 @@ final class SavedEmailTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $savedEmail->getCreatedAt());
+        $this->assertSame($createdAt, $savedEmail->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getDeletedAt());
+        $this->assertNull($savedEmail->getDeletedAt());
         $savedEmail->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $savedEmail->getDeletedAt());
+        $this->assertSame($deletedAt, $savedEmail->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -136,16 +140,16 @@ final class SavedEmailTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $savedEmail->getDeletedAt());
+        $this->assertSame($deletedAt, $savedEmail->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getUpdatedAt());
+        $this->assertNull($savedEmail->getUpdatedAt());
         $savedEmail->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $savedEmail->getUpdatedAt());
+        $this->assertSame($updatedAt, $savedEmail->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -153,7 +157,7 @@ final class SavedEmailTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $savedEmail->getUpdatedAt());
+        $this->assertSame($updatedAt, $savedEmail->getUpdatedAt());
     }
 
     public function testGetUser(): void
@@ -161,7 +165,7 @@ final class SavedEmailTest extends AbstractTestCase
         $user = new User();
         $savedEmail = new SavedEmail();
         $savedEmail->setUser($user);
-        $this->assertEquals($user, $savedEmail->getUser());
+        $this->assertSame($user, $savedEmail->getUser());
     }
 
     public function testSetUser(): void
@@ -169,16 +173,16 @@ final class SavedEmailTest extends AbstractTestCase
         $user = new User();
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setUser($user));
-        $this->assertEquals($user, $savedEmail->getUser());
+        $this->assertSame($user, $savedEmail->getUser());
     }
 
     public function testGetEmail(): void
     {
         $email = 'test email';
         $savedEmail = new SavedEmail();
-        $this->assertEquals(null, $savedEmail->getEmail());
+        $this->assertSame('', $savedEmail->getEmail());
         $savedEmail->setEmail($email);
-        $this->assertEquals($email, $savedEmail->getEmail());
+        $this->assertSame($email, $savedEmail->getEmail());
         $this->assertIsString($savedEmail->getEmail());
     }
 
@@ -187,7 +191,7 @@ final class SavedEmailTest extends AbstractTestCase
         $email = 'test email';
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setEmail($email));
-        $this->assertEquals($email, $savedEmail->getEmail());
+        $this->assertSame($email, $savedEmail->getEmail());
     }
 
     public function testGetType(): void
@@ -195,7 +199,7 @@ final class SavedEmailTest extends AbstractTestCase
         $type = SavedEmail::TYPE_INVITATION;
         $savedEmail = new SavedEmail();
         $savedEmail->setType($type);
-        $this->assertEquals($type, $savedEmail->getType());
+        $this->assertSame($type, $savedEmail->getType());
         $this->assertIsString($savedEmail->getType());
     }
 
@@ -216,7 +220,7 @@ final class SavedEmailTest extends AbstractTestCase
         $type = SavedEmail::TYPE_INVITATION;
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setType($type));
-        $this->assertEquals($type, $savedEmail->getType());
+        $this->assertSame($type, $savedEmail->getType());
     }
 
     public function testSetTypeException(): void

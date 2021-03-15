@@ -26,6 +26,10 @@ use App\Repository\UserRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -103,26 +107,25 @@ final class UserManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->accountManager,
-            $this->accountOperationManager,
-            $this->completedRoutineManager,
-            $this->contactManager,
-            $this->goalManager,
-            $this->noteManager,
-            $this->profileManager,
-            $this->projectManager,
-            $this->reminderManager,
-            $this->rewardManager,
-            $this->routineManager,
-            $this->savedEmailManager,
-            $this->testimonialManager,
-            $this->userFaker,
-            $this->userKytManager,
-            $this->userManager,
-            $this->userRepository,
-            $this->validator
-        );
+        $this->accountManager = null;
+        $this->accountOperationManager = null;
+        $this->completedRoutineManager = null;
+        $this->contactManager = null;
+        $this->goalManager = null;
+        $this->noteManager = null;
+        $this->profileManager = null;
+        $this->projectManager = null;
+        $this->reminderManager = null;
+        $this->rewardManager = null;
+        $this->routineManager = null;
+        $this->savedEmailManager = null;
+        $this->testimonialManager = null;
+        $this->userFaker = null;
+        $this->userKytManager = null;
+        $this->userManager = null;
+        $this->userRepository = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -166,7 +169,7 @@ final class UserManagerTest extends AbstractDoctrineTestCase
 
         $user2 = $this->userRepository->findOneById($userId);
         $this->assertInstanceOf(User::class, $user2);
-        $this->assertEquals($email, $user2->getEmail());
+        $this->assertSame($email, $user2->getEmail());
     }
 
     public function testDelete(): void

@@ -10,6 +10,10 @@ use App\Faker\QuoteFaker;
 use App\Manager\QuoteManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -27,11 +31,10 @@ final class QuoteFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->quoteFactory,
-            $this->quoteFaker,
-            $this->quoteManager
-        );
+        $this->quoteFactory = null;
+        $this->quoteFaker = null;
+        $this->quoteManager = null
+        ;
 
         parent::tearDown();
     }
@@ -56,9 +59,9 @@ final class QuoteFakerTest extends AbstractDoctrineTestCase
             $content,
             $isVisible
         );
-        $this->assertEquals($author, $quote->getAuthor());
-        $this->assertEquals($content, $quote->getContent());
-        $this->assertEquals($isVisible, $quote->getIsVisible());
+        $this->assertSame($author, $quote->getAuthor());
+        $this->assertSame($content, $quote->getContent());
+        $this->assertSame($isVisible, $quote->getIsVisible());
     }
 
     public function testCreateQuotePersisted(): void
@@ -74,8 +77,8 @@ final class QuoteFakerTest extends AbstractDoctrineTestCase
             $content,
             $isVisible
         );
-        $this->assertEquals($author, $quote->getAuthor());
-        $this->assertEquals($content, $quote->getContent());
-        $this->assertEquals($isVisible, $quote->getIsVisible());
+        $this->assertSame($author, $quote->getAuthor());
+        $this->assertSame($content, $quote->getContent());
+        $this->assertSame($isVisible, $quote->getIsVisible());
     }
 }

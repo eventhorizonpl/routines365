@@ -13,6 +13,10 @@ use App\Repository\QuoteRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -38,13 +42,12 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->quoteFaker,
-            $this->quoteManager,
-            $this->quoteRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->quoteFaker = null;
+        $this->quoteManager = null;
+        $this->quoteRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -72,7 +75,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
 
         $quote2 = $this->quoteRepository->findOneById($quoteId);
         $this->assertInstanceOf(Quote::class, $quote2);
-        $this->assertEquals($popularity, $quote2->getPopularity());
+        $this->assertSame($popularity, $quote2->getPopularity());
     }
 
     public function testDelete(): void
@@ -100,7 +103,7 @@ final class QuoteManagerTest extends AbstractDoctrineTestCase
 
         $quote2 = $this->quoteRepository->findOneById($quoteId);
         $this->assertInstanceOf(Quote::class, $quote2);
-        $this->assertEquals(($popularity + 1), $quote2->getPopularity());
+        $this->assertSame(($popularity + 1), $quote2->getPopularity());
     }
 
     public function testSave(): void

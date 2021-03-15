@@ -61,7 +61,7 @@ class AccountOperationManager
         $accountOperation->setUpdatedBy($actor);
 
         $errors = $this->validate($accountOperation);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $accountOperation));
         }
 
@@ -109,8 +109,6 @@ class AccountOperationManager
 
     public function validate(AccountOperation $accountOperation): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($accountOperation, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($accountOperation, null, ['system']);
     }
 }

@@ -65,8 +65,8 @@ class AccountOperationController extends AbstractController
         $notifications = 10;
         $smsNotifications = 0;
 
-        if ((true === $account->canDepositNotifications($notifications)) &&
-            (true === $account->canDepositSmsNotifications($smsNotifications))) {
+        if ((true === $account->canDepositNotifications($notifications))
+            && (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $accountOperationService->deposit(
                 $account,
                 'Free email notifications',
@@ -92,8 +92,8 @@ class AccountOperationController extends AbstractController
         $notifications = 0;
         $smsNotifications = 10;
 
-        if ((true === $account->canDepositNotifications($notifications)) &&
-            (true === $account->canDepositSmsNotifications($smsNotifications))) {
+        if ((true === $account->canDepositNotifications($notifications))
+            && (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $accountOperationService->deposit(
                 $account,
                 'Free sms notifications',

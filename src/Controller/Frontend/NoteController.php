@@ -97,12 +97,13 @@ class NoteController extends AbstractController
                         'know_your_tools' => KytResource::NOTES_SHOW,
                         'uuid' => $note->getUuid(),
                     ]);
-                } else {
-                    return $this->redirectToRoute('frontend_note_show', [
-                        'uuid' => $note->getUuid(),
-                    ]);
                 }
-            } elseif (Note::CONTEXT_ROUTINE === $context) {
+
+                return $this->redirectToRoute('frontend_note_show', [
+                    'uuid' => $note->getUuid(),
+                ]);
+            }
+            if (Note::CONTEXT_ROUTINE === $context) {
                 return $this->redirectToRoute('frontend_routine_show_notes', [
                     'uuid' => $note->getRoutine()->getUuid(),
                 ]);
@@ -150,12 +151,13 @@ class NoteController extends AbstractController
                         'know_your_tools' => KytResource::NOTES_FINISH,
                         'uuid' => $note->getUuid(),
                     ]);
-                } else {
-                    return $this->redirectToRoute('frontend_note_show', [
-                        'uuid' => $note->getUuid(),
-                    ]);
                 }
-            } elseif (Note::CONTEXT_ROUTINE === $context) {
+
+                return $this->redirectToRoute('frontend_note_show', [
+                    'uuid' => $note->getUuid(),
+                ]);
+            }
+            if (Note::CONTEXT_ROUTINE === $context) {
                 return $this->redirectToRoute('frontend_routine_show_notes', [
                     'uuid' => $note->getRoutine()->getUuid(),
                 ]);

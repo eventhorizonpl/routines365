@@ -27,7 +27,8 @@ class RoutineFactory
         $routine
             ->setIsEnabled($isEnabled)
             ->setName($name)
-            ->setType($type);
+            ->setType($type)
+        ;
 
         return $routine;
     }

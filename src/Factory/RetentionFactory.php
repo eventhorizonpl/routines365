@@ -26,7 +26,8 @@ class RetentionFactory
 
         $retention
             ->setData($data)
-            ->setDate($date);
+            ->setDate($date)
+        ;
 
         return $retention;
     }

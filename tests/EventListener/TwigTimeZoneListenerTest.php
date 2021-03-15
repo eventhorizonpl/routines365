@@ -13,6 +13,10 @@ use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TwigTimeZoneListenerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -34,12 +38,11 @@ final class TwigTimeZoneListenerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->environment,
-            $this->security,
-            $this->twigTimeZoneListener,
-            $this->userFaker
-        );
+        $this->environment = null;
+        $this->security = null;
+        $this->twigTimeZoneListener = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -59,13 +62,16 @@ final class TwigTimeZoneListenerTest extends AbstractDoctrineTestCase
 
         $httpKernel = $this->getMockBuilder(HttpKernel::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $security = $this->createStub(Security::class);
         $security->method('getUser')
-             ->willReturn($user);
+            ->willReturn($user)
+        ;
 
         $controllerArgumentsEvent = new ControllerArgumentsEvent($httpKernel, 'App\Entity\AccountOperation::getTypeFormChoices', [], $request, 1);
 
@@ -84,13 +90,16 @@ final class TwigTimeZoneListenerTest extends AbstractDoctrineTestCase
 
         $httpKernel = $this->getMockBuilder(HttpKernel::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $security = $this->createStub(Security::class);
         $security->method('getUser')
-             ->willReturn($user);
+            ->willReturn($user)
+        ;
 
         $controllerArgumentsEvent = new ControllerArgumentsEvent($httpKernel, 'App\Entity\AccountOperation::getTypeFormChoices', [], $request, 1);
 

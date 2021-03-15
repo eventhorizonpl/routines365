@@ -14,6 +14,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -47,15 +51,14 @@ final class UserServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->paginator,
-            $this->promotionService,
-            $this->userFaker,
-            $this->userManager,
-            $this->userPasswordEncoder,
-            $this->userRepository,
-            $this->userService
-        );
+        $this->paginator = null;
+        $this->promotionService = null;
+        $this->userFaker = null;
+        $this->userManager = null;
+        $this->userPasswordEncoder = null;
+        $this->userRepository = null;
+        $this->userService = null
+        ;
 
         parent::tearDown();
     }
@@ -96,7 +99,7 @@ final class UserServiceTest extends AbstractDoctrineTestCase
         $user = $this->userService->changeTypeToCustomer($user);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals(User::TYPE_CUSTOMER, $user->getType());
+        $this->assertSame(User::TYPE_CUSTOMER, $user->getType());
     }
 
     public function testChangeTypeToProspect(): void
@@ -107,7 +110,7 @@ final class UserServiceTest extends AbstractDoctrineTestCase
         $user = $this->userService->changeTypeToProspect($user);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals(User::TYPE_PROSPECT, $user->getType());
+        $this->assertSame(User::TYPE_PROSPECT, $user->getType());
     }
 
     public function testOnAuthenticationSuccess(): void

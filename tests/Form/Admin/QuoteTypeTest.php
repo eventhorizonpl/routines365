@@ -8,6 +8,10 @@ use App\Entity\Quote;
 use App\Form\Admin\QuoteType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuoteTypeTest extends TypeTestCase
 {
     /**
@@ -26,7 +30,8 @@ final class QuoteTypeTest extends TypeTestCase
     {
         $formData = new Quote();
         $view = $this->factory->create(QuoteType::class, $formData)
-            ->createView();
+            ->createView()
+        ;
         $this->assertSame($formData, $view->vars['data']);
         $this->assertSame($formData, $view->vars['value']);
     }

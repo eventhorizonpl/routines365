@@ -54,7 +54,7 @@ class ReminderMessageManager
         $reminderMessage->setUpdatedAt($date);
 
         $errors = $this->validate($reminderMessage);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $reminderMessage));
         }
 
@@ -90,8 +90,6 @@ class ReminderMessageManager
 
     public function validate(ReminderMessage $reminderMessage): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($reminderMessage, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($reminderMessage, null, ['system']);
     }
 }

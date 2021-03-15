@@ -18,11 +18,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Routine
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsEnabledTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_HOBBY = 'hobby';
     public const TYPE_LEARNING = 'learning';
@@ -129,9 +129,7 @@ class Routine
 
     public function getCompletedRoutines(): Collection
     {
-        return $this->completedRoutines->filter(function (CompletedRoutine $completedRoutine) {
-            return null === $completedRoutine->getDeletedAt();
-        });
+        return $this->completedRoutines->filter(fn (CompletedRoutine $completedRoutine) => null === $completedRoutine->getDeletedAt());
     }
 
     public function getCompletedRoutinesAll(): Collection
@@ -164,9 +162,9 @@ class Routine
 
         if ($sentReminders > 0) {
             return (int) (($completedRoutines / $sentReminders) * 100);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     public function removeCompletedRoutine(CompletedRoutine $completedRoutine): self
@@ -202,9 +200,7 @@ class Routine
 
     public function getGoals(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return null === $goal->getDeletedAt();
-        });
+        return $this->goals->filter(fn (Goal $goal) => null === $goal->getDeletedAt());
     }
 
     public function getGoalsAll(): Collection
@@ -214,9 +210,7 @@ class Routine
 
     public function getGoalsCompleted(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
-        });
+        return $this->goals->filter(fn (Goal $goal) => (true === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
     }
 
     public function getGoalsCompletedCount(): int
@@ -240,16 +234,14 @@ class Routine
 
         if ($total > 0) {
             return (int) (($goalsCompleted / $total) * 100);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     public function getGoalsNotCompleted(): Collection
     {
-        return $this->goals->filter(function (Goal $goal) {
-            return (false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt());
-        });
+        return $this->goals->filter(fn (Goal $goal) => (false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
     }
 
     public function getGoalsNotCompletedCount(): int
@@ -273,9 +265,9 @@ class Routine
 
         if ($total > 0) {
             return (int) (($goalsNotCompleted / $total) * 100);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     public function removeGoal(Goal $goal): self
@@ -311,9 +303,7 @@ class Routine
 
     public function getNotes(): Collection
     {
-        return $this->notes->filter(function (Note $note) {
-            return null === $note->getDeletedAt();
-        });
+        return $this->notes->filter(fn (Note $note) => null === $note->getDeletedAt());
     }
 
     public function getNotesAll(): Collection
@@ -342,9 +332,7 @@ class Routine
 
     public function getReminders(): Collection
     {
-        return $this->reminders->filter(function (Reminder $reminder) {
-            return null === $reminder->getDeletedAt();
-        });
+        return $this->reminders->filter(fn (Reminder $reminder) => null === $reminder->getDeletedAt());
     }
 
     public function getRemindersAll(): Collection
@@ -373,9 +361,7 @@ class Routine
 
     public function getRewards(): Collection
     {
-        return $this->rewards->filter(function (Reward $reward) {
-            return null === $reward->getDeletedAt();
-        });
+        return $this->rewards->filter(fn (Reward $reward) => null === $reward->getDeletedAt());
     }
 
     public function getRewardsAll(): Collection
@@ -404,9 +390,7 @@ class Routine
 
     public function getSentReminders(): Collection
     {
-        return $this->sentReminders->filter(function (SentReminder $sentReminder) {
-            return null === $sentReminder->getDeletedAt();
-        });
+        return $this->sentReminders->filter(fn (SentReminder $sentReminder) => null === $sentReminder->getDeletedAt());
     }
 
     public function getSentRemindersAll(): Collection
@@ -426,9 +410,9 @@ class Routine
 
         if ($sentReminders > 0) {
             return (int) ((($sentReminders / $sentReminders) * 100) - $this->getCompletedRoutinesPercent());
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     public function removeSentReminder(SentReminder $sentReminder): self
@@ -462,7 +446,7 @@ class Routine
 
     public function setType(string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

@@ -27,7 +27,8 @@ class TestimonialFactory
         $testimonial
             ->setContent($content)
             ->setIsVisible($isVisible)
-            ->setSignature($signature);
+            ->setSignature($signature)
+        ;
 
         return $testimonial;
     }

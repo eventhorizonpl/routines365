@@ -7,6 +7,10 @@ namespace App\Tests\Twig;
 use App\Tests\AbstractTestCase;
 use App\Twig\AccountOperationExtension;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class AccountOperationExtensionTest extends AbstractTestCase
 {
     public function testConstruct(): void

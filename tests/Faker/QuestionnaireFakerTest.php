@@ -12,6 +12,10 @@ use App\Faker\QuestionnaireFaker;
 use App\Manager\QuestionnaireManager;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuestionnaireFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -37,13 +41,12 @@ final class QuestionnaireFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->answerFaker,
-            $this->questionFaker,
-            $this->questionnaireFactory,
-            $this->questionnaireFaker,
-            $this->questionnaireManager
-        );
+        $this->answerFaker = null;
+        $this->questionFaker = null;
+        $this->questionnaireFactory = null;
+        $this->questionnaireFaker = null;
+        $this->questionnaireManager = null
+        ;
 
         parent::tearDown();
     }
@@ -71,8 +74,8 @@ final class QuestionnaireFakerTest extends AbstractDoctrineTestCase
             $isEnabled,
             $title
         );
-        $this->assertEquals($isEnabled, $questionnaire->getIsEnabled());
-        $this->assertEquals($title, $questionnaire->getTitle());
+        $this->assertSame($isEnabled, $questionnaire->getIsEnabled());
+        $this->assertSame($title, $questionnaire->getTitle());
     }
 
     public function testCreateRichQuestionnairePersisted(): void

@@ -20,6 +20,10 @@ use App\Service\UserQuestionnaireService;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserQuestionnaireServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -65,18 +69,17 @@ final class UserQuestionnaireServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->promotionFaker,
-            $this->promotionService,
-            $this->questionnaireFaker,
-            $this->userFaker,
-            $this->userQuestionnaireAnswerService,
-            $this->userQuestionnaireFactory,
-            $this->userQuestionnaireManager,
-            $this->userQuestionnaireRepository,
-            $this->userQuestionnaireService,
-            $this->userQuestionnaireFaker
-        );
+        $this->promotionFaker = null;
+        $this->promotionService = null;
+        $this->questionnaireFaker = null;
+        $this->userFaker = null;
+        $this->userQuestionnaireAnswerService = null;
+        $this->userQuestionnaireFactory = null;
+        $this->userQuestionnaireManager = null;
+        $this->userQuestionnaireRepository = null;
+        $this->userQuestionnaireService = null;
+        $this->userQuestionnaireFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -105,8 +108,8 @@ final class UserQuestionnaireServiceTest extends AbstractDoctrineTestCase
             $user
         );
         $this->assertInstanceOf(UserQuestionnaire::class, $userQuestionnaire);
-        $this->assertEquals($questionnaire, $userQuestionnaire->getQuestionnaire());
-        $this->assertEquals($user, $userQuestionnaire->getUser());
+        $this->assertSame($questionnaire, $userQuestionnaire->getQuestionnaire());
+        $this->assertSame($user, $userQuestionnaire->getUser());
     }
 
     public function testUpdateUserQuestionnaire(): void

@@ -60,7 +60,7 @@ class ContactManager
         $contact->setUpdatedBy($actor);
 
         $errors = $this->validate($contact);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $contact));
         }
 
@@ -98,8 +98,6 @@ class ContactManager
 
     public function validate(Contact $contact): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($contact, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($contact, null, ['system']);
     }
 }

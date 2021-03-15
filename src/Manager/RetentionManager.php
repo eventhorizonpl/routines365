@@ -54,7 +54,7 @@ class RetentionManager
         $retention->setUpdatedAt($date);
 
         $errors = $this->validate($retention);
-        if (0 !== count($errors)) {
+        if (0 !== \count($errors)) {
             throw new ManagerException(sprintf('%s %s', (string) $errors, $retention));
         }
 
@@ -90,8 +90,6 @@ class RetentionManager
 
     public function validate(Retention $retention): ConstraintViolationListInterface
     {
-        $errors = $this->validator->validate($retention, null, ['system']);
-
-        return $errors;
+        return $this->validator->validate($retention, null, ['system']);
     }
 }

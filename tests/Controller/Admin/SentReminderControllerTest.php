@@ -8,6 +8,10 @@ use App\Entity\SentReminder;
 use App\Manager\SentReminderManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SentReminderControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,7 +21,7 @@ final class SentReminderControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset($this->sentReminderManager);
+        $this->sentReminderManager = null;
 
         parent::tearDown();
     }
@@ -25,9 +29,8 @@ final class SentReminderControllerTest extends AbstractUiTestCase
     public function createSentReminder(): SentReminder
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $sentReminder = $user->getRoutines()->first()->getSentReminders()->first();
 
-        return $sentReminder;
+        return $user->getRoutines()->first()->getSentReminders()->first();
     }
 
     public function testIndex(): void

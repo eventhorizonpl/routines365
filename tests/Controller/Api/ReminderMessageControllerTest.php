@@ -7,6 +7,10 @@ namespace App\Tests\Controller\Api;
 use App\Tests\AbstractUiTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderMessageControllerTest extends AbstractUiTestCase
 {
     public function testGetBrowserNotificationsList(): void
@@ -19,9 +23,9 @@ final class ReminderMessageControllerTest extends AbstractUiTestCase
         ]);
         $content = json_decode($this->client->getResponse()->getContent(), true);
 
-        $this->assertEquals(Response::HTTP_OK, $content['code']);
-        $this->assertEquals('success', $content['status']);
-        $this->assertEquals([], $content['data']);
+        $this->assertSame(Response::HTTP_OK, $content['code']);
+        $this->assertSame('success', $content['status']);
+        $this->assertSame([], $content['data']);
 
         $this->purge();
         $user = $this->createAndLoginRich();
@@ -31,8 +35,8 @@ final class ReminderMessageControllerTest extends AbstractUiTestCase
         ]);
         $content = json_decode($this->client->getResponse()->getContent(), true);
 
-        $this->assertEquals(Response::HTTP_OK, $content['code']);
-        $this->assertEquals('success', $content['status']);
+        $this->assertSame(Response::HTTP_OK, $content['code']);
+        $this->assertSame('success', $content['status']);
         $this->assertCount(1, $content['data']);
     }
 }

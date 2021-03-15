@@ -10,6 +10,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
 {
     /**
@@ -23,10 +27,9 @@ final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->tokenAuthenticator,
-            $this->userFaker
-        );
+        $this->tokenAuthenticator = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -42,7 +45,8 @@ final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
     {
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $request->headers = new ParameterBag();
         $this->assertFalse($this->tokenAuthenticator->supports($request));
@@ -55,12 +59,13 @@ final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
     {
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $token = 'X-AUTH-TOKEN'.uniqid();
         $request->headers = new ParameterBag(['X-AUTH-TOKEN' => $token]);
         $credentials = $this->tokenAuthenticator->getCredentials($request);
-        $this->assertEquals($token, $credentials);
+        $this->assertSame($token, $credentials);
         $this->assertIsString($credentials);
     }
 
@@ -69,7 +74,8 @@ final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $request = $this->getMockBuilder(Request::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $token = 'X-AUTH-TOKEN'.uniqid();
         $request->headers = new ParameterBag(['X-AUTH-TOKEN' => $token]);

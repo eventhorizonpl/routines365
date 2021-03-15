@@ -9,20 +9,20 @@ use App\Entity\Routine;
 use App\Entity\User;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ReminderControllerTest extends AbstractUiTestCase
 {
     public function createReminder(User $user): Reminder
     {
-        $goal = $user->getReminders()->first();
-
-        return $goal;
+        return $user->getReminders()->first();
     }
 
     public function createRoutine(User $user): Routine
     {
-        $routine = $user->getRoutines()->first();
-
-        return $routine;
+        return $user->getRoutines()->first();
     }
 
     public function testNew(): void

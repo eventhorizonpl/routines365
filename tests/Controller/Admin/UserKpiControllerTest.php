@@ -15,6 +15,10 @@ use App\Tests\AbstractUiTestCase;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKpiControllerTest extends AbstractUiTestCase
 {
     /**
@@ -44,14 +48,13 @@ final class UserKpiControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->paginator,
-            $this->translator,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userRepository
-        );
+        $this->paginator = null;
+        $this->translator = null;
+        $this->userKpiFactory = null;
+        $this->userKpiManager = null;
+        $this->userKpiRepository = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -61,7 +64,8 @@ final class UserKpiControllerTest extends AbstractUiTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $userKpiService = new UserKpiService(
             $emailService,
             $this->paginator,
@@ -71,9 +75,8 @@ final class UserKpiControllerTest extends AbstractUiTestCase
             $this->userKpiRepository,
             $this->userRepository
         );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
 
-        return $userKpi;
+        return $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
     }
 
     public function testIndex(): void

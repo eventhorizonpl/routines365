@@ -12,6 +12,10 @@ use App\Repository\CompletedRoutineRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->completedRoutineManager,
-            $this->completedRoutineRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->completedRoutineManager = null;
+        $this->completedRoutineRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     public function createCompletedRoutine(): CompletedRoutine
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $completedRoutine = $user->getCompletedRoutines()->first();
 
-        return $completedRoutine;
+        return $user->getCompletedRoutines()->first();
     }
 
     public function testConstruct(): void
@@ -74,7 +76,7 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
 
         $completedRoutine2 = $this->completedRoutineRepository->findOneById($completedRoutineId);
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine2);
-        $this->assertEquals($minutesDevoted, $completedRoutine2->getMinutesDevoted());
+        $this->assertSame($minutesDevoted, $completedRoutine2->getMinutesDevoted());
     }
 
     public function testDelete(): void

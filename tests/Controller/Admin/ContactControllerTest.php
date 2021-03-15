@@ -8,6 +8,10 @@ use App\Entity\Contact;
 use App\Manager\ContactManager;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ContactControllerTest extends AbstractUiTestCase
 {
     /**
@@ -17,9 +21,8 @@ final class ContactControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->contactManager
-        );
+        $this->contactManager = null
+        ;
 
         parent::tearDown();
     }
@@ -27,9 +30,8 @@ final class ContactControllerTest extends AbstractUiTestCase
     public function createContact(): Contact
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $contact = $user->getContacts()->first();
 
-        return $contact;
+        return $user->getContacts()->first();
     }
 
     public function testIndex(): void

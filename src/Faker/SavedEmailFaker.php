@@ -33,11 +33,9 @@ class SavedEmailFaker
             );
         }
 
-        $savedEmail = $this->savedEmailFactory->createSavedEmailWithRequired(
+        return $this->savedEmailFactory->createSavedEmailWithRequired(
             $email,
             $type
         );
-
-        return $savedEmail;
     }
 }

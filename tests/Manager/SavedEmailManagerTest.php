@@ -12,6 +12,10 @@ use App\Repository\SavedEmailRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->savedEmailManager,
-            $this->savedEmailRepository,
-            $this->userFaker,
-            $this->validator
-        );
+        $this->savedEmailManager = null;
+        $this->savedEmailRepository = null;
+        $this->userFaker = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -46,9 +49,8 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
     public function createSavedEmail(): SavedEmail
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $savedEmail = $user->getSavedEmails()->first();
 
-        return $savedEmail;
+        return $user->getSavedEmails()->first();
     }
 
     public function testConstruct(): void
@@ -74,7 +76,7 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 
         $savedEmail2 = $this->savedEmailRepository->findOneById($savedEmailId);
         $this->assertInstanceOf(SavedEmail::class, $savedEmail2);
-        $this->assertEquals($email, $savedEmail2->getEmail());
+        $this->assertSame($email, $savedEmail2->getEmail());
     }
 
     public function testDelete(): void

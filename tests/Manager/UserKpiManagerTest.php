@@ -18,6 +18,10 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKpiManagerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -55,17 +59,16 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->paginator,
-            $this->translator,
-            $this->userFaker,
-            $this->userKpiFactory,
-            $this->userKpiManager,
-            $this->userKpiRepository,
-            $this->userKpiService,
-            $this->userRepository,
-            $this->validator
-        );
+        $this->paginator = null;
+        $this->translator = null;
+        $this->userFaker = null;
+        $this->userKpiFactory = null;
+        $this->userKpiManager = null;
+        $this->userKpiRepository = null;
+        $this->userKpiService = null;
+        $this->userRepository = null;
+        $this->validator = null
+        ;
 
         parent::tearDown();
     }
@@ -75,7 +78,8 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
         $userKpiService = new UserKpiService(
             $emailService,
             $this->paginator,
@@ -85,9 +89,8 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
             $this->userKpiRepository,
             $this->userRepository
         );
-        $userKpi = $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
 
-        return $userKpi;
+        return $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
     }
 
     public function testConstruct(): void
@@ -112,7 +115,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
 
         $userKpi2 = $this->userKpiRepository->findOneById($userKpiId);
         $this->assertInstanceOf(UserKpi::class, $userKpi2);
-        $this->assertEquals($accountOperationCounter, $userKpi2->getAccountOperationCounter());
+        $this->assertSame($accountOperationCounter, $userKpi2->getAccountOperationCounter());
     }
 
     public function testDelete(): void

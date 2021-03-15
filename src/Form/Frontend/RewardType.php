@@ -52,7 +52,8 @@ class RewardType extends AbstractType
                         ->where('r.user = :user')
                         ->andWhere('r.deletedAt IS NULL')
                         ->orderBy('r.name', 'ASC')
-                        ->setParameter('user', $user);
+                        ->setParameter('user', $user)
+                    ;
                 },
                 'required' => false,
             ]);

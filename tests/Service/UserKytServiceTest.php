@@ -16,6 +16,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class UserKytServiceTest extends AbstractDoctrineTestCase
 {
     /**
@@ -53,16 +57,15 @@ final class UserKytServiceTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->paginator,
-            $this->promotionService,
-            $this->translator,
-            $this->userFaker,
-            $this->userKytManager,
-            $this->userKytService,
-            $this->userManager,
-            $this->userRepository
-        );
+        $this->paginator = null;
+        $this->promotionService = null;
+        $this->translator = null;
+        $this->userFaker = null;
+        $this->userKytManager = null;
+        $this->userKytService = null;
+        $this->userManager = null;
+        $this->userRepository = null
+        ;
 
         parent::tearDown();
     }
@@ -71,7 +74,8 @@ final class UserKytServiceTest extends AbstractDoctrineTestCase
     {
         $emailService = $this->getMockBuilder(EmailService::class)
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMock()
+        ;
 
         $userKytService = new UserKytService(
             $emailService,
@@ -91,7 +95,8 @@ final class UserKytServiceTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $user
             ->setIsEnabled(true)
-            ->setIsVerified(true);
+            ->setIsVerified(true)
+        ;
         $this->userManager->save($user);
 
         $userKytService = $this->userKytService->nurture();

@@ -10,6 +10,10 @@ use App\Tests\AbstractTestCase;
 use Faker\Factory;
 use Faker\Generator;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CompletedRoutineFactoryTest extends AbstractTestCase
 {
     private ?Generator $faker;
@@ -23,7 +27,7 @@ final class CompletedRoutineFactoryTest extends AbstractTestCase
 
     protected function tearDown(): void
     {
-        unset($this->faker);
+        $this->faker = null;
 
         parent::tearDown();
     }
@@ -50,6 +54,6 @@ final class CompletedRoutineFactoryTest extends AbstractTestCase
             $minutesDevoted
         );
         $this->assertInstanceOf(CompletedRoutine::class, $completedRoutine);
-        $this->assertEquals($minutesDevoted, $completedRoutine->getMinutesDevoted());
+        $this->assertSame($minutesDevoted, $completedRoutine->getMinutesDevoted());
     }
 }

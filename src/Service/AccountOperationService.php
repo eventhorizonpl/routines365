@@ -26,8 +26,8 @@ class AccountOperationService
         int $smsNotifications,
         bool $topupReferrerAccount = true
     ): AccountOperation {
-        if ((true === $account->canDepositNotifications($notifications)) &&
-            (true === $account->canDepositSmsNotifications($smsNotifications))) {
+        if ((true === $account->canDepositNotifications($notifications))
+            && (true === $account->canDepositSmsNotifications($smsNotifications))) {
             $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
                 $description,
                 $notifications,
@@ -57,9 +57,8 @@ class AccountOperationService
             }
 
             return $accountOperation;
-        } else {
-            throw new AccountException();
         }
+        throw new AccountException();
     }
 
     public function withdraw(
@@ -69,8 +68,8 @@ class AccountOperationService
         int $smsNotifications,
         ReminderMessage $reminderMessage = null
     ): AccountOperation {
-        if ((true === $account->canWithdrawNotifications($notifications)) &&
-            (true === $account->canWithdrawSmsNotifications($smsNotifications))) {
+        if ((true === $account->canWithdrawNotifications($notifications))
+            && (true === $account->canWithdrawSmsNotifications($smsNotifications))) {
             $accountOperation = $this->accountOperationFactory->createAccountOperationWithRequired(
                 $description,
                 $notifications,
@@ -86,8 +85,7 @@ class AccountOperationService
             $this->accountOperationManager->save($accountOperation);
 
             return $accountOperation;
-        } else {
-            throw new AccountException();
         }
+        throw new AccountException();
     }
 }

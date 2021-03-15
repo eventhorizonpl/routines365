@@ -16,11 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Testimonial
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsVisibleTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsVisibleTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const STATUS_ACCEPTED = 'accepted';
     public const STATUS_NEW = 'new';
@@ -118,7 +118,7 @@ class Testimonial
 
     public function setStatus(string $status): self
     {
-        if (!(in_array($status, self::getStatusValidationChoices()))) {
+        if (!(\in_array($status, self::getStatusValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid status');
         }
 

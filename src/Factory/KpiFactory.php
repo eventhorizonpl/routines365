@@ -76,7 +76,8 @@ class KpiFactory
             ->setUserKpiCounter($userKpiCounter)
             ->setUserKytCounter($userKytCounter)
             ->setUserQuestionnaireCounter($userQuestionnaireCounter)
-            ->setUserQuestionnaireAnswerCounter($userQuestionnaireAnswerCounter);
+            ->setUserQuestionnaireAnswerCounter($userQuestionnaireAnswerCounter)
+        ;
 
         return $kpi;
     }

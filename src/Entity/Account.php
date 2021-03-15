@@ -17,10 +17,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Account
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TOPUP_REFERRER_ACCOUNT_MULTIPLIER = 0.05;
 
@@ -78,9 +78,7 @@ class Account
 
     public function getAccountOperations(): Collection
     {
-        return $this->accountOperations->filter(function (AccountOperation $accountOperation) {
-            return null === $accountOperation->getDeletedAt();
-        });
+        return $this->accountOperations->filter(fn (AccountOperation $accountOperation) => null === $accountOperation->getDeletedAt());
     }
 
     public function getAccountOperationsAll(): Collection
@@ -101,9 +99,9 @@ class Account
     {
         if (ConfigResource::ACCOUNT_AVAILABLE_NOTIFICATIONS_LIMIT > ($this->getAvailableNotifications() + $notifications)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function depositNotifications(int $notifications): self
@@ -129,9 +127,9 @@ class Account
     {
         if (0 <= ($this->getAvailableNotifications() - $notifications)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function withdrawNotifications(int $notifications): self
@@ -145,9 +143,9 @@ class Account
     {
         if (ConfigResource::ACCOUNT_AVAILABLE_SMS_NOTIFICATIONS_LIMIT > ($this->getAvailableSmsNotifications() + $smsNotifications)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function depositSmsNotifications(int $smsNotifications): self
@@ -173,9 +171,9 @@ class Account
     {
         if (0 <= ($this->getAvailableSmsNotifications() - $smsNotifications)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function withdrawSmsNotifications(int $smsNotifications): self

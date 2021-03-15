@@ -67,11 +67,11 @@ class ProjectController extends AbstractController
                     'know_your_tools' => KytResource::PROJECTS_SHOW,
                     'uuid' => $project->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_project_show', [
-                    'uuid' => $project->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_project_show', [
+                'uuid' => $project->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/project/new.html.twig', [
@@ -124,11 +124,11 @@ class ProjectController extends AbstractController
                     'know_your_tools' => KytResource::PROJECTS_FINISH,
                     'uuid' => $project->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_project_show', [
-                    'uuid' => $project->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_project_show', [
+                'uuid' => $project->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/project/edit.html.twig', [

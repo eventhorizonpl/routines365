@@ -62,11 +62,11 @@ class RoutineController extends AbstractController
                     'know_your_tools' => KytResource::ROUTINES_SHOW,
                     'uuid' => $routine->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_routine_show', [
-                    'uuid' => $routine->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_routine_show', [
+                'uuid' => $routine->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/routine/new.html.twig', [
@@ -152,11 +152,11 @@ class RoutineController extends AbstractController
                     'know_your_tools' => KytResource::ROUTINES_FINISH,
                     'uuid' => $routine->getUuid(),
                 ]);
-            } else {
-                return $this->redirectToRoute('frontend_routine_show', [
-                    'uuid' => $routine->getUuid(),
-                ]);
             }
+
+            return $this->redirectToRoute('frontend_routine_show', [
+                'uuid' => $routine->getUuid(),
+            ]);
         }
 
         return $this->render('frontend/routine/edit.html.twig', [

@@ -12,6 +12,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class TestimonialRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -33,12 +37,11 @@ final class TestimonialRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->testimonialManager,
-            $this->testimonialRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->testimonialManager = null;
+        $this->testimonialRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

@@ -12,6 +12,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class QuestionTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -25,22 +29,22 @@ final class QuestionTest extends AbstractTestCase
         $title = 'test title';
         $question = new Question();
         $question->setTitle($title);
-        $this->assertEquals($title, $question->__toString());
+        $this->assertSame($title, $question->__toString());
     }
 
     public function testGetId(): void
     {
         $question = new Question();
-        $this->assertEquals(null, $question->getId());
+        $this->assertNull($question->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $question = new Question();
-        $this->assertEquals(null, $question->getUuid());
+        $this->assertNull($question->getUuid());
         $question->setUuid($uuid);
-        $this->assertEquals($uuid, $question->getUuid());
+        $this->assertSame($uuid, $question->getUuid());
         $this->assertIsString($question->getUuid());
     }
 
@@ -49,16 +53,16 @@ final class QuestionTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setUuid($uuid));
-        $this->assertEquals($uuid, $question->getUuid());
+        $this->assertSame($uuid, $question->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $question = new Question();
-        $this->assertEquals(null, $question->getCreatedBy());
+        $this->assertNull($question->getCreatedBy());
         $question->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $question->getCreatedBy());
+        $this->assertSame($createdBy, $question->getCreatedBy());
         $this->assertIsString($question->getCreatedBy());
     }
 
@@ -67,16 +71,16 @@ final class QuestionTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $question->getCreatedBy());
+        $this->assertSame($createdBy, $question->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $question = new Question();
-        $this->assertEquals(null, $question->getDeletedBy());
+        $this->assertNull($question->getDeletedBy());
         $question->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $question->getDeletedBy());
+        $this->assertSame($deletedBy, $question->getDeletedBy());
         $this->assertIsString($question->getDeletedBy());
     }
 
@@ -85,16 +89,16 @@ final class QuestionTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $question->getDeletedBy());
+        $this->assertSame($deletedBy, $question->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $question = new Question();
-        $this->assertEquals(null, $question->getUpdatedBy());
+        $this->assertNull($question->getUpdatedBy());
         $question->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $question->getUpdatedBy());
+        $this->assertSame($updatedBy, $question->getUpdatedBy());
         $this->assertIsString($question->getUpdatedBy());
     }
 
@@ -103,16 +107,16 @@ final class QuestionTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $question->getUpdatedBy());
+        $this->assertSame($updatedBy, $question->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $question = new Question();
-        $this->assertEquals(null, $question->getCreatedAt());
+        $this->assertNull($question->getCreatedAt());
         $question->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $question->getCreatedAt());
+        $this->assertSame($createdAt, $question->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -120,16 +124,16 @@ final class QuestionTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $question->getCreatedAt());
+        $this->assertSame($createdAt, $question->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $question = new Question();
-        $this->assertEquals(null, $question->getDeletedAt());
+        $this->assertNull($question->getDeletedAt());
         $question->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $question->getDeletedAt());
+        $this->assertSame($deletedAt, $question->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -137,16 +141,16 @@ final class QuestionTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $question->getDeletedAt());
+        $this->assertSame($deletedAt, $question->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $question = new Question();
-        $this->assertEquals(null, $question->getUpdatedAt());
+        $this->assertNull($question->getUpdatedAt());
         $question->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $question->getUpdatedAt());
+        $this->assertSame($updatedAt, $question->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -154,7 +158,7 @@ final class QuestionTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $question->getUpdatedAt());
+        $this->assertSame($updatedAt, $question->getUpdatedAt());
     }
 
     public function testGetIsEnabled(): void
@@ -163,7 +167,7 @@ final class QuestionTest extends AbstractTestCase
         $question = new Question();
         $this->assertTrue($question->getIsEnabled());
         $question->setIsEnabled($isEnabled);
-        $this->assertEquals($isEnabled, $question->getIsEnabled());
+        $this->assertSame($isEnabled, $question->getIsEnabled());
         $this->assertIsBool($question->getIsEnabled());
     }
 
@@ -172,16 +176,16 @@ final class QuestionTest extends AbstractTestCase
         $isEnabled = true;
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setIsEnabled($isEnabled));
-        $this->assertEquals($isEnabled, $question->getIsEnabled());
+        $this->assertSame($isEnabled, $question->getIsEnabled());
     }
 
     public function testGetPosition(): void
     {
         $position = 10;
         $question = new Question();
-        $this->assertEquals(0, $question->getPosition());
+        $this->assertSame(0, $question->getPosition());
         $question->setPosition($position);
-        $this->assertEquals($position, $question->getPosition());
+        $this->assertSame($position, $question->getPosition());
         $this->assertIsInt($question->getPosition());
     }
 
@@ -190,7 +194,7 @@ final class QuestionTest extends AbstractTestCase
         $position = 10;
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setPosition($position));
-        $this->assertEquals($position, $question->getPosition());
+        $this->assertSame($position, $question->getPosition());
     }
 
     public function testAddAnswer(): void
@@ -247,7 +251,7 @@ final class QuestionTest extends AbstractTestCase
         $questionnaire = new Questionnaire();
         $question = new Question();
         $question->setQuestionnaire($questionnaire);
-        $this->assertEquals($questionnaire, $question->getQuestionnaire());
+        $this->assertSame($questionnaire, $question->getQuestionnaire());
     }
 
     public function testSetQuestionnaire(): void
@@ -255,16 +259,16 @@ final class QuestionTest extends AbstractTestCase
         $questionnaire = new Questionnaire();
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setQuestionnaire($questionnaire));
-        $this->assertEquals($questionnaire, $question->getQuestionnaire());
+        $this->assertSame($questionnaire, $question->getQuestionnaire());
     }
 
     public function testGetTitle(): void
     {
         $title = 'test title';
         $question = new Question();
-        $this->assertEquals(null, $question->getTitle());
+        $this->assertSame('', $question->getTitle());
         $question->setTitle($title);
-        $this->assertEquals($title, $question->getTitle());
+        $this->assertSame($title, $question->getTitle());
         $this->assertIsString($question->getTitle());
     }
 
@@ -273,7 +277,7 @@ final class QuestionTest extends AbstractTestCase
         $title = 'test title';
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setTitle($title));
-        $this->assertEquals($title, $question->getTitle());
+        $this->assertSame($title, $question->getTitle());
     }
 
     public function testGetType(): void
@@ -281,7 +285,7 @@ final class QuestionTest extends AbstractTestCase
         $type = Question::TYPE_SINGLE_ANSWER;
         $question = new Question();
         $question->setType($type);
-        $this->assertEquals($type, $question->getType());
+        $this->assertSame($type, $question->getType());
         $this->assertIsString($question->getType());
     }
 
@@ -302,7 +306,7 @@ final class QuestionTest extends AbstractTestCase
         $type = Question::TYPE_SINGLE_ANSWER;
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setType($type));
-        $this->assertEquals($type, $question->getType());
+        $this->assertSame($type, $question->getType());
     }
 
     public function testSetTypeException(): void

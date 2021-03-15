@@ -39,13 +39,11 @@ class QuoteFaker
             $isVisible = (bool) $this->faker->boolean;
         }
 
-        $quote = $this->quoteFactory->createQuoteWithRequired(
+        return $this->quoteFactory->createQuoteWithRequired(
             $author,
             $content,
             $isVisible
         );
-
-        return $quote;
     }
 
     public function createQuotePersisted(

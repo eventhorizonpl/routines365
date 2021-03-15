@@ -11,6 +11,10 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class PromotionTest extends AbstractTestCase
 {
     public function testConstruct(): void
@@ -25,22 +29,22 @@ final class PromotionTest extends AbstractTestCase
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
         $promotion = new Promotion();
         $promotion->setCode($code);
-        $this->assertEquals($newCode, $promotion->__toString());
+        $this->assertSame($newCode, $promotion->__toString());
     }
 
     public function testGetId(): void
     {
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getId());
+        $this->assertNull($promotion->getId());
     }
 
     public function testGetUuid(): void
     {
         $uuid = (string) Uuid::v4();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getUuid());
+        $this->assertNull($promotion->getUuid());
         $promotion->setUuid($uuid);
-        $this->assertEquals($uuid, $promotion->getUuid());
+        $this->assertSame($uuid, $promotion->getUuid());
         $this->assertIsString($promotion->getUuid());
     }
 
@@ -49,16 +53,16 @@ final class PromotionTest extends AbstractTestCase
         $uuid = (string) Uuid::v4();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setUuid($uuid));
-        $this->assertEquals($uuid, $promotion->getUuid());
+        $this->assertSame($uuid, $promotion->getUuid());
     }
 
     public function testGetCreatedBy(): void
     {
         $createdBy = (string) Uuid::v4();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getCreatedBy());
+        $this->assertNull($promotion->getCreatedBy());
         $promotion->setCreatedBy($createdBy);
-        $this->assertEquals($createdBy, $promotion->getCreatedBy());
+        $this->assertSame($createdBy, $promotion->getCreatedBy());
         $this->assertIsString($promotion->getCreatedBy());
     }
 
@@ -67,16 +71,16 @@ final class PromotionTest extends AbstractTestCase
         $createdBy = (string) Uuid::v4();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setCreatedBy($createdBy));
-        $this->assertEquals($createdBy, $promotion->getCreatedBy());
+        $this->assertSame($createdBy, $promotion->getCreatedBy());
     }
 
     public function testGetDeletedBy(): void
     {
         $deletedBy = (string) Uuid::v4();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getDeletedBy());
+        $this->assertNull($promotion->getDeletedBy());
         $promotion->setDeletedBy($deletedBy);
-        $this->assertEquals($deletedBy, $promotion->getDeletedBy());
+        $this->assertSame($deletedBy, $promotion->getDeletedBy());
         $this->assertIsString($promotion->getDeletedBy());
     }
 
@@ -85,16 +89,16 @@ final class PromotionTest extends AbstractTestCase
         $deletedBy = (string) Uuid::v4();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setDeletedBy($deletedBy));
-        $this->assertEquals($deletedBy, $promotion->getDeletedBy());
+        $this->assertSame($deletedBy, $promotion->getDeletedBy());
     }
 
     public function testGetUpdatedBy(): void
     {
         $updatedBy = (string) Uuid::v4();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getUpdatedBy());
+        $this->assertNull($promotion->getUpdatedBy());
         $promotion->setUpdatedBy($updatedBy);
-        $this->assertEquals($updatedBy, $promotion->getUpdatedBy());
+        $this->assertSame($updatedBy, $promotion->getUpdatedBy());
         $this->assertIsString($promotion->getUpdatedBy());
     }
 
@@ -103,16 +107,16 @@ final class PromotionTest extends AbstractTestCase
         $updatedBy = (string) Uuid::v4();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setUpdatedBy($updatedBy));
-        $this->assertEquals($updatedBy, $promotion->getUpdatedBy());
+        $this->assertSame($updatedBy, $promotion->getUpdatedBy());
     }
 
     public function testGetCreatedAt(): void
     {
         $createdAt = new DateTimeImmutable();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getCreatedAt());
+        $this->assertNull($promotion->getCreatedAt());
         $promotion->setCreatedAt($createdAt);
-        $this->assertEquals($createdAt, $promotion->getCreatedAt());
+        $this->assertSame($createdAt, $promotion->getCreatedAt());
     }
 
     public function testSetCreatedAt(): void
@@ -120,16 +124,16 @@ final class PromotionTest extends AbstractTestCase
         $createdAt = new DateTimeImmutable();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setCreatedAt($createdAt));
-        $this->assertEquals($createdAt, $promotion->getCreatedAt());
+        $this->assertSame($createdAt, $promotion->getCreatedAt());
     }
 
     public function testGetDeletedAt(): void
     {
         $deletedAt = new DateTimeImmutable();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getDeletedAt());
+        $this->assertNull($promotion->getDeletedAt());
         $promotion->setDeletedAt($deletedAt);
-        $this->assertEquals($deletedAt, $promotion->getDeletedAt());
+        $this->assertSame($deletedAt, $promotion->getDeletedAt());
     }
 
     public function testSetDeletedAt(): void
@@ -137,16 +141,16 @@ final class PromotionTest extends AbstractTestCase
         $deletedAt = new DateTimeImmutable();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setDeletedAt($deletedAt));
-        $this->assertEquals($deletedAt, $promotion->getDeletedAt());
+        $this->assertSame($deletedAt, $promotion->getDeletedAt());
     }
 
     public function testGetUpdatedAt(): void
     {
         $updatedAt = new DateTimeImmutable();
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getUpdatedAt());
+        $this->assertNull($promotion->getUpdatedAt());
         $promotion->setUpdatedAt($updatedAt);
-        $this->assertEquals($updatedAt, $promotion->getUpdatedAt());
+        $this->assertSame($updatedAt, $promotion->getUpdatedAt());
     }
 
     public function testSetUpdatedAt(): void
@@ -154,7 +158,7 @@ final class PromotionTest extends AbstractTestCase
         $updatedAt = new DateTimeImmutable();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setUpdatedAt($updatedAt));
-        $this->assertEquals($updatedAt, $promotion->getUpdatedAt());
+        $this->assertSame($updatedAt, $promotion->getUpdatedAt());
     }
 
     public function testGetIsEnabled(): void
@@ -163,7 +167,7 @@ final class PromotionTest extends AbstractTestCase
         $promotion = new Promotion();
         $this->assertTrue($promotion->getIsEnabled());
         $promotion->setIsEnabled($isEnabled);
-        $this->assertEquals($isEnabled, $promotion->getIsEnabled());
+        $this->assertSame($isEnabled, $promotion->getIsEnabled());
         $this->assertIsBool($promotion->getIsEnabled());
     }
 
@@ -172,7 +176,7 @@ final class PromotionTest extends AbstractTestCase
         $isEnabled = true;
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setIsEnabled($isEnabled));
-        $this->assertEquals($isEnabled, $promotion->getIsEnabled());
+        $this->assertSame($isEnabled, $promotion->getIsEnabled());
     }
 
     public function testGetCode(): void
@@ -180,9 +184,9 @@ final class PromotionTest extends AbstractTestCase
         $code = 'test code';
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getCode());
+        $this->assertSame('', $promotion->getCode());
         $promotion->setCode($code);
-        $this->assertEquals($newCode, $promotion->getCode());
+        $this->assertSame($newCode, $promotion->getCode());
         $this->assertIsString($promotion->getCode());
     }
 
@@ -192,16 +196,16 @@ final class PromotionTest extends AbstractTestCase
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setCode($code));
-        $this->assertEquals($newCode, $promotion->getCode());
+        $this->assertSame($newCode, $promotion->getCode());
     }
 
     public function testGetDescription(): void
     {
         $description = 'test description';
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getDescription());
+        $this->assertNull($promotion->getDescription());
         $promotion->setDescription($description);
-        $this->assertEquals($description, $promotion->getDescription());
+        $this->assertSame($description, $promotion->getDescription());
         $this->assertIsString($promotion->getDescription());
     }
 
@@ -210,7 +214,7 @@ final class PromotionTest extends AbstractTestCase
         $description = 'test description';
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setDescription($description));
-        $this->assertEquals($description, $promotion->getDescription());
+        $this->assertSame($description, $promotion->getDescription());
     }
 
     public function testGetNotifications(): void
@@ -218,7 +222,7 @@ final class PromotionTest extends AbstractTestCase
         $notifications = 10;
         $promotion = new Promotion();
         $promotion->setNotifications($notifications);
-        $this->assertEquals($notifications, $promotion->getNotifications());
+        $this->assertSame($notifications, $promotion->getNotifications());
         $this->assertIsInt($promotion->getNotifications());
     }
 
@@ -227,7 +231,7 @@ final class PromotionTest extends AbstractTestCase
         $notifications = 10;
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setNotifications($notifications));
-        $this->assertEquals($notifications, $promotion->getNotifications());
+        $this->assertSame($notifications, $promotion->getNotifications());
     }
 
     public function testGetExpiresAt(): void
@@ -235,7 +239,7 @@ final class PromotionTest extends AbstractTestCase
         $expiresAt = new DateTimeImmutable();
         $promotion = new Promotion();
         $promotion->setExpiresAt($expiresAt);
-        $this->assertEquals($expiresAt, $promotion->getExpiresAt());
+        $this->assertSame($expiresAt, $promotion->getExpiresAt());
     }
 
     public function testSetExpiresAt(): void
@@ -243,16 +247,16 @@ final class PromotionTest extends AbstractTestCase
         $expiresAt = new DateTimeImmutable();
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setExpiresAt($expiresAt));
-        $this->assertEquals($expiresAt, $promotion->getExpiresAt());
+        $this->assertSame($expiresAt, $promotion->getExpiresAt());
     }
 
     public function testGetName(): void
     {
         $name = 'test name';
         $promotion = new Promotion();
-        $this->assertEquals(null, $promotion->getName());
+        $this->assertSame('', $promotion->getName());
         $promotion->setName($name);
-        $this->assertEquals($name, $promotion->getName());
+        $this->assertSame($name, $promotion->getName());
         $this->assertIsString($promotion->getName());
     }
 
@@ -261,7 +265,7 @@ final class PromotionTest extends AbstractTestCase
         $name = 'test name';
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setName($name));
-        $this->assertEquals($name, $promotion->getName());
+        $this->assertSame($name, $promotion->getName());
     }
 
     public function testGetSmsNotifications(): void
@@ -269,7 +273,7 @@ final class PromotionTest extends AbstractTestCase
         $smsNotifications = 10;
         $promotion = new Promotion();
         $promotion->setSmsNotifications($smsNotifications);
-        $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());
+        $this->assertSame($smsNotifications, $promotion->getSmsNotifications());
         $this->assertIsInt($promotion->getSmsNotifications());
     }
 
@@ -278,7 +282,7 @@ final class PromotionTest extends AbstractTestCase
         $smsNotifications = 10;
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setSmsNotifications($smsNotifications));
-        $this->assertEquals($smsNotifications, $promotion->getSmsNotifications());
+        $this->assertSame($smsNotifications, $promotion->getSmsNotifications());
     }
 
     public function testGetType(): void
@@ -286,7 +290,7 @@ final class PromotionTest extends AbstractTestCase
         $type = Promotion::TYPE_EXISTING_ACCOUNT;
         $promotion = new Promotion();
         $promotion->setType($type);
-        $this->assertEquals($type, $promotion->getType());
+        $this->assertSame($type, $promotion->getType());
         $this->assertIsString($promotion->getType());
     }
 
@@ -307,7 +311,7 @@ final class PromotionTest extends AbstractTestCase
         $type = Promotion::TYPE_EXISTING_ACCOUNT;
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setType($type));
-        $this->assertEquals($type, $promotion->getType());
+        $this->assertSame($type, $promotion->getType());
     }
 
     public function testSetTypeException(): void

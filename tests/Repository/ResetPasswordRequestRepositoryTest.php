@@ -11,6 +11,10 @@ use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
 {
     /**
@@ -28,11 +32,10 @@ final class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->managerRegistry,
-            $this->resetPasswordRequestRepository,
-            $this->userFaker
-        );
+        $this->managerRegistry = null;
+        $this->resetPasswordRequestRepository = null;
+        $this->userFaker = null
+        ;
 
         parent::tearDown();
     }

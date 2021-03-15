@@ -9,6 +9,10 @@ use App\Manager\KpiManager;
 use App\Service\KpiService;
 use App\Tests\AbstractUiTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class KpiControllerTest extends AbstractUiTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class KpiControllerTest extends AbstractUiTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->kpiManager,
-            $this->kpiService
-        );
+        $this->kpiManager = null;
+        $this->kpiService = null
+        ;
 
         parent::tearDown();
     }
@@ -33,9 +36,8 @@ final class KpiControllerTest extends AbstractUiTestCase
     public function createKpi(): Kpi
     {
         $user = $this->userFaker->createRichUserPersisted();
-        $kpi = $this->kpiService->create();
 
-        return $kpi;
+        return $this->kpiService->create();
     }
 
     public function testIndex(): void

@@ -17,11 +17,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Achievement
 {
-    use Traits\IdTrait;
-    use Traits\UuidTrait;
-    use Traits\IsEnabledTrait;
     use Traits\BlameableTrait;
+    use Traits\IdTrait;
+    use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
+    use Traits\UuidTrait;
 
     public const TYPE_COMPLETED_ROUTINE = 'completed_routine';
     public const TYPE_COMPLETED_GOAL = 'completed_goal';
@@ -160,7 +160,7 @@ class Achievement
 
     public function setType(?string $type): self
     {
-        if (!(in_array($type, self::getTypeValidationChoices()))) {
+        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
             throw new InvalidArgumentException('Invalid type');
         }
 

@@ -34,22 +34,22 @@ class UserKpiService
     ): UserKpi {
         $date = new DateTimeImmutable();
         $userKpi = $this->userKpiFactory->createUserKpiWithRequired(
-            count($user->getAccount()->getAccountOperations()),
-            count($user->getRewardsAwarded()),
-            count($user->getGoalsCompleted()),
-            count($user->getProjectsCompleted()),
-            count($user->getCompletedRoutines()),
-            count($user->getContacts()),
+            \count($user->getAccount()->getAccountOperations()),
+            \count($user->getRewardsAwarded()),
+            \count($user->getGoalsCompleted()),
+            \count($user->getProjectsCompleted()),
+            \count($user->getCompletedRoutines()),
+            \count($user->getContacts()),
             $date,
-            count($user->getGoals()),
-            count($user->getNotes()),
-            count($user->getProjects()),
-            count($user->getReminders()),
-            count($user->getRewards()),
-            count($user->getRoutines()),
-            count($user->getSavedEmails()),
+            \count($user->getGoals()),
+            \count($user->getNotes()),
+            \count($user->getProjects()),
+            \count($user->getReminders()),
+            \count($user->getRewards()),
+            \count($user->getRoutines()),
+            \count($user->getSavedEmails()),
             $type,
-            count($user->getUserQuestionnaires())
+            \count($user->getUserQuestionnaires())
         );
         $userKpi->setUser($user);
         if (null !== $previousUserKpi) {
@@ -60,7 +60,7 @@ class UserKpiService
         return $userKpi;
     }
 
-    public function run(string $type): UserKpiService
+    public function run(string $type): self
     {
         $page = 1;
         $limit = 5;
@@ -80,7 +80,7 @@ class UserKpiService
                     $user,
                     $previousUserKpi
                 );
-                if (in_array($type, [UserKpi::TYPE_ANNUALLY, UserKpi::TYPE_MONTHLY, UserKpi::TYPE_WEEKLY])) {
+                if (\in_array($type, [UserKpi::TYPE_ANNUALLY, UserKpi::TYPE_MONTHLY, UserKpi::TYPE_WEEKLY], true)) {
                     $this->emailService->sendUserKpi(
                         $user->getEmail(),
                         $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()]),

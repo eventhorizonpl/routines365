@@ -9,6 +9,10 @@ use App\Factory\SavedEmailFactory;
 use App\Faker\SavedEmailFaker;
 use App\Tests\AbstractDoctrineTestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class SavedEmailFakerTest extends AbstractDoctrineTestCase
 {
     /**
@@ -22,10 +26,9 @@ final class SavedEmailFakerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
-        unset(
-            $this->savedEmailFactory,
-            $this->savedEmailFaker
-        );
+        $this->savedEmailFactory = null;
+        $this->savedEmailFaker = null
+        ;
 
         parent::tearDown();
     }
@@ -48,7 +51,7 @@ final class SavedEmailFakerTest extends AbstractDoctrineTestCase
             $email,
             $type
         );
-        $this->assertEquals($email, $savedEmail->getEmail());
-        $this->assertEquals($type, $savedEmail->getType());
+        $this->assertSame($email, $savedEmail->getEmail());
+        $this->assertSame($type, $savedEmail->getType());
     }
 }
