@@ -155,6 +155,7 @@ class User implements UserInterface, TwoFactorInterface
      * @ORM\Column(nullable=true, type="guid", unique=true)
      */
     #[Assert\Uuid(groups: ['system'])]
+    #[Groups(['login'])]
     private ?string $apiToken = null;
 
     /**
@@ -164,7 +165,7 @@ class User implements UserInterface, TwoFactorInterface
     #[Assert\Length(groups: ['form', 'system'], max: 180)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr'])]
+    #[Groups(['gdpr', 'login'])]
     private ?string $email;
 
     /**

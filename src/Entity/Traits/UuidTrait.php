@@ -14,7 +14,7 @@ trait UuidTrait
      */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Uuid(groups: ['Default', 'system'])]
-    #[Groups(['gdpr', 'list', 'show'])]
+    #[Groups(['gdpr', 'list', 'login', 'show'])]
     protected ?string $uuid = null;
 
     public function getUuid(): ?string
