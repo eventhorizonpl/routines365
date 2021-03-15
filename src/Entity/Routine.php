@@ -76,7 +76,7 @@ class Routine
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr'])]
+    #[Groups(['gdpr', 'list', 'show'])]
     private ?string $description;
 
     /**
@@ -85,7 +85,7 @@ class Routine
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr'])]
+    #[Groups(['gdpr', 'list', 'show'])]
     private ?string $name;
 
     /**
@@ -95,7 +95,7 @@ class Routine
     #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr'])]
+    #[Groups(['gdpr', 'show'])]
     private string $type;
 
     public function __construct()

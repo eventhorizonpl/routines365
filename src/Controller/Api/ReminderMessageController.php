@@ -33,7 +33,7 @@ class ReminderMessageController extends AbstractFOSRestController
      */
     #[Route('/browser-notifications-list', methods: ['GET'], name: 'browser_notifications_list', options: ['expose' => true])]
     #[Security(name: 'api_key')]
-    public function getBrowserNotificationsList(ReminderMessageRepository $reminderMessageRepository)
+    public function getBrowserNotificationsList(ReminderMessageRepository $reminderMessageRepository): Response
     {
         $reminders = $this->getUser()->getReminders()->filter(fn (Reminder $reminder) => true === $reminder->getSendToBrowser());
 
