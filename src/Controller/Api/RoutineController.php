@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted(User::ROLE_USER)]
-#[Route('/api/v1/routines', defaults: ['topdomain' => 'com'], host: 'api.routines365.{topdomain}', name: 'api_v1_reminder_message_', requirements: ['topdomain' => 'com|local'])]
+#[Route('/api/v1/routines', defaults: ['topdomain' => 'com'], host: 'api.routines365.{topdomain}', name: 'api_v1_routine_', requirements: ['topdomain' => 'com|local'])]
 class RoutineController extends AbstractFOSRestController
 {
     /**
@@ -146,7 +146,7 @@ class RoutineController extends AbstractFOSRestController
             return $this->handleView($view);
         }
 
-        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST, 'Error');
+        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST, 'error');
         $view = $this->view($data, Response::HTTP_BAD_REQUEST);
         $view->getContext()->addGroup('show');
 
@@ -192,7 +192,7 @@ class RoutineController extends AbstractFOSRestController
             return $this->handleView($view);
         }
 
-        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST, 'Error');
+        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST, 'error');
         $view = $this->view($data, Response::HTTP_BAD_REQUEST);
         $view->getContext()->addGroup('show');
 

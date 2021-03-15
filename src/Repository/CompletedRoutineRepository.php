@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\CompletedRoutine;
+use App\Entity\Routine;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -61,6 +63,21 @@ class CompletedRoutineRepository extends ServiceEntityRepository
                 }
             }
         }
+
+        return $queryBuilder->getQuery();
+    }
+
+    public function findByParametersForApi(User $user, Routine $routine): Query
+    {
+        $queryBuilder = $this->createQueryBuilder('cr')
+            ->select('cr')
+            ->where('cr.deletedAt IS NULL')
+            ->andWhere('cr.routine = :routine')
+            ->andWhere('cr.user = :user')
+            ->addOrderBy('cr.createdAt', 'DESC')
+            ->setParameter('routine', $routine)
+            ->setParameter('user', $user)
+        ;
 
         return $queryBuilder->getQuery();
     }
