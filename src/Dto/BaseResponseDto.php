@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 abstract class BaseResponseDto
 {
     /**
-     * @OA\Property(type="string")
+     * @OA\Property(type="integer")
      */
     #[Groups(['list', 'show'])]
     public int $code;

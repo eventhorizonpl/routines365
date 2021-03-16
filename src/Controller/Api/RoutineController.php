@@ -146,7 +146,7 @@ class RoutineController extends AbstractFOSRestController
             return $this->handleView($view);
         }
 
-        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST, 'error');
+        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST);
         $view = $this->view($data, Response::HTTP_BAD_REQUEST);
         $view->getContext()->addGroup('show');
 
@@ -192,7 +192,7 @@ class RoutineController extends AbstractFOSRestController
             return $this->handleView($view);
         }
 
-        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST, 'error');
+        $data = new ErrorResponseDto(Response::HTTP_BAD_REQUEST);
         $view = $this->view($data, Response::HTTP_BAD_REQUEST);
         $view->getContext()->addGroup('show');
 
