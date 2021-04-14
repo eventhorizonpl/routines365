@@ -48,7 +48,7 @@ final class SavedEmailFactoryTest extends AbstractTestCase
 
     public function testCreateSavedEmailWithRequired(): void
     {
-        $email = $this->faker->safeEmail;
+        $email = $this->faker->safeEmail();
         $type = $this->faker->randomElement(
             SavedEmail::getTypeFormChoices()
         );

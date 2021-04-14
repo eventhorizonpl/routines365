@@ -49,7 +49,7 @@ final class RetentionFactoryTest extends AbstractTestCase
 
     public function testCreateRetentionWithRequired(): void
     {
-        $data = $this->faker->rgbColorAsArray;
+        $data = $this->faker->rgbColorAsArray();
         $date = new DateTimeImmutable();
         $retentionFactory = new RetentionFactory();
         $retention = $retentionFactory->createRetentionWithRequired(

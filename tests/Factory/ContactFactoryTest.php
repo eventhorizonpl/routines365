@@ -48,11 +48,11 @@ final class ContactFactoryTest extends AbstractTestCase
 
     public function testCreateContactWithRequired(): void
     {
-        $content = $this->faker->sentence;
+        $content = $this->faker->sentence();
         $status = $this->faker->randomElement(
             Contact::getStatusFormChoices()
         );
-        $title = $this->faker->sentence;
+        $title = $this->faker->sentence();
         $type = $this->faker->randomElement(
             Contact::getTypeFormChoices()
         );

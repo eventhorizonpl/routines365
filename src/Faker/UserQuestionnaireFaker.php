@@ -28,7 +28,7 @@ class UserQuestionnaireFaker
         ?bool $isRewarded = null
     ): UserQuestionnaire {
         if (null === $isRewarded) {
-            $isRewarded = (bool) $this->faker->boolean;
+            $isRewarded = (bool) $this->faker->boolean();
         }
 
         return $this->userQuestionnaireFactory->createUserQuestionnaireWithRequired(

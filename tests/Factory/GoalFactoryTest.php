@@ -48,8 +48,8 @@ final class GoalFactoryTest extends AbstractTestCase
 
     public function testCreateGoalWithRequired(): void
     {
-        $isCompleted = $this->faker->boolean;
-        $name = $this->faker->sentence;
+        $isCompleted = $this->faker->boolean();
+        $name = $this->faker->sentence();
         $goalFactory = new GoalFactory();
         $goal = $goalFactory->createGoalWithRequired(
             $isCompleted,

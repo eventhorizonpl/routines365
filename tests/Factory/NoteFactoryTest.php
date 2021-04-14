@@ -48,8 +48,8 @@ final class NoteFactoryTest extends AbstractTestCase
 
     public function testCreateNoteWithRequired(): void
     {
-        $content = $this->faker->sentence;
-        $title = $this->faker->sentence;
+        $content = $this->faker->sentence();
+        $title = $this->faker->sentence();
         $noteFactory = new NoteFactory();
         $note = $noteFactory->createNoteWithRequired(
             $content,

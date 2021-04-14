@@ -27,15 +27,15 @@ class TestimonialFaker
         ?string $signature = null
     ): Testimonial {
         if (null === $content) {
-            $content = (string) $this->faker->text;
+            $content = (string) $this->faker->text();
         }
 
         if (null === $isVisible) {
-            $isVisible = (bool) $this->faker->boolean;
+            $isVisible = (bool) $this->faker->boolean();
         }
 
         if (null === $signature) {
-            $signature = (string) $this->faker->name;
+            $signature = (string) $this->faker->name();
         }
 
         return $this->testimonialFactory->createTestimonialWithRequired(

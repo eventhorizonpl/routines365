@@ -48,9 +48,9 @@ final class TestimonialFactoryTest extends AbstractTestCase
 
     public function testCreateTestimonialWithRequired(): void
     {
-        $content = $this->faker->sentence;
-        $isVisible = $this->faker->boolean;
-        $signature = $this->faker->sentence;
+        $content = $this->faker->sentence();
+        $isVisible = $this->faker->boolean();
+        $signature = $this->faker->sentence();
         $testimonialFactory = new TestimonialFactory();
         $testimonial = $testimonialFactory->createTestimonialWithRequired(
             $content,

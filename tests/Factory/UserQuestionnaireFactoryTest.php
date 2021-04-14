@@ -48,7 +48,7 @@ final class UserQuestionnaireFactoryTest extends AbstractTestCase
 
     public function testCreateUserQuestionnaireWithRequired(): void
     {
-        $isRewarded = $this->faker->boolean;
+        $isRewarded = $this->faker->boolean();
         $userQuestionnaireFactory = new UserQuestionnaireFactory();
         $userQuestionnaire = $userQuestionnaireFactory->createUserQuestionnaireWithRequired(
             $isRewarded

@@ -26,7 +26,7 @@ class ContactFaker
         ?string $type = null
     ): Contact {
         if (null === $content) {
-            $content = (string) $this->faker->text;
+            $content = (string) $this->faker->text();
         }
 
         if (null === $status) {
@@ -36,7 +36,7 @@ class ContactFaker
         }
 
         if (null === $title) {
-            $title = (string) $this->faker->word;
+            $title = (string) $this->faker->word();
         }
 
         if (null === $type) {

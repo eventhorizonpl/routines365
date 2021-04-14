@@ -48,7 +48,7 @@ final class ReportFactoryTest extends AbstractTestCase
 
     public function testCreateReportWithRequired(): void
     {
-        $data = $this->faker->words;
+        $data = $this->faker->words();
         $status = $this->faker->randomElement(
             Report::getStatusFormChoices()
         );

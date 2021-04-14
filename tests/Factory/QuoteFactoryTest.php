@@ -48,9 +48,9 @@ final class QuoteFactoryTest extends AbstractTestCase
 
     public function testCreateQuoteWithRequired(): void
     {
-        $author = $this->faker->sentence;
-        $content = $this->faker->sentence;
-        $isVisible = $this->faker->boolean;
+        $author = $this->faker->sentence();
+        $content = $this->faker->sentence();
+        $isVisible = $this->faker->boolean();
         $quoteFactory = new QuoteFactory();
         $quote = $quoteFactory->createQuoteWithRequired(
             $author,

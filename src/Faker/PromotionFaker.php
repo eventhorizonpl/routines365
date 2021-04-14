@@ -31,11 +31,11 @@ class PromotionFaker
         ?string $type = null
     ): Promotion {
         if (null === $code) {
-            $code = (string) $this->faker->word;
+            $code = (string) $this->faker->word();
         }
 
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $name) {

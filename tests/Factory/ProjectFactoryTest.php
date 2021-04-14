@@ -48,8 +48,8 @@ final class ProjectFactoryTest extends AbstractTestCase
 
     public function testCreateProjectWithRequired(): void
     {
-        $isCompleted = $this->faker->boolean;
-        $name = $this->faker->sentence;
+        $isCompleted = $this->faker->boolean();
+        $name = $this->faker->sentence();
         $projectFactory = new ProjectFactory();
         $project = $projectFactory->createProjectWithRequired(
             $isCompleted,

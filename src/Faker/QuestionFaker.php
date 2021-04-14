@@ -28,7 +28,7 @@ class QuestionFaker
         ?string $type = null
     ): Question {
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $position) {
@@ -36,7 +36,7 @@ class QuestionFaker
         }
 
         if (null === $title) {
-            $title = (string) $this->faker->word;
+            $title = (string) $this->faker->word();
         }
 
         if (null === $type) {

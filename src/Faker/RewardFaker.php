@@ -28,7 +28,7 @@ class RewardFaker
         ?string $type = null
     ): Reward {
         if (null === $description) {
-            $description = (string) $this->faker->text;
+            $description = (string) $this->faker->text();
         }
 
         if (null === $isAwarded) {

@@ -65,15 +65,15 @@ class UserFaker
         ?string $type = null
     ): User {
         if (null === $email) {
-            $email = (string) $this->faker->safeEmail;
+            $email = (string) $this->faker->safeEmail();
         }
 
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $password) {
-            $password = (string) $this->faker->word;
+            $password = (string) $this->faker->word();
         }
 
         if (null === $roles) {

@@ -24,7 +24,7 @@ class NoteFaker
         ?string $title = null
     ): Note {
         if (null === $content) {
-            $content = (string) $this->faker->text;
+            $content = (string) $this->faker->text();
         }
 
         if (null === $title) {

@@ -26,11 +26,11 @@ class RoutineFaker
         ?string $type = null
     ): Routine {
         if (null === $description) {
-            $description = (string) $this->faker->text;
+            $description = (string) $this->faker->text();
         }
 
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $name) {

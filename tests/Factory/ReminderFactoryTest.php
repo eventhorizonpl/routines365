@@ -50,11 +50,11 @@ final class ReminderFactoryTest extends AbstractTestCase
     public function testCreateReminderWithRequired(): void
     {
         $hour = new DateTimeImmutable();
-        $isEnabled = $this->faker->boolean;
-        $minutesBefore = $this->faker->randomNumber;
-        $sendEmail = $this->faker->boolean;
-        $sendMotivationalMessage = $this->faker->boolean;
-        $sendSms = $this->faker->boolean;
+        $isEnabled = $this->faker->boolean();
+        $minutesBefore = $this->faker->randomNumber();
+        $sendEmail = $this->faker->boolean();
+        $sendMotivationalMessage = $this->faker->boolean();
+        $sendSms = $this->faker->boolean();
         $type = $this->faker->randomElement(
             Reminder::getTypeFormChoices()
         );

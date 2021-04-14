@@ -48,8 +48,8 @@ final class RoutineFactoryTest extends AbstractTestCase
 
     public function testCreateRoutineWithRequired(): void
     {
-        $isEnabled = $this->faker->boolean;
-        $name = $this->faker->sentence;
+        $isEnabled = $this->faker->boolean();
+        $name = $this->faker->sentence();
         $type = $this->faker->randomElement(
             Routine::getTypeFormChoices()
         );

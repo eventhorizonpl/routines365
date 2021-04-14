@@ -28,11 +28,11 @@ class AnswerFaker
         ?string $type = null
     ): Answer {
         if (null === $content) {
-            $content = (string) $this->faker->word;
+            $content = (string) $this->faker->word();
         }
 
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $position) {

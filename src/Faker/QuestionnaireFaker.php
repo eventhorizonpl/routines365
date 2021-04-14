@@ -29,11 +29,11 @@ class QuestionnaireFaker
         ?string $title = null
     ): Questionnaire {
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $title) {
-            $title = (string) $this->faker->word;
+            $title = (string) $this->faker->word();
         }
 
         return $this->questionnaireFactory->createQuestionnaireWithRequired(

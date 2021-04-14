@@ -24,7 +24,7 @@ class CompletedRoutineFaker
         ?int $minutesDevoted = null
     ): CompletedRoutine {
         if (null === $comment) {
-            $comment = (string) $this->faker->text;
+            $comment = (string) $this->faker->text();
         }
 
         if (null === $minutesDevoted) {

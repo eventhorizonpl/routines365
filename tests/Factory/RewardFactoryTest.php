@@ -48,9 +48,9 @@ final class RewardFactoryTest extends AbstractTestCase
 
     public function testCreateRewardWithRequired(): void
     {
-        $isAwarded = $this->faker->boolean;
-        $name = $this->faker->sentence;
-        $requiredNumberOfCompletions = $this->faker->randomNumber;
+        $isAwarded = $this->faker->boolean();
+        $name = $this->faker->sentence();
+        $requiredNumberOfCompletions = $this->faker->randomNumber();
         $type = $this->faker->randomElement(
             Reward::getTypeFormChoices()
         );

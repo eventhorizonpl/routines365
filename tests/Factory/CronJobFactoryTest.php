@@ -48,11 +48,11 @@ final class CronJobFactoryTest extends AbstractTestCase
 
     public function testCreateCronJobWithRequired(): void
     {
-        $command = $this->faker->sentence;
-        $description = $this->faker->sentence;
-        $enabled = $this->faker->boolean;
-        $name = $this->faker->sentence;
-        $schedule = $this->faker->sentence;
+        $command = $this->faker->sentence();
+        $description = $this->faker->sentence();
+        $enabled = $this->faker->boolean();
+        $name = $this->faker->sentence();
+        $schedule = $this->faker->sentence();
         $cronJobFactory = new CronJobFactory();
         $cronJob = $cronJobFactory->createCronJobWithRequired(
             $command,

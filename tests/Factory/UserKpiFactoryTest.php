@@ -49,24 +49,24 @@ final class UserKpiFactoryTest extends AbstractTestCase
 
     public function testCreateUserKpiWithRequired(): void
     {
-        $accountOperationCounter = $this->faker->randomNumber;
-        $awardedRewardCounter = $this->faker->randomNumber;
-        $completedGoalCounter = $this->faker->randomNumber;
-        $completedProjectCounter = $this->faker->randomNumber;
-        $completedRoutineCounter = $this->faker->randomNumber;
-        $contactCounter = $this->faker->randomNumber;
+        $accountOperationCounter = $this->faker->randomNumber();
+        $awardedRewardCounter = $this->faker->randomNumber();
+        $completedGoalCounter = $this->faker->randomNumber();
+        $completedProjectCounter = $this->faker->randomNumber();
+        $completedRoutineCounter = $this->faker->randomNumber();
+        $contactCounter = $this->faker->randomNumber();
         $date = new DateTimeImmutable();
-        $goalCounter = $this->faker->randomNumber;
-        $noteCounter = $this->faker->randomNumber;
-        $projectCounter = $this->faker->randomNumber;
-        $reminderCounter = $this->faker->randomNumber;
-        $rewardCounter = $this->faker->randomNumber;
-        $routineCounter = $this->faker->randomNumber;
-        $savedEmailCounter = $this->faker->randomNumber;
+        $goalCounter = $this->faker->randomNumber();
+        $noteCounter = $this->faker->randomNumber();
+        $projectCounter = $this->faker->randomNumber();
+        $reminderCounter = $this->faker->randomNumber();
+        $rewardCounter = $this->faker->randomNumber();
+        $routineCounter = $this->faker->randomNumber();
+        $savedEmailCounter = $this->faker->randomNumber();
         $type = $this->faker->randomElement(
             UserKpi::getTypeFormChoices()
         );
-        $userQuestionnaireCounter = $this->faker->randomNumber;
+        $userQuestionnaireCounter = $this->faker->randomNumber();
         $userKpiFactory = new UserKpiFactory();
         $userKpi = $userKpiFactory->createUserKpiWithRequired(
             $accountOperationCounter,

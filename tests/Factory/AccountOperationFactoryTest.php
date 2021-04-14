@@ -48,9 +48,9 @@ final class AccountOperationFactoryTest extends AbstractTestCase
 
     public function testCreateAccountOperationWithRequired(): void
     {
-        $description = $this->faker->sentence;
-        $notifications = $this->faker->randomNumber;
-        $smsNotifications = $this->faker->randomNumber;
+        $description = $this->faker->sentence();
+        $notifications = $this->faker->randomNumber();
+        $smsNotifications = $this->faker->randomNumber();
         $type = $this->faker->randomElement(
             AccountOperation::getTypeFormChoices()
         );

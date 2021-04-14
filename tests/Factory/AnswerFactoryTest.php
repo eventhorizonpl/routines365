@@ -48,8 +48,8 @@ final class AnswerFactoryTest extends AbstractTestCase
 
     public function testCreateAnswerWithRequired(): void
     {
-        $content = $this->faker->sentence;
-        $isEnabled = $this->faker->boolean;
+        $content = $this->faker->sentence();
+        $isEnabled = $this->faker->boolean();
         $position = $this->faker->numberBetween(1, 10);
         $type = $this->faker->randomElement(
             Answer::getTypeFormChoices()

@@ -48,7 +48,7 @@ final class ReminderMessageFactoryTest extends AbstractTestCase
 
     public function testCreateReminderMessageWithRequired(): void
     {
-        $content = $this->faker->sentence;
+        $content = $this->faker->sentence();
         $type = $this->faker->randomElement(
             ReminderMessage::getTypeFormChoices()
         );

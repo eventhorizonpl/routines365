@@ -30,7 +30,7 @@ class AchievementFaker
         ?string $type = null
     ): Achievement {
         if (null === $isEnabled) {
-            $isEnabled = (bool) $this->faker->boolean;
+            $isEnabled = (bool) $this->faker->boolean();
         }
 
         if (null === $level) {

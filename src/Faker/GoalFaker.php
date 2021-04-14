@@ -25,11 +25,11 @@ class GoalFaker
         ?string $name = null
     ): Goal {
         if (null === $description) {
-            $description = (string) $this->faker->text;
+            $description = (string) $this->faker->text();
         }
 
         if (null === $isCompleted) {
-            $isCompleted = (bool) $this->faker->boolean;
+            $isCompleted = (bool) $this->faker->boolean();
         }
 
         if (null === $name) {

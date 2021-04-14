@@ -48,7 +48,7 @@ final class CompletedRoutineFactoryTest extends AbstractTestCase
 
     public function testCreateCompletedRoutineWithRequired(): void
     {
-        $minutesDevoted = $this->faker->randomNumber;
+        $minutesDevoted = $this->faker->randomNumber();
         $completedRoutineFactory = new CompletedRoutineFactory();
         $completedRoutine = $completedRoutineFactory->createCompletedRoutineWithRequired(
             $minutesDevoted

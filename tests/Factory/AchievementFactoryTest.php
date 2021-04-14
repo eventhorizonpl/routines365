@@ -48,9 +48,9 @@ final class AchievementFactoryTest extends AbstractTestCase
 
     public function testCreateAchievementWithRequired(): void
     {
-        $isEnabled = $this->faker->boolean;
+        $isEnabled = $this->faker->boolean();
         $level = $this->faker->numberBetween(1, 10);
-        $name = $this->faker->sentence;
+        $name = $this->faker->sentence();
         $requirement = $this->faker->numberBetween(1, 1000);
         $type = $this->faker->randomElement(
             Achievement::getTypeFormChoices()

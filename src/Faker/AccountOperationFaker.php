@@ -26,7 +26,7 @@ class AccountOperationFaker
         ?string $type = null
     ): AccountOperation {
         if (null === $description) {
-            $description = (string) $this->faker->sentence;
+            $description = (string) $this->faker->sentence();
         }
 
         if (null === $notifications) {

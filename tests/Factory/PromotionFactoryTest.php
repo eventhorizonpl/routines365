@@ -48,11 +48,11 @@ final class PromotionFactoryTest extends AbstractTestCase
 
     public function testCreatePromotionWithRequired(): void
     {
-        $code = $this->faker->sentence;
+        $code = $this->faker->sentence();
         $newCode = strtoupper(preg_replace('/[^a-z0-9]/i', '', $code));
         $notifications = $this->faker->numberBetween(1, 10);
-        $isEnabled = $this->faker->boolean;
-        $name = $this->faker->sentence;
+        $isEnabled = $this->faker->boolean();
+        $name = $this->faker->sentence();
         $smsNotifications = $this->faker->numberBetween(1, 10);
         $type = $this->faker->randomElement(
             Promotion::getTypeFormChoices()

@@ -70,8 +70,8 @@ final class UserFactoryTest extends AbstractTestCase
 
     public function testCreateUserWithRequired(): void
     {
-        $email = $this->faker->safeEmail;
-        $isEnabled = $this->faker->boolean;
+        $email = $this->faker->safeEmail();
+        $isEnabled = $this->faker->boolean();
         $roles = [
             User::ROLE_USER,
         ];

@@ -24,7 +24,7 @@ class SavedEmailFaker
         ?string $type = null
     ): SavedEmail {
         if (null === $email) {
-            $email = (string) $this->faker->safeEmail;
+            $email = (string) $this->faker->safeEmail();
         }
 
         if (null === $type) {

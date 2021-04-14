@@ -28,15 +28,15 @@ class QuoteFaker
         ?bool $isVisible = null
     ): Quote {
         if (null === $author) {
-            $author = (string) $this->faker->word;
+            $author = (string) $this->faker->word();
         }
 
         if (null === $content) {
-            $content = (string) $this->faker->text;
+            $content = (string) $this->faker->text();
         }
 
         if (null === $isVisible) {
-            $isVisible = (bool) $this->faker->boolean;
+            $isVisible = (bool) $this->faker->boolean();
         }
 
         return $this->quoteFactory->createQuoteWithRequired(

@@ -48,8 +48,8 @@ final class QuestionnaireFactoryTest extends AbstractTestCase
 
     public function testCreateQuestionnaireWithRequired(): void
     {
-        $isEnabled = $this->faker->boolean;
-        $title = $this->faker->sentence;
+        $isEnabled = $this->faker->boolean();
+        $title = $this->faker->sentence();
         $questionnaireFactory = new QuestionnaireFactory();
         $questionnaire = $questionnaireFactory->createQuestionnaireWithRequired(
             $isEnabled,

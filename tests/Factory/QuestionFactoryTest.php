@@ -48,9 +48,9 @@ final class QuestionFactoryTest extends AbstractTestCase
 
     public function testCreateQuestionWithRequired(): void
     {
-        $isEnabled = $this->faker->boolean;
+        $isEnabled = $this->faker->boolean();
         $position = $this->faker->numberBetween(1, 10);
-        $title = $this->faker->sentence;
+        $title = $this->faker->sentence();
         $type = $this->faker->randomElement(
             Question::getTypeFormChoices()
         );
