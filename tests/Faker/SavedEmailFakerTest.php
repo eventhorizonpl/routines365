@@ -11,7 +11,6 @@ use App\Tests\AbstractDoctrineTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class SavedEmailFakerTest extends AbstractDoctrineTestCase
 {

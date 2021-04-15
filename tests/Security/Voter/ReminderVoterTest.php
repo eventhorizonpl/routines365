@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ReminderVoterTest extends AbstractDoctrineTestCase
 {

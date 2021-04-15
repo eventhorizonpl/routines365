@@ -9,7 +9,6 @@ use App\Twig\ContactExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ContactExtensionTest extends AbstractTestCase
 {

@@ -12,7 +12,6 @@ use App\Tests\AbstractDoctrineTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class QuestionnaireFakerTest extends AbstractDoctrineTestCase
 {

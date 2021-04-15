@@ -10,7 +10,6 @@ use App\Tests\AbstractUiTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ProjectControllerTest extends AbstractUiTestCase
 {

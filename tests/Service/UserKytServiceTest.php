@@ -15,7 +15,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserKytServiceTest extends AbstractDoctrineTestCase
 {

@@ -9,7 +9,6 @@ use App\Twig\ReportExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ReportExtensionTest extends AbstractTestCase
 {

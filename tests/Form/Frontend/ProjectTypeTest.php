@@ -11,7 +11,6 @@ use App\Tests\AbstractTypeDoctrineTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ProjectTypeTest extends AbstractTypeDoctrineTestCase
 {

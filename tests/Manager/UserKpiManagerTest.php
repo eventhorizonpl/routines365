@@ -18,7 +18,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserKpiManagerTest extends AbstractDoctrineTestCase
 {

@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\{ParameterBag, Request};
 
 /**
  * @internal
- * @coversNothing
  */
 final class TokenAuthenticatorTest extends AbstractDoctrineTestCase
 {

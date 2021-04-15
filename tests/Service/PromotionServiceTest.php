@@ -17,7 +17,6 @@ use DateTimeImmutable;
 
 /**
  * @internal
- * @coversNothing
  */
 final class PromotionServiceTest extends AbstractDoctrineTestCase
 {

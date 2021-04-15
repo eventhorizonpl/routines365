@@ -9,7 +9,6 @@ use App\Twig\SavedEmailExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class SavedEmailExtensionTest extends AbstractTestCase
 {

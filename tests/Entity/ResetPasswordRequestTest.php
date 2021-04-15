@@ -10,7 +10,6 @@ use DateTimeImmutable;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ResetPasswordRequestTest extends AbstractTestCase
 {

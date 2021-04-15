@@ -9,7 +9,6 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * @internal
- * @coversNothing
  */
 final class CleanupSessionsCommandTest extends AbstractCommandTestCase
 {

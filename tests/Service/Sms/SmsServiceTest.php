@@ -10,7 +10,6 @@ use AsyncAws\Core\Exception\Http\NetworkException;
 
 /**
  * @internal
- * @coversNothing
  */
 final class SmsServiceTest extends AbstractDoctrineTestCase
 {

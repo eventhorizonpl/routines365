@@ -12,7 +12,6 @@ use Faker\{Factory, Generator};
 
 /**
  * @internal
- * @coversNothing
  */
 final class ReminderFactoryTest extends AbstractTestCase
 {

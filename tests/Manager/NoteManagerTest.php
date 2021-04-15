@@ -14,7 +14,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class NoteManagerTest extends AbstractDoctrineTestCase
 {

@@ -9,7 +9,6 @@ use App\Twig\ReminderExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ReminderExtensionTest extends AbstractTestCase
 {

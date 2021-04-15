@@ -13,7 +13,6 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 /**
  * @internal
- * @coversNothing
  */
 final class EmailServiceTest extends AbstractDoctrineTestCase
 {

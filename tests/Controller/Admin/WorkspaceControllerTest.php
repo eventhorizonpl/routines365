@@ -8,7 +8,6 @@ use App\Tests\AbstractUiTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class WorkspaceControllerTest extends AbstractUiTestCase
 {

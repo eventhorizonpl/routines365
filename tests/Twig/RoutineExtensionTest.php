@@ -9,7 +9,6 @@ use App\Twig\RoutineExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class RoutineExtensionTest extends AbstractTestCase
 {

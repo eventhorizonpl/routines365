@@ -10,7 +10,6 @@ use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ProfilePhoneVerificationCodeTypeTest extends TypeTestCase
 {

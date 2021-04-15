@@ -9,7 +9,6 @@ use App\Twig\RewardExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class RewardExtensionTest extends AbstractTestCase
 {

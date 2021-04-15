@@ -14,7 +14,6 @@ use App\Tests\AbstractDoctrineTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class AccountOperationServiceTest extends AbstractDoctrineTestCase
 {

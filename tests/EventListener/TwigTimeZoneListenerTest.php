@@ -15,7 +15,6 @@ use Twig\Environment;
 
 /**
  * @internal
- * @coversNothing
  */
 final class TwigTimeZoneListenerTest extends AbstractDoctrineTestCase
 {

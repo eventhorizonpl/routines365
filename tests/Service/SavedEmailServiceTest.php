@@ -13,7 +13,6 @@ use App\Tests\AbstractDoctrineTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class SavedEmailServiceTest extends AbstractDoctrineTestCase
 {

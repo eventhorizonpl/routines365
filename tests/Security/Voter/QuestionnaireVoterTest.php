@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 
 /**
  * @internal
- * @coversNothing
  */
 final class QuestionnaireVoterTest extends AbstractDoctrineTestCase
 {

@@ -10,7 +10,6 @@ use App\Tests\AbstractTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class AccountFactoryTest extends AbstractTestCase
 {

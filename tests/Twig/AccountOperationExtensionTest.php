@@ -9,7 +9,6 @@ use App\Twig\AccountOperationExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class AccountOperationExtensionTest extends AbstractTestCase
 {

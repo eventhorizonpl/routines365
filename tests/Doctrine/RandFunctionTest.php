@@ -10,7 +10,6 @@ use Doctrine\ORM\Query\{Parser, SqlWalker};
 
 /**
  * @internal
- * @coversNothing
  */
 final class RandFunctionTest extends AbstractTestCase
 {

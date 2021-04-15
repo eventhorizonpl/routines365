@@ -9,7 +9,6 @@ use App\Tests\AbstractUiTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class RoutineControllerTest extends AbstractUiTestCase
 {

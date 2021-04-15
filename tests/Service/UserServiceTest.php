@@ -15,7 +15,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserServiceTest extends AbstractDoctrineTestCase
 {

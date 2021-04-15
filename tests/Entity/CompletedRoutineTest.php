@@ -11,7 +11,6 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @internal
- * @coversNothing
  */
 final class CompletedRoutineTest extends AbstractTestCase
 {

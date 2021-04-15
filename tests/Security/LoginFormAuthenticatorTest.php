@@ -14,7 +14,6 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class LoginFormAuthenticatorTest extends AbstractDoctrineTestCase
 {

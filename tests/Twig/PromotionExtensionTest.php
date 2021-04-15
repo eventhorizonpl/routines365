@@ -9,7 +9,6 @@ use App\Twig\PromotionExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class PromotionExtensionTest extends AbstractTestCase
 {

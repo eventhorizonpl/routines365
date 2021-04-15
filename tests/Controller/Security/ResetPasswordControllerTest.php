@@ -9,7 +9,6 @@ use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ResetPasswordControllerTest extends AbstractUiTestCase
 {

@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Validation;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ChangePasswordFormTypeTest extends TypeTestCase
 {

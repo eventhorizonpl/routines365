@@ -12,7 +12,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @internal
- * @coversNothing
  */
 final class AccountOperationRepositoryTest extends AbstractDoctrineTestCase
 {

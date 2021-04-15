@@ -13,7 +13,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ResetPasswordRequestRepositoryTest extends AbstractDoctrineTestCase
 {

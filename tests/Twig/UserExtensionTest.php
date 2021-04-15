@@ -9,7 +9,6 @@ use App\Twig\UserExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserExtensionTest extends AbstractTestCase
 {

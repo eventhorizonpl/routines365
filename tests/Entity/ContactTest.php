@@ -12,7 +12,6 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ContactTest extends AbstractTestCase
 {

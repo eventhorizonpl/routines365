@@ -11,7 +11,6 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
  * @internal
- * @coversNothing
  */
 final class AmazonSnsServiceTest extends AbstractDoctrineTestCase
 {

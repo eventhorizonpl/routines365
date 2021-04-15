@@ -10,7 +10,6 @@ use App\Tests\AbstractTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class SentReminderFactoryTest extends AbstractTestCase
 {

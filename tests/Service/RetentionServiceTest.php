@@ -16,7 +16,6 @@ use DateTimeImmutable;
 
 /**
  * @internal
- * @coversNothing
  */
 final class RetentionServiceTest extends AbstractDoctrineTestCase
 {

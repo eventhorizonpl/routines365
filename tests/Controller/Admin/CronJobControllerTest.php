@@ -11,7 +11,6 @@ use Cron\CronBundle\Entity\CronJob;
 
 /**
  * @internal
- * @coversNothing
  */
 final class CronJobControllerTest extends AbstractUiTestCase
 {

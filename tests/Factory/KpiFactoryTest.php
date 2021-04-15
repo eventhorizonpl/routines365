@@ -12,7 +12,6 @@ use Faker\{Factory, Generator};
 
 /**
  * @internal
- * @coversNothing
  */
 final class KpiFactoryTest extends AbstractTestCase
 {

@@ -22,7 +22,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserQuestionnaireServiceTest extends AbstractDoctrineTestCase
 {

@@ -11,7 +11,6 @@ use App\Tests\AbstractUiTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class KpiControllerTest extends AbstractUiTestCase
 {

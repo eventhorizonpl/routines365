@@ -13,7 +13,6 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ProfileTest extends AbstractTestCase
 {

@@ -9,7 +9,6 @@ use App\Twig\UserKpiExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserKpiExtensionTest extends AbstractTestCase
 {

@@ -35,7 +35,6 @@ use App\Tests\AbstractDoctrineTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class UserFakerTest extends AbstractDoctrineTestCase
 {

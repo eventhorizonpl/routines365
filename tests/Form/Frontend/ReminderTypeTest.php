@@ -12,7 +12,6 @@ use DateTimeImmutable;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
 {

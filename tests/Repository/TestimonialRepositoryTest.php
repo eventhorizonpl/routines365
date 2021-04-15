@@ -14,7 +14,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @internal
- * @coversNothing
  */
 final class TestimonialRepositoryTest extends AbstractDoctrineTestCase
 {

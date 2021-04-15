@@ -9,7 +9,6 @@ use App\Twig\AchievementExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class AchievementExtensionTest extends AbstractTestCase
 {

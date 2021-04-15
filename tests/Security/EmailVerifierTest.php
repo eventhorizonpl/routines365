@@ -15,7 +15,6 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class EmailVerifierTest extends AbstractDoctrineTestCase
 {

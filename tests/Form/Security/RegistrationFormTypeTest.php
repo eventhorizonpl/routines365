@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Validation;
 
 /**
  * @internal
- * @coversNothing
  */
 final class RegistrationFormTypeTest extends TypeTestCase
 {

@@ -11,7 +11,6 @@ use Faker\{Factory, Generator};
 
 /**
  * @internal
- * @coversNothing
  */
 final class CronJobFactoryTest extends AbstractTestCase
 {

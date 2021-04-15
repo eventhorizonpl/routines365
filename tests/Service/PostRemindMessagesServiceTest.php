@@ -29,7 +29,6 @@ use Symfony\Component\Routing\RouterInterface;
 
 /**
  * @internal
- * @coversNothing
  */
 final class PostRemindMessagesServiceTest extends AbstractDoctrineTestCase
 {

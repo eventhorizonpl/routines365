@@ -9,7 +9,6 @@ use App\Tests\AbstractUiTestCase;
 
 /**
  * @internal
- * @coversNothing
  */
 final class ReminderControllerTest extends AbstractUiTestCase
 {

@@ -9,7 +9,6 @@ use App\Twig\TestimonialExtension;
 
 /**
  * @internal
- * @coversNothing
  */
 final class TestimonialExtensionTest extends AbstractTestCase
 {
