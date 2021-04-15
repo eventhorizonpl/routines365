@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Achievement;
-use App\Entity\User;
+use App\Entity\{Achievement, User};
 use App\Factory\AchievementFactory;
 use App\Manager\AchievementManager;
 use App\Repository\UserRepository;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Bundle\FixturesBundle\{Fixture, FixtureGroupInterface};
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 

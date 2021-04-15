@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\Reward;
 use App\Factory\RewardFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class RewardFaker
 {

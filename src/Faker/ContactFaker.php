@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\Contact;
 use App\Factory\ContactFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class ContactFaker
 {

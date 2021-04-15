@@ -13,6 +13,5 @@ class ErrorResponseDto extends BaseResponseDto
         }
 
         parent::__construct($code, $status);
-
     }
 }

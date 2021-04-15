@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Achievement;
 use App\Factory\AchievementFactory;
 use App\Manager\AchievementManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 use Symfony\Component\Uid\Uuid;
 
 class AchievementFaker

@@ -7,8 +7,7 @@ namespace App\Tests\Factory;
 use App\Factory\CronJobFactory;
 use App\Tests\AbstractTestCase;
 use Cron\CronBundle\Entity\CronJob;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 /**
  * @internal

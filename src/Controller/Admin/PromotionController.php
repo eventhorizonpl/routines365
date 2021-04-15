@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Promotion;
-use App\Entity\User;
+use App\Entity\{Promotion, User};
 use App\Factory\PromotionFactory;
 use App\Form\Admin\PromotionType;
 use App\Manager\PromotionManager;
@@ -14,8 +13,7 @@ use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted(User::ROLE_ADMIN)]

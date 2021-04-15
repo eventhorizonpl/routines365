@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\Form\Frontend;
 
-use App\Entity\Note;
-use App\Entity\Routine;
+use App\Entity\{Note, Routine};
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\{AbstractType, FormBuilderInterface};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class NoteType extends AbstractType

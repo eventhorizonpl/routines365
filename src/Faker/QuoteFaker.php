@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Quote;
 use App\Factory\QuoteFactory;
 use App\Manager\QuoteManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 use Symfony\Component\Uid\Uuid;
 
 class QuoteFaker

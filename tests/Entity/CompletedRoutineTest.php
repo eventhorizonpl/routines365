@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\CompletedRoutine;
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{CompletedRoutine, Routine, User};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;

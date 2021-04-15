@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Promotion;
 use App\Factory\PromotionFactory;
 use App\Manager\PromotionManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 use Symfony\Component\Uid\Uuid;
 
 class PromotionFaker

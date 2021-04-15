@@ -8,11 +8,9 @@ use App\Entity\User;
 use App\Factory\UserFactory;
 use App\Manager\UserManager;
 use App\Service\UserService;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Bundle\FixturesBundle\{Fixture, FixtureGroupInterface};
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\{ContainerAwareInterface, ContainerAwareTrait};
 
 class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, FixtureGroupInterface
 {

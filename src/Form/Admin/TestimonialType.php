@@ -6,8 +6,7 @@ namespace App\Form\Admin;
 
 use App\Entity\Testimonial;
 use App\Form\BaseTestimonialType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\{CheckboxType, ChoiceType};
 use Symfony\Component\Form\FormBuilderInterface;
 
 class TestimonialType extends BaseTestimonialType

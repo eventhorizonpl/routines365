@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Question;
 use App\Factory\QuestionFactory;
 use App\Manager\QuestionManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class QuestionFaker
 {

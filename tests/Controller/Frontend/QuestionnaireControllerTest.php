@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Frontend;
 
 use App\Entity\Promotion;
-use App\Faker\PromotionFaker;
-use App\Faker\QuestionnaireFaker;
+use App\Faker\{PromotionFaker, QuestionnaireFaker};
 use App\Manager\UserManager;
 use App\Tests\AbstractUiTestCase;
 

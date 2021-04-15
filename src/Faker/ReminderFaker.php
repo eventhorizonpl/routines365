@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Reminder;
 use App\Factory\ReminderFactory;
 use DateTimeImmutable;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class ReminderFaker
 {

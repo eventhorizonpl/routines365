@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\Project;
 use App\Factory\ProjectFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class ProjectFaker
 {

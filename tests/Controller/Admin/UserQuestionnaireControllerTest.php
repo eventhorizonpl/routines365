@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Admin;
 
 use App\Entity\UserQuestionnaire;
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserQuestionnaireFaker;
+use App\Faker\{QuestionnaireFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireManager;
 use App\Tests\AbstractUiTestCase;
 

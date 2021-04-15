@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
-use App\Entity\Answer;
-use App\Entity\Question;
-use App\Entity\Questionnaire;
+use App\Entity\{Answer, Question, Questionnaire};
 use App\Faker\QuestionnaireFaker;
 use App\Manager\AnswerManager;
 use App\Tests\AbstractUiTestCase;

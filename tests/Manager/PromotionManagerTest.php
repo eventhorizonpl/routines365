@@ -6,8 +6,7 @@ namespace App\Tests\Manager;
 
 use App\Entity\Promotion;
 use App\Exception\ManagerException;
-use App\Faker\PromotionFaker;
-use App\Faker\UserFaker;
+use App\Faker\{PromotionFaker, UserFaker};
 use App\Manager\PromotionManager;
 use App\Repository\PromotionRepository;
 use App\Tests\AbstractDoctrineTestCase;

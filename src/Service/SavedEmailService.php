@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\SavedEmail;
-use App\Entity\User;
+use App\Entity\{SavedEmail, User};
 use App\Factory\SavedEmailFactory;
 use App\Manager\SavedEmailManager;
 

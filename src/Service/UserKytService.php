@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\User;
-use App\Entity\UserKyt;
+use App\Entity\{User, UserKyt};
 use App\Manager\UserKytManager;
 use App\Repository\UserRepository;
 use DateTimeImmutable;

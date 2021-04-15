@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Kpi;
-use App\Entity\User;
+use App\Entity\{Kpi, User};
 use App\Manager\KpiManager;
 use App\Repository\KpiRepository;
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted(User::ROLE_ADMIN)]

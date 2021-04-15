@@ -6,8 +6,7 @@ namespace App\Tests\Manager;
 
 use App\Entity\Achievement;
 use App\Exception\ManagerException;
-use App\Faker\AchievementFaker;
-use App\Faker\UserFaker;
+use App\Faker\{AchievementFaker, UserFaker};
 use App\Manager\AchievementManager;
 use App\Repository\AchievementRepository;
 use App\Tests\AbstractDoctrineTestCase;

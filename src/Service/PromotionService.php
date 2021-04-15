@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Promotion;
-use App\Entity\User;
+use App\Entity\{Promotion, User};
 use App\Manager\UserManager;
 use App\Repository\PromotionRepository;
 use DateTimeImmutable;

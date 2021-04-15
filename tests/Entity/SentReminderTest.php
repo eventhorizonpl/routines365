@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Reminder;
-use App\Entity\ReminderMessage;
-use App\Entity\Routine;
-use App\Entity\SentReminder;
+use App\Entity\{Reminder, ReminderMessage, Routine, SentReminder};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;

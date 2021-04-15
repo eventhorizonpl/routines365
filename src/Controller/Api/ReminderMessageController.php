@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\Controller\Api;
 
 use App\Dto\ReminderMessageListDto;
-use App\Entity\Reminder;
-use App\Entity\ReminderMessage;
-use App\Entity\User;
+use App\Entity\{Reminder, ReminderMessage, User};
 use App\Repository\ReminderMessageRepository;
 use DateTime;
 use DateTimeImmutable;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use Nelmio\ApiDocBundle\Annotation\Security;
+use Nelmio\ApiDocBundle\Annotation\{Model, Security};
 use OpenApi\Annotations as OA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;

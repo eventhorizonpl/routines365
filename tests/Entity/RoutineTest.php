@@ -4,14 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\CompletedRoutine;
-use App\Entity\Goal;
-use App\Entity\Note;
-use App\Entity\Reminder;
-use App\Entity\Reward;
-use App\Entity\Routine;
-use App\Entity\SentReminder;
-use App\Entity\User;
+use App\Entity\{CompletedRoutine, Goal, Note, Reminder, Reward, Routine, SentReminder, User};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;

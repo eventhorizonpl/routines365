@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Question;
-use App\Entity\Questionnaire;
-use App\Entity\UserQuestionnaire;
+use App\Entity\{Question, Questionnaire, UserQuestionnaire};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;

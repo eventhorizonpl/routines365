@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Frontend;
 
-use App\Entity\Reward;
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{Reward, Routine, User};
 use App\Tests\AbstractUiTestCase;
 
 /**

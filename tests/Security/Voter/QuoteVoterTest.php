@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Security\Voter;
 
-use App\Faker\QuoteFaker;
-use App\Faker\UserFaker;
+use App\Faker\{QuoteFaker, UserFaker};
 use App\Security\Voter\QuoteVoter;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;

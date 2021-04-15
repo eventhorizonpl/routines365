@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\Goal;
 use App\Factory\GoalFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class GoalFaker
 {

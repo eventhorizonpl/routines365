@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Security\Voter;
 
-use App\Faker\GoalFaker;
-use App\Faker\UserFaker;
+use App\Faker\{GoalFaker, UserFaker};
 use App\Security\Voter\GoalVoter;
 use App\Tests\AbstractDoctrineTestCase;
 use ReflectionMethod;

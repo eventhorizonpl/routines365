@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\User;
-use App\Entity\UserKpi;
+use App\Entity\{User, UserKpi};
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;

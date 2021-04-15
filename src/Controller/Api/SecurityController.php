@@ -7,12 +7,9 @@ namespace App\Controller\Api;
 use App\Dto\UserLoginDto;
 use App\Entity\User;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use Nelmio\ApiDocBundle\Annotation\Security;
+use Nelmio\ApiDocBundle\Annotation\{Model, Security};
 use OpenApi\Annotations as OA;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api/v1', defaults: ['topdomain' => 'com'], host: 'api.routines365.{topdomain}', name: 'api_v1_security_', requirements: ['topdomain' => 'com|local'])]

@@ -6,8 +6,7 @@ namespace App\Tests\Manager;
 
 use App\Entity\Quote;
 use App\Exception\ManagerException;
-use App\Faker\QuoteFaker;
-use App\Faker\UserFaker;
+use App\Faker\{QuoteFaker, UserFaker};
 use App\Manager\QuoteManager;
 use App\Repository\QuoteRepository;
 use App\Tests\AbstractDoctrineTestCase;

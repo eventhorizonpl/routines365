@@ -4,24 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Account;
-use App\Entity\Achievement;
-use App\Entity\CompletedRoutine;
-use App\Entity\Contact;
-use App\Entity\Goal;
-use App\Entity\Note;
-use App\Entity\Profile;
-use App\Entity\Project;
-use App\Entity\Promotion;
-use App\Entity\Reminder;
-use App\Entity\Reward;
-use App\Entity\Routine;
-use App\Entity\SavedEmail;
-use App\Entity\Testimonial;
-use App\Entity\User;
-use App\Entity\UserKpi;
-use App\Entity\UserKyt;
-use App\Entity\UserQuestionnaire;
+use App\Entity\{Account, Achievement, CompletedRoutine, Contact, Goal, Note, Profile, Project, Promotion, Reminder, Reward, Routine, SavedEmail, Testimonial, User, UserKpi, UserKyt, UserQuestionnaire};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;

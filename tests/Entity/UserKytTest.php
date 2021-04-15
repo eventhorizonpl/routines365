@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\User;
-use App\Entity\UserKyt;
+use App\Entity\{User, UserKyt};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;

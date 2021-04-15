@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Account;
-use App\Entity\AccountOperation;
-use App\Entity\ReminderMessage;
+use App\Entity\{Account, AccountOperation, ReminderMessage};
 use App\Exception\AccountException;
 use App\Factory\AccountOperationFactory;
 use App\Manager\AccountOperationManager;

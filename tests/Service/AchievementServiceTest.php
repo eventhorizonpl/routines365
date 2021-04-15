@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Achievement;
-use App\Faker\AchievementFaker;
-use App\Faker\UserFaker;
+use App\Faker\{AchievementFaker, UserFaker};
 use App\Manager\UserManager;
 use App\Repository\AchievementRepository;
 use App\Service\AchievementService;

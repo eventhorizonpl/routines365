@@ -6,12 +6,9 @@ namespace App\Tests\Service;
 
 use App\Entity\User;
 use App\Faker\UserFaker;
-use App\Manager\UserKytManager;
-use App\Manager\UserManager;
+use App\Manager\{UserKytManager, UserManager};
 use App\Repository\UserRepository;
-use App\Service\EmailService;
-use App\Service\PromotionService;
-use App\Service\UserKytService;
+use App\Service\{EmailService, PromotionService, UserKytService};
 use App\Tests\AbstractDoctrineTestCase;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;

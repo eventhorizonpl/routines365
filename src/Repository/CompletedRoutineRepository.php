@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\CompletedRoutine;
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{CompletedRoutine, Routine, User};
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;

@@ -8,10 +8,7 @@ use App\Entity\Profile;
 use App\Form\BaseProfileType;
 use App\Resource\ConfigResource;
 use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
+use Symfony\Component\Form\Extension\Core\Type\{CheckboxType, ChoiceType, TextType, TimezoneType};
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ProfileType extends BaseProfileType

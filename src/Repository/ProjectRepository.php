@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\Project;
-use App\Entity\User;
+use App\Entity\{Project, User};
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;

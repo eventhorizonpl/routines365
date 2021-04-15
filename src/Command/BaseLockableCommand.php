@@ -7,9 +7,8 @@ namespace App\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\LogicException;
-use Symfony\Component\Lock\Lock;
-use Symfony\Component\Lock\LockFactory;
 use Symfony\Component\Lock\Store\PdoStore;
+use Symfony\Component\Lock\{Lock, LockFactory};
 
 abstract class BaseLockableCommand extends Command
 {

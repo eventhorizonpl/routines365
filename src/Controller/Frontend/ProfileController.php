@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\User;
-use App\Form\Frontend\ProfilePhoneVerificationCodeType;
-use App\Form\Frontend\ProfileType;
+use App\Form\Frontend\{ProfilePhoneVerificationCodeType, ProfileType};
 use App\Manager\ProfileManager;
 use App\Resource\KytResource;
 use App\Service\Sms\SmsService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

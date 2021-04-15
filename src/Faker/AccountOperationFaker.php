@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\AccountOperation;
 use App\Factory\AccountOperationFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class AccountOperationFaker
 {

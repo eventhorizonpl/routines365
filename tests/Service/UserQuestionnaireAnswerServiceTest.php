@@ -6,9 +6,7 @@ namespace App\Tests\Service;
 
 use App\Entity\UserQuestionnaireAnswer;
 use App\Factory\UserQuestionnaireAnswerFactory;
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserFaker;
-use App\Faker\UserQuestionnaireFaker;
+use App\Faker\{QuestionnaireFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireAnswerManager;
 use App\Repository\UserQuestionnaireAnswerRepository;
 use App\Service\UserQuestionnaireAnswerService;

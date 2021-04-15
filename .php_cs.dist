@@ -18,9 +18,9 @@ return PhpCsFixer\Config::create()
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
-        //'group_import' => true,
+        'group_import' => true,
         'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
-        //'single_import_per_statement' => false,
+        'single_import_per_statement' => false,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

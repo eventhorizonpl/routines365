@@ -9,8 +9,7 @@ use App\Manager\GoalManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\{ContainerAwareInterface, ContainerAwareTrait};
 
 class V1GoalFixtures extends Fixture implements ContainerAwareInterface, DependentFixtureInterface
 {

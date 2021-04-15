@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Reward;
-use App\Entity\Routine;
+use App\Entity\{Reward, Routine};
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
 

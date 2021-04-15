@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Repository;
 
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserFaker;
-use App\Faker\UserQuestionnaireFaker;
+use App\Faker\{QuestionnaireFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireManager;
 use App\Repository\UserQuestionnaireRepository;
 use App\Tests\AbstractDoctrineTestCase;

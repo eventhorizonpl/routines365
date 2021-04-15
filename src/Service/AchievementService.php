@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Achievement;
-use App\Entity\User;
+use App\Entity\{Achievement, User};
 use App\Manager\UserManager;
 use App\Repository\AchievementRepository;
 

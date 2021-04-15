@@ -5,13 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\User;
-use App\Factory\AccountFactory;
-use App\Factory\ProfileFactory;
-use App\Factory\UserFactory;
-use App\Factory\UserKytFactory;
+use App\Factory\{AccountFactory, ProfileFactory, UserFactory, UserKytFactory};
 use App\Tests\AbstractTestCase;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 /**
  * @internal

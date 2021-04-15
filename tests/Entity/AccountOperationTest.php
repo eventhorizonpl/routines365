@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Account;
-use App\Entity\AccountOperation;
-use App\Entity\ReminderMessage;
+use App\Entity\{Account, AccountOperation, ReminderMessage};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;

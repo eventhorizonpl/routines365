@@ -6,8 +6,7 @@ namespace App\Form\Admin;
 
 use App\Entity\Contact;
 use App\Form\BaseContactType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\{ChoiceType, TextareaType};
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ContactType extends BaseContactType

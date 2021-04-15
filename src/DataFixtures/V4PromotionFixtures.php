@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Promotion;
-use App\Entity\User;
+use App\Entity\{Promotion, User};
 use App\Factory\PromotionFactory;
 use App\Manager\PromotionManager;
 use App\Repository\UserRepository;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Bundle\FixturesBundle\{Fixture, FixtureGroupInterface};
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 

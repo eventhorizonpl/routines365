@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Frontend;
 
-use App\Entity\Project;
-use App\Entity\User;
+use App\Entity\{Project, User};
 use App\Tests\AbstractUiTestCase;
 
 /**

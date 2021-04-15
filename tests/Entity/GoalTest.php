@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Goal;
-use App\Entity\Project;
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{Goal, Project, Routine, User};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;

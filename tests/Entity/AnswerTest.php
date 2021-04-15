@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Answer;
-use App\Entity\Question;
-use App\Entity\UserQuestionnaireAnswer;
+use App\Entity\{Answer, Question, UserQuestionnaireAnswer};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;

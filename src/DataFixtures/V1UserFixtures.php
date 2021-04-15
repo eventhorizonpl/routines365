@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use App\Faker\TestimonialFaker;
-use App\Faker\UserFaker;
+use App\Faker\{TestimonialFaker, UserFaker};
 use App\Manager\UserManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\DependencyInjection\{ContainerAwareInterface, ContainerAwareTrait};
 
 class V1UserFixtures extends Fixture implements ContainerAwareInterface
 {

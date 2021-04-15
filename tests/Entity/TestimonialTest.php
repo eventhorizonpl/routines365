@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Testimonial;
-use App\Entity\User;
+use App\Entity\{Testimonial, User};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;

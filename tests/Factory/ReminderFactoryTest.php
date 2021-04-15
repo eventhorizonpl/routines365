@@ -8,8 +8,7 @@ use App\Entity\Reminder;
 use App\Factory\ReminderFactory;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 /**
  * @internal

@@ -7,8 +7,7 @@ namespace App\Tests\Security;
 use App\Faker\UserFaker;
 use App\Security\TokenAuthenticator;
 use App\Tests\AbstractDoctrineTestCase;
-use Symfony\Component\HttpFoundation\ParameterBag;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\{ParameterBag, Request};
 
 /**
  * @internal

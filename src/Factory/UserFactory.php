@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\Entity\Account;
-use App\Entity\User;
+use App\Entity\{Account, User};
 use Symfony\Component\Uid\Uuid;
 
 class UserFactory

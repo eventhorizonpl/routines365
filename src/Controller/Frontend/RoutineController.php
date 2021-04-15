@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{Routine, User};
 use App\Factory\RoutineFactory;
 use App\Form\Frontend\RoutineType;
 use App\Manager\RoutineManager;
@@ -14,8 +13,7 @@ use App\Resource\KytResource;
 use App\Security\Voter\RoutineVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted(User::ROLE_USER)]

@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use App\Entity\User;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\{CheckboxType, ChoiceType};
 use Symfony\Component\Form\FormBuilderInterface;
 
 class UserType extends BaseUserType

@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\Note;
 use App\Factory\NoteFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class NoteFaker
 {

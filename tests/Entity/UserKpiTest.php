@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\User;
-use App\Entity\UserKpi;
+use App\Entity\{User, UserKpi};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;

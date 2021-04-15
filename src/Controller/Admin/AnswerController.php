@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Answer;
-use App\Entity\Question;
-use App\Entity\User;
+use App\Entity\{Answer, Question, User};
 use App\Factory\AnswerFactory;
 use App\Form\Admin\AnswerType;
 use App\Manager\AnswerManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted(User::ROLE_ADMIN)]

@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Doctrine;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
-use Doctrine\ORM\Query\Parser;
-use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\{Lexer, Parser, SqlWalker};
 
 class RandFunction extends FunctionNode
 {

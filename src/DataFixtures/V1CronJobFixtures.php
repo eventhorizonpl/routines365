@@ -6,8 +6,7 @@ namespace App\DataFixtures;
 
 use App\Factory\CronJobFactory;
 use App\Manager\CronJobManager;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Bundle\FixturesBundle\{Fixture, FixtureGroupInterface};
 use Doctrine\Persistence\ObjectManager;
 
 class V1CronJobFixtures extends Fixture implements FixtureGroupInterface

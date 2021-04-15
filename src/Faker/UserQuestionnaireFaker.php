@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace App\Faker;
 
-use App\Entity\Questionnaire;
-use App\Entity\User;
-use App\Entity\UserQuestionnaire;
+use App\Entity\{Questionnaire, User, UserQuestionnaire};
 use App\Factory\UserQuestionnaireFactory;
 use App\Manager\UserQuestionnaireManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 use Symfony\Component\Uid\Uuid;
 
 class UserQuestionnaireFaker

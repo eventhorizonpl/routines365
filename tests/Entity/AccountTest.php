@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Entity;
 
-use App\Entity\Account;
-use App\Entity\AccountOperation;
-use App\Entity\User;
+use App\Entity\{Account, AccountOperation, User};
 use App\Resource\ConfigResource;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;

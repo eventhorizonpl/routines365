@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Form\Admin;
 
-use App\Entity\Profile;
-use App\Entity\User;
+use App\Entity\{Profile, User};
 use App\Form\Admin\UserLeadType;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;

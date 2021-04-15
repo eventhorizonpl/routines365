@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Answer;
-use App\Entity\UserQuestionnaire;
-use App\Entity\UserQuestionnaireAnswer;
+use App\Entity\{Answer, UserQuestionnaire, UserQuestionnaireAnswer};
 use App\Factory\UserQuestionnaireAnswerFactory;
 use App\Manager\UserQuestionnaireAnswerManager;
 use App\Repository\UserQuestionnaireAnswerRepository;

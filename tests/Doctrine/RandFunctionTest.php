@@ -6,8 +6,7 @@ namespace App\Tests\Doctrine;
 
 use App\Doctrine\RandFunction;
 use App\Tests\AbstractTestCase;
-use Doctrine\ORM\Query\Parser;
-use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\{Parser, SqlWalker};
 
 /**
  * @internal

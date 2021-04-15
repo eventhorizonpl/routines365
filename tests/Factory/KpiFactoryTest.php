@@ -8,8 +8,7 @@ use App\Entity\Kpi;
 use App\Factory\KpiFactory;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 /**
  * @internal

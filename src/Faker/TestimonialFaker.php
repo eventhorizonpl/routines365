@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Testimonial;
 use App\Factory\TestimonialFactory;
 use App\Manager\TestimonialManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class TestimonialFaker
 {

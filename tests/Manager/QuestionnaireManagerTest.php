@@ -6,10 +6,8 @@ namespace App\Tests\Manager;
 
 use App\Entity\Questionnaire;
 use App\Exception\ManagerException;
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserFaker;
-use App\Manager\QuestionManager;
-use App\Manager\QuestionnaireManager;
+use App\Faker\{QuestionnaireFaker, UserFaker};
+use App\Manager\{QuestionManager, QuestionnaireManager};
 use App\Repository\QuestionnaireRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

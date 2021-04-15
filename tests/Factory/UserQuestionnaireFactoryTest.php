@@ -7,8 +7,7 @@ namespace App\Tests\Factory;
 use App\Entity\UserQuestionnaire;
 use App\Factory\UserQuestionnaireFactory;
 use App\Tests\AbstractTestCase;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 /**
  * @internal

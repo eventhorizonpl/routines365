@@ -6,9 +6,7 @@ namespace App\Tests\Manager;
 
 use App\Entity\Answer;
 use App\Exception\ManagerException;
-use App\Faker\AnswerFaker;
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserFaker;
+use App\Faker\{AnswerFaker, QuestionnaireFaker, UserFaker};
 use App\Manager\AnswerManager;
 use App\Repository\AnswerRepository;
 use App\Tests\AbstractDoctrineTestCase;

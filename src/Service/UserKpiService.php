@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\User;
-use App\Entity\UserKpi;
+use App\Entity\{User, UserKpi};
 use App\Factory\UserKpiFactory;
 use App\Manager\UserKpiManager;
-use App\Repository\UserKpiRepository;
-use App\Repository\UserRepository;
+use App\Repository\{UserKpiRepository, UserRepository};
 use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;

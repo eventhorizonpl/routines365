@@ -6,8 +6,7 @@ namespace App\Faker;
 
 use App\Entity\Routine;
 use App\Factory\RoutineFactory;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class RoutineFaker
 {

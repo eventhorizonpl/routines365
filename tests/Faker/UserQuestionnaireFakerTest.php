@@ -6,9 +6,7 @@ namespace App\Tests\Faker;
 
 use App\Entity\UserQuestionnaire;
 use App\Factory\UserQuestionnaireFactory;
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserFaker;
-use App\Faker\UserQuestionnaireFaker;
+use App\Faker\{QuestionnaireFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireManager;
 use App\Tests\AbstractDoctrineTestCase;
 

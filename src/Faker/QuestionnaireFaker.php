@@ -7,8 +7,7 @@ namespace App\Faker;
 use App\Entity\Questionnaire;
 use App\Factory\QuestionnaireFactory;
 use App\Manager\QuestionnaireManager;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 use Symfony\Component\Uid\Uuid;
 
 class QuestionnaireFaker

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Service\Sms;
 
-use App\Service\Sms\AmazonSnsService;
-use App\Service\Sms\SmsService;
+use App\Service\Sms\{AmazonSnsService, SmsService};
 use App\Tests\AbstractDoctrineTestCase;
 use AsyncAws\Core\Exception\Http\NetworkException;
 
