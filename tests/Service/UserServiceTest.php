@@ -115,13 +115,11 @@ final class UserServiceTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $oldApiToken = $user->getApiToken();
         $oldLastLoginAt = $user->getLastLoginAt();
 
         $user = $this->userService->onAuthenticationSuccess($user);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertFalse($user->getApiToken() === $oldApiToken);
         $this->assertFalse($user->getLastLoginAt() === $oldLastLoginAt);
     }
 

@@ -6,7 +6,7 @@ rm -rf var/cache/*
 
 bin/console doctrine:database:drop --force
 bin/console doctrine:database:create
-bin/console doctrine:migrations:migrate -n
+bin/console doctrine:migrations:migrate -n -v
 bin/console doctrine:fixtures:load --group=v1deployment -n
 
 sh bin/restore_acl.sh

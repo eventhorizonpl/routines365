@@ -11,7 +11,6 @@ use DateTime;
 use DateTimeImmutable;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Uid\Uuid;
 
 class UserService
 {
@@ -55,7 +54,6 @@ class UserService
     public function onAuthenticationSuccess(User $user): User
     {
         $user
-            ->setApiToken((string) Uuid::v4())
             ->setLastLoginAt(new DateTimeImmutable())
         ;
         $this->userManager->save($user);

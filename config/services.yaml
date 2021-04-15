@@ -21,6 +21,8 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
+            - '../src/Doctrine/'
+            - '../src/Dto/'
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
@@ -37,6 +39,10 @@ services:
     App\EventListener\TwigTimeZoneListener:
         tags:
             - { name: kernel.event_listener, event: kernel.controller_arguments }
+
+    App\OpenApi\JwtDecorator:
+        decorates: 'api_platform.openapi.factory'
+        autoconfigure: false
 
     Sentry\Integration\IgnoreErrorsIntegration:
         arguments:

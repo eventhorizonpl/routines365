@@ -8,7 +8,6 @@ use App\Repository\ReminderMessageRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -53,7 +52,6 @@ class ReminderMessage
     #[Assert\Length(groups: ['system'], max: 512)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
-    #[Groups(['list', 'show'])]
     private string $content;
 
     /**
@@ -61,7 +59,6 @@ class ReminderMessage
      */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
-    #[Groups(['show'])]
     private bool $isReadFromBrowser;
 
     /**

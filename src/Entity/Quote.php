@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Dto\{QuoteCollectionOutput, QuoteItemOutput};
 use App\Repository\QuoteRepository;
+use App\Security\Voter\QuoteVoter;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -12,6 +15,19 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=QuoteRepository::class)
  * @ORM\Table(indexes={@ORM\Index(name="string_length_idx", columns={"string_length"})})
  */
+#[ApiResource(
+    collectionOperations: [
+        'get' => [
+            'output' => QuoteCollectionOutput::class,
+        ],
+    ],
+    itemOperations: [
+        'get' => [
+            'output' => QuoteItemOutput::class,
+            'security' => 'is_granted("'.QuoteVoter::VIEW.'", object)',
+        ],
+    ]
+)]
 class Quote
 {
     use Traits\BlameableTrait;

@@ -64,19 +64,4 @@ class CompletedRoutineRepository extends ServiceEntityRepository
 
         return $queryBuilder->getQuery();
     }
-
-    public function findByParametersForApi(User $user, Routine $routine): Query
-    {
-        $queryBuilder = $this->createQueryBuilder('cr')
-            ->select('cr')
-            ->where('cr.deletedAt IS NULL')
-            ->andWhere('cr.routine = :routine')
-            ->andWhere('cr.user = :user')
-            ->addOrderBy('cr.createdAt', 'DESC')
-            ->setParameter('routine', $routine)
-            ->setParameter('user', $user)
-        ;
-
-        return $queryBuilder->getQuery();
-    }
 }

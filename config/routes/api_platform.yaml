@@ -1,0 +1,18 @@
+api_securit_login:
+    defaults:
+        topdomain: com
+    host: api.routines365.{topdomain}
+    methods: ['POST']
+    path: /api/v1/security/login
+    requirements:
+        topdomain: com|local
+
+api_platform:
+    defaults:
+        topdomain: com
+    host: api.routines365.{topdomain}
+    prefix: /api/v1
+    requirements:
+        topdomain: com|local
+    resource: .
+    type: api_platform

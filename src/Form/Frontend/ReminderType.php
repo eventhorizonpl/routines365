@@ -6,11 +6,8 @@ namespace App\Form\Frontend;
 
 use App\Entity\Reminder;
 use App\Resource\ConfigResource;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
-use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\{CheckboxType, ChoiceType, TimeType};
+use Symfony\Component\Form\{AbstractType, FormBuilderInterface};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ReminderType extends AbstractType

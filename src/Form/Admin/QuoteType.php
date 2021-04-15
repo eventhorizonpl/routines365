@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Form\Admin;
 
 use App\Entity\Quote;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\{CheckboxType, TextareaType};
+use Symfony\Component\Form\{AbstractType, FormBuilderInterface};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class QuoteType extends AbstractType

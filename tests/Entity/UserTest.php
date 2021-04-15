@@ -281,24 +281,6 @@ final class UserTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user->removeAchievement($achievement1));
     }
 
-    public function testGetApiToken(): void
-    {
-        $apiToken = 'test apiToken';
-        $user = new User();
-        $this->assertNull($user->getApiToken());
-        $user->setApiToken($apiToken);
-        $this->assertSame($apiToken, $user->getApiToken());
-        $this->assertIsString($user->getApiToken());
-    }
-
-    public function testSetApiToken(): void
-    {
-        $apiToken = 'test apiToken';
-        $user = new User();
-        $this->assertInstanceOf(User::class, $user->setApiToken($apiToken));
-        $this->assertSame($apiToken, $user->getApiToken());
-    }
-
     public function testAddCompletedRoutine(): void
     {
         $user = new User();

@@ -14,7 +14,7 @@ final class Version20210222115324 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Version v6';
     }
 
     public function isTransactional(): bool

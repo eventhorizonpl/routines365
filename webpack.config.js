@@ -35,7 +35,6 @@ Encore
     .addEntry('frontend-dark', './assets/js/frontend-dark.js')
     .addEntry('frontend-light', './assets/js/frontend-light.js')
     .addEntry('frontend-profile-edit', './assets/js/frontend-profile-edit.js')
-    .addEntry('frontend-reminder-message-show', './assets/js/frontend-reminder-message-show.js')
     .addEntry('frontend-routines', './assets/js/frontend-routines.js')
     .addEntry('admin', './assets/js/admin.js')
     //.addEntry('app', './assets/app.js')

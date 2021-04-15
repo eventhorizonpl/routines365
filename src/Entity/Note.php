@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Dto\{NoteCollectionInput, NoteCollectionOutput, NoteItemInput, NoteItemOutput};
 use App\Repository\NoteRepository;
+use App\Security\Voter\NoteVoter;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,6 +15,36 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
+#[ApiResource(
+    collectionOperations: [
+        'get' => [
+            'output' => NoteCollectionOutput::class,
+        ],
+        'post' => [
+            'input' => NoteCollectionInput::class,
+            'output' => NoteItemOutput::class,
+        ],
+    ],
+    itemOperations: [
+        'delete' => [
+            'security' => 'is_granted("'.NoteVoter::DELETE.'", object)',
+        ],
+        'get' => [
+            'output' => NoteItemOutput::class,
+            'security' => 'is_granted("'.NoteVoter::VIEW.'", object)',
+        ],
+        'patch' => [
+            'input' => NoteItemInput::class,
+            'output' => NoteItemOutput::class,
+            'security' => 'is_granted("'.NoteVoter::EDIT.'", object)',
+        ],
+        'put' => [
+            'input' => NoteItemInput::class,
+            'output' => NoteItemOutput::class,
+            'security' => 'is_granted("'.NoteVoter::EDIT.'", object)',
+        ],
+    ],
+)]
 class Note
 {
     use Traits\BlameableTrait;

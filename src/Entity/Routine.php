@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Dto\{RoutineCollectionInput, RoutineCollectionOutput, RoutineItemInput, RoutineItemOutput};
 use App\Repository\RoutineRepository;
+use App\Security\Voter\RoutineVoter;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -15,6 +18,36 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=RoutineRepository::class)
  * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
  */
+#[ApiResource(
+    collectionOperations: [
+        'get' => [
+            'output' => RoutineCollectionOutput::class,
+        ],
+        'post' => [
+            'input' => RoutineCollectionInput::class,
+            'output' => RoutineItemOutput::class,
+        ],
+    ],
+    itemOperations: [
+        'delete' => [
+            'security' => 'is_granted("'.RoutineVoter::DELETE.'", object)',
+        ],
+        'get' => [
+            'output' => RoutineItemOutput::class,
+            'security' => 'is_granted("'.RoutineVoter::VIEW.'", object)',
+        ],
+        'patch' => [
+            'input' => RoutineItemInput::class,
+            'output' => RoutineItemOutput::class,
+            'security' => 'is_granted("'.RoutineVoter::EDIT.'", object)',
+        ],
+        'put' => [
+            'input' => RoutineItemInput::class,
+            'output' => RoutineItemOutput::class,
+            'security' => 'is_granted("'.RoutineVoter::EDIT.'", object)',
+        ],
+    ],
+)]
 class Routine
 {
     use Traits\BlameableTrait;
@@ -75,7 +108,7 @@ class Routine
      */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr', 'list', 'show'])]
+    #[Groups(['gdpr'])]
     private ?string $description;
 
     /**
@@ -84,7 +117,7 @@ class Routine
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr', 'list', 'show'])]
+    #[Groups(['gdpr'])]
     private ?string $name;
 
     /**
@@ -94,7 +127,7 @@ class Routine
     #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr', 'show'])]
+    #[Groups(['gdpr'])]
     private string $type;
 
     public function __construct()
@@ -238,6 +271,11 @@ class Routine
         return 0;
     }
 
+    public function getGoalsCount(): int
+    {
+        return $this->getGoals()->count();
+    }
+
     public function getGoalsNotCompleted(): Collection
     {
         return $this->goals->filter(fn (Goal $goal) => (false === $goal->getIsCompleted()) && (null === $goal->getDeletedAt()));
@@ -310,6 +348,11 @@ class Routine
         return $this->notes;
     }
 
+    public function getNotesCount(): int
+    {
+        return $this->getNotes()->count();
+    }
+
     public function removeNote(Note $note): self
     {
         if (true === $this->notes->contains($note)) {
@@ -339,6 +382,11 @@ class Routine
         return $this->reminders;
     }
 
+    public function getRemindersCount(): int
+    {
+        return $this->getReminders()->count();
+    }
+
     public function removeReminder(Reminder $reminder): self
     {
         if (true === $this->reminders->contains($reminder)) {
@@ -366,6 +414,11 @@ class Routine
     public function getRewardsAll(): Collection
     {
         return $this->rewards;
+    }
+
+    public function getRewardsCount(): int
+    {
+        return $this->getRewards()->count();
     }
 
     public function removeReward(Reward $reward): self

@@ -10,33 +10,27 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
-        app_user_api_provider:
-            entity:
-                class: App\Entity\User
-                property: apiToken
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        api_login:
-            pattern: ^/api/v1/login
+        api_securit_login:
+            pattern: ^/api/v1/security/login
             anonymous: true
-            lazy: true
-            host: ^api\.routines365\.com$
-            provider: app_user_provider
             json_login:
-                check_path: /api/v1/login
+                check_path: /api/v1/security/login
+                username_path: email
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
         api:
-            pattern: ^/api
+            pattern: ^/api/
             anonymous: true
-            host: ^api\.routines365\.com$
-            lazy: true
-            logout: ~
-            provider: app_user_api_provider
-
             guard:
                 authenticators:
-                    - App\Security\TokenAuthenticator
+                    - lexik_jwt_authentication.jwt_token_authenticator
+            provider: app_user_provider
+            stateless: true
         main:
             anonymous: true
             lazy: true
@@ -75,7 +69,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/api/v1/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/api/v1/security, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }

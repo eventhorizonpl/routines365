@@ -1277,10 +1277,6 @@
         <source>Routines sent</source>
         <target>Routines sent</target>
       </trans-unit>
-      <trans-unit id="Y6bQ9hF" resname="API token">
-        <source>API token</source>
-        <target>API token</target>
-      </trans-unit>
       <trans-unit id="bAyofJn" resname="Last login at">
         <source>Last login at</source>
         <target>Last login at</target>

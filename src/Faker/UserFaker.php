@@ -16,7 +16,6 @@ use App\Manager\UserManager;
 use App\Service\UserService;
 use Faker\Factory;
 use Faker\Generator;
-use Symfony\Component\Uid\Uuid;
 
 class UserFaker
 {
@@ -92,8 +91,6 @@ class UserFaker
             $roles,
             $type
         );
-
-        $user->setApiToken((string) Uuid::v4());
 
         return $this->userService->encodePassword($user, $password);
     }

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity\Traits;
 
+use ApiPlatform\Core\Annotation\{ApiProperty, ApiResource};
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ApiResource]
 trait IdTrait
 {
     /**
@@ -13,6 +15,7 @@ trait IdTrait
      * @ORM\GeneratedValue()
      * @ORM\Id()
      */
+    #[ApiProperty(identifier: false)]
     #[Assert\Type('int', groups: ['system'])]
     protected ?int $id = null;
 

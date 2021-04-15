@@ -151,20 +151,13 @@ class User implements UserInterface, TwoFactorInterface
     private Collection $userQuestionnaires;
 
     /**
-     * @ORM\Column(nullable=true, type="guid", unique=true)
-     */
-    #[Assert\Uuid(groups: ['system'])]
-    #[Groups(['login'])]
-    private ?string $apiToken = null;
-
-    /**
      * @ORM\Column(length=180, type="string", unique=true)
      */
     #[Assert\Email(groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 180)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
-    #[Groups(['gdpr', 'login'])]
+    #[Groups(['gdpr'])]
     private ?string $email;
 
     /**
@@ -299,18 +292,6 @@ class User implements UserInterface, TwoFactorInterface
         if (true === $this->achievements->contains($achievement)) {
             $this->achievements->removeElement($achievement);
         }
-
-        return $this;
-    }
-
-    public function getApiToken(): ?string
-    {
-        return $this->apiToken;
-    }
-
-    public function setApiToken(string $apiToken): self
-    {
-        $this->apiToken = $apiToken;
 
         return $this;
     }

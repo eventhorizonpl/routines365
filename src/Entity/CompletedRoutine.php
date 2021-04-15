@@ -37,27 +37,27 @@ class CompletedRoutine
     /**
      * @ORM\Column(nullable=true, type="string")
      */
-    #[Assert\Length(groups: ['api', 'form', 'system'], max: 255)]
-    #[Assert\Type('string', groups: ['api', 'form', 'system'])]
+    #[Assert\Length(groups: ['form', 'system'], max: 255)]
+    #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
     private ?string $comment;
 
     /**
      * @ORM\Column(type="datetimetz_immutable")
      */
-    #[Assert\NotBlank(groups: ['api', 'form', 'system'])]
-    #[Assert\Type('DateTimeImmutable', groups: ['api', 'form', 'system'])]
-    #[Groups(['gdpr', 'list'])]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $date;
 
     /**
      * @ORM\Column(type="integer")
      */
-    #[Assert\GreaterThanOrEqual(0, groups: ['api', 'form', 'system'])]
-    #[Assert\LessThanOrEqual(1024, groups: ['api', 'form', 'system'])]
-    #[Assert\NotBlank(groups: ['api', 'form', 'system'])]
-    #[Assert\Type('int', groups: ['api', 'form', 'system'])]
-    #[Groups(['gdpr', 'list'])]
+    #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
+    #[Assert\LessThanOrEqual(1024, groups: ['form', 'system'])]
+    #[Assert\NotBlank(groups: ['form', 'system'])]
+    #[Assert\Type('int', groups: ['form', 'system'])]
+    #[Groups(['gdpr'])]
     private int $minutesDevoted;
 
     public function __construct()

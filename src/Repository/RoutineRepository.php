@@ -74,44 +74,6 @@ class RoutineRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
-    public function findByParametersForApi(User $user, array $parameters = []): Query
-    {
-        $queryBuilder = $this->createQueryBuilder('r')
-            ->select('r')
-            ->where('r.deletedAt IS NULL')
-            ->andWhere('r.user = :user')
-            ->addOrderBy('r.name', 'ASC')
-            ->setParameter('user', $user)
-        ;
-
-        if (!(empty($parameters))) {
-            if (\array_key_exists('type', $parameters)) {
-                $type = $parameters['type'];
-                if ((null !== $type) && ('' !== $type)) {
-                    $queryBuilder->andWhere('r.type = :type')
-                        ->setParameter('type', $type)
-                    ;
-                }
-            }
-
-            if (\array_key_exists('query', $parameters)) {
-                $query = $parameters['query'];
-                if ((null !== $query) && ('' !== $query)) {
-                    $queryBuilder->andWhere(
-                        $queryBuilder->expr()->orX(
-                            $queryBuilder->expr()->like('r.description', ':q'),
-                            $queryBuilder->expr()->like('r.name', ':q')
-                        )
-                    )
-                        ->setParameter('q', sprintf('%%%s%%', $query))
-                    ;
-                }
-            }
-        }
-
-        return $queryBuilder->getQuery();
-    }
-
     public function findByParametersForFrontend(User $user, array $parameters = []): array
     {
         $queryBuilder = $this->createQueryBuilder('r')

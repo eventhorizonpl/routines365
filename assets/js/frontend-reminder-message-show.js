@@ -2,7 +2,6 @@ export default class ReminderMessageShow {
   constructor(el) {
     this.el = el;
     this.token = el.dataset.value;
-    this.url = Routing.generate('api_v1_reminder_message_browser_notifications_list', null, true);
     this.url = 'http://api.routines365.local/index.php/api/v1/reminder-message/browser-notifications-list';
     this.askNotificationPermission();
     this.backgroundCheck();

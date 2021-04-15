@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Repository\{AccountOperationRepository, AccountRepository, AchievementRepository, AnswerRepository, CompletedRoutineRepository, ContactRepository, GoalRepository, KpiRepository, NoteRepository, ProfileRepository, ProjectRepository, PromotionRepository, QuestionRepository, QuestionnaireRepository, QuoteRepository, ReminderMessageRepository, ReminderRepository, RetentionRepository, RewardRepository, RoutineRepository, SavedEmailRepository, SentReminderRepository, TestimonialRepository, UserKpiRepository, UserKytRepository, UserQuestionnaireAnswerRepository, UserQuestionnaireRepository, UserRepository};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
