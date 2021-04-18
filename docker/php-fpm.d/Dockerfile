@@ -13,23 +13,25 @@ RUN apk add --no-cache \
   libzip-dev \
   zlib-dev
 
-RUN docker-php-ext-configure intl \
-  && docker-php-ext-install intl \
-  && docker-php-ext-install mysqli pdo pdo_mysql \
-  && docker-php-ext-install opcache \
-  && docker-php-ext-enable pdo_mysql \
-  && docker-php-ext-configure pcntl \
-  && docker-php-ext-install pcntl \
-  && docker-php-ext-configure xsl \
-  && docker-php-ext-install xsl \
-  && docker-php-ext-configure zip \
-  && docker-php-ext-install zip \
+RUN docker-php-ext-install intl \
+  mysqli \
+  opcache \
+  pdo \
+  pdo_mysql \
+  pcntl \
+  xsl \
+  zip \
   && pecl install apcu \
   && pecl clear-cache \
-  && docker-php-ext-enable apcu opcache
+  && docker-php-ext-enable apcu \
+  opcache \
+  pdo_mysql
 
 RUN rm -rf /tmp/pear/ \
   && apk del .build-deps
+
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
@@ -39,7 +41,8 @@ ARG APP_ENV=prod
 
 COPY composer.json composer.lock package.json symfony.lock webpack.config.js yarn.lock ./
 
-RUN composer install --prefer-dist --no-scripts --no-progress --no-suggest \
+RUN composer install --prefer-dist --no-interaction --no-scripts --no-progress --no-suggest \
+  && composer dump-autoload --no-dev --classmap-authoritative --no-interaction \
   && composer clear-cache
 
 COPY .env .env.prod.local  ./
@@ -55,9 +58,6 @@ COPY templates templates/
 COPY translations translations/
 RUN mkdir -p var/cache var/log
 VOLUME /var/www/html/var
-
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY docker/php/conf.d/prod.ini $PHP_INI_DIR/conf.d/prod.ini
 
 FROM php_build as php_build_assets
 RUN apk add --no-cache \
