@@ -63,16 +63,17 @@
         "version": "v0.5.3"
     },
     "doctrine/doctrine-bundle": {
-        "version": "2.0",
+        "version": "2.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "2.0",
-            "ref": "40631978d2c4adc9b11220b13eba539b727c36a8"
+            "version": "2.3",
+            "ref": "6e0f582596a8f1c865aaa0d3cceb9bf0daf609b4"
         },
         "files": [
             "config/packages/doctrine.yaml",
             "config/packages/prod/doctrine.yaml",
+            "config/packages/test/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
         ]
@@ -90,12 +91,12 @@
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
-        "version": "2.2",
+        "version": "3.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "2.2",
-            "ref": "baaa439e3e3179e69e3da84b671f0a3e4a2f56ad"
+            "version": "3.1",
+            "ref": "ee609429c9ee23e22d6fa5728211768f51ed2818"
         },
         "files": [
             "config/packages/doctrine_migrations.yaml",
@@ -232,7 +233,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.0",
-            "ref": "7c0a9352a57376f04f5444e74565102c3a23d0c7"
+            "ref": "0cd4d2d0e7f646fda75f9944f747a56e6ed13d4c"
         },
         "files": [
             "config/packages/nyholm_psr7.yaml"
@@ -319,7 +320,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "4.7",
-            "ref": "477e1387616f39505ba79715f43f124836020d71"
+            "ref": "fc18a41d910bd168b6d83b09330d3dd892ddbcdd"
         },
         "files": [
             ".env.test",
@@ -655,12 +656,12 @@
         "version": "v5.1.2"
     },
     "symfony/monolog-bundle": {
-        "version": "3.3",
+        "version": "3.7",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "3.3",
-            "ref": "d7249f7d560f6736115eee1851d02a65826f0a56"
+            "version": "3.7",
+            "ref": "f4adb4379ee437f91ecb1bd5a41c1de6286b9a04"
         },
         "files": [
             "config/packages/dev/monolog.yaml",
@@ -887,7 +888,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.9",
-            "ref": "34a82422147bc632dec0db2676bf27aaaa582ba0"
+            "ref": "9399a0bfc6ee7a0c019f952bca46d6a6045dd451"
         },
         "files": [
             "assets/app.js",
