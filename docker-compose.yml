@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+    mariadb:
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: routines365
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+        image: mariadb:10.5.9-focal
+        ports:
+          - '3306:3306'
+        restart: on-failure
+    routines365-nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile.dev
+        depends_on:
+            - routines365-php-fpm
+        ports:
+          - '80:80'
+        restart: on-failure
+    routines365-php-fpm:
+        build:
+            context: .
+            dockerfile: docker/php-fpm.d/Dockerfile.dev
+        restart: on-failure

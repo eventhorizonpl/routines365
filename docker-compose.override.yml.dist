@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    mariadb:
+        volumes:
+            - ./docker/data/mysql/:/var/lib/mysql
+    routines365-nginx:
+        volumes:
+            - './public/:/var/www/html/public'
+    routines365-php-fpm:
+        volumes:
+            - './:/var/www/html'
