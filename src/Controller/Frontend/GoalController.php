@@ -4,27 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Achievement;
-use App\Entity\Goal;
-use App\Entity\Reward;
-use App\Entity\User;
+use App\Entity\{Achievement, Goal, Reward, User};
 use App\Factory\GoalFactory;
 use App\Form\Frontend\GoalType;
 use App\Manager\GoalManager;
-use App\Repository\ProjectRepository;
-use App\Repository\QuoteRepository;
-use App\Repository\RoutineRepository;
+use App\Repository\{ProjectRepository, QuoteRepository, RoutineRepository};
 use App\Resource\KytResource;
-use App\Security\Voter\GoalVoter;
-use App\Security\Voter\ProjectVoter;
-use App\Security\Voter\RoutineVoter;
-use App\Service\AchievementService;
-use App\Service\RewardService;
+use App\Security\Voter\{GoalVoter, ProjectVoter, RoutineVoter};
+use App\Service\{AchievementService, RewardService};
 use DateTimeImmutable;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

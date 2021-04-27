@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Service;
 
-use App\Entity\Answer;
-use App\Entity\Promotion;
-use App\Entity\UserQuestionnaire;
+use App\Entity\{Answer, Promotion, UserQuestionnaire};
 use App\Factory\UserQuestionnaireFactory;
-use App\Faker\PromotionFaker;
-use App\Faker\QuestionnaireFaker;
-use App\Faker\UserFaker;
-use App\Faker\UserQuestionnaireFaker;
+use App\Faker\{PromotionFaker, QuestionnaireFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireManager;
 use App\Repository\UserQuestionnaireRepository;
-use App\Service\PromotionService;
-use App\Service\UserQuestionnaireAnswerService;
-use App\Service\UserQuestionnaireService;
+use App\Service\{PromotionService, UserQuestionnaireAnswerService, UserQuestionnaireService};
 use App\Tests\AbstractDoctrineTestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;
 

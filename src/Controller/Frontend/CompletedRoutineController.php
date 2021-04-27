@@ -4,24 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Achievement;
-use App\Entity\Reward;
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{Achievement, Reward, Routine, User};
 use App\Factory\CompletedRoutineFactory;
 use App\Form\Frontend\CompletedRoutineType;
 use App\Manager\CompletedRoutineManager;
-use App\Repository\QuoteRepository;
-use App\Repository\ReminderRepository;
+use App\Repository\{QuoteRepository, ReminderRepository};
 use App\Resource\KytResource;
 use App\Security\Voter\RoutineVoter;
-use App\Service\AchievementService;
-use App\Service\EmailService;
-use App\Service\RewardService;
+use App\Service\{AchievementService, EmailService, RewardService};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

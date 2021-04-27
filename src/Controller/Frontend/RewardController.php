@@ -4,22 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Reward;
-use App\Entity\Routine;
-use App\Entity\User;
+use App\Entity\{Reward, Routine, User};
 use App\Factory\RewardFactory;
 use App\Form\Frontend\RewardType;
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
 use App\Resource\KytResource;
-use App\Security\Voter\RewardVoter;
-use App\Security\Voter\RoutineVoter;
+use App\Security\Voter\{RewardVoter, RoutineVoter};
 use App\Util\DateTimeImmutableUtil;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted(User::ROLE_USER)]

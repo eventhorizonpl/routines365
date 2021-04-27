@@ -4,21 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Quote;
-use App\Entity\SavedEmail;
-use App\Entity\User;
+use App\Entity\{Quote, SavedEmail, User};
 use App\Form\Frontend\SendMotivationalEmailType;
 use App\Manager\QuoteManager;
 use App\Repository\QuoteRepository;
 use App\Resource\ConfigResource;
 use App\Security\Voter\QuoteVoter;
-use App\Service\EmailService;
-use App\Service\SavedEmailService;
+use App\Service\{EmailService, SavedEmailService};
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

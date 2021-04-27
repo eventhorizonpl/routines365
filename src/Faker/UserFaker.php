@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\Faker;
 
-use App\Entity\AccountOperation;
-use App\Entity\ReminderMessage;
-use App\Entity\Reward;
-use App\Entity\User;
-use App\Factory\SentReminderFactory;
-use App\Factory\UserFactory;
-use App\Manager\ReminderMessageManager;
-use App\Manager\SentReminderManager;
-use App\Manager\UserManager;
+use App\Entity\{AccountOperation, ReminderMessage, Reward, User};
+use App\Factory\{SentReminderFactory, UserFactory};
+use App\Manager\{ReminderMessageManager, SentReminderManager, UserManager};
 use App\Service\UserService;
-use Faker\Factory;
-use Faker\Generator;
+use Faker\{Factory, Generator};
 
 class UserFaker
 {

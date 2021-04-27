@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Promotion;
-use App\Faker\PromotionFaker;
-use App\Faker\UserFaker;
-use App\Manager\PromotionManager;
-use App\Manager\UserManager;
+use App\Faker\{PromotionFaker, UserFaker};
+use App\Manager\{PromotionManager, UserManager};
 use App\Repository\PromotionRepository;
-use App\Service\AccountOperationService;
-use App\Service\PromotionService;
+use App\Service\{AccountOperationService, PromotionService};
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
 

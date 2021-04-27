@@ -27,7 +27,7 @@
         "scheb/2fa-google-authenticator": "^5.8",
         "scheb/2fa-qr-code": "^5.8",
         "sensio/framework-extra-bundle": "^6.1",
-        "sentry/sentry-symfony": "^4.0",
+        "sentry/sentry-symfony": "4.0.*",
         "symfony/amazon-mailer": "5.2.*",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.2.*",

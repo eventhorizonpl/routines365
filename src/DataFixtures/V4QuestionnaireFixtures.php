@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Answer;
-use App\Entity\Question;
-use App\Entity\User;
-use App\Factory\AnswerFactory;
-use App\Factory\QuestionFactory;
-use App\Factory\QuestionnaireFactory;
-use App\Manager\AnswerManager;
-use App\Manager\QuestionManager;
-use App\Manager\QuestionnaireManager;
+use App\Entity\{Answer, Question, User};
+use App\Factory\{AnswerFactory, QuestionFactory, QuestionnaireFactory};
+use App\Manager\{AnswerManager, QuestionManager, QuestionnaireManager};
 use App\Repository\UserRepository;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Bundle\FixturesBundle\{Fixture, FixtureGroupInterface};
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 

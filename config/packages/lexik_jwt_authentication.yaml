@@ -14,7 +14,7 @@ lexik_jwt_authentication:
             lifetime: null
             samesite: strict
             path: /
-            domain: null
+            domain: '%env(DOMAIN)%'
             httpOnly: false
             split:
                 - header
@@ -24,7 +24,7 @@ lexik_jwt_authentication:
             lifetime: null
             samesite: strict
             path: /
-            domain: null
+            domain: '%env(DOMAIN)%'
             httpOnly: true
             split:
                 - signature

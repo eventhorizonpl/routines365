@@ -15,10 +15,10 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         api_securit_login:
-            pattern: ^/api/v1/security/login
+            pattern: ^/api/v1.0/security/login
             anonymous: true
             json_login:
-                check_path: /api/v1/security/login
+                check_path: /api/v1.0/security/login
                 username_path: email
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
@@ -70,8 +70,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/api/v1/security, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/v1/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1.0/security, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1.0/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }

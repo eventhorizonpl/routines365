@@ -5,15 +5,11 @@ declare(strict_types=1);
 namespace App\Controller\Security;
 
 use App\Entity\User;
-use App\Form\Security\ChangePasswordFormType;
-use App\Form\Security\ResetPasswordRequestFormType;
+use App\Form\Security\{ChangePasswordFormType, ResetPasswordRequestFormType};
 use App\Manager\UserManager;
-use App\Service\EmailService;
-use App\Service\UserService;
+use App\Service\{EmailService, UserService};
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{RedirectResponse, Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;

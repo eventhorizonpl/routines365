@@ -4,18 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Promotion;
-use App\Entity\SavedEmail;
-use App\Entity\User;
+use App\Entity\{Promotion, SavedEmail, User};
 use App\Form\Frontend\InvitationType;
 use App\Resource\ConfigResource;
-use App\Service\EmailService;
-use App\Service\PromotionService;
-use App\Service\SavedEmailService;
+use App\Service\{EmailService, PromotionService, SavedEmailService};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

@@ -14,7 +14,12 @@ final class Version20210418112024 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Version v8';
+    }
+
+    public function isTransactional(): bool
+    {
+        return false;
     }
 
     public function up(Schema $schema): void

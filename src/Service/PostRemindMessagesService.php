@@ -4,16 +4,10 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Entity\Reminder;
-use App\Entity\ReminderMessage;
-use App\Entity\Report;
-use App\Factory\ReminderMessageFactory;
-use App\Factory\SentReminderFactory;
-use App\Manager\ReminderManager;
-use App\Manager\ReminderMessageManager;
-use App\Manager\SentReminderManager;
-use App\Repository\QuoteRepository;
-use App\Repository\ReminderRepository;
+use App\Entity\{Reminder, ReminderMessage, Report};
+use App\Factory\{ReminderMessageFactory, SentReminderFactory};
+use App\Manager\{ReminderManager, ReminderMessageManager, SentReminderManager};
+use App\Repository\{QuoteRepository, ReminderRepository};
 use App\Service\Sms\SmsService;
 use DateTimeImmutable;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
