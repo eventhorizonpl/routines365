@@ -1,4 +1,4 @@
-FROM nginx:1.18.0-alpine as nginx_build
+FROM nginx:1.20.0-alpine as nginx_build
 
 COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 WORKDIR /var/www/html
