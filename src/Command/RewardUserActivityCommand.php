@@ -6,6 +6,7 @@ namespace App\Command;
 
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,10 +16,11 @@ class RewardUserActivityCommand extends BaseLockableCommand
     protected static $defaultName = 'app:reward-user-activity';
 
     public function __construct(
+        DriverFactory $driverFactory,
         EntityManagerInterface $entityManager,
         private UserService $userService
     ) {
-        parent::__construct($entityManager);
+        parent::__construct($driverFactory, $entityManager);
     }
 
     protected function configure(): void
@@ -32,6 +34,12 @@ class RewardUserActivityCommand extends BaseLockableCommand
     {
         if (false === $this->lock()) {
             $output->writeln('The command is already running in another process.');
+
+            return Command::FAILURE;
+        }
+
+        if (true === $this->hasMaintenanceLock()) {
+            $output->writeln('Maintenance lock detected. Exiting.');
 
             return Command::FAILURE;
         }

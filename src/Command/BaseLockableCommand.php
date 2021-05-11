@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\LogicException;
 use Symfony\Component\Lock\Store\PdoStore;
@@ -15,8 +16,10 @@ abstract class BaseLockableCommand extends Command
     private ?Lock $lock;
     private PdoStore $store;
 
-    public function __construct(EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private DriverFactory $driverFactory,
+        protected EntityManagerInterface $entityManager
+    ) {
         $this->lock = null;
         $this->store = new PdoStore($entityManager->getConnection());
 
@@ -45,5 +48,14 @@ abstract class BaseLockableCommand extends Command
             $this->lock->release();
             $this->lock = null;
         }
+    }
+
+    public function hasMaintenanceLock(): bool
+    {
+        if (true === $this->driverFactory->getDriver()->isExists()) {
+            return true;
+        }
+
+        return false;
     }
 }

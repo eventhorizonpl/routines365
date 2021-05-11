@@ -6,6 +6,7 @@ namespace App\Command;
 
 use App\Service\RetentionService;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\{InputInterface, InputOption};
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,10 +16,11 @@ class CreateRetentionCommand extends BaseLockableCommand
     protected static $defaultName = 'app:create-retention';
 
     public function __construct(
+        DriverFactory $driverFactory,
         EntityManagerInterface $entityManager,
         private RetentionService $retentionService
     ) {
-        parent::__construct($entityManager);
+        parent::__construct($driverFactory, $entityManager);
     }
 
     protected function configure(): void
@@ -38,6 +40,12 @@ class CreateRetentionCommand extends BaseLockableCommand
     {
         if (false === $this->lock()) {
             $output->writeln('The command is already running in another process.');
+
+            return Command::FAILURE;
+        }
+
+        if (true === $this->hasMaintenanceLock()) {
+            $output->writeln('Maintenance lock detected. Exiting.');
 
             return Command::FAILURE;
         }
