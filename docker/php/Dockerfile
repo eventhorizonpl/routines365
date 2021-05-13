@@ -62,4 +62,4 @@ VOLUME /var/www/html/var
 RUN echo "* * * * * /var/www/html/bin/console cron:run 1>> /dev/null 2>&1" >> /var/spool/cron/crontabs/root
 
 STOPSIGNAL SIGQUIT
-CMD ["cron", "-f"]
+CMD ["crond", "-f"]
