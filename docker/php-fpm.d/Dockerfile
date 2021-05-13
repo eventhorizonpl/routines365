@@ -42,7 +42,6 @@ ARG APP_ENV=prod
 COPY composer.json composer.lock package.json symfony.lock webpack.config.js yarn.lock ./
 
 RUN composer install --prefer-dist --no-interaction --no-scripts --no-progress --no-suggest \
-  && composer dump-autoload --no-dev --classmap-authoritative --no-interaction \
   && composer clear-cache
 
 COPY .env .env.prod.local  ./
