@@ -1,4 +1,4 @@
-FROM php:8.0.5-fpm-alpine3.13 AS php_build
+FROM php:8.0.6-fpm-alpine3.13 AS php_build
 
 RUN apk add --no-cache \
   acl \
@@ -41,7 +41,7 @@ ARG APP_ENV=prod
 
 COPY composer.json composer.lock package.json symfony.lock webpack.config.js yarn.lock ./
 
-RUN composer install --prefer-dist --no-interaction --no-scripts --no-progress --no-suggest \
+RUN composer install --prefer-dist --no-interaction --no-scripts --no-progress --no-suggest --no-dev \
   && composer clear-cache
 
 COPY .env .env.prod.local  ./
