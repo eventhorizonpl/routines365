@@ -48,16 +48,7 @@ final class JwtDecorator implements OpenApiFactoryInterface
                 operationId: 'postCredentialsItem',
                 tags: ['Token'],
                 responses: [
-                    '200' => [
-                        'description' => 'Get JWT token',
-                        'content' => [
-                            'application/json' => [
-                                'schema' => [
-                                    '$ref' => '#/components/schemas/Token',
-                                ],
-                            ],
-                        ],
-                    ],
+                    '204' => [],
                 ],
                 summary: 'Get JWT token to login.',
                 requestBody: new Model\RequestBody(

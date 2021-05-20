@@ -47,6 +47,9 @@ services:
         decorates: 'api_platform.openapi.factory'
         autoconfigure: false
 
+    lexik_jwt_authentication.security.guard.jwt_token_authenticator:
+        class: App\Security\Guard\JWTTokenAuthenticator
+
     Sentry\Integration\IgnoreErrorsIntegration:
         arguments:
             $options:
