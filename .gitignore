@@ -24,7 +24,7 @@ yarn-error.log
 /docker/data/
 /drivers/
 *.phar
-.php_cs.cache
+.php-cs-fixer.cache
 docker-compose.override.yml
 
 ###> phpunit/phpunit ###

@@ -6,7 +6,9 @@ if (!file_exists(__DIR__.'/src')) {
     exit(0);
 }
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+$config
+    ->setRiskyAllowed(true)
     ->setRules([
         '@PHP80Migration' => true,
         '@PHP80Migration:risky' => true,
@@ -31,3 +33,5 @@ return PhpCsFixer\Config::create()
             ->append([__FILE__])
     )
 ;
+
+return $config;
