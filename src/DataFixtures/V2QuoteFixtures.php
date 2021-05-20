@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
+use App\Enum\UserTypeEnum;
 use App\Factory\QuoteFactory;
 use App\Manager\QuoteManager;
 use App\Repository\UserRepository;
@@ -488,7 +488,7 @@ class V2QuoteFixtures extends Fixture implements DependentFixtureInterface, Fixt
         }
 
         $user = $this->userRepository->findOneBy([
-            'type' => User::TYPE_STAFF,
+            'type' => UserTypeEnum::STAFF,
         ], [
             'id' => 'ASC',
         ]);

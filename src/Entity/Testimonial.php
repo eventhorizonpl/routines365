@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\TestimonialStatusEnum;
 use App\Repository\TestimonialRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -21,10 +22,6 @@ class Testimonial
     use Traits\IsVisibleTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const STATUS_ACCEPTED = 'accepted';
-    public const STATUS_NEW = 'new';
-    public const STATUS_REJECTED = 'rejected';
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -65,7 +62,7 @@ class Testimonial
         $this->content = '';
         $this->isVisible = false;
         $this->signature = '';
-        $this->status = self::STATUS_NEW;
+        $this->status = TestimonialStatusEnum::NEW;
     }
 
     public function __toString(): string
@@ -105,9 +102,9 @@ class Testimonial
     public static function getStatusFormChoices(): array
     {
         return [
-            self::STATUS_ACCEPTED => self::STATUS_ACCEPTED,
-            self::STATUS_NEW => self::STATUS_NEW,
-            self::STATUS_REJECTED => self::STATUS_REJECTED,
+            TestimonialStatusEnum::ACCEPTED => TestimonialStatusEnum::ACCEPTED,
+            TestimonialStatusEnum::NEW => TestimonialStatusEnum::NEW,
+            TestimonialStatusEnum::REJECTED => TestimonialStatusEnum::REJECTED,
         ];
     }
 

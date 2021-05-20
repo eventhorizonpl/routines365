@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\{ReminderMessageThirdPartySystemTypeEnum, ReminderMessageTypeEnum};
 use App\Repository\ReminderMessageRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,12 +20,6 @@ class ReminderMessage
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES = 'amazon_ses';
-    public const THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS = 'amazon_sns';
-    public const TYPE_BROWSER = 'browser';
-    public const TYPE_EMAIL = 'email';
-    public const TYPE_SMS = 'sms';
 
     /**
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="reminderMessage", targetEntity=AccountOperation::class)
@@ -97,7 +92,7 @@ class ReminderMessage
         $this->isReadFromBrowser = false;
         $this->thirdPartySystemResponse = null;
         $this->thirdPartySystemType = null;
-        $this->type = self::TYPE_EMAIL;
+        $this->type = ReminderMessageTypeEnum::EMAIL;
     }
 
     public function __toString(): string
@@ -197,8 +192,8 @@ class ReminderMessage
     public static function getThirdPartySystemTypeFormChoices(): array
     {
         return [
-            self::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES => self::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES,
-            self::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS => self::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS,
+            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES => ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES,
+            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS => ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS,
         ];
     }
 
@@ -226,9 +221,9 @@ class ReminderMessage
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_BROWSER => self::TYPE_BROWSER,
-            self::TYPE_EMAIL => self::TYPE_EMAIL,
-            self::TYPE_SMS => self::TYPE_SMS,
+            ReminderMessageTypeEnum::BROWSER => ReminderMessageTypeEnum::BROWSER,
+            ReminderMessageTypeEnum::EMAIL => ReminderMessageTypeEnum::EMAIL,
+            ReminderMessageTypeEnum::SMS => ReminderMessageTypeEnum::SMS,
         ];
     }
 

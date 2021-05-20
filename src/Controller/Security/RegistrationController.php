@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Security;
 
 use App\Entity\User;
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Factory\UserFactory;
 use App\Form\Security\RegistrationFormType;
 use App\Manager\UserManager;
@@ -50,8 +51,8 @@ class RegistrationController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             $user->setIsEnabled(true);
-            $user->setRoles([User::ROLE_USER]);
-            $user->setType(User::TYPE_PROSPECT);
+            $user->setRoles([UserRoleEnum::ROLE_USER]);
+            $user->setType(UserTypeEnum::PROSPECT);
 
             if ((null !== $referrerCode) || ('' !== $referrerCode)) {
                 $referrer = $userRepository->findOneBy([

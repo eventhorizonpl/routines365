@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Admin;
 
 use App\Entity\Achievement;
+use App\Enum\AchievementTypeEnum;
 use App\Form\Admin\AchievementType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -45,7 +46,7 @@ final class AchievementTypeTest extends TypeTestCase
                     'isEnabled' => true,
                     'level' => 1,
                     'requirement' => 2,
-                    'type' => Achievement::TYPE_COMPLETED_ROUTINE,
+                    'type' => AchievementTypeEnum::COMPLETED_ROUTINE,
                 ],
             ],
         ];

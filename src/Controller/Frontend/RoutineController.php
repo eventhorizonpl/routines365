@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Routine, User};
+use App\Enum\UserRoleEnum;
 use App\Factory\RoutineFactory;
 use App\Form\Frontend\RoutineType;
 use App\Manager\RoutineManager;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/routines', name: 'frontend_routine_')]
 class RoutineController extends AbstractController
 {

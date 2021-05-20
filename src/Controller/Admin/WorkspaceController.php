@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Repository\{AccountOperationRepository, AccountRepository, AchievementRepository, AnswerRepository, CompletedRoutineRepository, ContactRepository, GoalRepository, KpiRepository, NoteRepository, ProfileRepository, ProjectRepository, PromotionRepository, QuestionRepository, QuestionnaireRepository, QuoteRepository, ReminderMessageRepository, ReminderRepository, RetentionRepository, RewardRepository, RoutineRepository, SavedEmailRepository, SentReminderRepository, TestimonialRepository, UserKpiRepository, UserKytRepository, UserQuestionnaireAnswerRepository, UserQuestionnaireRepository, UserRepository};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin', name: 'admin_')]
 class WorkspaceController extends AbstractController
 {

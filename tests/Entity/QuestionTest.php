@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Answer, Question, Questionnaire};
+use App\Enum\QuestionTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -279,7 +280,7 @@ final class QuestionTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Question::TYPE_SINGLE_ANSWER;
+        $type = QuestionTypeEnum::SINGLE_ANSWER;
         $question = new Question();
         $question->setType($type);
         $this->assertSame($type, $question->getType());
@@ -300,7 +301,7 @@ final class QuestionTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Question::TYPE_SINGLE_ANSWER;
+        $type = QuestionTypeEnum::SINGLE_ANSWER;
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setType($type));
         $this->assertSame($type, $question->getType());

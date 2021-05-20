@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Achievement, Reward, Routine, User};
+use App\Enum\{AchievementTypeEnum, RewardTypeEnum, UserRoleEnum};
 use App\Factory\CompletedRoutineFactory;
 use App\Form\Frontend\CompletedRoutineType;
 use App\Manager\CompletedRoutineManager;
@@ -18,7 +19,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/completed-routines', name: 'frontend_completed_routine_')]
 class CompletedRoutineController extends AbstractController
 {
@@ -49,8 +50,8 @@ class CompletedRoutineController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $completedRoutineManager->save($completedRoutine, (string) $user);
 
-            $reward = $rewardService->manageReward($completedRoutine->getRoutine(), Reward::TYPE_COMPLETED_ROUTINE);
-            $achievement = $achievementService->manageAchievements($user, Achievement::TYPE_COMPLETED_ROUTINE);
+            $reward = $rewardService->manageReward($completedRoutine->getRoutine(), RewardTypeEnum::COMPLETED_ROUTINE);
+            $achievement = $achievementService->manageAchievements($user, AchievementTypeEnum::COMPLETED_ROUTINE);
 
             if (null !== $achievement) {
                 $this->addFlash(

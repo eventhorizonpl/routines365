@@ -34,7 +34,6 @@ abstract class AbstractKernelTestCase extends KernelTestCase implements ServiceC
         $this->entityManager->getConnection()->rollBack();
         $this->entityManager->close();
         $this->entityManager = null;
-        $this->entityManager = null;
 
         $refl = new ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {

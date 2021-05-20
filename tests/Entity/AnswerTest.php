@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Answer, Question, UserQuestionnaireAnswer};
+use App\Enum\AnswerTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -230,7 +231,7 @@ final class AnswerTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Answer::TYPE_DEFINED;
+        $type = AnswerTypeEnum::DEFINED;
         $answer = new Answer();
         $answer->setType($type);
         $this->assertSame($type, $answer->getType());
@@ -251,7 +252,7 @@ final class AnswerTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Answer::TYPE_DEFINED;
+        $type = AnswerTypeEnum::DEFINED;
         $answer = new Answer();
         $this->assertInstanceOf(Answer::class, $answer->setType($type));
         $this->assertSame($type, $answer->getType());

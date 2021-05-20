@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\UserKpiTypeEnum;
 use App\Repository\UserKpiRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,11 +20,6 @@ class UserKpi
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_ANNUALLY = 'annually';
-    public const TYPE_DAILY = 'daily';
-    public const TYPE_MONTHLY = 'monthly';
-    public const TYPE_WEEKLY = 'weekly';
 
     /**
      * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="previousUserKpi", targetEntity=UserKpi::class)
@@ -417,10 +413,10 @@ class UserKpi
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_ANNUALLY => self::TYPE_ANNUALLY,
-            self::TYPE_DAILY => self::TYPE_DAILY,
-            self::TYPE_MONTHLY => self::TYPE_MONTHLY,
-            self::TYPE_WEEKLY => self::TYPE_WEEKLY,
+            UserKpiTypeEnum::ANNUALLY => UserKpiTypeEnum::ANNUALLY,
+            UserKpiTypeEnum::DAILY => UserKpiTypeEnum::DAILY,
+            UserKpiTypeEnum::MONTHLY => UserKpiTypeEnum::MONTHLY,
+            UserKpiTypeEnum::WEEKLY => UserKpiTypeEnum::WEEKLY,
         ];
     }
 

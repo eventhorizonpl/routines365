@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\{Account, User};
+use App\Enum\UserTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class UserFactory
@@ -45,7 +46,7 @@ class UserFactory
         $user
             ->setIsEnabled(true)
             ->setIsVerified(true)
-            ->setType(User::TYPE_LEAD)
+            ->setType(UserTypeEnum::LEAD)
         ;
 
         return $user;

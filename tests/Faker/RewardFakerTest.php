@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Reward;
+use App\Enum\RewardTypeEnum;
 use App\Factory\RewardFactory;
 use App\Faker\RewardFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -49,7 +50,7 @@ final class RewardFakerTest extends AbstractDoctrineTestCase
         $name = 'test name';
         $numberOfCompletions = 1;
         $requiredNumberOfCompletions = 2;
-        $type = Reward::TYPE_ALL;
+        $type = RewardTypeEnum::ALL;
         $reward = $this->rewardFaker->createReward(
             $description,
             $isAwarded,

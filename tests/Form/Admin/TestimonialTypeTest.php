@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Admin;
 
 use App\Entity\Testimonial;
+use App\Enum\TestimonialStatusEnum;
 use App\Form\Admin\TestimonialType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -43,7 +44,7 @@ final class TestimonialTypeTest extends TypeTestCase
                     'content' => 'test comment',
                     'signature' => 'test content',
                     'isVisible' => true,
-                    'status' => Testimonial::STATUS_NEW,
+                    'status' => TestimonialStatusEnum::NEW,
                 ],
             ],
         ];

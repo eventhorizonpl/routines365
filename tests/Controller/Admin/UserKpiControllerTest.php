@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Admin;
 
 use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use App\Factory\UserKpiFactory;
 use App\Manager\UserKpiManager;
 use App\Repository\{UserKpiRepository, UserRepository};
@@ -73,7 +74,7 @@ final class UserKpiControllerTest extends AbstractUiTestCase
             $this->userRepository
         );
 
-        return $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        return $userKpiService->create(UserKpiTypeEnum::WEEKLY, $user);
     }
 
     public function testIndex(): void

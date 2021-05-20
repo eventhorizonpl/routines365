@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\SavedEmail;
+use App\Enum\SavedEmailTypeEnum;
 use App\Factory\SavedEmailFactory;
 use App\Faker\SavedEmailFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -45,7 +46,7 @@ final class SavedEmailFakerTest extends AbstractDoctrineTestCase
         $savedEmail = $this->savedEmailFaker->createSavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail);
         $email = 'test email';
-        $type = SavedEmail::TYPE_INVITATION;
+        $type = SavedEmailTypeEnum::INVITATION;
         $savedEmail = $this->savedEmailFaker->createSavedEmail(
             $email,
             $type

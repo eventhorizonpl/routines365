@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Faker\{PromotionFaker, UserFaker};
 use App\Manager\{PromotionManager, UserManager};
 use App\Repository\PromotionRepository;
@@ -75,7 +76,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', false, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', false, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $promotion2 = $this->promotionService->getEnabledAndValidPromotion(
             $promotion->getCode(),
@@ -83,7 +84,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
         );
         $this->assertNull($promotion2);
 
-        $promotion3 = $this->promotionFaker->createPromotionPersisted('REWARD11', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion3 = $this->promotionFaker->createPromotionPersisted('REWARD11', true, null, null, null, PromotionTypeEnum::SYSTEM);
         $promotion3->setExpiresAt(new DateTimeImmutable('2021-01-01'));
         $this->promotionManager->save($promotion3, (string) $user);
 
@@ -107,7 +108,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $applied = $this->promotionService->applyExistingAccountPromotion(
             $promotion->getCode(),
@@ -115,7 +116,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
         );
         $this->assertFalse($applied);
 
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_EXISTING_ACCOUNT);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::EXISTING_ACCOUNT);
 
         $applied = $this->promotionService->applyExistingAccountPromotion(
             $promotion->getCode(),
@@ -128,7 +129,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $applied = $this->promotionService->applyNewAccountPromotion(
             $promotion->getCode(),
@@ -136,7 +137,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
         );
         $this->assertFalse($applied);
 
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_NEW_ACCOUNT);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::NEW_ACCOUNT);
 
         $applied = $this->promotionService->applyNewAccountPromotion(
             $promotion->getCode(),
@@ -149,7 +150,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $applied = $this->promotionService->applyPromotion(
             $promotion,
@@ -162,7 +163,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
     {
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, Promotion::TYPE_NEW_ACCOUNT);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD9', true, null, null, null, PromotionTypeEnum::NEW_ACCOUNT);
 
         $applied = $this->promotionService->applySystemPromotion(
             $promotion->getCode(),
@@ -170,7 +171,7 @@ final class PromotionServiceTest extends AbstractDoctrineTestCase
         );
         $this->assertFalse($applied);
 
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $applied = $this->promotionService->applySystemPromotion(
             $promotion->getCode(),

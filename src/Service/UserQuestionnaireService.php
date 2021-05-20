@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{Answer, Questionnaire, User, UserQuestionnaire};
+use App\Enum\AnswerTypeEnum;
 use App\Factory\UserQuestionnaireFactory;
 use App\Manager\UserQuestionnaireManager;
 use App\Repository\UserQuestionnaireRepository;
@@ -48,12 +49,12 @@ class UserQuestionnaireService
             foreach ($question->getAnswers() as $answer) {
                 if ($answer->getUuid() === $answerUuid) {
                     $content = null;
-                    if (Answer::TYPE_OWN === $answer->getType()) {
+                    if (AnswerTypeEnum::OWN === $answer->getType()) {
                         $content = $parameterBag->get(sprintf(
                             '%s_%s_%s',
                             $question->getUuid(),
                             $answer->getUuid(),
-                            Answer::TYPE_OWN
+                            AnswerTypeEnum::OWN
                         ));
                     }
                     $userQuestionnaireAnswer = $this->userQuestionnaireAnswerService->findOrCreate(

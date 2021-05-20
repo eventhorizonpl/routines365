@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Manager;
 
 use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use App\Exception\ManagerException;
 use App\Factory\UserKpiFactory;
 use App\Faker\UserFaker;
@@ -87,7 +88,7 @@ final class UserKpiManagerTest extends AbstractDoctrineTestCase
             $this->userRepository
         );
 
-        return $userKpiService->create(UserKpi::TYPE_WEEKLY, $user);
+        return $userKpiService->create(UserKpiTypeEnum::WEEKLY, $user);
     }
 
     public function testConstruct(): void

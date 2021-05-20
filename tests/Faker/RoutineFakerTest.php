@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Routine;
+use App\Enum\RoutineTypeEnum;
 use App\Factory\RoutineFactory;
 use App\Faker\RoutineFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -47,7 +48,7 @@ final class RoutineFakerTest extends AbstractDoctrineTestCase
         $description = 'test description';
         $isEnabled = true;
         $name = 'test name';
-        $type = Routine::TYPE_HOBBY;
+        $type = RoutineTypeEnum::HOBBY;
         $routine = $this->routineFaker->createRoutine(
             $description,
             $isEnabled,

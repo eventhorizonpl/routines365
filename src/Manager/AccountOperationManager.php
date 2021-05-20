@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Manager;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use App\Exception\ManagerException;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -66,10 +67,10 @@ class AccountOperationManager
         }
 
         $account = $accountOperation->getAccount();
-        if (AccountOperation::TYPE_DEPOSIT === $accountOperation->getType()) {
+        if (AccountOperationTypeEnum::DEPOSIT === $accountOperation->getType()) {
             $account->depositNotifications($accountOperation->getNotifications());
             $account->depositSmsNotifications($accountOperation->getSmsNotifications());
-        } elseif (AccountOperation::TYPE_WITHDRAW === $accountOperation->getType()) {
+        } elseif (AccountOperationTypeEnum::WITHDRAW === $accountOperation->getType()) {
             $account->withdrawNotifications($accountOperation->getNotifications());
             $account->withdrawSmsNotifications($accountOperation->getSmsNotifications());
         }

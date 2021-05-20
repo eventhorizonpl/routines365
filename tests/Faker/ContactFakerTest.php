@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Contact;
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use App\Factory\ContactFactory;
 use App\Faker\ContactFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -45,9 +46,9 @@ final class ContactFakerTest extends AbstractDoctrineTestCase
         $contact = $this->contactFaker->createContact();
         $this->assertInstanceOf(Contact::class, $contact);
         $content = 'test content';
-        $status = Contact::STATUS_SPAM;
+        $status = ContactStatusEnum::SPAM;
         $title = 'test title';
-        $type = Contact::TYPE_FEATURE_IDEA;
+        $type = ContactTypeEnum::FEATURE_IDEA;
         $contact = $this->contactFaker->createContact(
             $content,
             $status,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Testimonial, User};
+use App\Enum\TestimonialStatusEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -211,7 +212,7 @@ final class TestimonialTest extends AbstractTestCase
 
     public function testGetStatus(): void
     {
-        $status = Testimonial::STATUS_NEW;
+        $status = TestimonialStatusEnum::NEW;
         $testimonial = new Testimonial();
         $testimonial->setStatus($status);
         $this->assertSame($status, $testimonial->getStatus());
@@ -232,7 +233,7 @@ final class TestimonialTest extends AbstractTestCase
 
     public function testSetStatus(): void
     {
-        $status = Testimonial::STATUS_NEW;
+        $status = TestimonialStatusEnum::NEW;
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setStatus($status));
         $this->assertSame($status, $testimonial->getStatus());

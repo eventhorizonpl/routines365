@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Achievement;
+use App\Enum\AchievementTypeEnum;
 use App\Faker\{AchievementFaker, UserFaker};
 use App\Manager\UserManager;
 use App\Repository\AchievementRepository;
@@ -66,30 +67,30 @@ final class AchievementServiceTest extends AbstractDoctrineTestCase
             1,
             'test achievement',
             1,
-            Achievement::TYPE_COMPLETED_ROUTINE
+            AchievementTypeEnum::COMPLETED_ROUTINE
         );
 
         $achievement = $this->achievementService->manageAchievements(
             $user,
-            Achievement::TYPE_COMPLETED_ROUTINE
+            AchievementTypeEnum::COMPLETED_ROUTINE
         );
         $this->assertInstanceOf(Achievement::class, $achievement);
 
         $achievement = $this->achievementService->manageAchievements(
             $user,
-            Achievement::TYPE_COMPLETED_GOAL
+            AchievementTypeEnum::COMPLETED_GOAL
         );
         $this->assertNull($achievement);
 
         $achievement = $this->achievementService->manageAchievements(
             $user,
-            Achievement::TYPE_COMPLETED_PROJECT
+            AchievementTypeEnum::COMPLETED_PROJECT
         );
         $this->assertNull($achievement);
 
         $achievement = $this->achievementService->manageAchievements(
             $user,
-            Achievement::TYPE_CREATED_NOTE
+            AchievementTypeEnum::CREATED_NOTE
         );
         $this->assertNull($achievement);
 

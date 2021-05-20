@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Quote, User};
+use App\Enum\UserRoleEnum;
 use App\Factory\QuoteFactory;
 use App\Form\Admin\QuoteType;
 use App\Manager\QuoteManager;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/quote', name: 'admin_quote_')]
 class QuoteController extends AbstractController
 {
@@ -101,7 +102,7 @@ class QuoteController extends AbstractController
         ]);
     }
 
-    #[IsGranted(User::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Quote $quote,

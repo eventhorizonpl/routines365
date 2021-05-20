@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{AccountOperation, Reminder, ReminderMessage, SentReminder};
+use App\Enum\{ReminderMessageThirdPartySystemTypeEnum, ReminderMessageTypeEnum};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -224,7 +225,7 @@ final class ReminderMessageTest extends AbstractTestCase
 
     public function testGetThirdPartySystemType(): void
     {
-        $thirdPartySystemType = ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES;
+        $thirdPartySystemType = ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES;
         $reminderMessage = new ReminderMessage();
         $reminderMessage->setThirdPartySystemType($thirdPartySystemType);
         $this->assertSame($thirdPartySystemType, $reminderMessage->getThirdPartySystemType());
@@ -245,7 +246,7 @@ final class ReminderMessageTest extends AbstractTestCase
 
     public function testSetThirdPartySystemType(): void
     {
-        $thirdPartySystemType = ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES;
+        $thirdPartySystemType = ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES;
         $reminderMessage = new ReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setThirdPartySystemType($thirdPartySystemType));
         $this->assertSame($thirdPartySystemType, $reminderMessage->getThirdPartySystemType());
@@ -261,7 +262,7 @@ final class ReminderMessageTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = ReminderMessage::TYPE_EMAIL;
+        $type = ReminderMessageTypeEnum::EMAIL;
         $reminderMessage = new ReminderMessage();
         $reminderMessage->setType($type);
         $this->assertSame($type, $reminderMessage->getType());
@@ -282,7 +283,7 @@ final class ReminderMessageTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = ReminderMessage::TYPE_EMAIL;
+        $type = ReminderMessageTypeEnum::EMAIL;
         $reminderMessage = new ReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setType($type));
         $this->assertSame($type, $reminderMessage->getType());

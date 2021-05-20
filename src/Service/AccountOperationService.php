@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{Account, AccountOperation, ReminderMessage};
+use App\Enum\AccountOperationTypeEnum;
 use App\Exception\AccountException;
 use App\Factory\AccountOperationFactory;
 use App\Manager\AccountOperationManager;
@@ -30,7 +31,7 @@ class AccountOperationService
                 $description,
                 $notifications,
                 $smsNotifications,
-                AccountOperation::TYPE_DEPOSIT
+                AccountOperationTypeEnum::DEPOSIT
             );
             $accountOperation->setAccount($account);
             $this->accountOperationManager->save($accountOperation);
@@ -56,7 +57,8 @@ class AccountOperationService
 
             return $accountOperation;
         }
-        throw new AccountException();
+
+        throw new AccountException('Account operation deposit problem.');
     }
 
     public function withdraw(
@@ -72,7 +74,7 @@ class AccountOperationService
                 $description,
                 $notifications,
                 $smsNotifications,
-                AccountOperation::TYPE_WITHDRAW
+                AccountOperationTypeEnum::WITHDRAW
             );
             $accountOperation->setAccount($account);
 
@@ -84,6 +86,7 @@ class AccountOperationService
 
             return $accountOperation;
         }
-        throw new AccountException();
+
+        throw new AccountException('Account operation withdraw problem.');
     }
 }

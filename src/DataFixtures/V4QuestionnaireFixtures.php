@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\{Answer, Question, User};
+use App\Enum\{AnswerTypeEnum, QuestionTypeEnum, UserTypeEnum};
 use App\Factory\{AnswerFactory, QuestionFactory, QuestionnaireFactory};
 use App\Manager\{AnswerManager, QuestionManager, QuestionnaireManager};
 use App\Repository\UserRepository;
@@ -48,35 +49,35 @@ class V4QuestionnaireFixtures extends Fixture implements DependentFixtureInterfa
             true,
             1,
             'How often do you use the Routines365?',
-            Question::TYPE_SINGLE_ANSWER
+            QuestionTypeEnum::SINGLE_ANSWER
         );
         $questionnaire1question1->setQuestionnaire($questionnaire1);
         $questionnaire1question1answer1 = $this->answerFactory->createAnswerWithRequired(
             'Daily',
             true,
             1,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question1answer1->setQuestion($questionnaire1question1);
         $questionnaire1question1answer2 = $this->answerFactory->createAnswerWithRequired(
             'A couple of times a week',
             true,
             2,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question1answer2->setQuestion($questionnaire1question1);
         $questionnaire1question1answer3 = $this->answerFactory->createAnswerWithRequired(
             'A couple of times a month',
             true,
             3,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question1answer3->setQuestion($questionnaire1question1);
         $questionnaire1question1answer4 = $this->answerFactory->createAnswerWithRequired(
             'I do not use it',
             true,
             4,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question1answer4->setQuestion($questionnaire1question1);
 
@@ -84,21 +85,21 @@ class V4QuestionnaireFixtures extends Fixture implements DependentFixtureInterfa
             true,
             2,
             'Does the Routines365 help you achieve your goals?',
-            Question::TYPE_SINGLE_ANSWER
+            QuestionTypeEnum::SINGLE_ANSWER
         );
         $questionnaire1question2->setQuestionnaire($questionnaire1);
         $questionnaire1question2answer1 = $this->answerFactory->createAnswerWithRequired(
             'Yes',
             true,
             1,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question2answer1->setQuestion($questionnaire1question2);
         $questionnaire1question2answer2 = $this->answerFactory->createAnswerWithRequired(
             'No',
             true,
             2,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question2answer2->setQuestion($questionnaire1question2);
 
@@ -106,56 +107,56 @@ class V4QuestionnaireFixtures extends Fixture implements DependentFixtureInterfa
             true,
             3,
             'What is your favorite tool or portion of the Routines365?',
-            Question::TYPE_SINGLE_ANSWER
+            QuestionTypeEnum::SINGLE_ANSWER
         );
         $questionnaire1question3->setQuestionnaire($questionnaire1);
         $questionnaire1question3answer1 = $this->answerFactory->createAnswerWithRequired(
             'Routines',
             true,
             1,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question3answer1->setQuestion($questionnaire1question3);
         $questionnaire1question3answer2 = $this->answerFactory->createAnswerWithRequired(
             'Reminders',
             true,
             2,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question3answer2->setQuestion($questionnaire1question3);
         $questionnaire1question3answer3 = $this->answerFactory->createAnswerWithRequired(
             'Goals',
             true,
             3,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question3answer3->setQuestion($questionnaire1question3);
         $questionnaire1question3answer4 = $this->answerFactory->createAnswerWithRequired(
             'Projects',
             true,
             4,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question3answer4->setQuestion($questionnaire1question3);
         $questionnaire1question3answer5 = $this->answerFactory->createAnswerWithRequired(
             'Notes',
             true,
             5,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question3answer5->setQuestion($questionnaire1question3);
         $questionnaire1question3answer6 = $this->answerFactory->createAnswerWithRequired(
             'Statistics',
             true,
             6,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question3answer6->setQuestion($questionnaire1question3);
         $questionnaire1question3answer7 = $this->answerFactory->createAnswerWithRequired(
             'Own answer',
             true,
             7,
-            Answer::TYPE_OWN
+            AnswerTypeEnum::OWN
         );
         $questionnaire1question3answer7->setQuestion($questionnaire1question3);
 
@@ -163,61 +164,61 @@ class V4QuestionnaireFixtures extends Fixture implements DependentFixtureInterfa
             true,
             4,
             'What would you improve if you could?',
-            Question::TYPE_SINGLE_ANSWER
+            QuestionTypeEnum::SINGLE_ANSWER
         );
         $questionnaire1question4->setQuestionnaire($questionnaire1);
         $questionnaire1question4answer1 = $this->answerFactory->createAnswerWithRequired(
             'Routines',
             true,
             1,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question4answer1->setQuestion($questionnaire1question4);
         $questionnaire1question4answer2 = $this->answerFactory->createAnswerWithRequired(
             'Reminders',
             true,
             2,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question4answer2->setQuestion($questionnaire1question4);
         $questionnaire1question4answer3 = $this->answerFactory->createAnswerWithRequired(
             'Goals',
             true,
             3,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question4answer3->setQuestion($questionnaire1question4);
         $questionnaire1question4answer4 = $this->answerFactory->createAnswerWithRequired(
             'Projects',
             true,
             4,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question4answer4->setQuestion($questionnaire1question4);
         $questionnaire1question4answer5 = $this->answerFactory->createAnswerWithRequired(
             'Notes',
             true,
             5,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question4answer5->setQuestion($questionnaire1question4);
         $questionnaire1question4answer6 = $this->answerFactory->createAnswerWithRequired(
             'Statistics',
             true,
             6,
-            Answer::TYPE_DEFINED
+            AnswerTypeEnum::DEFINED
         );
         $questionnaire1question4answer6->setQuestion($questionnaire1question4);
         $questionnaire1question4answer7 = $this->answerFactory->createAnswerWithRequired(
             'Own answer',
             true,
             7,
-            Answer::TYPE_OWN
+            AnswerTypeEnum::OWN
         );
         $questionnaire1question4answer7->setQuestion($questionnaire1question4);
 
         $user = $this->userRepository->findOneBy([
-            'type' => User::TYPE_STAFF,
+            'type' => UserTypeEnum::STAFF,
         ], [
             'id' => 'ASC',
         ]);

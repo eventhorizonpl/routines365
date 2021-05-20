@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Achievement, Project, User};
+use App\Enum\{AchievementTypeEnum, UserRoleEnum};
 use App\Factory\ProjectFactory;
 use App\Form\Frontend\ProjectType;
 use App\Manager\ProjectManager;
@@ -18,7 +19,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/projects', name: 'frontend_project_')]
 class ProjectController extends AbstractController
 {
@@ -107,7 +108,7 @@ class ProjectController extends AbstractController
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $projectManager->save($project, (string) $user);
-            $achievement = $achievementService->manageAchievements($user, Achievement::TYPE_COMPLETED_PROJECT);
+            $achievement = $achievementService->manageAchievements($user, AchievementTypeEnum::COMPLETED_PROJECT);
 
             if (null !== $achievement) {
                 $this->addFlash(

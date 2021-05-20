@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Admin;
 
 use App\Entity\{Profile, User};
+use App\Enum\{ProfileThemeEnum, UserTypeEnum};
 use App\Form\Admin\UserType;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
@@ -60,11 +61,11 @@ final class UserTypeTest extends TypeTestCase
                     'plainPassword' => 'test plainPassword',
                     'isEnabled' => true,
                     'isVerified' => true,
-                    'type' => User::TYPE_CUSTOMER,
+                    'type' => UserTypeEnum::CUSTOMER,
                     'profile' => [
                         'sendWeeklyMonthlyStatistics' => true,
                         'showMotivationalMessages' => true,
-                        'theme' => Profile::THEME_DARK,
+                        'theme' => ProfileThemeEnum::DARK,
                     ],
                 ],
             ],

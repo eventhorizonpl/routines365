@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Testimonial;
+use App\Enum\TestimonialStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -82,7 +83,7 @@ class TestimonialRepository extends ServiceEntityRepository
             ->orderBy('RAND()')
             ->setMaxResults(1)
             ->setParameter('isVisible', true)
-            ->setParameter('status', Testimonial::STATUS_ACCEPTED)
+            ->setParameter('status', TestimonialStatusEnum::ACCEPTED)
         ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

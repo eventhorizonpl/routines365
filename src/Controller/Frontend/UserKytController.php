@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Resource\KytResource;
 use App\Service\UserKytService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/know-your-tools', name: 'frontend_user_kyt_')]
 class UserKytController extends AbstractController
 {

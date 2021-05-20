@@ -2,7 +2,7 @@
 
 {% set navbarClasses = 'navbar-dark bg-dark' %}
 {% if app.user %}
-    {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
+    {% if app.user.profile.theme == constant('App\\Enum\\ProfileThemeEnum::LIGHT') %}
         {% set navbarClasses = 'navbar-light bg-light' %}
     {% endif %}
 {% endif %}

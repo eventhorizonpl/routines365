@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use Cron\CronBundle\Entity\CronReport;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/cron-report', name: 'admin_cron_report_')]
 class CronReportController extends AbstractController
 {

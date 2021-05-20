@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Reminder, Routine, User};
+use App\Enum\UserRoleEnum;
 use App\Factory\ReminderFactory;
 use App\Form\Frontend\ReminderType;
 use App\Manager\ReminderManager;
@@ -16,7 +17,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/reminders', name: 'frontend_reminder_')]
 class ReminderController extends AbstractController
 {

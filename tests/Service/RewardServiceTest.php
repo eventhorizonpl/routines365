@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Reward;
+use App\Enum\RewardTypeEnum;
 use App\Faker\UserFaker;
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
@@ -59,7 +60,7 @@ final class RewardServiceTest extends AbstractDoctrineTestCase
         $reward = $routine->getRewards()->first();
         $isAwarded = $reward->getIsAwarded();
 
-        $type = Reward::TYPE_COMPLETED_ROUTINE;
+        $type = RewardTypeEnum::COMPLETED_ROUTINE;
         $reward->setType($type);
 
         $this->rewardManager->save($reward);
@@ -80,7 +81,7 @@ final class RewardServiceTest extends AbstractDoctrineTestCase
         $routine = $user->getRoutines()->first();
         $reward = $routine->getRewards()->first();
 
-        $type = Reward::TYPE_COMPLETED_ROUTINE;
+        $type = RewardTypeEnum::COMPLETED_ROUTINE;
         $isAwarded = false;
         $numberOfCompletions = 0;
         $reward->setType($type);

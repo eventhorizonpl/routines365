@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use App\Factory\UserKpiFactory;
 use App\Faker\UserFaker;
 use App\Manager\{UserKpiManager, UserManager};
@@ -97,7 +98,7 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
 
-        $type = UserKpi::TYPE_DAILY;
+        $type = UserKpiTypeEnum::DAILY;
         $userKpi = $this->userKpiService->create(
             $type,
             $user
@@ -128,7 +129,7 @@ final class UserKpiServiceTest extends AbstractDoctrineTestCase
         $this->assertCount(0, $userKpis);
         $this->assertIsArray($userKpis);
 
-        $type = UserKpi::TYPE_WEEKLY;
+        $type = UserKpiTypeEnum::WEEKLY;
         $userKpiService = $this->userKpiService->run(
             $type
         );

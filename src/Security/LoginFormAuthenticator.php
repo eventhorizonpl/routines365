@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Security;
 
 use App\Entity\User;
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\{RedirectResponse, Request};
@@ -91,7 +92,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
-        if (User::TYPE_LEAD === $token->getUser()->getType()) {
+        if (UserTypeEnum::LEAD === $token->getUser()->getType()) {
             $this->userService->changeTypeToProspect($token->getUser());
         }
 
@@ -101,10 +102,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        if ((User::TYPE_STAFF === $token->getUser()->getType()) || (\in_array(User::ROLE_ADMIN, $token->getRoleNames(), true))) {
+        if ((UserTypeEnum::STAFF === $token->getUser()->getType()) || (\in_array(UserRoleEnum::ROLE_ADMIN, $token->getRoleNames(), true))) {
             return new RedirectResponse($this->urlGenerator->generate('admin_workspace'));
         }
-        if (\in_array(User::ROLE_USER, $token->getRoleNames(), true)) {
+        if (\in_array(UserRoleEnum::ROLE_USER, $token->getRoleNames(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('frontend_routine_index'));
         }
 

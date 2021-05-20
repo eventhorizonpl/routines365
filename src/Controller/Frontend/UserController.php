@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Form\Frontend\ChangePasswordFormType;
 use App\Manager\UserManager;
 use App\Service\UserService;
@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/settings', name: 'frontend_user_')]
 class UserController extends AbstractController
 {

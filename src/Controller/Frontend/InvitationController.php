@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Promotion, SavedEmail, User};
+use App\Enum\{PromotionTypeEnum, SavedEmailTypeEnum, UserRoleEnum};
 use App\Form\Frontend\InvitationType;
 use App\Resource\ConfigResource;
 use App\Service\{EmailService, PromotionService, SavedEmailService};
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/invitations', name: 'frontend_invitation_')]
 class InvitationController extends AbstractController
 {
@@ -36,7 +37,7 @@ class InvitationController extends AbstractController
         $lastName = $profile->getLastName();
         $promotion = $promotionService->getEnabledAndValidPromotion(
             'PLUS10NR',
-            Promotion::TYPE_NEW_ACCOUNT
+            PromotionTypeEnum::NEW_ACCOUNT
         );
 
         if ((null === $firstName) || ('' === trim($firstName)) || (null === $lastName) || ('' === trim($lastName))) {
@@ -73,7 +74,7 @@ class InvitationController extends AbstractController
 
             $savedEmailService->create(
                 $invitationEmailFormModel->email,
-                SavedEmail::TYPE_INVITATION,
+                SavedEmailTypeEnum::INVITATION,
                 $user
             );
 

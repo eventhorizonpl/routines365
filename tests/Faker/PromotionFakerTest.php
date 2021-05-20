@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Factory\PromotionFactory;
 use App\Faker\PromotionFaker;
 use App\Manager\PromotionManager;
@@ -56,7 +57,7 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
         $isEnabled = true;
         $name = 'test name';
         $smsNotifications = 10;
-        $type = Promotion::TYPE_EXISTING_ACCOUNT;
+        $type = PromotionTypeEnum::EXISTING_ACCOUNT;
         $promotion = $this->promotionFaker->createPromotion(
             $code,
             $isEnabled,
@@ -84,7 +85,7 @@ final class PromotionFakerTest extends AbstractDoctrineTestCase
         $isEnabled = true;
         $name = 'test name';
         $smsNotifications = 10;
-        $type = Promotion::TYPE_EXISTING_ACCOUNT;
+        $type = PromotionTypeEnum::EXISTING_ACCOUNT;
         $promotion = $this->promotionFaker->createPromotionPersisted(
             $code,
             $isEnabled,

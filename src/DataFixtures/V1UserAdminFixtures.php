@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Factory\UserFactory;
 use App\Manager\UserManager;
 use App\Service\UserService;
@@ -35,8 +35,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         $user = $this->userFactory->createUserWithRequired(
             'michal@eventhorizonlabs.eu',
             true,
-            [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER],
-            User::TYPE_STAFF
+            [UserRoleEnum::ROLE_ADMIN, UserRoleEnum::ROLE_SUPER_ADMIN, UserRoleEnum::ROLE_USER],
+            UserTypeEnum::STAFF
         );
         $user = $this->userService->encodePassword($user, 'michal');
         $user->getProfile()->setSendWeeklyMonthlyStatistics(false)
@@ -50,8 +50,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         $user = $this->userFactory->createUserWithRequired(
             'mkpiotrowskiprivate@gmail.com',
             true,
-            [User::ROLE_USER],
-            User::TYPE_PROSPECT
+            [UserRoleEnum::ROLE_USER],
+            UserTypeEnum::PROSPECT
         );
         $user = $this->userService->encodePassword($user, 'michal');
         $user->getProfile()->setFirstName('Michal')
@@ -66,8 +66,8 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         $user = $this->userFactory->createUserWithRequired(
             'epiotrowska16@gmail.com',
             true,
-            [User::ROLE_USER],
-            User::TYPE_PROSPECT
+            [UserRoleEnum::ROLE_USER],
+            UserTypeEnum::PROSPECT
         );
         $user = $this->userService->encodePassword($user, 'ewelina');
         $user->getProfile()->setFirstName('Ewelina')

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{CompletedRoutine, Goal, Note, Reminder, Reward, Routine, SentReminder, User};
+use App\Enum\RoutineTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -639,7 +640,7 @@ final class RoutineTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Routine::TYPE_HOBBY;
+        $type = RoutineTypeEnum::HOBBY;
         $routine = new Routine();
         $routine->setType($type);
         $this->assertSame($type, $routine->getType());
@@ -660,7 +661,7 @@ final class RoutineTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Routine::TYPE_HOBBY;
+        $type = RoutineTypeEnum::HOBBY;
         $routine = new Routine();
         $this->assertInstanceOf(Routine::class, $routine->setType($type));
         $this->assertSame($type, $routine->getType());

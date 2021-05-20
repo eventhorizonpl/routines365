@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Manager;
 
 use App\Entity\Reminder;
+use App\Enum\ReminderTypeEnum;
 use App\Exception\ManagerException;
 use DateTime;
 use DateTimeImmutable;
@@ -69,7 +70,7 @@ class ReminderManager
             $reminder->getMinutesBefore()
         ));
 
-        if (Reminder::TYPE_DAILY === $reminder->getType()) {
+        if (ReminderTypeEnum::DAILY === $reminder->getType()) {
             while ($dateTime <= $dateTimeNow) {
                 $dateTime->modify('+1 day');
             }

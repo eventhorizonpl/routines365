@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use App\Exception\AccountException;
 use App\Factory\AccountOperationFactory;
 use App\Faker\UserFaker;
@@ -74,7 +75,7 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
         $this->assertSame($description, $accountOperation->getDescription());
         $this->assertSame($notifications, $accountOperation->getNotifications());
         $this->assertSame($smsNotifications, $accountOperation->getSmsNotifications());
-        $this->assertSame(AccountOperation::TYPE_DEPOSIT, $accountOperation->getType());
+        $this->assertSame(AccountOperationTypeEnum::DEPOSIT, $accountOperation->getType());
     }
 
     public function testDepositException(): void
@@ -114,7 +115,7 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
         $this->assertSame($description, $accountOperation->getDescription());
         $this->assertSame($notifications, $accountOperation->getNotifications());
         $this->assertSame($smsNotifications, $accountOperation->getSmsNotifications());
-        $this->assertSame(AccountOperation::TYPE_WITHDRAW, $accountOperation->getType());
+        $this->assertSame(AccountOperationTypeEnum::WITHDRAW, $accountOperation->getType());
     }
 
     public function testWithdrawException(): void

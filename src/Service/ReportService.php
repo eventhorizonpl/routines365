@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\Report;
+use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use App\Factory\ReportFactory;
 use App\Manager\ReportManager;
 
@@ -22,7 +23,7 @@ class ReportService
     ): Report {
         $report
             ->addData($data)
-            ->setStatus(Report::STATUS_IN_PROGRESS)
+            ->setStatus(ReportStatusEnum::IN_PROGRESS)
         ;
         $this->reportManager->save($report);
 
@@ -49,15 +50,15 @@ class ReportService
     {
         return $this->create(
             [],
-            Report::STATUS_INITIAL,
-            Report::TYPE_POST_REMIND_MESSAGES
+            ReportStatusEnum::INITIAL,
+            ReportTypeEnum::POST_REMIND_MESSAGES
         );
     }
 
     public function finish(
         Report $report
     ): Report {
-        $report->setStatus(Report::STATUS_FINISHED);
+        $report->setStatus(ReportStatusEnum::FINISHED);
         $this->reportManager->save($report);
 
         return $report;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Form\Frontend\{ProfilePhoneVerificationCodeType, ProfileType};
 use App\Manager\ProfileManager;
 use App\Resource\KytResource;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/settings/profile', name: 'frontend_profile_')]
 class ProfileController extends AbstractController
 {

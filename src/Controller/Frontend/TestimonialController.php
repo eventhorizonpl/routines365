@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Testimonial, User};
+use App\Enum\{TestimonialStatusEnum, UserRoleEnum};
 use App\Factory\TestimonialFactory;
 use App\Form\Frontend\TestimonialType;
 use App\Manager\TestimonialManager;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/testimonial', name: 'frontend_testimonial_')]
 class TestimonialController extends AbstractController
 {
@@ -34,7 +35,7 @@ class TestimonialController extends AbstractController
             $testimonial = $testimonialFactory->createTestimonial();
             $testimonial->setUser($user);
         }
-        if (Testimonial::STATUS_ACCEPTED === $testimonial->getStatus()) {
+        if (TestimonialStatusEnum::ACCEPTED === $testimonial->getStatus()) {
             $this->addFlash(
                 'success',
                 $translator->trans('We already accepted your testimonial.')

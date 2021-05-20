@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\User;
+use App\Enum\UserTypeEnum;
 use App\Faker\UserFaker;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
@@ -97,7 +98,7 @@ final class UserServiceTest extends AbstractDoctrineTestCase
         $user = $this->userService->changeTypeToCustomer($user);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertSame(User::TYPE_CUSTOMER, $user->getType());
+        $this->assertSame(UserTypeEnum::CUSTOMER, $user->getType());
     }
 
     public function testChangeTypeToProspect(): void
@@ -108,7 +109,7 @@ final class UserServiceTest extends AbstractDoctrineTestCase
         $user = $this->userService->changeTypeToProspect($user);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertSame(User::TYPE_PROSPECT, $user->getType());
+        $this->assertSame(UserTypeEnum::PROSPECT, $user->getType());
     }
 
     public function testOnAuthenticationSuccess(): void

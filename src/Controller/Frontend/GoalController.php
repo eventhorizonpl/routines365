@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Achievement, Goal, Reward, User};
+use App\Enum\{AchievementTypeEnum, RewardTypeEnum, UserRoleEnum};
 use App\Factory\GoalFactory;
 use App\Form\Frontend\GoalType;
 use App\Manager\GoalManager;
@@ -19,7 +20,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/goals', name: 'frontend_goal_')]
 class GoalController extends AbstractController
 {
@@ -107,8 +108,8 @@ class GoalController extends AbstractController
         $goal->setIsCompleted(true);
         $goalManager->save($goal, (string) $user);
 
-        $reward = $rewardService->manageReward($goal->getRoutine(), Reward::TYPE_COMPLETED_GOAL);
-        $achievement = $achievementService->manageAchievements($user, Achievement::TYPE_COMPLETED_GOAL);
+        $reward = $rewardService->manageReward($goal->getRoutine(), RewardTypeEnum::COMPLETED_GOAL);
+        $achievement = $achievementService->manageAchievements($user, AchievementTypeEnum::COMPLETED_GOAL);
 
         if (null !== $achievement) {
             $this->addFlash(

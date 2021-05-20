@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Quote, SavedEmail, User};
+use App\Enum\{SavedEmailTypeEnum, UserRoleEnum};
 use App\Form\Frontend\SendMotivationalEmailType;
 use App\Manager\QuoteManager;
 use App\Repository\QuoteRepository;
@@ -18,7 +19,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/motivate-friend', name: 'frontend_quote_')]
 class QuoteController extends AbstractController
 {
@@ -104,7 +105,7 @@ class QuoteController extends AbstractController
 
             $savedEmailService->create(
                 $sendMotivationalEmailType->email,
-                SavedEmail::TYPE_MOTIVATIONAL,
+                SavedEmailTypeEnum::MOTIVATIONAL,
                 $user
             );
 

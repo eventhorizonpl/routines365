@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{User, UserKpi};
+use App\Enum\UserKpiTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -406,7 +407,7 @@ final class UserKpiTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = UserKpi::TYPE_ANNUALLY;
+        $type = UserKpiTypeEnum::ANNUALLY;
         $userKpi = new UserKpi();
         $userKpi->setType($type);
         $this->assertSame($type, $userKpi->getType());
@@ -427,7 +428,7 @@ final class UserKpiTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = UserKpi::TYPE_ANNUALLY;
+        $type = UserKpiTypeEnum::ANNUALLY;
         $userKpi = new UserKpi();
         $this->assertInstanceOf(UserKpi::class, $userKpi->setType($type));
         $this->assertSame($type, $userKpi->getType());

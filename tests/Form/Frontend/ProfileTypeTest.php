@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Frontend;
 
 use App\Entity\Profile;
+use App\Enum\ProfileThemeEnum;
 use App\Form\Frontend\ProfileType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -42,7 +43,7 @@ final class ProfileTypeTest extends TypeTestCase
                 'data' => [
                     'sendWeeklyMonthlyStatistics' => true,
                     'showMotivationalMessages' => true,
-                    'theme' => Profile::THEME_DARK,
+                    'theme' => ProfileThemeEnum::DARK,
                 ],
             ],
         ];

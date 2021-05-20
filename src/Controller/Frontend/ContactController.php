@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Factory\ContactFactory;
 use App\Form\Frontend\ContactType;
 use App\Manager\ContactManager;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/contact', name: 'frontend_contact_')]
 class ContactController extends AbstractController
 {

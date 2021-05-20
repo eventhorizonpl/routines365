@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Frontend;
 
-use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Faker\PromotionFaker;
 use App\Tests\AbstractUiTestCase;
 
@@ -43,7 +43,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/basic-configuration-finish');
         $this->assertResponseIsSuccessful();
@@ -69,7 +69,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/completing-routines-finish');
         $this->assertResponseIsSuccessful();
@@ -95,7 +95,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/goals-finish');
         $this->assertResponseIsSuccessful();
@@ -121,7 +121,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/notes-finish');
         $this->assertResponseIsSuccessful();
@@ -147,7 +147,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/projects-finish');
         $this->assertResponseIsSuccessful();
@@ -173,7 +173,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/reminders-finish');
         $this->assertResponseIsSuccessful();
@@ -199,7 +199,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/rewards-finish');
         $this->assertResponseIsSuccessful();
@@ -225,7 +225,7 @@ final class UserKytControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/know-your-tools/routines-finish');
         $this->assertResponseIsSuccessful();

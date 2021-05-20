@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Account, Achievement, CompletedRoutine, Contact, Goal, Note, Profile, Project, Promotion, Reminder, Reward, Routine, SavedEmail, Testimonial, User, UserKpi, UserKyt, UserQuestionnaire};
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -900,7 +901,7 @@ final class UserTest extends AbstractTestCase
 
     public function testGetRoles(): void
     {
-        $roles = [User::ROLE_USER];
+        $roles = [UserRoleEnum::ROLE_USER];
         $user = new User();
         $user->setRoles($roles);
         $this->assertSame($roles, $user->getRoles());
@@ -921,7 +922,7 @@ final class UserTest extends AbstractTestCase
 
     public function testSetRoles(): void
     {
-        $roles = [User::ROLE_USER];
+        $roles = [UserRoleEnum::ROLE_USER];
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setRoles($roles));
         $this->assertSame($roles, $user->getRoles());
@@ -1049,7 +1050,7 @@ final class UserTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = User::TYPE_CUSTOMER;
+        $type = UserTypeEnum::CUSTOMER;
         $user = new User();
         $user->setType($type);
         $this->assertSame($type, $user->getType());
@@ -1070,7 +1071,7 @@ final class UserTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = User::TYPE_CUSTOMER;
+        $type = UserTypeEnum::CUSTOMER;
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setType($type));
         $this->assertSame($type, $user->getType());

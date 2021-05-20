@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Frontend;
 
-use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Faker\{PromotionFaker, QuestionnaireFaker};
 use App\Manager\UserManager;
 use App\Tests\AbstractUiTestCase;
@@ -41,7 +41,7 @@ final class QuestionnaireControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
         $questionnaire = $this->questionnaireFaker->createRichQuestionnairePersisted();
 
         $crawler = $this->client->request('GET', '/surveys/'.$questionnaire->getUuid());

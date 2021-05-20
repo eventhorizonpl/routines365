@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Service;
 
-use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use App\Factory\UserKpiFactory;
 use App\Service\EmailService;
 use App\Tests\AbstractDoctrineTestCase;
@@ -203,7 +203,7 @@ final class EmailServiceTest extends AbstractDoctrineTestCase
     public function testSendUserKpi(): void
     {
         $userKpi = $this->userKpiFactory->createUserKpi();
-        $userKpi->setType(UserKpi::TYPE_DAILY);
+        $userKpi->setType(UserKpiTypeEnum::DAILY);
         $result = $this->emailService->sendUserKpi(
             'test@example.org',
             'test subject',

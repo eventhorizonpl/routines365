@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Testimonial, User};
+use App\Enum\UserRoleEnum;
 use App\Form\Admin\TestimonialType;
 use App\Manager\TestimonialManager;
 use App\Repository\TestimonialRepository;
@@ -15,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/testimonial', name: 'admin_testimonial_')]
 class TestimonialController extends AbstractController
 {

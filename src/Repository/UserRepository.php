@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Enum\UserTypeEnum;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -155,7 +156,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setParameter('isEnabled', true)
             ->setParameter('isVerified', true)
             ->setParameter('lastLoginAt', $lastLoginAt)
-            ->setParameter('type', User::TYPE_PROSPECT)
+            ->setParameter('type', UserTypeEnum::PROSPECT)
         ;
 
         return $queryBuilder->getQuery();

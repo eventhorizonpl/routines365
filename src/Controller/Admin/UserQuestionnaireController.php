@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{User, UserQuestionnaire};
+use App\Enum\UserRoleEnum;
 use App\Manager\UserQuestionnaireManager;
 use App\Repository\UserQuestionnaireRepository;
 use App\Util\DateTimeImmutableUtil;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/user-questionnaire', name: 'admin_user_questionnaire_')]
 class UserQuestionnaireController extends AbstractController
 {

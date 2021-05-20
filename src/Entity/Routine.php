@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Dto\{RoutineCollectionInput, RoutineCollectionOutput, RoutineItemInput, RoutineItemOutput};
+use App\Enum\RoutineTypeEnum;
 use App\Repository\RoutineRepository;
 use App\Security\Voter\RoutineVoter;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
@@ -55,11 +56,6 @@ class Routine
     use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_HOBBY = 'hobby';
-    public const TYPE_LEARNING = 'learning';
-    public const TYPE_SPORT = 'sport';
-    public const TYPE_WORK = 'work';
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=CompletedRoutine::class)
@@ -141,7 +137,7 @@ class Routine
         $this->reminders = new ArrayCollection();
         $this->rewards = new ArrayCollection();
         $this->sentReminders = new ArrayCollection();
-        $this->type = self::TYPE_HOBBY;
+        $this->type = RoutineTypeEnum::HOBBY;
     }
 
     public function __toString(): string
@@ -484,10 +480,10 @@ class Routine
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_HOBBY => self::TYPE_HOBBY,
-            self::TYPE_LEARNING => self::TYPE_LEARNING,
-            self::TYPE_SPORT => self::TYPE_SPORT,
-            self::TYPE_WORK => self::TYPE_WORK,
+            RoutineTypeEnum::HOBBY => RoutineTypeEnum::HOBBY,
+            RoutineTypeEnum::LEARNING => RoutineTypeEnum::LEARNING,
+            RoutineTypeEnum::SPORT => RoutineTypeEnum::SPORT,
+            RoutineTypeEnum::WORK => RoutineTypeEnum::WORK,
         ];
     }
 

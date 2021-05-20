@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Report;
+use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -135,7 +136,7 @@ final class ReportTest extends AbstractTestCase
 
     public function testGetStatus(): void
     {
-        $status = Report::STATUS_INITIAL;
+        $status = ReportStatusEnum::INITIAL;
         $report = new Report();
         $report->setStatus($status);
         $this->assertSame($status, $report->getStatus());
@@ -156,7 +157,7 @@ final class ReportTest extends AbstractTestCase
 
     public function testSetStatus(): void
     {
-        $status = Report::STATUS_INITIAL;
+        $status = ReportStatusEnum::INITIAL;
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setStatus($status));
         $this->assertSame($status, $report->getStatus());
@@ -172,7 +173,7 @@ final class ReportTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Report::TYPE_POST_REMIND_MESSAGES;
+        $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $report = new Report();
         $report->setType($type);
         $this->assertSame($type, $report->getType());
@@ -193,7 +194,7 @@ final class ReportTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Report::TYPE_POST_REMIND_MESSAGES;
+        $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setType($type));
         $this->assertSame($type, $report->getType());

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{Reminder, ReminderMessage, Report};
+use App\Enum\{ReminderMessageThirdPartySystemTypeEnum, ReminderMessageTypeEnum, ReportDataKeyEnum};
 use App\Factory\{ReminderMessageFactory, SentReminderFactory};
 use App\Manager\{ReminderManager, ReminderMessageManager, SentReminderManager};
 use App\Repository\{QuoteRepository, ReminderRepository};
@@ -76,7 +77,7 @@ class PostRemindMessagesService
         Report $report
     ): Reminder {
         $data = [
-            Report::DATA_KEY_REMINDER => $reminder->getUuid(),
+            ReportDataKeyEnum::REMINDER => $reminder->getUuid(),
         ];
 
         $message = sprintf(
@@ -145,14 +146,14 @@ class PostRemindMessagesService
             $createSentReminder = true;
         }
 
-        $data[Report::DATA_KEY_CREATE_SENT_REMINDER] = $createSentReminder;
+        $data[ReportDataKeyEnum::CREATE_SENT_REMINDER] = $createSentReminder;
 
         if (true === $createSentReminder) {
             $sentReminder = $this->sentReminderFactory->createSentReminder();
             $sentReminder->setReminder($reminder);
             $sentReminder->setRoutine($reminder->getRoutine());
             $this->sentReminderManager->save($sentReminder);
-            $data[Report::DATA_KEY_SENT_REMINDER] = $sentReminder->getUuid();
+            $data[ReportDataKeyEnum::SENT_REMINDER] = $sentReminder->getUuid();
         } else {
             $sentReminder = null;
         }
@@ -164,7 +165,7 @@ class PostRemindMessagesService
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $emailMessage,
-                    ReminderMessage::TYPE_EMAIL
+                    ReminderMessageTypeEnum::EMAIL
                 );
                 $reminderMessage
                     ->setReminder($reminder)
@@ -187,12 +188,12 @@ class PostRemindMessagesService
 
                 $reminderMessage
                     ->setPostDate(new DateTimeImmutable())
-                    ->setThirdPartySystemType(ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SES)
+                    ->setThirdPartySystemType(ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES)
                     ->setThirdPartySystemResponse($response)
                 ;
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
+                $data[ReportDataKeyEnum::REMINDER_MESSAGE] = $reminderMessage->getUuid();
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
@@ -208,7 +209,7 @@ class PostRemindMessagesService
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $smsMessage,
-                    ReminderMessage::TYPE_SMS
+                    ReminderMessageTypeEnum::SMS
                 );
                 $reminderMessage
                     ->setReminder($reminder)
@@ -225,12 +226,12 @@ class PostRemindMessagesService
 
                 $reminderMessage
                     ->setPostDate(new DateTimeImmutable())
-                    ->setThirdPartySystemType(ReminderMessage::THIRD_PARTY_SYSTEM_TYPE_AMAZON_SNS)
+                    ->setThirdPartySystemType(ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS)
                     ->setThirdPartySystemResponse($response)
                 ;
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
+                $data[ReportDataKeyEnum::REMINDER_MESSAGE] = $reminderMessage->getUuid();
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
@@ -245,7 +246,7 @@ class PostRemindMessagesService
             ) {
                 $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(
                     $browserMessage,
-                    ReminderMessage::TYPE_BROWSER
+                    ReminderMessageTypeEnum::BROWSER
                 );
                 $reminderMessage
                     ->setPostDate(new DateTimeImmutable())
@@ -254,7 +255,7 @@ class PostRemindMessagesService
                 ;
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $data[Report::DATA_KEY_REMINDER_MESSAGE] = $reminderMessage->getUuid();
+                $data[ReportDataKeyEnum::REMINDER_MESSAGE] = $reminderMessage->getUuid();
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,

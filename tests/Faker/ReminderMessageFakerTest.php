@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\ReminderMessage;
+use App\Enum\ReminderMessageTypeEnum;
 use App\Factory\ReminderMessageFactory;
 use App\Faker\ReminderMessageFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -45,7 +46,7 @@ final class ReminderMessageFakerTest extends AbstractDoctrineTestCase
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage);
         $content = 'test content';
-        $type = ReminderMessage::TYPE_EMAIL;
+        $type = ReminderMessageTypeEnum::EMAIL;
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage(
             $content,
             $type

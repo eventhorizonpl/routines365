@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\User;
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Factory\{AccountFactory, ProfileFactory, UserFactory, UserKytFactory};
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -60,7 +61,7 @@ final class UserFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(User::class, $user);
         $this->assertTrue($user->getIsEnabled());
         $this->assertTrue($user->getIsVerified());
-        $this->assertSame(User::TYPE_LEAD, $user->getType());
+        $this->assertSame(UserTypeEnum::LEAD, $user->getType());
     }
 
     public function testCreateUserWithRequired(): void
@@ -68,7 +69,7 @@ final class UserFactoryTest extends AbstractTestCase
         $email = $this->faker->safeEmail();
         $isEnabled = $this->faker->boolean();
         $roles = [
-            User::ROLE_USER,
+            UserRoleEnum::ROLE_USER,
         ];
         $type = $this->faker->randomElement(
             User::getTypeFormChoices()

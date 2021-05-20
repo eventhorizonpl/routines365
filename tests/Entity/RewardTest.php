@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Reward, Routine, User};
+use App\Enum\RewardTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -311,7 +312,7 @@ final class RewardTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Reward::TYPE_ALL;
+        $type = RewardTypeEnum::ALL;
         $reward = new Reward();
         $reward->setType($type);
         $this->assertSame($type, $reward->getType());
@@ -332,7 +333,7 @@ final class RewardTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Reward::TYPE_ALL;
+        $type = RewardTypeEnum::ALL;
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setType($type));
         $this->assertSame($type, $reward->getType());

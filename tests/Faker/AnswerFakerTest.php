@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Answer;
+use App\Enum\AnswerTypeEnum;
 use App\Factory\AnswerFactory;
 use App\Faker\AnswerFaker;
 use App\Manager\AnswerManager;
@@ -53,7 +54,7 @@ final class AnswerFakerTest extends AbstractDoctrineTestCase
         $content = 'test content';
         $isEnabled = true;
         $position = 1;
-        $type = Answer::TYPE_DEFINED;
+        $type = AnswerTypeEnum::DEFINED;
         $answer = $this->answerFaker->createAnswer(
             $content,
             $isEnabled,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Reward, User};
+use App\Enum\UserRoleEnum;
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
 use App\Util\DateTimeImmutableUtil;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/reward', name: 'admin_reward_')]
 class RewardController extends AbstractController
 {

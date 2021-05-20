@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\SavedEmail;
+use App\Enum\SavedEmailTypeEnum;
 use App\Factory\SavedEmailFactory;
 use App\Faker\UserFaker;
 use App\Manager\SavedEmailManager;
@@ -57,7 +58,7 @@ final class SavedEmailServiceTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
 
         $email = 'test@example.org';
-        $type = SavedEmail::TYPE_INVITATION;
+        $type = SavedEmailTypeEnum::INVITATION;
         $savedEmail = $this->savedEmailService->create(
             $email,
             $type,

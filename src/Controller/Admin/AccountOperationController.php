@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Account, AccountOperation, User};
+use App\Enum\UserRoleEnum;
 use App\Manager\AccountOperationManager;
 use App\Repository\AccountOperationRepository;
 use App\Service\AccountOperationService;
@@ -15,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/account-operation', name: 'admin_account_operation_')]
 class AccountOperationController extends AbstractController
 {

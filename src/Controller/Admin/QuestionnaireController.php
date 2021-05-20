@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Questionnaire, User};
+use App\Enum\UserRoleEnum;
 use App\Factory\QuestionnaireFactory;
 use App\Form\Admin\QuestionnaireType;
 use App\Manager\QuestionnaireManager;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/questionnaire', name: 'admin_questionnaire_')]
 class QuestionnaireController extends AbstractController
 {
@@ -101,7 +102,7 @@ class QuestionnaireController extends AbstractController
         ]);
     }
 
-    #[IsGranted(User::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Questionnaire $questionnaire,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Promotion, User};
+use App\Enum\PromotionTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -285,7 +286,7 @@ final class PromotionTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Promotion::TYPE_EXISTING_ACCOUNT;
+        $type = PromotionTypeEnum::EXISTING_ACCOUNT;
         $promotion = new Promotion();
         $promotion->setType($type);
         $this->assertSame($type, $promotion->getType());
@@ -306,7 +307,7 @@ final class PromotionTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Promotion::TYPE_EXISTING_ACCOUNT;
+        $type = PromotionTypeEnum::EXISTING_ACCOUNT;
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setType($type));
         $this->assertSame($type, $promotion->getType());

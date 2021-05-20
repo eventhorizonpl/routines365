@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Reminder, User};
+use App\Enum\UserRoleEnum;
 use App\Manager\ReminderManager;
 use App\Repository\ReminderRepository;
 use App\Util\DateTimeImmutableUtil;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/reminder', name: 'admin_reminder_')]
 class ReminderController extends AbstractController
 {

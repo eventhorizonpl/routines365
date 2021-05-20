@@ -128,7 +128,7 @@
 
 {% block javascripts %}
     {% if app.user %}
-        {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
+        {% if app.user.profile.theme == constant('App\\Enum\\ProfileThemeEnum::LIGHT') %}
             {{ encore_entry_script_tags('frontend-light') }}
         {% else %}
             {{ encore_entry_script_tags('frontend-dark') }}
@@ -192,7 +192,7 @@
 
 {% block stylesheets %}
     {% if app.user %}
-        {% if app.user.profile.theme == constant('App\\Entity\\Profile::THEME_LIGHT') %}
+        {% if app.user.profile.theme == constant('App\\Enum\\ProfileThemeEnum::LIGHT') %}
             {{ encore_entry_link_tags('frontend-light') }}
         {% else %}
             {{ encore_entry_link_tags('frontend-dark') }}

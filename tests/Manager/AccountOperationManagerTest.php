@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Manager;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use App\Exception\ManagerException;
 use App\Faker\UserFaker;
 use App\Manager\{AccountManager, AccountOperationManager};
@@ -102,15 +103,15 @@ final class AccountOperationManagerTest extends AbstractDoctrineTestCase
         $accountOperation = $this->createAccountOperation();
         $user = $accountOperation->getAccount()->getUsers()->first();
 
-        $accountOperation->setType(AccountOperation::TYPE_DEPOSIT);
+        $accountOperation->setType(AccountOperationTypeEnum::DEPOSIT);
         $accountOperationManager = $this->accountOperationManager->save($accountOperation, (string) $user, true);
         $this->assertInstanceOf(AccountOperationManager::class, $accountOperationManager);
 
-        $accountOperation->setType(AccountOperation::TYPE_WITHDRAW);
+        $accountOperation->setType(AccountOperationTypeEnum::WITHDRAW);
         $accountOperationManager = $this->accountOperationManager->save($accountOperation, (string) $user, true);
         $this->assertInstanceOf(AccountOperationManager::class, $accountOperationManager);
 
-        $accountOperation->setType(AccountOperation::TYPE_WITHDRAW);
+        $accountOperation->setType(AccountOperationTypeEnum::WITHDRAW);
         $accountOperationManager = $this->accountOperationManager->save($accountOperation);
         $this->assertInstanceOf(AccountOperationManager::class, $accountOperationManager);
     }

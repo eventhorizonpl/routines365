@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{Reward, Routine};
+use App\Enum\RewardTypeEnum;
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
 
@@ -20,7 +21,7 @@ class RewardService
     {
         $user = $routine->getUser();
         $types = [
-            Reward::TYPE_ALL,
+            RewardTypeEnum::ALL,
             $type,
         ];
         $reward = $this->rewardRepository->findOneByUserAndTypesAndRoutine($user, $types, $routine);

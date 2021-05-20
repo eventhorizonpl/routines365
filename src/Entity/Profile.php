@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\ProfileThemeEnum;
 use App\Repository\ProfileRepository;
 use App\Resource\ConfigResource;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,9 +24,6 @@ class Profile
     use Traits\IsVerifiedTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const THEME_DARK = 'dark';
-    public const THEME_LIGHT = 'light';
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -130,7 +128,7 @@ class Profile
         $this->phoneMd5 = null;
         $this->sendWeeklyMonthlyStatistics = true;
         $this->showMotivationalMessages = true;
-        $this->theme = self::THEME_DARK;
+        $this->theme = ProfileThemeEnum::DARK;
         $this->timeZone = null;
     }
 
@@ -325,8 +323,8 @@ class Profile
     public static function getThemeFormChoices(): array
     {
         return [
-            self::THEME_DARK => self::THEME_DARK,
-            self::THEME_LIGHT => self::THEME_LIGHT,
+            ProfileThemeEnum::DARK => ProfileThemeEnum::DARK,
+            ProfileThemeEnum::LIGHT => ProfileThemeEnum::LIGHT,
         ];
     }
 

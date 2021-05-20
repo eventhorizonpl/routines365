@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Achievement, User};
+use App\Enum\UserRoleEnum;
 use App\Factory\AchievementFactory;
 use App\Form\Admin\AchievementType;
 use App\Manager\AchievementManager;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/achievement', name: 'admin_achievement_')]
 class AchievementController extends AbstractController
 {
@@ -102,7 +103,7 @@ class AchievementController extends AbstractController
         ]);
     }
 
-    #[IsGranted(User::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Achievement $achievement,

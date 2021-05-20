@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{SavedEmail, User};
+use App\Enum\SavedEmailTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -194,7 +195,7 @@ final class SavedEmailTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = SavedEmail::TYPE_INVITATION;
+        $type = SavedEmailTypeEnum::INVITATION;
         $savedEmail = new SavedEmail();
         $savedEmail->setType($type);
         $this->assertSame($type, $savedEmail->getType());
@@ -215,7 +216,7 @@ final class SavedEmailTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = SavedEmail::TYPE_INVITATION;
+        $type = SavedEmailTypeEnum::INVITATION;
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setType($type));
         $this->assertSame($type, $savedEmail->getType());

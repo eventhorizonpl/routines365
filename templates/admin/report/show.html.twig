@@ -54,15 +54,15 @@
                                                         {% for key, value in data %}
                                                             <li>
                                                                 {{ key }} =
-                                                                {% if key == constant('App\\Entity\\Report::DATA_KEY_REMINDER') %}
+                                                                {% if key == constant('App\\Enum\\ReportDataKeyEnum::REMINDER') %}
                                                                     <a href="{{ path('admin_reminder_show', {'uuid': value}) }}">
                                                                         {{ value }}
                                                                     </a>
-                                                                {% elseif key == constant('App\\Entity\\Report::DATA_KEY_REMINDER_MESSAGE') %}
+                                                                {% elseif key == constant('App\\Enum\\ReportDataKeyEnum::REMINDER_MESSAGE') %}
                                                                     <a href="{{ path('admin_reminder_message_show', {'uuid': value}) }}">
                                                                         {{ value }}
                                                                     </a>
-                                                                {% elseif key == constant('App\\Entity\\Report::DATA_KEY_SENT_REMINDER') %}
+                                                                {% elseif key == constant('App\\Enum\\ReportDataKeyEnum::SENT_REMINDER') %}
                                                                     <a href="{{ path('admin_sent_reminder_show', {'uuid': value}) }}">
                                                                         {{ value }}
                                                                     </a>

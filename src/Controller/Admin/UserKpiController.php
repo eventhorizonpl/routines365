@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{User, UserKpi};
+use App\Enum\UserRoleEnum;
 use App\Manager\UserKpiManager;
 use App\Repository\UserKpiRepository;
 use App\Util\DateTimeImmutableUtil;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/user-kpi', name: 'admin_user_kpi_')]
 class UserKpiController extends AbstractController
 {

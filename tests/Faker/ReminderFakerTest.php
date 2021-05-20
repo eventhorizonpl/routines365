@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Reminder;
+use App\Enum\ReminderTypeEnum;
 use App\Factory\ReminderFactory;
 use App\Faker\ReminderFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -51,7 +52,7 @@ final class ReminderFakerTest extends AbstractDoctrineTestCase
         $sendEmail = true;
         $sendMotivationalMessage = true;
         $sendSms = false;
-        $type = Reminder::TYPE_DAILY;
+        $type = ReminderTypeEnum::DAILY;
         $reminder = $this->reminderFaker->createReminder(
             $hour,
             $isEnabled,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Reminder, ReminderMessage, Routine, SentReminder, User};
+use App\Enum\ReminderTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -506,7 +507,7 @@ final class ReminderTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Reminder::TYPE_DAILY;
+        $type = ReminderTypeEnum::DAILY;
         $reminder = new Reminder();
         $reminder->setType($type);
         $this->assertSame($type, $reminder->getType());
@@ -527,7 +528,7 @@ final class ReminderTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Reminder::TYPE_DAILY;
+        $type = ReminderTypeEnum::DAILY;
         $reminder = new Reminder();
         $this->assertInstanceOf(Reminder::class, $reminder->setType($type));
         $this->assertSame($type, $reminder->getType());

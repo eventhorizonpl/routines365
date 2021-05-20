@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{Achievement, User};
+use App\Enum\AchievementTypeEnum;
 use App\Manager\UserManager;
 use App\Repository\AchievementRepository;
 
@@ -21,13 +22,13 @@ class AchievementService
         $achievement = null;
         $saveUser = false;
 
-        if (Achievement::TYPE_COMPLETED_ROUTINE === $type) {
+        if (AchievementTypeEnum::COMPLETED_ROUTINE === $type) {
             $requirement = \count($user->getCompletedRoutines());
-        } elseif (Achievement::TYPE_COMPLETED_GOAL === $type) {
+        } elseif (AchievementTypeEnum::COMPLETED_GOAL === $type) {
             $requirement = \count($user->getGoalsCompleted());
-        } elseif (Achievement::TYPE_COMPLETED_PROJECT === $type) {
+        } elseif (AchievementTypeEnum::COMPLETED_PROJECT === $type) {
             $requirement = \count($user->getProjectsCompleted());
-        } elseif (Achievement::TYPE_CREATED_NOTE === $type) {
+        } elseif (AchievementTypeEnum::CREATED_NOTE === $type) {
             $requirement = \count($user->getNotes());
         } else {
             $requirement = 10000;

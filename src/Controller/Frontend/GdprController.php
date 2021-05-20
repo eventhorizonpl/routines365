@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/settings/gdpr', name: 'frontend_gdpr_')]
 class GdprController extends AbstractController
 {

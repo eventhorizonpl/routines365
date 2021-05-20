@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use App\Service\UserKpiService;
 use Doctrine\ORM\EntityManagerInterface;
 use InvalidArgumentException;
@@ -34,7 +35,7 @@ class CreateUserKpiCommand extends BaseLockableCommand
                 null,
                 InputOption::VALUE_REQUIRED,
                 'User KPI type',
-                UserKpi::TYPE_WEEKLY
+                UserKpiTypeEnum::WEEKLY
             )
         ;
     }

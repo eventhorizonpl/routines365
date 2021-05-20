@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Achievement;
+use App\Enum\AchievementTypeEnum;
 use App\Factory\AchievementFactory;
 use App\Faker\AchievementFaker;
 use App\Manager\AchievementManager;
@@ -54,7 +55,7 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
         $level = 1;
         $name = 'test name';
         $requirement = 10;
-        $type = Achievement::TYPE_COMPLETED_ROUTINE;
+        $type = AchievementTypeEnum::COMPLETED_ROUTINE;
         $achievement = $this->achievementFaker->createAchievement(
             $isEnabled,
             $level,
@@ -78,7 +79,7 @@ final class AchievementFakerTest extends AbstractDoctrineTestCase
         $level = 1;
         $name = 'test name';
         $requirement = 10;
-        $type = Achievement::TYPE_COMPLETED_ROUTINE;
+        $type = AchievementTypeEnum::COMPLETED_ROUTINE;
         $achievement = $this->achievementFaker->createAchievementPersisted(
             $isEnabled,
             $level,

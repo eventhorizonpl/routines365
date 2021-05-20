@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Account, AccountOperation, ReminderMessage};
+use App\Enum\AccountOperationTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -246,7 +247,7 @@ final class AccountOperationTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = AccountOperation::TYPE_DEPOSIT;
+        $type = AccountOperationTypeEnum::DEPOSIT;
         $accountOperation = new AccountOperation();
         $accountOperation->setType($type);
         $this->assertSame($type, $accountOperation->getType());
@@ -267,7 +268,7 @@ final class AccountOperationTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = AccountOperation::TYPE_DEPOSIT;
+        $type = AccountOperationTypeEnum::DEPOSIT;
         $accountOperation = new AccountOperation();
         $this->assertInstanceOf(AccountOperation::class, $accountOperation->setType($type));
         $this->assertSame($type, $accountOperation->getType());

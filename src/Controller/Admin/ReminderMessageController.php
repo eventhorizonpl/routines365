@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{ReminderMessage, User};
+use App\Enum\UserRoleEnum;
 use App\Manager\ReminderMessageManager;
 use App\Repository\ReminderMessageRepository;
 use App\Util\DateTimeImmutableUtil;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/reminder-message', name: 'admin_reminder_message_')]
 class ReminderMessageController extends AbstractController
 {

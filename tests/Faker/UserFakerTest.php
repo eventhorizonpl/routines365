@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\User;
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Factory\{SentReminderFactory, UserFactory};
 use App\Faker\{AccountOperationFaker, AchievementFaker, AnswerFaker, CompletedRoutineFaker, ContactFaker, GoalFaker, NoteFaker, ProjectFaker, PromotionFaker, QuestionFaker, QuestionnaireFaker, QuoteFaker, ReminderFaker, ReminderMessageFaker, RewardFaker, RoutineFaker, SavedEmailFaker, TestimonialFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\{ReminderMessageManager, SentReminderManager, UserManager};
@@ -195,8 +196,8 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $email = 'test@example.org';
         $isEnabled = true;
         $password = 'test password';
-        $roles = [User::ROLE_USER];
-        $type = User::TYPE_STAFF;
+        $roles = [UserRoleEnum::ROLE_USER];
+        $type = UserTypeEnum::STAFF;
         $user = $this->userFaker->createUser(
             $email,
             $isEnabled,
@@ -218,8 +219,8 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $email = 'test@example.org';
         $isEnabled = true;
         $password = 'test password';
-        $roles = [User::ROLE_USER];
-        $type = User::TYPE_STAFF;
+        $roles = [UserRoleEnum::ROLE_USER];
+        $type = UserTypeEnum::STAFF;
         $user = $this->userFaker->createUserPersisted(
             $email,
             $isEnabled,

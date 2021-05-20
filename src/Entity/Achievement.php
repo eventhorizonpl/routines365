@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\AchievementTypeEnum;
 use App\Repository\AchievementRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
 use Doctrine\ORM\Mapping as ORM;
@@ -21,11 +22,6 @@ class Achievement
     use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_COMPLETED_ROUTINE = 'completed_routine';
-    public const TYPE_COMPLETED_GOAL = 'completed_goal';
-    public const TYPE_COMPLETED_PROJECT = 'completed_project';
-    public const TYPE_CREATED_NOTE = 'created_note';
 
     /**
      * @ORM\ManyToMany(fetch="EXTRA_LAZY", mappedBy="achievements", targetEntity=User::class)
@@ -145,10 +141,10 @@ class Achievement
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_COMPLETED_ROUTINE => self::TYPE_COMPLETED_ROUTINE,
-            self::TYPE_COMPLETED_GOAL => self::TYPE_COMPLETED_GOAL,
-            self::TYPE_COMPLETED_PROJECT => self::TYPE_COMPLETED_PROJECT,
-            self::TYPE_CREATED_NOTE => self::TYPE_CREATED_NOTE,
+            AchievementTypeEnum::COMPLETED_ROUTINE => AchievementTypeEnum::COMPLETED_ROUTINE,
+            AchievementTypeEnum::COMPLETED_GOAL => AchievementTypeEnum::COMPLETED_GOAL,
+            AchievementTypeEnum::COMPLETED_PROJECT => AchievementTypeEnum::COMPLETED_PROJECT,
+            AchievementTypeEnum::CREATED_NOTE => AchievementTypeEnum::CREATED_NOTE,
         ];
     }
 

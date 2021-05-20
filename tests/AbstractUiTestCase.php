@@ -85,9 +85,7 @@ abstract class AbstractUiTestCase extends PantherTestCase implements ServiceCont
         $this->entityManager = null;
 
         $this->client = null;
-        $this->entityManager = null;
-        $this->userFaker = null
-        ;
+        $this->userFaker = null;
 
         $refl = new ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Faker\{TestimonialFaker, UserFaker};
 use App\Manager\UserManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -31,8 +31,8 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
             'admin@admin.com',
             true,
             'admin',
-            [User::ROLE_ADMIN, User::ROLE_SUPER_ADMIN, User::ROLE_USER],
-            User::TYPE_STAFF
+            [UserRoleEnum::ROLE_ADMIN, UserRoleEnum::ROLE_SUPER_ADMIN, UserRoleEnum::ROLE_USER],
+            UserTypeEnum::STAFF
         );
         $user->getProfile()
             ->setSendWeeklyMonthlyStatistics(false)
@@ -50,8 +50,8 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
                     sprintf('test%d@example.org', $userId),
                     true,
                     sprintf('test%d', $userId),
-                    [User::ROLE_USER],
-                    User::TYPE_PROSPECT
+                    [UserRoleEnum::ROLE_USER],
+                    UserTypeEnum::PROSPECT
                 );
                 $testimonial = $this->testimonialFaker->createTestimonial();
                 $testimonial->setUser($user);

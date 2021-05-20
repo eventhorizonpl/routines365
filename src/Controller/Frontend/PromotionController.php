@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Form\Frontend\PromotionCodeType;
 use App\Resource\ConfigResource;
 use App\Service\PromotionService;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/promotions', name: 'frontend_promotion_')]
 class PromotionController extends AbstractController
 {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Questionnaire, User};
+use App\Enum\UserRoleEnum;
 use App\Manager\QuestionnaireManager;
 use App\Security\Voter\QuestionnaireVoter;
 use App\Service\UserQuestionnaireService;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/surveys', name: 'frontend_survey_')]
 class QuestionnaireController extends AbstractController
 {

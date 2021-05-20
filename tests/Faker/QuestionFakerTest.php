@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\Question;
+use App\Enum\QuestionTypeEnum;
 use App\Factory\QuestionFactory;
 use App\Faker\QuestionFaker;
 use App\Manager\QuestionManager;
@@ -53,7 +54,7 @@ final class QuestionFakerTest extends AbstractDoctrineTestCase
         $isEnabled = true;
         $position = 1;
         $title = 'test content';
-        $type = Question::TYPE_SINGLE_ANSWER;
+        $type = QuestionTypeEnum::SINGLE_ANSWER;
         $question = $this->questionFaker->createQuestion(
             $isEnabled,
             $position,

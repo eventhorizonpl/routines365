@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\PromotionTypeEnum;
 use App\Repository\PromotionRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
@@ -24,10 +25,6 @@ class Promotion
     use Traits\IsEnabledTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_EXISTING_ACCOUNT = 'existing_account';
-    public const TYPE_NEW_ACCOUNT = 'new_account';
-    public const TYPE_SYSTEM = 'system';
 
     /**
      * @ORM\ManyToMany(fetch="EXTRA_LAZY", mappedBy="promotions", targetEntity=User::class)
@@ -187,9 +184,9 @@ class Promotion
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_EXISTING_ACCOUNT => self::TYPE_EXISTING_ACCOUNT,
-            self::TYPE_NEW_ACCOUNT => self::TYPE_NEW_ACCOUNT,
-            self::TYPE_SYSTEM => self::TYPE_SYSTEM,
+            PromotionTypeEnum::EXISTING_ACCOUNT => PromotionTypeEnum::EXISTING_ACCOUNT,
+            PromotionTypeEnum::NEW_ACCOUNT => PromotionTypeEnum::NEW_ACCOUNT,
+            PromotionTypeEnum::SYSTEM => PromotionTypeEnum::SYSTEM,
         ];
     }
 

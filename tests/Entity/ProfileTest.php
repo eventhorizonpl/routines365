@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Profile, User};
+use App\Enum\ProfileThemeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -346,7 +347,7 @@ final class ProfileTest extends AbstractTestCase
         $phoneNumberUtil = PhoneNumberUtil::getInstance();
         $phone = $phoneNumberUtil->parse('+48881573056');
         $showMotivationalMessages = true;
-        $theme = Profile::THEME_DARK;
+        $theme = ProfileThemeEnum::DARK;
         $timeZone = 'test time zone';
         $email = 'test email';
         $user = new User();
@@ -404,7 +405,7 @@ final class ProfileTest extends AbstractTestCase
 
     public function testGetTheme(): void
     {
-        $theme = Profile::THEME_DARK;
+        $theme = ProfileThemeEnum::DARK;
         $profile = new Profile();
         $profile->setTheme($theme);
         $this->assertSame($theme, $profile->getTheme());
@@ -425,7 +426,7 @@ final class ProfileTest extends AbstractTestCase
 
     public function testSetTheme(): void
     {
-        $theme = Profile::THEME_DARK;
+        $theme = ProfileThemeEnum::DARK;
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setTheme($theme));
         $this->assertSame($theme, $profile->getTheme());

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
@@ -27,14 +28,6 @@ class User implements UserInterface, TwoFactorInterface
     use Traits\IsVerifiedTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const ROLE_ADMIN = 'ROLE_ADMIN';
-    public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
-    public const ROLE_USER = 'ROLE_USER';
-    public const TYPE_CUSTOMER = 'customer';
-    public const TYPE_LEAD = 'lead';
-    public const TYPE_PROSPECT = 'prospect';
-    public const TYPE_STAFF = 'staff';
 
     /**
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
@@ -226,7 +219,7 @@ class User implements UserInterface, TwoFactorInterface
         $this->rewards = new ArrayCollection();
         $this->routines = new ArrayCollection();
         $this->savedEmails = new ArrayCollection();
-        $this->type = self::TYPE_PROSPECT;
+        $this->type = UserTypeEnum::PROSPECT;
         $this->userKpis = new ArrayCollection();
         $this->userQuestionnaires = new ArrayCollection();
     }
@@ -676,7 +669,7 @@ class User implements UserInterface, TwoFactorInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        $roles[] = self::ROLE_USER;
+        $roles[] = UserRoleEnum::ROLE_USER;
 
         return array_unique($roles);
     }
@@ -684,9 +677,9 @@ class User implements UserInterface, TwoFactorInterface
     public static function getRolesFormChoices(): array
     {
         return [
-            self::ROLE_ADMIN => self::ROLE_ADMIN,
-            self::ROLE_SUPER_ADMIN => self::ROLE_SUPER_ADMIN,
-            self::ROLE_USER => self::ROLE_USER,
+            UserRoleEnum::ROLE_ADMIN => UserRoleEnum::ROLE_ADMIN,
+            UserRoleEnum::ROLE_SUPER_ADMIN => UserRoleEnum::ROLE_SUPER_ADMIN,
+            UserRoleEnum::ROLE_USER => UserRoleEnum::ROLE_USER,
         ];
     }
 
@@ -784,10 +777,10 @@ class User implements UserInterface, TwoFactorInterface
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_CUSTOMER => self::TYPE_CUSTOMER,
-            self::TYPE_LEAD => self::TYPE_LEAD,
-            self::TYPE_PROSPECT => self::TYPE_PROSPECT,
-            self::TYPE_STAFF => self::TYPE_STAFF,
+            UserTypeEnum::CUSTOMER => UserTypeEnum::CUSTOMER,
+            UserTypeEnum::LEAD => UserTypeEnum::LEAD,
+            UserTypeEnum::PROSPECT => UserTypeEnum::PROSPECT,
+            UserTypeEnum::STAFF => UserTypeEnum::STAFF,
         ];
     }
 

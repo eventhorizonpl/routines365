@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use App\Repository\ReportRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -18,15 +19,6 @@ class Report
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const DATA_KEY_CREATE_SENT_REMINDER = 'create_sent_reminder';
-    public const DATA_KEY_REMINDER = 'reminder';
-    public const DATA_KEY_REMINDER_MESSAGE = 'reminder_message';
-    public const DATA_KEY_SENT_REMINDER = 'sent_reminder';
-    public const STATUS_FINISHED = 'finished';
-    public const STATUS_INITIAL = 'initial';
-    public const STATUS_IN_PROGRESS = 'in_progress';
-    public const TYPE_POST_REMIND_MESSAGES = 'post_remind_messages';
 
     /**
      * @ORM\Column(type="json")
@@ -55,7 +47,7 @@ class Report
     public function __construct()
     {
         $this->data = [];
-        $this->status = self::STATUS_INITIAL;
+        $this->status = ReportStatusEnum::INITIAL;
     }
 
     public function __toString(): string
@@ -90,9 +82,9 @@ class Report
     public static function getStatusFormChoices(): array
     {
         return [
-            self::STATUS_FINISHED => self::STATUS_FINISHED,
-            self::STATUS_INITIAL => self::STATUS_INITIAL,
-            self::STATUS_IN_PROGRESS => self::STATUS_IN_PROGRESS,
+            ReportStatusEnum::FINISHED => ReportStatusEnum::FINISHED,
+            ReportStatusEnum::INITIAL => ReportStatusEnum::INITIAL,
+            ReportStatusEnum::IN_PROGRESS => ReportStatusEnum::IN_PROGRESS,
         ];
     }
 
@@ -120,7 +112,7 @@ class Report
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_POST_REMIND_MESSAGES => self::TYPE_POST_REMIND_MESSAGES,
+            ReportTypeEnum::POST_REMIND_MESSAGES => ReportTypeEnum::POST_REMIND_MESSAGES,
         ];
     }
 

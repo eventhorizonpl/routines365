@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Contact, User};
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -212,7 +213,7 @@ final class ContactTest extends AbstractTestCase
 
     public function testGetStatus(): void
     {
-        $status = Contact::STATUS_CLOSED;
+        $status = ContactStatusEnum::CLOSED;
         $contact = new Contact();
         $contact->setStatus($status);
         $this->assertSame($status, $contact->getStatus());
@@ -233,7 +234,7 @@ final class ContactTest extends AbstractTestCase
 
     public function testSetStatus(): void
     {
-        $status = Contact::STATUS_CLOSED;
+        $status = ContactStatusEnum::CLOSED;
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setStatus($status));
         $this->assertSame($status, $contact->getStatus());
@@ -267,7 +268,7 @@ final class ContactTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Contact::TYPE_FEATURE_IDEA;
+        $type = ContactTypeEnum::FEATURE_IDEA;
         $contact = new Contact();
         $contact->setType($type);
         $this->assertSame($type, $contact->getType());
@@ -288,7 +289,7 @@ final class ContactTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Contact::TYPE_FEATURE_IDEA;
+        $type = ContactTypeEnum::FEATURE_IDEA;
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setType($type));
         $this->assertSame($type, $contact->getType());

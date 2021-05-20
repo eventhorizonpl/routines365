@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\QuestionTypeEnum;
 use App\Repository\QuestionRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
 use Doctrine\ORM\Mapping as ORM;
@@ -21,9 +22,6 @@ class Question
     use Traits\PositionTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_MULTIPLE_ANSWER = 'multiple_answer';
-    public const TYPE_SINGLE_ANSWER = 'single_answer';
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="question", orphanRemoval=true, targetEntity=Answer::class)
@@ -61,7 +59,7 @@ class Question
         $this->isEnabled = true;
         $this->position = 0;
         $this->title = '';
-        $this->type = self::TYPE_SINGLE_ANSWER;
+        $this->type = QuestionTypeEnum::SINGLE_ANSWER;
     }
 
     public function __toString(): string
@@ -130,8 +128,8 @@ class Question
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_MULTIPLE_ANSWER => self::TYPE_MULTIPLE_ANSWER,
-            self::TYPE_SINGLE_ANSWER => self::TYPE_SINGLE_ANSWER,
+            QuestionTypeEnum::MULTIPLE_ANSWER => QuestionTypeEnum::MULTIPLE_ANSWER,
+            QuestionTypeEnum::SINGLE_ANSWER => QuestionTypeEnum::SINGLE_ANSWER,
         ];
     }
 

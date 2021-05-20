@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Factory\UserFactory;
 use App\Form\Admin\{UserLeadType, UserType};
 use App\Manager\UserManager;
@@ -19,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/user', name: 'admin_user_')]
 class UserController extends AbstractController
 {
@@ -169,7 +170,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[IsGranted(User::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Request $request,

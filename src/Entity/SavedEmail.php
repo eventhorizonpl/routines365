@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\SavedEmailTypeEnum;
 use App\Repository\SavedEmailRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -20,9 +21,6 @@ class SavedEmail
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_INVITATION = 'invitation';
-    public const TYPE_MOTIVATIONAL = 'motivational';
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -54,7 +52,7 @@ class SavedEmail
     public function __construct()
     {
         $this->email = '';
-        $this->type = self::TYPE_INVITATION;
+        $this->type = SavedEmailTypeEnum::INVITATION;
     }
 
     public function __toString(): string
@@ -82,8 +80,8 @@ class SavedEmail
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_INVITATION => self::TYPE_INVITATION,
-            self::TYPE_MOTIVATIONAL => self::TYPE_MOTIVATIONAL,
+            SavedEmailTypeEnum::INVITATION => SavedEmailTypeEnum::INVITATION,
+            SavedEmailTypeEnum::MOTIVATIONAL => SavedEmailTypeEnum::MOTIVATIONAL,
         ];
     }
 

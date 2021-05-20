@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Admin;
 
 use App\Entity\Answer;
+use App\Enum\AnswerTypeEnum;
 use App\Form\Admin\AnswerType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -43,7 +44,7 @@ final class AnswerTypeTest extends TypeTestCase
                     'content' => 'test content',
                     'isEnabled' => true,
                     'position' => 1,
-                    'type' => Answer::TYPE_DEFINED,
+                    'type' => AnswerTypeEnum::DEFINED,
                 ],
             ],
         ];

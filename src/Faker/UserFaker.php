@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\{AccountOperation, ReminderMessage, Reward, User};
+use App\Enum\{AccountOperationTypeEnum, ReminderMessageTypeEnum, RewardTypeEnum, UserRoleEnum, UserTypeEnum};
 use App\Factory\{SentReminderFactory, UserFactory};
 use App\Manager\{ReminderMessageManager, SentReminderManager, UserManager};
 use App\Service\UserService;
@@ -69,7 +70,7 @@ class UserFaker
         }
 
         if (null === $roles) {
-            $roles = [User::ROLE_USER];
+            $roles = [UserRoleEnum::ROLE_USER];
         }
 
         if (null === $type) {
@@ -124,11 +125,11 @@ class UserFaker
             true,
             $password,
             [
-                User::ROLE_ADMIN,
-                User::ROLE_SUPER_ADMIN,
-                User::ROLE_USER,
+                UserRoleEnum::ROLE_ADMIN,
+                UserRoleEnum::ROLE_SUPER_ADMIN,
+                UserRoleEnum::ROLE_USER,
             ],
-            User::TYPE_STAFF
+            UserTypeEnum::STAFF
         );
     }
 
@@ -148,8 +149,8 @@ class UserFaker
             $email,
             true,
             $password,
-            [User::ROLE_USER],
-            User::TYPE_CUSTOMER
+            [UserRoleEnum::ROLE_USER],
+            UserTypeEnum::CUSTOMER
         );
     }
 
@@ -169,8 +170,8 @@ class UserFaker
             $email,
             true,
             $password,
-            [User::ROLE_USER],
-            User::TYPE_CUSTOMER
+            [UserRoleEnum::ROLE_USER],
+            UserTypeEnum::CUSTOMER
         );
 
         $user->getProfile()->setCountry('US');
@@ -178,7 +179,7 @@ class UserFaker
             null,
             null,
             null,
-            AccountOperation::TYPE_DEPOSIT
+            AccountOperationTypeEnum::DEPOSIT
         );
         $user->getAccount()->addAccountOperation($accountOperation);
 
@@ -215,7 +216,7 @@ class UserFaker
         $reminder->setSendToBrowser(true);
         $user->addReminder($reminder);
 
-        $reward = $this->rewardFaker->createReward(null, null, null, null, null, Reward::TYPE_COMPLETED_ROUTINE);
+        $reward = $this->rewardFaker->createReward(null, null, null, null, null, RewardTypeEnum::COMPLETED_ROUTINE);
         $user->addReward($reward);
         $routine->addReward($reward);
 
@@ -234,7 +235,7 @@ class UserFaker
 
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage(
             null,
-            ReminderMessage::TYPE_BROWSER
+            ReminderMessageTypeEnum::BROWSER
         );
         $reminderMessage
             ->setAccountOperation($accountOperation)
@@ -246,7 +247,7 @@ class UserFaker
 
         $reminderMessage = $this->reminderMessageFaker->createReminderMessage(
             null,
-            ReminderMessage::TYPE_EMAIL
+            ReminderMessageTypeEnum::EMAIL
         );
         $reminderMessage
             ->setAccountOperation($accountOperation)

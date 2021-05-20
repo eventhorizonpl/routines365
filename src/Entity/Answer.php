@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\AnswerTypeEnum;
 use App\Repository\AnswerRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
 use Doctrine\ORM\Mapping as ORM;
@@ -21,9 +22,6 @@ class Answer
     use Traits\PositionTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_DEFINED = 'defined';
-    public const TYPE_OWN = 'own';
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -59,7 +57,7 @@ class Answer
         $this->isEnabled = true;
         $this->position = 0;
         $this->content = '';
-        $this->type = self::TYPE_DEFINED;
+        $this->type = AnswerTypeEnum::DEFINED;
         $this->userQuestionnaireAnswers = new ArrayCollection();
     }
 
@@ -100,8 +98,8 @@ class Answer
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_DEFINED => self::TYPE_DEFINED,
-            self::TYPE_OWN => self::TYPE_OWN,
+            AnswerTypeEnum::DEFINED => AnswerTypeEnum::DEFINED,
+            AnswerTypeEnum::OWN => AnswerTypeEnum::OWN,
         ];
     }
 

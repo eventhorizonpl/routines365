@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Repository;
 
 use App\Entity\Testimonial;
+use App\Enum\TestimonialStatusEnum;
 use App\Faker\UserFaker;
 use App\Manager\TestimonialManager;
 use App\Repository\TestimonialRepository;
@@ -103,7 +104,7 @@ final class TestimonialRepositoryTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $testimonial = $user->getTestimonial();
         $testimonial->setIsVisible(true);
-        $testimonial->setStatus(Testimonial::STATUS_ACCEPTED);
+        $testimonial->setStatus(TestimonialStatusEnum::ACCEPTED);
         $this->testimonialManager->save($testimonial, (string) $user);
 
         $testimonial = $this->testimonialRepository->findOneRand();

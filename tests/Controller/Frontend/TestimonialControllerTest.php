@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Frontend;
 
 use App\Entity\{Promotion, Testimonial};
+use App\Enum\{PromotionTypeEnum, TestimonialStatusEnum};
 use App\Faker\PromotionFaker;
 use App\Manager\UserManager;
 use App\Tests\AbstractUiTestCase;
@@ -36,7 +37,7 @@ final class TestimonialControllerTest extends AbstractUiTestCase
     {
         $this->purge();
         $user = $this->createAndLoginRegular();
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $crawler = $this->client->request('GET', '/testimonial/new');
 
@@ -69,7 +70,7 @@ final class TestimonialControllerTest extends AbstractUiTestCase
         );
 
         $this->entityManager->refresh($user);
-        $user->getTestimonial()->setStatus(Testimonial::STATUS_ACCEPTED);
+        $user->getTestimonial()->setStatus(TestimonialStatusEnum::ACCEPTED);
         $this->userManager->save($user);
 
         $crawler = $this->client->request('GET', '/testimonial/new');

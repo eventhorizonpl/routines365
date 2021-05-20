@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Manager;
 
 use App\Entity\Report;
+use App\Enum\ReportStatusEnum;
 use App\Exception\ManagerException;
 use App\Manager\ReportManager;
 use App\Repository\ReportRepository;
@@ -55,7 +56,7 @@ final class ReportManagerTest extends AbstractDoctrineTestCase
     public function testBulkSave(): void
     {
         $this->purge();
-        $status = Report::STATUS_FINISHED;
+        $status = ReportStatusEnum::FINISHED;
         $report = $this->reportService->createPostRemindMessages();
         $report->setStatus($status);
         $reportId = $report->getId();

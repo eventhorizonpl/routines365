@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\{Answer, Promotion, UserQuestionnaire};
+use App\Enum\{AnswerTypeEnum, PromotionTypeEnum};
 use App\Factory\UserQuestionnaireFactory;
 use App\Faker\{PromotionFaker, QuestionnaireFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireManager;
@@ -115,7 +116,7 @@ final class UserQuestionnaireServiceTest extends AbstractDoctrineTestCase
             false
         );
 
-        $questionnaire->getQuestions()->first()->getAnswers()->first()->setType(Answer::TYPE_OWN);
+        $questionnaire->getQuestions()->first()->getAnswers()->first()->setType(AnswerTypeEnum::OWN);
         $parameterBag = new ParameterBag([
             $questionnaire->getQuestions()->first()->getUuid() => $questionnaire->getQuestions()->first()->getAnswers()->first()->getUuid(),
         ]);
@@ -134,7 +135,7 @@ final class UserQuestionnaireServiceTest extends AbstractDoctrineTestCase
             $questionnaire,
             false
         );
-        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, Promotion::TYPE_SYSTEM);
+        $promotion = $this->promotionFaker->createPromotionPersisted('REWARD10', true, null, null, null, PromotionTypeEnum::SYSTEM);
 
         $userQuestionnaire = $this->userQuestionnaireService->rewardUserQuestionnaire($userQuestionnaire);
         $this->assertInstanceOf(UserQuestionnaire::class, $userQuestionnaire);

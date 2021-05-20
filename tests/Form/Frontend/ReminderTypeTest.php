@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Frontend;
 
 use App\Entity\Reminder;
+use App\Enum\ReminderTypeEnum;
 use App\Faker\UserFaker;
 use App\Form\Frontend\ReminderType;
 use App\Tests\AbstractTypeDoctrineTestCase;
@@ -67,7 +68,7 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
                     'sendMotivationalMessage' => true,
                     'sendSms' => true,
                     'sendToBrowser' => true,
-                    'type' => Reminder::TYPE_DAILY,
+                    'type' => ReminderTypeEnum::DAILY,
                 ],
             ],
         ];

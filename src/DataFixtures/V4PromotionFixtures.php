@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\{Promotion, User};
+use App\Enum\{PromotionTypeEnum, UserTypeEnum};
 use App\Factory\PromotionFactory;
 use App\Manager\PromotionManager;
 use App\Repository\UserRepository;
@@ -41,7 +42,7 @@ class V4PromotionFixtures extends Fixture implements DependentFixtureInterface, 
                 'name' => '+10 notifications reward promotion',
                 'notifications' => 10,
                 'sms_notifications' => 0,
-                'type' => Promotion::TYPE_SYSTEM,
+                'type' => PromotionTypeEnum::SYSTEM,
             ],
         ];
 
@@ -58,7 +59,7 @@ class V4PromotionFixtures extends Fixture implements DependentFixtureInterface, 
         }
 
         $user = $this->userRepository->findOneBy([
-            'type' => User::TYPE_STAFF,
+            'type' => UserTypeEnum::STAFF,
         ], [
             'id' => 'ASC',
         ]);

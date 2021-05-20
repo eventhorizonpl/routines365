@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -20,15 +21,6 @@ class Contact
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const STATUS_CLOSED = 'closed';
-    public const STATUS_ON_HOLD = 'on_hold';
-    public const STATUS_OPEN = 'open';
-    public const STATUS_PENDING = 'pending';
-    public const STATUS_SOLVED = 'solved';
-    public const STATUS_SPAM = 'spam';
-    public const TYPE_FEATURE_IDEA = 'feature_idea';
-    public const TYPE_QUESTION = 'question';
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -85,9 +77,9 @@ class Contact
     {
         $this->comment = '';
         $this->content = '';
-        $this->status = self::STATUS_OPEN;
+        $this->status = ContactStatusEnum::OPEN;
         $this->title = '';
-        $this->type = self::TYPE_QUESTION;
+        $this->type = ContactTypeEnum::QUESTION;
     }
 
     public function __toString(): string
@@ -127,12 +119,12 @@ class Contact
     public static function getStatusFormChoices(): array
     {
         return [
-            self::STATUS_CLOSED => self::STATUS_CLOSED,
-            self::STATUS_ON_HOLD => self::STATUS_ON_HOLD,
-            self::STATUS_OPEN => self::STATUS_OPEN,
-            self::STATUS_PENDING => self::STATUS_PENDING,
-            self::STATUS_SOLVED => self::STATUS_SOLVED,
-            self::STATUS_SPAM => self::STATUS_SPAM,
+            ContactStatusEnum::CLOSED => ContactStatusEnum::CLOSED,
+            ContactStatusEnum::ON_HOLD => ContactStatusEnum::ON_HOLD,
+            ContactStatusEnum::OPEN => ContactStatusEnum::OPEN,
+            ContactStatusEnum::PENDING => ContactStatusEnum::PENDING,
+            ContactStatusEnum::SOLVED => ContactStatusEnum::SOLVED,
+            ContactStatusEnum::SPAM => ContactStatusEnum::SPAM,
         ];
     }
 
@@ -172,8 +164,8 @@ class Contact
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_FEATURE_IDEA => self::TYPE_FEATURE_IDEA,
-            self::TYPE_QUESTION => self::TYPE_QUESTION,
+            ContactTypeEnum::FEATURE_IDEA => ContactTypeEnum::FEATURE_IDEA,
+            ContactTypeEnum::QUESTION => ContactTypeEnum::QUESTION,
         ];
     }
 

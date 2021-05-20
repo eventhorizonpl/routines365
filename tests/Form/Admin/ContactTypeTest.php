@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Admin;
 
 use App\Entity\Contact;
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use App\Form\Admin\ContactType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -42,17 +43,17 @@ final class ContactTypeTest extends TypeTestCase
                 'data' => [
                     'comment' => 'test comment',
                     'content' => 'test content',
-                    'status' => Contact::STATUS_CLOSED,
+                    'status' => ContactStatusEnum::CLOSED,
                     'title' => 'test title',
-                    'type' => Contact::TYPE_QUESTION,
+                    'type' => ContactTypeEnum::QUESTION,
                 ],
             ],
             [
                 'data' => [
                     'content' => 'test content',
-                    'status' => Contact::STATUS_CLOSED,
+                    'status' => ContactStatusEnum::CLOSED,
                     'title' => 'test title',
-                    'type' => Contact::TYPE_QUESTION,
+                    'type' => ContactTypeEnum::QUESTION,
                 ],
             ],
         ];

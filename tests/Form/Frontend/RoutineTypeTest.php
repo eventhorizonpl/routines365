@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Frontend;
 
 use App\Entity\Routine;
+use App\Enum\RoutineTypeEnum;
 use App\Form\Frontend\RoutineType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -43,7 +44,7 @@ final class RoutineTypeTest extends TypeTestCase
                     'description' => 'test description',
                     'isEnabled' => true,
                     'name' => 'test name',
-                    'type' => Routine::TYPE_HOBBY,
+                    'type' => RoutineTypeEnum::HOBBY,
                 ],
             ],
         ];

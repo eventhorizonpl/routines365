@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\RewardTypeEnum;
 use App\Repository\RewardRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -23,9 +24,6 @@ class Reward
 
     public const CONTEXT_DEFAULT = 'default';
     public const CONTEXT_ROUTINE = 'routine';
-    public const TYPE_ALL = 'all';
-    public const TYPE_COMPLETED_ROUTINE = 'completed_routine';
-    public const TYPE_COMPLETED_GOAL = 'completed_goal';
 
     /**
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
@@ -220,9 +218,9 @@ class Reward
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_ALL => self::TYPE_ALL,
-            self::TYPE_COMPLETED_ROUTINE => self::TYPE_COMPLETED_ROUTINE,
-            self::TYPE_COMPLETED_GOAL => self::TYPE_COMPLETED_GOAL,
+            RewardTypeEnum::ALL => RewardTypeEnum::ALL,
+            RewardTypeEnum::COMPLETED_ROUTINE => RewardTypeEnum::COMPLETED_ROUTINE,
+            RewardTypeEnum::COMPLETED_GOAL => RewardTypeEnum::COMPLETED_GOAL,
         ];
     }
 

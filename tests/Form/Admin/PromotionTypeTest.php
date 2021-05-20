@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Admin;
 
 use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Form\Admin\PromotionType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -46,7 +47,7 @@ final class PromotionTypeTest extends TypeTestCase
                     'isEnabled' => true,
                     'name' => 'test name',
                     'smsNotifications' => 10,
-                    'type' => Promotion::TYPE_EXISTING_ACCOUNT,
+                    'type' => PromotionTypeEnum::EXISTING_ACCOUNT,
                 ],
             ],
         ];

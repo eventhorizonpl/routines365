@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\{Contact, User};
+use App\Enum\UserRoleEnum;
 use App\Form\Admin\ContactType;
 use App\Manager\ContactManager;
 use App\Repository\ContactRepository;
@@ -15,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/contact', name: 'admin_contact_')]
 class ContactController extends AbstractController
 {

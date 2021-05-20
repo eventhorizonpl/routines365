@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\{Achievement, User};
+use App\Enum\AchievementTypeEnum;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -248,7 +249,7 @@ final class AchievementTest extends AbstractTestCase
 
     public function testGetType(): void
     {
-        $type = Achievement::TYPE_COMPLETED_ROUTINE;
+        $type = AchievementTypeEnum::COMPLETED_ROUTINE;
         $achievement = new Achievement();
         $achievement->setType($type);
         $this->assertSame($type, $achievement->getType());
@@ -269,7 +270,7 @@ final class AchievementTest extends AbstractTestCase
 
     public function testSetType(): void
     {
-        $type = Achievement::TYPE_COMPLETED_ROUTINE;
+        $type = AchievementTypeEnum::COMPLETED_ROUTINE;
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setType($type));
         $this->assertSame($type, $achievement->getType());

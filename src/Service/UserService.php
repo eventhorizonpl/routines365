@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\User;
+use App\Enum\UserTypeEnum;
 use App\Manager\UserManager;
 use App\Repository\UserRepository;
 use DateTime;
@@ -37,7 +38,7 @@ class UserService
 
     public function changeTypeToCustomer(User $user): User
     {
-        $user->setType(User::TYPE_CUSTOMER);
+        $user->setType(UserTypeEnum::CUSTOMER);
         $this->userManager->save($user);
 
         return $user;
@@ -45,7 +46,7 @@ class UserService
 
     public function changeTypeToProspect(User $user): User
     {
-        $user->setType(User::TYPE_PROSPECT);
+        $user->setType(UserTypeEnum::PROSPECT);
         $this->userManager->save($user);
 
         return $user;

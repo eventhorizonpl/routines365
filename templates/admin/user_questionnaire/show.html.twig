@@ -222,7 +222,7 @@
                                                     {% else %}
                                                         {{ answer.content }}
                                                     {% endif %}
-                                                    {% if answer.type == constant('App\\Entity\\Answer::TYPE_OWN') %}
+                                                    {% if answer.type == constant('App\\Enum\\AnswerTypeEnum::OWN') %}
                                                         {% set user_questionnaire_answer = user_questionnaire.getUserQuestionnaireAnswer(answer) %}
                                                         {% if user_questionnaire_answer %}
                                                             : {{ user_questionnaire_answer.content }}

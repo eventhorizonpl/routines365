@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Enum\UserRoleEnum;
 use App\Factory\CronJobFactory;
 use App\Form\Admin\CronJobType;
 use App\Manager\CronJobManager;
@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
 #[Route('/admin/cron-job', name: 'admin_cron_job_')]
 class CronJobController extends AbstractController
 {
@@ -100,7 +100,7 @@ class CronJobController extends AbstractController
         ]);
     }
 
-    #[IsGranted(User::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
     #[Route('/{id}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         CronJob $cronJob,

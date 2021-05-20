@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Faker;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use App\Factory\AccountOperationFactory;
 use App\Faker\AccountOperationFaker;
 use App\Tests\AbstractDoctrineTestCase;
@@ -47,7 +48,7 @@ final class AccountOperationFakerTest extends AbstractDoctrineTestCase
         $description = 'test description';
         $notifications = 1;
         $smsNotifications = 2;
-        $type = AccountOperation::TYPE_DEPOSIT;
+        $type = AccountOperationTypeEnum::DEPOSIT;
         $accountOperation = $this->accountOperationFaker->createAccountOperation(
             $description,
             $notifications,

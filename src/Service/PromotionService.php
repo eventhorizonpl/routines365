@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{Promotion, User};
+use App\Enum\PromotionTypeEnum;
 use App\Manager\UserManager;
 use App\Repository\PromotionRepository;
 use DateTimeImmutable;
@@ -40,7 +41,7 @@ class PromotionService
     {
         $promotion = $this->getEnabledAndValidPromotion(
             $code,
-            Promotion::TYPE_EXISTING_ACCOUNT
+            PromotionTypeEnum::EXISTING_ACCOUNT
         );
         $result = false;
 
@@ -55,7 +56,7 @@ class PromotionService
     {
         $promotion = $this->getEnabledAndValidPromotion(
             $code,
-            Promotion::TYPE_NEW_ACCOUNT
+            PromotionTypeEnum::NEW_ACCOUNT
         );
         $result = false;
 
@@ -70,8 +71,8 @@ class PromotionService
     {
         $saveUser = false;
 
-        if ((Promotion::TYPE_SYSTEM === $promotion->getType())
-            || ((\in_array($promotion->getType(), [Promotion::TYPE_EXISTING_ACCOUNT, Promotion::TYPE_NEW_ACCOUNT], true))
+        if ((PromotionTypeEnum::SYSTEM === $promotion->getType())
+            || ((\in_array($promotion->getType(), [PromotionTypeEnum::EXISTING_ACCOUNT, PromotionTypeEnum::NEW_ACCOUNT], true))
             && (false === $user->hasPromotion($promotion)))
         ) {
             $user->addPromotion($promotion);
@@ -96,7 +97,7 @@ class PromotionService
     {
         $promotion = $this->getEnabledAndValidPromotion(
             $code,
-            Promotion::TYPE_SYSTEM
+            PromotionTypeEnum::SYSTEM
         );
 
         $result = false;

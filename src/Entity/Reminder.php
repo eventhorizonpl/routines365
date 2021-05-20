@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\ReminderTypeEnum;
 use App\Repository\ReminderRepository;
 use DateTime;
 use DateTimeImmutable;
@@ -25,15 +26,6 @@ class Reminder
     use Traits\LockableTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_DAILY = 'daily';
-    public const TYPE_FRIDAY = 'friday';
-    public const TYPE_MONDAY = 'monday';
-    public const TYPE_SATURDAY = 'saturday';
-    public const TYPE_SUNDAY = 'sunday';
-    public const TYPE_THURSDAY = 'thursday';
-    public const TYPE_TUESDAY = 'tuesday';
-    public const TYPE_WEDNESDAY = 'wednesday';
 
     /**
      * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="reminder", orphanRemoval=true, targetEntity=ReminderMessage::class)
@@ -156,7 +148,7 @@ class Reminder
         $this->sentReminders = new ArrayCollection();
         $this->sendSms = false;
         $this->sendToBrowser = false;
-        $this->type = self::TYPE_DAILY;
+        $this->type = ReminderTypeEnum::DAILY;
     }
 
     public function __toString(): string
@@ -388,14 +380,14 @@ class Reminder
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_DAILY => self::TYPE_DAILY,
-            self::TYPE_MONDAY => self::TYPE_MONDAY,
-            self::TYPE_TUESDAY => self::TYPE_TUESDAY,
-            self::TYPE_WEDNESDAY => self::TYPE_WEDNESDAY,
-            self::TYPE_THURSDAY => self::TYPE_THURSDAY,
-            self::TYPE_FRIDAY => self::TYPE_FRIDAY,
-            self::TYPE_SATURDAY => self::TYPE_SATURDAY,
-            self::TYPE_SUNDAY => self::TYPE_SUNDAY,
+            ReminderTypeEnum::DAILY => ReminderTypeEnum::DAILY,
+            ReminderTypeEnum::MONDAY => ReminderTypeEnum::MONDAY,
+            ReminderTypeEnum::TUESDAY => ReminderTypeEnum::TUESDAY,
+            ReminderTypeEnum::WEDNESDAY => ReminderTypeEnum::WEDNESDAY,
+            ReminderTypeEnum::THURSDAY => ReminderTypeEnum::THURSDAY,
+            ReminderTypeEnum::FRIDAY => ReminderTypeEnum::FRIDAY,
+            ReminderTypeEnum::SATURDAY => ReminderTypeEnum::SATURDAY,
+            ReminderTypeEnum::SUNDAY => ReminderTypeEnum::SUNDAY,
         ];
     }
 

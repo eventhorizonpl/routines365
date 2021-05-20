@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Achievement, Note, Routine, User};
+use App\Enum\{AchievementTypeEnum, UserRoleEnum};
 use App\Factory\NoteFactory;
 use App\Form\Frontend\NoteType;
 use App\Manager\NoteManager;
@@ -20,7 +21,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/notes', name: 'frontend_note_')]
 class NoteController extends AbstractController
 {
@@ -77,7 +78,7 @@ class NoteController extends AbstractController
 
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $noteManager->save($note, (string) $user);
-            $achievement = $achievementService->manageAchievements($user, Achievement::TYPE_CREATED_NOTE);
+            $achievement = $achievementService->manageAchievements($user, AchievementTypeEnum::CREATED_NOTE);
 
             if (null !== $achievement) {
                 $this->addFlash(

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Report;
+use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use App\Factory\ReportFactory;
 use App\Manager\ReportManager;
 use App\Service\ReportService;
@@ -50,8 +51,8 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         $this->purge();
 
         $data = ['test'];
-        $status = Report::STATUS_FINISHED;
-        $type = Report::TYPE_POST_REMIND_MESSAGES;
+        $status = ReportStatusEnum::FINISHED;
+        $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $report = $this->reportService->create(
             $data,
             $status,
@@ -68,8 +69,8 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         $this->purge();
 
         $data = [['test']];
-        $status = Report::STATUS_FINISHED;
-        $type = Report::TYPE_POST_REMIND_MESSAGES;
+        $status = ReportStatusEnum::FINISHED;
+        $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $report = $this->reportService->create(
             $data,
             $status,
@@ -88,7 +89,7 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
 
         $this->assertInstanceOf(Report::class, $report);
         $this->assertCount(2, $report->getData());
-        $this->assertSame(Report::STATUS_IN_PROGRESS, $report->getStatus());
+        $this->assertSame(ReportStatusEnum::IN_PROGRESS, $report->getStatus());
     }
 
     public function testCreatePostRemindMessages(): void
@@ -98,8 +99,8 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         $report = $this->reportService->createPostRemindMessages();
         $this->assertInstanceOf(Report::class, $report);
         $this->assertSame([], $report->getData());
-        $this->assertSame(Report::STATUS_INITIAL, $report->getStatus());
-        $this->assertSame(Report::TYPE_POST_REMIND_MESSAGES, $report->getType());
+        $this->assertSame(ReportStatusEnum::INITIAL, $report->getStatus());
+        $this->assertSame(ReportTypeEnum::POST_REMIND_MESSAGES, $report->getType());
     }
 
     public function testFinish(): void
@@ -107,8 +108,8 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         $this->purge();
 
         $data = [['test']];
-        $status = Report::STATUS_IN_PROGRESS;
-        $type = Report::TYPE_POST_REMIND_MESSAGES;
+        $status = ReportStatusEnum::IN_PROGRESS;
+        $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $report = $this->reportService->create(
             $data,
             $status,
@@ -123,6 +124,6 @@ final class ReportServiceTest extends AbstractDoctrineTestCase
         $report = $this->reportService->finish($report);
 
         $this->assertInstanceOf(Report::class, $report);
-        $this->assertSame(Report::STATUS_FINISHED, $report->getStatus());
+        $this->assertSame(ReportStatusEnum::FINISHED, $report->getStatus());
     }
 }

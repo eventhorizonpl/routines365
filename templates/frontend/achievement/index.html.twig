@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="row text-center">
                         {% for achievement in achievements %}
-                            {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_COMPLETED_ROUTINE') %}
+                            {% if achievement.type == constant('App\\Enum\\AchievementTypeEnum::COMPLETED_ROUTINE') %}
                                 <div class="col-6 col-lg-3 col-md-4 mb-3 mt-3">
                                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-light{% endif %} p-3" style="min-width: 151px;">
                                         <h4>
@@ -51,7 +51,7 @@
                 <div class="card-body">
                     <div class="row text-center">
                         {% for achievement in achievements %}
-                            {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_COMPLETED_GOAL') %}
+                            {% if achievement.type == constant('App\\Enum\\AchievementTypeEnum::COMPLETED_GOAL') %}
                                 <div class="col-6 col-lg-3 col-md-4 mb-3 mt-3">
                                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-light{% endif %} p-3" style="min-width: 151px;">
                                         <h4>
@@ -82,7 +82,7 @@
                 <div class="card-body">
                     <div class="row text-center">
                         {% for achievement in achievements %}
-                            {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_COMPLETED_PROJECT') %}
+                            {% if achievement.type == constant('App\\Enum\\AchievementTypeEnum::COMPLETED_PROJECT') %}
                                 <div class="col-6 col-lg-3 col-md-4 mb-3 mt-3">
                                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-light{% endif %} p-3" style="min-width: 151px;">
                                         <h4>
@@ -113,7 +113,7 @@
                 <div class="card-body">
                     <div class="row text-center">
                         {% for achievement in achievements %}
-                            {% if achievement.type == constant('App\\Entity\\Achievement::TYPE_CREATED_NOTE') %}
+                            {% if achievement.type == constant('App\\Enum\\AchievementTypeEnum::CREATED_NOTE') %}
                                 <div class="col-6 col-lg-3 col-md-4 mb-3 mt-3">
                                     <div class="badge {% if user.hasAchievement(achievement) %}badge-primary{% else %}badge-light{% endif %} p-3" style="min-width: 151px;">
                                         <h4>

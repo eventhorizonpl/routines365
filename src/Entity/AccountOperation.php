@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\AccountOperationTypeEnum;
 use App\Repository\AccountOperationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
@@ -19,9 +20,6 @@ class AccountOperation
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
-
-    public const TYPE_DEPOSIT = 'deposit';
-    public const TYPE_WITHDRAW = 'withdraw';
 
     /**
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
@@ -152,8 +150,8 @@ class AccountOperation
     public static function getTypeFormChoices(): array
     {
         return [
-            self::TYPE_DEPOSIT => self::TYPE_DEPOSIT,
-            self::TYPE_WITHDRAW => self::TYPE_WITHDRAW,
+            AccountOperationTypeEnum::DEPOSIT => AccountOperationTypeEnum::DEPOSIT,
+            AccountOperationTypeEnum::WITHDRAW => AccountOperationTypeEnum::WITHDRAW,
         ];
     }
 

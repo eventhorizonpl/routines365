@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Frontend;
 
 use App\Entity\{Reward, Routine, User};
+use App\Enum\UserRoleEnum;
 use App\Factory\RewardFactory;
 use App\Form\Frontend\RewardType;
 use App\Manager\RewardManager;
@@ -18,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(User::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER)]
 #[Route('/rewards', name: 'frontend_reward_')]
 class RewardController extends AbstractController
 {

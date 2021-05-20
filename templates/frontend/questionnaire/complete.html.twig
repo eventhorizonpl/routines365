@@ -35,12 +35,12 @@
                                                                 <li class="mb-2">
                                                                     <div class="row">
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input ml-1 mt-2" id="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}" name="{{ question.uuid }}{% if question.type == constant('App\\Entity\\Question::TYPE_MULTIPLE_ANSWER') %}[]{% endif %}" type="{% if question.type == constant('App\\Entity\\Question::TYPE_MULTIPLE_ANSWER') %}checkbox{% else %}radio{% endif %}" value="{{ answer.uuid }}" {% if question.type == constant('App\\Entity\\Question::TYPE_SINGLE_ANSWER') %}required{% endif %}>
+                                                                            <input class="form-check-input ml-1 mt-2" id="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}" name="{{ question.uuid }}{% if question.type == constant('App\\Enum\\QuestionTypeEnum::MULTIPLE_ANSWER') %}[]{% endif %}" type="{% if question.type == constant('App\\Enum\\QuestionTypeEnum::MULTIPLE_ANSWER') %}checkbox{% else %}radio{% endif %}" value="{{ answer.uuid }}" {% if question.type == constant('App\\Enum\\QuestionTypeEnum::SINGLE_ANSWER') %}required{% endif %}>
                                                                             <label class="form-check-label ml-4 mt-1" for="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}">
                                                                                 {{ answer.content }}
                                                                             </label>
-                                                                            {% if answer.type == constant('App\\Entity\\Answer::TYPE_OWN') %}
-                                                                                <input class="form-control mt-3" id="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}_own" name="{{ question.uuid }}_{{ answer.uuid }}_{{ constant('App\\Entity\\Answer::TYPE_OWN') }}" type="text">
+                                                                            {% if answer.type == constant('App\\Enum\\AnswerTypeEnum::OWN') %}
+                                                                                <input class="form-control mt-3" id="{{ questionnaire.uuid }}_{{ question.uuid }}_{{ answer.uuid }}_own" name="{{ question.uuid }}_{{ answer.uuid }}_{{ constant('App\\Enum\\AnswerTypeEnum::OWN') }}" type="text">
                                                                             {% endif %}
                                                                         </div>
                                                                     </div>

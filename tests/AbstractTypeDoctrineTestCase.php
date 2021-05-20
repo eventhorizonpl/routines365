@@ -38,7 +38,6 @@ abstract class AbstractTypeDoctrineTestCase extends TypeTestCase implements Serv
         $this->entityManager->getConnection()->rollBack();
         $this->entityManager->close();
         $this->entityManager = null;
-        $this->entityManager = null;
 
         $refl = new ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {

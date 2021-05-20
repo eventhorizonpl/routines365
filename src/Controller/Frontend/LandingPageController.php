@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Frontend;
 
-use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Service\PromotionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +35,7 @@ class LandingPageController extends AbstractController
     {
         $promotion = $promotionService->getEnabledAndValidPromotion(
             'PLUS10NR',
-            Promotion::TYPE_NEW_ACCOUNT
+            PromotionTypeEnum::NEW_ACCOUNT
         );
 
         return $this->render('frontend/landing_page/_register.html.twig', [

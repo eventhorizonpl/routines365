@@ -36,7 +36,6 @@ abstract class AbstractDoctrineTestCase extends AbstractTestCase implements Serv
         $this->entityManager->getConnection()->rollBack();
         $this->entityManager->close();
         $this->entityManager = null;
-        $this->entityManager = null;
 
         parent::tearDown();
     }

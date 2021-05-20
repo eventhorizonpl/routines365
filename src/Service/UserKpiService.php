@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{User, UserKpi};
+use App\Enum\UserKpiTypeEnum;
 use App\Factory\UserKpiFactory;
 use App\Manager\UserKpiManager;
 use App\Repository\{UserKpiRepository, UserRepository};
@@ -78,7 +79,7 @@ class UserKpiService
                     $user,
                     $previousUserKpi
                 );
-                if (\in_array($type, [UserKpi::TYPE_ANNUALLY, UserKpi::TYPE_MONTHLY, UserKpi::TYPE_WEEKLY], true)) {
+                if (\in_array($type, [UserKpiTypeEnum::ANNUALLY, UserKpiTypeEnum::MONTHLY, UserKpiTypeEnum::WEEKLY], true)) {
                     $this->emailService->sendUserKpi(
                         $user->getEmail(),
                         $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()]),
