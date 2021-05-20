@@ -1,4 +1,8 @@
-{% apply inky_to_html %}
+{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}
+    <style>
+        {{ encore_entry_css_source('email') }}
+    </style>
+
     <container>
         <row>
             <columns>
@@ -12,21 +16,19 @@
 
     <container>
         <row>
-            <columns>
-                <center>
-                    <menu class="text-center">
-                        <item href="{{ url('frontend_home') }}">Homepage</item>
-                        | <item href="{{ url('frontend_static_page_contact') }}">Contact</item>
-                        | <item href="{{ url('frontend_static_page_faq') }}">FAQ</item>
-                        | <item href="{{ url('frontend_static_page_how_to') }}">How-to</item>
-                        | <item href="{{ url('frontend_user_kyt_start') }}">Know your tools</item>
-                        | <item href="{{ url('security_login') }}">Login</item>
-                        {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
-                            | <item href="{{ url('security_register') }}">Register</item>
-                        {% endif %}
-                    </menu>
-                </center>
-            </columns>
+            <center>
+                <menu>
+                    <item href="{{ url('frontend_home') }}">Homepage</item>
+                    <item href="{{ url('frontend_static_page_contact') }}">Contact</item>
+                    <item href="{{ url('frontend_static_page_faq') }}">FAQ</item>
+                    <item href="{{ url('frontend_static_page_how_to') }}">How-to</item>
+                    <item href="{{ url('frontend_user_kyt_start') }}">Know your tools</item>
+                    <item href="{{ url('security_login') }}">Login</item>
+                    {% if true == constant('App\\Resource\\ConfigResource::REGISTRATION_ENABLED') %}
+                        <item href="{{ url('security_register') }}">Register</item>
+                    {% endif %}
+                </menu>
+            </center>
         </row>
     </container>
 {% endapply %}

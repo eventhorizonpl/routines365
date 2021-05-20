@@ -32,11 +32,12 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
+    .addEntry('admin', './assets/js/admin.js')
+    .addEntry('email', './assets/js/email.js')
     .addEntry('frontend-dark', './assets/js/frontend-dark.js')
     .addEntry('frontend-light', './assets/js/frontend-light.js')
     .addEntry('frontend-profile-edit', './assets/js/frontend-profile-edit.js')
     .addEntry('frontend-routines', './assets/js/frontend-routines.js')
-    .addEntry('admin', './assets/js/admin.js')
     //.addEntry('app', './assets/app.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
