@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\{ChoiceType, TextareaType};
 use Symfony\Component\Form\{AbstractType, FormBuilderInterface};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BaseContactType extends AbstractType
+abstract class BaseContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
