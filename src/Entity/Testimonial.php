@@ -70,7 +70,7 @@ class Testimonial
         return $this->getUuid();
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -82,7 +82,7 @@ class Testimonial
         return $this;
     }
 
-    public function getSignature(): string
+    public function getSignature(): ?string
     {
         return $this->signature;
     }

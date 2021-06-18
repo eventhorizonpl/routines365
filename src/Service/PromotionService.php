@@ -37,7 +37,7 @@ class PromotionService
         return $promotion;
     }
 
-    public function applyExistingAccountPromotion(string $code, User $user): bool
+    public function applyExistingAccountPromotion(string $code, User $user): ?bool
     {
         $promotion = $this->getEnabledAndValidPromotion(
             $code,
@@ -52,7 +52,7 @@ class PromotionService
         return $result;
     }
 
-    public function applyNewAccountPromotion(string $code, User $user): bool
+    public function applyNewAccountPromotion(string $code, User $user): ?bool
     {
         $promotion = $this->getEnabledAndValidPromotion(
             $code,
@@ -93,7 +93,7 @@ class PromotionService
         return $saveUser;
     }
 
-    public function applySystemPromotion(string $code, User $user): bool
+    public function applySystemPromotion(string $code, User $user): ?bool
     {
         $promotion = $this->getEnabledAndValidPromotion(
             $code,

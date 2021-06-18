@@ -37,7 +37,7 @@ class RegistrationController extends AbstractController
         UserManager $userManager,
         UserRepository $userRepository,
         UserService $userService
-    ): Response {
+    ): ?Response {
         if (true !== ConfigResource::REGISTRATION_ENABLED) {
             return $this->redirectToRoute('frontend_home');
         }

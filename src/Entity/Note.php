@@ -99,7 +99,7 @@ class Note
         return $this->getUuid();
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -123,7 +123,7 @@ class Note
         return $this;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }

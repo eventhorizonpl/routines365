@@ -69,7 +69,7 @@ class AchievementRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
-    public function findByRequirementAndType($requirement, $type): array
+    public function findByRequirementAndType(int $requirement, ?string $type): array
     {
         $queryBuilder = $this->createQueryBuilder('a')
             ->select('a')

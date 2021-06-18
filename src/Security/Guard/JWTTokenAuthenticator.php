@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class JWTTokenAuthenticator extends BaseJWTTokenAuthenticator
 {
-    public function getUser($preAuthToken, UserProviderInterface $userProvider): User
+    public function getUser($preAuthToken, UserProviderInterface $userProvider): ?User
     {
         $user = parent::getUser($preAuthToken, $userProvider);
 

@@ -22,7 +22,7 @@ class AmazonSnsService implements SmsServiceInterface
         ]);
     }
 
-    public function send(string $message, string $phone): string
+    public function send(string $message, string $phone): ?string
     {
         $result = $this->snsClient->publish(new PublishInput([
             'Message' => $message,

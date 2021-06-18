@@ -66,7 +66,7 @@ class Answer
         return $this->getContent();
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }

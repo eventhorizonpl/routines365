@@ -10,7 +10,7 @@ class SmsService implements SmsServiceInterface
     {
     }
 
-    public function send(string $message, string $phone): string
+    public function send(string $message, string $phone): ?string
     {
         return $this->amazonSnsService->send($message, $phone);
     }

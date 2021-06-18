@@ -90,7 +90,7 @@ class Quote
         return sprintf('"%s" - %s', $this->getContent(), $this->getAuthor());
     }
 
-    public function getAuthor(): string
+    public function getAuthor(): ?string
     {
         return $this->author;
     }

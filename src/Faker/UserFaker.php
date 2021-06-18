@@ -157,7 +157,7 @@ class UserFaker
     public function createRichUserPersisted(
         ?string $email = null,
         ?string $password = null
-    ) {
+    ): User {
         if (null === $email) {
             $email = self::CUSTOMER_EMAIL;
         }

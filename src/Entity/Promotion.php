@@ -104,7 +104,7 @@ class Promotion
         return $this->getCode();
     }
 
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -140,7 +140,7 @@ class Promotion
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
