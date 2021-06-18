@@ -11,6 +11,7 @@ use App\Repository\{RetentionRepository, UserRepository};
 use App\Util\DateTimeImmutableUtil;
 use DateTime;
 use DateTimeImmutable;
+use DateTimeInterface;
 
 class RetentionService
 {
@@ -105,7 +106,7 @@ class RetentionService
         return $this;
     }
 
-    public function getEndDate(DateTime $pointerTime): DateTimeImmutable
+    public function getEndDate(DateTimeInterface $pointerTime): DateTimeImmutable
     {
         $dateTime = clone $pointerTime;
         $dateTime->modify('+1 month');
