@@ -2,3 +2,8 @@ framework:
     router:
         utf8: true
         default_uri: https://%domain%
+
+when@prod:
+    framework:
+        router:
+            strict_requirements: null
