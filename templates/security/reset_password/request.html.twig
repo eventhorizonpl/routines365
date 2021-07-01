@@ -9,9 +9,9 @@
                 </div>
                 <div class="card-body">
                     {{ form_start(requestForm) }}
-                        {% for flashError in app.flashes('reset_password_error') %}
+                        {% for flash_error in app.flashes('reset_password_error') %}
                             <div class="alert alert-danger" role="alert">
-                                {{ flashError }}
+                                {{ flash_error }}
                             </div>
                         {% endfor %}
                         <div class="row">

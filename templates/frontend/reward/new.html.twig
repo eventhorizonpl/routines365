@@ -22,7 +22,7 @@
                             <i aria-hidden="true" class="bi bi-question-square"></i>
                         </a>
                         {% if reward.routine %}
-                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm ml-2" href="{{ path('frontend_routine_show_rewards', {'uuid': reward.routine.uuid }) }}" title="{{ 'Close'|trans }}">
+                            <a aria-label="{{ 'Close'|trans }}" class="btn btn-secondary btn-sm ml-2" href="{{ path('frontend_routine_show_rewards', {'uuid': reward.routine.uuid}) }}" title="{{ 'Close'|trans }}">
                                 <i aria-hidden="true" class="bi bi-x-square"></i>
                             </a>
                         {% else %}

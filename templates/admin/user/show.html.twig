@@ -496,10 +496,10 @@
                                 <td>
                                     {% if user.userKpisAll|length %}
                                         <ul>
-                                            {% for userKpi in user.userKpisAll %}
+                                            {% for user_kpi in user.userKpisAll %}
                                                 <li>
-                                                    <a href="{{ path('admin_user_kpi_show', {'uuid': userKpi.uuid}) }}">
-                                                        {{ userKpi.uuid }}
+                                                    <a href="{{ path('admin_user_kpi_show', {'uuid': user_kpi.uuid}) }}">
+                                                        {{ user_kpi.uuid }}
                                                     </a>
                                                 </li>
                                             {% endfor %}

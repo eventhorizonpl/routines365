@@ -8,7 +8,7 @@
                     {{ 'Two-factor authentication'|trans }}
                 </div>
                 <div class="card-body">
-                    <form class="form" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post">
+                    <form class="form" action="{{ checkPathUrl ? checkPathUrl : path(checkPathRoute) }}" method="post">
                         {% if authenticationError %}
                             <div class="alert alert-danger">
                                 {{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}
