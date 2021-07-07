@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\ApiPlatform;
+namespace App\Tests\OpenApi;
 
 use ApiPlatform\Core\Metadata\Property\{PropertyMetadata, PropertyNameCollection};
 use ApiPlatform\Core\Metadata\Resource\{ResourceMetadata, ResourceNameCollection};
