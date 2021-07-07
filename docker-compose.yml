@@ -6,9 +6,7 @@ services:
             MYSQL_DATABASE: routines365
             MYSQL_USER: admin
             MYSQL_PASSWORD: admin
-        image: mariadb:10.5.9-focal
-        ports:
-          - '3306:3306'
+        image: mariadb:10.5.11-focal
         restart: on-failure
     routines365-nginx:
         build:
@@ -23,4 +21,6 @@ services:
         build:
             context: .
             dockerfile: docker/php-fpm.d/Dockerfile.dev
+        depends_on:
+            - mariadb
         restart: on-failure
