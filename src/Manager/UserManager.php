@@ -208,9 +208,15 @@ class UserManager
 
     public function updateLastActivityAt(User $user): User
     {
-        $user
-            ->setLastActivityAt(new DateTimeImmutable())
-        ;
+        $user->setLastActivityAt(new DateTimeImmutable());
+        $this->save($user);
+
+        return $user;
+    }
+
+    public function updateLastLoginAt(User $user): User
+    {
+        $user->setLastLoginAt(new DateTimeImmutable());
         $this->save($user);
 
         return $user;

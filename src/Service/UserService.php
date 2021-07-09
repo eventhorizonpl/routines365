@@ -54,10 +54,7 @@ class UserService
 
     public function onAuthenticationSuccess(User $user): User
     {
-        $user
-            ->setLastLoginAt(new DateTimeImmutable())
-        ;
-        $this->userManager->save($user);
+        $this->userManager->updateLastLoginAt($user);
 
         return $user;
     }
