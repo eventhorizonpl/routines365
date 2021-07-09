@@ -11,6 +11,7 @@ use App\Manager\GoalManager;
 use App\Repository\GoalRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -18,6 +19,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class GoalManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -37,11 +42,11 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->goalManager = null;
         $this->goalRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -55,7 +60,11 @@ final class GoalManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $goalManager = new GoalManager($this->entityManager, $this->validator);
+        $goalManager = new GoalManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->validator
+        );
 
         $this->assertInstanceOf(GoalManager::class, $goalManager);
     }

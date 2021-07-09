@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\{CompletedRoutineManager, GoalManager, NoteManager, ReminderManager, RewardManager, RoutineManager};
 use App\Repository\RoutineRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -21,6 +22,10 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
      * @inject
      */
     private ?CompletedRoutineManager $completedRoutineManager;
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -57,6 +62,7 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
     protected function tearDown(): void
     {
         $this->completedRoutineManager = null;
+        $this->eventDispatcher = null;
         $this->goalManager = null;
         $this->noteManager = null;
         $this->reminderManager = null;
@@ -64,8 +70,7 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
         $this->routineManager = null;
         $this->routineRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -93,6 +98,7 @@ final class RoutineManagerTest extends AbstractDoctrineTestCase
         $routineManager = new RoutineManager(
             $this->completedRoutineManager,
             $this->entityManager,
+            $this->eventDispatcher,
             $this->goalManager,
             $this->noteManager,
             $this->reminderManager,

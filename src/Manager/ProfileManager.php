@@ -90,10 +90,10 @@ class ProfileManager
 
         if (true === $flush) {
             $this->entityManager->flush();
-        }
 
-        foreach ($profile->getUser()->getReminders() as $reminder) {
-            $this->reminderManager->save($reminder);
+            foreach ($profile->getUser()->getReminders() as $reminder) {
+                $this->reminderManager->save($reminder, null, true, false);
+            }
         }
 
         return $this;

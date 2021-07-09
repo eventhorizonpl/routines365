@@ -67,10 +67,10 @@ class UserService
         $page = 1;
         $limit = 5;
 
-        $lastLoginAt = new DateTime();
-        $lastLoginAt->modify('-1 day');
-        $lastLoginAt = DateTimeImmutable::createFromMutable($lastLoginAt);
-        $usersQuery = $this->userRepository->findForRewardUserActivity($lastLoginAt);
+        $lastActivityAt = new DateTime();
+        $lastActivityAt->modify('-1 day');
+        $lastActivityAt = DateTimeImmutable::createFromMutable($lastActivityAt);
+        $usersQuery = $this->userRepository->findForRewardUserActivity($lastActivityAt);
 
         do {
             $users = $this->paginator->paginate($usersQuery, $page, $limit);

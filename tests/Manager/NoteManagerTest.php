@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\NoteManager;
 use App\Repository\NoteRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -17,6 +18,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class NoteManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -36,11 +41,11 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->noteManager = null;
         $this->noteRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -54,7 +59,11 @@ final class NoteManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $noteManager = new NoteManager($this->entityManager, $this->validator);
+        $noteManager = new NoteManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->validator
+        );
 
         $this->assertInstanceOf(NoteManager::class, $noteManager);
     }

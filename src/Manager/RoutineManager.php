@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Manager;
 
 use App\Entity\Routine;
+use App\Event\UserLastActivityUpdate;
 use App\Exception\ManagerException;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -16,6 +18,7 @@ class RoutineManager
     public function __construct(
         private CompletedRoutineManager $completedRoutineManager,
         private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
         private GoalManager $goalManager,
         private NoteManager $noteManager,
         private ReminderManager $reminderManager,
@@ -73,6 +76,9 @@ class RoutineManager
 
         if (true === $flush) {
             $this->entityManager->flush();
+
+            $event = new UserLastActivityUpdate($routine->getUser());
+            $this->eventDispatcher->dispatch($event, UserLastActivityUpdate::NAME);
         }
 
         return $this;

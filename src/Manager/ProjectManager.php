@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Manager;
 
 use App\Entity\Project;
+use App\Event\UserLastActivityUpdate;
 use App\Exception\ManagerException;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -15,6 +17,7 @@ class ProjectManager
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
         private GoalManager $goalManager,
         private ValidatorInterface $validator
     ) {
@@ -79,6 +82,9 @@ class ProjectManager
 
         if (true === $flush) {
             $this->entityManager->flush();
+
+            $event = new UserLastActivityUpdate($project->getUser());
+            $this->eventDispatcher->dispatch($event, UserLastActivityUpdate::NAME);
         }
 
         return $this;

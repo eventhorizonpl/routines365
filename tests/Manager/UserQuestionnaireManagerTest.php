@@ -10,6 +10,7 @@ use App\Faker\{QuestionnaireFaker, UserFaker, UserQuestionnaireFaker};
 use App\Manager\UserQuestionnaireManager;
 use App\Repository\UserQuestionnaireRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -17,6 +18,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -44,12 +49,12 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->userQuestionnaireFaker = null;
         $this->userQuestionnaireManager = null;
         $this->userQuestionnaireRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -77,6 +82,7 @@ final class UserQuestionnaireManagerTest extends AbstractDoctrineTestCase
     {
         $userQuestionnaireManager = new UserQuestionnaireManager(
             $this->entityManager,
+            $this->eventDispatcher,
             $this->validator
         );
 

@@ -1,7 +1,10 @@
 api_platform:
+    description: 'Routines 365 API'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    title: 'Routines 365'
+    version: '%env(VERSION)%'

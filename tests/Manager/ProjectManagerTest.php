@@ -11,6 +11,7 @@ use App\Manager\{GoalManager, ProjectManager};
 use App\Repository\ProjectRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -18,6 +19,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class ProjectManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -41,12 +46,12 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->goalManager = null;
         $this->projectManager = null;
         $this->projectRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -60,7 +65,12 @@ final class ProjectManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $projectManager = new ProjectManager($this->entityManager, $this->goalManager, $this->validator);
+        $projectManager = new ProjectManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->goalManager,
+            $this->validator
+        );
 
         $this->assertInstanceOf(ProjectManager::class, $projectManager);
     }

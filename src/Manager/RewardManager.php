@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Manager;
 
 use App\Entity\Reward;
+use App\Event\UserLastActivityUpdate;
 use App\Exception\ManagerException;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -15,6 +17,7 @@ class RewardManager
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
         private ValidatorInterface $validator
     ) {
     }
@@ -74,6 +77,9 @@ class RewardManager
 
         if (true === $flush) {
             $this->entityManager->flush();
+
+            $event = new UserLastActivityUpdate($reward->getUser());
+            $this->eventDispatcher->dispatch($event, UserLastActivityUpdate::NAME);
         }
 
         return $this;

@@ -11,6 +11,7 @@ use App\Manager\{ReminderManager, ReminderMessageManager, SentReminderManager};
 use App\Repository\ReminderRepository;
 use App\Tests\AbstractDoctrineTestCase;
 use DateTimeImmutable;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -18,6 +19,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class ReminderManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -45,13 +50,13 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->reminderManager = null;
         $this->reminderMessageManager = null;
         $this->reminderRepository = null;
         $this->sentReminderManager = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -67,6 +72,7 @@ final class ReminderManagerTest extends AbstractDoctrineTestCase
     {
         $reminderManager = new ReminderManager(
             $this->entityManager,
+            $this->eventDispatcher,
             $this->reminderMessageManager,
             $this->sentReminderManager,
             $this->validator

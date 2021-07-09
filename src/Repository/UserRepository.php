@@ -141,7 +141,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return (int) $query->getSingleScalarResult();
     }
 
-    public function findForRewardUserActivity(DateTimeImmutable $lastLoginAt): Query
+    public function findForRewardUserActivity(DateTimeImmutable $lastActivityAt): Query
     {
         $queryBuilder = $this->createQueryBuilder('u')
             ->select('u, ua, up')
@@ -151,11 +151,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->andWhere('u.isEnabled = :isEnabled')
             ->andWhere('u.isVerified = :isVerified')
             ->andWhere('u.type = :type')
-            ->andWhere('u.lastLoginAt >= :lastLoginAt')
+            ->andWhere('u.lastActivityAt >= :lastActivityAt')
             ->addOrderBy('u.createdAt', 'DESC')
             ->setParameter('isEnabled', true)
             ->setParameter('isVerified', true)
-            ->setParameter('lastLoginAt', $lastLoginAt)
+            ->setParameter('lastActivityAt', $lastActivityAt)
             ->setParameter('type', UserTypeEnum::PROSPECT)
         ;
 

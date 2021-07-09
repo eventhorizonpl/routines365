@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\SavedEmailManager;
 use App\Repository\SavedEmailRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -17,6 +18,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -36,11 +41,11 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->savedEmailManager = null;
         $this->savedEmailRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -54,7 +59,11 @@ final class SavedEmailManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $savedEmailManager = new SavedEmailManager($this->entityManager, $this->validator);
+        $savedEmailManager = new SavedEmailManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->validator
+        );
 
         $this->assertInstanceOf(SavedEmailManager::class, $savedEmailManager);
     }

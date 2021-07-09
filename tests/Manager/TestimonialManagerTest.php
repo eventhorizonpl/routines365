@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\TestimonialManager;
 use App\Repository\TestimonialRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -17,6 +18,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class TestimonialManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -36,11 +41,11 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->testimonialManager = null;
         $this->testimonialRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -56,6 +61,7 @@ final class TestimonialManagerTest extends AbstractDoctrineTestCase
     {
         $testimonialManager = new TestimonialManager(
             $this->entityManager,
+            $this->eventDispatcher,
             $this->validator
         );
 

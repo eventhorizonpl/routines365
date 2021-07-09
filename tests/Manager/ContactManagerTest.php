@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\ContactManager;
 use App\Repository\ContactRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -28,6 +29,10 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?EventDispatcherInterface $eventDispatcher;
+    /**
+     * @inject
+     */
     private ?UserFaker $userFaker;
     /**
      * @inject
@@ -38,9 +43,9 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
     {
         $this->contactManager = null;
         $this->contactRepository = null;
+        $this->eventDispatcher = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -54,7 +59,11 @@ final class ContactManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $contactManager = new ContactManager($this->entityManager, $this->validator);
+        $contactManager = new ContactManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->validator
+        );
 
         $this->assertInstanceOf(ContactManager::class, $contactManager);
     }

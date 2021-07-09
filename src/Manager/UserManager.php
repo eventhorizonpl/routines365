@@ -206,6 +206,16 @@ class UserManager
         return $this;
     }
 
+    public function updateLastActivityAt(User $user): User
+    {
+        $user
+            ->setLastActivityAt(new DateTimeImmutable())
+        ;
+        $this->save($user);
+
+        return $user;
+    }
+
     public function validate(User $user): ConstraintViolationListInterface
     {
         return $this->validator->validate($user, null, ['system']);

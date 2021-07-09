@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Manager;
 
 use App\Entity\UserQuestionnaire;
+use App\Event\UserLastActivityUpdate;
 use App\Exception\ManagerException;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -15,6 +17,7 @@ class UserQuestionnaireManager
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
         private ValidatorInterface $validator
     ) {
     }
@@ -45,7 +48,7 @@ class UserQuestionnaireManager
         return $this;
     }
 
-    public function save(UserQuestionnaire $userQuestionnaire, string $actor, bool $flush = true): self
+    public function save(UserQuestionnaire $userQuestionnaire, string $actor, bool $flush = true, bool $dispatch = true): self
     {
         $date = new DateTimeImmutable();
         if (null === $userQuestionnaire->getId()) {
@@ -64,6 +67,11 @@ class UserQuestionnaireManager
 
         if (true === $flush) {
             $this->entityManager->flush();
+
+            if (true === $dispatch) {
+                $event = new UserLastActivityUpdate($userQuestionnaire->getUser());
+                $this->eventDispatcher->dispatch($event, UserLastActivityUpdate::NAME);
+            }
         }
 
         return $this;

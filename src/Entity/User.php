@@ -165,6 +165,13 @@ class User implements UserInterface, TwoFactorInterface
      */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    private ?DateTimeImmutable $lastActivityAt = null;
+
+    /**
+     * @ORM\Column(nullable=true, type="datetimetz_immutable")
+     */
+    #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[Groups(['gdpr'])]
     private ?DateTimeImmutable $lastLoginAt = null;
 
     /**
@@ -415,6 +422,18 @@ class User implements UserInterface, TwoFactorInterface
     public function setGoogleAuthenticatorSecret(?string $googleAuthenticatorSecret): self
     {
         $this->googleAuthenticatorSecret = $googleAuthenticatorSecret;
+
+        return $this;
+    }
+
+    public function getLastActivityAt(): ?DateTimeImmutable
+    {
+        return $this->lastActivityAt;
+    }
+
+    public function setLastActivityAt(?DateTimeImmutable $lastActivityAt): self
+    {
+        $this->lastActivityAt = $lastActivityAt;
 
         return $this;
     }

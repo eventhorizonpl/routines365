@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\RewardManager;
 use App\Repository\RewardRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -17,6 +18,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class RewardManagerTest extends AbstractDoctrineTestCase
 {
+    /**
+     * @inject
+     */
+    private ?EventDispatcherInterface $eventDispatcher;
     /**
      * @inject
      */
@@ -36,11 +41,11 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
 
     protected function tearDown(): void
     {
+        $this->eventDispatcher = null;
         $this->rewardManager = null;
         $this->rewardRepository = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -54,7 +59,11 @@ final class RewardManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $rewardManager = new RewardManager($this->entityManager, $this->validator);
+        $rewardManager = new RewardManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->validator
+        );
 
         $this->assertInstanceOf(RewardManager::class, $rewardManager);
     }

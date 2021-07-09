@@ -6,12 +6,14 @@ namespace App\Manager;
 
 use App\Entity\Reminder;
 use App\Enum\ReminderTypeEnum;
+use App\Event\UserLastActivityUpdate;
 use App\Exception\ManagerException;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -19,6 +21,7 @@ class ReminderManager
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private EventDispatcherInterface $eventDispatcher,
         private ReminderMessageManager $reminderMessageManager,
         private SentReminderManager $sentReminderManager,
         private ValidatorInterface $validator
@@ -97,7 +100,7 @@ class ReminderManager
         return $this;
     }
 
-    public function save(Reminder $reminder, string $actor = null, bool $flush = true): self
+    public function save(Reminder $reminder, string $actor = null, bool $flush = true, bool $dispatch = true): self
     {
         if (null === $actor) {
             $actor = (string) $reminder->getUser();
@@ -133,6 +136,11 @@ class ReminderManager
 
         if (true === $flush) {
             $this->entityManager->flush();
+
+            if (true === $dispatch) {
+                $event = new UserLastActivityUpdate($reminder->getUser());
+                $this->eventDispatcher->dispatch($event, UserLastActivityUpdate::NAME);
+            }
         }
 
         return $this;

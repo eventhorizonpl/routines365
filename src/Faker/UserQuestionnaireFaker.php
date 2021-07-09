@@ -45,7 +45,7 @@ class UserQuestionnaireFaker
             ->setQuestionnaire($questionnaire)
             ->setUser($user)
         ;
-        $this->userQuestionnaireManager->save($userQuestionnaire, (string) Uuid::v4());
+        $this->userQuestionnaireManager->save($userQuestionnaire, (string) Uuid::v4(), true, false);
 
         return $userQuestionnaire;
     }

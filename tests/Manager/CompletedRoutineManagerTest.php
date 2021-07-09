@@ -10,6 +10,7 @@ use App\Faker\UserFaker;
 use App\Manager\CompletedRoutineManager;
 use App\Repository\CompletedRoutineRepository;
 use App\Tests\AbstractDoctrineTestCase;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -28,6 +29,10 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     /**
      * @inject
      */
+    private ?EventDispatcherInterface $eventDispatcher;
+    /**
+     * @inject
+     */
     private ?UserFaker $userFaker;
     /**
      * @inject
@@ -38,9 +43,9 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
     {
         $this->completedRoutineManager = null;
         $this->completedRoutineRepository = null;
+        $this->eventDispatcher = null;
         $this->userFaker = null;
-        $this->validator = null
-        ;
+        $this->validator = null;
 
         parent::tearDown();
     }
@@ -54,7 +59,11 @@ final class CompletedRoutineManagerTest extends AbstractDoctrineTestCase
 
     public function testConstruct(): void
     {
-        $completedRoutineManager = new CompletedRoutineManager($this->entityManager, $this->validator);
+        $completedRoutineManager = new CompletedRoutineManager(
+            $this->entityManager,
+            $this->eventDispatcher,
+            $this->validator
+        );
 
         $this->assertInstanceOf(CompletedRoutineManager::class, $completedRoutineManager);
     }
