@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\DataPersister;
+namespace App\Tests\DataTransformer;
 
 use ApiPlatform\Core\Serializer\AbstractItemNormalizer;
 use App\DataTransformer\NoteCollectionInputDataTransformer;
