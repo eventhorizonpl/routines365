@@ -48,7 +48,7 @@ final class JWTTokenAuthenticatorTest extends AbstractDoctrineTestCase
     public function testGetUser(): void
     {
         $this->purge();
-        $user = $this->userFaker->createUserPersisted();
+        $user = $this->userFaker->createUserPersisted(null, true);
         $token = $this->jwtManager->create($user);
 
         $this->assertIsString($token);
