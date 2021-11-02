@@ -104,6 +104,13 @@ final class AccountOperationServiceTest extends AbstractDoctrineTestCase
         $notifications = 11;
         $smsNotifications = 12;
 
+        $accountOperation = $this->accountOperationService->deposit(
+            $user->getAccount(),
+            'test deposit',
+            $notifications,
+            $smsNotifications,
+        );
+
         $accountOperation = $this->accountOperationService->withdraw(
             $user->getAccount(),
             $description,
