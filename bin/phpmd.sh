@@ -2,7 +2,7 @@
 
 if [ ! -e phpmd.phar ]
 then
-    wget https://github.com/phpmd/phpmd/releases/download/2.10.1/phpmd.phar
+    wget https://github.com/phpmd/phpmd/releases/download/2.10.2/phpmd.phar
 fi
 
 if [ ! -d var/phpmd_report ]

@@ -90,7 +90,7 @@ abstract class AbstractUiTestCase extends PantherTestCase implements ServiceCont
         $refl = new ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {
             if ((!($prop->isStatic()))
-                && (0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_'))
+                && (!str_starts_with($prop->getDeclaringClass()->getName(), 'PHPUnit_'))
             ) {
                 $prop->setAccessible(true);
                 $prop->setValue($this, null);
