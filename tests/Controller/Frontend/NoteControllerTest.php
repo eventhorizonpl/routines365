@@ -33,7 +33,10 @@ final class NoteControllerTest extends AbstractUiTestCase
         $this->assertTrue(
             $crawler->filter('p:contains("You do not have any notes!")')->count() > 0
         );
+    }
 
+    public function testIndex2(): void
+    {
         $this->purge();
         $user = $this->createAndLoginRich();
         $note = $this->createNote($user);

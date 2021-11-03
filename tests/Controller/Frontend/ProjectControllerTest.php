@@ -28,7 +28,10 @@ final class ProjectControllerTest extends AbstractUiTestCase
         $this->assertTrue(
             $crawler->filter('p:contains("You do not have any projects!")')->count() > 0
         );
+    }
 
+    public function testIndex2(): void
+    {
         $this->purge();
         $user = $this->createAndLoginRich();
         $project = $this->createProject($user);

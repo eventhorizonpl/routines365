@@ -28,7 +28,10 @@ final class RoutineControllerTest extends AbstractUiTestCase
         $this->assertTrue(
             $crawler->filter('p:contains("You do not have any routines!")')->count() > 0
         );
+    }
 
+    public function testIndex2(): void
+    {
         $this->purge();
         $user = $this->createAndLoginRich();
         $routine = $this->createRoutine($user);

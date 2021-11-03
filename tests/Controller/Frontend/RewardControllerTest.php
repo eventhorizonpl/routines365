@@ -33,7 +33,10 @@ final class RewardControllerTest extends AbstractUiTestCase
         $this->assertTrue(
             $crawler->filter('p:contains("You do not have any rewards!")')->count() > 0
         );
+    }
 
+    public function testIndex2(): void
+    {
         $this->purge();
         $user = $this->createAndLoginRich();
         $reward = $this->createReward($user);
