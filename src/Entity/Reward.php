@@ -6,15 +6,14 @@ namespace App\Entity;
 
 use App\Enum\RewardTypeEnum;
 use App\Repository\RewardRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=RewardRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: RewardRepository::class)]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class Reward
 {
     use Traits\BlameableTrait;
@@ -25,74 +24,58 @@ class Reward
     public const CONTEXT_DEFAULT = 'default';
     public const CONTEXT_ROUTINE = 'routine';
 
-    /**
-     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="rewards", targetEntity=Routine::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'rewards', targetEntity: Routine::class)]
     private ?Routine $routine;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="rewards", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'rewards', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isAwarded;
 
-    /**
-     * @ORM\Column(length=64, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 64, type: Types::STRING)]
     private ?string $name;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\LessThanOrEqual(90, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $numberOfCompletions;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\Choice(callback: 'getRequiredNumberOfCompletionsValidationChoices', groups: ['form', 'system'])]
     #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
     #[Assert\LessThanOrEqual(90, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $requiredNumberOfCompletions;
 
-    /**
-     * @ORM\Column(length=24, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 24, type: Types::STRING)]
     private string $type;
 
     public function __construct()

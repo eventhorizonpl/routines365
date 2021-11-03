@@ -6,15 +6,14 @@ namespace App\Entity;
 
 use App\Enum\TestimonialStatusEnum;
 use App\Repository\TestimonialRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=TestimonialRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="status_idx", columns={"status"})})
- */
+#[ORM\Entity(repositoryClass: TestimonialRepository::class)]
+#[ORM\Index(name: 'status_idx', columns: ['status'])]
 class Testimonial
 {
     use Traits\BlameableTrait;
@@ -23,38 +22,30 @@ class Testimonial
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="testimonial", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', inversedBy: 'testimonial', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(length=255, nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $content;
 
-    /**
-     * @ORM\Column(length=128, nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 128)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 128, nullable: true, type: Types::STRING)]
     private ?string $signature;
 
-    /**
-     * @ORM\Column(length=8, type="string")
-     */
     #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 8, type: Types::STRING)]
     private string $status;
 
     public function __construct()

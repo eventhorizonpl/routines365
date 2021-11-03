@@ -6,42 +6,36 @@ namespace App\Entity;
 
 use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use App\Repository\ReportRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=ReportRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="status_idx", columns={"status"}), @ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: ReportRepository::class)]
+#[ORM\Index(name: 'status_idx', columns: ['status'])]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class Report
 {
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\Column(type="json")
-     */
     #[Assert\Type('array', groups: ['system'])]
+    #[ORM\Column(type: Types::JSON)]
     private array $data;
 
-    /**
-     * @ORM\Column(length=12, type="string")
-     */
     #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 12)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 12, type: Types::STRING)]
     private string $status;
 
-    /**
-     * @ORM\Column(length=24, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 24)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 24, type: Types::STRING)]
     private string $type;
 
     public function __construct()

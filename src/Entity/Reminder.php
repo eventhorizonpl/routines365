@@ -9,15 +9,15 @@ use App\Repository\ReminderRepository;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=ReminderRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="next_date_idx", columns={"next_date"}), @ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: ReminderRepository::class)]
+#[ORM\Index(name: 'next_date_idx', columns: ['next_date'])]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class Reminder
 {
     use Traits\BlameableTrait;
@@ -27,113 +27,85 @@ class Reminder
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="reminder", orphanRemoval=true, targetEntity=ReminderMessage::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'reminder', orphanRemoval: true, targetEntity: ReminderMessage::class)]
     private Collection $reminderMessages;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="reminder", orphanRemoval=true, targetEntity=SentReminder::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'reminder', orphanRemoval: true, targetEntity: SentReminder::class)]
     private Collection $sentReminders;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=Routine::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'reminders', targetEntity: Routine::class)]
     private Routine $routine;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="reminders", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'reminders', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(type="time_immutable")
-     */
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::TIME_IMMUTABLE)]
     private DateTimeImmutable $hour;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\Choice(callback: 'getMinutesBeforeValidationChoices', groups: ['form', 'system'])]
     #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
     #[Assert\LessThanOrEqual(60, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $minutesBefore;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $nextDate;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $nextDateLocalTime;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $previousDate;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $sendEmail;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $sendMotivationalMessage;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $sendSms;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['form', 'system'])]
     #[Assert\Type('bool', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $sendToBrowser;
 
-    /**
-     * @ORM\Column(length=10, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 10)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 10, type: Types::STRING)]
     private string $type;
 
     public function __construct()

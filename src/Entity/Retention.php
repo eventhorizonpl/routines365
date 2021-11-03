@@ -6,30 +6,25 @@ namespace App\Entity;
 
 use App\Repository\RetentionRepository;
 use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=RetentionRepository::class)
- */
+#[ORM\Entity(repositoryClass: RetentionRepository::class)]
 class Retention
 {
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\Column(type="json")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('array', groups: ['system'])]
+    #[ORM\Column(type: Types::JSON)]
     private array $data;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $date;
 
     public function __toString(): string

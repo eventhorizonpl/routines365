@@ -5,32 +5,28 @@ declare(strict_types=1);
 namespace App\Entity\Traits;
 
 use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait TimestampableTrait
 {
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     protected ?DateTimeImmutable $createdAt = null;
 
-    /**
-     * @ORM\Column(nullable=true, type="datetimetz_immutable")
-     */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::DATETIMETZ_IMMUTABLE)]
     protected ?DateTimeImmutable $deletedAt = null;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     protected ?DateTimeImmutable $updatedAt = null;
 
     public function getCreatedAt(): ?DateTimeImmutable

@@ -6,13 +6,12 @@ namespace App\Entity;
 
 use App\Repository\CompletedRoutineRepository;
 use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=CompletedRoutineRepository::class)
- */
+#[ORM\Entity(repositoryClass: CompletedRoutineRepository::class)]
 class CompletedRoutine
 {
     use Traits\BlameableTrait;
@@ -20,44 +19,34 @@ class CompletedRoutine
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="completedRoutines", targetEntity=Routine::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'completedRoutines', targetEntity: Routine::class)]
     private Routine $routine;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="completedRoutines", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'completedRoutines', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $comment;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $date;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['form', 'system'])]
     #[Assert\LessThanOrEqual(1024, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $minutesDevoted;
 
     public function __construct()

@@ -7,174 +7,133 @@ namespace App\Entity;
 use App\Enum\UserKpiTypeEnum;
 use App\Repository\UserKpiRepository;
 use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=UserKpiRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: UserKpiRepository::class)]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class UserKpi
 {
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="previousUserKpi", targetEntity=UserKpi::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', mappedBy: 'previousUserKpi', targetEntity: self::class)]
     private ?UserKpi $nextUserKpi = null;
 
-    /**
-     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="nextUserKpi", targetEntity=UserKpi::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', inversedBy: 'nextUserKpi', targetEntity: self::class)]
     private ?UserKpi $previousUserKpi = null;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userKpis", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'userKpis', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $accountOperationCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $awardedRewardCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $completedGoalCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $completedProjectCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $completedRoutineCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $contactCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $efficiency11;
 
-    /**
-     * @ORM\Column(type="datetimetz_immutable")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $date;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $goalCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $noteCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $projectCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $reminderCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $rewardCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $routineCounter;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $savedEmailCounter;
 
-    /**
-     * @ORM\Column(length=8, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 8, type: Types::STRING)]
     private string $type;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $userQuestionnaireCounter;
 
     public function __construct()

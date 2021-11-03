@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\GoalRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=GoalRepository::class)
- */
+#[ORM\Entity(repositoryClass: GoalRepository::class)]
 class Goal
 {
     use Traits\BlameableTrait;
@@ -23,42 +22,32 @@ class Goal
     public const CONTEXT_PROJECT = 'project';
     public const CONTEXT_ROUTINE = 'routine';
 
-    /**
-     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="goals", targetEntity=Project::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'goals', targetEntity: Project::class)]
     private ?Project $project;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="goals", targetEntity=Routine::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'goals', targetEntity: Routine::class)]
     private Routine $routine;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="goals", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'goals', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(length=64, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 64, type: Types::STRING)]
     private ?string $name;
 
     public function __construct()

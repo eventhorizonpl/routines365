@@ -7,13 +7,12 @@ namespace App\Entity;
 use App\Enum\AnswerTypeEnum;
 use App\Repository\AnswerRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=AnswerRepository::class)
- */
+#[ORM\Entity(repositoryClass: AnswerRepository::class)]
 class Answer
 {
     use Traits\BlameableTrait;
@@ -23,33 +22,25 @@ class Answer
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="answers", targetEntity=Question::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'answers', targetEntity: Question::class)]
     private Question $question;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="answer", orphanRemoval=true, targetEntity=UserQuestionnaireAnswer::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'answer', orphanRemoval: true, targetEntity: UserQuestionnaireAnswer::class)]
     private Collection $userQuestionnaireAnswers;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(type: Types::STRING)]
     private ?string $content;
 
-    /**
-     * @ORM\Column(length=24, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(length: 24, type: Types::STRING)]
     private string $type;
 
     public function __construct()

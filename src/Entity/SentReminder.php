@@ -9,32 +9,24 @@ use Doctrine\Common\Collections\{ArrayCollection, Collection};
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=SentReminderRepository::class)
- */
+#[ORM\Entity(repositoryClass: SentReminderRepository::class)]
 class SentReminder
 {
     use Traits\IdTrait;
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="sentReminders", targetEntity=Reminder::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'sentReminders', targetEntity: Reminder::class)]
     private Reminder $reminder;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="sentReminder", orphanRemoval=true, targetEntity=ReminderMessage::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'sentReminder', orphanRemoval: true, targetEntity: ReminderMessage::class)]
     private Collection $reminderMessages;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="sentReminders", targetEntity=Routine::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'sentReminders', targetEntity: Routine::class)]
     private Routine $routine;
 
     public function __construct()

@@ -6,12 +6,11 @@ namespace App\Entity;
 
 use App\Repository\QuestionnaireRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=QuestionnaireRepository::class)
- */
+#[ORM\Entity(repositoryClass: QuestionnaireRepository::class)]
 class Questionnaire
 {
     use Traits\BlameableTrait;
@@ -20,30 +19,22 @@ class Questionnaire
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="questionnaire", orphanRemoval=true, targetEntity=Question::class)
-     * @ORM\OrderBy({"position" = "ASC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'questionnaire', orphanRemoval: true, targetEntity: Question::class)]
+    #[ORM\OrderBy(['position' => 'ASC'])]
     private Collection $questions;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="questionnaire", orphanRemoval=true, targetEntity=UserQuestionnaire::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'questionnaire', orphanRemoval: true, targetEntity: UserQuestionnaire::class)]
     private Collection $userQuestionnaires;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(type: Types::STRING)]
     private ?string $title;
 
     public function __construct()

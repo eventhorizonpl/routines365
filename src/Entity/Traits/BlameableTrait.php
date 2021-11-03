@@ -4,28 +4,24 @@ declare(strict_types=1);
 
 namespace App\Entity\Traits;
 
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait BlameableTrait
 {
-    /**
-     * @ORM\Column(type="guid")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Uuid(groups: ['system'])]
+    #[ORM\Column(type: Types::GUID)]
     protected ?string $createdBy = null;
 
-    /**
-     * @ORM\Column(type="guid", nullable=true)
-     */
     #[Assert\Uuid(groups: ['system'])]
+    #[ORM\Column(nullable: true, type: Types::GUID)]
     protected ?string $deletedBy = null;
 
-    /**
-     * @ORM\Column(type="guid")
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Uuid(groups: ['system'])]
+    #[ORM\Column(type: Types::GUID)]
     protected ?string $updatedBy = null;
 
     public function getCreatedBy(): ?string

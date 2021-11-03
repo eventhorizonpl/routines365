@@ -6,13 +6,12 @@ namespace App\Entity;
 
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=ProjectRepository::class)
- */
+#[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
     use Traits\BlameableTrait;
@@ -21,34 +20,26 @@ class Project
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="project", orphanRemoval=true, targetEntity=Goal::class)
-     * @ORM\OrderBy({"name" = "ASC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'project', orphanRemoval: true, targetEntity: Goal::class)]
+    #[ORM\OrderBy(['name' => 'ASC'])]
     private Collection $goals;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="projects", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'projects', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(length=64, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 64, type: Types::STRING)]
     private ?string $name;
 
     public function __construct()

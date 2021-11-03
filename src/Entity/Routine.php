@@ -10,15 +10,12 @@ use App\Enum\RoutineTypeEnum;
 use App\Repository\RoutineRepository;
 use App\Security\Voter\RoutineVoter;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=RoutineRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
- */
 #[ApiResource(
     collectionOperations: [
         'get' => [
@@ -49,6 +46,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         ],
     ],
 )]
+#[ORM\Entity(repositoryClass: RoutineRepository::class)]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class Routine
 {
     use Traits\BlameableTrait;
@@ -57,73 +56,53 @@ class Routine
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=CompletedRoutine::class)
-     * @ORM\OrderBy({"id" = "ASC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'routine', orphanRemoval: true, targetEntity: CompletedRoutine::class)]
+    #[ORM\OrderBy(['id' => 'ASC'])]
     private Collection $completedRoutines;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Goal::class)
-     * @ORM\OrderBy({"name" = "ASC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'routine', orphanRemoval: true, targetEntity: Goal::class)]
+    #[ORM\OrderBy(['name' => 'ASC'])]
     private Collection $goals;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Note::class)
-     * @ORM\OrderBy({"id" = "DESC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'routine', orphanRemoval: true, targetEntity: Note::class)]
+    #[ORM\OrderBy(['id' => 'DESC'])]
     private Collection $notes;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Reminder::class)
-     * @ORM\OrderBy({"nextDate" = "ASC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'routine', orphanRemoval: true, targetEntity: Reminder::class)]
+    #[ORM\OrderBy(['nextDate' => 'ASC'])]
     private Collection $reminders;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=Reward::class)
-     * @ORM\OrderBy({"id" = "DESC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'routine', orphanRemoval: true, targetEntity: Reward::class)]
+    #[ORM\OrderBy(['id' => 'DESC'])]
     private Collection $rewards;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="routine", orphanRemoval=true, targetEntity=SentReminder::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'routine', orphanRemoval: true, targetEntity: SentReminder::class)]
     private Collection $sentReminders;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="routines", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'routines', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(length=64, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 64, type: Types::STRING)]
     private ?string $name;
 
-    /**
-     * @ORM\Column(length=16, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 16, type: Types::STRING)]
     private string $type;
 
     public function __construct()

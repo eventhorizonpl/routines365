@@ -6,15 +6,15 @@ namespace App\Entity;
 
 use App\Enum\SavedEmailTypeEnum;
 use App\Repository\SavedEmailRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=SavedEmailRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="email_idx", columns={"email"}), @ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: SavedEmailRepository::class)]
+#[ORM\Index(name: 'email_idx', columns: ['email'])]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class SavedEmail
 {
     use Traits\BlameableTrait;
@@ -22,31 +22,25 @@ class SavedEmail
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="savedEmails", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'savedEmails', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(length=180, type="string")
-     */
     #[Assert\Email(groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 180)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 180, type: Types::STRING)]
     private string $email;
 
-    /**
-     * @ORM\Column(length=16, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 16)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 16, type: Types::STRING)]
     private string $type;
 
     public function __construct()

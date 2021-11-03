@@ -7,13 +7,12 @@ namespace App\Entity;
 use App\Repository\AccountRepository;
 use App\Resource\ConfigResource;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=AccountRepository::class)
- */
+#[ORM\Entity(repositoryClass: AccountRepository::class)]
 class Account
 {
     use Traits\BlameableTrait;
@@ -23,33 +22,25 @@ class Account
 
     public const TOPUP_REFERRER_ACCOUNT_MULTIPLIER = 0.05;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", orphanRemoval=true, targetEntity=AccountOperation::class)
-     * @ORM\OrderBy({"id" = "DESC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'account', orphanRemoval: true, targetEntity: AccountOperation::class)]
+    #[ORM\OrderBy(['id' => 'DESC'])]
     private Collection $accountOperations;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="account", targetEntity=User::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'account', targetEntity: User::class)]
     private Collection $users;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0)]
     #[Assert\NotBlank]
     #[Assert\Type('int')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $availableNotifications;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0)]
     #[Assert\NotBlank]
     #[Assert\Type('int')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $availableSmsNotifications;
 
     public function __construct()

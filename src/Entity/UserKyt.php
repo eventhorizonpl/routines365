@@ -6,12 +6,11 @@ namespace App\Entity;
 
 use App\Repository\UserKytRepository;
 use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=UserKytRepository::class)
- */
+#[ORM\Entity(repositoryClass: UserKytRepository::class)]
 class UserKyt
 {
     use Traits\BlameableTrait;
@@ -19,135 +18,97 @@ class UserKyt
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="userKyt", targetEntity=User::class)
-     */
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', inversedBy: 'userKyt', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $basicConfigurationLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $basicConfigurationSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $completingRoutinesLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $completingRoutinesSent;
 
-    /**
-     * @ORM\Column(nullable=true, type="datetimetz_immutable")
-     */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
+    #[ORM\Column(nullable: true, type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $dateOfLastMessage = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $goalsLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $goalsSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $notesLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $notesSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $projectsLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $projectsSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $remindersLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $remindersSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $rewardsLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $rewardsSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $routinesLearned;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $routinesSent;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $testimonialRequestSent;
 
     public function __construct()

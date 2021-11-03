@@ -8,6 +8,7 @@ use App\Enum\{UserRoleEnum, UserTypeEnum};
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
@@ -16,10 +17,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
- */
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, TwoFactorInterface
 {
     use Traits\BlameableTrait;
@@ -29,182 +28,128 @@ class User implements UserInterface, TwoFactorInterface
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Account::class)
-     */
     #[Assert\Valid(groups: ['form'])]
     #[Groups(['gdpr'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'users', targetEntity: Account::class)]
     private ?Account $account;
 
-    /**
-     * @ORM\ManyToMany(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Achievement::class)
-     */
+    #[ORM\ManyToMany(fetch: 'EXTRA_LAZY', inversedBy: 'users', targetEntity: Achievement::class)]
     private Collection $achievements;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=CompletedRoutine::class)
-     * @ORM\OrderBy({"id" = "ASC"})
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: CompletedRoutine::class)]
+    #[ORM\OrderBy(['id' => 'ASC'])]
     private Collection $completedRoutines;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Contact::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Contact::class)]
     private Collection $contacts;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Goal::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Goal::class)]
     private Collection $goals;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Note::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Note::class)]
     private Collection $notes;
 
-    /**
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Profile::class)
-     */
     #[Assert\Valid(groups: ['form'])]
     #[Groups(['gdpr'])]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', mappedBy: 'user', targetEntity: Profile::class)]
     private Profile $profile;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Project::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Project::class)]
     private Collection $projects;
 
-    /**
-     * @ORM\ManyToMany(fetch="EXTRA_LAZY", inversedBy="users", targetEntity=Promotion::class)
-     */
+    #[ORM\ManyToMany(fetch: 'EXTRA_LAZY', inversedBy: 'users', targetEntity: Promotion::class)]
     private Collection $promotions;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="referrer", targetEntity=User::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'referrer', targetEntity: self::class)]
     private Collection $recommendations;
 
-    /**
-     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="recommendations", targetEntity=User::class)
-     */
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'recommendations', targetEntity: self::class)]
     private ?User $referrer = null;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reminder::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Reminder::class)]
     private Collection $reminders;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Reward::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Reward::class)]
     private Collection $rewards;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=Routine::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: Routine::class)]
     private Collection $routines;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=SavedEmail::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: SavedEmail::class)]
     private Collection $savedEmails;
 
-    /**
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=Testimonial::class)
-     */
     #[Assert\Valid(groups: ['form'])]
     #[Groups(['gdpr'])]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', mappedBy: 'user', targetEntity: Testimonial::class)]
     private ?Testimonial $testimonial = null;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserKpi::class)
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: UserKpi::class)]
     private Collection $userKpis;
 
-    /**
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", mappedBy="user", targetEntity=UserKyt::class)
-     */
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', mappedBy: 'user', targetEntity: UserKyt::class)]
     private ?UserKyt $userKyt = null;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="user", orphanRemoval=true, targetEntity=UserQuestionnaire::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'user', orphanRemoval: true, targetEntity: UserQuestionnaire::class)]
     private Collection $userQuestionnaires;
 
-    /**
-     * @ORM\Column(length=180, type="string", unique=true)
-     */
     #[Assert\Email(groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 180)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 180, type: Types::STRING, unique: true)]
     private ?string $email;
 
-    /**
-     * @ORM\Column(length=52, nullable=true, type="string", unique=true)
-     */
     #[Assert\Length(groups: ['system'], max: 52)]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 52, nullable: true, type: Types::STRING, unique: true)]
     private ?string $googleAuthenticatorSecret;
 
-    /**
-     * @ORM\Column(nullable=true, type="datetimetz_immutable")
-     */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $lastActivityAt = null;
 
-    /**
-     * @ORM\Column(nullable=true, type="datetimetz_immutable")
-     */
     #[Assert\Type('DateTimeImmutable', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: Types::DATETIMETZ_IMMUTABLE)]
     private ?DateTimeImmutable $lastLoginAt = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     #[Assert\Length(groups: ['system'], max: 255)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(type: Types::STRING)]
     private string $password;
 
-    /**
-     * @ORM\Column(type="guid", unique=true)
-     */
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Uuid(groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::GUID, unique: true)]
     private string $referrerCode;
 
-    /**
-     * @ORM\Column(type="json")
-     */
     #[Assert\Choice(callback: 'getRolesFormChoices', multiple: true, groups: ['system'])]
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('array', groups: ['system'])]
+    #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
 
-    /**
-     * @ORM\Column(length=8, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 8, type: Types::STRING)]
     private string $type;
 
     public function __construct()

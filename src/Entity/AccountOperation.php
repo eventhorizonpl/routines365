@@ -6,14 +6,13 @@ namespace App\Entity;
 
 use App\Enum\AccountOperationTypeEnum;
 use App\Repository\AccountOperationRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=AccountOperationRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: AccountOperationRepository::class)]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class AccountOperation
 {
     use Traits\BlameableTrait;
@@ -21,52 +20,40 @@ class AccountOperation
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="accountOperations", targetEntity=Account::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'accountOperations', targetEntity: Account::class)]
     private Account $account;
 
-    /**
-     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="accountOperation", targetEntity=ReminderMessage::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', inversedBy: 'accountOperation', targetEntity: ReminderMessage::class)]
     private ?ReminderMessage $reminderMessage;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     #[Assert\Length(groups: ['system'], max: 255)]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(type: Types::STRING)]
     private string $description;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\LessThanOrEqual(1024, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $notifications;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\LessThanOrEqual(1024, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $smsNotifications;
 
-    /**
-     * @ORM\Column(length=8, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
     #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 8, type: Types::STRING)]
     private string $type;
 
     public function __construct()

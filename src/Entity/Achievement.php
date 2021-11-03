@@ -7,14 +7,13 @@ namespace App\Entity;
 use App\Enum\AchievementTypeEnum;
 use App\Repository\AchievementRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=AchievementRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="type_idx", columns={"type"})})
- */
+#[ORM\Entity(repositoryClass: AchievementRepository::class)]
+#[ORM\Index(name: 'type_idx', columns: ['type'])]
 class Achievement
 {
     use Traits\BlameableTrait;
@@ -23,51 +22,39 @@ class Achievement
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\ManyToMany(fetch="EXTRA_LAZY", mappedBy="achievements", targetEntity=User::class)
-     */
+    #[ORM\ManyToMany(fetch: 'EXTRA_LAZY', mappedBy: 'achievements', targetEntity: User::class)]
     private Collection $users;
 
-    /**
-     * @ORM\Column(nullable=true, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(nullable: true, type: Types::STRING)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(1, groups: ['form', 'system'])]
     #[Assert\LessThanOrEqual(10, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $level;
 
-    /**
-     * @ORM\Column(length=64, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(length: 64, type: Types::STRING)]
     private ?string $name;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(1, groups: ['form', 'system'])]
     #[Assert\LessThanOrEqual(1000, groups: ['form', 'system'])]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('int', groups: ['form', 'system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $requirement;
 
-    /**
-     * @ORM\Column(length=24, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(length: 24, type: Types::STRING)]
     private ?string $type;
 
     public function __construct()

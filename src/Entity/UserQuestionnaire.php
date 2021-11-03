@@ -6,13 +6,12 @@ namespace App\Entity;
 
 use App\Repository\UserQuestionnaireRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=UserQuestionnaireRepository::class)
- */
+#[ORM\Entity(repositoryClass: UserQuestionnaireRepository::class)]
 class UserQuestionnaire
 {
     use Traits\BlameableTrait;
@@ -21,32 +20,24 @@ class UserQuestionnaire
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaires", targetEntity=Questionnaire::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'userQuestionnaires', targetEntity: Questionnaire::class)]
     private Questionnaire $questionnaire;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="userQuestionnaires", targetEntity=User::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'userQuestionnaires', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="userQuestionnaire", orphanRemoval=true, targetEntity=UserQuestionnaireAnswer::class)
-     */
     #[Groups(['gdpr'])]
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'userQuestionnaire', orphanRemoval: true, targetEntity: UserQuestionnaireAnswer::class)]
     private Collection $userQuestionnaireAnswers;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull(groups: ['system'])]
     #[Assert\Type('bool', groups: ['system'])]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isRewarded;
 
     public function __construct()

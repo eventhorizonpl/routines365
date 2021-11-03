@@ -8,13 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Dto\{QuoteCollectionOutput, QuoteItemOutput};
 use App\Repository\QuoteRepository;
 use App\Security\Voter\QuoteVoter;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=QuoteRepository::class)
- * @ORM\Table(indexes={@ORM\Index(name="string_length_idx", columns={"string_length"})})
- */
 #[ApiResource(
     collectionOperations: [
         'get' => [
@@ -28,6 +25,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         ],
     ]
 )]
+#[ORM\Entity(repositoryClass: QuoteRepository::class)]
+#[ORM\Index(name: 'string_length_idx', columns: ['string_length'])]
 class Quote
 {
     use Traits\BlameableTrait;
@@ -36,45 +35,35 @@ class Quote
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\Column(length=64, type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 64)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(length: 64, type: Types::STRING)]
     private ?string $author;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(type: Types::STRING)]
     private ?string $content;
 
-    /**
-     * @ORM\Column(length=32, type="string", unique=true)
-     */
     #[Assert\Length(groups: ['system'], max: 32)]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('string', groups: ['system'])]
+    #[ORM\Column(length: 32, type: Types::STRING, unique: true)]
     private string $contentMd5;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $popularity;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\LessThanOrEqual(336, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
     #[Assert\Type('int', groups: ['system'])]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $stringLength;
 
     public function __construct()

@@ -7,16 +7,16 @@ namespace App\Entity;
 use App\Enum\ProfileThemeEnum;
 use App\Repository\ProfileRepository;
 use App\Resource\ConfigResource;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use libphonenumber\{PhoneNumber, PhoneNumberFormat, PhoneNumberUtil};
+use Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType;
 use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=ProfileRepository::class)
- */
+#[ORM\Entity(repositoryClass: ProfileRepository::class)]
 class Profile
 {
     use Traits\BlameableTrait;
@@ -25,96 +25,72 @@ class Profile
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\OneToOne(fetch="EXTRA_LAZY", inversedBy="profile", targetEntity=User::class)
-     */
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\OneToOne(fetch: 'EXTRA_LAZY', inversedBy: 'profile', targetEntity: User::class)]
     private User $user;
 
-    /**
-     * @ORM\Column(length=2, nullable=true, type="string")
-     */
     #[Assert\Length(max: 2)]
     #[Assert\Type('string')]
+    #[ORM\Column(length: 2, nullable: true, type: Types::STRING)]
     private ?string $country;
 
-    /**
-     * @ORM\Column(length=64, nullable=true, type="string")
-     */
     #[Assert\Length(max: 64)]
     #[Assert\Type('string')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 64, nullable: true, type: Types::STRING)]
     private ?string $firstName;
 
-    /**
-     * @ORM\Column(length=64, nullable=true, type="string")
-     */
     #[Assert\Length(max: 64)]
     #[Assert\Type('string')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 64, nullable: true, type: Types::STRING)]
     private ?string $lastName;
 
-    /**
-     * @ORM\Column(nullable=true, type="integer")
-     */
     #[Assert\GreaterThanOrEqual(0)]
     #[Assert\LessThanOrEqual(5)]
     #[Assert\Type('int')]
+    #[ORM\Column(nullable: true, type: Types::INTEGER)]
     private ?int $numberOfPhoneVerificationTries;
 
-    /**
-     * @AssertPhoneNumber(type="mobile")
-     * @ORM\Column(nullable=true, type="phone_number", unique=true)
-     */
+    #[AssertPhoneNumber(type: 'mobile')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(nullable: true, type: PhoneNumberType::NAME, unique: true)]
     private ?PhoneNumber $phone;
 
-    /**
-     * @ORM\Column(nullable=true, length=32, type="string", unique=true)
-     */
     #[Assert\Length(max: 32)]
     #[Assert\Type('string')]
+    #[ORM\Column(length: 32, nullable: true, type: Types::STRING, unique: true)]
     private ?string $phoneMd5;
 
-    /**
-     * @ORM\Column(nullable=true, type="integer")
-     */
     #[Assert\GreaterThanOrEqual(100000)]
     #[Assert\LessThanOrEqual(999999)]
     #[Assert\Type('int')]
+    #[ORM\Column(nullable: true, type: Types::INTEGER)]
     private ?int $phoneVerificationCode;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\Type('bool')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $sendWeeklyMonthlyStatistics;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
     #[Assert\NotNull]
     #[Assert\Type('bool')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $showMotivationalMessages;
 
-    /**
-     * @ORM\Column(length=8, nullable=true, type="string")
-     */
     #[Assert\Choice(callback: 'getThemeValidationChoices')]
     #[Assert\Length(max: 8)]
     #[Assert\Type('string')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 8, nullable: true, type: Types::STRING)]
     private ?string $theme;
 
-    /**
-     * @ORM\Column(length=36, nullable=true, type="string")
-     */
     #[Assert\Length(max: 36)]
     #[Assert\Timezone]
     #[Assert\Type('string')]
     #[Groups(['gdpr'])]
+    #[ORM\Column(length: 36, nullable: true, type: Types::STRING)]
     private ?string $timeZone;
 
     public function __construct()

@@ -7,13 +7,12 @@ namespace App\Entity;
 use App\Enum\QuestionTypeEnum;
 use App\Repository\QuestionRepository;
 use Doctrine\Common\Collections\{ArrayCollection, Collection};
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=QuestionRepository::class)
- */
+#[ORM\Entity(repositoryClass: QuestionRepository::class)]
 class Question
 {
     use Traits\BlameableTrait;
@@ -23,34 +22,26 @@ class Question
     use Traits\TimestampableTrait;
     use Traits\UuidTrait;
 
-    /**
-     * @ORM\OneToMany(fetch="EXTRA_LAZY", mappedBy="question", orphanRemoval=true, targetEntity=Answer::class)
-     * @ORM\OrderBy({"position" = "ASC"})
-     */
+    #[ORM\OneToMany(fetch: 'EXTRA_LAZY', mappedBy: 'question', orphanRemoval: true, targetEntity: Answer::class)]
+    #[ORM\OrderBy(['position' => 'ASC'])]
     private Collection $answers;
 
-    /**
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
-     * @ORM\ManyToOne(fetch="EXTRA_LAZY", inversedBy="questions", targetEntity=Questionnaire::class)
-     */
     #[Assert\Valid(groups: ['system'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'questions', targetEntity: Questionnaire::class)]
     private Questionnaire $questionnaire;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(type: Types::STRING)]
     private ?string $title;
 
-    /**
-     * @ORM\Column(length=24, type="string")
-     */
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
     #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
     #[Assert\Type('string', groups: ['form', 'system'])]
+    #[ORM\Column(length: 24, type: Types::STRING)]
     private string $type;
 
     public function __construct()
