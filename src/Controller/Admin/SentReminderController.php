@@ -59,8 +59,12 @@ class SentReminderController extends AbstractController
     ): Response {
         $sentReminderManager->undelete($sentReminder);
 
-        return $this->redirectToRoute('admin_sent_reminder_show', [
-            'uuid' => $sentReminder->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_sent_reminder_show',
+            [
+                'uuid' => $sentReminder->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

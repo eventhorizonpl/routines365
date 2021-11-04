@@ -33,9 +33,13 @@ class QuestionController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $questionManager->save($question, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_questionnaire_show', [
-                'uuid' => $questionnaire->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_questionnaire_show',
+                [
+                    'uuid' => $questionnaire->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/question/new.html.twig', [
@@ -64,9 +68,13 @@ class QuestionController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $questionManager->save($question, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_question_show', [
-                'uuid' => $question->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_question_show',
+                [
+                    'uuid' => $question->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/question/edit.html.twig', [
@@ -92,9 +100,13 @@ class QuestionController extends AbstractController
             $questionManager->softDelete($question, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_questionnaire_show', [
-            'uuid' => $question->getQuestionnaire()->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_questionnaire_show',
+            [
+                'uuid' => $question->getQuestionnaire()->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -104,8 +116,12 @@ class QuestionController extends AbstractController
     ): Response {
         $questionManager->undelete($question);
 
-        return $this->redirectToRoute('admin_question_show', [
-            'uuid' => $question->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_question_show',
+            [
+                'uuid' => $question->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

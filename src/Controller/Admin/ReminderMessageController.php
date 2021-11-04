@@ -61,8 +61,12 @@ class ReminderMessageController extends AbstractController
     ): Response {
         $reminderMessageManager->undelete($reminderMessage);
 
-        return $this->redirectToRoute('admin_reminder_message_show', [
-            'uuid' => $reminderMessage->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_reminder_message_show',
+            [
+                'uuid' => $reminderMessage->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

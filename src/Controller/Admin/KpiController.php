@@ -59,8 +59,12 @@ class KpiController extends AbstractController
     ): Response {
         $kpiManager->undelete($kpi);
 
-        return $this->redirectToRoute('admin_kpi_show', [
-            'uuid' => $kpi->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_kpi_show',
+            [
+                'uuid' => $kpi->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

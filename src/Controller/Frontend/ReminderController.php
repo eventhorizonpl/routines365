@@ -38,7 +38,7 @@ class ReminderController extends AbstractController
                 $translator->trans('Please set up time zone!')
             );
 
-            return $this->redirectToRoute('frontend_profile_edit');
+            return $this->redirectToRoute('frontend_profile_edit', [], Response::HTTP_SEE_OTHER);
         }
 
         $reminder = $reminderFactory->createReminder();
@@ -51,15 +51,23 @@ class ReminderController extends AbstractController
             $reminderManager->save($reminder, (string) $this->getUser());
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_routine_show_reminders', [
-                    'know_your_tools' => KytResource::REMINDERS_SHOW3,
-                    'uuid' => $routine->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_reminders',
+                    [
+                        'know_your_tools' => KytResource::REMINDERS_SHOW3,
+                        'uuid' => $routine->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_routine_show_reminders', [
-                'uuid' => $routine->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show_reminders',
+                [
+                    'uuid' => $routine->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/reminder/new.html.twig', [
@@ -86,7 +94,7 @@ class ReminderController extends AbstractController
                 $translator->trans('Please set up time zone!')
             );
 
-            return $this->redirectToRoute('frontend_profile_edit');
+            return $this->redirectToRoute('frontend_profile_edit', [], Response::HTTP_SEE_OTHER);
         }
 
         $form = $this->createForm(ReminderType::class, $reminder);
@@ -96,15 +104,23 @@ class ReminderController extends AbstractController
             $reminderManager->save($reminder, (string) $this->getUser());
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_routine_show_reminders', [
-                    'know_your_tools' => KytResource::REMINDERS_FINISH,
-                    'uuid' => $reminder->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_reminders',
+                    [
+                        'know_your_tools' => KytResource::REMINDERS_FINISH,
+                        'uuid' => $reminder->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_routine_show_reminders', [
-                'uuid' => $reminder->getRoutine()->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show_reminders',
+                [
+                    'uuid' => $reminder->getRoutine()->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/reminder/edit.html.twig', [
@@ -133,8 +149,12 @@ class ReminderController extends AbstractController
             $reminderManager->softDelete($reminder, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('frontend_routine_show_reminders', [
-            'uuid' => $reminder->getRoutine()->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'frontend_routine_show_reminders',
+            [
+                'uuid' => $reminder->getRoutine()->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

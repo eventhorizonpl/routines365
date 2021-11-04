@@ -110,11 +110,11 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('frontend_routine_index');
+        return $this->redirectToRoute('frontend_routine_index', [], Response::HTTP_SEE_OTHER);
     }
 }

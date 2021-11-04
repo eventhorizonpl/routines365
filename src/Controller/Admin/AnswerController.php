@@ -33,9 +33,13 @@ class AnswerController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $answerManager->save($answer, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_answer_show', [
-                'uuid' => $answer->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_answer_show',
+                [
+                    'uuid' => $answer->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/answer/new.html.twig', [
@@ -64,9 +68,13 @@ class AnswerController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $answerManager->save($answer, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_answer_show', [
-                'uuid' => $answer->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_answer_show',
+                [
+                    'uuid' => $answer->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/answer/edit.html.twig', [
@@ -92,9 +100,13 @@ class AnswerController extends AbstractController
             $answerManager->softDelete($answer, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_question_show', [
-            'uuid' => $answer->getQuestion()->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_question_show',
+            [
+                'uuid' => $answer->getQuestion()->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -104,8 +116,12 @@ class AnswerController extends AbstractController
     ): Response {
         $answerManager->undelete($answer);
 
-        return $this->redirectToRoute('admin_answer_show', [
-            'uuid' => $answer->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_answer_show',
+            [
+                'uuid' => $answer->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

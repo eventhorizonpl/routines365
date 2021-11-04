@@ -59,8 +59,12 @@ class RetentionController extends AbstractController
     ): Response {
         $retentionManager->undelete($retention);
 
-        return $this->redirectToRoute('admin_retention_show', [
-            'uuid' => $retention->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_retention_show',
+            [
+                'uuid' => $retention->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

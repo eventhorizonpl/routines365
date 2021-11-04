@@ -48,7 +48,7 @@ class ResetPasswordController extends AbstractController
     {
         // We prevent users from directly accessing this page
         if (!$this->canCheckEmail()) {
-            return $this->redirectToRoute('security_forgot_password_request');
+            return $this->redirectToRoute('security_forgot_password_request', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('security/reset_password/check_email.html.twig', [
@@ -69,7 +69,7 @@ class ResetPasswordController extends AbstractController
             // loaded in a browser and potentially leaking the token to 3rd party JavaScript.
             $this->storeTokenInSession($token);
 
-            return $this->redirectToRoute('security_reset_password');
+            return $this->redirectToRoute('security_reset_password', [], Response::HTTP_SEE_OTHER);
         }
 
         $token = $this->getTokenFromSession();
@@ -85,7 +85,7 @@ class ResetPasswordController extends AbstractController
                 $e->getReason()
             ));
 
-            return $this->redirectToRoute('security_forgot_password_request');
+            return $this->redirectToRoute('security_forgot_password_request', [], Response::HTTP_SEE_OTHER);
         }
 
         // The token is valid; allow the user to change their password.
@@ -102,7 +102,7 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('security/reset_password/reset.html.twig', [
@@ -121,7 +121,7 @@ class ResetPasswordController extends AbstractController
 
         // Do not reveal whether a user account was found or not.
         if (!$user) {
-            return $this->redirectToRoute('security_check_email');
+            return $this->redirectToRoute('security_check_email', [], Response::HTTP_SEE_OTHER);
         }
 
         try {
@@ -136,7 +136,7 @@ class ResetPasswordController extends AbstractController
             //     $e->getReason()
             // ));
 
-            return $this->redirectToRoute('security_check_email');
+            return $this->redirectToRoute('security_check_email', [], Response::HTTP_SEE_OTHER);
         }
 
         $emailService->sendResetPassword(
@@ -149,6 +149,6 @@ class ResetPasswordController extends AbstractController
             ]
         );
 
-        return $this->redirectToRoute('security_check_email');
+        return $this->redirectToRoute('security_check_email', [], Response::HTTP_SEE_OTHER);
     }
 }

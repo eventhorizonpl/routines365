@@ -61,9 +61,13 @@ class AchievementController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $achievementManager->save($achievement, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_achievement_show', [
-                'uuid' => $achievement->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_achievement_show',
+                [
+                    'uuid' => $achievement->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/achievement/new.html.twig', [
@@ -92,9 +96,13 @@ class AchievementController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $achievementManager->save($achievement, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_achievement_show', [
-                'uuid' => $achievement->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_achievement_show',
+                [
+                    'uuid' => $achievement->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/achievement/edit.html.twig', [
@@ -120,7 +128,7 @@ class AchievementController extends AbstractController
             $achievementManager->softDelete($achievement, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_achievement_index');
+        return $this->redirectToRoute('admin_achievement_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -130,8 +138,12 @@ class AchievementController extends AbstractController
     ): Response {
         $achievementManager->undelete($achievement);
 
-        return $this->redirectToRoute('admin_achievement_show', [
-            'uuid' => $achievement->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_achievement_show',
+            [
+                'uuid' => $achievement->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

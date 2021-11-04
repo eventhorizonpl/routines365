@@ -44,7 +44,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/completing-routines', methods: ['GET'], name: 'completing_routines')]
@@ -74,7 +74,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/goals', methods: ['GET'], name: 'goals')]
@@ -104,7 +104,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/notes', methods: ['GET'], name: 'notes')]
@@ -134,7 +134,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/projects', methods: ['GET'], name: 'projects')]
@@ -164,7 +164,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/reminders', methods: ['GET'], name: 'reminders')]
@@ -194,7 +194,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/rewards', methods: ['GET'], name: 'rewards')]
@@ -224,7 +224,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/routines', methods: ['GET'], name: 'routines')]
@@ -254,7 +254,7 @@ class UserKytController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('frontend_user_kyt_start');
+        return $this->redirectToRoute('frontend_user_kyt_start', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/start', methods: ['GET'], name: 'start')]

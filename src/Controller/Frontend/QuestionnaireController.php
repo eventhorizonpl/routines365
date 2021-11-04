@@ -37,7 +37,7 @@ class QuestionnaireController extends AbstractController
                 $translator->trans('You already completed this survey.')
             );
 
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         if ('POST' === $request->getMethod()) {
@@ -62,7 +62,7 @@ class QuestionnaireController extends AbstractController
                 }
             }
 
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('frontend/questionnaire/complete.html.twig', [

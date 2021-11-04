@@ -61,15 +61,23 @@ class ProjectController extends AbstractController
             $projectManager->save($project, (string) $user);
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_project_show', [
-                    'know_your_tools' => KytResource::PROJECTS_SHOW,
-                    'uuid' => $project->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_project_show',
+                    [
+                        'know_your_tools' => KytResource::PROJECTS_SHOW,
+                        'uuid' => $project->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_project_show', [
-                'uuid' => $project->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_project_show',
+                [
+                    'uuid' => $project->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/project/new.html.twig', [
@@ -118,15 +126,23 @@ class ProjectController extends AbstractController
             }
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_project_show', [
-                    'know_your_tools' => KytResource::PROJECTS_FINISH,
-                    'uuid' => $project->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_project_show',
+                    [
+                        'know_your_tools' => KytResource::PROJECTS_FINISH,
+                        'uuid' => $project->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_project_show', [
-                'uuid' => $project->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_project_show',
+                [
+                    'uuid' => $project->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/project/edit.html.twig', [
@@ -154,6 +170,6 @@ class ProjectController extends AbstractController
             $projectManager->softDelete($project, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('frontend_project_index');
+        return $this->redirectToRoute('frontend_project_index', [], Response::HTTP_SEE_OTHER);
     }
 }

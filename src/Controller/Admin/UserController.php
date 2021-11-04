@@ -66,9 +66,13 @@ class UserController extends AbstractController
             $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             $userManager->save($user, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_user_show', [
-                'uuid' => $user->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_user_show',
+                [
+                    'uuid' => $user->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/user/new.html.twig', [
@@ -113,9 +117,13 @@ class UserController extends AbstractController
                 ]
             );
 
-            return $this->redirectToRoute('admin_user_show', [
-                'uuid' => $user->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_user_show',
+                [
+                    'uuid' => $user->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/user/new_lead.html.twig', [
@@ -138,9 +146,13 @@ class UserController extends AbstractController
         $user->setGoogleAuthenticatorSecret(null);
         $userManager->save($user, (string) $user);
 
-        return $this->redirectToRoute('admin_user_show', [
-            'uuid' => $user->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_user_show',
+            [
+                'uuid' => $user->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
     #[Route('/{uuid}/edit', methods: ['GET', 'POST'], name: 'edit')]
@@ -159,9 +171,13 @@ class UserController extends AbstractController
             }
             $userManager->save($user, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_user_show', [
-                'uuid' => $user->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_user_show',
+                [
+                    'uuid' => $user->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/user/edit.html.twig', [
@@ -187,7 +203,7 @@ class UserController extends AbstractController
             $userManager->softDelete($user, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_user_index');
+        return $this->redirectToRoute('admin_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -197,8 +213,12 @@ class UserController extends AbstractController
     ): Response {
         $userManager->undelete($user);
 
-        return $this->redirectToRoute('admin_user_show', [
-            'uuid' => $user->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_user_show',
+            [
+                'uuid' => $user->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

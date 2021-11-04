@@ -61,8 +61,12 @@ class ProjectController extends AbstractController
     ): Response {
         $projectManager->undelete($project);
 
-        return $this->redirectToRoute('admin_project_show', [
-            'uuid' => $project->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_project_show',
+            [
+                'uuid' => $project->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

@@ -61,7 +61,7 @@ class ProfileController extends AbstractController
                     'phone_verification_code' => $profile->getPhoneVerificationCode(),
                 ]);
 
-                return $this->redirectToRoute('frontend_profile_phone_verification_code');
+                return $this->redirectToRoute('frontend_profile_phone_verification_code', [], Response::HTTP_SEE_OTHER);
             }
             if (5 <= $profile->getNumberOfPhoneVerificationTries()) {
                 $this->addFlash(
@@ -71,12 +71,16 @@ class ProfileController extends AbstractController
             }
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_profile_show', [
-                    'know_your_tools' => KytResource::BASIC_CONFIGURATION_FINISH,
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_profile_show',
+                    [
+                        'know_your_tools' => KytResource::BASIC_CONFIGURATION_FINISH,
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_profile_show');
+            return $this->redirectToRoute('frontend_profile_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('frontend/profile/edit.html.twig', [
@@ -100,7 +104,7 @@ class ProfileController extends AbstractController
                 $translator->trans('Your phone number is already verified!')
             );
 
-            return $this->redirectToRoute('frontend_profile_show');
+            return $this->redirectToRoute('frontend_profile_show', [], Response::HTTP_SEE_OTHER);
         }
 
         $form = $this->createForm(ProfilePhoneVerificationCodeType::class);
@@ -139,7 +143,7 @@ class ProfileController extends AbstractController
                 );
             }
 
-            return $this->redirectToRoute('frontend_profile_phone_verification_code');
+            return $this->redirectToRoute('frontend_profile_phone_verification_code', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('frontend/profile/phone_verification_code.html.twig', [

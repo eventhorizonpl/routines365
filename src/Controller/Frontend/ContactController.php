@@ -56,7 +56,7 @@ class ContactController extends AbstractController
                 $translator->trans('We saved your contact request. We will get back to you soon.')
             );
 
-            return $this->redirectToRoute('frontend_contact_new');
+            return $this->redirectToRoute('frontend_contact_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('frontend/contact/new.html.twig', [

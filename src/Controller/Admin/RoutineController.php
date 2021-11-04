@@ -61,8 +61,12 @@ class RoutineController extends AbstractController
     ): Response {
         $routineManager->undelete($routine);
 
-        return $this->redirectToRoute('admin_routine_show', [
-            'uuid' => $routine->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_routine_show',
+            [
+                'uuid' => $routine->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

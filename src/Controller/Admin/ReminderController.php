@@ -61,9 +61,13 @@ class ReminderController extends AbstractController
     ): Response {
         $reminderManager->undelete($reminder);
 
-        return $this->redirectToRoute('admin_reminder_show', [
-            'uuid' => $reminder->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_reminder_show',
+            [
+                'uuid' => $reminder->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
     #[Route('/{uuid}/unlock', methods: ['GET'], name: 'unlock')]
@@ -73,8 +77,12 @@ class ReminderController extends AbstractController
     ): Response {
         $reminderManager->unlock($reminder);
 
-        return $this->redirectToRoute('admin_reminder_show', [
-            'uuid' => $reminder->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_reminder_show',
+            [
+                'uuid' => $reminder->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

@@ -60,8 +60,12 @@ class GoalController extends AbstractController
     ): Response {
         $goalManager->undelete($goal);
 
-        return $this->redirectToRoute('admin_goal_show', [
-            'uuid' => $goal->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_goal_show',
+            [
+                'uuid' => $goal->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

@@ -60,8 +60,12 @@ class UserQuestionnaireController extends AbstractController
     ): Response {
         $userQuestionnaireManager->undelete($userQuestionnaire);
 
-        return $this->redirectToRoute('admin_user_questionnaire_show', [
-            'uuid' => $userQuestionnaire->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_user_questionnaire_show',
+            [
+                'uuid' => $userQuestionnaire->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

@@ -60,8 +60,12 @@ class CompletedRoutineController extends AbstractController
     ): Response {
         $completedRoutineManager->undelete($completedRoutine);
 
-        return $this->redirectToRoute('admin_completed_routine_show', [
-            'uuid' => $completedRoutine->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_completed_routine_show',
+            [
+                'uuid' => $completedRoutine->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

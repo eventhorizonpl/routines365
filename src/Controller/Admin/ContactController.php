@@ -68,9 +68,13 @@ class ContactController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $contactManager->save($contact, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_contact_show', [
-                'uuid' => $contact->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_contact_show',
+                [
+                    'uuid' => $contact->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/contact/edit.html.twig', [
@@ -86,8 +90,12 @@ class ContactController extends AbstractController
     ): Response {
         $contactManager->undelete($contact);
 
-        return $this->redirectToRoute('admin_contact_show', [
-            'uuid' => $contact->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_contact_show',
+            [
+                'uuid' => $contact->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

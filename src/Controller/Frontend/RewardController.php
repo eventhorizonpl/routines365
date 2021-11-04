@@ -75,20 +75,32 @@ class RewardController extends AbstractController
 
             if (Reward::CONTEXT_DEFAULT === $context) {
                 if ($knowYourTools) {
-                    return $this->redirectToRoute('frontend_reward_show', [
-                        'know_your_tools' => KytResource::REWARDS_SHOW,
-                        'uuid' => $reward->getUuid(),
-                    ]);
+                    return $this->redirectToRoute(
+                        'frontend_reward_show',
+                        [
+                            'know_your_tools' => KytResource::REWARDS_SHOW,
+                            'uuid' => $reward->getUuid(),
+                        ],
+                        Response::HTTP_SEE_OTHER
+                    );
                 }
 
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'uuid' => $reward->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_reward_show',
+                    [
+                        'uuid' => $reward->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
             if (Reward::CONTEXT_ROUTINE === $context) {
-                return $this->redirectToRoute('frontend_routine_show_rewards', [
-                    'uuid' => $reward->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_rewards',
+                    [
+                        'uuid' => $reward->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
         }
 
@@ -129,20 +141,32 @@ class RewardController extends AbstractController
 
             if (Reward::CONTEXT_DEFAULT === $context) {
                 if ($knowYourTools) {
-                    return $this->redirectToRoute('frontend_reward_show', [
-                        'know_your_tools' => KytResource::REWARDS_FINISH,
-                        'uuid' => $reward->getUuid(),
-                    ]);
+                    return $this->redirectToRoute(
+                        'frontend_reward_show',
+                        [
+                            'know_your_tools' => KytResource::REWARDS_FINISH,
+                            'uuid' => $reward->getUuid(),
+                        ],
+                        Response::HTTP_SEE_OTHER
+                    );
                 }
 
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'uuid' => $reward->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_reward_show',
+                    [
+                        'uuid' => $reward->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
             if (Reward::CONTEXT_ROUTINE === $context) {
-                return $this->redirectToRoute('frontend_routine_show_rewards', [
-                    'uuid' => $reward->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_rewards',
+                    [
+                        'uuid' => $reward->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
         }
 
@@ -171,6 +195,6 @@ class RewardController extends AbstractController
             $rewardManager->softDelete($reward, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('frontend_reward_index');
+        return $this->redirectToRoute('frontend_reward_index', [], Response::HTTP_SEE_OTHER);
     }
 }

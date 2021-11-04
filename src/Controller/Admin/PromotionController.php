@@ -61,9 +61,13 @@ class PromotionController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $promotionManager->save($promotion, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_promotion_show', [
-                'uuid' => $promotion->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_promotion_show',
+                [
+                    'uuid' => $promotion->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/promotion/new.html.twig', [
@@ -92,9 +96,13 @@ class PromotionController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $promotionManager->save($promotion, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_promotion_show', [
-                'uuid' => $promotion->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_promotion_show',
+                [
+                    'uuid' => $promotion->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/promotion/edit.html.twig', [
@@ -120,7 +128,7 @@ class PromotionController extends AbstractController
             $promotionManager->softDelete($promotion, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_promotion_index');
+        return $this->redirectToRoute('admin_promotion_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -130,8 +138,12 @@ class PromotionController extends AbstractController
     ): Response {
         $promotionManager->undelete($promotion);
 
-        return $this->redirectToRoute('admin_promotion_show', [
-            'uuid' => $promotion->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_promotion_show',
+            [
+                'uuid' => $promotion->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

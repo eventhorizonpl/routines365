@@ -60,9 +60,13 @@ class QuoteController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $quoteManager->save($quote, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_quote_show', [
-                'uuid' => $quote->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_quote_show',
+                [
+                    'uuid' => $quote->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/quote/new.html.twig', [
@@ -91,9 +95,13 @@ class QuoteController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $quoteManager->save($quote, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_quote_show', [
-                'uuid' => $quote->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_quote_show',
+                [
+                    'uuid' => $quote->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/quote/edit.html.twig', [
@@ -119,7 +127,7 @@ class QuoteController extends AbstractController
             $quoteManager->softDelete($quote, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_quote_index');
+        return $this->redirectToRoute('admin_quote_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -129,8 +137,12 @@ class QuoteController extends AbstractController
     ): Response {
         $quoteManager->undelete($quote);
 
-        return $this->redirectToRoute('admin_quote_show', [
-            'uuid' => $quote->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_quote_show',
+            [
+                'uuid' => $quote->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

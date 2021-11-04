@@ -61,8 +61,12 @@ class RewardController extends AbstractController
     ): Response {
         $rewardManager->undelete($reward);
 
-        return $this->redirectToRoute('admin_reward_show', [
-            'uuid' => $reward->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_reward_show',
+            [
+                'uuid' => $reward->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

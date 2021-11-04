@@ -67,9 +67,13 @@ class TestimonialController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $testimonialManager->save($testimonial, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_testimonial_show', [
-                'uuid' => $testimonial->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_testimonial_show',
+                [
+                    'uuid' => $testimonial->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/testimonial/edit.html.twig', [
@@ -85,8 +89,12 @@ class TestimonialController extends AbstractController
     ): Response {
         $testimonialManager->undelete($testimonial);
 
-        return $this->redirectToRoute('admin_testimonial_show', [
-            'uuid' => $testimonial->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_testimonial_show',
+            [
+                'uuid' => $testimonial->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

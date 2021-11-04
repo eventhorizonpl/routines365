@@ -30,7 +30,7 @@ class QuoteController extends AbstractController
         Request $request
     ): Response {
         if (true !== ConfigResource::MOTIVATE_A_FRIEND_ENABLED) {
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         $parameters = [
@@ -60,7 +60,7 @@ class QuoteController extends AbstractController
         TranslatorInterface $translator
     ): Response {
         if (true !== ConfigResource::MOTIVATE_A_FRIEND_ENABLED) {
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         $this->denyAccessUnlessGranted(QuoteVoter::SEND, $quote);
@@ -76,7 +76,7 @@ class QuoteController extends AbstractController
                 $translator->trans('Please provide your first and last name!')
             );
 
-            return $this->redirectToRoute('frontend_profile_edit');
+            return $this->redirectToRoute('frontend_profile_edit', [], Response::HTTP_SEE_OTHER);
         }
 
         $subject = sprintf(
@@ -114,7 +114,13 @@ class QuoteController extends AbstractController
                 $translator->trans('Email was sent. You can send motivational message to another person.')
             );
 
-            return $this->redirectToRoute('frontend_quote_send', ['uuid' => $quote->getUuid()]);
+            return $this->redirectToRoute(
+                'frontend_quote_send',
+                [
+                    'uuid' => $quote->getUuid()
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/quote/send.html.twig', [

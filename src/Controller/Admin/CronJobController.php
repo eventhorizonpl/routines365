@@ -58,9 +58,13 @@ class CronJobController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $cronJobManager->save($cronJob);
 
-            return $this->redirectToRoute('admin_cron_job_show', [
-                'id' => $cronJob->getId(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_cron_job_show',
+                [
+                    'id' => $cronJob->getId(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/cron_job/new.html.twig', [
@@ -89,9 +93,13 @@ class CronJobController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $cronJobManager->save($cronJob);
 
-            return $this->redirectToRoute('admin_cron_job_show', [
-                'id' => $cronJob->getId(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_cron_job_show',
+                [
+                    'id' => $cronJob->getId(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/cron_job/edit.html.twig', [
@@ -117,6 +125,6 @@ class CronJobController extends AbstractController
             $cronJobManager->delete($cronJob);
         }
 
-        return $this->redirectToRoute('admin_cron_job_index');
+        return $this->redirectToRoute('admin_cron_job_index', [], Response::HTTP_SEE_OTHER);
     }
 }

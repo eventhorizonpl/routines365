@@ -60,8 +60,12 @@ class NoteController extends AbstractController
     ): Response {
         $noteManager->undelete($note);
 
-        return $this->redirectToRoute('admin_note_show', [
-            'uuid' => $note->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_note_show',
+            [
+                'uuid' => $note->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

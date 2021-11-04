@@ -72,14 +72,22 @@ class AccountOperationController extends AbstractController
                 $smsNotifications
             );
 
-            return $this->redirectToRoute('admin_account_operation_show', [
-                'uuid' => $accountOperation->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_account_operation_show',
+                [
+                    'uuid' => $accountOperation->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
-        return $this->redirectToRoute('admin_user_show', [
-            'uuid' => $account->getUser()->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_user_show',
+            [
+                'uuid' => $account->getUser()->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
     #[Route('/{uuid}/add-free-sms', methods: ['GET'], name: 'add_free_sms')]
@@ -99,14 +107,22 @@ class AccountOperationController extends AbstractController
                 $smsNotifications
             );
 
-            return $this->redirectToRoute('admin_account_operation_show', [
-                'uuid' => $accountOperation->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_account_operation_show',
+                [
+                    'uuid' => $accountOperation->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
-        return $this->redirectToRoute('admin_user_show', [
-            'uuid' => $account->getUser()->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_user_show',
+            [
+                'uuid' => $account->getUser()->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -116,8 +132,12 @@ class AccountOperationController extends AbstractController
     ): Response {
         $accountOperationManager->undelete($accountOperation);
 
-        return $this->redirectToRoute('admin_account_operation_show', [
-            'uuid' => $accountOperation->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_account_operation_show',
+            [
+                'uuid' => $accountOperation->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

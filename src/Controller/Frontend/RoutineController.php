@@ -57,15 +57,23 @@ class RoutineController extends AbstractController
             $routineManager->save($routine, (string) $this->getUser());
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_routine_show', [
-                    'know_your_tools' => KytResource::ROUTINES_SHOW,
-                    'uuid' => $routine->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show',
+                    [
+                        'know_your_tools' => KytResource::ROUTINES_SHOW,
+                        'uuid' => $routine->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_routine_show', [
-                'uuid' => $routine->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show',
+                [
+                    'uuid' => $routine->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/routine/new.html.twig', [
@@ -147,15 +155,23 @@ class RoutineController extends AbstractController
             $routineManager->save($routine, (string) $this->getUser());
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_routine_show', [
-                    'know_your_tools' => KytResource::ROUTINES_FINISH,
-                    'uuid' => $routine->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show',
+                    [
+                        'know_your_tools' => KytResource::ROUTINES_FINISH,
+                        'uuid' => $routine->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_routine_show', [
-                'uuid' => $routine->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show',
+                [
+                    'uuid' => $routine->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/routine/edit.html.twig', [
@@ -183,6 +199,6 @@ class RoutineController extends AbstractController
             $routineManager->softDelete($routine, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('frontend_routine_index');
+        return $this->redirectToRoute('frontend_routine_index', [], Response::HTTP_SEE_OTHER);
     }
 }

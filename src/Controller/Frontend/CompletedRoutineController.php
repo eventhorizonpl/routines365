@@ -93,21 +93,33 @@ class CompletedRoutineController extends AbstractController
                     $translator->trans('Congratulations for awarding your reward!')
                 );
 
-                return $this->redirectToRoute('frontend_reward_show', [
-                    'uuid' => $reward->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_reward_show',
+                    [
+                        'uuid' => $reward->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
             if ($knowYourTools) {
-                return $this->redirectToRoute('frontend_routine_show', [
-                    'know_your_tools' => KytResource::COMPLETING_ROUTINES_FINISH,
-                    'uuid' => $routine->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show',
+                    [
+                        'know_your_tools' => KytResource::COMPLETING_ROUTINES_FINISH,
+                        'uuid' => $routine->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
 
-            return $this->redirectToRoute('frontend_routine_show', [
-                'uuid' => $routine->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show',
+                [
+                    'uuid' => $routine->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('frontend/completed_routine/new.html.twig', [

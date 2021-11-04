@@ -41,14 +41,14 @@ class UserController extends AbstractController
                     $translator->trans('Old password is not correct!')
                 );
 
-                return $this->redirectToRoute('frontend_user_change_password');
+                return $this->redirectToRoute('frontend_user_change_password', [], Response::HTTP_SEE_OTHER);
             }
             if (null !== $form->get('plainPassword')->getData()) {
                 $user = $userService->encodePassword($user, $form->get('plainPassword')->getData());
             }
             $userManager->save($user, (string) $user);
 
-            return $this->redirectToRoute('frontend_profile_show');
+            return $this->redirectToRoute('frontend_profile_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('frontend/user/change_password.html.twig', [
@@ -82,7 +82,7 @@ class UserController extends AbstractController
         $user->setGoogleAuthenticatorSecret(null);
         $userManager->save($user, (string) $user);
 
-        return $this->redirectToRoute('frontend_profile_show');
+        return $this->redirectToRoute('frontend_profile_show', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/qr-code', methods: ['GET'], name: 'qr_code')]

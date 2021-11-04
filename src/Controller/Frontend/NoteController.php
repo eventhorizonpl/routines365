@@ -89,20 +89,32 @@ class NoteController extends AbstractController
 
             if (Note::CONTEXT_DEFAULT === $context) {
                 if ($knowYourTools) {
-                    return $this->redirectToRoute('frontend_note_show', [
-                        'know_your_tools' => KytResource::NOTES_SHOW,
-                        'uuid' => $note->getUuid(),
-                    ]);
+                    return $this->redirectToRoute(
+                        'frontend_note_show',
+                        [
+                            'know_your_tools' => KytResource::NOTES_SHOW,
+                            'uuid' => $note->getUuid(),
+                        ],
+                        Response::HTTP_SEE_OTHER
+                    );
                 }
 
-                return $this->redirectToRoute('frontend_note_show', [
-                    'uuid' => $note->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_note_show',
+                    [
+                        'uuid' => $note->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
             if (Note::CONTEXT_ROUTINE === $context) {
-                return $this->redirectToRoute('frontend_routine_show_notes', [
-                    'uuid' => $note->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_notes',
+                    [
+                        'uuid' => $note->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
         }
 
@@ -143,20 +155,32 @@ class NoteController extends AbstractController
 
             if (Note::CONTEXT_DEFAULT === $context) {
                 if ($knowYourTools) {
-                    return $this->redirectToRoute('frontend_note_show', [
-                        'know_your_tools' => KytResource::NOTES_FINISH,
-                        'uuid' => $note->getUuid(),
-                    ]);
+                    return $this->redirectToRoute(
+                        'frontend_note_show',
+                        [
+                            'know_your_tools' => KytResource::NOTES_FINISH,
+                            'uuid' => $note->getUuid(),
+                        ],
+                        Response::HTTP_SEE_OTHER
+                    );
                 }
 
-                return $this->redirectToRoute('frontend_note_show', [
-                    'uuid' => $note->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_note_show',
+                    [
+                        'uuid' => $note->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
             if (Note::CONTEXT_ROUTINE === $context) {
-                return $this->redirectToRoute('frontend_routine_show_notes', [
-                    'uuid' => $note->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_notes',
+                    [
+                        'uuid' => $note->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
         }
 
@@ -185,6 +209,6 @@ class NoteController extends AbstractController
             $noteManager->softDelete($note, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('frontend_note_index');
+        return $this->redirectToRoute('frontend_note_index', [], Response::HTTP_SEE_OTHER);
     }
 }

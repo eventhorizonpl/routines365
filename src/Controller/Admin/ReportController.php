@@ -61,8 +61,12 @@ class ReportController extends AbstractController
     ): Response {
         $reportManager->undelete($report);
 
-        return $this->redirectToRoute('admin_report_show', [
-            'uuid' => $report->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_report_show',
+            [
+                'uuid' => $report->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

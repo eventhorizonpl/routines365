@@ -63,21 +63,33 @@ class GoalController extends AbstractController
             $goalManager->save($goal, (string) $this->getUser());
 
             if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {
-                return $this->redirectToRoute('frontend_project_show', [
-                    'uuid' => $goal->getProject()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_project_show',
+                    [
+                        'uuid' => $goal->getProject()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
             if ((Goal::CONTEXT_ROUTINE === $context) || (null === $goal->getProject())) {
                 if ($knowYourTools) {
-                    return $this->redirectToRoute('frontend_routine_show_goals', [
-                        'know_your_tools' => KytResource::GOALS_SHOW3,
-                        'uuid' => $goal->getRoutine()->getUuid(),
-                    ]);
+                    return $this->redirectToRoute(
+                        'frontend_routine_show_goals',
+                        [
+                            'know_your_tools' => KytResource::GOALS_SHOW3,
+                            'uuid' => $goal->getRoutine()->getUuid(),
+                        ],
+                        Response::HTTP_SEE_OTHER
+                    );
                 }
 
-                return $this->redirectToRoute('frontend_routine_show_goals', [
-                    'uuid' => $goal->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_goals',
+                    [
+                        'uuid' => $goal->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
         }
 
@@ -137,20 +149,32 @@ class GoalController extends AbstractController
                 $translator->trans('Congratulations for awarding your reward!')
             );
 
-            return $this->redirectToRoute('frontend_reward_show', [
-                'uuid' => $reward->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_reward_show',
+                [
+                    'uuid' => $reward->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {
-            return $this->redirectToRoute('frontend_project_show', [
-                'uuid' => $goal->getProject()->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_project_show',
+                [
+                    'uuid' => $goal->getProject()->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
         if ((Goal::CONTEXT_ROUTINE === $context) || (null === $goal->getProject())) {
-            return $this->redirectToRoute('frontend_routine_show_goals', [
-                'uuid' => $goal->getRoutine()->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show_goals',
+                [
+                    'uuid' => $goal->getRoutine()->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
     }
 
@@ -171,21 +195,33 @@ class GoalController extends AbstractController
             $goalManager->save($goal, (string) $this->getUser());
 
             if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {
-                return $this->redirectToRoute('frontend_project_show', [
-                    'uuid' => $goal->getProject()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_project_show',
+                    [
+                        'uuid' => $goal->getProject()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
             if ((Goal::CONTEXT_ROUTINE === $context) || (null === $goal->getProject())) {
                 if ($knowYourTools) {
-                    return $this->redirectToRoute('frontend_routine_show_goals', [
-                        'know_your_tools' => KytResource::GOALS_FINISH,
-                        'uuid' => $goal->getRoutine()->getUuid(),
-                    ]);
+                    return $this->redirectToRoute(
+                        'frontend_routine_show_goals',
+                        [
+                            'know_your_tools' => KytResource::GOALS_FINISH,
+                            'uuid' => $goal->getRoutine()->getUuid(),
+                        ],
+                        Response::HTTP_SEE_OTHER
+                    );
                 }
 
-                return $this->redirectToRoute('frontend_routine_show_goals', [
-                    'uuid' => $goal->getRoutine()->getUuid(),
-                ]);
+                return $this->redirectToRoute(
+                    'frontend_routine_show_goals',
+                    [
+                        'uuid' => $goal->getRoutine()->getUuid(),
+                    ],
+                    Response::HTTP_SEE_OTHER
+                );
             }
         }
 
@@ -219,14 +255,22 @@ class GoalController extends AbstractController
         }
 
         if ((Goal::CONTEXT_PROJECT === $context) && (null !== $goal->getProject())) {
-            return $this->redirectToRoute('frontend_project_show', [
-                'uuid' => $goal->getProject()->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_project_show',
+                [
+                    'uuid' => $goal->getProject()->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
         if ((Goal::CONTEXT_ROUTINE === $context) || (null === $goal->getProject())) {
-            return $this->redirectToRoute('frontend_routine_show_goals', [
-                'uuid' => $goal->getRoutine()->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'frontend_routine_show_goals',
+                [
+                    'uuid' => $goal->getRoutine()->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
     }
 }

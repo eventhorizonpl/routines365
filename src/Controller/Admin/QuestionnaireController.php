@@ -60,9 +60,13 @@ class QuestionnaireController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $questionnaireManager->save($questionnaire, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_questionnaire_show', [
-                'uuid' => $questionnaire->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_questionnaire_show',
+                [
+                    'uuid' => $questionnaire->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/questionnaire/new.html.twig', [
@@ -91,9 +95,13 @@ class QuestionnaireController extends AbstractController
         if ((true === $form->isSubmitted()) && (true === $form->isValid())) {
             $questionnaireManager->save($questionnaire, (string) $this->getUser());
 
-            return $this->redirectToRoute('admin_questionnaire_show', [
-                'uuid' => $questionnaire->getUuid(),
-            ]);
+            return $this->redirectToRoute(
+                'admin_questionnaire_show',
+                [
+                    'uuid' => $questionnaire->getUuid(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('admin/questionnaire/edit.html.twig', [
@@ -119,7 +127,7 @@ class QuestionnaireController extends AbstractController
             $questionnaireManager->softDelete($questionnaire, (string) $this->getUser());
         }
 
-        return $this->redirectToRoute('admin_questionnaire_index');
+        return $this->redirectToRoute('admin_questionnaire_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{uuid}/undelete', methods: ['GET'], name: 'undelete')]
@@ -129,8 +137,12 @@ class QuestionnaireController extends AbstractController
     ): Response {
         $questionnaireManager->undelete($questionnaire);
 
-        return $this->redirectToRoute('admin_questionnaire_show', [
-            'uuid' => $questionnaire->getUuid(),
-        ]);
+        return $this->redirectToRoute(
+            'admin_questionnaire_show',
+            [
+                'uuid' => $questionnaire->getUuid(),
+            ],
+            Response::HTTP_SEE_OTHER
+        );
     }
 }

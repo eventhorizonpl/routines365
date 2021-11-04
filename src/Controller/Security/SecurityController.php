@@ -16,7 +16,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if (null !== $this->getUser()) {
-            return $this->redirectToRoute('frontend_home');
+            return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('security/security/login.html.twig', [

@@ -14,7 +14,7 @@ class StaticPageController extends AbstractController
     #[Route('/about', methods: ['GET'], name: 'about')]
     public function about(): Response
     {
-        return $this->redirectToRoute('frontend_home');
+        return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/changelog', methods: ['GET'], name: 'changelog')]
