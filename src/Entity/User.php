@@ -805,6 +805,11 @@ class User implements UserInterface, TwoFactorInterface
         return $this;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
     public function getUsername(): string
     {
         return (string) $this->email;
