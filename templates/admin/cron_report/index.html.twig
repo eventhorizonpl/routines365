@@ -39,6 +39,9 @@
                             <th{% if cron_reports.isSorted('cr.Output') %} class="sorted"{% endif %}>
                                 {{ knp_pagination_sortable(cron_reports, 'Output'|trans, 'cr.output') }}
                             </th>
+                            <th{% if cron_reports.isSorted('cr.Error') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(cron_reports, 'Error'|trans, 'cr.error') }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,10 +65,13 @@
                                 <td>
                                     {{ cron_report.output }}
                                 </td>
+                                <td>
+                                    {{ cron_report.error }}
+                                </td>
                             </tr>
                         {% else %}
                             <tr>
-                                <td colspan="6">
+                                <td colspan="7">
                                     {{ 'No records found'|trans }}
                                 </td>
                             </tr>

@@ -117,7 +117,7 @@ class QuoteController extends AbstractController
             return $this->redirectToRoute(
                 'frontend_quote_send',
                 [
-                    'uuid' => $quote->getUuid()
+                    'uuid' => $quote->getUuid(),
                 ],
                 Response::HTTP_SEE_OTHER
             );

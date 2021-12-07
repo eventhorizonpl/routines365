@@ -1685,6 +1685,10 @@
         <source>Edit a goal</source>
         <target>Edit a goal</target>
       </trans-unit>
+      <trans-unit id="VKDowX6" resname="Error">
+        <source>Error</source>
+        <target>Error</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
