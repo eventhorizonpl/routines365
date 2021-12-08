@@ -90,7 +90,7 @@ class QuoteRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
-    public function findOneByStringLength(int $stringLength = null): ?Quote
+    public function findOneByStringLength(?int $stringLength = null): ?Quote
     {
         $queryBuilder = $this->createQueryBuilder('q')
             ->where('q.deletedAt IS NULL')

@@ -33,7 +33,7 @@ class UserManager
     ) {
     }
 
-    public function bulkSave(array $users, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $users, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -59,7 +59,7 @@ class UserManager
         return $this;
     }
 
-    public function save(User $user, string $actor = null, bool $flush = true, bool $saveDependencies = false): self
+    public function save(User $user, ?string $actor = null, bool $flush = true, bool $saveDependencies = false): self
     {
         if (null === $actor) {
             $actor = $user->getUuid();

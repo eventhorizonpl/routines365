@@ -22,7 +22,7 @@ class NoteManager
     ) {
     }
 
-    public function bulkSave(array $notes, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $notes, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -48,7 +48,7 @@ class NoteManager
         return $this;
     }
 
-    public function save(Note $note, string $actor = null, bool $flush = true): self
+    public function save(Note $note, ?string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
             $actor = (string) $note->getUser();

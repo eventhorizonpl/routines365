@@ -27,7 +27,7 @@ class RoutineManager
     ) {
     }
 
-    public function bulkSave(array $routines, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $routines, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -53,7 +53,7 @@ class RoutineManager
         return $this;
     }
 
-    public function save(Routine $routine, string $actor = null, bool $flush = true): self
+    public function save(Routine $routine, ?string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
             $actor = (string) $routine->getUser();

@@ -28,7 +28,7 @@ class ReminderManager
     ) {
     }
 
-    public function bulkSave(array $reminders, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $reminders, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -100,7 +100,7 @@ class ReminderManager
         return $this;
     }
 
-    public function save(Reminder $reminder, string $actor = null, bool $flush = true, bool $dispatch = true): self
+    public function save(Reminder $reminder, ?string $actor = null, bool $flush = true, bool $dispatch = true): self
     {
         if (null === $actor) {
             $actor = (string) $reminder->getUser();

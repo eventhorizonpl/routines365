@@ -104,7 +104,7 @@ class RewardRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
-    public function findOneByUserAndTypesAndRoutine(User $user, array $types, Routine $routine = null): ?Reward
+    public function findOneByUserAndTypesAndRoutine(User $user, array $types, ?Routine $routine = null): ?Reward
     {
         $queryBuilder = $this->createQueryBuilder('r')
             ->select('r')

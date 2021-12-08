@@ -22,7 +22,7 @@ class GoalManager
     ) {
     }
 
-    public function bulkSave(array $goals, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $goals, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -48,7 +48,7 @@ class GoalManager
         return $this;
     }
 
-    public function save(Goal $goal, string $actor = null, bool $flush = true): self
+    public function save(Goal $goal, ?string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
             $actor = (string) $goal->getUser();

@@ -26,7 +26,7 @@ abstract class BaseLockableCommand extends Command
         parent::__construct();
     }
 
-    public function lock(string $name = null, bool $blocking = false): bool
+    public function lock(?string $name = null, bool $blocking = false): bool
     {
         if (null !== $this->lock) {
             throw new LogicException('A lock is already in place.');

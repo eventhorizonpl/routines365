@@ -21,7 +21,7 @@ class AccountOperationManager
     ) {
     }
 
-    public function bulkSave(array $accountOperations, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $accountOperations, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -47,7 +47,7 @@ class AccountOperationManager
         return $this;
     }
 
-    public function save(AccountOperation $accountOperation, string $actor = null, bool $flush = true): self
+    public function save(AccountOperation $accountOperation, ?string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
             $actor = (string) $accountOperation->getAccount()->getUsers()->first();

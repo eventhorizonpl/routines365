@@ -23,7 +23,7 @@ class ProjectManager
     ) {
     }
 
-    public function bulkSave(array $projects, string $actor = null, int $saveEvery = 200): self
+    public function bulkSave(array $projects, ?string $actor = null, int $saveEvery = 200): self
     {
         $this->entityManager->getConnection()->getConfiguration()->setSQLLogger(null);
         $i = 1;
@@ -49,7 +49,7 @@ class ProjectManager
         return $this;
     }
 
-    public function save(Project $project, string $actor = null, bool $flush = true): self
+    public function save(Project $project, ?string $actor = null, bool $flush = true): self
     {
         if (null === $actor) {
             $actor = (string) $project->getUser();
