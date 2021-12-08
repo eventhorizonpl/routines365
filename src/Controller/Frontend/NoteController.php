@@ -118,8 +118,8 @@ class NoteController extends AbstractController
             }
         }
 
-        return $this->render('frontend/note/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/note/new.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'note' => $note,
         ]);
@@ -184,8 +184,8 @@ class NoteController extends AbstractController
             }
         }
 
-        return $this->render('frontend/note/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/note/edit.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'note' => $note,
         ]);

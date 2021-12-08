@@ -83,8 +83,8 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('frontend_profile_show', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('frontend/profile/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/profile/edit.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'profile' => $profile,
         ]);
@@ -146,8 +146,8 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('frontend_profile_phone_verification_code', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('frontend/profile/phone_verification_code.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/profile/phone_verification_code.html.twig', [
+            'form' => $form,
         ]);
     }
 }

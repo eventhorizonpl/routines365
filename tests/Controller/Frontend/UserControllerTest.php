@@ -35,10 +35,12 @@ final class UserControllerTest extends AbstractUiTestCase
         );
 
         $crawler = $this->client->submitForm('Change password');
-        $this->assertResponseIsSuccessful();
+
+        $this->assertResponseStatusCodeSame(422);
         $this->assertTrue(
             $crawler->filter('span:contains("Please enter a password")')->count() > 0
         );
+
         $password = 'test password';
         $crawler = $this->client->submitForm('Change password', [
             'change_password_form[oldPassword]' => $password,

@@ -122,9 +122,9 @@ class CompletedRoutineController extends AbstractController
             );
         }
 
-        return $this->render('frontend/completed_routine/new.html.twig', [
+        return $this->renderForm('frontend/completed_routine/new.html.twig', [
             'completed_routine' => $completedRoutine,
-            'form' => $form->createView(),
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'routine' => $routine,
         ]);

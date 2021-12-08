@@ -51,8 +51,8 @@ class UserController extends AbstractController
             return $this->redirectToRoute('frontend_profile_show', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('frontend/user/change_password.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/user/change_password.html.twig', [
+            'form' => $form,
             'user' => $user,
         ]);
     }

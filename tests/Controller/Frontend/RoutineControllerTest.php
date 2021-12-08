@@ -71,7 +71,7 @@ final class RoutineControllerTest extends AbstractUiTestCase
 
         $crawler = $this->client->submitForm('Save');
 
-        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(422);
         $this->assertTrue(
             $crawler->filter('span:contains("This value should not be blank.")')->count() > 0
         );

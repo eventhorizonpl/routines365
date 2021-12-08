@@ -17,7 +17,7 @@ final class CompletedRoutineControllerTest extends AbstractUiTestCase
         return $user->getRoutines()->first();
     }
 
-    public function testEdit(): void
+    public function testNew(): void
     {
         $this->purge();
         $user = $this->createAndLoginRich();

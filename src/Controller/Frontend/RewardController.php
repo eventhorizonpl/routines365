@@ -104,8 +104,8 @@ class RewardController extends AbstractController
             }
         }
 
-        return $this->render('frontend/reward/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/reward/new.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'reward' => $reward,
         ]);
@@ -170,8 +170,8 @@ class RewardController extends AbstractController
             }
         }
 
-        return $this->render('frontend/reward/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/reward/edit.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'reward' => $reward,
         ]);

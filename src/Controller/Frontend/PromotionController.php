@@ -56,8 +56,8 @@ class PromotionController extends AbstractController
             return $this->redirectToRoute('frontend_promotion_code', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('frontend/promotion/code.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/promotion/code.html.twig', [
+            'form' => $form,
             'promotions' => $promotions,
         ]);
     }

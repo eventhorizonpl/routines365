@@ -42,7 +42,7 @@ final class ResetPasswordControllerTest extends AbstractUiTestCase
 
         $crawler = $this->client->submitForm('Send password reset email');
 
-        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(422);
 
         $this->assertTrue(
             $crawler->filter('span:contains("Please enter your email")')->count() > 0
@@ -99,7 +99,7 @@ final class ResetPasswordControllerTest extends AbstractUiTestCase
             'change_password_form[plainPassword][second]' => $password.'123',
         ]);
 
-        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(422);
 
         $this->assertTrue(
             $crawler->filter('span:contains("The password fields must match.")')->count() > 0

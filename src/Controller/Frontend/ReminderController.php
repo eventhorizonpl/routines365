@@ -70,8 +70,8 @@ class ReminderController extends AbstractController
             );
         }
 
-        return $this->render('frontend/reminder/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/reminder/new.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'reminder' => $reminder,
             'routine' => $routine,
@@ -123,8 +123,8 @@ class ReminderController extends AbstractController
             );
         }
 
-        return $this->render('frontend/reminder/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/reminder/edit.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'reminder' => $reminder,
             'routine' => $reminder->getRoutine(),

@@ -69,8 +69,8 @@ class TestimonialController extends AbstractController
             return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('frontend/testimonial/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/testimonial/new.html.twig', [
+            'form' => $form,
             'testimonial' => $testimonial,
         ]);
     }

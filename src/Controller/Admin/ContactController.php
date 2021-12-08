@@ -77,9 +77,9 @@ class ContactController extends AbstractController
             );
         }
 
-        return $this->render('admin/contact/edit.html.twig', [
+        return $this->renderForm('admin/contact/edit.html.twig', [
             'contact' => $contact,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

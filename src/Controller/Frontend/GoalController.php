@@ -93,8 +93,8 @@ class GoalController extends AbstractController
             }
         }
 
-        return $this->render('frontend/goal/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/goal/new.html.twig', [
+            'form' => $form,
             'goal' => $goal,
             'know_your_tools' => $knowYourTools,
             'project' => $project,
@@ -225,9 +225,9 @@ class GoalController extends AbstractController
             }
         }
 
-        return $this->render('frontend/goal/edit.html.twig', [
+        return $this->renderForm('frontend/goal/edit.html.twig', [
             'context' => $context,
-            'form' => $form->createView(),
+            'form' => $form,
             'goal' => $goal,
             'know_your_tools' => $knowYourTools,
             'project' => $goal->getProject(),

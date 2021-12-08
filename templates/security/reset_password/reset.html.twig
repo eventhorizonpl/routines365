@@ -8,10 +8,10 @@
                     {{ 'Reset your password'|trans }}
                 </div>
                 <div class="card-body">
-                    {{ form_start(resetForm) }}
+                    {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(resetForm.plainPassword) }}
+                                {{ form_row(form.plainPassword) }}
                             </div>
                         </div>
                         <hr>
@@ -22,7 +22,7 @@
                                 </button>
                             </div>
                         </div>
-                    {{ form_end(resetForm) }}
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>

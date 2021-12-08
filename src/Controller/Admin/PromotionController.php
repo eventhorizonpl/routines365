@@ -70,8 +70,8 @@ class PromotionController extends AbstractController
             );
         }
 
-        return $this->render('admin/promotion/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/promotion/new.html.twig', [
+            'form' => $form,
             'promotion' => $promotion,
         ]);
     }
@@ -105,8 +105,8 @@ class PromotionController extends AbstractController
             );
         }
 
-        return $this->render('admin/promotion/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/promotion/edit.html.twig', [
+            'form' => $form,
             'promotion' => $promotion,
         ]);
     }

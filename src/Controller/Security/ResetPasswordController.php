@@ -38,8 +38,8 @@ class ResetPasswordController extends AbstractController
             );
         }
 
-        return $this->render('security/reset_password/request.html.twig', [
-            'requestForm' => $form->createView(),
+        return $this->renderForm('security/reset_password/request.html.twig', [
+            'form' => $form,
         ]);
     }
 
@@ -105,8 +105,8 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('frontend_home', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('security/reset_password/reset.html.twig', [
-            'resetForm' => $form->createView(),
+        return $this->renderForm('security/reset_password/reset.html.twig', [
+            'form' => $form,
         ]);
     }
 

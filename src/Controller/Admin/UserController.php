@@ -75,8 +75,8 @@ class UserController extends AbstractController
             );
         }
 
-        return $this->render('admin/user/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/user/new.html.twig', [
+            'form' => $form,
             'user' => $user,
         ]);
     }
@@ -126,8 +126,8 @@ class UserController extends AbstractController
             );
         }
 
-        return $this->render('admin/user/new_lead.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/user/new_lead.html.twig', [
+            'form' => $form,
             'user' => $user,
         ]);
     }
@@ -180,8 +180,8 @@ class UserController extends AbstractController
             );
         }
 
-        return $this->render('admin/user/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/user/edit.html.twig', [
+            'form' => $form,
             'user' => $user,
         ]);
     }

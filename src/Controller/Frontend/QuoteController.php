@@ -123,9 +123,9 @@ class QuoteController extends AbstractController
             );
         }
 
-        return $this->render('frontend/quote/send.html.twig', [
+        return $this->renderForm('frontend/quote/send.html.twig', [
             'first_name' => $firstName,
-            'form' => $form->createView(),
+            'form' => $form,
             'last_name' => $lastName,
             'quote' => $quote,
             'subject' => $subject,

@@ -62,7 +62,7 @@ final class RegistrationControllerTest extends AbstractUiTestCase
 
         $crawler = $this->client->submitForm('Register');
 
-        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(422);
 
         $this->assertTrue(
             $crawler->filter('span:contains("Please enter a password")')->count() > 0

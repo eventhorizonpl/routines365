@@ -69,8 +69,8 @@ class QuoteController extends AbstractController
             );
         }
 
-        return $this->render('admin/quote/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/quote/new.html.twig', [
+            'form' => $form,
             'quote' => $quote,
         ]);
     }
@@ -104,8 +104,8 @@ class QuoteController extends AbstractController
             );
         }
 
-        return $this->render('admin/quote/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/quote/edit.html.twig', [
+            'form' => $form,
             'quote' => $quote,
         ]);
     }

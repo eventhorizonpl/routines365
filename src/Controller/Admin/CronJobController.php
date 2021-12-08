@@ -67,9 +67,9 @@ class CronJobController extends AbstractController
             );
         }
 
-        return $this->render('admin/cron_job/new.html.twig', [
+        return $this->renderForm('admin/cron_job/new.html.twig', [
             'cron_job' => $cronJob,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -102,9 +102,9 @@ class CronJobController extends AbstractController
             );
         }
 
-        return $this->render('admin/cron_job/edit.html.twig', [
+        return $this->renderForm('admin/cron_job/edit.html.twig', [
             'cron_job' => $cronJob,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

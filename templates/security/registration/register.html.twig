@@ -8,20 +8,20 @@
                     {{ 'Register'|trans }}
                 </div>
                 <div class="card-body">
-                    {{ form_start(registrationForm) }}
+                    {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(registrationForm.email) }}
+                                {{ form_row(form.email) }}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(registrationForm.plainPassword) }}
+                                {{ form_row(form.plainPassword) }}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(registrationForm.agree) }}
+                                {{ form_row(form.agree) }}
                                 <a href="{{ path('frontend_static_page_terms_and_conditions') }}">
                                     {{ 'Terms and Conditions'|trans }}
                                 </a>
@@ -36,7 +36,7 @@
                                 </button>
                             </div>
                         </div>
-                    {{ form_end(registrationForm) }}
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>

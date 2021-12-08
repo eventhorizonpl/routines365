@@ -8,7 +8,7 @@
                     {{ 'Reset your password'|trans }}
                 </div>
                 <div class="card-body">
-                    {{ form_start(requestForm) }}
+                    {{ form_start(form) }}
                         {% for flash_error in app.flashes('reset_password_error') %}
                             <div class="alert alert-danger" role="alert">
                                 {{ flash_error }}
@@ -16,7 +16,7 @@
                         {% endfor %}
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(requestForm.email) }}
+                                {{ form_row(form.email) }}
                             </div>
                         </div>
                         <div>
@@ -33,7 +33,7 @@
                                 </button>
                             </div>
                         </div>
-                    {{ form_end(requestForm) }}
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>

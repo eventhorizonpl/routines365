@@ -76,8 +76,8 @@ class RoutineController extends AbstractController
             );
         }
 
-        return $this->render('frontend/routine/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/routine/new.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'routine' => $routine,
         ]);
@@ -174,8 +174,8 @@ class RoutineController extends AbstractController
             );
         }
 
-        return $this->render('frontend/routine/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/routine/edit.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'routine' => $routine,
         ]);

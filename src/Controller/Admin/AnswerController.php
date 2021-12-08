@@ -42,9 +42,9 @@ class AnswerController extends AbstractController
             );
         }
 
-        return $this->render('admin/answer/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/answer/new.html.twig', [
             'answer' => $answer,
+            'form' => $form,
         ]);
     }
 
@@ -77,9 +77,9 @@ class AnswerController extends AbstractController
             );
         }
 
-        return $this->render('admin/answer/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/answer/edit.html.twig', [
             'answer' => $answer,
+            'form' => $form,
         ]);
     }
 

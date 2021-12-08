@@ -80,8 +80,8 @@ class ProjectController extends AbstractController
             );
         }
 
-        return $this->render('frontend/project/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/project/new.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'project' => $project,
         ]);
@@ -145,8 +145,8 @@ class ProjectController extends AbstractController
             );
         }
 
-        return $this->render('frontend/project/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('frontend/project/edit.html.twig', [
+            'form' => $form,
             'know_your_tools' => $knowYourTools,
             'project' => $project,
         ]);

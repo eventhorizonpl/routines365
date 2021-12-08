@@ -70,9 +70,9 @@ class AchievementController extends AbstractController
             );
         }
 
-        return $this->render('admin/achievement/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/achievement/new.html.twig', [
             'achievement' => $achievement,
+            'form' => $form,
         ]);
     }
 
@@ -105,9 +105,9 @@ class AchievementController extends AbstractController
             );
         }
 
-        return $this->render('admin/achievement/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/achievement/edit.html.twig', [
             'achievement' => $achievement,
+            'form' => $form,
         ]);
     }
 

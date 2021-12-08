@@ -86,9 +86,9 @@ class InvitationController extends AbstractController
             return $this->redirectToRoute('frontend_invitation_send', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('frontend/invitation/send.html.twig', [
+        return $this->renderForm('frontend/invitation/send.html.twig', [
             'first_name' => $firstName,
-            'form' => $form->createView(),
+            'form' => $form,
             'last_name' => $lastName,
             'promotion' => $promotion,
             'referrer_code' => $user->getReferrerCode(),

@@ -69,8 +69,8 @@ class QuestionnaireController extends AbstractController
             );
         }
 
-        return $this->render('admin/questionnaire/new.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/questionnaire/new.html.twig', [
+            'form' => $form,
             'questionnaire' => $questionnaire,
         ]);
     }
@@ -104,8 +104,8 @@ class QuestionnaireController extends AbstractController
             );
         }
 
-        return $this->render('admin/questionnaire/edit.html.twig', [
-            'form' => $form->createView(),
+        return $this->renderForm('admin/questionnaire/edit.html.twig', [
+            'form' => $form,
             'questionnaire' => $questionnaire,
         ]);
     }
