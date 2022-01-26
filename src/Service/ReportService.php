@@ -32,8 +32,8 @@ class ReportService
 
     public function create(
         array $data,
-        string $status,
-        string $type
+        ReportStatusEnum $status,
+        ReportTypeEnum $type
     ): Report {
         $report = $this->reportFactory->createReportWithRequired(
             $data,

@@ -217,7 +217,6 @@ final class ContactTest extends AbstractTestCase
         $contact = new Contact();
         $contact->setStatus($status);
         $this->assertSame($status, $contact->getStatus());
-        $this->assertIsString($contact->getStatus());
     }
 
     public function testGetStatusFormChoices(): void
@@ -238,14 +237,6 @@ final class ContactTest extends AbstractTestCase
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setStatus($status));
         $this->assertSame($status, $contact->getStatus());
-    }
-
-    public function testSetStatusException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $status = 'wrong status';
-        $contact = new Contact();
-        $this->assertInstanceOf(Contact::class, $contact->setStatus($status));
     }
 
     public function testGetTitle(): void
@@ -272,7 +263,6 @@ final class ContactTest extends AbstractTestCase
         $contact = new Contact();
         $contact->setType($type);
         $this->assertSame($type, $contact->getType());
-        $this->assertIsString($contact->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -293,13 +283,5 @@ final class ContactTest extends AbstractTestCase
         $contact = new Contact();
         $this->assertInstanceOf(Contact::class, $contact->setType($type));
         $this->assertSame($type, $contact->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $contact = new Contact();
-        $this->assertInstanceOf(Contact::class, $contact->setType($type));
     }
 }

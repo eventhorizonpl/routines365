@@ -901,7 +901,7 @@ final class UserTest extends AbstractTestCase
 
     public function testGetRoles(): void
     {
-        $roles = [UserRoleEnum::ROLE_USER];
+        $roles = [UserRoleEnum::ROLE_USER->value];
         $user = new User();
         $user->setRoles($roles);
         $this->assertSame($roles, $user->getRoles());
@@ -922,7 +922,7 @@ final class UserTest extends AbstractTestCase
 
     public function testSetRoles(): void
     {
-        $roles = [UserRoleEnum::ROLE_USER];
+        $roles = [UserRoleEnum::ROLE_USER->value];
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setRoles($roles));
         $this->assertSame($roles, $user->getRoles());
@@ -1054,7 +1054,6 @@ final class UserTest extends AbstractTestCase
         $user = new User();
         $user->setType($type);
         $this->assertSame($type, $user->getType());
-        $this->assertIsString($user->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -1075,14 +1074,6 @@ final class UserTest extends AbstractTestCase
         $user = new User();
         $this->assertInstanceOf(User::class, $user->setType($type));
         $this->assertSame($type, $user->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $user = new User();
-        $this->assertInstanceOf(User::class, $user->setType($type));
     }
 
     public function testAddUserKpi(): void

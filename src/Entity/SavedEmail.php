@@ -36,12 +36,11 @@ class SavedEmail
     private string $email;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 16)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
+    #[Assert\Type(SavedEmailTypeEnum::class, groups: ['system'])]
     #[Groups(['gdpr'])]
-    #[ORM\Column(length: 16, type: Types::STRING)]
-    private string $type;
+    #[ORM\Column(enumType: SavedEmailTypeEnum::class, length: 16, type: Types::STRING)]
+    private SavedEmailTypeEnum $type;
 
     public function __construct()
     {
@@ -66,7 +65,7 @@ class SavedEmail
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?SavedEmailTypeEnum
     {
         return $this->type;
     }
@@ -74,22 +73,21 @@ class SavedEmail
     public static function getTypeFormChoices(): array
     {
         return [
-            SavedEmailTypeEnum::INVITATION => SavedEmailTypeEnum::INVITATION,
-            SavedEmailTypeEnum::MOTIVATIONAL => SavedEmailTypeEnum::MOTIVATIONAL,
+            SavedEmailTypeEnum::INVITATION->value => SavedEmailTypeEnum::INVITATION->value,
+            SavedEmailTypeEnum::MOTIVATIONAL->value => SavedEmailTypeEnum::MOTIVATIONAL->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            SavedEmailTypeEnum::INVITATION,
+            SavedEmailTypeEnum::MOTIVATIONAL,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(SavedEmailTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

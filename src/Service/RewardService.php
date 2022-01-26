@@ -17,12 +17,12 @@ class RewardService
     ) {
     }
 
-    public function findReward(Routine $routine, string $type): ?Reward
+    public function findReward(Routine $routine, RewardTypeEnum $type): ?Reward
     {
         $user = $routine->getUser();
         $types = [
-            RewardTypeEnum::ALL,
-            $type,
+            RewardTypeEnum::ALL->value,
+            $type->value,
         ];
         $reward = $this->rewardRepository->findOneByUserAndTypesAndRoutine($user, $types, $routine);
 
@@ -33,7 +33,7 @@ class RewardService
         return $reward;
     }
 
-    public function manageReward(Routine $routine, string $type): ?Reward
+    public function manageReward(Routine $routine, RewardTypeEnum $type): ?Reward
     {
         $reward = $this->findReward($routine, $type);
 

@@ -71,12 +71,11 @@ class Reward
     private int $requiredNumberOfCompletions;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Assert\Type(RewardTypeEnum::class, groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
-    #[ORM\Column(length: 24, type: Types::STRING)]
-    private string $type;
+    #[ORM\Column(enumType: RewardTypeEnum::class, length: 24, type: Types::STRING)]
+    private RewardTypeEnum $type;
 
     public function __construct()
     {
@@ -193,7 +192,7 @@ class Reward
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?RewardTypeEnum
     {
         return $this->type;
     }
@@ -201,23 +200,23 @@ class Reward
     public static function getTypeFormChoices(): array
     {
         return [
-            RewardTypeEnum::ALL => RewardTypeEnum::ALL,
-            RewardTypeEnum::COMPLETED_ROUTINE => RewardTypeEnum::COMPLETED_ROUTINE,
-            RewardTypeEnum::COMPLETED_GOAL => RewardTypeEnum::COMPLETED_GOAL,
+            RewardTypeEnum::ALL->value => RewardTypeEnum::ALL->value,
+            RewardTypeEnum::COMPLETED_ROUTINE->value => RewardTypeEnum::COMPLETED_ROUTINE->value,
+            RewardTypeEnum::COMPLETED_GOAL->value => RewardTypeEnum::COMPLETED_GOAL->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            RewardTypeEnum::ALL,
+            RewardTypeEnum::COMPLETED_ROUTINE,
+            RewardTypeEnum::COMPLETED_GOAL,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(RewardTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

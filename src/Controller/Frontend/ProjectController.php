@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(UserRoleEnum::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER->value)]
 #[Route('/projects', name: 'frontend_project_')]
 class ProjectController extends AbstractController
 {

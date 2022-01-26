@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class ReminderMessageThirdPartySystemTypeEnum
+enum ReminderMessageThirdPartySystemTypeEnum: string
 {
-    public const AMAZON_SES = 'amazon_ses';
-    public const AMAZON_SNS = 'amazon_sns';
+    case AMAZON_SES = 'amazon_ses';
+    case AMAZON_SNS = 'amazon_sns';
 }

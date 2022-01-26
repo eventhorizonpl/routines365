@@ -5,7 +5,7 @@
         <row>
             {{ include('email/_start.txt.twig') }}
             <br><br>
-            Here are your {{ user_kpi.type }} statistics.<br><br>
+            Here are your {{ user_kpi.type.value }} statistics.<br><br>
             <container>
                 <row>
                     <columns>Awarded rewards: {{ user_kpi.awardedRewardCounter }}</columns>

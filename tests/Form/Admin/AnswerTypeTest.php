@@ -44,7 +44,7 @@ final class AnswerTypeTest extends TypeTestCase
                     'content' => 'test content',
                     'isEnabled' => true,
                     'position' => 1,
-                    'type' => AnswerTypeEnum::DEFINED,
+                    'type' => AnswerTypeEnum::DEFINED->value,
                 ],
             ],
         ];

@@ -115,7 +115,7 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($userKpis);
 
         $parameters = [
-            'type' => $userKpi->getType(),
+            'type' => $userKpi->getType()->value,
         ];
         $userKpis = $this->userKpiRepository->findByParametersForAdmin($parameters)->getResult();
         $this->assertCount(1, $userKpis);
@@ -142,7 +142,7 @@ final class UserKpiRepositoryTest extends AbstractDoctrineTestCase
         $userKpi = $this->createUserKpi();
         $user = $userKpi->getUser();
 
-        $userKpi2 = $this->userKpiRepository->findOneByTypeAndUser($userKpi->getType(), $user);
+        $userKpi2 = $this->userKpiRepository->findOneByTypeAndUser($userKpi->getType()->value, $user);
         $this->assertInstanceOf(UserKpi::class, $userKpi2);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\SavedEmail;
+use App\Enum\SavedEmailTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class SavedEmailFactory
@@ -19,7 +20,7 @@ class SavedEmailFactory
 
     public function createSavedEmailWithRequired(
         string $email,
-        string $type
+        SavedEmailTypeEnum $type
     ): SavedEmail {
         $savedEmail = $this->createSavedEmail();
 

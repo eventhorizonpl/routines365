@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Report;
+use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use Symfony\Component\Uid\Uuid;
 
 class ReportFactory
@@ -19,8 +20,8 @@ class ReportFactory
 
     public function createReportWithRequired(
         array $data,
-        string $status,
-        string $type
+        ReportStatusEnum $status,
+        ReportTypeEnum $type
     ): Report {
         $report = $this->createReport();
 

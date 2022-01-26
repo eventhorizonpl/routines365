@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN->value)]
 #[Route('/admin/sent-reminder', name: 'admin_sent_reminder_')]
 class SentReminderController extends AbstractController
 {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Routine;
+use App\Enum\RoutineTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class RoutineFactory
@@ -20,7 +21,7 @@ class RoutineFactory
     public function createRoutineWithRequired(
         bool $isEnabled,
         string $name,
-        string $type
+        RoutineTypeEnum $type
     ): Routine {
         $routine = $this->createRoutine();
 

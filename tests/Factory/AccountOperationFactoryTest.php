@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use App\Factory\AccountOperationFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -49,9 +50,7 @@ final class AccountOperationFactoryTest extends AbstractTestCase
         $description = $this->faker->sentence();
         $notifications = $this->faker->randomNumber();
         $smsNotifications = $this->faker->randomNumber();
-        $type = $this->faker->randomElement(
-            AccountOperation::getTypeFormChoices()
-        );
+        $type = AccountOperationTypeEnum::DEPOSIT;
         $accountOperationFactory = new AccountOperationFactory();
         $accountOperation = $accountOperationFactory->createAccountOperationWithRequired(
             $description,

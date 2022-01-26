@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class QuestionTypeEnum
+enum QuestionTypeEnum: string
 {
-    public const MULTIPLE_ANSWER = 'multiple_answer';
-    public const SINGLE_ANSWER = 'single_answer';
+    case MULTIPLE_ANSWER = 'multiple_answer';
+    case SINGLE_ANSWER = 'single_answer';
 }

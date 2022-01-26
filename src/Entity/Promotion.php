@@ -64,11 +64,10 @@ class Promotion
     private int $smsNotifications;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
-    #[ORM\Column(length: 24, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(PromotionTypeEnum::class, groups: ['form', 'system'])]
+    #[ORM\Column(enumType: PromotionTypeEnum::class, length: 24, type: Types::STRING)]
+    private PromotionTypeEnum $type;
 
     public function __construct()
     {
@@ -159,7 +158,7 @@ class Promotion
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?PromotionTypeEnum
     {
         return $this->type;
     }
@@ -167,23 +166,23 @@ class Promotion
     public static function getTypeFormChoices(): array
     {
         return [
-            PromotionTypeEnum::EXISTING_ACCOUNT => PromotionTypeEnum::EXISTING_ACCOUNT,
-            PromotionTypeEnum::NEW_ACCOUNT => PromotionTypeEnum::NEW_ACCOUNT,
-            PromotionTypeEnum::SYSTEM => PromotionTypeEnum::SYSTEM,
+            PromotionTypeEnum::EXISTING_ACCOUNT->value => PromotionTypeEnum::EXISTING_ACCOUNT->value,
+            PromotionTypeEnum::NEW_ACCOUNT->value => PromotionTypeEnum::NEW_ACCOUNT->value,
+            PromotionTypeEnum::SYSTEM->value => PromotionTypeEnum::SYSTEM->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            PromotionTypeEnum::EXISTING_ACCOUNT,
+            PromotionTypeEnum::NEW_ACCOUNT,
+            PromotionTypeEnum::SYSTEM,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(PromotionTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

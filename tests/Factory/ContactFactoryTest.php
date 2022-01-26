@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Contact;
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use App\Factory\ContactFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -47,13 +48,9 @@ final class ContactFactoryTest extends AbstractTestCase
     public function testCreateContactWithRequired(): void
     {
         $content = $this->faker->sentence();
-        $status = $this->faker->randomElement(
-            Contact::getStatusFormChoices()
-        );
+        $status = ContactStatusEnum::OPEN;
         $title = $this->faker->sentence();
-        $type = $this->faker->randomElement(
-            Contact::getTypeFormChoices()
-        );
+        $type = ContactTypeEnum::QUESTION;
         $contactFactory = new ContactFactory();
         $contact = $contactFactory->createContactWithRequired(
             $content,

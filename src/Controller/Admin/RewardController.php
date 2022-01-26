@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN->value)]
 #[Route('/admin/reward', name: 'admin_reward_')]
 class RewardController extends AbstractController
 {

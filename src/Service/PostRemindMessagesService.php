@@ -77,7 +77,7 @@ class PostRemindMessagesService
         Report $report
     ): Reminder {
         $data = [
-            ReportDataKeyEnum::REMINDER => $reminder->getUuid(),
+            ReportDataKeyEnum::REMINDER->value => $reminder->getUuid(),
         ];
 
         $message = sprintf(
@@ -146,14 +146,14 @@ class PostRemindMessagesService
             $createSentReminder = true;
         }
 
-        $data[ReportDataKeyEnum::CREATE_SENT_REMINDER] = $createSentReminder;
+        $data[ReportDataKeyEnum::CREATE_SENT_REMINDER->value] = $createSentReminder;
 
         if (true === $createSentReminder) {
             $sentReminder = $this->sentReminderFactory->createSentReminder();
             $sentReminder->setReminder($reminder);
             $sentReminder->setRoutine($reminder->getRoutine());
             $this->sentReminderManager->save($sentReminder);
-            $data[ReportDataKeyEnum::SENT_REMINDER] = $sentReminder->getUuid();
+            $data[ReportDataKeyEnum::SENT_REMINDER->value] = $sentReminder->getUuid();
         } else {
             $sentReminder = null;
         }
@@ -193,7 +193,7 @@ class PostRemindMessagesService
                 ;
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $data[ReportDataKeyEnum::REMINDER_MESSAGE] = $reminderMessage->getUuid();
+                $data[ReportDataKeyEnum::REMINDER_MESSAGE->value] = $reminderMessage->getUuid();
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
@@ -231,7 +231,7 @@ class PostRemindMessagesService
                 ;
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $data[ReportDataKeyEnum::REMINDER_MESSAGE] = $reminderMessage->getUuid();
+                $data[ReportDataKeyEnum::REMINDER_MESSAGE->value] = $reminderMessage->getUuid();
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,
@@ -255,7 +255,7 @@ class PostRemindMessagesService
                 ;
                 $this->reminderMessageManager->save($reminderMessage);
 
-                $data[ReportDataKeyEnum::REMINDER_MESSAGE] = $reminderMessage->getUuid();
+                $data[ReportDataKeyEnum::REMINDER_MESSAGE->value] = $reminderMessage->getUuid();
 
                 $accountOperation = $this->accountOperationService->withdraw(
                     $account,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
@@ -33,7 +34,7 @@ class UserKpiFactory
         int $rewardCounter,
         int $routineCounter,
         int $savedEmailCounter,
-        string $type,
+        UserKpiTypeEnum $type,
         int $userQuestionnaireCounter
     ): UserKpi {
         $userUserKpi = $this->createUserKpi();

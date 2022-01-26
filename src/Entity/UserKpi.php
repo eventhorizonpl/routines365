@@ -124,11 +124,10 @@ class UserKpi
     private int $savedEmailCounter;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 8, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(UserKpiTypeEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: UserKpiTypeEnum::class, length: 8, type: Types::STRING)]
+    private UserKpiTypeEnum $type;
 
     #[Assert\GreaterThanOrEqual(0, groups: ['system'])]
     #[Assert\NotBlank(groups: ['system'])]
@@ -364,7 +363,7 @@ class UserKpi
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?UserKpiTypeEnum
     {
         return $this->type;
     }
@@ -372,24 +371,25 @@ class UserKpi
     public static function getTypeFormChoices(): array
     {
         return [
-            UserKpiTypeEnum::ANNUALLY => UserKpiTypeEnum::ANNUALLY,
-            UserKpiTypeEnum::DAILY => UserKpiTypeEnum::DAILY,
-            UserKpiTypeEnum::MONTHLY => UserKpiTypeEnum::MONTHLY,
-            UserKpiTypeEnum::WEEKLY => UserKpiTypeEnum::WEEKLY,
+            UserKpiTypeEnum::ANNUALLY->value => UserKpiTypeEnum::ANNUALLY->value,
+            UserKpiTypeEnum::DAILY->value => UserKpiTypeEnum::DAILY->value,
+            UserKpiTypeEnum::MONTHLY->value => UserKpiTypeEnum::MONTHLY->value,
+            UserKpiTypeEnum::WEEKLY->value => UserKpiTypeEnum::WEEKLY->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            UserKpiTypeEnum::ANNUALLY,
+            UserKpiTypeEnum::DAILY,
+            UserKpiTypeEnum::MONTHLY,
+            UserKpiTypeEnum::WEEKLY,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(UserKpiTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

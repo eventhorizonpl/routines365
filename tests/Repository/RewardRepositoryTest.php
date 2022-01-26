@@ -122,7 +122,7 @@ final class RewardRepositoryTest extends AbstractDoctrineTestCase
         $user = $this->userFaker->createRichUserPersisted();
         $reward = $user->getRewards()->first();
         $routine = $user->getRoutines()->first();
-        $types = [$reward->getType()];
+        $types = [$reward->getType()->value];
 
         $rewardResult = $this->rewardRepository->findOneByUserAndTypesAndRoutine($user, $types);
         if (true === $reward->getIsAwarded()) {

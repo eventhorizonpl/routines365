@@ -140,7 +140,6 @@ final class ReportTest extends AbstractTestCase
         $report = new Report();
         $report->setStatus($status);
         $this->assertSame($status, $report->getStatus());
-        $this->assertIsString($report->getStatus());
     }
 
     public function testGetStatusFormChoices(): void
@@ -163,21 +162,12 @@ final class ReportTest extends AbstractTestCase
         $this->assertSame($status, $report->getStatus());
     }
 
-    public function testSetStatusException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $status = 'wrong status';
-        $report = new Report();
-        $this->assertInstanceOf(Report::class, $report->setStatus($status));
-    }
-
     public function testGetType(): void
     {
         $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $report = new Report();
         $report->setType($type);
         $this->assertSame($type, $report->getType());
-        $this->assertIsString($report->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -198,13 +188,5 @@ final class ReportTest extends AbstractTestCase
         $report = new Report();
         $this->assertInstanceOf(Report::class, $report->setType($type));
         $this->assertSame($type, $report->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $report = new Report();
-        $this->assertInstanceOf(Report::class, $report->setType($type));
     }
 }

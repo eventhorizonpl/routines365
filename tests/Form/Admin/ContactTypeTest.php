@@ -45,7 +45,7 @@ final class ContactTypeTest extends TypeTestCase
                     'content' => 'test content',
                     'status' => ContactStatusEnum::CLOSED,
                     'title' => 'test title',
-                    'type' => ContactTypeEnum::QUESTION,
+                    'type' => ContactTypeEnum::QUESTION->value,
                 ],
             ],
             [
@@ -53,7 +53,7 @@ final class ContactTypeTest extends TypeTestCase
                     'content' => 'test content',
                     'status' => ContactStatusEnum::CLOSED,
                     'title' => 'test title',
-                    'type' => ContactTypeEnum::QUESTION,
+                    'type' => ContactTypeEnum::QUESTION->value,
                 ],
             ],
         ];

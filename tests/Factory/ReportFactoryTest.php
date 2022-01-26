@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Report;
+use App\Enum\{ReportStatusEnum, ReportTypeEnum};
 use App\Factory\ReportFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -47,12 +48,8 @@ final class ReportFactoryTest extends AbstractTestCase
     public function testCreateReportWithRequired(): void
     {
         $data = $this->faker->words();
-        $status = $this->faker->randomElement(
-            Report::getStatusFormChoices()
-        );
-        $type = $this->faker->randomElement(
-            Report::getTypeFormChoices()
-        );
+        $status = ReportStatusEnum::INITIAL;
+        $type = ReportTypeEnum::POST_REMIND_MESSAGES;
         $reportFactory = new ReportFactory();
         $report = $reportFactory->createReportWithRequired(
             $data,

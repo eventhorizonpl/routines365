@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Reward;
+use App\Enum\RewardTypeEnum;
 use App\Factory\RewardFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -49,9 +50,7 @@ final class RewardFactoryTest extends AbstractTestCase
         $isAwarded = $this->faker->boolean();
         $name = $this->faker->sentence();
         $requiredNumberOfCompletions = $this->faker->randomNumber();
-        $type = $this->faker->randomElement(
-            Reward::getTypeFormChoices()
-        );
+        $type = RewardTypeEnum::ALL;
         $rewardFactory = new RewardFactory();
         $reward = $rewardFactory->createRewardWithRequired(
             $isAwarded,

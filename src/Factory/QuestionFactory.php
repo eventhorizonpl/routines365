@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Question;
+use App\Enum\QuestionTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class QuestionFactory
@@ -21,7 +22,7 @@ class QuestionFactory
         bool $isEnabled,
         int $position,
         string $title,
-        string $type
+        QuestionTypeEnum $type
     ): Question {
         $question = $this->createQuestion();
 

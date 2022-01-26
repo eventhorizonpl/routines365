@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\UserKpi;
+use App\Enum\UserKpiTypeEnum;
 use App\Factory\UserKpiFactory;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
@@ -61,9 +62,7 @@ final class UserKpiFactoryTest extends AbstractTestCase
         $rewardCounter = $this->faker->randomNumber();
         $routineCounter = $this->faker->randomNumber();
         $savedEmailCounter = $this->faker->randomNumber();
-        $type = $this->faker->randomElement(
-            UserKpi::getTypeFormChoices()
-        );
+        $type = UserKpiTypeEnum::ANNUALLY;
         $userQuestionnaireCounter = $this->faker->randomNumber();
         $userKpiFactory = new UserKpiFactory();
         $userKpi = $userKpiFactory->createUserKpiWithRequired(

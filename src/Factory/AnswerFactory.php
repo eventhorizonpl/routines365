@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Answer;
+use App\Enum\AnswerTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class AnswerFactory
@@ -21,7 +22,7 @@ class AnswerFactory
         string $content,
         bool $isEnabled,
         int $position,
-        string $type
+        AnswerTypeEnum $type
     ): Answer {
         $answer = $this->createAnswer();
 

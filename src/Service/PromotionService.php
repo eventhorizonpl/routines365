@@ -19,11 +19,11 @@ class PromotionService
     ) {
     }
 
-    public function getEnabledAndValidPromotion(string $code, string $type): ?Promotion
+    public function getEnabledAndValidPromotion(string $code, PromotionTypeEnum $type): ?Promotion
     {
         $promotion = $this->promotionRepository->findOneByCodeAndType(
             $code,
-            $type
+            $type->value
         );
 
         $date = new DateTimeImmutable();

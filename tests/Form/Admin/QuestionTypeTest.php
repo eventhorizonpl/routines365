@@ -44,7 +44,7 @@ final class QuestionTypeTest extends TypeTestCase
                     'isEnabled' => true,
                     'position' => 1,
                     'title' => 'test title',
-                    'type' => QuestionTypeEnum::SINGLE_ANSWER,
+                    'type' => QuestionTypeEnum::SINGLE_ANSWER->value,
                 ],
             ],
         ];

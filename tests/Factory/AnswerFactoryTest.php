@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Answer;
+use App\Enum\AnswerTypeEnum;
 use App\Factory\AnswerFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -49,9 +50,7 @@ final class AnswerFactoryTest extends AbstractTestCase
         $content = $this->faker->sentence();
         $isEnabled = $this->faker->boolean();
         $position = $this->faker->numberBetween(1, 10);
-        $type = $this->faker->randomElement(
-            Answer::getTypeFormChoices()
-        );
+        $type = AnswerTypeEnum::DEFINED;
         $answerFactory = new AnswerFactory();
         $answer = $answerFactory->createAnswerWithRequired(
             $content,

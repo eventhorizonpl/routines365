@@ -44,7 +44,7 @@ final class RoutineTypeTest extends TypeTestCase
                     'description' => 'test description',
                     'isEnabled' => true,
                     'name' => 'test name',
-                    'type' => RoutineTypeEnum::HOBBY,
+                    'type' => RoutineTypeEnum::HOBBY->value,
                 ],
             ],
         ];

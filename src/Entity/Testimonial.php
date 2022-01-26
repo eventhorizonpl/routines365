@@ -42,11 +42,10 @@ class Testimonial
     private ?string $signature;
 
     #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 8, type: Types::STRING)]
-    private string $status;
+    #[Assert\Type(TestimonialStatusEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: TestimonialStatusEnum::class, length: 8, type: Types::STRING)]
+    private TestimonialStatusEnum $status;
 
     public function __construct()
     {
@@ -85,7 +84,7 @@ class Testimonial
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?TestimonialStatusEnum
     {
         return $this->status;
     }
@@ -93,23 +92,23 @@ class Testimonial
     public static function getStatusFormChoices(): array
     {
         return [
-            TestimonialStatusEnum::ACCEPTED => TestimonialStatusEnum::ACCEPTED,
-            TestimonialStatusEnum::NEW => TestimonialStatusEnum::NEW,
-            TestimonialStatusEnum::REJECTED => TestimonialStatusEnum::REJECTED,
+            TestimonialStatusEnum::ACCEPTED->value => TestimonialStatusEnum::ACCEPTED->value,
+            TestimonialStatusEnum::NEW->value => TestimonialStatusEnum::NEW->value,
+            TestimonialStatusEnum::REJECTED->value => TestimonialStatusEnum::REJECTED->value,
         ];
     }
 
     public static function getStatusValidationChoices(): array
     {
-        return array_keys(self::getStatusFormChoices());
+        return [
+            TestimonialStatusEnum::ACCEPTED,
+            TestimonialStatusEnum::NEW,
+            TestimonialStatusEnum::REJECTED,
+        ];
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(TestimonialStatusEnum $status): self
     {
-        if (!(\in_array($status, self::getStatusValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid status');
-        }
-
         $this->status = $status;
 
         return $this;

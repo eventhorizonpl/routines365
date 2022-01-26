@@ -409,7 +409,6 @@ final class ProfileTest extends AbstractTestCase
         $profile = new Profile();
         $profile->setTheme($theme);
         $this->assertSame($theme, $profile->getTheme());
-        $this->assertIsString($profile->getTheme());
     }
 
     public function testGetThemeFormChoices(): void
@@ -430,14 +429,6 @@ final class ProfileTest extends AbstractTestCase
         $profile = new Profile();
         $this->assertInstanceOf(Profile::class, $profile->setTheme($theme));
         $this->assertSame($theme, $profile->getTheme());
-    }
-
-    public function testSetThemeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $theme = 'wrong theme';
-        $profile = new Profile();
-        $this->assertInstanceOf(Profile::class, $profile->setTheme($theme));
     }
 
     public function testGetTimeZone(): void

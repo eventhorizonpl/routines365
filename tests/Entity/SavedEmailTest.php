@@ -199,7 +199,6 @@ final class SavedEmailTest extends AbstractTestCase
         $savedEmail = new SavedEmail();
         $savedEmail->setType($type);
         $this->assertSame($type, $savedEmail->getType());
-        $this->assertIsString($savedEmail->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -220,13 +219,5 @@ final class SavedEmailTest extends AbstractTestCase
         $savedEmail = new SavedEmail();
         $this->assertInstanceOf(SavedEmail::class, $savedEmail->setType($type));
         $this->assertSame($type, $savedEmail->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $savedEmail = new SavedEmail();
-        $this->assertInstanceOf(SavedEmail::class, $savedEmail->setType($type));
     }
 }

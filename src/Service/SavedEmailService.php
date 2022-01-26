@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\{SavedEmail, User};
+use App\Enum\SavedEmailTypeEnum;
 use App\Factory\SavedEmailFactory;
 use App\Manager\SavedEmailManager;
 
@@ -18,7 +19,7 @@ class SavedEmailService
 
     public function create(
         string $email,
-        string $type,
+        SavedEmailTypeEnum $type,
         User $user
     ): SavedEmail {
         $savedEmail = $this->savedEmailFactory->createSavedEmailWithRequired(

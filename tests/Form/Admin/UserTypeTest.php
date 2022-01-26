@@ -61,7 +61,7 @@ final class UserTypeTest extends TypeTestCase
                     'plainPassword' => 'test plainPassword',
                     'isEnabled' => true,
                     'isVerified' => true,
-                    'type' => UserTypeEnum::CUSTOMER,
+                    'type' => UserTypeEnum::CUSTOMER->value,
                     'profile' => [
                         'sendWeeklyMonthlyStatistics' => true,
                         'showMotivationalMessages' => true,

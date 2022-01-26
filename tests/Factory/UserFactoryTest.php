@@ -69,11 +69,9 @@ final class UserFactoryTest extends AbstractTestCase
         $email = $this->faker->safeEmail();
         $isEnabled = $this->faker->boolean();
         $roles = [
-            UserRoleEnum::ROLE_USER,
+            UserRoleEnum::ROLE_USER->value,
         ];
-        $type = $this->faker->randomElement(
-            User::getTypeFormChoices()
-        );
+        $type = UserTypeEnum::PROSPECT;
         $accountFactory = new AccountFactory();
         $profileFactory = new ProfileFactory();
         $userKytFactory = new UserKytFactory();

@@ -251,7 +251,6 @@ final class AccountOperationTest extends AbstractTestCase
         $accountOperation = new AccountOperation();
         $accountOperation->setType($type);
         $this->assertSame($type, $accountOperation->getType());
-        $this->assertIsString($accountOperation->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -272,13 +271,5 @@ final class AccountOperationTest extends AbstractTestCase
         $accountOperation = new AccountOperation();
         $this->assertInstanceOf(AccountOperation::class, $accountOperation->setType($type));
         $this->assertSame($type, $accountOperation->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $accountOperation = new AccountOperation();
-        $this->assertInstanceOf(AccountOperation::class, $accountOperation->setType($type));
     }
 }

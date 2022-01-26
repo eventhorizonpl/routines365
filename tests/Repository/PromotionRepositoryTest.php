@@ -63,7 +63,7 @@ final class PromotionRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($promotions);
 
         $parameters = [
-            'type' => $promotion->getType(),
+            'type' => $promotion->getType()->value,
         ];
         $promotions = $this->promotionRepository->findByParametersForAdmin($parameters)->getResult();
         $this->assertCount(1, $promotions);
@@ -96,7 +96,7 @@ final class PromotionRepositoryTest extends AbstractDoctrineTestCase
         $this->purge();
         $promotion = $this->promotionFaker->createPromotionPersisted(null, true);
 
-        $promotion2 = $this->promotionRepository->findOneByCodeAndType($promotion->getCode(), $promotion->getType());
+        $promotion2 = $this->promotionRepository->findOneByCodeAndType($promotion->getCode(), $promotion->getType()->value);
         $this->assertInstanceOf(Promotion::class, $promotion2);
     }
 }

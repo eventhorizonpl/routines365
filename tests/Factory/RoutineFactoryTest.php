@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Routine;
+use App\Enum\RoutineTypeEnum;
 use App\Factory\RoutineFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -48,9 +49,7 @@ final class RoutineFactoryTest extends AbstractTestCase
     {
         $isEnabled = $this->faker->boolean();
         $name = $this->faker->sentence();
-        $type = $this->faker->randomElement(
-            Routine::getTypeFormChoices()
-        );
+        $type = RoutineTypeEnum::HOBBY;
         $routineFactory = new RoutineFactory();
         $routine = $routineFactory->createRoutineWithRequired(
             $isEnabled,

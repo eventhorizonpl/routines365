@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class UserTypeEnum
+enum UserTypeEnum: string
 {
-    public const CUSTOMER = 'customer';
-    public const LEAD = 'lead';
-    public const PROSPECT = 'prospect';
-    public const STAFF = 'staff';
+    case CUSTOMER = 'customer';
+    case LEAD = 'lead';
+    case PROSPECT = 'prospect';
+    case STAFF = 'staff';
 }

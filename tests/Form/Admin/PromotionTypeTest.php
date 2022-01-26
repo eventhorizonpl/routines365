@@ -47,7 +47,7 @@ final class PromotionTypeTest extends TypeTestCase
                     'isEnabled' => true,
                     'name' => 'test name',
                     'smsNotifications' => 10,
-                    'type' => PromotionTypeEnum::EXISTING_ACCOUNT,
+                    'type' => PromotionTypeEnum::EXISTING_ACCOUNT->value,
                 ],
             ],
         ];

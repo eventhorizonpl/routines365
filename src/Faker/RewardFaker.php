@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Reward;
+use App\Enum\RewardTypeEnum;
 use App\Factory\RewardFactory;
 use Faker\{Factory, Generator};
 
@@ -24,7 +25,7 @@ class RewardFaker
         ?string $name = null,
         ?int $numberOfCompletions = null,
         ?int $requiredNumberOfCompletions = null,
-        ?string $type = null
+        ?RewardTypeEnum $type = null
     ): Reward {
         if (null === $description) {
             $description = (string) $this->faker->text();
@@ -52,9 +53,7 @@ class RewardFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Reward::getTypeValidationChoices()
-            );
+            $type = RewardTypeEnum::ALL;
         }
 
         $reward = $this->rewardFactory->createRewardWithRequired(

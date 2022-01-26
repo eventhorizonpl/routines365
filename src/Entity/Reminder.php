@@ -101,12 +101,11 @@ class Reminder
     private bool $sendToBrowser;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 10)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Assert\Type(ReminderTypeEnum::class, groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
-    #[ORM\Column(length: 10, type: Types::STRING)]
-    private string $type;
+    #[ORM\Column(enumType: ReminderTypeEnum::class, length: 10, type: Types::STRING)]
+    private ReminderTypeEnum $type;
 
     public function __construct()
     {
@@ -344,7 +343,7 @@ class Reminder
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?ReminderTypeEnum
     {
         return $this->type;
     }
@@ -352,28 +351,33 @@ class Reminder
     public static function getTypeFormChoices(): array
     {
         return [
-            ReminderTypeEnum::DAILY => ReminderTypeEnum::DAILY,
-            ReminderTypeEnum::MONDAY => ReminderTypeEnum::MONDAY,
-            ReminderTypeEnum::TUESDAY => ReminderTypeEnum::TUESDAY,
-            ReminderTypeEnum::WEDNESDAY => ReminderTypeEnum::WEDNESDAY,
-            ReminderTypeEnum::THURSDAY => ReminderTypeEnum::THURSDAY,
-            ReminderTypeEnum::FRIDAY => ReminderTypeEnum::FRIDAY,
-            ReminderTypeEnum::SATURDAY => ReminderTypeEnum::SATURDAY,
-            ReminderTypeEnum::SUNDAY => ReminderTypeEnum::SUNDAY,
+            ReminderTypeEnum::DAILY->value => ReminderTypeEnum::DAILY->value,
+            ReminderTypeEnum::MONDAY->value => ReminderTypeEnum::MONDAY->value,
+            ReminderTypeEnum::TUESDAY->value => ReminderTypeEnum::TUESDAY->value,
+            ReminderTypeEnum::WEDNESDAY->value => ReminderTypeEnum::WEDNESDAY->value,
+            ReminderTypeEnum::THURSDAY->value => ReminderTypeEnum::THURSDAY->value,
+            ReminderTypeEnum::FRIDAY->value => ReminderTypeEnum::FRIDAY->value,
+            ReminderTypeEnum::SATURDAY->value => ReminderTypeEnum::SATURDAY->value,
+            ReminderTypeEnum::SUNDAY->value => ReminderTypeEnum::SUNDAY->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            ReminderTypeEnum::DAILY,
+            ReminderTypeEnum::MONDAY,
+            ReminderTypeEnum::TUESDAY,
+            ReminderTypeEnum::WEDNESDAY,
+            ReminderTypeEnum::THURSDAY,
+            ReminderTypeEnum::FRIDAY,
+            ReminderTypeEnum::SATURDAY,
+            ReminderTypeEnum::SUNDAY,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(ReminderTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

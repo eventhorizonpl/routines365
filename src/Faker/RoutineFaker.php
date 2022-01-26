@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Routine;
+use App\Enum\RoutineTypeEnum;
 use App\Factory\RoutineFactory;
 use Faker\{Factory, Generator};
 
@@ -22,7 +23,7 @@ class RoutineFaker
         ?string $description = null,
         ?bool $isEnabled = null,
         ?string $name = null,
-        ?string $type = null
+        ?RoutineTypeEnum $type = null
     ): Routine {
         if (null === $description) {
             $description = (string) $this->faker->text();
@@ -37,9 +38,7 @@ class RoutineFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Routine::getTypeFormChoices()
-            );
+            $type = RoutineTypeEnum::HOBBY;
         }
 
         $routine = $this->routineFactory->createRoutineWithRequired(

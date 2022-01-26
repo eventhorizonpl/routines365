@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Reward;
+use App\Enum\RewardTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class RewardFactory
@@ -21,7 +22,7 @@ class RewardFactory
         bool $isAwarded,
         string $name,
         int $requiredNumberOfCompletions,
-        string $type
+        RewardTypeEnum $type
     ): Reward {
         $reward = $this->createReward();
 

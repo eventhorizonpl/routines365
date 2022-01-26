@@ -40,11 +40,10 @@ class Contact
     private ?string $content;
 
     #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 8, type: Types::STRING)]
-    private string $status;
+    #[Assert\Type(ContactStatusEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: ContactStatusEnum::class, length: 8, type: Types::STRING)]
+    private ContactStatusEnum $status;
 
     #[Assert\Length(groups: ['form', 'system'], max: 255)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
@@ -54,12 +53,11 @@ class Contact
     private ?string $title;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Assert\Type(ContactTypeEnum::class, groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
-    #[ORM\Column(length: 16, type: Types::STRING)]
-    private string $type;
+    #[ORM\Column(enumType: ContactTypeEnum::class, length: 16, type: Types::STRING)]
+    private ContactTypeEnum $type;
 
     public function __construct()
     {
@@ -99,7 +97,7 @@ class Contact
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?ContactStatusEnum
     {
         return $this->status;
     }
@@ -107,26 +105,29 @@ class Contact
     public static function getStatusFormChoices(): array
     {
         return [
-            ContactStatusEnum::CLOSED => ContactStatusEnum::CLOSED,
-            ContactStatusEnum::ON_HOLD => ContactStatusEnum::ON_HOLD,
-            ContactStatusEnum::OPEN => ContactStatusEnum::OPEN,
-            ContactStatusEnum::PENDING => ContactStatusEnum::PENDING,
-            ContactStatusEnum::SOLVED => ContactStatusEnum::SOLVED,
-            ContactStatusEnum::SPAM => ContactStatusEnum::SPAM,
+            ContactStatusEnum::CLOSED->value => ContactStatusEnum::CLOSED->value,
+            ContactStatusEnum::ON_HOLD->value => ContactStatusEnum::ON_HOLD->value,
+            ContactStatusEnum::OPEN->value => ContactStatusEnum::OPEN->value,
+            ContactStatusEnum::PENDING->value => ContactStatusEnum::PENDING->value,
+            ContactStatusEnum::SOLVED->value => ContactStatusEnum::SOLVED->value,
+            ContactStatusEnum::SPAM->value => ContactStatusEnum::SPAM->value,
         ];
     }
 
     public static function getStatusValidationChoices(): array
     {
-        return array_keys(self::getStatusFormChoices());
+        return [
+            ContactStatusEnum::CLOSED,
+            ContactStatusEnum::ON_HOLD,
+            ContactStatusEnum::OPEN,
+            ContactStatusEnum::PENDING,
+            ContactStatusEnum::SOLVED,
+            ContactStatusEnum::SPAM,
+        ];
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(ContactStatusEnum $status): self
     {
-        if (!(\in_array($status, self::getStatusValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid status');
-        }
-
         $this->status = $status;
 
         return $this;
@@ -144,7 +145,7 @@ class Contact
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?ContactTypeEnum
     {
         return $this->type;
     }
@@ -152,22 +153,21 @@ class Contact
     public static function getTypeFormChoices(): array
     {
         return [
-            ContactTypeEnum::FEATURE_IDEA => ContactTypeEnum::FEATURE_IDEA,
-            ContactTypeEnum::QUESTION => ContactTypeEnum::QUESTION,
+            ContactTypeEnum::FEATURE_IDEA->value => ContactTypeEnum::FEATURE_IDEA->value,
+            ContactTypeEnum::QUESTION->value => ContactTypeEnum::QUESTION->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            ContactTypeEnum::FEATURE_IDEA,
+            ContactTypeEnum::QUESTION,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(ContactTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

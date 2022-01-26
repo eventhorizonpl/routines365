@@ -35,7 +35,7 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         $user = $this->userFactory->createUserWithRequired(
             'michal@eventhorizonlabs.eu',
             true,
-            [UserRoleEnum::ROLE_ADMIN, UserRoleEnum::ROLE_SUPER_ADMIN, UserRoleEnum::ROLE_USER],
+            [UserRoleEnum::ROLE_ADMIN->value, UserRoleEnum::ROLE_SUPER_ADMIN->value, UserRoleEnum::ROLE_USER->value],
             UserTypeEnum::STAFF
         );
         $user = $this->userService->encodePassword($user, 'michal');
@@ -50,7 +50,7 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         $user = $this->userFactory->createUserWithRequired(
             'mkpiotrowskiprivate@gmail.com',
             true,
-            [UserRoleEnum::ROLE_USER],
+            [UserRoleEnum::ROLE_USER->value],
             UserTypeEnum::PROSPECT
         );
         $user = $this->userService->encodePassword($user, 'michal');
@@ -66,7 +66,7 @@ class V1UserAdminFixtures extends Fixture implements ContainerAwareInterface, Fi
         $user = $this->userFactory->createUserWithRequired(
             'epiotrowska16@gmail.com',
             true,
-            [UserRoleEnum::ROLE_USER],
+            [UserRoleEnum::ROLE_USER->value],
             UserTypeEnum::PROSPECT
         );
         $user = $this->userService->encodePassword($user, 'ewelina');

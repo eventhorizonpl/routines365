@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\ReminderMessage;
+use App\Enum\ReminderMessageTypeEnum;
 use App\Factory\ReminderMessageFactory;
 use DateTimeImmutable;
 use Faker\{Factory, Generator};
@@ -21,16 +22,14 @@ class ReminderMessageFaker
 
     public function createReminderMessage(
         ?string $content = null,
-        ?string $type = null
+        ?ReminderMessageTypeEnum $type = null
     ): ReminderMessage {
         if (null === $content) {
             $content = (string) $this->faker->text();
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                ReminderMessage::getTypeValidationChoices()
-            );
+            $type = ReminderMessageTypeEnum::EMAIL;
         }
 
         $reminderMessage = $this->reminderMessageFactory->createReminderMessageWithRequired(

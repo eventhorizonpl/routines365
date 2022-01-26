@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER->value)]
 #[Route('/achievements', name: 'frontend_achievement_')]
 class AchievementController extends AbstractController
 {

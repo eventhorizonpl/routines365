@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Reminder;
+use App\Enum\ReminderTypeEnum;
 use App\Factory\ReminderFactory;
 use App\Tests\AbstractTestCase;
 use DateTimeImmutable;
@@ -53,9 +54,7 @@ final class ReminderFactoryTest extends AbstractTestCase
         $sendEmail = $this->faker->boolean();
         $sendMotivationalMessage = $this->faker->boolean();
         $sendSms = $this->faker->boolean();
-        $type = $this->faker->randomElement(
-            Reminder::getTypeFormChoices()
-        );
+        $type = ReminderTypeEnum::DAILY;
         $reminderFactory = new ReminderFactory();
         $reminder = $reminderFactory->createReminderWithRequired(
             $hour,

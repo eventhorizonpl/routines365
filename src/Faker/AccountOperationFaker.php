@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use App\Factory\AccountOperationFactory;
 use Faker\{Factory, Generator};
 
@@ -22,7 +23,7 @@ class AccountOperationFaker
         ?string $description = null,
         ?int $notifications = null,
         ?int $smsNotifications = null,
-        ?string $type = null
+        ?AccountOperationTypeEnum $type = null
     ): AccountOperation {
         if (null === $description) {
             $description = (string) $this->faker->sentence();
@@ -37,9 +38,7 @@ class AccountOperationFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                AccountOperation::getTypeFormChoices()
-            );
+            $type = AccountOperationTypeEnum::DEPOSIT;
         }
 
         return $this->accountOperationFactory->createAccountOperationWithRequired(

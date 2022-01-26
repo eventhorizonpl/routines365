@@ -62,7 +62,7 @@ final class AchievementRepositoryTest extends AbstractDoctrineTestCase
         $this->assertIsArray($achievements);
 
         $parameters = [
-            'type' => $achievement->getType(),
+            'type' => $achievement->getType()->value,
         ];
         $achievements = $this->achievementRepository->findByParametersForAdmin($parameters)->getResult();
         $this->assertCount(1, $achievements);
@@ -95,7 +95,7 @@ final class AchievementRepositoryTest extends AbstractDoctrineTestCase
         $this->purge();
         $achievement = $this->achievementFaker->createAchievementPersisted(true);
 
-        $achievements = $this->achievementRepository->findByRequirementAndType(1000, $achievement->getType());
+        $achievements = $this->achievementRepository->findByRequirementAndType(1000, $achievement->getType()->value);
         $this->assertCount(1, $achievements);
         $this->assertIsArray($achievements);
     }

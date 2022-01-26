@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Achievement;
+use App\Enum\AchievementTypeEnum;
 use App\Factory\AchievementFactory;
 use App\Manager\AchievementManager;
 use Faker\{Factory, Generator};
@@ -26,7 +27,7 @@ class AchievementFaker
         ?int $level = null,
         ?string $name = null,
         ?int $requirement = null,
-        ?string $type = null
+        ?AchievementTypeEnum $type = null
     ): Achievement {
         if (null === $isEnabled) {
             $isEnabled = (bool) $this->faker->boolean();
@@ -45,9 +46,7 @@ class AchievementFaker
         }
 
         if (null === $type) {
-            $type = $this->faker->randomElement(
-                Achievement::getTypeFormChoices()
-            );
+            $type = AchievementTypeEnum::COMPLETED_ROUTINE;
         }
 
         return $this->achievementFactory->createAchievementWithRequired(
@@ -64,7 +63,7 @@ class AchievementFaker
         ?int $level = null,
         ?string $name = null,
         ?int $requirement = null,
-        ?string $type = null
+        ?AchievementTypeEnum $type = null
     ): Achievement {
         $achievement = $this->createAchievement(
             $isEnabled,

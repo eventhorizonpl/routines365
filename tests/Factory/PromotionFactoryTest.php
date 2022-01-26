@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Factory\PromotionFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -52,9 +53,7 @@ final class PromotionFactoryTest extends AbstractTestCase
         $isEnabled = $this->faker->boolean();
         $name = $this->faker->sentence();
         $smsNotifications = $this->faker->numberBetween(1, 10);
-        $type = $this->faker->randomElement(
-            Promotion::getTypeFormChoices()
-        );
+        $type = PromotionTypeEnum::EXISTING_ACCOUNT;
         $promotionFactory = new PromotionFactory();
         $promotion = $promotionFactory->createPromotionWithRequired(
             $code,

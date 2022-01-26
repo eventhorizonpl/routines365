@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\AccountOperation;
+use App\Enum\AccountOperationTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class AccountOperationFactory
@@ -21,7 +22,7 @@ class AccountOperationFactory
         string $description,
         int $notifications,
         int $smsNotifications,
-        string $type
+        AccountOperationTypeEnum $type
     ): AccountOperation {
         $accountOperation = $this->createAccountOperation();
 

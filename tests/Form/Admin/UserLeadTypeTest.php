@@ -64,7 +64,7 @@ final class UserLeadTypeTest extends TypeTestCase
                     'profile' => [
                         'sendWeeklyMonthlyStatistics' => true,
                         'showMotivationalMessages' => true,
-                        'theme' => ProfileThemeEnum::DARK,
+                        'theme' => ProfileThemeEnum::DARK->value,
                     ],
                 ],
             ],

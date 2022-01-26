@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class SavedEmailTypeEnum
+enum SavedEmailTypeEnum: string
 {
-    public const INVITATION = 'invitation';
-    public const MOTIVATIONAL = 'motivational';
+    case INVITATION = 'invitation';
+    case MOTIVATIONAL = 'motivational';
 }

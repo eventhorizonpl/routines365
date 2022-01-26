@@ -50,11 +50,10 @@ class AccountOperation
     private int $smsNotifications;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 8, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(AccountOperationTypeEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: AccountOperationTypeEnum::class, length: 8, type: Types::STRING)]
+    private AccountOperationTypeEnum $type;
 
     public function __construct()
     {
@@ -129,7 +128,7 @@ class AccountOperation
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?AccountOperationTypeEnum
     {
         return $this->type;
     }
@@ -137,22 +136,21 @@ class AccountOperation
     public static function getTypeFormChoices(): array
     {
         return [
-            AccountOperationTypeEnum::DEPOSIT => AccountOperationTypeEnum::DEPOSIT,
-            AccountOperationTypeEnum::WITHDRAW => AccountOperationTypeEnum::WITHDRAW,
+            AccountOperationTypeEnum::DEPOSIT->value => AccountOperationTypeEnum::DEPOSIT->value,
+            AccountOperationTypeEnum::WITHDRAW->value => AccountOperationTypeEnum::WITHDRAW->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            AccountOperationTypeEnum::DEPOSIT,
+            AccountOperationTypeEnum::WITHDRAW,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(AccountOperationTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

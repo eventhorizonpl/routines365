@@ -284,7 +284,6 @@ final class QuestionTest extends AbstractTestCase
         $question = new Question();
         $question->setType($type);
         $this->assertSame($type, $question->getType());
-        $this->assertIsString($question->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -305,13 +304,5 @@ final class QuestionTest extends AbstractTestCase
         $question = new Question();
         $this->assertInstanceOf(Question::class, $question->setType($type));
         $this->assertSame($type, $question->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $question = new Question();
-        $this->assertInstanceOf(Question::class, $question->setType($type));
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Question;
+use App\Enum\QuestionTypeEnum;
 use App\Factory\QuestionFactory;
 use App\Manager\QuestionManager;
 use Faker\{Factory, Generator};
@@ -24,7 +25,7 @@ class QuestionFaker
         ?bool $isEnabled = null,
         ?int $position = null,
         ?string $title = null,
-        ?string $type = null
+        ?QuestionTypeEnum $type = null
     ): Question {
         if (null === $isEnabled) {
             $isEnabled = (bool) $this->faker->boolean();
@@ -39,9 +40,7 @@ class QuestionFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Question::getTypeFormChoices()
-            );
+            $type = QuestionTypeEnum::SINGLE_ANSWER;
         }
 
         return $this->questionFactory->createQuestionWithRequired(

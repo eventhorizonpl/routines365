@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN->value)]
 #[Route('/admin/kpi', name: 'admin_kpi_')]
 class KpiController extends AbstractController
 {

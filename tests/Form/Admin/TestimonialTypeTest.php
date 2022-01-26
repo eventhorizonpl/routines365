@@ -44,7 +44,7 @@ final class TestimonialTypeTest extends TypeTestCase
                     'content' => 'test comment',
                     'signature' => 'test content',
                     'isVisible' => true,
-                    'status' => TestimonialStatusEnum::NEW,
+                    'status' => TestimonialStatusEnum::NEW->value,
                 ],
             ],
         ];

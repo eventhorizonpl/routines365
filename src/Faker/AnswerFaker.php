@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Answer;
+use App\Enum\AnswerTypeEnum;
 use App\Factory\AnswerFactory;
 use App\Manager\AnswerManager;
 use Faker\{Factory, Generator};
@@ -24,7 +25,7 @@ class AnswerFaker
         ?string $content = null,
         ?bool $isEnabled = null,
         ?int $position = null,
-        ?string $type = null
+        ?AnswerTypeEnum $type = null
     ): Answer {
         if (null === $content) {
             $content = (string) $this->faker->word();
@@ -39,9 +40,7 @@ class AnswerFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Answer::getTypeFormChoices()
-            );
+            $type = AnswerTypeEnum::DEFINED;
         }
 
         return $this->answerFactory->createAnswerWithRequired(

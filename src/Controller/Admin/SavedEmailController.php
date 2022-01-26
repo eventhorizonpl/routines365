@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN->value)]
 #[Route('/admin/saved-email', name: 'admin_saved_email_')]
 class SavedEmailController extends AbstractController
 {

@@ -55,17 +55,15 @@ class ReminderMessage
     private ?string $thirdPartySystemResponse;
 
     #[Assert\Choice(callback: 'getThirdPartySystemTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 10)]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 10, nullable: true, type: Types::STRING)]
-    private ?string $thirdPartySystemType;
+    #[Assert\Type(ReminderMessageThirdPartySystemTypeEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: ReminderMessageThirdPartySystemTypeEnum::class, length: 10, nullable: true, type: Types::STRING)]
+    private ?ReminderMessageThirdPartySystemTypeEnum $thirdPartySystemType;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 10)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 10, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(ReminderMessageTypeEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: ReminderMessageTypeEnum::class, length: 10, type: Types::STRING)]
+    private ReminderMessageTypeEnum $type;
 
     public function __construct()
     {
@@ -165,7 +163,7 @@ class ReminderMessage
         return $this;
     }
 
-    public function getThirdPartySystemType(): ?string
+    public function getThirdPartySystemType(): ?ReminderMessageThirdPartySystemTypeEnum
     {
         return $this->thirdPartySystemType;
     }
@@ -173,28 +171,27 @@ class ReminderMessage
     public static function getThirdPartySystemTypeFormChoices(): array
     {
         return [
-            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES => ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES,
-            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS => ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS,
+            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES->value => ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES->value,
+            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS->value => ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS->value,
         ];
     }
 
     public static function getThirdPartySystemTypeValidationChoices(): array
     {
-        return array_keys(self::getThirdPartySystemTypeFormChoices());
+        return [
+            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SES,
+            ReminderMessageThirdPartySystemTypeEnum::AMAZON_SNS,
+        ];
     }
 
-    public function setThirdPartySystemType(?string $thirdPartySystemType): self
+    public function setThirdPartySystemType(?ReminderMessageThirdPartySystemTypeEnum $thirdPartySystemType): self
     {
-        if (!(\in_array($thirdPartySystemType, self::getThirdPartySystemTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid third party system type');
-        }
-
         $this->thirdPartySystemType = $thirdPartySystemType;
 
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?ReminderMessageTypeEnum
     {
         return $this->type;
     }
@@ -202,23 +199,23 @@ class ReminderMessage
     public static function getTypeFormChoices(): array
     {
         return [
-            ReminderMessageTypeEnum::BROWSER => ReminderMessageTypeEnum::BROWSER,
-            ReminderMessageTypeEnum::EMAIL => ReminderMessageTypeEnum::EMAIL,
-            ReminderMessageTypeEnum::SMS => ReminderMessageTypeEnum::SMS,
+            ReminderMessageTypeEnum::BROWSER->value => ReminderMessageTypeEnum::BROWSER->value,
+            ReminderMessageTypeEnum::EMAIL->value => ReminderMessageTypeEnum::EMAIL->value,
+            ReminderMessageTypeEnum::SMS->value => ReminderMessageTypeEnum::SMS->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            ReminderMessageTypeEnum::BROWSER,
+            ReminderMessageTypeEnum::EMAIL,
+            ReminderMessageTypeEnum::SMS,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(ReminderMessageTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

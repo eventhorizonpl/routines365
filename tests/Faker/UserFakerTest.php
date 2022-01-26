@@ -196,7 +196,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $email = 'test@example.org';
         $isEnabled = true;
         $password = 'test password';
-        $roles = [UserRoleEnum::ROLE_USER];
+        $roles = [UserRoleEnum::ROLE_USER->value];
         $type = UserTypeEnum::STAFF;
         $user = $this->userFaker->createUser(
             $email,
@@ -219,7 +219,7 @@ final class UserFakerTest extends AbstractDoctrineTestCase
         $email = 'test@example.org';
         $isEnabled = true;
         $password = 'test password';
-        $roles = [UserRoleEnum::ROLE_USER];
+        $roles = [UserRoleEnum::ROLE_USER->value];
         $type = UserTypeEnum::STAFF;
         $user = $this->userFaker->createUserPersisted(
             $email,

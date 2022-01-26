@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class RoutineTypeEnum
+enum RoutineTypeEnum: string
 {
-    public const HOBBY = 'hobby';
-    public const LEARNING = 'learning';
-    public const SPORT = 'sport';
-    public const WORK = 'work';
+    case HOBBY = 'hobby';
+    case LEARNING = 'learning';
+    case SPORT = 'sport';
+    case WORK = 'work';
 }

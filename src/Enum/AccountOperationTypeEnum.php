@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class AccountOperationTypeEnum
+enum AccountOperationTypeEnum: string
 {
-    public const DEPOSIT = 'deposit';
-    public const WITHDRAW = 'withdraw';
+    case DEPOSIT = 'deposit';
+    case WITHDRAW = 'withdraw';
 }

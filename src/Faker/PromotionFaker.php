@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use App\Factory\PromotionFactory;
 use App\Manager\PromotionManager;
 use Faker\{Factory, Generator};
@@ -27,7 +28,7 @@ class PromotionFaker
         ?string $name = null,
         ?int $notifications = null,
         ?int $smsNotifications = null,
-        ?string $type = null
+        ?PromotionTypeEnum $type = null
     ): Promotion {
         if (null === $code) {
             $code = (string) $this->faker->word();
@@ -50,9 +51,7 @@ class PromotionFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Promotion::getTypeValidationChoices()
-            );
+            $type = PromotionTypeEnum::EXISTING_ACCOUNT;
         }
 
         return $this->promotionFactory->createPromotionWithRequired(
@@ -71,7 +70,7 @@ class PromotionFaker
         ?string $name = null,
         ?int $notifications = null,
         ?int $smsNotifications = null,
-        ?string $type = null
+        ?PromotionTypeEnum $type = null
     ): Promotion {
         $promotion = $this->createPromotion(
             $code,

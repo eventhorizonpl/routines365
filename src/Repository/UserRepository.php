@@ -156,7 +156,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setParameter('isEnabled', true)
             ->setParameter('isVerified', true)
             ->setParameter('lastActivityAt', $lastActivityAt)
-            ->setParameter('type', UserTypeEnum::PROSPECT)
+            ->setParameter('type', UserTypeEnum::PROSPECT->value)
         ;
 
         return $queryBuilder->getQuery();

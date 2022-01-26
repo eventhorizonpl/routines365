@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class UserKpiTypeEnum
+enum UserKpiTypeEnum: string
 {
-    public const ANNUALLY = 'annually';
-    public const DAILY = 'daily';
-    public const MONTHLY = 'monthly';
-    public const WEEKLY = 'weekly';
+    case ANNUALLY = 'annually';
+    case DAILY = 'daily';
+    case MONTHLY = 'monthly';
+    case WEEKLY = 'weekly';
 }

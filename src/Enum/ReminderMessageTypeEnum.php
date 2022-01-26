@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class ReminderMessageTypeEnum
+enum ReminderMessageTypeEnum: string
 {
-    public const BROWSER = 'browser';
-    public const EMAIL = 'email';
-    public const SMS = 'sms';
+    case BROWSER = 'browser';
+    case EMAIL = 'email';
+    case SMS = 'sms';
 }

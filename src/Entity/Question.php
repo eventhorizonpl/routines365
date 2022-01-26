@@ -38,11 +38,10 @@ class Question
     private ?string $title;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
-    #[ORM\Column(length: 24, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(QuestionTypeEnum::class, groups: ['form', 'system'])]
+    #[ORM\Column(enumType: QuestionTypeEnum::class, length: 24, type: Types::STRING)]
+    private QuestionTypeEnum $type;
 
     public function __construct()
     {
@@ -111,7 +110,7 @@ class Question
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?QuestionTypeEnum
     {
         return $this->type;
     }
@@ -119,22 +118,21 @@ class Question
     public static function getTypeFormChoices(): array
     {
         return [
-            QuestionTypeEnum::MULTIPLE_ANSWER => QuestionTypeEnum::MULTIPLE_ANSWER,
-            QuestionTypeEnum::SINGLE_ANSWER => QuestionTypeEnum::SINGLE_ANSWER,
+            QuestionTypeEnum::MULTIPLE_ANSWER->value => QuestionTypeEnum::MULTIPLE_ANSWER->value,
+            QuestionTypeEnum::SINGLE_ANSWER->value => QuestionTypeEnum::SINGLE_ANSWER->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            QuestionTypeEnum::MULTIPLE_ANSWER,
+            QuestionTypeEnum::SINGLE_ANSWER,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(QuestionTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

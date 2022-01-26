@@ -291,7 +291,7 @@ class V3AchievementFixtures extends Fixture implements DependentFixtureInterface
         }
 
         $user = $this->userRepository->findOneBy([
-            'type' => UserTypeEnum::STAFF,
+            'type' => UserTypeEnum::STAFF->value,
         ], [
             'id' => 'ASC',
         ]);

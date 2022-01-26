@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Achievement;
+use App\Enum\AchievementTypeEnum;
 use App\Factory\AchievementFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -50,9 +51,7 @@ final class AchievementFactoryTest extends AbstractTestCase
         $level = $this->faker->numberBetween(1, 10);
         $name = $this->faker->sentence();
         $requirement = $this->faker->numberBetween(1, 1000);
-        $type = $this->faker->randomElement(
-            Achievement::getTypeFormChoices()
-        );
+        $type = AchievementTypeEnum::COMPLETED_ROUTINE;
         $achievementFactory = new AchievementFactory();
         $achievement = $achievementFactory->createAchievementWithRequired(
             $isEnabled,

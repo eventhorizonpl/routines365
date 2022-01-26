@@ -290,7 +290,6 @@ final class PromotionTest extends AbstractTestCase
         $promotion = new Promotion();
         $promotion->setType($type);
         $this->assertSame($type, $promotion->getType());
-        $this->assertIsString($promotion->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -311,14 +310,6 @@ final class PromotionTest extends AbstractTestCase
         $promotion = new Promotion();
         $this->assertInstanceOf(Promotion::class, $promotion->setType($type));
         $this->assertSame($type, $promotion->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $promotion = new Promotion();
-        $this->assertInstanceOf(Promotion::class, $promotion->setType($type));
     }
 
     public function testAddUser(): void

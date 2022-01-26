@@ -68,7 +68,7 @@ final class ReminderTypeTest extends AbstractTypeDoctrineTestCase
                     'sendMotivationalMessage' => true,
                     'sendSms' => true,
                     'sendToBrowser' => true,
-                    'type' => ReminderTypeEnum::DAILY,
+                    'type' => ReminderTypeEnum::DAILY->value,
                 ],
             ],
         ];

@@ -43,7 +43,7 @@ final class ProfileTypeTest extends TypeTestCase
                 'data' => [
                     'sendWeeklyMonthlyStatistics' => true,
                     'showMotivationalMessages' => true,
-                    'theme' => ProfileThemeEnum::DARK,
+                    'theme' => ProfileThemeEnum::DARK->value,
                 ],
             ],
         ];

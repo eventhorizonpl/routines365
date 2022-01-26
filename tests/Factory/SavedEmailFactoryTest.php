@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\SavedEmail;
+use App\Enum\SavedEmailTypeEnum;
 use App\Factory\SavedEmailFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -47,9 +48,7 @@ final class SavedEmailFactoryTest extends AbstractTestCase
     public function testCreateSavedEmailWithRequired(): void
     {
         $email = $this->faker->safeEmail();
-        $type = $this->faker->randomElement(
-            SavedEmail::getTypeFormChoices()
-        );
+        $type = SavedEmailTypeEnum::INVITATION;
         $savedEmailFactory = new SavedEmailFactory();
         $savedEmail = $savedEmailFactory->createSavedEmailWithRequired(
             $email,

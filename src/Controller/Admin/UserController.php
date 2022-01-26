@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN->value)]
 #[Route('/admin/user', name: 'admin_user_')]
 class UserController extends AbstractController
 {
@@ -186,7 +186,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN->value)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Request $request,

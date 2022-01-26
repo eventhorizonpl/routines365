@@ -253,7 +253,6 @@ final class AchievementTest extends AbstractTestCase
         $achievement = new Achievement();
         $achievement->setType($type);
         $this->assertSame($type, $achievement->getType());
-        $this->assertIsString($achievement->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -274,14 +273,6 @@ final class AchievementTest extends AbstractTestCase
         $achievement = new Achievement();
         $this->assertInstanceOf(Achievement::class, $achievement->setType($type));
         $this->assertSame($type, $achievement->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $achievement = new Achievement();
-        $this->assertInstanceOf(Achievement::class, $achievement->setType($type));
     }
 
     public function testAddUser(): void

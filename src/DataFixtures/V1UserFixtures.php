@@ -31,7 +31,7 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
             'admin@admin.com',
             true,
             'admin',
-            [UserRoleEnum::ROLE_ADMIN, UserRoleEnum::ROLE_SUPER_ADMIN, UserRoleEnum::ROLE_USER],
+            [UserRoleEnum::ROLE_ADMIN->value, UserRoleEnum::ROLE_SUPER_ADMIN->value, UserRoleEnum::ROLE_USER->value],
             UserTypeEnum::STAFF
         );
         $user->getProfile()
@@ -50,7 +50,7 @@ class V1UserFixtures extends Fixture implements ContainerAwareInterface
                     sprintf('test%d@example.org', $userId),
                     true,
                     sprintf('test%d', $userId),
-                    [UserRoleEnum::ROLE_USER],
+                    [UserRoleEnum::ROLE_USER->value],
                     UserTypeEnum::PROSPECT
                 );
                 $testimonial = $this->testimonialFaker->createTestimonial();

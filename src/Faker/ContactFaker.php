@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Contact;
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use App\Factory\ContactFactory;
 use Faker\{Factory, Generator};
 
@@ -20,18 +21,16 @@ class ContactFaker
 
     public function createContact(
         ?string $content = null,
-        ?string $status = null,
+        ?ContactStatusEnum $status = null,
         ?string $title = null,
-        ?string $type = null
+        ?ContactTypeEnum $type = null
     ): Contact {
         if (null === $content) {
             $content = (string) $this->faker->text();
         }
 
         if (null === $status) {
-            $status = (string) $this->faker->randomElement(
-                Contact::getStatusValidationChoices()
-            );
+            $status = ContactStatusEnum::SPAM;
         }
 
         if (null === $title) {
@@ -39,9 +38,7 @@ class ContactFaker
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Contact::getTypeValidationChoices()
-            );
+            $type = ContactTypeEnum::FEATURE_IDEA;
         }
 
         return $this->contactFactory->createContactWithRequired(

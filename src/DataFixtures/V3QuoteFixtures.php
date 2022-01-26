@@ -104,7 +104,7 @@ class V3QuoteFixtures extends Fixture implements DependentFixtureInterface, Fixt
         }
 
         $user = $this->userRepository->findOneBy([
-            'type' => UserTypeEnum::STAFF,
+            'type' => UserTypeEnum::STAFF->value,
         ], [
             'id' => 'ASC',
         ]);

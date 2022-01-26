@@ -37,11 +37,10 @@ class Answer
     private ?string $content;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
-    #[ORM\Column(length: 24, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(AnswerTypeEnum::class, groups: ['form', 'system'])]
+    #[ORM\Column(enumType: AnswerTypeEnum::class, length: 24, type: Types::STRING)]
+    private AnswerTypeEnum $type;
 
     public function __construct()
     {
@@ -81,7 +80,7 @@ class Answer
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?AnswerTypeEnum
     {
         return $this->type;
     }
@@ -89,22 +88,21 @@ class Answer
     public static function getTypeFormChoices(): array
     {
         return [
-            AnswerTypeEnum::DEFINED => AnswerTypeEnum::DEFINED,
-            AnswerTypeEnum::OWN => AnswerTypeEnum::OWN,
+            AnswerTypeEnum::DEFINED->value => AnswerTypeEnum::DEFINED->value,
+            AnswerTypeEnum::OWN->value => AnswerTypeEnum::OWN->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            AnswerTypeEnum::DEFINED,
+            AnswerTypeEnum::OWN,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(AnswerTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Faker;
 
 use App\Entity\Reminder;
+use App\Enum\ReminderTypeEnum;
 use App\Factory\ReminderFactory;
 use DateTimeImmutable;
 use Faker\{Factory, Generator};
@@ -26,7 +27,7 @@ class ReminderFaker
         ?bool $sendEmail = null,
         ?bool $sendMotivationalMessage = null,
         ?bool $sendSms = null,
-        ?string $type = null
+        ?ReminderTypeEnum $type = null
     ): Reminder {
         if (null === $hour) {
             $hour = DateTimeImmutable::createFromMutable($this->faker->dateTime());
@@ -56,9 +57,7 @@ class ReminderFaker
         $sendSms = false;
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                Reminder::getTypeValidationChoices()
-            );
+            $type = ReminderTypeEnum::DAILY;
         }
 
         return $this->reminderFactory->createReminderWithRequired(

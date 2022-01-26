@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(UserRoleEnum::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER->value)]
 #[Route('/know-your-tools', name: 'frontend_user_kyt_')]
 class UserKytController extends AbstractController
 {

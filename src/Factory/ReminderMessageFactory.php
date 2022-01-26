@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\ReminderMessage;
+use App\Enum\ReminderMessageTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class ReminderMessageFactory
@@ -19,7 +20,7 @@ class ReminderMessageFactory
 
     public function createReminderMessageWithRequired(
         string $content,
-        string $type
+        ReminderMessageTypeEnum $type
     ): ReminderMessage {
         $reminderMessage = $this->createReminderMessage();
 

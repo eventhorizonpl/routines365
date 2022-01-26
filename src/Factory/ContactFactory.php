@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Contact;
+use App\Enum\{ContactStatusEnum, ContactTypeEnum};
 use Symfony\Component\Uid\Uuid;
 
 class ContactFactory
@@ -19,9 +20,9 @@ class ContactFactory
 
     public function createContactWithRequired(
         string $content,
-        string $status,
+        ContactStatusEnum $status,
         string $title,
-        string $type
+        ContactTypeEnum $type
     ): Contact {
         $contact = $this->createContact();
 

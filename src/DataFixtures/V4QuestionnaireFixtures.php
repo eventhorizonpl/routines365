@@ -218,7 +218,7 @@ class V4QuestionnaireFixtures extends Fixture implements DependentFixtureInterfa
         $questionnaire1question4answer7->setQuestion($questionnaire1question4);
 
         $user = $this->userRepository->findOneBy([
-            'type' => UserTypeEnum::STAFF,
+            'type' => UserTypeEnum::STAFF->value,
         ], [
             'id' => 'ASC',
         ]);

@@ -51,11 +51,10 @@ class Achievement
     private ?int $requirement;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 24)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
-    #[ORM\Column(length: 24, type: Types::STRING)]
-    private ?string $type;
+    #[Assert\Type(AchievementTypeEnum::class, groups: ['form', 'system'])]
+    #[ORM\Column(enumType: AchievementTypeEnum::class, length: 24, type: Types::STRING)]
+    private ?AchievementTypeEnum $type;
 
     public function __construct()
     {
@@ -120,7 +119,7 @@ class Achievement
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?AchievementTypeEnum
     {
         return $this->type;
     }
@@ -128,24 +127,25 @@ class Achievement
     public static function getTypeFormChoices(): array
     {
         return [
-            AchievementTypeEnum::COMPLETED_ROUTINE => AchievementTypeEnum::COMPLETED_ROUTINE,
-            AchievementTypeEnum::COMPLETED_GOAL => AchievementTypeEnum::COMPLETED_GOAL,
-            AchievementTypeEnum::COMPLETED_PROJECT => AchievementTypeEnum::COMPLETED_PROJECT,
-            AchievementTypeEnum::CREATED_NOTE => AchievementTypeEnum::CREATED_NOTE,
+            AchievementTypeEnum::COMPLETED_ROUTINE->value => AchievementTypeEnum::COMPLETED_ROUTINE->value,
+            AchievementTypeEnum::COMPLETED_GOAL->value => AchievementTypeEnum::COMPLETED_GOAL->value,
+            AchievementTypeEnum::COMPLETED_PROJECT->value => AchievementTypeEnum::COMPLETED_PROJECT->value,
+            AchievementTypeEnum::CREATED_NOTE->value => AchievementTypeEnum::CREATED_NOTE->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            AchievementTypeEnum::COMPLETED_ROUTINE,
+            AchievementTypeEnum::COMPLETED_GOAL,
+            AchievementTypeEnum::COMPLETED_PROJECT,
+            AchievementTypeEnum::CREATED_NOTE,
+        ];
     }
 
-    public function setType(?string $type): self
+    public function setType(?AchievementTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

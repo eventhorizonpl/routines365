@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_ADMIN)]
+#[IsGranted(UserRoleEnum::ROLE_ADMIN->value)]
 #[Route('/admin/quote', name: 'admin_quote_')]
 class QuoteController extends AbstractController
 {
@@ -110,7 +110,7 @@ class QuoteController extends AbstractController
         ]);
     }
 
-    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN)]
+    #[IsGranted(UserRoleEnum::ROLE_SUPER_ADMIN->value)]
     #[Route('/{uuid}', methods: ['DELETE'], name: 'delete')]
     public function delete(
         Quote $quote,

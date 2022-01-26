@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Promotion;
+use App\Enum\PromotionTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class PromotionFactory
@@ -23,7 +24,7 @@ class PromotionFactory
         string $name,
         int $notifications,
         int $smsNotifications,
-        string $type
+        PromotionTypeEnum $type
     ): Promotion {
         $promotion = $this->createPromotion();
 

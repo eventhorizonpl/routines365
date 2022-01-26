@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(UserRoleEnum::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER->value)]
 #[Route('/motivate-friend', name: 'frontend_quote_')]
 class QuoteController extends AbstractController
 {

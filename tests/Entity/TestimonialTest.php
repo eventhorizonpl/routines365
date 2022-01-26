@@ -216,7 +216,6 @@ final class TestimonialTest extends AbstractTestCase
         $testimonial = new Testimonial();
         $testimonial->setStatus($status);
         $this->assertSame($status, $testimonial->getStatus());
-        $this->assertIsString($testimonial->getStatus());
     }
 
     public function testGetStatusFormChoices(): void
@@ -237,13 +236,5 @@ final class TestimonialTest extends AbstractTestCase
         $testimonial = new Testimonial();
         $this->assertInstanceOf(Testimonial::class, $testimonial->setStatus($status));
         $this->assertSame($status, $testimonial->getStatus());
-    }
-
-    public function testSetStatusException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $status = 'wrong status';
-        $testimonial = new Testimonial();
-        $this->assertInstanceOf(Testimonial::class, $testimonial->setStatus($status));
     }
 }

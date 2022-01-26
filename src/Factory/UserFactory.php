@@ -56,7 +56,7 @@ class UserFactory
         string $email,
         bool $isEnabled,
         array $roles,
-        string $type
+        UserTypeEnum $type
     ): User {
         $user = $this->createUser();
 

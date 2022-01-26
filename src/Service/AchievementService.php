@@ -17,7 +17,7 @@ class AchievementService
     ) {
     }
 
-    public function manageAchievements(User $user, string $type): ?Achievement
+    public function manageAchievements(User $user, AchievementTypeEnum $type): ?Achievement
     {
         $achievement = null;
         $saveUser = false;
@@ -34,7 +34,7 @@ class AchievementService
             $requirement = 10000;
         }
 
-        $achievements = $this->achievementRepository->findByRequirementAndType($requirement, $type);
+        $achievements = $this->achievementRepository->findByRequirementAndType($requirement, $type->value);
 
         foreach ($achievements as $achievementTmp) {
             if (false === $user->hasAchievement($achievementTmp)) {

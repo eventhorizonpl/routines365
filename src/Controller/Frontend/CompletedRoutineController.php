@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[IsGranted(UserRoleEnum::ROLE_USER)]
+#[IsGranted(UserRoleEnum::ROLE_USER->value)]
 #[Route('/completed-routines', name: 'frontend_completed_routine_')]
 class CompletedRoutineController extends AbstractController
 {

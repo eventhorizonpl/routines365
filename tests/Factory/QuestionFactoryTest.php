@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Factory;
 
 use App\Entity\Question;
+use App\Enum\QuestionTypeEnum;
 use App\Factory\QuestionFactory;
 use App\Tests\AbstractTestCase;
 use Faker\{Factory, Generator};
@@ -49,9 +50,7 @@ final class QuestionFactoryTest extends AbstractTestCase
         $isEnabled = $this->faker->boolean();
         $position = $this->faker->numberBetween(1, 10);
         $title = $this->faker->sentence();
-        $type = $this->faker->randomElement(
-            Question::getTypeFormChoices()
-        );
+        $type = QuestionTypeEnum::SINGLE_ANSWER;
         $questionFactory = new QuestionFactory();
         $question = $questionFactory->createQuestionWithRequired(
             $isEnabled,

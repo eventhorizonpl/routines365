@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class ContactTypeEnum
+enum ContactTypeEnum: string
 {
-    public const FEATURE_IDEA = 'feature_idea';
-    public const QUESTION = 'question';
+    case FEATURE_IDEA = 'feature_idea';
+    case QUESTION = 'question';
 }

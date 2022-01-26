@@ -97,7 +97,7 @@ final class ReminderMessageRepositoryTest extends AbstractDoctrineTestCase
         $this->purge();
         $user = $this->userFaker->createRichUserPersisted();
         $reminders = $user->getReminders();
-        $type = $reminders->first()->getReminderMessages()->first()->getType();
+        $type = $reminders->first()->getReminderMessages()->first()->getType()->value;
 
         $reminderMessages = $this->reminderMessageRepository->findByRemindersAndPostDateAndType($reminders, $postDate, $type);
         $this->assertCount(1, $reminderMessages);

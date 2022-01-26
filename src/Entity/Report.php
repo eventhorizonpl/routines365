@@ -25,18 +25,16 @@ class Report
     private array $data;
 
     #[Assert\Choice(callback: 'getStatusValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 12)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 12, type: Types::STRING)]
-    private string $status;
+    #[Assert\Type(ReportStatusEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: ReportStatusEnum::class, length: 12, type: Types::STRING)]
+    private ReportStatusEnum $status;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 24)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 24, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(ReportTypeEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: ReportTypeEnum::class, length: 24, type: Types::STRING)]
+    private ReportTypeEnum $type;
 
     public function __construct()
     {
@@ -68,7 +66,7 @@ class Report
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?ReportStatusEnum
     {
         return $this->status;
     }
@@ -76,29 +74,29 @@ class Report
     public static function getStatusFormChoices(): array
     {
         return [
-            ReportStatusEnum::FINISHED => ReportStatusEnum::FINISHED,
-            ReportStatusEnum::INITIAL => ReportStatusEnum::INITIAL,
-            ReportStatusEnum::IN_PROGRESS => ReportStatusEnum::IN_PROGRESS,
+            ReportStatusEnum::FINISHED->value => ReportStatusEnum::FINISHED->value,
+            ReportStatusEnum::INITIAL->value => ReportStatusEnum::INITIAL->value,
+            ReportStatusEnum::IN_PROGRESS->value => ReportStatusEnum::IN_PROGRESS->value,
         ];
     }
 
     public static function getStatusValidationChoices(): array
     {
-        return array_keys(self::getStatusFormChoices());
+        return [
+            ReportStatusEnum::FINISHED,
+            ReportStatusEnum::INITIAL,
+            ReportStatusEnum::IN_PROGRESS,
+        ];
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(ReportStatusEnum $status): self
     {
-        if (!(\in_array($status, self::getStatusValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid status');
-        }
-
         $this->status = $status;
 
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?ReportTypeEnum
     {
         return $this->type;
     }
@@ -106,21 +104,19 @@ class Report
     public static function getTypeFormChoices(): array
     {
         return [
-            ReportTypeEnum::POST_REMIND_MESSAGES => ReportTypeEnum::POST_REMIND_MESSAGES,
+            ReportTypeEnum::POST_REMIND_MESSAGES->value => ReportTypeEnum::POST_REMIND_MESSAGES->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            ReportTypeEnum::POST_REMIND_MESSAGES,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(ReportTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

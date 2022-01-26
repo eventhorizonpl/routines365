@@ -43,7 +43,7 @@ final class ContactTypeTest extends TypeTestCase
                 'data' => [
                     'content' => 'test content',
                     'title' => 'test title',
-                    'type' => ContactTypeEnum::QUESTION,
+                    'type' => ContactTypeEnum::QUESTION->value,
                 ],
             ],
         ];

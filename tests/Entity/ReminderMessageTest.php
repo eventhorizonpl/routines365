@@ -229,7 +229,6 @@ final class ReminderMessageTest extends AbstractTestCase
         $reminderMessage = new ReminderMessage();
         $reminderMessage->setThirdPartySystemType($thirdPartySystemType);
         $this->assertSame($thirdPartySystemType, $reminderMessage->getThirdPartySystemType());
-        $this->assertIsString($reminderMessage->getThirdPartySystemType());
     }
 
     public function testGetThirdPartySystemTypeFormChoices(): void
@@ -252,21 +251,12 @@ final class ReminderMessageTest extends AbstractTestCase
         $this->assertSame($thirdPartySystemType, $reminderMessage->getThirdPartySystemType());
     }
 
-    public function testSetThirdPartySystemTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $thirdPartySystemType = 'wrong third party system type';
-        $reminderMessage = new ReminderMessage();
-        $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setThirdPartySystemType($thirdPartySystemType));
-    }
-
     public function testGetType(): void
     {
         $type = ReminderMessageTypeEnum::EMAIL;
         $reminderMessage = new ReminderMessage();
         $reminderMessage->setType($type);
         $this->assertSame($type, $reminderMessage->getType());
-        $this->assertIsString($reminderMessage->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -287,13 +277,5 @@ final class ReminderMessageTest extends AbstractTestCase
         $reminderMessage = new ReminderMessage();
         $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setType($type));
         $this->assertSame($type, $reminderMessage->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $reminderMessage = new ReminderMessage();
-        $this->assertInstanceOf(ReminderMessage::class, $reminderMessage->setType($type));
     }
 }

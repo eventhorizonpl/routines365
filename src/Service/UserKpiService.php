@@ -27,7 +27,7 @@ class UserKpiService
     }
 
     public function create(
-        string $type,
+        UserKpiTypeEnum $type,
         User $user,
         UserKpi $previousUserKpi = null
     ): UserKpi {
@@ -59,7 +59,7 @@ class UserKpiService
         return $userKpi;
     }
 
-    public function run(string $type): self
+    public function run(UserKpiTypeEnum $type): self
     {
         $page = 1;
         $limit = 5;
@@ -71,7 +71,7 @@ class UserKpiService
 
             foreach ($users as $user) {
                 $previousUserKpi = $this->userKpiRepository->findOneByTypeAndUser(
-                    $type,
+                    $type->value,
                     $user
                 );
                 $userKpi = $this->create(
@@ -82,7 +82,7 @@ class UserKpiService
                 if (\in_array($type, [UserKpiTypeEnum::ANNUALLY, UserKpiTypeEnum::MONTHLY, UserKpiTypeEnum::WEEKLY], true)) {
                     $this->emailService->sendUserKpi(
                         $user->getEmail(),
-                        $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()]),
+                        $this->translator->trans('R365: Your type statistics', ['type' => $userKpi->getType()->value]),
                         [
                             'recipient_first_name' => $user->getProfile()->getFirstName(),
                             'user_kpi' => $userKpi,

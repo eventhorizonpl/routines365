@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Reminder;
+use App\Enum\ReminderTypeEnum;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
 
@@ -25,7 +26,7 @@ class ReminderFactory
         bool $sendEmail,
         bool $sendMotivationalMessage,
         bool $sendSms,
-        string $type
+        ReminderTypeEnum $type
     ): Reminder {
         $reminder = $this->createReminder();
 

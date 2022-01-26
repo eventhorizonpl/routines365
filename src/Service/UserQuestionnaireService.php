@@ -54,7 +54,7 @@ class UserQuestionnaireService
                             '%s_%s_%s',
                             $question->getUuid(),
                             $answer->getUuid(),
-                            AnswerTypeEnum::OWN
+                            AnswerTypeEnum::OWN->value
                         ));
                     }
                     $userQuestionnaireAnswer = $this->userQuestionnaireAnswerService->findOrCreate(

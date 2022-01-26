@@ -93,11 +93,5 @@ final class AchievementServiceTest extends AbstractDoctrineTestCase
             AchievementTypeEnum::CREATED_NOTE
         );
         $this->assertNull($achievement);
-
-        $achievement = $this->achievementService->manageAchievements(
-            $user,
-            'something else'
-        );
-        $this->assertNull($achievement);
     }
 }

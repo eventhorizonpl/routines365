@@ -83,7 +83,7 @@ class TestimonialRepository extends ServiceEntityRepository
             ->orderBy('RAND()')
             ->setMaxResults(1)
             ->setParameter('isVisible', true)
-            ->setParameter('status', TestimonialStatusEnum::ACCEPTED)
+            ->setParameter('status', TestimonialStatusEnum::ACCEPTED->value)
         ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

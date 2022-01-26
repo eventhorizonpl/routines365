@@ -80,11 +80,10 @@ class Profile
     private bool $showMotivationalMessages;
 
     #[Assert\Choice(callback: 'getThemeValidationChoices')]
-    #[Assert\Length(max: 8)]
-    #[Assert\Type('string')]
+    #[Assert\Type(ProfileThemeEnum::class)]
     #[Groups(['gdpr'])]
-    #[ORM\Column(length: 8, nullable: true, type: Types::STRING)]
-    private ?string $theme;
+    #[ORM\Column(enumType: ProfileThemeEnum::class, length: 8, nullable: true, type: Types::STRING)]
+    private ?ProfileThemeEnum $theme;
 
     #[Assert\Length(max: 36)]
     #[Assert\Timezone]
@@ -291,7 +290,7 @@ class Profile
         return $this;
     }
 
-    public function getTheme(): ?string
+    public function getTheme(): ?ProfileThemeEnum
     {
         return $this->theme;
     }
@@ -299,22 +298,21 @@ class Profile
     public static function getThemeFormChoices(): array
     {
         return [
-            ProfileThemeEnum::DARK => ProfileThemeEnum::DARK,
-            ProfileThemeEnum::LIGHT => ProfileThemeEnum::LIGHT,
+            ProfileThemeEnum::DARK->value => ProfileThemeEnum::DARK->value,
+            ProfileThemeEnum::LIGHT->value => ProfileThemeEnum::LIGHT->value,
         ];
     }
 
     public static function getThemeValidationChoices(): array
     {
-        return array_keys(self::getThemeFormChoices());
+        return [
+            ProfileThemeEnum::DARK,
+            ProfileThemeEnum::LIGHT,
+        ];
     }
 
-    public function setTheme(?string $theme): self
+    public function setTheme(?ProfileThemeEnum $theme): self
     {
-        if (!(\in_array($theme, self::getThemeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid theme');
-        }
-
         $this->theme = $theme;
 
         return $this;

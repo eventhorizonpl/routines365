@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class ProfileThemeEnum
+enum ProfileThemeEnum: string
 {
-    public const DARK = 'dark';
-    public const LIGHT = 'light';
+    case DARK = 'dark';
+    case LIGHT = 'light';
 }

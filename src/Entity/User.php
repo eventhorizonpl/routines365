@@ -146,11 +146,10 @@ class User implements UserInterface, TwoFactorInterface
     private array $roles = [];
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['system'])]
-    #[Assert\Length(groups: ['system'], max: 8)]
     #[Assert\NotBlank(groups: ['system'])]
-    #[Assert\Type('string', groups: ['system'])]
-    #[ORM\Column(length: 8, type: Types::STRING)]
-    private string $type;
+    #[Assert\Type(UserTypeEnum::class, groups: ['system'])]
+    #[ORM\Column(enumType: UserTypeEnum::class, length: 8, type: Types::STRING)]
+    private UserTypeEnum $type;
 
     public function __construct()
     {
@@ -633,7 +632,7 @@ class User implements UserInterface, TwoFactorInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        $roles[] = UserRoleEnum::ROLE_USER;
+        $roles[] = UserRoleEnum::ROLE_USER->value;
 
         return array_unique($roles);
     }
@@ -641,9 +640,9 @@ class User implements UserInterface, TwoFactorInterface
     public static function getRolesFormChoices(): array
     {
         return [
-            UserRoleEnum::ROLE_ADMIN => UserRoleEnum::ROLE_ADMIN,
-            UserRoleEnum::ROLE_SUPER_ADMIN => UserRoleEnum::ROLE_SUPER_ADMIN,
-            UserRoleEnum::ROLE_USER => UserRoleEnum::ROLE_USER,
+            UserRoleEnum::ROLE_ADMIN->value => UserRoleEnum::ROLE_ADMIN->value,
+            UserRoleEnum::ROLE_SUPER_ADMIN->value => UserRoleEnum::ROLE_SUPER_ADMIN->value,
+            UserRoleEnum::ROLE_USER->value => UserRoleEnum::ROLE_USER->value,
         ];
     }
 
@@ -733,7 +732,7 @@ class User implements UserInterface, TwoFactorInterface
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?UserTypeEnum
     {
         return $this->type;
     }
@@ -741,24 +740,25 @@ class User implements UserInterface, TwoFactorInterface
     public static function getTypeFormChoices(): array
     {
         return [
-            UserTypeEnum::CUSTOMER => UserTypeEnum::CUSTOMER,
-            UserTypeEnum::LEAD => UserTypeEnum::LEAD,
-            UserTypeEnum::PROSPECT => UserTypeEnum::PROSPECT,
-            UserTypeEnum::STAFF => UserTypeEnum::STAFF,
+            UserTypeEnum::CUSTOMER->value => UserTypeEnum::CUSTOMER->value,
+            UserTypeEnum::LEAD->value => UserTypeEnum::LEAD->value,
+            UserTypeEnum::PROSPECT->value => UserTypeEnum::PROSPECT->value,
+            UserTypeEnum::STAFF->value => UserTypeEnum::STAFF->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            UserTypeEnum::CUSTOMER,
+            UserTypeEnum::LEAD,
+            UserTypeEnum::PROSPECT,
+            UserTypeEnum::STAFF,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(UserTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

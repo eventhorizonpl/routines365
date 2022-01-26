@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class RewardTypeEnum
+enum RewardTypeEnum: string
 {
-    public const ALL = 'all';
-    public const COMPLETED_ROUTINE = 'completed_routine';
-    public const COMPLETED_GOAL = 'completed_goal';
+    case ALL = 'all';
+    case COMPLETED_ROUTINE = 'completed_routine';
+    case COMPLETED_GOAL = 'completed_goal';
 }

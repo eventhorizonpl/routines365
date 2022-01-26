@@ -55,7 +55,7 @@ class UserFaker
         ?bool $isEnabled = null,
         ?string $password = null,
         ?array $roles = null,
-        ?string $type = null
+        ?UserTypeEnum $type = null
     ): User {
         if (null === $email) {
             $email = (string) $this->faker->safeEmail();
@@ -70,13 +70,11 @@ class UserFaker
         }
 
         if (null === $roles) {
-            $roles = [UserRoleEnum::ROLE_USER];
+            $roles = [UserRoleEnum::ROLE_USER->value];
         }
 
         if (null === $type) {
-            $type = (string) $this->faker->randomElement(
-                User::getTypeFormChoices()
-            );
+            $type = UserTypeEnum::STAFF;
         }
 
         $user = $this->userFactory->createUserWithRequired(
@@ -94,7 +92,7 @@ class UserFaker
         ?bool $isEnabled = null,
         ?string $password = null,
         ?array $roles = null,
-        ?string $type = null
+        ?UserTypeEnum $type = null
     ): User {
         $user = $this->createUser(
             $email,
@@ -125,9 +123,9 @@ class UserFaker
             true,
             $password,
             [
-                UserRoleEnum::ROLE_ADMIN,
-                UserRoleEnum::ROLE_SUPER_ADMIN,
-                UserRoleEnum::ROLE_USER,
+                UserRoleEnum::ROLE_ADMIN->value,
+                UserRoleEnum::ROLE_SUPER_ADMIN->value,
+                UserRoleEnum::ROLE_USER->value,
             ],
             UserTypeEnum::STAFF
         );
@@ -149,7 +147,7 @@ class UserFaker
             $email,
             true,
             $password,
-            [UserRoleEnum::ROLE_USER],
+            [UserRoleEnum::ROLE_USER->value],
             UserTypeEnum::CUSTOMER
         );
     }
@@ -170,7 +168,7 @@ class UserFaker
             $email,
             true,
             $password,
-            [UserRoleEnum::ROLE_USER],
+            [UserRoleEnum::ROLE_USER->value],
             UserTypeEnum::CUSTOMER
         );
 

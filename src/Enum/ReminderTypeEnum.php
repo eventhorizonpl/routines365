@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
-class ReminderTypeEnum
+enum ReminderTypeEnum: string
 {
-    public const DAILY = 'daily';
-    public const FRIDAY = 'friday';
-    public const MONDAY = 'monday';
-    public const SATURDAY = 'saturday';
-    public const SUNDAY = 'sunday';
-    public const THURSDAY = 'thursday';
-    public const TUESDAY = 'tuesday';
-    public const WEDNESDAY = 'wednesday';
+    case DAILY = 'daily';
+    case FRIDAY = 'friday';
+    case MONDAY = 'monday';
+    case SATURDAY = 'saturday';
+    case SUNDAY = 'sunday';
+    case THURSDAY = 'thursday';
+    case TUESDAY = 'tuesday';
+    case WEDNESDAY = 'wednesday';
 }

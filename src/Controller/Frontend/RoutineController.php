@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted(UserRoleEnum::ROLE_USER)]
+#[IsGranted([UserRoleEnum::ROLE_USER->value])]
 #[Route('/routines', name: 'frontend_routine_')]
 class RoutineController extends AbstractController
 {

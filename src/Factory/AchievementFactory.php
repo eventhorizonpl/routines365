@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\Entity\Achievement;
+use App\Enum\AchievementTypeEnum;
 use Symfony\Component\Uid\Uuid;
 
 class AchievementFactory
@@ -22,7 +23,7 @@ class AchievementFactory
         int $level,
         string $name,
         int $requirement,
-        string $type
+        AchievementTypeEnum $type
     ): Achievement {
         $achievement = $this->createAchievement();
 

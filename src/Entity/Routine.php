@@ -98,12 +98,11 @@ class Routine
     private ?string $name;
 
     #[Assert\Choice(callback: 'getTypeValidationChoices', groups: ['form', 'system'])]
-    #[Assert\Length(groups: ['form', 'system'], max: 16)]
     #[Assert\NotBlank(groups: ['form', 'system'])]
-    #[Assert\Type('string', groups: ['form', 'system'])]
+    #[Assert\Type(RoutineTypeEnum::class, groups: ['form', 'system'])]
     #[Groups(['gdpr'])]
-    #[ORM\Column(length: 16, type: Types::STRING)]
-    private string $type;
+    #[ORM\Column(enumType: RoutineTypeEnum::class, length: 16, type: Types::STRING)]
+    private RoutineTypeEnum $type;
 
     public function __construct()
     {
@@ -451,7 +450,7 @@ class Routine
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?RoutineTypeEnum
     {
         return $this->type;
     }
@@ -459,24 +458,25 @@ class Routine
     public static function getTypeFormChoices(): array
     {
         return [
-            RoutineTypeEnum::HOBBY => RoutineTypeEnum::HOBBY,
-            RoutineTypeEnum::LEARNING => RoutineTypeEnum::LEARNING,
-            RoutineTypeEnum::SPORT => RoutineTypeEnum::SPORT,
-            RoutineTypeEnum::WORK => RoutineTypeEnum::WORK,
+            RoutineTypeEnum::HOBBY->value => RoutineTypeEnum::HOBBY->value,
+            RoutineTypeEnum::LEARNING->value => RoutineTypeEnum::LEARNING->value,
+            RoutineTypeEnum::SPORT->value => RoutineTypeEnum::SPORT->value,
+            RoutineTypeEnum::WORK->value => RoutineTypeEnum::WORK->value,
         ];
     }
 
     public static function getTypeValidationChoices(): array
     {
-        return array_keys(self::getTypeFormChoices());
+        return [
+            RoutineTypeEnum::HOBBY,
+            RoutineTypeEnum::LEARNING,
+            RoutineTypeEnum::SPORT,
+            RoutineTypeEnum::WORK,
+        ];
     }
 
-    public function setType(string $type): self
+    public function setType(RoutineTypeEnum $type): self
     {
-        if (!(\in_array($type, self::getTypeValidationChoices(), true))) {
-            throw new InvalidArgumentException('Invalid type');
-        }
-
         $this->type = $type;
 
         return $this;

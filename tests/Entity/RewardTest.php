@@ -316,7 +316,6 @@ final class RewardTest extends AbstractTestCase
         $reward = new Reward();
         $reward->setType($type);
         $this->assertSame($type, $reward->getType());
-        $this->assertIsString($reward->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -337,13 +336,5 @@ final class RewardTest extends AbstractTestCase
         $reward = new Reward();
         $this->assertInstanceOf(Reward::class, $reward->setType($type));
         $this->assertSame($type, $reward->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $reward = new Reward();
-        $this->assertInstanceOf(Reward::class, $reward->setType($type));
     }
 }

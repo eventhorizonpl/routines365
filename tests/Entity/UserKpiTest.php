@@ -411,7 +411,6 @@ final class UserKpiTest extends AbstractTestCase
         $userKpi = new UserKpi();
         $userKpi->setType($type);
         $this->assertSame($type, $userKpi->getType());
-        $this->assertIsString($userKpi->getType());
     }
 
     public function testGetTypeFormChoices(): void
@@ -432,14 +431,6 @@ final class UserKpiTest extends AbstractTestCase
         $userKpi = new UserKpi();
         $this->assertInstanceOf(UserKpi::class, $userKpi->setType($type));
         $this->assertSame($type, $userKpi->getType());
-    }
-
-    public function testSetTypeException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $type = 'wrong type';
-        $userKpi = new UserKpi();
-        $this->assertInstanceOf(UserKpi::class, $userKpi->setType($type));
     }
 
     public function testGetUser(): void
