@@ -7,7 +7,7 @@
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
         "async-aws/ses": "^1.4",
-        "async-aws/sns": "^1.2",
+        "async-aws/sns": "^1.3",
         "composer/package-versions-deprecated": "^1.11",
         "cron/cron-bundle": "^2.10",
         "doctrine/annotations": "^1.13",
@@ -15,8 +15,8 @@
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.10",
-        "fakerphp/faker": "^1.17",
+        "doctrine/orm": "^2.11",
+        "fakerphp/faker": "^1.18",
         "knplabs/knp-paginator-bundle": "^5.8",
         "league/iso3166": "^4.0",
         "lexik/jwt-authentication-bundle": "^2.14",
@@ -83,7 +83,7 @@
         "symfony/twig-bundle": "^5.4",
         "symfony/var-dumper": "^5.4",
         "symfony/web-profiler-bundle": "^5.4",
-        "zalas/phpunit-injector": "^2.1"
+        "zalas/phpunit-injector": "^2.2"
     },
     "config": {
         "optimize-autoloader": true,
